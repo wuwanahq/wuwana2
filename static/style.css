@@ -4,11 +4,14 @@ body {
 	background-color: #F0F0F0;
 	font-size: 14px;
 	margin: 0px}
+
 a {
 	font-weight: bold;
 	color: black}
+
 hr {
 	margin: 30px 0 15px 0}
+
 .menu {
 	line-height:25px;
 	padding: 10px;
@@ -17,21 +20,27 @@ hr {
 	width: 280px;
 	color: white;
 	background-color: #595757}
+
 .menu .logo {
 	margin: 40px;
 	text-align: center}
+
 .menu dl {
 	margin: 40px 0}
+
 .menu input {
 	margin-right: 9px}
+
 .menu dt:first-child,
 .content .title {
 	margin: 20px 0;
 	font-weight: bold;
 	font-size: 1.3em}
+
 .content {
 	margin-left: 300px;
 	padding: 16px}
+
 .content .card {
 	display: inline-block;
 	width: 250px;
@@ -40,6 +49,7 @@ hr {
 	margin: 5px;
 	padding: 20px;
 	background-color: white}
+
 .content .button {
 	margin: 9px;
 	color: black;
@@ -47,6 +57,7 @@ hr {
 	border-radius: 20px;
 	padding: 5px 9px;
 	background-color: #F0F0F0}
+
 .content .hero {
 	color: white;
 	width: 98%;
@@ -57,13 +68,23 @@ hr {
 	background-image: linear-gradient(black, transparent), url("brent-gorwin.png");
 	background-position: bottom;
 	background-size: cover}
+
 .content .card-title {
 	font-weight: bold;
 	font-size: 1.5em}
+
+.content .card > img {
+	border-radius: 8px;
+	border-style: solid;
+	border-color: #F0F0F0;
+	width: 80px;
+	height: 80px}
+
 .content .geoloc {
 	font-weight: normal;
 	color: #595757;
 	font-size: .7em;
 	float: right}
+
 .content .geoloc img {
 	margin-right: 5px}

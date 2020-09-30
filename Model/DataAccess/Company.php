@@ -9,6 +9,7 @@ use PDOStatement;
  */
 class Company
 {
+	const NO_LOGO_ICON = '/static/logo_circular.png';
 	const VALUES_DELIMITER = ';';
 	const TABLE_NAME = 'Company';
 	const COLUMNS = [
@@ -40,7 +41,7 @@ class Company
 		{
 			$company = new Company();
 			$company->name = $row['Name'];
-			$company->logo = $row['Logo'];
+			$company->logo = empty($row['Logo']) ? self::NO_LOGO_ICON : $row['Logo'];
 			$company->description = $row['Description'];
 			$company->website = $row['Website'];
 			$company->phoneNumber = $row['PhoneNumber'];
@@ -50,7 +51,7 @@ class Company
 
 			foreach (explode(self::VALUES_DELIMITER, $row['CategoriesID']) as $category)
 			{
-				if (!empty($category))
+				if ($category > 0)
 				{ $company->categories[] = (int)$category; }
 			}
 

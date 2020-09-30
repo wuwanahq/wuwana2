@@ -11,7 +11,9 @@
 		<div class="logo"><a href="/"><img src="static/logo.png"></a></div>
 		<dl>
 			<dt>Category</dt>
-			<dt><input id="c" type="checkbox" <?php if (count($selectedCategories) == 0) { echo 'checked'; } ?>>
+			<dt>
+				<input id="c" type="checkbox" name="cat" onchange="this.form.submit()"
+					<?php if ($selectedCategories == []) { echo 'checked disabled'; } ?>>
 				<label for="c">All categories</label>
 			</dt>
 			<?php
@@ -29,7 +31,8 @@
 		<dl>
 			<dt>Region</dt>
 			<dt>
-				<input id="r" type="checkbox" <?php if (count($selectedRegions) == 0) { echo 'checked'; } ?>>
+				<input id="r" type="checkbox" name="region" onchange="this.form.submit()"
+					<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>>
 				<label for="r">All regions</label>
 			</dt>
 			<?php
@@ -58,12 +61,16 @@
 			<?php
 				foreach ($companies as $company)
 				{
-					echo
-					'<div class="card">',
-						'<a href="#" class="geoloc"><img src="static/geoloc.png">',
+					echo '<div class="card">';
+
+					if ($company->region > 0)
+					{
+						echo '<span class="geoloc"><img src="static/geoloc.png">',
 							$locations[$company->region]->region,
-						'</a>',
-						'<img src="static/company-logo/', $company->logo, '">',
+						'</span>';
+					}
+
+					echo '<img src="', $company->logo, '">',
 						'<br><span class="card-title">', $company->name, '</span>',
 						'<br><br>', $company->description,
 						'<hr>';

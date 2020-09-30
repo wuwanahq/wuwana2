@@ -10,25 +10,29 @@ spl_autoload_register(function($className) {
 
 $db = new DataAccess\DataAccess(WebApp\WebApp::getDatabase());
 $categories = $db->getCategories();
-$locations = $db->getLocations();
+$locations = $db->getLocations(true);
+
 $selectedCategories = [];
 $selectedRegions = [];
 
 if (count($_GET) > 0)
 {
-	$totalCategory = count($categories);
-	$totalLocation = count($locations);
-
-	for ($i = 1; $i <= $totalCategory; ++$i)
+	if (!filter_has_var(INPUT_GET, 'cat'))
 	{
-		if (filter_has_var(INPUT_GET, 'cat' . $i))
-		{ $selectedCategories[] = $i; }
+		foreach ($categories as $key => $value)
+		{
+			if (filter_has_var(INPUT_GET, 'cat' . $key))
+			{ $selectedCategories[] = $key; }
+		}
 	}
 
-	for ($i = 1; $i <= $totalLocation; ++$i)
+	if (!filter_has_var(INPUT_GET, 'region'))
 	{
-		if (filter_has_var(INPUT_GET, 'region' . $i))
-		{ $selectedRegions[] = $i; }
+		foreach ($locations as $key => $value)
+		{
+			if (filter_has_var(INPUT_GET, 'region' . $key))
+			{ $selectedRegions[] = $key; }
+		}
 	}
 }
 

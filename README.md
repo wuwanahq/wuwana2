@@ -1,6 +1,6 @@
 # Wuwana v2
 
-https://www.wuwana.com
+CMS used for https://www.wuwana.com
 
 ## How to test locally
 
@@ -18,6 +18,9 @@ Now you can open the website with your browser:
 - Go to http://localhost:8000/admin-wuwana To import your data
 - Go to http://localhost:8000 To watch your data on the homepage
 
-## How to deploy on prod
+To update your local version: `git pull`
 
-To do...
+## How to deploy on a shared web hosting
+
+Copy the project's files on your web hosting service (via FTP or GitHub sync).  
+Import your data with the "admin-wuwana" page.

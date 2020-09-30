@@ -13,6 +13,7 @@ $message = '';
 if (WebApp\Config::ADMIN_PASSWORD === filter_input(INPUT_POST, 'Pass'))
 {
 	$db = new DataAccess\DataAccess(WebApp\WebApp::getDatabase());
+	$db->getCategories();  // Check if the database was created
 
 	if (!empty($_FILES['Cat']['tmp_name'])
 		&& is_uploaded_file($_FILES['Cat']['tmp_name'])
