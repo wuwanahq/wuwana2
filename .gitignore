@@ -2,9 +2,13 @@ thumbs.db
 desktop.ini
 .DS_Store
 
+# SQLite databases
+*.db
+
+# IDE folders
+nbproject/
+.idea/
+
 # Composer files
 composer.phar
 vendor/
-
-# Local configs
-config/autoload/*.local.php

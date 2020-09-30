@@ -7,39 +7,44 @@
 	<link rel="stylesheet" type="text/css" href="static/style.css"/>
 </head>
 <body>
-	<div class="menu">
-		<div class="logo"><img src="static/logo.png"></div>
+	<form class="menu" method="get">
+		<div class="logo"><a href="/"><img src="static/logo.png"></a></div>
 		<dl>
 			<dt>Category</dt>
-			<dt><input type="checkbox" checked>All categories</dt>
-			<dd><input type="checkbox">Cafeteria</dd>
-			<dd><input type="checkbox">Micro-roasters</dd>
-			<dd><input type="checkbox">Roasters</dd>
+			<dt><input id="c" type="checkbox" <?php if (count($selectedCategories) == 0) { echo 'checked'; } ?>>
+				<label for="c">All categories</label>
+			</dt>
+			<?php
+				foreach ($categories as $id => $category)
+				{
+					echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
+
+					if (in_array($id, $selectedCategories))
+					{ echo ' checked'; }
+
+					echo ' onchange="this.form.submit()"><label for="C', $id, '">', $category->spanish, '</label></dd>';
+				}
+			?>
 		</dl>
 		<dl>
 			<dt>Region</dt>
-			<dt><input type="checkbox" checked>All regions</dt>
-			<dd><input type="checkbox">Andalucia</dd>
-			<dd><input type="checkbox">Aragon</dd>
-			<dd><input type="checkbox">Canarias</dd>
-			<dd><input type="checkbox">Cantabria</dd>
-			<dd><input type="checkbox">Castilla y Leon</dd>
-			<dd><input type="checkbox">Castilla-La Mancha</dd>
-			<dd><input type="checkbox">Cantaluna</dd>
-			<dd><input type="checkbox">Ceuta</dd>
-			<dd><input type="checkbox">Comunidad de Madrid</dd>
-			<dd><input type="checkbox">Comunidad Foral de Navarra</dd>
-			<dd><input type="checkbox">Comunidad Valenciana</dd>
-			<dd><input type="checkbox">Extremadura</dd>
-			<dd><input type="checkbox">Galicia</dd>
-			<dd><input type="checkbox">Islas Baleares</dd>
-			<dd><input type="checkbox">La Rioja</dd>
-			<dd><input type="checkbox">Melilla</dd>
-			<dd><input type="checkbox">Pais Vasco</dd>
-			<dd><input type="checkbox">Principado de Auturias</dd>
-			<dd><input type="checkbox">Region de Murcia</dd>
+			<dt>
+				<input id="r" type="checkbox" <?php if (count($selectedRegions) == 0) { echo 'checked'; } ?>>
+				<label for="r">All regions</label>
+			</dt>
+			<?php
+				foreach ($locations as $id => $location)
+				{
+					echo '<dd><input type="checkbox" name="region', $id, '" id="L', $id, '"';
+
+					if (in_array($id, $selectedRegions))
+					{ echo ' checked'; }
+
+					echo ' onchange="this.form.submit()"><label for="L', $id, '">', $location->region, '</label></dd>';
+				}
+			?>
 		</dl>
-	</div>
+	</form>
 	<div class="content">
 		<div class="hero" style="position:relative">
 			<br><span style="font-size:2.5em; font-weight:bold">¿Estás buscando café de especialidad?</span><br>
@@ -55,15 +60,33 @@
 				{
 					echo
 					'<div class="card">',
-						'<a href="#" class="geoloc"><img src="static/geoloc.png">', $company->region, '</a>',
-						'<img src="static/company-', $company->icon, '.png">',
+						'<a href="#" class="geoloc"><img src="static/geoloc.png">',
+							$locations[$company->region]->region,
+						'</a>',
+						'<img src="static/company-logo/', $company->logo, '">',
 						'<br><span class="card-title">', $company->name, '</span>',
 						'<br><br>', $company->description,
-						'<hr>',
-						'<span class="button">Micro-roaster</span> <span class="button">Cafeteria</span>',
-						'<br><br><a href="http://wuwana.com" target="_blank">Visit the website</a>',
-						'&nbsp; <a href="mailto:jonathan@wuwana.com">Contact</a>',
-					'</div>';
+						'<hr>';
+
+					foreach ($company->categories as $category)
+					{ echo '<span class="button">', $categories[$category]->spanish, '</span>'; }
+
+					echo '<br><br>';
+
+					if (!empty($company->website))
+					{ echo '<a href="', $company->website, '" target="_blank">Visit the website</a> &nbsp; '; }
+
+					if (!empty($company->email))
+					{ echo '<a href="mailto:', $company->email, '">Contact</a> &nbsp; '; }
+
+					if (!empty($company->phoneNumber))
+					{
+						echo '<a target="_blank" href="';
+						printf(WebApp\Config::WHATSAPP_URL, $company->phoneNumber, $company->name);
+						echo '">Whatsapp</a> &nbsp; ';
+					}
+
+					echo '</div>';
 				}
 			?>
 		</div>

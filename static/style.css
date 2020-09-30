@@ -41,6 +41,7 @@ hr {
 	padding: 20px;
 	background-color: white}
 .content .button {
+	margin: 9px;
 	color: black;
 	font-size: .7em;
 	border-radius: 20px;
