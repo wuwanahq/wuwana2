@@ -1,6 +1,6 @@
 # Wuwana v2
 
-CMS used for https://www.wuwana.com
+Business directory project used for https://www.wuwana.com
 
 ## How to test locally
 
