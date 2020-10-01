@@ -9,7 +9,7 @@ use PDOStatement;
  */
 class Company
 {
-	const NO_LOGO_ICON = '/static/logo_circular.png';
+	const NO_LOGO_ICON = '/static/logo-square%u.png';
 	const VALUES_DELIMITER = ';';
 	const TABLE_NAME = 'Company';
 	const COLUMNS = [
@@ -41,7 +41,7 @@ class Company
 		{
 			$company = new Company();
 			$company->name = $row['Name'];
-			$company->logo = empty($row['Logo']) ? self::NO_LOGO_ICON : $row['Logo'];
+			$company->logo = empty($row['Logo']) ? sprintf(self::NO_LOGO_ICON, rand(1,8)) : $row['Logo'];
 			$company->description = $row['Description'];
 			$company->website = $row['Website'];
 			$company->phoneNumber = $row['PhoneNumber'];

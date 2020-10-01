@@ -37,5 +37,6 @@ if (count($_GET) > 0)
 }
 
 $companies = $db->getCompanies($selectedCategories, $selectedRegions);
+shuffle($companies);
 
 require 'homepage/view.php';
