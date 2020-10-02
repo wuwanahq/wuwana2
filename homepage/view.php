@@ -22,11 +22,11 @@
 	<form class="menu" method="get">
 		<div class="logo"><a href="/"><img src="static/logo.png"></a></div>
 		<dl>
-			<dt>Category</dt>
+			<dt>Categorías</dt>
 			<dt>
 				<input id="c" type="checkbox" name="cat" onchange="this.form.submit()"
 					<?php if ($selectedCategories == []) { echo 'checked disabled'; } ?>>
-				<label for="c">All categories</label>
+				<label for="c">Todas las categorías</label>
 			</dt>
 			<?php
 				foreach ($categories as $id => $category)
@@ -41,11 +41,11 @@
 			?>
 		</dl>
 		<dl>
-			<dt>Region</dt>
+			<dt>Comunidades autónomas</dt>
 			<dt>
 				<input id="r" type="checkbox" name="region" onchange="this.form.submit()"
 					<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>>
-				<label for="r">All regions</label>
+				<label for="r">Todas las comunidades</label>
 			</dt>
 			<?php
 				foreach ($locations as $id => $location)
@@ -62,14 +62,14 @@
 	</form>
 	<div class="content">
 		<div class="hero" style="position:relative">
-			<br><span style="font-size:2.5em; font-weight:bold">¿Estás buscando café de especialidad?</span><br>
+			<br><span style="font-size: 4rem; font-weight:900">¿Estás buscando café de especialidad?</span><br>
 			<br><span style="font-size:1.5em">Encuentra los proveedores que necesitas rápidamente.</span>
-			<br><a href="#popup" class="button" style="position:absolute; bottom:24px; right:24px; font-size: .9em">
+			<br><a href="#popup" class="button" style="position:absolute; bottom:16px; right:16px; font-size: 1rem">
 				¿Qué es Wuwana?
 			</a>
 		</div>
-		<span class="title">The providers</span>
-		<div style="text-align:center; margin-top:30px">
+		<span class="title">Las empresas</span>
+		<div style="text-align:center; margin-top:24px">
 			<?php
 				foreach ($companies as $company)
 				{
@@ -84,8 +84,7 @@
 
 					echo '<img src="', $company->logo, '">',
 						'<br><span class="card-title">', $company->name, '</span>',
-						'<br><br>', $company->description,
-						'<hr>';
+						'<div class="description"><br><br>', $company->description, '</div>',						'<hr>';
 
 					foreach ($company->categories as $category)
 					{ echo '<span class="button">', $categories[$category]->spanish, '</span>'; }
