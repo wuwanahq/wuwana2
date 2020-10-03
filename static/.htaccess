@@ -1,0 +1,8 @@
+# Apache
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "now plus 9 hours"
+</IfModule>
+
+# Nginx
+#location /static/ { expires 9h; }

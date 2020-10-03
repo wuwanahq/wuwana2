@@ -62,9 +62,9 @@
 	</form>
 	<div class="content">
 		<div class="hero" style="position:relative">
-			<br><span style="font-size: 4rem; font-weight:900">¿Estás buscando café de especialidad?</span><br>
+			<br><span style="font-size:3rem; font-weight:900">¿Estás buscando café de especialidad?</span><br>
 			<br><span style="font-size:1.5em">Encuentra los proveedores que necesitas rápidamente.</span>
-			<br><a href="#popup" class="button" style="position:absolute; bottom:16px; right:16px; font-size: 1rem">
+			<br><a href="#popup" class="button">
 				¿Qué es Wuwana?
 			</a>
 		</div>
@@ -83,8 +83,8 @@
 					}
 
 					echo '<img src="', $company->logo, '">',
-						'<br><span class="card-title">', $company->name, '</span>',
-						'<div class="description"><br><br>', $company->description, '</div>',						'<hr>';
+						'<p class="text"><span class="title">', $company->name, '</span>',
+						'<br><br>', $company->description, '</p><hr>';
 
 					foreach ($company->categories as $category)
 					{ echo '<span class="button">', $categories[$category]->spanish, '</span>'; }
@@ -94,14 +94,15 @@
 					if (!empty($company->website))
 					{ echo '<a href="', $company->website, '" target="_blank">Visit the website</a> &nbsp; '; }
 
-					if (!empty($company->email))
-					{ echo '<a href="mailto:', $company->email, '">Contact</a> &nbsp; '; }
-
 					if (!empty($company->phoneNumber))
 					{
 						echo '<a target="_blank" href="';
 						printf(WebApp\Config::WHATSAPP_URL, $company->phoneNumber, $company->name);
 						echo '">Whatsapp</a> &nbsp; ';
+					}
+					elseif (!empty($company->email))
+					{
+						echo '<a href="mailto:', $company->email, '">Contact</a> &nbsp; ';
 					}
 
 					echo '</div>';
