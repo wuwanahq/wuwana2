@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 body {
 	font-family: "Roboto", sans-serif;
@@ -16,53 +16,102 @@ hr {
 	margin: 0 0 30px 0;
 	color: #8B8989}
 
-.menu {
+.Symbol {
+	margin: 4px 24px;
+	float: right;
+	font-size: 48px}
+
+.Tag {
+	text-decoration: none;
+	margin: 6px;
+	color: #8B8989;
+	font-size: .87rem;
+	font-weight: 500;
+	border: 1px solid #8B8989;
+	padding: 8px 16px;
+	background-color: white}
+
+.ButtonRound,
+.ButtonSquare {
+	text-decoration: none;
+	margin: 6px;
+	color: #161313;
+	font-size: .87rem;
+	font-weight: 500;
+	border: 1px solid #161313;
+	padding: 8px 16px;
+	background-color: rgba(255, 255, 255, 0.7)}
+
+.ButtonRound,
+.Tag {
+	border-radius: 20px}
+
+.ButtonSquare {
+	border-radius: 8px}
+
+a.ButtonRound:hover,
+a.ButtonSquare:hover {
+	background-color: #161313;
+	color: white}
+
+.Menu {
 	overflow: auto;
-	line-height:25px;
+	line-height: 25px;
 	padding: 16px;
 	position: fixed;
 	height: 100%;
-	width: 280px;
+	width: 240px;
 	color: white;
 	background-color: #595757}
 
-.menu .logo {
+.Menu .Logo {
 	margin: 24px;
 	text-align: center}
 
-.menu dl {
+.Menu dl {
 	margin: 40px 0}
 
-.menu input {
+.Menu dl dd {
+	margin-inline-start: 23px}
+
+.Menu input {
 	margin-right: 8px}
 
-.menu dt:first-child,
-.content .title {
+.Menu dt:first-child,
+.Content .Title {
 	margin: 20px 0;
 	font-weight: 800;
 	font-size: 2rem}
 
-.content {
-	margin-left: 311px;
+.MenuMobile1,
+.MenuMobile2 {
+	background-color: white;
+	display: none}
+
+.MenuMobile1 .Logo {
+	margin: 24px}
+
+.Content {
+	margin-left: 280px; /* Menu width + padding x2 + 8px */
 	padding: 16px}
 
-.content .hero {
+.Content .Hero {
 	color: white;
-	width: 99%;
+	width: 98%;
 	min-height: 280px;
 	margin: 24px 0 40px 0;
 	padding-left: 16px;
 	border-radius: 16px;
-	background-image: linear-gradient(#161313, transparent), url("brent-gorwin.png");
+	background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-wide-unsplash.jpg");
 	background-position: bottom;
 	background-size: cover}
 
-.content .hero .button {
+.Content .Hero .ButtonRound {
 	position: absolute;
 	bottom: 16px;
 	right: 16px}
 
-.content .card {
+.Content .Card {
 	display: inline-block;
 	width: 270px;
 	text-align: left;
@@ -72,46 +121,29 @@ hr {
 	background-color: white;
 	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05)}
 
-.content .card .title {
+.Content .Card .Title {
 	font-weight: 700;
-	font-size: 1.5rem;
-	}
+	font-size: 1.5rem}
 
-.content .card .text {
+.Content .Card .Text {
 	min-height: 160px;
-	font-weight: 400;
-	}
+	font-weight: 400}
 
-.content .card > img {
+.Content .Card > img {
 	border-radius: 8px;
 	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);
 	width: 100px;
 	height: 100px}
 
-.content .geoloc {
+.Content .Card .GeoLoc {
 	font-weight: 500;
 	color: rgba(22, 19, 19, 0.7);
 	font-size: .75rem;
 	float: right}
 
-.content .geoloc img {
+.Content .Card .GeoLoc img {
+	vertical-align: top;
 	margin-right: 4px}
-
-.button {
-	text-decoration: none;
-	margin: 6px;
-	color: #161313;
-	font-size: .87rem;
-	font-weight: 500;
-	border: 1px solid #161313;
-	border-radius: 20px;
-	padding: 8px 16px;
-	background-color: rgba(255, 255, 255, 0.7);
-	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05)}
-
-a.button:hover {
-	background-color: #161313;
-	color: white}
 
 #popup {
 	width: 100%;
@@ -150,5 +182,26 @@ a.button:hover {
 	z-index: 1;
 	padding: 24px}
 
-#popup p {
+#popup > div p {
 	text-align: left}
+
+#popup > div img {
+	width: 96px;
+	height: 96px}
+
+#popup > div .ButtonRound {
+	float: right}
+
+@media screen and (max-width: 767px) {
+	.Menu {
+		display: none}
+
+	.MenuMobile1 {
+		display: block}
+
+	.Content {
+		margin-left: 0}
+
+	.Content .Hero {
+		background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-square-unsplash.jpg")}
+}
