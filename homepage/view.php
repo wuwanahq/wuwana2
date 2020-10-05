@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=320">
 	<title>wuwana.com</title>
 	<link rel="icon" type="image/png" href="static/icon.png"/>
 	<link rel="stylesheet" type="text/css" href="static/style.css"/>
@@ -19,11 +20,11 @@
 			<a class="ButtonSquare" href="https://twitter.com/wuwanahq" target="_blank">Síguenos en Twitter</a>
 		</div>
 	</div>
-	<div class="MenuMobile1">
+	<div class="MenuMobile">
 		<a href="/"><img class="Logo" src="static/wuwana-black.png"></a>
-		<span class="Symbol">≡</span>
+		<a href="#menu" class="Symbol">≡</a>
 	</div>
-	<form class="MenuMobile2" method="get">
+	<form id="menu" method="get">
 		<dl>
 			<dt>Categorías</dt>
 			<dt>
@@ -105,9 +106,9 @@
 		</dl>
 	</form>
 	<div class="Content">
-		<div class="Hero" style="position:relative">
-			<br><span style="font-size:3rem; font-weight:900">¿Estás buscando café de especialidad?</span><br>
-			<br><span style="font-size:1.5em">Encuentra los proveedores que necesitas rápidamente.</span>
+		<div class="Hero">
+			<br><span class="Text1">¿Estás buscando café de especialidad?</span><br>
+			<br><span class="Text2">Encuentra los proveedores que necesitas rápidamente.</span>
 			<br><a href="#popup" class="ButtonRound">
 				¿Qué es Wuwana?
 			</a>

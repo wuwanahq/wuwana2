@@ -17,9 +17,10 @@ hr {
 	color: #8B8989}
 
 .Symbol {
-	margin: 4px 24px;
+	text-decoration: none;
+	margin: 2px 16px 2px 0;
 	float: right;
-	font-size: 48px}
+	font-size: 46px}
 
 .Tag {
 	text-decoration: none;
@@ -59,7 +60,9 @@ a.ButtonSquare:hover {
 	line-height: 25px;
 	padding: 16px;
 	position: fixed;
-	height: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
 	width: 240px;
 	color: white;
 	background-color: #595757}
@@ -83,28 +86,27 @@ a.ButtonSquare:hover {
 	font-weight: 800;
 	font-size: 2rem}
 
-.MenuMobile1,
-.MenuMobile2 {
-	background-color: white;
-	display: none}
-
-.MenuMobile1 .Logo {
-	margin: 24px}
-
 .Content {
-	margin-left: 280px; /* Menu width + padding x2 + 8px */
+	margin-left: 272px; /* Menu width + padding x2 */
 	padding: 16px}
 
 .Content .Hero {
+	position:relative;
 	color: white;
-	width: 98%;
-	min-height: 280px;
+	height: 280px;
 	margin: 24px 0 40px 0;
 	padding-left: 16px;
 	border-radius: 16px;
 	background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-wide-unsplash.jpg");
 	background-position: bottom;
 	background-size: cover}
+
+.Content .Hero .Text1 {
+	font-size: 3rem;
+	font-weight: 900}
+
+.Content .Hero .Text2 {
+	font-size: 1.5em}
 
 .Content .Hero .ButtonRound {
 	position: absolute;
@@ -113,7 +115,7 @@ a.ButtonSquare:hover {
 
 .Content .Card {
 	display: inline-block;
-	width: 270px;
+	width: 260px;
 	text-align: left;
 	border-radius: 8px;
 	margin: 8px;
@@ -177,7 +179,7 @@ a.ButtonSquare:hover {
 	border: 4px solid #161313;
 	background: white;
 	margin: 0 auto;
-	width: 500px;
+	width: 580px;
 	position: relative;
 	z-index: 1;
 	padding: 24px}
@@ -192,16 +194,42 @@ a.ButtonSquare:hover {
 #popup > div .ButtonRound {
 	float: right}
 
+.MenuMobile,
+#menu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 2;
+	background-color: white;
+	display: none}
+
+.MenuMobile .Logo {
+	margin: 24px}
+
+#menu:target {
+	display:block}
+
 @media screen and (max-width: 767px) {
 	.Menu {
 		display: none}
 
-	.MenuMobile1 {
+	.MenuMobile {
 		display: block}
 
-	.Content {
-		margin-left: 0}
+	.Content,
+	#menu {
+		margin-left: 0;
+		margin-top: 60px}
 
 	.Content .Hero {
+		height: 360px;
 		background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-square-unsplash.jpg")}
+
+	.Content .Hero .Text1 {
+		font-size: 2rem;
+		font-weight: 700}
+
+	.Content .Hero .Text2 {
+		font-size: 1em}
 }
