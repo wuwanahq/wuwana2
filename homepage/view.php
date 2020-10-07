@@ -2,8 +2,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=320">
-	<title>wuwana.com</title>
+	<meta name="viewport" content="width=360">
+	<title>Wuwana</title>
 	<link rel="icon" type="image/png" href="static/icon.png"/>
 	<link rel="stylesheet" type="text/css" href="static/style.css"/>
 </head>
@@ -25,44 +25,46 @@
 		<a href="#menu" class="Symbol">≡</a>
 	</div>
 	<form id="menu" method="get">
-		<dl>
-			<dt>Categorías</dt>
-			<dt>
-				<input id="c" type="checkbox" name="cat" onchange="this.form.submit()"
+		<a href="/"><img class="Logo" src="static/wuwana-black.png"></a>
+		<a href="#" class="Symbol">×</a>
+		<p>Categorías</p>
+		<p>
+			<span class="ButtonRound">
+				<input id="c" type="checkbox" name="cat"
 					<?php if ($selectedCategories == []) { echo 'checked disabled'; } ?>>
-				<label for="c">Todas las categorías</label>
-			</dt>
+				<label for="c">Todas</label>
+			</span>
 			<?php
 				foreach ($categories as $id => $category)
 				{
-					echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
+					echo '<span class="ButtonRound"><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
 
 					if (in_array($id, $selectedCategories))
 					{ echo ' checked'; }
 
-					echo ' onchange="this.form.submit()"><label for="C', $id, '">', $category->spanish, '</label></dd>';
+					echo '><label for="C', $id, '">', $category->spanish, '</label></span>';
 				}
 			?>
-		</dl>
-		<dl>
-			<dt>Comunidades autónomas</dt>
-			<dt>
-				<input id="r" type="checkbox" name="region" onchange="this.form.submit()"
+		</p>
+		<p>Comunidades autónomas</p>
+		<p>
+			<span class="ButtonRound">
+				<input id="r" type="checkbox" name="region"
 					<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>>
-				<label for="r">Todas las comunidades</label>
-			</dt>
+				<label for="r">Todas</label>
+			</span>
 			<?php
 				foreach ($locations as $id => $location)
 				{
-					echo '<dd><input type="checkbox" name="region', $id, '" id="L', $id, '"';
+					echo '<span class="ButtonRound"><input type="checkbox" name="region', $id, '" id="L', $id, '"';
 
 					if (in_array($id, $selectedRegions))
 					{ echo ' checked'; }
 
-					echo ' onchange="this.form.submit()"><label for="L', $id, '">', $location->region, '</label></dd>';
+					echo '><label for="L', $id, '">', $location->region, '</label></span>';
 				}
 			?>
-		</dl>
+		</p>
 	</form>
 	<form class="Menu" method="get">
 		<div class="Logo"><a href="/"><img src="static/wuwana-white.png"></a></div>
@@ -76,12 +78,12 @@
 			<?php
 				foreach ($categories as $id => $category)
 				{
-					echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
+					echo '<dd><input type="checkbox" name="cat', $id, '" id="c', $id, '"';
 
 					if (in_array($id, $selectedCategories))
 					{ echo ' checked'; }
 
-					echo ' onchange="this.form.submit()"><label for="C', $id, '">', $category->spanish, '</label></dd>';
+					echo ' onchange="this.form.submit()"><label for="c', $id, '">', $category->spanish, '</label></dd>';
 				}
 			?>
 		</dl>
@@ -114,7 +116,7 @@
 			</a>
 		</div>
 		<span class="Title">Las empresas</span>
-		<div style="text-align:center; margin-top:24px">
+		<div>
 			<?php
 				foreach ($companies as $company)
 				{
