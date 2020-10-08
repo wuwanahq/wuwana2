@@ -6,6 +6,7 @@
 	<title>Wuwana</title>
 	<link rel="icon" type="image/png" href="static/icon.png"/>
 	<link rel="stylesheet" type="text/css" href="static/style.css"/>
+	<script defer src="static/ES5.js"></script>
 </head>
 <body>
 	<div id="popup">
@@ -20,92 +21,53 @@
 			<a class="ButtonSquare" href="https://twitter.com/wuwanahq" target="_blank">Síguenos en Twitter</a>
 		</div>
 	</div>
-	<div class="MenuMobile">
-		<a href="/"><img class="Logo" src="static/wuwana-black.png"></a>
-		<a href="#menu" class="Symbol">≡</a>
-	</div>
 	<form id="menu" method="get">
-		<a href="/"><img class="Logo" src="static/wuwana-black.png"></a>
-		<a href="#" class="Symbol">×</a>
-		<p>Categorías</p>
-		<p>
-			<span class="ButtonRound">
-				<input id="c" type="checkbox" name="cat"
-					<?php if ($selectedCategories == []) { echo 'checked disabled'; } ?>>
-				<label for="c">Todas</label>
-			</span>
-			<?php
-				foreach ($categories as $id => $category)
-				{
-					echo '<span class="ButtonRound"><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
+		<div class="Desktop"><a href="/"><img src="static/wuwana-white.png"></a></div>
+		<div class="Mobile">
+			<a href="#menu" class="Symbol Open">≡</a>
+			<a href="#" class="Symbol Close">×</a>
+			<a href="/"><img class="Logo" src="static/wuwana-black.png"></a>
+		</div>
+		<div class="Filters">
+			<span class="Title">Categorías</span>
+			<dl>
+				<dt>
+					<input id="C0" type="checkbox" name="cat"
+						<?php if ($selectedCategories == []) { echo 'checked disabled'; } ?>>
+					<label for="C0">Todas las categorías</label>
+				</dt>
+				<?php
+					foreach ($categories as $id => $category)
+					{
+						echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
 
-					if (in_array($id, $selectedCategories))
-					{ echo ' checked'; }
+						if (in_array($id, $selectedCategories))
+						{ echo ' checked'; }
 
-					echo '><label for="C', $id, '">', $category->spanish, '</label></span>';
-				}
-			?>
-		</p>
-		<p>Comunidades autónomas</p>
-		<p>
-			<span class="ButtonRound">
-				<input id="r" type="checkbox" name="region"
-					<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>>
-				<label for="r">Todas</label>
-			</span>
-			<?php
-				foreach ($locations as $id => $location)
-				{
-					echo '<span class="ButtonRound"><input type="checkbox" name="region', $id, '" id="L', $id, '"';
+						echo '><label for="C', $id, '">', $category->spanish, '</label></dd>';
+					}
+				?>
+			</dl>
+			<span class="Title">Comunidades autónomas</span>
+			<dl>
+				<dt>
+					<input id="R0" type="checkbox" name="region"
+						<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>>
+					<label for="R0">Todas las comunidades</label>
+				</dt>
+				<?php
+					foreach ($locations as $id => $location)
+					{
+						echo '<dd><input type="checkbox" name="region', $id, '" id="R', $id, '"';
 
-					if (in_array($id, $selectedRegions))
-					{ echo ' checked'; }
+						if (in_array($id, $selectedRegions))
+						{ echo ' checked'; }
 
-					echo '><label for="L', $id, '">', $location->region, '</label></span>';
-				}
-			?>
-		</p>
-	</form>
-	<form class="Menu" method="get">
-		<div class="Logo"><a href="/"><img src="static/wuwana-white.png"></a></div>
-		<dl>
-			<dt>Categorías</dt>
-			<dt>
-				<input id="c" type="checkbox" name="cat" onchange="this.form.submit()"
-					<?php if ($selectedCategories == []) { echo 'checked disabled'; } ?>>
-				<label for="c">Todas las categorías</label>
-			</dt>
-			<?php
-				foreach ($categories as $id => $category)
-				{
-					echo '<dd><input type="checkbox" name="cat', $id, '" id="c', $id, '"';
-
-					if (in_array($id, $selectedCategories))
-					{ echo ' checked'; }
-
-					echo ' onchange="this.form.submit()"><label for="c', $id, '">', $category->spanish, '</label></dd>';
-				}
-			?>
-		</dl>
-		<dl>
-			<dt>Comunidades autónomas</dt>
-			<dt>
-				<input id="r" type="checkbox" name="region" onchange="this.form.submit()"
-					<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>>
-				<label for="r">Todas las comunidades</label>
-			</dt>
-			<?php
-				foreach ($locations as $id => $location)
-				{
-					echo '<dd><input type="checkbox" name="region', $id, '" id="L', $id, '"';
-
-					if (in_array($id, $selectedRegions))
-					{ echo ' checked'; }
-
-					echo ' onchange="this.form.submit()"><label for="L', $id, '">', $location->region, '</label></dd>';
-				}
-			?>
-		</dl>
+						echo '><label for="R', $id, '">', $location->region, '</label></dd>';
+					}
+				?>
+			</dl>
+		</div>
 	</form>
 	<div class="Content">
 		<div class="Hero">
