@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=360">
-	<title>Wuwana</title>
+	<title>Café de especialidad | Wuwana</title>
 	<link rel="icon" type="image/png" href="static/icon.png"/>
 	<link rel="stylesheet" type="text/css" href="static/style.css"/>
 	<script defer src="static/ES5.js"></script>

@@ -4,27 +4,26 @@ body {
 	font-family: "Roboto", sans-serif;
 	color: #161313;
 	background-color: #FAFAFA;
-	font-size: 16px;
+	font-size: 1rem;
 	margin: 0px}
 
 hr {
-	margin: 0 0 30px 0;
+	margin: 0 0 16px 0;
 	color: #8B8989}
 
 .Tag {
 	text-decoration: none;
-	margin: 6px;
+	margin-right: 4px;
 	color: #8B8989;
 	font-size: .87rem;
 	font-weight: 500;
 	border: 1px solid #8B8989;
-	padding: 8px 16px;
+	padding: 6px 16px;
 	background-color: white}
 
 .ButtonRound,
 .ButtonSquare {
 	text-decoration: none;
-	margin: 6px;
 	color: #161313;
 	font-size: .87rem;
 	font-weight: 500;
@@ -34,7 +33,7 @@ hr {
 
 .ButtonRound,
 .Tag {
-	border-radius: 20px}
+	border-radius: 100px}
 
 .ButtonSquare {
 	border-radius: 8px}
@@ -65,10 +64,12 @@ a.ButtonSquare:hover {
 
 .Content .Hero .Text1 {
 	font-size: 3rem;
-	font-weight: 900}
+	font-weight: 900;
+	line-height: 1;}
 
 .Content .Hero .Text2 {
-	font-size: 1.5em}
+	font-size: 1.5em;
+	line-height: 1;}
 
 .Content .Hero .ButtonRound {
 	position: absolute;
@@ -80,18 +81,20 @@ a.ButtonSquare:hover {
 	margin-top:24px}
 
 .Content .Card {
+	position: relative;
 	display: inline-block;
 	width: 280px;
 	text-align: left;
 	border-radius: 8px;
-	margin: 8px;
+	margin: 0px 8px 16px;
 	padding: 16px;
 	background-color: white;
 	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05)}
 
 .Content .Card .Title {
 	font-weight: 700;
-	font-size: 1.5rem}
+	font-size: 1.5rem;
+	line-height: 1;}
 
 .Content .Card .Text {
 	min-height: 160px;
@@ -101,13 +104,15 @@ a.ButtonSquare:hover {
 	border-radius: 8px;
 	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);
 	width: 96px;
-	height: 96px}
+	height: 96px;
+	object-fit: cover;}
 
 .Content .Card .GeoLoc {
 	font-weight: 500;
 	color: rgba(22, 19, 19, 0.7);
 	font-size: .75rem;
-	float: right}
+	position: absolute;
+	right: 16px;}
 
 .Content .Card .GeoLoc img {
 	vertical-align: top;
@@ -117,11 +122,14 @@ a.ButtonSquare:hover {
 	font-weight: 700;
 	font-size: 1.12rem;
 	color: #161313;
+	margin-top: 8px;
 	display: inline-block;
-	transition: all 500ms}
+	transition: all 200ms}
 
 .Content .Card a:hover {
 	transform: translateY(-2px)}
+
+/* Popup */
 
 #popup {
 	width: 100%;
@@ -135,22 +143,16 @@ a.ButtonSquare:hover {
 #popup:target {
 	visibility: visible;
 	display: flex;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	-ms-flex-pack: center;
 	justify-content: center;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
 	align-items: center}
 
 #popup > div {
+	position: flex;
+	flex-direction: column;
+	align-items: flex-start;
 	text-align: center;
 	font-size: 1rem;
-	line-height: 1.5rem;
+	line-height: 1.5;
 	border-radius: 16px;
 	border: 4px solid #161313;
 	background: white;
@@ -165,10 +167,14 @@ a.ButtonSquare:hover {
 
 #popup > div img {
 	width: 96px;
-	height: 96px}
+	height: 96px;
+	position: static;
+  	align-self: center;
+}
 
 #popup > div .ButtonRound {
-	float: right}
+	position: absolute;
+	right: 24px;}
 
 
 #menu .Mobile {
@@ -210,10 +216,11 @@ a.ButtonSquare:hover {
 		display: block}
 
 	#menu .Mobile img {
-		margin: 9px 0 0 0}
+		margin: 12px 0 0 0}
 
 	#menu {
-		padding: 9px;
+		position: block;
+		padding: 0px;
 		line-height: 40px;
 		z-index: 1;
 		width: auto;
@@ -223,7 +230,7 @@ a.ButtonSquare:hover {
 		background-color: white}
 
 	#menu dl {
-		margin: 10px 0 20px 0}
+		margin: 8px 0 24px 0}
 
 	#menu dl dt,
 	#menu dl dd {
@@ -235,35 +242,40 @@ a.ButtonSquare:hover {
 
 	#menu dl label {
 		text-decoration: none;
-		margin: 6px;
+		margin-right: 8px;
 		color: #161313;
-		font-size: .7rem;
+		font-size: 0.875rem;
 		font-weight: 500;
 		border: 1px solid #161313;
 		padding: 8px 16px;
 		background-color: white;
-		border-radius: 20px}
+		border-radius: 100px}
 
 	#menu dl input:checked + label {
-		background-color: black;
+		background-color: #161313;
 		color: white}
 
 	#menu .Title {
-		font-size: 1.5rem}
+		font-size: 1.5rem;
+		font-weight: 500;}
 
 	.Content{
 		margin-left: 0;
-		margin-top: 60px} /* Menu height */
+		margin-top: 40px} /* Menu height */
 
 	.Content .Hero {
 		height: 360px; /* Same size as HTML viewport width to make a square */
 		background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-square-unsplash.jpg")}
 
 	.Content .Hero .Text1 {
-		font-size: 1.8rem}
+		font-size: 2rem;
+		line-height: 1;
+	}
 
 	.Content .Hero .Text2 {
-		font-size: 1em}
+		font-size: 1rem;
+		line-height: 1.3;
+	}
 }
 
 /* Button "≡" to open filters in the menu */
@@ -276,7 +288,6 @@ a.ButtonSquare:hover {
 /* Button "×" to close and submit filters */
 #menu .Mobile input.Symbol {
 	border: none;
-	background-color: white;
 	margin: 0 16px 0 0;
 	float: right;
 	font-size: 46px;
