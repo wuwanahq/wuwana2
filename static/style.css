@@ -1,113 +1,128 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 body {
 	font-family: "Roboto", sans-serif;
+	color: #161313;
 	background-color: #FAFAFA;
 	font-size: 16px;
 	margin: 0px}
 
 a {
-	font-weight: bold;
+	font-weight: 700;
 	font-size: 1.12rem;
 	color: #161313}
 
 hr {
-	margin: 24px 0 8px 0;
+	margin: 0 0 30px 0;
 	color: #8B8989}
 
-.menu {
-	line-height:25px;
-	padding: 16px;
-	position: fixed;
-	height: 100%;
-	width: 280px;
-	color: white;
-	background-color: #595757}
+.Tag {
+	text-decoration: none;
+	margin: 6px;
+	color: #8B8989;
+	font-size: .87rem;
+	font-weight: 500;
+	border: 1px solid #8B8989;
+	padding: 8px 16px;
+	background-color: white}
 
-.menu .logo {
-	margin: 24px;
-	text-align: center}
+.ButtonRound,
+.ButtonSquare {
+	text-decoration: none;
+	margin: 6px;
+	color: #161313;
+	font-size: .87rem;
+	font-weight: 500;
+	border: 1px solid #161313;
+	padding: 8px 16px;
+	background-color: rgba(255, 255, 255, 0.7)}
 
-.menu dl {
-	margin: 40px 0}
+.ButtonRound,
+.Tag {
+	border-radius: 20px}
 
-.menu input {
-	margin-right: 8px}
+.ButtonSquare {
+	border-radius: 8px}
 
-.menu dt:first-child,
-.content .title {
-	margin: 20px 0;
+a.ButtonRound:hover,
+a.ButtonSquare:hover {
+	background-color: #161313;
+	color: white}
+
+.Title {
 	font-weight: 800;
 	font-size: 2rem}
 
-.content {
-	margin-left: 311px;
-	padding: 16px;}
+.Content {
+	margin-left: 272px; /* Menu width + padding x2 */
+	padding: 16px}
 
-.content .card {
+.Content .Hero {
+	position:relative;
+	color: white;
+	height: 280px;
+	margin: 24px 0 40px 0;
+	padding-left: 16px;
+	border-radius: 16px;
+	background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-wide-unsplash.jpg");
+	background-position: bottom;
+	background-size: cover}
+
+.Content .Hero .Text1 {
+	font-size: 3rem;
+	font-weight: 900}
+
+.Content .Hero .Text2 {
+	font-size: 1.5em}
+
+.Content .Hero .ButtonRound {
+	position: absolute;
+	bottom: 16px;
+	right: 16px}
+
+.Content > div:last-child {
+	text-align:center;
+	margin-top:24px}
+
+.Content .Card {
 	display: inline-block;
-	width: 300px;
+	width: 280px;
 	text-align: left;
 	border-radius: 8px;
 	margin: 8px;
 	padding: 16px;
 	background-color: white;
-	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);}
+	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05)}
 
-.content .hero {
-	color: white;
-	width: 99%;
-	min-height: 280px;
-	margin: 24px 0 40px 0;
-	padding-left: 16px;
-	border-radius: 16px;
-	background-image: linear-gradient(#161313, transparent), url("brent-gorwin.png");
-	background-position: bottom;
-	background-size: cover}
+.Content .Card .Title {
+	font-weight: 700;
+	font-size: 1.5rem}
 
-.content .card-title {
-	font-weight: 900;
-	font-size: 2em}
+.Content .Card .Text {
+	min-height: 160px;
+	font-weight: 400}
 
-.content .card .description {
-	min-height: 80px;
-}
-
-.content .card > img {
+.Content .Card > img {
 	border-radius: 8px;
 	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);
-	width: 100px;
-	height: 100px;
-	margin-bottom: 16px;}
+	width: 96px;
+	height: 96px}
 
-.content .geoloc {
-	font-weight: normal;
+.Content .Card .GeoLoc {
+	font-weight: 500;
 	color: rgba(22, 19, 19, 0.7);
 	font-size: .75rem;
 	float: right}
 
-.content .geoloc img {
+.Content .Card .GeoLoc img {
+	vertical-align: top;
 	margin-right: 4px}
-
-.button {
-	text-decoration: none;
-	margin: 0px;
-	color: #161313;
-	font-size: .87rem;
-	font-weight: 500;
-	border-radius: 20px;
-	padding: 8px 16px;
-	background-color: rgba(255, 255, 255, 0.7);
-	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);}
-
-a.button:hover {
-	background-color: white}
 
 #popup {
 	width: 100%;
 	height: 100%;
 	position: fixed;
-	z-index: 1;
+	z-index: 2;
 	visibility: hidden;
 	display: none;
 	background-color: rgba(0,0,0,0.5)}
@@ -125,8 +140,7 @@ a.button:hover {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	-ms-flex-align: center;
-	align-items: center;
-	}
+	align-items: center}
 
 #popup > div {
 	text-align: center;
@@ -136,10 +150,135 @@ a.button:hover {
 	border: 4px solid #161313;
 	background: white;
 	margin: 0 auto;
-	width: 500px;
+	width: 580px;
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 	padding: 24px}
 
-#popup p {
-	text-align: left;}
+#popup > div p {
+	text-align: left}
+
+#popup > div img {
+	width: 96px;
+	height: 96px}
+
+#popup > div .ButtonRound {
+	float: right}
+
+
+#menu .Mobile {
+	display: none}
+
+#menu {
+	overflow: auto;
+	line-height: 25px;
+	padding: 16px;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 240px;
+	color: white;
+	background-color: #595757}
+
+#menu .Desktop {
+	margin: 25px 0;
+	text-align: center}
+
+#menu dl {
+	margin: 15px 0 30px 0}
+
+#menu dl dd {
+	margin-inline-start: 23px}
+
+#menu dl input {
+	margin-right: 8px}
+
+/* LAYOUT CHANGES FOR MOBILE DEVICES */
+
+@media screen and (max-width: 788px) {
+	#menu .Desktop,
+	#menu .Filters {
+		display: none}
+
+	#menu .Mobile {
+		display: block}
+
+	#menu .Mobile img {
+		margin: 9px 0 0 0}
+
+	#menu {
+		padding: 9px;
+		line-height: 40px;
+		z-index: 1;
+		width: auto;
+		right: 0;
+		bottom: auto;
+		color: black;
+		background-color: white}
+
+	#menu dl {
+		margin: 10px 0 20px 0}
+
+	#menu dl dt,
+	#menu dl dd {
+		margin-inline-start: 0;
+		display: inline}
+
+	#menu dl input {
+		display: none}
+
+	#menu dl label {
+		text-decoration: none;
+		margin: 6px;
+		color: #161313;
+		font-size: .7rem;
+		font-weight: 500;
+		border: 1px solid #161313;
+		padding: 8px 16px;
+		background-color: white;
+		border-radius: 20px}
+
+	#menu dl input:checked + label {
+		background-color: black;
+		color: white}
+
+	#menu .Title {
+		font-size: 1.5rem}
+
+	.Content{
+		margin-left: 0;
+		margin-top: 60px} /* Menu height */
+
+	.Content .Hero {
+		height: 360px; /* Same size as HTML viewport width to make a square */
+		background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-square-unsplash.jpg")}
+
+	.Content .Hero .Text1 {
+		font-size: 1.8rem}
+
+	.Content .Hero .Text2 {
+		font-size: 1em}
+}
+
+/* Button "≡" to open filters in the menu */
+#menu .Mobile a.Symbol {
+	text-decoration: none;
+	margin: 0 16px 0 0;
+	float: right;
+	font-size: 46px}
+
+/* Button "×" to close and submit filters */
+#menu .Mobile input.Symbol {
+	border: none;
+	background-color: white;
+	margin: 0 16px 0 0;
+	float: right;
+	font-size: 46px;
+	display: none}
+
+/* On click "≡": Hide "≡" then display "×" and filters */
+#menu:target .Mobile a.Symbol {display: none}
+#menu:target .Mobile input.Symbol {display: block}
+#menu:target .Filters {display: block}
+#menu:target {bottom: 0}
