@@ -1,29 +1,50 @@
 // ECMAScript 5
-'use strict';
+"use strict";
 
-for (var i = 0; i < 99; ++i)
+document.getElementById("C0").addEventListener("change", handleEventChangeFilterAll);
+document.getElementById("R0").addEventListener("change", handleEventChangeFilterAll);
+
+for (var i=1; i < 50; ++i)
 {
-	var input1 = document.getElementById('C' + i);
-	var input2 = document.getElementById('R' + i);
+	var checkbox1 = document.getElementById("C" + i);
+	var checkbox2 = document.getElementById("R" + i);
 
-	//TODO:
-	var debug1 = input1.style.display;
-	var debug2 = input2.style.display;
+	if (checkbox1 != null)
+	{ checkbox1.addEventListener("change", handleEventChangeFilter); }
 
-	if (input1 != null)
+	if (checkbox2 != null)
+	{ checkbox2.addEventListener("change", handleEventChangeFilter); }
+}
+
+function handleEventChangeFilter()
+{
+	if (getComputedStyle(this).getPropertyValue("display") == "none")
 	{
-		input1.addEventListener('change', function() {
-			this.form.submit();
-		});
+		// Mobile
+		var checkbox = document.getElementById(this.id.substr(0,1) + "0");
+		checkbox.disabled = false;
+		checkbox.checked = false;
+	}
+	else
+	{
+		// Desktop
+		this.form.submit();
+	}
+}
+
+function handleEventChangeFilterAll()
+{
+	var prefix = this.id.substr(0,1);
+
+	for (var i=1; i < 50; ++i)
+	{
+		var checkbox = document.getElementById(prefix + i);
+
+		if (checkbox != null)
+		{ checkbox.checked = false; }
 	}
 
-	if (input2 != null)
-	{
-		input2.addEventListener('change', function() {
-			this.form.submit();
-		});
-	}
-
-	if (input1 == null && input2 == null)
-	{ break; }
+	// Desktop only
+	if (getComputedStyle(this).getPropertyValue("display") != "none")
+	{ this.form.submit(); }
 }

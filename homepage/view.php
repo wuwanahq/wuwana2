@@ -21,11 +21,11 @@
 			<a class="ButtonSquare" href="https://twitter.com/wuwanahq" target="_blank">Síguenos en Twitter</a>
 		</div>
 	</div>
-	<form id="menu" method="get">
+	<form id="menu" method="get" action="/">
 		<div class="Desktop"><a href="/"><img src="static/wuwana-white.png"></a></div>
 		<div class="Mobile">
-			<a href="#menu" class="Symbol Open">≡</a>
-			<a href="#" class="Symbol Close">×</a>
+			<a href="#menu" class="Symbol">≡</a>
+			<input type="submit" class="Symbol" value="×">
 			<a href="/"><img class="Logo" src="static/wuwana-black.png"></a>
 		</div>
 		<div class="Filters">
@@ -63,7 +63,7 @@
 						if (in_array($id, $selectedRegions))
 						{ echo ' checked'; }
 
-						echo '><label for="R', $id, '">', $location->region, '</label></dd>';
+						echo '><label for="R', $id, '">', str_replace(' ', '&nbsp;', $location->region), '</label></dd>';
 					}
 				?>
 			</dl>
