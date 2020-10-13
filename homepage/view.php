@@ -13,11 +13,13 @@
 		<div>
 			<a href="#" class="ButtonRound">×</a>
 			<img src="static/logo-circle.png"><br><br>
-			<p>Encontrar un buen proveedor de café de especialidad debería ser más fácil.<br>¿Por qué no lo es?</p>
-			<p>Los micro-tostadores no tienen los recursos necesarios para competir con las grandes empresas. Mientras que estas utilizan su dinero para contratar agencias y “expertos del marketing” para aparecer en las primeras páginas de Google, los comercios independientes utilizan todos sus recursos para ofrecer el mejor producto posible. Además, es un esfuerzo enorme convertise en un vendedor de Amazon Business. Aparte de cobrar unas comisiones desorbitadas, Amazon hace el proceso de registro como vendedor una pesadilla.</p>
-			<p>Estas barreras dejan a la mayoría de tostadores independientes fuera de la revolución digital. En Wuwana queremos cambiarlo.</p>
+			<p>Encontrar un buen proveedor de café de especialidad debería ser más fácil<br>¿No crees? En Wuwana queremos cambiarlo.</p>
+			<p>Competir con las grandes empresas resulta imposible para los micro-tostadores. Frente a las agencias y expertos en marketing los comercios independientes se centran en ofrecer el mejor producto posible.</p>
+			<p>Ser parte de plataformas como Amazon Business resulta complicado y caro, con condiciones desorbitadas y procesos tediosos. Así, con el monopolio de la presencia en buscadores como Google y la dificultad de acceder a plataformas de venta online de forma justa, las pequeñas empresas se ven excluidas de esta revolución digital.</p>
+			<p>En Wuwana queremos cambiarlo.</p>
 			<p>Estamos creando un directorio moderno y digital que de apoyo a las pequeñas cafeterías y a los tostadores locales. Una página honesta y transparente donde serás capaz de filtrar los comercios locales por categoría, visitar sus páginas web para conocerles mejor y contactarles directamente. Trabajamos con un grupo de cafeterías y micro-tostadores de Madrid en la creación de este proyecto.</p>
 			<p>Apoya a los comercios independientes del café. Síguenos en Twitter para ser de los primeros en probar nuestra beta a finales de octubre 2020.</p>
+			<br>
 			<a class="ButtonSquare" href="https://twitter.com/wuwanahq" target="_blank">Síguenos en Twitter</a>
 		</div>
 	</div>
