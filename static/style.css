@@ -171,13 +171,14 @@ a.ButtonSquare:hover {
 	position: absolute;
 	right: 24px}
 
+/* Mobile */
 
 #menu .Mobile {
 	display: none}
 
 #menu {
 	overflow: auto;
-	line-height: 25px;
+	line-height: 24px;
 	padding: 16px;
 	position: fixed;
 	top: 0;
@@ -188,14 +189,14 @@ a.ButtonSquare:hover {
 	background-color: #595757}
 
 #menu .Desktop {
-	margin: 25px 0;
+	margin: 24px 0;
 	text-align: center}
 
 #menu dl {
-	margin: 15px 0 30px 0}
+	margin: 16px 0 24px 0}
 
 #menu dl dd {
-	margin-inline-start: 23px}
+	margin-inline-start: 24px}
 
 #menu dl input {
 	margin-right: 8px}
