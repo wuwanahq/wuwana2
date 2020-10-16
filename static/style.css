@@ -215,7 +215,7 @@ a.ButtonSquare:hover {
 
 	#menu {
 		position: block;
-		padding: 0px;
+		padding: 0px 24px;
 		line-height: 40px;
 		z-index: 1;
 		width: auto;
