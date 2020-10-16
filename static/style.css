@@ -33,7 +33,7 @@ hr {
 
 .ButtonRound,
 .Tag {
-	border-radius: 20px} /* Magic number set by Vince */
+	border-radius: 20px} /* Half of the highest button (40px) */
 
 .ButtonSquare {
 	border-radius: 8px}
@@ -54,9 +54,9 @@ a.ButtonSquare:hover {
 .Content .Hero {
 	position:relative;
 	color: white;
-	height: 280px;
+	height: 230px;
 	margin: 24px 0 40px 0;
-	padding-left: 16px;
+	padding: 16px;
 	border-radius: 16px;
 	background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-wide-unsplash.jpg");
 	background-position: bottom;
@@ -64,12 +64,11 @@ a.ButtonSquare:hover {
 
 .Content .Hero .Text1 {
 	font-size: 3rem;
-	font-weight: 900;
-	line-height: 1}
+	font-weight: 700}
 
 .Content .Hero .Text2 {
-	font-size: 1.5em;
-	line-height: 1}
+	font-size: 1.8em;
+	font-weight: 300}
 
 .Content .Hero .ButtonRound {
 	position: absolute;
@@ -83,7 +82,7 @@ a.ButtonSquare:hover {
 .Content .Card {
 	position: relative;
 	display: inline-block;
-	width: 280px;
+	width: 290px;
 	text-align: left;
 	border-radius: 8px;
 	margin: 0px 8px 16px;
@@ -127,7 +126,7 @@ a.ButtonSquare:hover {
 .Content .Card a:hover {
 	transform: translateY(-2px)}
 
-/* Popup */
+/* POPUP WINDOW */
 
 #popup {
 	width: 100%;
@@ -171,10 +170,7 @@ a.ButtonSquare:hover {
 	position: absolute;
 	right: 24px}
 
-/* Mobile */
-
-#menu .Mobile {
-	display: none}
+/* MENU WITH FILTERS */
 
 #menu {
 	overflow: auto;
@@ -202,6 +198,9 @@ a.ButtonSquare:hover {
 	margin-right: 8px}
 
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
+
+#menu .Mobile {
+	display: none}
 
 @media screen and (max-width: 788px) {
 	#menu .Desktop,
@@ -260,20 +259,23 @@ a.ButtonSquare:hover {
 		margin-top: 40px} /* Menu height */
 
 	.Content .Hero {
-		height: 360px; /* Same size as HTML viewport width to make a square */
+		height: 310px;
 		background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-square-unsplash.jpg")}
 
 	.Content .Hero .Text1 {
-		font-size: 2rem;
-		line-height: 1}
+		font-size: 1.6rem;
+		font-weight: 400;
+		line-height: 1.4}
 
 	.Content .Hero .Text2 {
-		font-size: 1rem;
-		line-height: 1.3}
+		font-size: 1.2rem;
+		font-weight: 300;
+		line-height: 1.4}
 }
 
 /* Button "≡" to open filters in the menu */
 #menu .Mobile a.Symbol {
+	color: black;
 	text-decoration: none;
 	margin: 0 16px 0 0;
 	float: right;
@@ -281,6 +283,8 @@ a.ButtonSquare:hover {
 
 /* Button "×" to close and submit filters */
 #menu .Mobile input.Symbol {
+	color: black;
+	background-color: white;
 	border: none;
 	margin: 0 16px 0 0;
 	float: right;

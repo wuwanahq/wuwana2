@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=360">
+	<meta name="viewport" content="width=375">
 	<title>Café de especialidad | Wuwana</title>
 	<link rel="icon" type="image/png" href="static/icon.png"/>
 	<link rel="stylesheet" type="text/css" href="static/style.css"/>
@@ -73,9 +73,10 @@
 	</form>
 	<div class="Content">
 		<div class="Hero">
-			<br><span class="Text1">¿Estás buscando café de especialidad?</span><br>
-			<br><span class="Text2">Encuentra los proveedores que necesitas rápidamente.</span>
-			<br><a href="#popup" class="ButtonRound">
+			<span class="Text1">¿Estás buscando café de especialidad?</span>
+			<br><br>
+			<span class="Text2">Encuentra los proveedores que necesitas rápidamente.</span>
+			<a href="#popup" class="ButtonRound">
 				¿Qué es Wuwana?
 			</a>
 		</div>
