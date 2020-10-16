@@ -103,7 +103,7 @@
 					echo '<br><br>';
 
 					if (!empty($company->website))
-					{ echo '<a href="', $company->website, '" target="_blank">Visit the website</a> &nbsp; '; }
+					{ echo '<a href="', $company->website, '" target="_blank">Página web</a> &nbsp; '; }
 
 					if (!empty($company->phoneNumber))
 					{
@@ -113,7 +113,7 @@
 					}
 					elseif (!empty($company->email))
 					{
-						echo '<a href="mailto:', $company->email, '">Contact</a> &nbsp; ';
+						echo '<a href="mailto:', $company->email, '">Email</a> &nbsp; ';
 					}
 
 					echo '</div>';
