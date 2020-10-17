@@ -24,11 +24,11 @@
 		</div>
 	</div>
 	<form id="menu" method="get" action="/">
-		<div class="Desktop"><a href="/"><img src="static/wuwana-white.png"></a></div>
+		<div class="Desktop"><a href="/"><img src="static/wuwana-white.svg"></a></div>
 		<div class="Mobile">
 			<a href="#menu" class="Symbol">≡</a>
 			<input type="submit" class="Symbol" value="×">
-			<a href="/"><img class="Logo" src="static/wuwana-black.png"></a>
+			<a href="/"><img src="static/wuwana-black.svg"></a>
 		</div>
 		<div class="Filters">
 			<span class="Title">Categorías</span>

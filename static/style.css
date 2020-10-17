@@ -44,8 +44,8 @@ a.ButtonSquare:hover {
 	color: white}
 
 .Title {
-	font-weight: 800;
-	font-size: 2rem}
+	font-weight: 500;
+	font-size: 1.5rem}
 
 .Content {
 	margin-left: 272px; /* Menu width + padding x2 */
@@ -285,6 +285,7 @@ a.ButtonSquare:hover {
 #menu .Mobile input.Symbol {
 	color: black;
 	background-color: white;
+	-webkit-appearance: none; /* hide iPhone button shape */
 	border: none;
 	margin: 0 16px 0 0;
 	float: right;
