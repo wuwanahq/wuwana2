@@ -30,7 +30,7 @@ First, find the local IP address of your computer that run PHP.
 - On **Linux** open a new Terminal and type: `ifconfig | grep 'inet \(192\|10\)\.'`
 - On **Windows** open a new Command Prompt and type: `ipconfig`
 
-Then, in your browser, go to `http://` your IP `:8000`  
+Then, on your mobile device, go to `http://` your IP `:8000` with the browser  
 Example: http://192.168.0.100:8000
 
 ## How to deploy on a shared web hosting
