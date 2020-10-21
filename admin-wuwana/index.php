@@ -19,7 +19,7 @@ if (WebApp\Config::ADMIN_PASSWORD === filter_input(INPUT_POST, 'Pass'))
 		&& is_uploaded_file($_FILES['Cat']['tmp_name'])
 		&& filesize($_FILES['Cat']['tmp_name']) > 2)
 	{
-		$db->recreateTableCategory();
+		$db->recreateTable(DataAccess\Category::TABLE_NAME);
 		$db->insertData($_FILES['Cat']['tmp_name'], DataAccess\Category::TABLE_NAME, DataAccess\Category::COLUMNS);
 		$message .= 'Category file imported (' . $_FILES['Cat']['name'] . ').<br>';
 	}
@@ -28,7 +28,7 @@ if (WebApp\Config::ADMIN_PASSWORD === filter_input(INPUT_POST, 'Pass'))
 		&& is_uploaded_file($_FILES['Loc']['tmp_name'])
 		&& filesize($_FILES['Loc']['tmp_name']) > 2)
 	{
-		$db->recreateTableLocation();
+		$db->recreateTable(DataAccess\Location::TABLE_NAME);
 		$db->insertData($_FILES['Loc']['tmp_name'], DataAccess\Location::TABLE_NAME, DataAccess\Location::COLUMNS);
 		$message .= 'Location file imported (' . $_FILES['Loc']['name'] . ').<br>';
 	}
@@ -37,7 +37,7 @@ if (WebApp\Config::ADMIN_PASSWORD === filter_input(INPUT_POST, 'Pass'))
 		&& is_uploaded_file($_FILES['Comp']['tmp_name'])
 		&& filesize($_FILES['Comp']['tmp_name']) > 2)
 	{
-		$db->recreateTableCompany();
+		$db->recreateTable(DataAccess\Company::TABLE_NAME);
 		$db->insertData($_FILES['Comp']['tmp_name'], DataAccess\Company::TABLE_NAME, DataAccess\Company::COLUMNS);
 		$message .= 'Company file imported (' . $_FILES['Comp']['name'] . ').<br>';
 	}

@@ -19,6 +19,14 @@ class Location
 	public $country;
 	public $region;
 
+	static function getTableSchema()
+	{
+		return 'create table ' . self::TABLE_NAME . ' ('
+			. 'ID smallint primary key,'
+			. 'CountryCode char(2) not null,'
+			. 'Region varchar(255) not null)';
+	}
+
 	static function fetchObjects(PDOStatement $stmt)
 	{
 		$locations = [];

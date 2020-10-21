@@ -17,78 +17,34 @@ class DataAccess
 
 	private function createDatabase()
 	{
-		$this->createTableLocation();
-		$this->createTableCategory();
-		$this->createTableCompany();
+		foreach ([Category::getTableSchema(), Location::getTableSchema(), Company::getTableSchema()] as $sql)
+		{
+			$result = $this->pdo->exec($sql);
+
+			if ($result === false)
+			{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
+		}
 	}
 
-	private function createTableLocation()
+	public function recreateTable($tableName)
 	{
-		$result = $this->pdo->exec(
-			'create table ' . Location::TABLE_NAME . ' ('
-			. 'ID smallint primary key,'
-			. 'CountryCode char(2) not null,'
-			. 'Region varchar(255) not null)'
-		);
+		$sql = '';
+
+		switch ($tableName)
+		{
+			case 'Category': $sql = Category::getTableSchema(); break;
+			case 'Location': $sql = Location::getTableSchema(); break;
+			case 'Company':  $sql = Company::getTableSchema(); break;
+			default: return;
+		}
+
+		if ($this->pdo->exec('drop table ' . $tableName) === false)
+		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
+
+		$result = $this->pdo->exec($sql);
 
 		if ($result === false)
 		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-	}
-
-	private function createTableCategory()
-	{
-		$result = $this->pdo->exec(
-			'create table ' . Category::TABLE_NAME . ' ('
-			. 'ID smallint primary key,'
-			. 'English varchar(255) not null,'
-			. 'Spanish varchar(255) not null)'
-		);
-
-		if ($result === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-	}
-
-	private function createTableCompany()
-	{
-		$result = $this->pdo->exec(
-			'create table ' . Company::TABLE_NAME . ' ('
-			. 'ID int primary key,'
-			. 'Name varchar(255) not null,'
-			. 'Logo varchar(255) not null,'
-			. 'Description varchar(255) not null,'
-			. 'Website varchar(255) not null,'
-			. 'PhoneNumber varchar(255) not null,'
-			. 'Email varchar(255) not null,'
-			. 'LocationID smallint not null,'
-			. 'CategoriesID varchar(255) not null)'
-		);
-
-		if ($result === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-	}
-
-	public function recreateTableLocation()
-	{
-		if ($this->pdo->exec('drop table ' . Location::TABLE_NAME) === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-
-		$this->createTableLocation();
-	}
-
-	public function recreateTableCategory()
-	{
-		if ($this->pdo->exec('drop table ' . Category::TABLE_NAME) === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-
-		$this->createTableCategory();
-	}
-
-	public function recreateTableCompany()
-	{
-		if ($this->pdo->exec('drop table ' . Company::TABLE_NAME) === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-
-		$this->createTableCompany();
 	}
 
 	public function insertData($filePath, $tableName, $columns)
@@ -108,7 +64,7 @@ class DataAccess
 
 			foreach ($columns as $columnType)
 			{
-				$preparedStatement->bindValue($i+1, $values[$i], $columnType);
+				$preparedStatement->bindValue($i+1, trim($values[$i]), $columnType);
 				++$i;
 			}
 
