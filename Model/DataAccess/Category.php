@@ -19,6 +19,14 @@ class Category
 	public $english;
 	public $spanish;
 
+	static function getTableSchema()
+	{
+		return 'create table ' . self::TABLE_NAME . ' ('
+			. 'ID smallint primary key,'
+			. 'English varchar(255) not null,'
+			. 'Spanish varchar(255) not null)';
+	}
+
 	static function fetchObjects(PDOStatement $stmt)
 	{
 		$categories = [];

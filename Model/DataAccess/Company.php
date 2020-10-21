@@ -22,6 +22,7 @@ class Company
 		'Email'        => PDO::PARAM_STR,
 		'LocationID'   => PDO::PARAM_INT,
 		'CategoriesID' => PDO::PARAM_STR,
+		'SocialMedia'  => PDO::PARAM_STR,
 	];
 
 	public $name;
@@ -32,6 +33,22 @@ class Company
 	public $email;
 	public $region;
 	public $categories;
+	public $socialMedia;
+
+	static function getTableSchema()
+	{
+		return 'create table ' . self::TABLE_NAME . ' ('
+			. 'ID int primary key,'
+			. 'Name varchar(255) not null,'
+			. 'Logo varchar(255) not null,'
+			. 'Description varchar(255) not null,'
+			. 'Website varchar(255) not null,'
+			. 'PhoneNumber varchar(255) not null,'
+			. 'Email varchar(255) not null,'
+			. 'LocationID smallint not null,'
+			. 'CategoriesID varchar(255) not null,'
+			. 'SocialMedia varchar(255) not null)';
+	}
 
 	static function fetchObjects(PDOStatement $stmt)
 	{
@@ -47,6 +64,7 @@ class Company
 			$company->phoneNumber = $row['PhoneNumber'];
 			$company->email = $row['Email'];
 			$company->region = (int)$row['LocationID'];
+			$company->socialMedia = 'https://' . $row['SocialMedia'];
 			$company->categories = [];
 
 			foreach (explode(self::VALUES_DELIMITER, $row['CategoriesID']) as $category)

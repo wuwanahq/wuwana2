@@ -103,7 +103,9 @@
 
 					echo '<br><br>';
 
-					if (!empty($company->website))
+					if (!empty($company->socialMedia))
+					{ echo '<a href="', $company->socialMedia, '" target="_blank">Visitar Instagram</a> &nbsp; '; }
+					elseif (!empty($company->website))
 					{ echo '<a href="', $company->website, '" target="_blank">Página web</a> &nbsp; '; }
 
 					if (!empty($company->phoneNumber))
