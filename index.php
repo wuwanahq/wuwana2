@@ -39,4 +39,5 @@ if (count($_GET) > 0)
 $companies = $db->getCompanies($selectedCategories, $selectedRegions);
 shuffle($companies);
 
+require 'homepage/text/es.php';
 require 'homepage/view.php';
