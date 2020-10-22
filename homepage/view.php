@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo $language ?>">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=375">
@@ -34,14 +34,14 @@
 					<label for="C0"><?php echo TEXT[2] ?></label>
 				</dt>
 				<?php
-					foreach ($categories as $id => $category)
+					foreach ($categories as $id => $languages)
 					{
 						echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
 
 						if (in_array($id, $selectedCategories))
 						{ echo ' checked'; }
 
-						echo '><label for="C', $id, '">', $category->spanish, '</label></dd>';
+						echo '><label for="C', $id, '">', $languages[$language], '</label></dd>';
 					}
 				?>
 			</dl>
@@ -94,7 +94,7 @@
 						'<br><br>', $company->description, '</p><hr>';
 
 					foreach ($company->categories as $category)
-					{ echo '<span class="Tag">', $categories[$category]->spanish, '</span>'; }
+					{ echo '<span class="Tag">', $categories[$category][$language], '</span>'; }
 
 					echo '<br><br>';
 

@@ -39,5 +39,6 @@ if (count($_GET) > 0)
 $companies = $db->getCompanies($selectedCategories, $selectedRegions);
 shuffle($companies);
 
-require 'homepage/text/es.php';
+$language = WebApp\WebApp::getCodeLanguage();
+require 'homepage/text/' . $language . '.php';
 require 'homepage/view.php';
