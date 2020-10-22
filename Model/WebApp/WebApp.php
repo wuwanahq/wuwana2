@@ -3,7 +3,7 @@ namespace WebApp;
 use PDO;
 
 /**
- * Description of WebApp
+ * WebApp's common functions.
  * @author Vince <vincent.boursier@gmail.com>
  */
 class WebApp
@@ -22,5 +22,11 @@ class WebApp
 		]);
 	}
 
-	//TODO: function loadTranslation()
+	static function getLanguageCode()
+	{
+		if (substr(filter_input(INPUT_SERVER, 'SERVER_NAME'), -2)  == 'es')
+		{ return 'es'; }
+
+		return 'en';
+	}
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo $language ?>">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=375">
-	<title>Café de especialidad | Wuwana</title>
+	<title><?php echo TEXT[0] ?> | Wuwana</title>
 	<link rel="icon" type="image/png" href="static/icon.png"/>
 	<link rel="stylesheet" type="text/css" href="static/style.css"/>
 	<script defer src="static/ES5.js"></script>
@@ -13,14 +13,9 @@
 		<div>
 			<a href="#" class="ButtonRound">×</a>
 			<img src="static/logo-circle.png"><br><br>
-			<p>Encontrar un buen proveedor de café de especialidad debería ser más fácil<br>¿No crees? En Wuwana queremos cambiarlo.</p>
-			<p>Competir con las grandes empresas resulta imposible para los micro-tostadores. Frente a las agencias y expertos en marketing los comercios independientes se centran en ofrecer el mejor producto posible.</p>
-			<p>Ser parte de plataformas como Amazon Business resulta complicado y caro, con condiciones desorbitadas y procesos tediosos. Así, con el monopolio de la presencia en buscadores como Google y la dificultad de acceder a plataformas de venta online de forma justa, las pequeñas empresas se ven excluidas de esta revolución digital.</p>
-			<p>En Wuwana queremos cambiarlo.</p>
-			<p>Estamos creando un directorio moderno y digital que de apoyo a las pequeñas cafeterías y a los tostadores locales. Una página honesta y transparente donde serás capaz de filtrar los comercios locales por categoría, visitar sus páginas web para conocerles mejor y contactarles directamente. Trabajamos con un grupo de cafeterías y micro-tostadores de Madrid en la creación de este proyecto.</p>
-			<p>Apoya a los comercios independientes del café. Síguenos en Twitter para ser de los primeros en probar nuestra beta a finales de octubre 2020.</p>
+			<?php echo TEXT[14] ?>
 			<br>
-			<a class="ButtonSquare" href="https://twitter.com/wuwanahq" target="_blank">Síguenos en Twitter</a>
+			<a class="ButtonSquare" href="https://twitter.com/wuwanahq" target="_blank"><?php echo TEXT[13] ?></a>
 		</div>
 	</div>
 	<form id="menu" method="get" action="/">
@@ -31,31 +26,31 @@
 			<a href="/"><img src="static/wuwana-black.svg"></a>
 		</div>
 		<div class="Filters">
-			<span class="Title">Categorías</span>
+			<span class="Title"><?php echo TEXT[1] ?></span>
 			<dl>
 				<dt>
 					<input id="C0" type="checkbox" name="cat"
 						<?php if ($selectedCategories == []) { echo 'checked disabled'; } ?>>
-					<label for="C0">Todas las categorías</label>
+					<label for="C0"><?php echo TEXT[2] ?></label>
 				</dt>
 				<?php
-					foreach ($categories as $id => $category)
+					foreach ($categories as $id => $languages)
 					{
 						echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
 
 						if (in_array($id, $selectedCategories))
 						{ echo ' checked'; }
 
-						echo '><label for="C', $id, '">', $category->spanish, '</label></dd>';
+						echo '><label for="C', $id, '">', $languages[$language], '</label></dd>';
 					}
 				?>
 			</dl>
-			<span class="Title">Comunidades autónomas</span>
+			<span class="Title"><?php echo TEXT[3] ?></span>
 			<dl>
 				<dt>
 					<input id="R0" type="checkbox" name="region"
 						<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>>
-					<label for="R0">Todas las comunidades</label>
+					<label for="R0"><?php echo TEXT[4] ?></label>
 				</dt>
 				<?php
 					foreach ($locations as $id => $location)
@@ -65,7 +60,9 @@
 						if (in_array($id, $selectedRegions))
 						{ echo ' checked'; }
 
-						echo '><label for="R', $id, '">', str_replace(' ', '&nbsp;', $location->region), '</label></dd>';
+						echo '><label for="R', $id, '">',
+							str_replace(' ', '&nbsp;', $location->region), // Avoid to break long filter names on mobile
+							'</label></dd>';
 					}
 				?>
 			</dl>
@@ -73,14 +70,12 @@
 	</form>
 	<div class="Content">
 		<div class="Hero">
-			<span class="Text1">¿Estás buscando café de especialidad?</span>
+			<span class="Text1"><?php echo TEXT[5] ?></span>
 			<br><br>
-			<span class="Text2">Encuentra los proveedores que necesitas rápidamente.</span>
-			<a href="#popup" class="ButtonRound">
-				¿Qué es Wuwana?
-			</a>
+			<span class="Text2"><?php echo TEXT[6] ?></span>
+			<a href="#popup" class="ButtonRound"><?php echo TEXT[7] ?></a>
 		</div>
-		<span class="Title">Las empresas</span>
+		<span class="Title"><?php echo TEXT[8] ?></span>
 		<div>
 			<?php
 				foreach ($companies as $company)
@@ -99,24 +94,24 @@
 						'<br><br>', $company->description, '</p><hr>';
 
 					foreach ($company->categories as $category)
-					{ echo '<span class="Tag">', $categories[$category]->spanish, '</span>'; }
+					{ echo '<span class="Tag">', $categories[$category][$language], '</span>'; }
 
 					echo '<br><br>';
 
 					if (!empty($company->socialMedia))
-					{ echo '<a href="', $company->socialMedia, '" target="_blank">Visitar Instagram</a> &nbsp; '; }
+					{ echo '<a href="', $company->socialMedia, '" target="_blank">', TEXT[9], '</a> &nbsp; '; }
 					elseif (!empty($company->website))
-					{ echo '<a href="', $company->website, '" target="_blank">Página web</a> &nbsp; '; }
+					{ echo '<a href="', $company->website, '" target="_blank">', TEXT[10], '</a> &nbsp; '; }
 
 					if (!empty($company->phoneNumber))
 					{
 						echo '<a target="_blank" href="';
 						printf(WebApp\Config::WHATSAPP_URL, $company->phoneNumber, $company->name);
-						echo '">Whatsapp</a> &nbsp; ';
+						echo '">', TEXT[11], '</a> &nbsp; ';
 					}
 					elseif (!empty($company->email))
 					{
-						echo '<a href="mailto:', $company->email, '">Email</a> &nbsp; ';
+						echo '<a href="mailto:', $company->email, '">', TEXT[12], '</a> &nbsp; ';
 					}
 
 					echo '</div>';

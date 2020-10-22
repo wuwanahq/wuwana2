@@ -16,9 +16,6 @@ class Category
 		'Spanish' => PDO::PARAM_STR,
 	];
 
-	public $english;
-	public $spanish;
-
 	static function getTableSchema()
 	{
 		return 'create table ' . self::TABLE_NAME . ' ('
@@ -33,11 +30,10 @@ class Category
 
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 		{
-			$category = new Category();
-			$category->english = $row['English'];
-			$category->spanish = $row['Spanish'];
-
-			$categories[(int)$row['ID']] = $category;
+			$categories[(int)$row['ID']] = [
+				'en' => $row['English'],
+				'es' => $row['Spanish'],
+			];
 		}
 
 		return $categories;
