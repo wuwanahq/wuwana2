@@ -22,7 +22,7 @@ class WebApp
 		]);
 	}
 
-	static function getCodeLanguage()
+	static function getLanguageCode()
 	{
 		if (substr(filter_input(INPUT_SERVER, 'SERVER_NAME'), -2)  == 'es')
 		{ return 'es'; }
