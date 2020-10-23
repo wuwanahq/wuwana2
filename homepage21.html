@@ -1,304 +1,7 @@
 <html>
 <head>
     <title>Homepage</title>
-    <style>
-
- /* Default */
-
-        body {
-            display: flex;
-            font-family: "Roboto", sans-serif;
-            color: #161313;
-            background-color: #f6f6f6;
-            font-size: 16px;
-            margin: 0px;
-            justify-content: center;
-            padding: 24px 16px;
-        }
-
-        hr {
-            background-color: #EFEDED;
-            margin: 0;
-            border: 0;
-            height: 1px;
-
-        }
- 
-        h1 { /* Title */
-            font-size: 1.5rem;
-            line-height: 2rem;
-            font-weight: 500;
-            margin-bottom: 16px;
-            margin-block-start: 0;
-        }
-
-        h2 { /* Subtitle */
-            font-size: 1.125rem;
-            line-height: 1.5rem;
-            font-weight: 500;
-            margin-bottom: 16px;
-            margin-block-start: 0;
-            margin-block-end: 0;
-        }
-
-        h3 { /* Company Title */
-            font-size: 1rem;
-            line-height: 1.5rem;
-            font-weight: 700;
-            margin-block-start: 0;
-            margin-block-end: 0;
-        }
-
-        p {
-            margin-top: 8px;
-        }
-        
-/* Text Style */
-
-        .Tag {
-            font-size: 0.75rem;
-            line-height: 1rem;
-            font-weight: 700;
-            border-radius: 8px;
-            padding: 4px;
-        }
-
-        .Label {
-            color: #8B8989;
-            font-size: 0.75rem;
-            line-height: 1rem;
-            font-weight: 400;
-            margin-right: 4px;
-        }
-
-/* CSS to make the Layout */
-
-        .Container {
-            position: static;
-            display: flex;
-            width: 100%;
-            max-width: 1200px;
-            align-items: flex-start;
-        }
-
-        .ColumnLeft {
-            position: static;
-            min-width: 280px;
-            max-width: 280px;
-            height: auto;
-            margin-right: 24px;
-            align-self: stretch;
-        }
-
-        .ColumnMain {
-            width: 100%;
-            height: auto;
-        }
-        
-        .Sticky {
-            position: sticky;
-            top: 24px;
-        }
-
-/* Box */
-
-        .Box {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            min-height: 20px;
-            margin-bottom: 24px;
-            border-radius: 8px 8px 8px 8px;
-            background-color: red;
-            box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.05);
-        }
-
-        .Box.Test {
-            height: 1000px;
-        }
-
-/* About us */
-
-        .Box.About {
-            background-color: #ffffff;
-            align-items: center;
-        }
-
-        .AboutCover {
-            height: 72px;
-            margin-bottom: 16px;
-        }
-
-        .AboutCover img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-
-        .AboutText {
-            color: #545151;
-            font-size: 0.875rem;
-            line-height: 1.3;
-            text-align: center;
-            max-width: 90%; /* This is to try to replicate padding 16px on left and right */
-        }
-
-        .AboutLine {
-            margin: 24px 0px 16px;
-            width: 100%;
-        }
-
-        .AboutSocial {
-            width: 88%; /* This is to try to replicate padding 16px on left and right */
-            margin: 16px 0 24px;
-            text-align: center;
-            
-        }
-
- /* Banner */
-
-        .Box.Banner {
-            min-height: 230px;
-            background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 60%), url("/Users/levogirar/Desktop/Picture/ali-yahya-7_AZi5Fe-rU-unsplash 2.png");
-            background-size: auto, cover;
-            justify-content: center;
-            background-position: 0px 0px, 50% 50%;
-        }
-
-        .BannerText {
-            color: #ffffff;
-            margin-left: 24px;
-            max-width: 60ch;
-        }
-
-        .BannerTitle {
-            font-size: 2rem;
-            line-height: 2.4rem;
-            font-weight: 700;
-            margin: 0px 0px 8px 0px;
-        }
-
-        .BannerSubtitle {
-            font-size: 1.5rem;
-            list-style: 2rem;
-            font-weight: 400;
-            margin: 0;
-        }
-
-/* Cards */
-
-        .Card {
-            position: relative;
-            height: auto;
-            display: flex;
-            justify-content: flex-start;
-            align-content: flex-start;
-            background-color: #ffffff;
-            padding: 16px 24px 16px 16px;
-        }
-
-        .Card:first-child {
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-
-        .Card:last-child {
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-        }
-
-        .Card:hover {
-            background-color: #fafafa;
-        }
-
-        .Logo {
-            width: 88px;
-            min-width: 88px;
-            height: 88px;
-            border-radius: 8px;
-            margin-right: 16px;
-        }
-
-        .Logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .CompanyContent {
-            width: 100%;
-        }
-
-        .Category {
-            margin-bottom: 16px;
-        }
-
-        .Tag.Region {
-            display: inline-block;
-            color: #8b8989;
-            background-color: #ffffff;
-            border-style: solid;
-            border-width: 1px;
-            border-color: #8b8989;
-            margin-right: 8px;
-        }
-      
-        .Badge {
-            align-self: center;
-            margin-left: 24px;
-            width: 48px;
-            height: 48px;
-            min-width: 48px;
-            background-color: black;
-        }
-
-/* Buttons */
-
-        .Button {
-            display: flex;
-            padding: 8px 8px;
-            align-items: center;
-            border-style: solid;
-            border-width: 1px;
-            border-color: black;
-            border-radius: 8px;
-            background-color: white;
-            font-size: 12px;
-            line-height: 14px;
-            font-weight: 700;
-            box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.05);
-            transition: all 200ms;
-        }
-
-        .Button:hover {
-            color: white;
-            background-color: #161313;
-        }
-
-        .Button img {
-            margin-right: 4px;
-        }
-
-        .Button.Fixed {
-            z-index: 1;
-            position: fixed;
-            padding: 2px 4px;
-            right: 0%;
-            bottom: 0%;
-            margin-right: 24px;
-            margin-bottom: 24px;
-        }
-
-        .Button.Social {
-            display: inline-block;
-            margin: 0px 4px 8px;
-        }
-
-
-
-    </style>
+    <link rel="stylesheet" href="new.css"/>
 </head>
 <body>
 
@@ -328,7 +31,36 @@
             </div>
             <div class="Sticky">
                 <h2>Personaliza la buqueda</h2>
-                <div class="Box"></div>
+                <div class="Box">
+
+                    <dl> <!-- Category Filter -->
+                        <dt>Categoria</dt>
+                        <dd><input id="id1" type="checkbox"><label for="id1">Todas las categorias</label></dd>
+                        <dd><input id="id2" type="checkbox"><label for="id2">Tostadores</label></dd>
+                        <dd><input id="id3" type="checkbox"><label for="id3">Cafeterias</label></dd>
+                        <dd><input id="id4" type="checkbox"><label for="id4">Importadores</label></dd>
+                    </dl>
+
+                    <dl> <!-- Location Filter -->
+                        <dt>Comunidades autonomas</dt>
+                        <dd><input id="id1" type="checkbox"><label for="id1">Todas las categorias</label></dd>
+                        <dd><input id="id2" type="checkbox"><label for="id2">Tostadores</label></dd>
+                        <dd><input id="id3" type="checkbox"><label for="id3">Cafeterias</label></dd>
+                        <dd><input id="id4" type="checkbox"><label for="id4">Importadores</label></dd>
+                        <dd><input id="id2" type="checkbox"><label for="id2">Tostadores</label></dd>
+                        <dd><input id="id3" type="checkbox"><label for="id3">Cafeterias</label></dd>
+                        <dd><input id="id4" type="checkbox"><label for="id4">Importadores</label></dd>
+                        <dd><input id="id2" type="checkbox"><label for="id2">Tostadores</label></dd>
+                        <dd><input id="id3" type="checkbox"><label for="id3">Cafeterias</label></dd>
+                        <dd><input id="id4" type="checkbox"><label for="id4">Importadores</label></dd>
+                        <dd><input id="id2" type="checkbox"><label for="id2">Tostadores</label></dd>
+                        <dd><input id="id3" type="checkbox"><label for="id3">Cafeterias</label></dd>
+                        <dd><input id="id4" type="checkbox"><label for="id4">Importadores</label></dd>
+                        <dd><input id="id2" type="checkbox"><label for="id2">Tostadores</label></dd>
+                        <dd><input id="id3" type="checkbox"><label for="id3">Cafeterias</label></dd>
+                        <dd><input id="id4" type="checkbox"><label for="id4">Importadores</label></dd>
+                    </dl>
+                </div>
             </div>
             
         </div>
