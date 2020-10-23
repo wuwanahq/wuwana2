@@ -3,7 +3,8 @@
     <title>Homepage</title>
     <style>
 
-        /* Default */
+ /* Default */
+
         body {
             display: flex;
             font-family: "Roboto", sans-serif;
@@ -47,8 +48,12 @@
             margin-block-start: 0;
             margin-block-end: 0;
         }
+
+        p {
+            margin-top: 8px;
+        }
         
-        /* Text Style */
+/* Text Style */
 
         .Tag {
             font-size: 0.75rem;
@@ -66,7 +71,8 @@
             margin-right: 4px;
         }
 
-        /* CSS to make the Layout */
+/* CSS to make the Layout */
+
         .Container {
             position: static;
             display: flex;
@@ -78,6 +84,7 @@
         .ColumnLeft {
             position: static;
             min-width: 280px;
+            max-width: 280px;
             height: auto;
             margin-right: 24px;
             align-self: stretch;
@@ -93,7 +100,7 @@
             top: 24px;
         }
 
-        /* Box */
+/* Box */
 
         .Box {
             display: flex;
@@ -106,15 +113,81 @@
             box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.05);
         }
 
-        .Box.Banner {
-            height: 230px;
-        }
-
         .Box.Test {
             height: 1000px;
         }
 
-        /* Cards */
+/* About us */
+
+        .Box.About {
+            background-color: #ffffff;
+            align-items: center;
+        }
+
+        .AboutCover {
+            height: 72px;
+            margin-bottom: 16px;
+        }
+
+        .AboutCover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .AboutText {
+            color: #545151;
+            font-size: 0.875rem;
+            line-height: 1.3;
+            text-align: center;
+            max-width: 90%; /* This is to try to replicate padding 16px on left and right */
+        }
+
+        .AboutLine {
+            margin: 24px 0px 16px;
+            width: 100%;
+        }
+
+        .AboutSocial {
+            width: 88%; /* This is to try to replicate padding 16px on left and right */
+            margin: 16px 0 24px;
+            text-align: center;
+            
+        }
+
+ /* Banner */
+
+        .Box.Banner {
+            min-height: 230px;
+            background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 60%), url("/Users/levogirar/Desktop/Picture/ali-yahya-7_AZi5Fe-rU-unsplash 2.png");
+            background-size: auto, cover;
+            justify-content: center;
+            background-position: 0px 0px, 50% 50%;
+        }
+
+        .BannerText {
+            color: #ffffff;
+            margin-left: 24px;
+            max-width: 60ch;
+        }
+
+        .BannerTitle {
+            font-size: 2rem;
+            line-height: 2.4rem;
+            font-weight: 700;
+            margin: 0px 0px 8px 0px;
+        }
+
+        .BannerSubtitle {
+            font-size: 1.5rem;
+            list-style: 2rem;
+            font-weight: 400;
+            margin: 0;
+        }
+
+/* Cards */
 
         .Card {
             position: relative;
@@ -158,6 +231,10 @@
             width: 100%;
         }
 
+        .Category {
+            margin-bottom: 16px;
+        }
+
         .Tag.Region {
             display: inline-block;
             color: #8b8989;
@@ -166,8 +243,6 @@
             border-width: 1px;
             border-color: #8b8989;
             margin-right: 8px;
-            position: absolute;
-            bottom: 16px;
         }
       
         .Badge {
@@ -179,11 +254,11 @@
             background-color: black;
         }
 
-        /* Buttons*/
+/* Buttons */
 
         .Button {
             display: flex;
-            padding: 2px 4px;
+            padding: 8px 8px;
             align-items: center;
             border-style: solid;
             border-width: 1px;
@@ -209,10 +284,16 @@
         .Button.Fixed {
             z-index: 1;
             position: fixed;
+            padding: 2px 4px;
             right: 0%;
             bottom: 0%;
             margin-right: 24px;
             margin-bottom: 24px;
+        }
+
+        .Button.Social {
+            display: inline-block;
+            margin: 0px 4px 8px;
         }
 
 
@@ -222,13 +303,29 @@
 <body>
 
     <div class="Button Fixed">
-        <img src="ic24-arrow-circle-top.png">
+        <img src="/Users/levogirar/Desktop/Picture/ic24-arrow-circle-top.png">
         Volver arriba
     </div>
 
     <div class="Container">
         <div class="ColumnLeft">
-            <div class="Box"></div>
+            <div class="Box About">
+                <div class="AboutCover">
+                    <img src="/Users/levogirar/Desktop/Picture/Cover Picture _ Oct 2020.png">
+                </div>
+                <img src="/Users/levogirar/Desktop/Picture/Name.png">
+                <p class="AboutText">Encontrar un la informacion que necesitas deberia ser mas facil.</p>
+                <div class="Button">Descubre que es Wuwana</div>
+                <hr class="AboutLine">
+                <h3>Contactanos</h3>
+                <div class="AboutSocial">
+                    <div class="Button Social"> Social Media</div>
+                    <div class="Button Social"> Social Media</div>
+                    <div class="Button Social"> Social Media</div>
+                    <div class="Button Social"> Social Media</div>
+                    <div class="Button Social"> Social Media</div>
+                </div>
+            </div>
             <div class="Sticky">
                 <h2>Personaliza la buqueda</h2>
                 <div class="Box"></div>
@@ -236,46 +333,42 @@
             
         </div>
         <div class="ColumnMain">
-            <div class="Box Banner"></div>
+            <div class="Box Banner">
+                <div class="BannerText">
+                    <h1 class="BannerTitle">Estas buscando cafe de especialidad?</h1>
+                    <p class="BannerSubtitle">Encuentra las empresas que necesitas rapidamente.</p>
+                </div>
+            
+            </div>
             <h1>Empresas destacadas</h1>
             <div class="Box">
                 <div class="Card">
                     <div class="Logo">
-                        <img src="117926628_3215393278552514_8264428497985741185_n 1.png">
+                        <img src="/Users/levogirar/Desktop/Picture/117926628_3215393278552514_8264428497985741185_n 1.png">
                     </div>
                     <div class="CompanyContent">
-                        <h3>Right Side Coffee</h3>
-                        <span class="Label">Tostador</span>
-                        <span class="Label">Cafeteria</span>
-                        <br>
+                        <h3>Company 1 </h3>
+                        <div class="Category">
+                            <span class="Label">Tostador</span>
+                            <span class="Label">Cafeteria</span>
+                        </div>
                         <div class="Tag Region">Cataluna</div>
                     </div>
+                    <div class="Badge"></div>
+                    <div class="Badge"></div>
                     <div class="Badge"></div>
                 </div>
                 <hr>
                 <div class="Card">
                     <div class="Logo">
-                        <img src="117926628_3215393278552514_8264428497985741185_n 1.png">
+                        <img src="/Users/levogirar/Desktop/Picture/117926628_3215393278552514_8264428497985741185_n 1.png">
                     </div>
                     <div class="CompanyContent">
-                        <h3>Right Side Coffee</h3>
-                        <span class="Label">Tostador</span>
-                        <span class="Label">Cafeteria</span>
-                        <br>
-                        <div class="Tag Region">Cataluna</div>
-                    </div>
-                    <div class="Badge"></div>
-                </div>
-                <hr>
-                <div class="Card">
-                    <div class="Logo">
-                        <img src="117926628_3215393278552514_8264428497985741185_n 1.png">
-                    </div>
-                    <div class="CompanyContent">
-                        <h3>Right Side Coffee</h3>
-                        <span class="Label">Tostador</span>
-                        <span class="Label">Cafeteria</span>
-                        <br>
+                        <h3>Company 2 Super Long Name</h3>
+                        <div class="Category">
+                            <span class="Label">Tostador</span>
+                            <span class="Label">Cafeteria</span>
+                        </div>
                         <div class="Tag Region">Cataluna</div>
                     </div>
                     <div class="Badge"></div>
