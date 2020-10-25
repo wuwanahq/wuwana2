@@ -167,6 +167,16 @@ dd {
         margin-right: 4px;
     }
 
+.Button.Pill {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    line-height: 1;
+    border-radius: 16px;
+    font-weight: 500;
+    align-self: center;
+    margin-bottom: 8px;
+}
+
 .Button.Center {
     align-self: center;
     padding: 2px 4px;
@@ -435,9 +445,9 @@ dd {
         object-fit: cover;
     }
 
-    /* LAYOUT CHANGES FOR TABLET DEVICES */
+/* LAYOUT CHANGES FOR TABLET DEVICES */
 
-@media screen and (max-width: 788px) {
+@media screen and (max-width: 800px) {
 
 /* Tablet General Changes */
 
@@ -486,9 +496,64 @@ dd {
         padding: 16px 0px 16px;
     }
 
-    .Black {
-        height: 40px;
-        width: 40px;
-        background-color: black;
+    /* Menu mobile */
+
+    dl {
+        margin: 16px 16px 16px;
     }
+
+        dl label {
+            display: inline-block;
+            border-style: solid;
+            border-width: 1px;
+            border-color: black;
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            line-height: 1;
+            border-radius: 16px;
+            font-weight: 500;
+            align-self: center;
+            background-color: white;
+        }
+
+        dl input {
+            display: none;
+        }
+
+        dl input:checked + label {
+            color: white;
+            background-color: #161313;
+        }
+    
+    dt {
+        font-size: 1rem;
+        line-height: 1.5;
+        font-weight: 700;
+        margin: 0px 0px 16px 0px;
+        margin-block-start: 0;
+    }
+    
+    dd {
+        display: inline-block;
+        transition: color 200ms, background-color 200ms;
+        box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.05);    
+    }
+
+    .Box.Filter {
+        padding-bottom: 24px;
+    }
+
+}
+
+@media screen and (max-width: 414px) {
+
+/* Banner */
+
+
+}
+
+.Black {
+    height: 40px;
+    width: 40px;
+    background-color: black;
 }
