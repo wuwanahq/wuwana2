@@ -278,9 +278,16 @@ dd {
     align-items: center;
 }
 
+.Box.Aspect {
+    padding-top: 56.25%;
+    background-color: blue;
+    position: relative;
+}
+
 .Box.Test {
     padding-top: 56.25%;
     background-color: blue;
+    position: relative;
 }
 
 /* About us */
@@ -378,7 +385,39 @@ dd {
 }
 
 .ProfileBadge {
+    width: 88%;
     display: flex;
     flex-direction: row;
-
+    justify-content: center;
 }
+
+.ProfileInstagram {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.InstagramRow {
+    display: flex;
+    justify-content: space-between;
+    height: 49.5%;
+}
+
+.InstagramPicture {;
+    margin: 0px;
+    height: 100%;
+    width: 33%;
+}
+
+    .InstagramPicture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
