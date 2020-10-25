@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Wuwana administration</title>
+	<meta charset="utf-8">
+	<title>Wuwana administration page</title>
 </head>
 <body>
 	<h1>Overwrite tables in the database</h1>

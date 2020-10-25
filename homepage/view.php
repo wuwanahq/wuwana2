@@ -21,8 +21,8 @@
 	<link rel="apple-touch-icon" href="/static/favicon144.png" sizes="144x144">
 	<link rel="apple-touch-icon" href="/static/favicon152.png" sizes="152x152">
 	<link rel="apple-touch-icon" href="/static/favicon180.png" sizes="180x180">
-	<link rel="stylesheet" type="text/css" href="static/style.css"/>
-	<script src="static/ES5.js" defer></script>
+	<link rel="stylesheet" type="text/css" href="/static/style.css"/>
+	<script src="/static/ES5.js" defer></script>
 </head>
 <body>
 	<div id="popup">
@@ -35,11 +35,11 @@
 		</div>
 	</div>
 	<form id="menu" method="get" action="/">
-		<div class="Desktop"><a href="/"><img src="static/wuwana-white.svg"></a></div>
+		<div class="Desktop"><a href="/"><img src="/static/wuwana-white.svg"></a></div>
 		<div class="Mobile">
 			<a href="#menu" class="Symbol">≡</a>
 			<input type="submit" class="Symbol" value="×">
-			<a href="/"><img src="static/wuwana-black.svg"></a>
+			<a href="/"><img src="/static/wuwana-black.svg"></a>
 		</div>
 		<div class="Filters">
 			<span class="Title"><?php echo TEXT[1] ?></span>
@@ -100,7 +100,7 @@
 
 					if ($company->region > 0)
 					{
-						echo '<span class="GeoLoc"><img src="static/geoloc.png">',
+						echo '<span class="GeoLoc"><img src="/static/geoloc.png">',
 							$locations[$company->region]->region,
 						'</span>';
 					}
@@ -121,8 +121,8 @@
 
 					if (!empty($company->phoneNumber))
 					{
-						echo '<a target="_blank" href="';
-						printf(WebApp\Config::WHATSAPP_URL, $company->phoneNumber, $company->name);
+						echo '<a target="_blank" href="https://wa.me/', $company->phoneNumber, '?text=';
+						printf(TEXT[15], $company->name);
 						echo '">', TEXT[11], '</a> &nbsp; ';
 					}
 					elseif (!empty($company->email))
