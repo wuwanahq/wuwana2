@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="<?php echo $language ?>">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=375">
+	<meta name="description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
 	<link rel="icon" type="image/png" href="/static/favicon16.png" sizes="16x16">
 	<link rel="icon" type="image/png" href="/static/favicon32.png" sizes="32x32">
@@ -21,7 +22,7 @@
 	<link rel="apple-touch-icon" href="/static/favicon152.png" sizes="152x152">
 	<link rel="apple-touch-icon" href="/static/favicon180.png" sizes="180x180">
 	<link rel="stylesheet" type="text/css" href="static/style.css"/>
-	<script defer src="static/ES5.js"></script>
+	<script src="static/ES5.js" defer></script>
 </head>
 <body>
 	<div id="popup">

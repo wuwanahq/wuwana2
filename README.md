@@ -1,6 +1,6 @@
 # Wuwana v2
 
-Simple business directory project used for https://www.wuwana.com
+Simple business directory project used for https://wuwana.com
 
 ## How to test locally
 
