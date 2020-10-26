@@ -81,10 +81,6 @@ dd {
 
 /* Desktop Hidden Elements*/
 
-.MenuBar {
-    display: none;
-}
-
 .MobileAbout {
     display: none;
 }
@@ -97,6 +93,7 @@ dd {
     width: 100%;
     max-width: 1200px;
     justify-content: center;
+    margin-top: 56px;
 }
 
 .ColumnLeft {
@@ -193,7 +190,7 @@ dd {
 }
 
 .Button.Fixed {
-    z-index: 1;
+    z-index: 99;
     position: fixed;
     padding: 2px 4px;
     right: 0%;
@@ -211,6 +208,41 @@ dd {
         margin-bottom: 0px;
     }
 
+/* Header */
+
+    .HeaderBar{
+        z-index: 99;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 56px;
+        width: 100vw;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+    }
+
+        .HeaderContainer {
+            display: flex;
+            justify-content: space-between;
+            align-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1232px; /* 1200px + 16px padding left and right */
+        }
+
+        .HeaderLogo {
+            margin-left: 16px;
+            height: 24px;
+        }
+
+        .HeaderIcon {
+            display: none;
+            margin-right: 16px;
+        }
+        
+        
 /* Cards */
 
 .Card {
@@ -484,34 +516,12 @@ dd {
 
 /* Tablet General Changes */
 
-    .MenuBar{
-        z-index: 99;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 56px;
-        width: 100vw;
-        background-color: #ffffff;
-        overflow: hidden;
-        display: flex;
-        justify-content: space-between;
-        align-content: space-between;
-        align-items: center;
-        box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+    .HeaderIcon {
+        display: inline;
     }
-
-        .MenuLogo {
-            margin-left: 16px;
-            height: 24px;
-        }
-
-        .MenuIcon {
-            margin-right: 16px;
-        }
 
     .Container {
         flex-direction: column;
-        margin-top: 56px; /* Menu bar height*/
     }
 
     .ColumnLeft.Home {
@@ -587,6 +597,10 @@ dd {
     }
 
 /* Company profile page */
+
+    .Box.About.Company {
+        display: none;
+    }
 
     .Container {
         flex-direction: column;
