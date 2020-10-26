@@ -329,13 +329,18 @@ dd {
 
 .Box.Profile {
     align-items: center;
+    padding-bottom: 24px;
 }
+
 
 .Box.Aspect {
     padding-top: 56.25%;
-    background-color: blue;
     position: relative;
 }
+
+    .Box.Aspect.Mobile {
+        display: none;
+    }
 
 .Box.Test {
     padding-top: 56.25%;
@@ -504,12 +509,13 @@ dd {
             margin-right: 16px;
         }
 
-    .ColumnLeft.Home {
-        display: none;
+    .Container {
+        flex-direction: column;
+        margin-top: 56px; /* Menu bar height*/
     }
 
-    .ColumnMain.Home {
-        margin-top: 56px; /* Menu bar height*/
+    .ColumnLeft.Home {
+        display: none;
     }
 
     .Box.Banner {
@@ -580,7 +586,18 @@ dd {
         padding-bottom: 24px;
     }
 
+/* Company profile page */
 
+    .Container {
+        flex-direction: column;
+    }
+
+    .ColumnLeft.Company {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    
 }
 
 @media screen and (max-width: 500px) {
@@ -643,6 +660,34 @@ dd {
         margin-right: 8px;
         margin-left: 0px;
     }
+
+    /* Company profile */
+
+    .Box.Aspect {
+        display: none;
+    }
+
+    .Box.Aspect.Mobile {
+        display: flex;
+        padding-top: 133%;
+    }
+
+    .InstagramRow {
+        height: 33%;
+    }
+    
+    .InstagramPicture {
+        margin: 0px;
+        height: 100%;
+        width: 49.5%;
+    }
+    
+        .InstagramPicture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
 
 
 }
