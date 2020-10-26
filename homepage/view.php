@@ -22,13 +22,13 @@
 	<link rel="apple-touch-icon" href="/static/favicon152.png" sizes="152x152">
 	<link rel="apple-touch-icon" href="/static/favicon180.png" sizes="180x180">
 	<link rel="stylesheet" type="text/css" href="/static/style.css"/>
-	<script src="/static/ES5.js" defer></script>
+	<script src="/static/es5.js" defer></script>
 </head>
 <body>
 	<div id="popup">
 		<div>
 			<a href="#" class="ButtonRound">×</a>
-			<img src="/static/favicon196.png"><br><br>
+			<img src="/static/favicon96.png"><br><br>
 			<?php echo TEXT[14] ?>
 			<br>
 			<a class="ButtonSquare" href="https://twitter.com/wuwanahq" target="_blank"><?php echo TEXT[13] ?></a>
