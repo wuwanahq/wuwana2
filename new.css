@@ -210,8 +210,14 @@ dd {
 
 .Button.Circle {
     border-radius: 50%;
+    border-width: 2px;
     padding: 0px;
+    margin: 4px;
 }
+
+    .Button.Circle img {
+        margin: 8px;
+    }
 
 /* Header */
 
@@ -418,7 +424,6 @@ dd {
 
 .AboutSocial {
     max-width: 88%; /* This is to try to replicate padding 16px on left and right */
-    margin-top: 16px;
     text-align: center;
     justify-content: center;
     display: flex;
