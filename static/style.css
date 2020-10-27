@@ -1,295 +1,614 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url(
+	"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+);
 
 body {
 	font-family: "Roboto", sans-serif;
+	display: flex;
+	flex-direction: column;
 	color: #161313;
-	background-color: #FAFAFA;
+	background-color: #f6f6f6;
 	font-size: 16px;
-	margin: 0px}
+	margin: 0;
+	justify-content: center;
+	align-items: center;
+	padding: 24px 16px}
 
 hr {
-	margin: 0 0 16px 0;
-	color: #8B8989}
+	background-color: #efeded;
+	margin: 0;
+	border: 0;
+	height: 1px}
 
-.Tag {
-	text-decoration: none;
-	margin-right: 4px;
-	color: #8B8989;
-	font-size: .87rem;
-	font-weight: 500;
-	border: 1px solid #8B8989;
-	padding: 6px 16px;
-	background-color: white}
-
-.ButtonRound,
-.ButtonSquare {
-	text-decoration: none;
-	color: #161313;
-	font-size: .87rem;
-	font-weight: 500;
-	border: 1px solid #161313;
-	padding: 8px 16px;
-	background-color: rgba(255, 255, 255, 0.7)}
-
-.ButtonRound,
-.Tag {
-	border-radius: 20px} /* Half of the highest button (40px) */
-
-.ButtonSquare {
-	border-radius: 8px}
-
-a.ButtonRound:hover,
-a.ButtonSquare:hover {
-	background-color: #161313;
-	color: white}
-
-.Title {
-	font-weight: 500;
-	font-size: 1.5rem}
-
-.Content {
-	margin-left: 272px; /* Menu width + padding x2 */
-	padding: 16px}
-
-.Content .Hero {
-	position:relative;
-	color: white;
-	height: 230px;
-	margin: 24px 0 40px 0;
-	padding: 16px;
-	border-radius: 16px;
-	background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-wide-unsplash.jpg");
-	background-position: bottom;
-	background-size: cover}
-
-.Content .Hero .Text1 {
-	font-size: 3rem;
-	font-weight: 700}
-
-.Content .Hero .Text2 {
-	font-size: 1.8em;
-	font-weight: 300}
-
-.Content .Hero .ButtonRound {
-	position: absolute;
-	bottom: 16px;
-	right: 16px}
-
-.Content > div:last-child {
-	text-align:center;
-	margin-top:24px}
-
-.Content .Card {
-	position: relative;
-	display: inline-block;
-	width: 290px;
-	text-align: left;
-	border-radius: 8px;
-	margin: 0px 8px 16px;
-	padding: 16px;
-	background-color: white;
-	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05)}
-
-.Content .Card .Title {
-	font-weight: 700;
+h1 { /* Title */
 	font-size: 1.5rem;
-	line-height: 1}
-
-.Content .Card .Text {
-	min-height: 160px;
-	font-weight: 400}
-
-.Content .Card > img {
-	border-radius: 8px;
-	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);
-	width: 96px;
-	height: 96px}
-
-.Content .Card .GeoLoc {
+	line-height: 1.3;
 	font-weight: 500;
-	color: rgba(22, 19, 19, 0.7);
-	font-size: .75rem;
-	float: right}
+	margin-bottom: 16px;
+	margin-block-start: 0}
 
-.Content .Card .GeoLoc img {
-	vertical-align: top;
-	margin-right: 4px}
+h2 { /* Subtitle */
+	font-size: 1.125rem;
+	line-height: 1.3;
+	font-weight: 500;
+	margin: 0 0 16px}
 
-.Content .Card a {
+h3 { /* Company Title */
+	font-size: 1rem;
+	line-height: 1.3;
 	font-weight: 700;
-	font-size: 1.12rem;
-	color: #161313;
-	margin-top: 8px;
-	display: inline-block;
-	transition: all 200ms}
+	margin-block-start: 0;
+	margin-block-end: 0}
 
-.Content .Card a:hover {
-	transform: translateY(-2px)}
+p {
+	margin-top: 8px}
 
-/* POPUP WINDOW */
+input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+	margin: 0 8px 0 0}
 
-#popup {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	z-index: 2;
-	visibility: hidden;
-	display: none;
-	background-color: rgba(0,0,0,0.5)}
+input, label {
+	vertical-align: middle}
 
-#popup:target {
-	visibility: visible;
-	display: flex;
-	justify-content: center;
-	align-items: center}
+label {
+	font-weight: 400;
+	color: #545151}
 
-#popup > div {
-	position: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	text-align: center;
+dl {
+	margin: 16px 16px 16px}
+
+dt {
 	font-size: 1rem;
 	line-height: 1.5;
+	font-weight: 700;
+	margin: 0 0 16px 0;
+	margin-block-start: 0}
+
+dd {
+	margin: 0 0 8px 0}
+
+/* DESKTOP HIDDEN ELEMENTS*/
+
+.MobileAbout {
+	display: none}
+
+/* CSS TO MAKE THE LAYOUT */
+
+.Container {
+	position: static;
+	display: flex;
+	width: 100%;
+	max-width: 1200px;
+	justify-content: center;
+	margin-top: 56px}
+
+.ColumnLeft {
+	position: static;
+	min-width: 280px;
+	max-width: 280px;
+	height: auto;
+	margin-right: 24px;
+	align-self: stretch}
+
+.ColumnMain {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	height: auto}
+
+.Sticky {
+	position: sticky;
+	top: 60px}
+
+/* TEXT STYLE */
+
+.Tag {
+	font-size: 0.75rem;
+	line-height: 1.3;
+	font-weight: 700;
+	border-radius: 8px;
+	padding: 4px}
+
+.Label {
+	color: #8b8989;
+	font-size: 0.75rem;
+	line-height: 1.3;
+	font-weight: 400;
+	margin-right: 4px}
+
+/* BUTTONS */
+
+.Button {
+	display: flex;
+	padding: 8px 8px;
+	align-items: center;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	border-radius: 8px;
+	background-color: white;
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 14px;
+	font-weight: 700;
+	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
+	transition: color 200ms, background-color 200ms}
+
+.Button:hover {
+	color: white;
+	background-color: #161313}
+
+.Button img {
+	margin-right: 4px}
+
+.Button.Pill {
+	padding: 8px 16px;
+	font-size: 0.875rem;
+	line-height: 1;
 	border-radius: 16px;
-	border: 4px solid #161313;
-	background: white;
-	margin: 0 auto;
-	width: 580px;
-	position: relative;
-	z-index: 2;
-	padding: 24px}
+	font-weight: 500;
+	align-self: center;
+	margin-bottom: 8px}
 
-#popup > div p {
-	text-align: left}
+.Button.Center {
+	align-self: center;
+	padding: 2px 4px}
 
-#popup > div .ButtonRound {
+.Button.Absolute {
+	z-index: 1;
 	position: absolute;
-	right: 24px}
+	padding: 2px 4px;
+	right: 0;
+	bottom: 0;
+	margin-right: 24px;
+	margin-bottom: 24px}
 
-/* MENU WITH FILTERS */
+.Button.Fixed {
+	z-index: 9;
+	position: fixed;
+	padding: 2px 4px;
+	right: 0;
+	bottom: 0;
+	margin-right: 24px;
+	margin-bottom: 24px}
 
-#menu {
-	overflow: auto;
-	line-height: 24px;
-	padding: 16px;
+.Button.Social {
+	display: inline-block;
+	margin: 0 4px 8px}
+
+.Button.Social:last-child {
+	margin-bottom: 0}
+
+.Button.Circle {
+	border-radius: 50%;
+	padding: 0}
+
+/* HEADER */
+
+.HeaderBar{
+	z-index: 9;
 	position: fixed;
 	top: 0;
-	bottom: 0;
 	left: 0;
-	width: 240px;
-	color: white;
-	background-color: #595757}
+	height: 56px;
+	width: 100vw;
+	background-color: #ffffff;
+	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: center}
 
-#menu .Desktop {
-	margin: 24px 0;
-	text-align: center}
+.HeaderContainer {
+	display: flex;
+	justify-content: space-between;
+	align-content: space-between;
+	align-items: center;
+	width: 100%;
+	max-width: 1232px} /* 1200px + 16px padding left and right */
 
-#menu dl {
-	margin: 16px 0 24px 0}
+.HeaderLogo {
+	margin-left: 16px;
+	height: 24px}
 
-#menu dl dd {
-	margin-inline-start: 24px}
+.HeaderIcon {
+	display: none;
+	margin-right: 16px}
 
-#menu dl input {
+/* CARDS */
+
+.Card {
+	height: auto;
+	display: flex;
+	justify-content: flex-start;
+	align-content: flex-start;
+	background-color: #ffffff;
+	padding: 16px;
+	transition: background-color 200ms}
+
+.Card:first-child {
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px}
+
+.Card:last-child {
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px}
+
+.Card:hover {
+	background-color: #fafafa}
+
+.Logo {
+	width: 88px;
+	min-width: 88px;
+	height: 88px;
+	border-radius: 8px;
+	overflow: hidden;
+	margin-right: 16px}
+
+.Logo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover}
+
+.CompanyMain {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between}
+
+.CompanyContent {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-right: 24px}
+
+.Category {
+	margin-bottom: 8px}
+
+.Tag.Region {
+	display: inline-block;
+	color: #8b8989;
+	background-color: #ffffff;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #8b8989;
+	margin-top: auto;
 	margin-right: 8px}
 
-/* LAYOUT CHANGES FOR MOBILE DEVICES */
+.BadgeArea.Random {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	min-width: 100px;
+	flex-wrap: wrap;
+	justify-content: flex-start}
 
-#menu .Mobile {
+.BadgeArea {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	justify-items: right}
+
+.Badge {
+	align-self: center;
+	margin-left: 16px;
+	margin-bottom: 8px;
+	width: 48px;
+	height: 48px;
+	min-width: 48px;
+	background-color: black}
+
+.Badge:first-child {
+	margin-left: 0}
+
+/* BOX */
+
+.Box {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	min-height: 20px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	background-color: #ffffff;
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05)}
+
+.Box.Profile {
+	align-items: center;
+	padding-bottom: 24px}
+
+
+.Box.Aspect {
+	padding-top: 56.25%; /* very precise! */
+	position: relative}
+
+.Box.Aspect.Mobile {
 	display: none}
 
-@media screen and (max-width: 788px) {
-	#menu .Desktop,
-	#menu .Filters {
-		display: none}
+.Box.Test {
+	padding-top: 56.25%;
+	background-color: blue;
+	position: relative}
 
-	#menu .Mobile {
-		display: block}
+/* ABOUT US */
 
-	#menu .Mobile img {
-		margin: 12px 0 0 0}
+.Box.About {
+	align-items: center;
+	padding-bottom: 24px}
 
-	#menu {
-		position: block;
-		padding: 0px 24px;
-		line-height: 40px;
-		z-index: 1;
-		width: auto;
-		right: 0;
-		bottom: auto;
-		color: black;
-		background-color: white}
+.AboutCover {
+	height: 72px;
+	margin-bottom: 16px}
 
-	#menu dl {
-		margin: 8px 0 24px 0}
+.AboutCover img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover}
 
-	#menu dl dt,
-	#menu dl dd {
-		margin-inline-start: 0;
+.AboutText {
+	color: #545151;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	text-align: center;
+	max-width: 90%} /* This is to try to replicate padding 16px on left and right */
+
+.AboutLine {
+	margin: 24px 0 16px;
+	width: 100%}
+
+.AboutSocial {
+	max-width: 88%; /* This is to try to replicate padding 16px on left and right */
+	margin-top: 16px;
+	text-align: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: row}
+
+/* BANNER */
+
+.Box.Banner { /*************************** TO REVIEW... ******************************************/
+	min-height: 230px;
+	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 60%), url("/Users/levogirar/Desktop/Picture/ali-yahya-7_AZi5Fe-rU-unsplash 2.png");
+	background-size: auto, cover;
+	justify-content: center;
+	background-position: 0 0, 50% 50%}
+
+.BannerText {
+	color: #ffffff;
+	margin-left: 24px;
+	max-width: 60ch}
+
+.BannerTitle {
+	font-size: 2rem;
+	line-height: 2.4rem;
+	font-weight: 700;
+	margin: 0 0 8px 0}
+
+.BannerSubtitle {
+	font-size: 1.5rem;
+	list-style: 2rem; /* ERROR: The value is not supposed to be a number or size */
+	font-weight: 400;
+	margin: 0}
+
+/* COMPANY PROFILE */
+
+.Logo.Profile {
+	margin: 16px 0px 8px}
+
+.ProfileName {
+	max-width: 88%;
+	text-align: center;
+	margin-bottom: 8px}
+
+.ProfileHeading {
+	max-width: 88%;
+	font-weight: 500;
+	text-align: left;
+	margin-bottom: 8px;
+	align-self: start;
+	margin-left: 16px}
+
+.ProfileLine {
+	width: 100%;
+	margin: 24px 0px 16px}
+
+.BadgeArea.Profile {
+	width: 88%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center}
+
+.ProfileInstagram {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white}
+
+.InstagramRow {
+	display: flex;
+	justify-content: space-between;
+	height: 49.5%}
+
+.InstagramPicture {
+	margin: 0px;
+	height: 100%;
+	width: 33%}
+
+.InstagramPicture img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover}
+
+/* LAYOUT CHANGES FOR TABLET DEVICES */
+@media screen and (max-width: 800px)
+{
+	/* TABLET GENERAL CHANGES */
+
+	.HeaderIcon {
 		display: inline}
 
-	#menu dl input {
+	.Container {
+		flex-direction: column}
+
+	.ColumnLeft.Home {
 		display: none}
 
-	#menu dl label {
-		text-decoration: none;
-		margin-right: 8px;
-		color: #161313;
-		font-size: 0.875rem;
-		font-weight: 500;
-		border: 1px solid #161313;
+	.Box.Banner {
+		min-height: 230px;
+		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/Users/levogirar/Desktop/Picture/ali-yahya-7_AZi5Fe-rU-unsplash 2.png");
+		background-size: auto, cover;
+		justify-content: center;
+		background-position: 0 0, 50% 50%}
+
+	/* ABOUT US MOBILE*/
+
+	.MobileAbout {
+		display: block;
+		width: 100%}
+
+	.Box.About {
+		align-items: center;
+		padding: 16px 0 16px}
+
+	/* MENU MOBILE */
+
+	dl {
+		margin: 16px 16px 16px}
+
+	dl label {
+		display: inline-block;
+		border-style: solid;
+		border-width: 1px;
+		border-color: black;
+		color: black;
 		padding: 8px 16px;
-		background-color: white;
-		border-radius: 20px}
+		font-size: 0.875rem;
+		line-height: 1;
+		border-radius: 16px;
+		font-weight: 500;
+		align-self: center}
 
-	#menu dl input:checked + label {
-		background-color: #161313;
-		color: white}
+	dl input {
+		display: none}
 
-	#menu .Title {
-		font-size: 1.5rem;
-		font-weight: 500;}
+	dl input:checked + label {
+		color: white;
+		background-color: #161313}
 
-	.Content{
-		margin-left: 0;
-		margin-top: 40px} /* Menu height */
+	dt {
+		font-size: 1rem;
+		line-height: 1.5;
+		font-weight: 700;
+		margin: 0 0 16px 0;
+		margin-block-start: 0}
 
-	.Content .Hero {
-		height: 310px;
-		background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-square-unsplash.jpg")}
+	dd {
+		display: inline-block;
+		border-radius: 16px;
+		transition: color 200ms, background-color 200ms;
+		box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05)}
 
-	.Content .Hero .Text1 {
-		font-size: 1.6rem;
-		font-weight: 400;
-		line-height: 1.4}
+	.Box.Filter {
+		padding-bottom: 24px}
 
-	.Content .Hero .Text2 {
-		font-size: 1.2rem;
-		font-weight: 300;
-		line-height: 1.4}
+	/* COMPANY PROFILE PAGE */
+
+	.Box.About.Company {
+		display: none}
+
+	.Container {
+		flex-direction: column}
+
+	.ColumnLeft.Company {
+		width: 100%}
 }
 
-/* Button "≡" to open filters in the menu */
-#menu .Mobile a.Symbol {
-	color: black;
-	text-decoration: none;
-	margin: 0 16px 0 0;
-	float: right;
-	font-size: 46px}
+/* LAYOUT CHANGES FOR MOBILE DEVICES */
+@media screen and (max-width: 500px)
+{
+	/* BANNER */
 
-/* Button "×" to close and submit filters */
-#menu .Mobile input.Symbol {
-	color: black;
-	background-color: white;
-	-webkit-appearance: none; /* hide iPhone button shape */
-	border: none;
-	margin: 0 16px 0 0;
-	float: right;
-	font-size: 46px;
-	display: none}
+	.Box.Banner {
+		display: block;
+		min-height: 230px;
+		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/Users/levogirar/Desktop/Picture/ali-yahya-7_AZi5Fe-rU-unsplash 2.png");
+		background-size: auto, cover;
+		background-position: 0 0, 50% 50%}
 
-/* On click "≡": Hide "≡" then display "×" and filters */
-#menu:target .Mobile a.Symbol {display: none}
-#menu:target .Mobile input.Symbol {display: block}
-#menu:target .Filters {display: block}
-#menu:target {bottom: 0}
+	.BannerText {
+		align-self: flex-start;
+		color: #ffffff;
+		margin: 16px 0 0 16px;
+		max-width: 60ch}
+
+	.BannerTitle {
+		font-size: 1.5rem;
+		line-height: 1.3;
+		font-weight: 500;
+		margin: 0 0 8px 0}
+
+	.BannerSubtitle {
+		font-size: 1rem;
+		list-style: 1.3;
+		font-weight: 400;
+		margin: 0}
+
+	/* COMPANY CARD */
+
+	.CompanyMain {
+		width: 100%;
+		display: flex;
+		flex-direction: column}
+
+	.Tag.Region {
+		margin-top: 16px;
+		margin-bottom: 8px}
+
+	.BadgeArea {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		min-width: 100px;
+		flex-wrap: wrap;
+		justify-content: flex-start}
+
+	.Badge {
+		margin-right: 8px;
+		margin-left: 0}
+
+	/* COMPANY PROFILE */
+
+	.Box.Aspect {
+		display: none}
+
+	.Box.Aspect.Mobile {
+		display: flex;
+		padding-top: 133%}
+
+	.InstagramRow {
+		height: 33%}
+
+	.InstagramPicture {
+		margin: 0;
+		height: 100%;
+		width: 49.5%}
+
+	.InstagramPicture img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover}
+}
+
+/* Why this class is here? */
+.Black {
+	height: 40px;
+	width: 40px;
+	background-color: black}
