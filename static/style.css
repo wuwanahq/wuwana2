@@ -68,7 +68,7 @@ dt {
 dd {
 	margin: 0 0 8px 0}
 
-/* DESKTOP HIDDEN ELEMENTS*/
+/* DESKTOP HIDDEN ELEMENTS */
 
 .MobileAbout {
 	display: none}
@@ -81,7 +81,7 @@ dd {
 	width: 100%;
 	max-width: 1200px;
 	justify-content: center;
-	margin-top: 56px}
+	margin-top: 48px}
 
 .ColumnLeft {
 	position: static;
@@ -109,7 +109,8 @@ dd {
 	line-height: 1.3;
 	font-weight: 700;
 	border-radius: 8px;
-	padding: 4px}
+	padding: 4px;
+	margin-bottom: 8px}
 
 .Label {
 	color: #8b8989;
@@ -152,6 +153,22 @@ dd {
 	align-self: center;
 	margin-bottom: 8px}
 
+.Button.Circle {
+	max-width: 40px;
+	border-radius: 50%;
+	border-width: 2px;
+	padding: 0px}
+
+.Label.Circle {
+	font-size: 0.5rem;
+	color: black;
+	margin: 4px 0px 8px;
+	max-width: 48px;
+	text-align: center}
+
+.Button.Circle img {
+	margin: 8px}
+
 .Button.Center {
 	align-self: center;
 	padding: 2px 4px}
@@ -174,6 +191,7 @@ dd {
 	margin-right: 24px;
 	margin-bottom: 24px}
 
+/*
 .Button.Social {
 	display: inline-block;
 	margin: 0 4px 8px}
@@ -184,6 +202,7 @@ dd {
 .Button.Circle {
 	border-radius: 50%;
 	padding: 0}
+*/
 
 /* HEADER */
 
@@ -192,7 +211,7 @@ dd {
 	position: fixed;
 	top: 0;
 	left: 0;
-	height: 56px;
+	height: 48px;
 	width: 100vw;
 	background-color: #ffffff;
 	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
@@ -275,6 +294,7 @@ dd {
 	margin-top: auto;
 	margin-right: 8px}
 
+/*
 .BadgeArea.Random {
 	display: flex;
 	flex-direction: row;
@@ -282,6 +302,7 @@ dd {
 	min-width: 100px;
 	flex-wrap: wrap;
 	justify-content: flex-start}
+*/
 
 .BadgeArea {
 	display: flex;
@@ -290,6 +311,7 @@ dd {
 	justify-content: flex-end;
 	justify-items: right}
 
+/*
 .Badge {
 	align-self: center;
 	margin-left: 16px;
@@ -301,6 +323,14 @@ dd {
 
 .Badge:first-child {
 	margin-left: 0}
+*/
+
+.ItemLabelBadge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 16px 4px 0px
+}
 
 /* BOX */
 
@@ -318,7 +348,7 @@ dd {
 
 .Box.Profile {
 	align-items: center;
-	padding-bottom: 24px}
+	padding-bottom: 8px}
 
 .Box.Aspect {
 	padding-top: 56.25%; /* aspect ratio 16:9 */
@@ -331,7 +361,7 @@ dd {
 
 .Box.About {
 	align-items: center;
-	padding-bottom: 24px}
+	padding-bottom: 8px}
 
 .AboutCover {
 	height: 72px;
@@ -359,7 +389,20 @@ dd {
 	text-align: center;
 	justify-content: center;
 	display: flex;
-	flex-direction: row}
+	flex-direction: row;
+	align-items: flex-start}
+
+.ItemLabel {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 4px}
+
+.ItemLabel:first-child {
+	margin-left: 0}
+
+.ItemLabel:last-child {
+	margin-right: 0}
 
 /* BANNER */
 
@@ -406,12 +449,10 @@ dd {
 
 .ProfileLine {
 	width: 100%;
-	margin: 24px 0px 16px}
+	margin-bottom: 16px}
 
 .BadgeArea.Profile {
 	width: 88%;
-	display: flex;
-	flex-direction: row;
 	justify-content: center}
 
 .ProfileInstagram {
@@ -461,7 +502,7 @@ dd {
 		justify-content: center;
 		background-position: 0 0, 50% 50%}
 
-	/* ABOUT US MOBILE*/
+	/* ABOUT US MOBILE */
 
 	.MobileAbout {
 		display: block;
@@ -469,7 +510,7 @@ dd {
 
 	.Box.About {
 		align-items: center;
-		padding: 16px 0 16px}
+		padding-top: 24px;}
 
 	/* MENU MOBILE */
 
@@ -521,7 +562,8 @@ dd {
 		flex-direction: column}
 
 	.ColumnLeft.Company {
-		width: 100%}
+		min-width: 100%;
+        max-width: 100%}
 }
 
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
@@ -571,7 +613,8 @@ dd {
 		width: 100%;
 		min-width: 100px;
 		flex-wrap: wrap;
-		justify-content: flex-start}
+		justify-content: flex-start;
+		align-items: flex-start}
 
 	.Badge {
 		margin-right: 8px;
@@ -598,6 +641,9 @@ dd {
 		width: 100%;
 		height: 100%;
 		object-fit: cover}
+
+	.BadgeArea {
+		margin-top: 0}
 }
 
 .Black {
