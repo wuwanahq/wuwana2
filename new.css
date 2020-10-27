@@ -115,7 +115,7 @@ dd {
 
 .Sticky {
     position: sticky;
-    top: 24px;
+    top: 60px;
 }
 
 /* Text Style */
@@ -207,6 +207,11 @@ dd {
     .Button.Social:last-child {
         margin-bottom: 0px;
     }
+
+.Button.Circle {
+    border-radius: 50%;
+    padding: 0px;
+}
 
 /* Header */
 
@@ -412,9 +417,12 @@ dd {
 }
 
 .AboutSocial {
-    width: 88%; /* This is to try to replicate padding 16px on left and right */
+    max-width: 88%; /* This is to try to replicate padding 16px on left and right */
     margin-top: 16px;
     text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
 }
 
 /* Banner */
