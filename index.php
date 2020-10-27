@@ -1,7 +1,7 @@
 <?php
 /**
  * Controller for the home page.
- * @link http://wuwana.com/
+ * @link https://wuwana.com/
  */
 
 spl_autoload_register(function($className) {
