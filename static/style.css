@@ -320,18 +320,12 @@ dd {
 	align-items: center;
 	padding-bottom: 24px}
 
-
 .Box.Aspect {
-	padding-top: 56.25%; /* very precise! */
+	padding-top: 56.25%; /* aspect ratio 16:9 */
 	position: relative}
 
 .Box.Aspect.Mobile {
 	display: none}
-
-.Box.Test {
-	padding-top: 56.25%;
-	background-color: blue;
-	position: relative}
 
 /* ABOUT US */
 
@@ -369,9 +363,9 @@ dd {
 
 /* BANNER */
 
-.Box.Banner { /*************************** TO REVIEW... ******************************************/
+.Box.Banner {
 	min-height: 230px;
-	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 60%), url("/Users/levogirar/Desktop/Picture/ali-yahya-7_AZi5Fe-rU-unsplash 2.png");
+	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), transparent 60%), url("/Users/levogirar/wuwana2/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
 	background-size: auto, cover;
 	justify-content: center;
 	background-position: 0 0, 50% 50%}
@@ -389,7 +383,6 @@ dd {
 
 .BannerSubtitle {
 	font-size: 1.5rem;
-	list-style: 2rem; /* ERROR: The value is not supposed to be a number or size */
 	font-weight: 400;
 	margin: 0}
 
@@ -607,8 +600,12 @@ dd {
 		object-fit: cover}
 }
 
-/* Why this class is here? */
 .Black {
 	height: 40px;
 	width: 40px;
 	background-color: black}
+
+.Box.Test {
+	padding-top: 56.25%;
+	background-color: blue;
+	position: relative}
