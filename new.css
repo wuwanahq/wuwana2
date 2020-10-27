@@ -334,20 +334,6 @@ dd {
     margin-right: -16px;
 }
 
-.Badge { /* OLD */
-    align-self: center;
-    margin-left: 16px;
-    margin-bottom: 8px;
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    background-color: black;
-}
-
-    .Badge:first-child { /* OLD */
-        margin-left: 0px;
-    }
-
 .ItemLabelBadge {
     display: flex;
     flex-direction: column;
