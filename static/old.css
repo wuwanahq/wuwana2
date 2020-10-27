@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+body {
+	font-family: "Roboto", sans-serif;
+	color: #161313;
+	background-color: #FAFAFA;
+	font-size: 16px;
+	margin: 0px}
+
+hr {
+	margin: 0 0 16px 0;
+	color: #8B8989}
+
+.Tag {
+	text-decoration: none;
+	margin-right: 4px;
+	color: #8B8989;
+	font-size: .87rem;
+	font-weight: 500;
+	border: 1px solid #8B8989;
+	padding: 6px 16px;
+	background-color: white}
+
+.ButtonRound,
+.ButtonSquare {
+	text-decoration: none;
+	color: #161313;
+	font-size: .87rem;
+	font-weight: 500;
+	border: 1px solid #161313;
+	padding: 8px 16px;
+	background-color: rgba(255, 255, 255, 0.7)}
+
+.ButtonRound,
+.Tag {
+	border-radius: 20px} /* Half of the highest button (40px) */
+
+.ButtonSquare {
+	border-radius: 8px}
+
+a.ButtonRound:hover,
+a.ButtonSquare:hover {
+	background-color: #161313;
+	color: white}
+
+.Title {
+	font-weight: 500;
+	font-size: 1.5rem}
+
+.Content {
+	margin-left: 272px; /* Menu width + padding x2 */
+	padding: 16px}
+
+.Content .Hero {
+	position:relative;
+	color: white;
+	height: 230px;
+	margin: 24px 0 40px 0;
+	padding: 16px;
+	border-radius: 16px;
+	background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-wide-unsplash.jpg");
+	background-position: bottom;
+	background-size: cover}
+
+.Content .Hero .Text1 {
+	font-size: 3rem;
+	font-weight: 700}
+
+.Content .Hero .Text2 {
+	font-size: 1.8em;
+	font-weight: 300}
+
+.Content .Hero .ButtonRound {
+	position: absolute;
+	bottom: 16px;
+	right: 16px}
+
+.Content > div:last-child {
+	text-align:center;
+	margin-top:24px}
+
+.Content .Card {
+	position: relative;
+	display: inline-block;
+	width: 290px;
+	text-align: left;
+	border-radius: 8px;
+	margin: 0px 8px 16px;
+	padding: 16px;
+	background-color: white;
+	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05)}
+
+.Content .Card .Title {
+	font-weight: 700;
+	font-size: 1.5rem;
+	line-height: 1}
+
+.Content .Card .Text {
+	min-height: 160px;
+	font-weight: 400}
+
+.Content .Card > img {
+	border-radius: 8px;
+	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);
+	width: 96px;
+	height: 96px}
+
+.Content .Card .GeoLoc {
+	font-weight: 500;
+	color: rgba(22, 19, 19, 0.7);
+	font-size: .75rem;
+	float: right}
+
+.Content .Card .GeoLoc img {
+	vertical-align: top;
+	margin-right: 4px}
+
+.Content .Card a {
+	font-weight: 700;
+	font-size: 1.12rem;
+	color: #161313;
+	margin-top: 8px;
+	display: inline-block;
+	transition: all 200ms}
+
+.Content .Card a:hover {
+	transform: translateY(-2px)}
+
+/* POPUP WINDOW */
+
+#popup {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 2;
+	visibility: hidden;
+	display: none;
+	background-color: rgba(0,0,0,0.5)}
+
+#popup:target {
+	visibility: visible;
+	display: flex;
+	justify-content: center;
+	align-items: center}
+
+#popup > div {
+	position: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	text-align: center;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: 16px;
+	border: 4px solid #161313;
+	background: white;
+	margin: 0 auto;
+	width: 580px;
+	position: relative;
+	z-index: 2;
+	padding: 24px}
+
+#popup > div p {
+	text-align: left}
+
+#popup > div .ButtonRound {
+	position: absolute;
+	right: 24px}
+
+/* MENU WITH FILTERS */
+
+#menu {
+	overflow: auto;
+	line-height: 24px;
+	padding: 16px;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 240px;
+	color: white;
+	background-color: #595757}
+
+#menu .Desktop {
+	margin: 24px 0;
+	text-align: center}
+
+#menu dl {
+	margin: 16px 0 24px 0}
+
+#menu dl dd {
+	margin-inline-start: 24px}
+
+#menu dl input {
+	margin-right: 8px}
+
+/* LAYOUT CHANGES FOR MOBILE DEVICES */
+
+#menu .Mobile {
+	display: none}
+
+@media screen and (max-width: 788px) {
+	#menu .Desktop,
+	#menu .Filters {
+		display: none}
+
+	#menu .Mobile {
+		display: block}
+
+	#menu .Mobile img {
+		margin: 12px 0 0 0}
+
+	#menu {
+		position: block;
+		padding: 0px 24px;
+		line-height: 40px;
+		z-index: 1;
+		width: auto;
+		right: 0;
+		bottom: auto;
+		color: black;
+		background-color: white}
+
+	#menu dl {
+		margin: 8px 0 24px 0}
+
+	#menu dl dt,
+	#menu dl dd {
+		margin-inline-start: 0;
+		display: inline}
+
+	#menu dl input {
+		display: none}
+
+	#menu dl label {
+		text-decoration: none;
+		margin-right: 8px;
+		color: #161313;
+		font-size: 0.875rem;
+		font-weight: 500;
+		border: 1px solid #161313;
+		padding: 8px 16px;
+		background-color: white;
+		border-radius: 20px}
+
+	#menu dl input:checked + label {
+		background-color: #161313;
+		color: white}
+
+	#menu .Title {
+		font-size: 1.5rem;
+		font-weight: 500;}
+
+	.Content{
+		margin-left: 0;
+		margin-top: 40px} /* Menu height */
+
+	.Content .Hero {
+		height: 310px;
+		background-image: linear-gradient(#161313, transparent), url("brent-gorwin-vhQUnmnOLys-square-unsplash.jpg")}
+
+	.Content .Hero .Text1 {
+		font-size: 1.6rem;
+		font-weight: 400;
+		line-height: 1.4}
+
+	.Content .Hero .Text2 {
+		font-size: 1.2rem;
+		font-weight: 300;
+		line-height: 1.4}
+}
+
+/* Button "≡" to open filters in the menu */
+#menu .Mobile a.Symbol {
+	color: black;
+	text-decoration: none;
+	margin: 0 16px 0 0;
+	float: right;
+	font-size: 46px}
+
+/* Button "×" to close and submit filters */
+#menu .Mobile input.Symbol {
+	color: black;
+	background-color: white;
+	-webkit-appearance: none; /* hide iPhone button shape */
+	border: none;
+	margin: 0 16px 0 0;
+	float: right;
+	font-size: 46px;
+	display: none}
+
+/* On click "≡": Hide "≡" then display "×" and filters */
+#menu:target .Mobile a.Symbol {display: none}
+#menu:target .Mobile input.Symbol {display: block}
+#menu:target .Filters {display: block}
+#menu:target {bottom: 0}

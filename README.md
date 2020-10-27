@@ -3,7 +3,7 @@
 Simple business directory project used for https://wuwana.com
 
 Targeted browsers on desktop and mobile:  
-Google Chrome 49+, Mozilla Firefox 48+, Samsung Internet 5+, Apple Safari 9+ and Microsoft Edge
+Google Chrome 49+, Mozilla Firefox 48+, Samsung Internet 5+, Apple Safari 10+ and Microsoft Edge
 
 ## How to test locally
 
