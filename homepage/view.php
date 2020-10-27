@@ -1,29 +1,45 @@
 <!DOCTYPE html>
 <html lang="<?php echo $language ?>">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=375">
+	<meta name="description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
-	<link rel="icon" type="image/png" href="static/icon.png"/>
-	<link rel="stylesheet" type="text/css" href="static/style.css"/>
-	<script defer src="static/ES5.js"></script>
+	<link rel="icon" type="image/png" href="/static/favicon16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="/static/favicon32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/static/favicon48.png" sizes="48x48">
+	<link rel="icon" type="image/png" href="/static/favicon64.png" sizes="64x64">
+	<link rel="icon" type="image/png" href="/static/favicon96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="/static/favicon160.png" sizes="160x160">
+	<link rel="icon" type="image/png" href="/static/favicon196.png" sizes="196x196">
+	<link rel="apple-touch-icon" href="/static/favicon57.png" sizes="57x57">
+	<link rel="apple-touch-icon" href="/static/favicon60.png" sizes="60x60">
+	<link rel="apple-touch-icon" href="/static/favicon72.png" sizes="72x72">
+	<link rel="apple-touch-icon" href="/static/favicon76.png" sizes="76x76">
+	<link rel="apple-touch-icon" href="/static/favicon114.png" sizes="114x114">
+	<link rel="apple-touch-icon" href="/static/favicon120.png" sizes="120x120">
+	<link rel="apple-touch-icon" href="/static/favicon144.png" sizes="144x144">
+	<link rel="apple-touch-icon" href="/static/favicon152.png" sizes="152x152">
+	<link rel="apple-touch-icon" href="/static/favicon180.png" sizes="180x180">
+	<link rel="stylesheet" type="text/css" href="/static/style.css"/>
+	<script src="/static/es5.js" defer></script>
 </head>
 <body>
 	<div id="popup">
 		<div>
 			<a href="#" class="ButtonRound">×</a>
-			<img src="static/logo-circle.png"><br><br>
+			<img src="/static/favicon96.png"><br><br>
 			<?php echo TEXT[14] ?>
 			<br>
 			<a class="ButtonSquare" href="https://twitter.com/wuwanahq" target="_blank"><?php echo TEXT[13] ?></a>
 		</div>
 	</div>
 	<form id="menu" method="get" action="/">
-		<div class="Desktop"><a href="/"><img src="static/wuwana-white.svg"></a></div>
+		<div class="Desktop"><a href="/"><img src="/static/wuwana-white.svg"></a></div>
 		<div class="Mobile">
 			<a href="#menu" class="Symbol">≡</a>
 			<input type="submit" class="Symbol" value="×">
-			<a href="/"><img src="static/wuwana-black.svg"></a>
+			<a href="/"><img src="/static/wuwana-black.svg"></a>
 		</div>
 		<div class="Filters">
 			<span class="Title"><?php echo TEXT[1] ?></span>
@@ -84,7 +100,7 @@
 
 					if ($company->region > 0)
 					{
-						echo '<span class="GeoLoc"><img src="static/geoloc.png">',
+						echo '<span class="GeoLoc"><img src="/static/geoloc.png">',
 							$locations[$company->region]->region,
 						'</span>';
 					}
@@ -105,8 +121,8 @@
 
 					if (!empty($company->phoneNumber))
 					{
-						echo '<a target="_blank" href="';
-						printf(WebApp\Config::WHATSAPP_URL, $company->phoneNumber, $company->name);
+						echo '<a target="_blank" href="https://wa.me/', $company->phoneNumber, '?text=';
+						printf(TEXT[15], $company->name);
 						echo '">', TEXT[11], '</a> &nbsp; ';
 					}
 					elseif (!empty($company->email))

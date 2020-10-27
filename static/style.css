@@ -162,10 +162,6 @@ a.ButtonSquare:hover {
 #popup > div p {
 	text-align: left}
 
-#popup > div img {
-	width: 96px;
-	height: 96px}
-
 #popup > div .ButtonRound {
 	position: absolute;
 	right: 24px}

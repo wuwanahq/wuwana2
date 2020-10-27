@@ -20,4 +20,5 @@ const TEXT = [
 <p>En Wuwana queremos cambiarlo.</p>
 <p>Estamos creando un directorio moderno y digital que de apoyo a las pequeñas cafeterías y a los tostadores locales. Una página honesta y transparente donde serás capaz de filtrar los comercios locales por categoría, visitar sus páginas web para conocerles mejor y contactarles directamente. Trabajamos con un grupo de cafeterías y micro-tostadores de Madrid en la creación de este proyecto.</p>
 <p>Apoya a los comercios independientes del café. Síguenos en Twitter para ser de los primeros en probar nuestra beta a finales de octubre 2020.</p>',
+15 => 'Hola %s, os he encontrado a través de wuwana.es y me gustaría saber más sobre vosotros.',
 ];
