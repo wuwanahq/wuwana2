@@ -199,21 +199,19 @@ dd {
     margin-bottom: 24px;
 }
 
-.Button.Social {
-    display: inline-block;
-    margin: 0px 4px 8px;
-}
-
-    .Button.Social:last-child {
-        margin-bottom: 0px;
-    }
-
 .Button.Circle {
+    max-width: 40px;
     border-radius: 50%;
     border-width: 2px;
     padding: 0px;
     margin: 4px;
 }
+
+    .Label.Circle {
+        font-size: 0.5rem;
+        color: black;
+        margin: 0px;
+    }
 
     .Button.Circle img {
         margin: 8px;
@@ -424,11 +422,19 @@ dd {
 
 .AboutSocial {
     max-width: 88%; /* This is to try to replicate padding 16px on left and right */
+    margin-top: 8px;
     text-align: center;
     justify-content: center;
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
 }
+
+    .AboutSocialItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 /* Banner */
 
