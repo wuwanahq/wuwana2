@@ -93,7 +93,7 @@ dd {
     width: 100%;
     max-width: 1200px;
     justify-content: center;
-    margin-top: 56px;
+    margin-top: 48px;
 }
 
 .ColumnLeft {
@@ -126,6 +126,7 @@ dd {
     font-weight: 700;
     border-radius: 8px;
     padding: 4px;
+    margin-bottom: 8px;
 }
 
 .Label {
@@ -174,6 +175,25 @@ dd {
     margin-bottom: 8px;
 }
 
+.Button.Circle {
+    max-width: 40px;
+    border-radius: 50%;
+    border-width: 2px;
+    padding: 0px;
+}
+
+    .Label.Circle {
+        font-size: 0.5rem;
+        color: black;
+        margin: 4px 0px 8px;
+        max-width: 48px;
+        text-align: center;
+    }
+
+    .Button.Circle img {
+        margin: 8px;
+    }
+
 .Button.Center {
     align-self: center;
     padding: 2px 4px;
@@ -199,24 +219,6 @@ dd {
     margin-bottom: 24px;
 }
 
-.Button.Circle {
-    max-width: 40px;
-    border-radius: 50%;
-    border-width: 2px;
-    padding: 0px;
-    margin: 4px;
-}
-
-    .Label.Circle {
-        font-size: 0.5rem;
-        color: black;
-        margin: 0px;
-    }
-
-    .Button.Circle img {
-        margin: 8px;
-    }
-
 /* Header */
 
     .HeaderBar{
@@ -224,7 +226,7 @@ dd {
         position: fixed;
         top: 0;
         left: 0;
-        height: 56px;
+        height: 48px;
         width: 100vw;
         background-color: #ffffff;
         box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
@@ -322,24 +324,17 @@ dd {
     margin-right: 8px;
 }
 
-.BadgeArea.Random {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    min-width: 100px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
 .BadgeArea {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
     justify-items: right;
+    margin-top: 8px;
+    margin-right: -16px;
 }
 
-.Badge {
+.Badge { /* OLD */
     align-self: center;
     margin-left: 16px;
     margin-bottom: 8px;
@@ -349,9 +344,17 @@ dd {
     background-color: black;
 }
 
-    .Badge:first-child {
+    .Badge:first-child { /* OLD */
         margin-left: 0px;
     }
+
+.ItemLabelBadge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 16px 4px 0px
+}
+
 
 /* Box */
 
@@ -430,11 +433,20 @@ dd {
     align-items: flex-start;
 }
 
-    .AboutSocialItem {
+    .ItemLabel {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 4px
     }
+
+        .ItemLabel:first-child {
+            margin-left: 0px;
+        }
+
+        .ItemLabel:last-child {
+            margin-right: 0px;
+        }
 
 /* Banner */
 
@@ -489,13 +501,11 @@ dd {
 
 .ProfileLine {
     width: 100%;
-    margin: 24px 0px 16px;
+    margin-bottom: 16px;
 }
 
 .BadgeArea.Profile {
     width: 88%;
-    display: flex;
-    flex-direction: row;
     justify-content: center;
 }
 
@@ -687,12 +697,13 @@ dd {
         min-width: 100px;
         flex-wrap: wrap;
         justify-content: flex-start;
+        align-items: flex-start;
     }
 
-    .Badge {
-        margin-right: 8px;
-        margin-left: 0px;
-    }
+        .Badge {
+            margin-right: 8px;
+            margin-left: 0px;
+        }
 
     /* Company profile */
 
@@ -721,7 +732,9 @@ dd {
             object-fit: cover;
         }
 
-
+        .BadgeArea {
+            margin-top: 0px;
+        }
 
 }
 
