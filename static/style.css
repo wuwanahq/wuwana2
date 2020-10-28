@@ -21,7 +21,7 @@ body {
 hr {
 	background-color: #efeded;
 	width: 100%;
-	margin: 16px 0 0;
+	margin: 0;
 	border: 0;
 	height: 1px}
 
@@ -447,7 +447,7 @@ dd {
 
 .AboutSocial {
 	max-width: 88%; /* This is to try to replicate padding 16px on left and right */
-	margin-top: 16px;
+	margin: 8px 0 8px;
 	text-align: center;
 	justify-content: center;
 	display: flex;
@@ -586,7 +586,6 @@ dd {
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
-		transition-duration: 1s;
 	}
 
 	/* MENU MOBILE */
