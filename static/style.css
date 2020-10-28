@@ -509,6 +509,10 @@ dd {
 	align-self: start;
 	margin-left: 16px}
 
+.Box.Profile .Tag.Region{
+	margin: 0 0 16px
+}
+
 .ProfileLine {
 	width: 100%;
 	margin-bottom: 16px}
@@ -550,9 +554,6 @@ dd {
 
 	.HeaderIcon {
 		display: inline}
-
-	.Container {
-		flex-direction: column}
 
 	.ColumnLeft.Home {
 		display: none}
@@ -643,6 +644,7 @@ dd {
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
 @media screen and (max-width: 500px)
 {
+
 	/* BANNER */
 
 	.Box.Banner {
