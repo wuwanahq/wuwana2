@@ -2,6 +2,10 @@
 	"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
 );
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family: "Roboto", sans-serif;
 	display: flex;
@@ -147,6 +151,7 @@ dd {
 /* BUTTONS */
 
 .Button {
+	color: #161313;
 	display: flex;
 	padding: 8px 8px;
 	align-items: center;
@@ -234,7 +239,8 @@ dd {
 	right: 0;
 	bottom: 0;
 	margin-right: 24px;
-	margin-bottom: 24px}
+	margin-bottom: 24px;
+	animation: 5s;}
 
 /*
 .Button.Social {
