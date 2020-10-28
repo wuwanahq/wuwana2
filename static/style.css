@@ -162,7 +162,7 @@ dd {
 .Label.Circle {
 	font-size: 0.5rem;
 	color: black;
-	margin: 4px 0px 8px;
+	margin: 4px 0px 0px;
 	max-width: 48px;
 	text-align: center}
 
@@ -309,7 +309,8 @@ dd {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: flex-end;
-	justify-items: right}
+	justify-items: right;
+	margin-top: 8px;}
 
 /*
 .Badge {
@@ -329,7 +330,7 @@ dd {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0px 16px 4px 0px
+    margin: 0px 16px 8px 0px
 }
 
 /* BOX */
