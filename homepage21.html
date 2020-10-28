@@ -1,7 +1,9 @@
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Homepage</title>
     <link rel="stylesheet" href="static/style.css"/>
+    <script src="static/es5.js" defer></script>
 </head>
 <body>
 
@@ -15,15 +17,13 @@
             <div class="HeaderLogo">
                 <img src="static/wuwana-black.svg">
             </div>
-            <div class="HeaderIcon">
-                <a href="#menu">
-                    <img src="static/icons/menu.svg">
-                </a>
+            <div class="HeaderIcon" onclick="showMenu()">
+                    <img id="TestImg" src="static/icons/menu.svg">
             </div>
         </div>
     </header>
 
-    <div id="menu" class="menu"> <! Mobile filter menu>
+    <div class="menu" id="menu"> <! Mobile filter menu>
 
         <dl> <!-- Category Filter -->
             <dt>Categoria</dt>
@@ -46,11 +46,11 @@
         
         </dl>
     
-    <div class="Button Center">
-        <img src="static/icons/filter.svg">
-        Aplicar filtros
+        <div class="Button Center">
+            <img src="static/icons/filter.svg">
+            Aplicar filtros
+        </div>
     </div>
-</div>
 
     <div class="Container">
         <div class="ColumnLeft Home">

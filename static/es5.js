@@ -48,3 +48,25 @@ function handleEventChangeFilterAll()
 	if (getComputedStyle(this).getPropertyValue("display") != "none")
 	{ this.form.submit(); }
 }
+
+// Jonathan's Random Test
+
+function showMenu()
+{
+	var div = document.getElementById("menu");
+	var img = document.getElementById("TestImg");
+	var body = document.body;
+
+	if (getComputedStyle(div).getPropertyValue("display") == "none")
+	{
+		div.style.display = "flex";
+		img.src = "static/icons/close.svg";
+		body.style.overflow = "hidden"
+	}
+	else
+	{
+		div.style.display = "none";
+		img.src = "static/icons/menu.svg";
+		body.style.overflow = "auto"
+	}
+}

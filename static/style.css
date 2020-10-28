@@ -74,8 +74,21 @@ dd {
 .MobileAbout {
 	display: none}
 
-#menu {
+.menu {
+	z-index: 10;
 	display: none;
+	flex-direction: column;
+	align-content: flex-start;
+	position: fixed;
+	background-color: white;
+	top: 48px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow-y: scroll}
+
+.menu .Button.Center {
+	margin-bottom: 24px;
 }
 
 /* CSS TO MAKE THE LAYOUT */
@@ -254,8 +267,15 @@ dd {
 	height: 24px}
 
 .HeaderIcon {
+	padding: 8px;
+	border-radius: 8px;
+	cursor: pointer;
 	display: none;
-	margin-right: 16px}
+	margin-right: 8px}
+
+.HeaderIcon:hover {
+	background-color: #fafafa;
+}
 
 /* CARDS */
 
@@ -380,6 +400,9 @@ dd {
 
 .Box.Aspect.Mobile {
 	display: none}
+
+.Box.Filter {
+	overflow-y: scroll}
 
 /* ABOUT US */
 
@@ -526,28 +549,6 @@ dd {
 		justify-content: center;
 		background-position: 0 0, 50% 50%}
 
-	#menu {
-		z-index: 10;
-		display: none;
-		flex-direction: column;
-		align-content: flex-start;
-		position: fixed;
-		background-color: rgba(0, 0, 0, 0.1);
-		top: 48px;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		overflow-y: scroll}
-
-	#menu .Button.Center {
-		margin-bottom: 24px;
-	}
-	
-	/* On click "≡" */
-	#menu:target {
-		display: flex;}
-
-
 
 	/* ABOUT US MOBILE */
 
@@ -629,7 +630,7 @@ dd {
 	.Box.Banner {
 		display: block;
 		min-height: 230px;
-		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/Users/levogirar/Desktop/Picture/ali-yahya-7_AZi5Fe-rU-unsplash 2.png");
+		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/Users/levogirar/wuwana2/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
 		background-size: auto, cover;
 		background-position: 0 0, 50% 50%}
 
@@ -700,6 +701,8 @@ dd {
 	.BadgeArea {
 		margin-top: 0}
 }
+
+/* Random Class */
 
 .Black {
 	height: 40px;
