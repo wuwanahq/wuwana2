@@ -16,6 +16,7 @@ body {
 
 hr {
 	background-color: #efeded;
+	width: 100%;
 	margin: 0;
 	border: 0;
 	height: 1px}
@@ -72,6 +73,10 @@ dd {
 
 .MobileAbout {
 	display: none}
+
+#menu {
+	display: none;
+}
 
 /* CSS TO MAKE THE LAYOUT */
 
@@ -169,9 +174,27 @@ dd {
 .Button.Circle img {
 	margin: 8px}
 
+.Button.Toggle {
+	color: #161313;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+	border-style: none;
+	box-shadow: none;
+	padding: 4px 0 ;
+	margin: 0;
+	text-decoration: none;
+	transition: color 200ms, background-color 200ms}
+
+.Button.Toggle:hover {
+	background-color: #fafafa;
+	color: #161313}
+
 .Button.Center {
 	align-self: center;
-	padding: 2px 4px}
+	padding: 2px 4px;
+	min-height: 24px;}
 
 .Button.Absolute {
 	z-index: 1;
@@ -207,7 +230,7 @@ dd {
 /* HEADER */
 
 .HeaderBar{
-	z-index: 9;
+	z-index: 99;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -498,10 +521,33 @@ dd {
 
 	.Box.Banner {
 		min-height: 230px;
-		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/Users/levogirar/Desktop/Picture/ali-yahya-7_AZi5Fe-rU-unsplash 2.png");
+		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/Users/levogirar/wuwana2/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
 		background-size: auto, cover;
 		justify-content: center;
 		background-position: 0 0, 50% 50%}
+
+	#menu {
+		z-index: 10;
+		display: none;
+		flex-direction: column;
+		align-content: flex-start;
+		position: fixed;
+		background-color: rgba(0, 0, 0, 0.1);
+		top: 48px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		overflow-y: scroll}
+
+	#menu .Button.Center {
+		margin-bottom: 24px;
+	}
+	
+	/* On click "≡" */
+	#menu:target {
+		display: flex;}
+
+
 
 	/* ABOUT US MOBILE */
 
@@ -511,7 +557,17 @@ dd {
 
 	.Box.About {
 		align-items: center;
-		padding-top: 24px;}
+		padding-top: 24px;
+		padding-bottom: 0;}
+
+	#Hidden { 
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;}
+
+	#Hidden:target {
+		display: flex;}
 
 	/* MENU MOBILE */
 
@@ -524,6 +580,7 @@ dd {
 		border-width: 1px;
 		border-color: black;
 		color: black;
+		background-color: white;
 		padding: 8px 16px;
 		font-size: 0.875rem;
 		line-height: 1;
@@ -550,9 +607,6 @@ dd {
 		border-radius: 16px;
 		transition: color 200ms, background-color 200ms;
 		box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05)}
-
-	.Box.Filter {
-		padding-bottom: 24px}
 
 	/* COMPANY PROFILE PAGE */
 

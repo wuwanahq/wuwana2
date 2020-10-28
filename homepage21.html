@@ -10,17 +10,47 @@
         Volver arriba
     </div>
 
-    <div class="HeaderBar">
+    <header class="HeaderBar">
         <div class="HeaderContainer">
             <div class="HeaderLogo">
                 <img src="static/wuwana-black.svg">
             </div>
             <div class="HeaderIcon">
-                <img src="static/icons/arrow-circle-top.svg">
+                <a href="#menu">
+                    <img src="static/icons/menu.svg">
+                </a>
             </div>
         </div>
+    </header>
+
+    <div id="menu" class="menu"> <! Mobile filter menu>
+
+        <dl> <!-- Category Filter -->
+            <dt>Categoria</dt>
+            <dd><input id="id11" type="checkbox"><label for="id11">Todas las categorias</label></dd>
+            <dd><input id="id12" type="checkbox"><label for="id12">Tostadores super long text</label></dd>
+            <dd><input id="id13" type="checkbox"><label for="id13">Cafeterias</label></dd>
+            <dd><input id="id14" type="checkbox"><label for="id14">Importadores</label></dd>
+        </dl>
+
+        <dl> <!-- Location Filter -->
+            <dt>Comunidades autonomas</dt>
+            <dd><input id="id11" type="checkbox"><label for="id11">Todas las categorias</label></dd>
+            <dd><input id="id12" type="checkbox"><label for="id12">Tostadores super long text</label></dd>
+            <dd><input id="id13" type="checkbox"><label for="id13">Cafeterias super super long text</label></dd>
+            <dd><input id="id14" type="checkbox"><label for="id14">Importadores</label></dd>
+            <dd><input id="id13" type="checkbox"><label for="id13">Cafeterias super super long text</label></dd>
+            <dd><input id="id14" type="checkbox"><label for="id14">Importadores</label></dd>
+            <dd><input id="id13" type="checkbox"><label for="id13">Cafeterias super super long text</label></dd>
+            <dd><input id="id14" type="checkbox"><label for="id14">Importadores</label></dd>
         
+        </dl>
+    
+    <div class="Button Center">
+        <img src="static/icons/filter.svg">
+        Aplicar filtros
     </div>
+</div>
 
     <div class="Container">
         <div class="ColumnLeft Home">
@@ -90,52 +120,36 @@
             
             </div>
 
-                <div class="Box Filter">
-
-                    <dl> <!-- Category Filter -->
-                        <dt>Categoria</dt>
-                        <dd><input id="id11" type="checkbox"><label for="id11">Todas las categorias</label></dd>
-                        <dd><input id="id12" type="checkbox"><label for="id12">Tostadores super long text</label></dd>
-                        <dd><input id="id13" type="checkbox"><label for="id13">Cafeterias</label></dd>
-                        <dd><input id="id14" type="checkbox"><label for="id14">Importadores</label></dd>
-                    </dl>
-
-                    <dl> <!-- Location Filter -->
-                        <dt>Comunidades autonomas</dt>
-                        <dd><input id="id11" type="checkbox"><label for="id11">Todas las categorias</label></dd>
-                        <dd><input id="id12" type="checkbox"><label for="id12">Tostadores super long text</label></dd>
-                        <dd><input id="id13" type="checkbox"><label for="id13">Cafeterias super super long text</label></dd>
-                        <dd><input id="id14" type="checkbox"><label for="id14">Importadores</label></dd>
-                    
-                    </dl>
-                
-                <div class="Button Center">
-                    <img src="static/icons/arrow-circle-top.svg">
-                    Aplicar filtros
-                </div>
-            </div>
-
-            <! Mobile about us card>
-
-            <div class="MobileAbout">
+            <div class="MobileAbout"> <! Mobile about us card>
                 <div class="Box About">
                     <img src="static/wuwana-black.svg">
                     <p class="AboutText">Encontrar un la informacion que necesitas deberia ser mas facil.</p>
-                    <div class="Button">Descubre que es Wuwana</div>
-                    <hr class="AboutLine">
-                    <h3>Contactanos</h3>
-                    <div class="AboutSocial">
-                        <div class="ItemLabel">
-                            <div class="Button Circle"><img src="static/icons/instagram.svg"></div>
-                            <span class="Label Circle">Instagram</span>
-                        </div>
-
-                        <div class="ItemLabel">
-                            <div class="Button Circle"><img src="static/icons/whatsapp.svg"></div>
-                            <span class="Label Circle">Whatsapp</span>
-                        </div>
                     
+                    <div id="Hidden">
+                        <div class="Button">Descubre que es Wuwana</div>
+                        <hr class="AboutLine">
+                        <h3>Contactanos</h3>
+                        <div class="AboutSocial">
+                            <div class="ItemLabel">
+                                <div class="Button Circle"><img src="static/icons/instagram.svg"></div>
+                                <span class="Label Circle">Instagram</span>
+                            </div>
+
+                            <div class="ItemLabel">
+                                <div class="Button Circle"><img src="static/icons/whatsapp.svg"></div>
+                                <span class="Label Circle">Whatsapp</span>
+                            </div>
+                        </div>
                     </div>
+                    <hr>
+                    
+                    <div class="Button Toggle">
+                        <a class="Button Toggle" href="#Hidden">
+                            <img src="static/icons/chevron-down.svg">
+                            Ver mas
+                        </a>
+                    </div> 
+
                 </div>
 
             </div>
