@@ -17,7 +17,7 @@ body {
 hr {
 	background-color: #efeded;
 	width: 100%;
-	margin: 0;
+	margin: 16px 0 0;
 	border: 0;
 	height: 1px}
 
@@ -50,7 +50,8 @@ input[type="checkbox"] {
 	margin: 0 8px 0 0}
 
 input, label {
-	vertical-align: middle}
+	vertical-align: middle;
+	cursor: pointer;}
 
 label {
 	font-weight: 400;
@@ -137,6 +138,12 @@ dd {
 	font-weight: 400;
 	margin-right: 4px}
 
+.TextButton {
+	font-size: 12px;
+	line-height: 14px;
+	font-weight: 700;
+	color: #161313;}
+
 /* BUTTONS */
 
 .Button {
@@ -153,7 +160,8 @@ dd {
 	line-height: 14px;
 	font-weight: 700;
 	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
-	transition: color 200ms, background-color 200ms}
+	transition: color 200ms, background-color 200ms;
+	cursor: pointer}
 
 .Button:hover {
 	color: white;
@@ -194,6 +202,7 @@ dd {
 	justify-content: center;
 	width: 100%;
 	border-style: none;
+	border-radius: 0;
 	box-shadow: none;
 	padding: 4px 0 ;
 	margin: 0;
@@ -556,19 +565,23 @@ dd {
 		display: block;
 		width: 100%}
 
+	.AboutSocial {
+		min-width: 100%;
+		margin-right: -4px;
+	}
+
 	.Box.About {
 		align-items: center;
 		padding-top: 24px;
 		padding-bottom: 0;}
-
-	#Hidden { 
+	
+	.Hidden {
 		display: none;
 		flex-direction: column;
-		justify-content: center;
-		text-align: center;}
-
-	#Hidden:target {
-		display: flex;}
+		align-items: center;
+		width: 100%;
+		transition-duration: 1s;
+	}
 
 	/* MENU MOBILE */
 

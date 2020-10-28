@@ -117,15 +117,12 @@
                     <h1 class="BannerTitle">Estas buscando cafe de especialidad?</h1>
                     <p class="BannerSubtitle">Encuentra las empresas que necesitas rapidamente.</p>
                 </div>
-            
             </div>
-
-            <div class="MobileAbout"> <! Mobile about us card>
+            <div class="MobileAbout">
                 <div class="Box About">
                     <img src="static/wuwana-black.svg">
                     <p class="AboutText">Encontrar un la informacion que necesitas deberia ser mas facil.</p>
-                    
-                    <div id="Hidden">
+                    <div class="Hidden" id="AboutUsMobile">
                         <div class="Button">Descubre que es Wuwana</div>
                         <hr class="AboutLine">
                         <h3>Contactanos</h3>
@@ -134,25 +131,24 @@
                                 <div class="Button Circle"><img src="static/icons/instagram.svg"></div>
                                 <span class="Label Circle">Instagram</span>
                             </div>
-
+        
                             <div class="ItemLabel">
                                 <div class="Button Circle"><img src="static/icons/whatsapp.svg"></div>
                                 <span class="Label Circle">Whatsapp</span>
                             </div>
                         </div>
                     </div>
-                    <hr>
                     
-                    <div class="Button Toggle">
-                        <a class="Button Toggle" href="#Hidden">
-                            <img src="static/icons/chevron-down.svg">
-                            Ver mas
-                        </a>
+                    <hr>
+                    <div class="Button Toggle" onclick="hide()">
+                            <img id="ToggleAboutUsImg" src="static/icons/chevron-down.svg">
+                            <label class="TextButton" id="ToggleAboutUsLabel">
+                                Ver mas
+                            </label>
                     </div> 
-
                 </div>
-
             </div>
+            
 
             <h1>Empresas destacadas</h1>
             <div class="Box">

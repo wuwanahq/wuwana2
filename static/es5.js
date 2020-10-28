@@ -49,7 +49,7 @@ function handleEventChangeFilterAll()
 	{ this.form.submit(); }
 }
 
-// Jonathan's Random Test
+// Show menu
 
 function showMenu()
 {
@@ -68,5 +68,26 @@ function showMenu()
 		div.style.display = "none";
 		img.src = "static/icons/menu.svg";
 		body.style.overflow = "auto"
+	}
+}
+
+// Hide & unhide
+
+function hide() {
+	var div = document.getElementById("AboutUsMobile");
+	var img = document.getElementById ("ToggleAboutUsImg");
+	var label = document.getElementById ("ToggleAboutUsLabel");
+
+	if (getComputedStyle(div).getPropertyValue("display") == "none")
+	{
+		div.style.display = "flex";
+		img.src = "static/icons/chevron-up.svg";
+		label.innerText = "Ver menos";
+	}
+	else 
+	{
+		div.style.display = "none";
+		img.src = "static/icons/chevron-down.svg";
+		label.innerText = "Ver mas";
 	}
 }
