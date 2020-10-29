@@ -1,6 +1,7 @@
 // ECMAScript 5
 "use strict";
 
+/*
 document.getElementById("C0").addEventListener("change", handleEventChangeFilterAll);
 document.getElementById("R0").addEventListener("change", handleEventChangeFilterAll);
 
@@ -15,6 +16,7 @@ for (var i=1; i < 50; ++i)
 	if (checkbox2 != null)
 	{ checkbox2.addEventListener("change", handleEventChangeFilter); }
 }
+*/
 
 function handleEventChangeFilter()
 {

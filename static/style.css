@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
 body {
 	font-family: "Roboto", sans-serif;
 	display: flex;
@@ -149,7 +148,7 @@ dd {
 .Button {
 	color: #161313;
 	display: flex;
-	padding: 8px 8px;
+	padding: 8px;
 	align-items: center;
 	border-style: solid;
 	border-width: 1px;
@@ -232,24 +231,8 @@ dd {
 	z-index: 3;
 	position: fixed;
 	padding: 2px 4px;
-	right: 0;
-	bottom: 0;
-	margin-right: 24px;
-	margin-bottom: 24px;
-	display: flex}
-
-/*
-.Button.Social {
-	display: inline-block;
-	margin: 0 4px 8px}
-
-.Button.Social:last-child {
-	margin-bottom: 0}
-
-.Button.Circle {
-	border-radius: 50%;
-	padding: 0}
-*/
+	right: 24px;
+	bottom: 24px}
 
 /* HEADER */
 
@@ -347,16 +330,6 @@ dd {
 	margin-top: auto;
 	margin-right: 8px}
 
-/*
-.BadgeArea.Random {
-	display: flex;
-	flex-direction: row;
-	width: 100%;
-	min-width: 100px;
-	flex-wrap: wrap;
-	justify-content: flex-start}
-*/
-
 .BadgeArea {
 	display: flex;
 	flex-direction: row;
@@ -364,20 +337,6 @@ dd {
 	justify-content: flex-end;
 	justify-items: right;
 	margin-top: 8px}
-
-/*
-.Badge {
-	align-self: center;
-	margin-left: 16px;
-	margin-bottom: 8px;
-	width: 48px;
-	height: 48px;
-	min-width: 48px;
-	background-color: black}
-
-.Badge:first-child {
-	margin-left: 0}
-*/
 
 .ItemLabelBadge {
     display: flex;
@@ -464,7 +423,7 @@ dd {
 
 .Box.Banner {
 	min-height: 230px;
-	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), transparent 60%), url("/Users/levogirar/wuwana2/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
+	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), transparent 60%), url("/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
 	background-size: auto, cover;
 	justify-content: center;
 	background-position: 0 0, 50% 50%}
@@ -556,7 +515,7 @@ dd {
 
 	.Box.Banner {
 		min-height: 230px;
-		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/Users/levogirar/wuwana2/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
+		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
 		background-size: auto, cover;
 		justify-content: center;
 		background-position: 0 0, 50% 50%}
@@ -638,13 +597,12 @@ dd {
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
 @media screen and (max-width: 500px)
 {
-
 	/* BANNER */
 
 	.Box.Banner {
 		display: block;
 		min-height: 230px;
-		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/Users/levogirar/wuwana2/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
+		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
 		background-size: auto, cover;
 		background-position: 0 0, 50% 50%}
 

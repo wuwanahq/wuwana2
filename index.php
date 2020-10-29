@@ -40,5 +40,5 @@ $companies = $db->getCompanies($selectedCategories, $selectedRegions);
 shuffle($companies);
 
 $language = WebApp\WebApp::getLanguageCode();
-require 'homepage/text/' . $language . '.php';
+require 'homepage/text ' . $language . '.php';
 require 'homepage/view.php';

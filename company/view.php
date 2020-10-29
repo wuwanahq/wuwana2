@@ -3,8 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta name="description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
-	<title><?php echo TEXT[0] ?> | Wuwana</title>
+	<title>Wuwana</title>
 	<link rel="icon" type="image/png" href="/static/favicon/16.png" sizes="16x16">
 	<link rel="icon" type="image/png" href="/static/favicon/32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="/static/favicon/48.png" sizes="48x48">
@@ -25,12 +24,9 @@
 	<script src="/static/es5.js" defer></script>
 </head>
 <body>
-	<div class="Button ToTop" id="ToTop">
-		<a href="#"><img src="/static/icon/arrow-circle-top.svg">Volver arriba</a>
-	</div>
 	<header class="HeaderBar">
 		<div class="HeaderContainer">
-			<div class="HeaderLogo"><img src="/static/wuwana-black.svg"></div>
+			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg"></a></div>
 		</div>
 	</header>
 	<div class="Container">
@@ -143,5 +139,8 @@
 			<div class="Button Center"><img src="/static/icon/home.svg"> Volver a la pagina principal</div>
 		</div>
 	</div>
+	<a href="#">
+		<div class="Button ToTop" id="ToTop"><img src="/static/icon/arrow-circle-top.svg">Volver arriba</div>
+	</a>
 </body>
 </html>
