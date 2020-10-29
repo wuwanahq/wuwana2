@@ -56,7 +56,7 @@
 			<dd>
 				<input type="checkbox" name="region" id="R0"
 					<?php echo $selectedRegions==[] ? 'checked disabled' : '' ?>>
-				<label for="id21">Todas las categorias</label>
+				<label for="R0"><?php echo TEXT[4] ?></label>
 			</dd>
 			<?php
 				foreach ($locations as $id => $location)
@@ -119,7 +119,7 @@
 						<dd>
 							<input type="checkbox" name="region" id="R0"
 								<?php echo $selectedRegions==[] ? 'checked disabled' : '' ?>>
-							<label for="id21">Todas las categorias</label>
+							<label for="R0"><?php echo TEXT[4] ?></label>
 						</dd>
 						<?php
 							foreach ($locations as $id => $location)
@@ -139,8 +139,8 @@
 		<div class="ColumnMain Home">
 			<div class="Box Banner">
 				<div class="BannerText">
-					<h1 class="BannerTitle">Estas buscando cafe de especialidad?</h1>
-					<p class="BannerSubtitle">Encuentra las empresas que necesitas rapidamente.</p>
+					<h1 class="BannerTitle"><?php echo TEXT[5] ?></h1>
+					<p class="BannerSubtitle"><?php echo TEXT[6] ?></p>
 				</div>
 			</div>
 			<div class="MobileAbout">
@@ -237,7 +237,7 @@
 			</div>
 			<h1>Otras empresas</h1>
 			<div class="Box Test"></div>
-			<div class="Button Center"><img src="static/icon/plus.svg"> Ver mas empresas</div>
+			<div class="Button Center"><img src="static/icon/plus.svg">Ver mas empresas</div>
 		</div>
 	</div>
 	<a href="#">
