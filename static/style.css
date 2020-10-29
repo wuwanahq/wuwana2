@@ -232,15 +232,15 @@ dd {
 	margin-right: 24px;
 	margin-bottom: 24px}
 
-.Button.Fixed {
-	z-index: 9;
+.Button.ToTop {
+	z-index: 3;
 	position: fixed;
 	padding: 2px 4px;
 	right: 0;
 	bottom: 0;
 	margin-right: 24px;
 	margin-bottom: 24px;
-	animation: 5s;}
+	display: flex;}
 
 /*
 .Button.Social {
@@ -512,6 +512,9 @@ dd {
 .Box.Profile .Tag.Region{
 	margin: 0 0 16px
 }
+
+.Box.Profile .Category {
+	margin-right: -4px}
 
 .ProfileLine {
 	width: 100%;
