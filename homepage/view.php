@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo $language ?>">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -32,23 +32,43 @@
 		</div>
 	</header>
 	<div class="menu" id="menu"><!-- Mobile filter menu -->
-		<dl><!-- Category Filter -->
-			<dt>Categoria</dt>
-			<dd><input type="checkbox" id="id11"><label for="id11">Todas las categorias</label></dd>
-			<dd><input type="checkbox" id="id12"><label for="id12">Tostadores super long text</label></dd>
-			<dd><input type="checkbox" id="id13"><label for="id13">Cafeterias</label></dd>
-			<dd><input type="checkbox" id="id14"><label for="id14">Importadores</label></dd>
+		<dl>
+			<dt><?php echo TEXT[1] ?></dt>
+			<dd>
+				<input type="checkbox" name="cat" id="C0"
+					<?php echo $selectedCategories==[] ? 'checked disabled' : '' ?>>
+				<label for="C0"><?php echo TEXT[2] ?></label>
+			</dd>
+			<?php
+				foreach ($categories as $id => $languages)
+				{
+					echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
+
+					if (in_array($id, $selectedCategories))
+					{ echo ' checked'; }
+
+					echo '><label for="C', $id, '">', $languages[$language], '</label></dd>';
+				}
+			?>
 		</dl>
-		<dl><!-- Location Filter -->
-			<dt>Comunidades autonomas</dt>
-			<dd><input type="checkbox" id="id21"><label for="id21">Todas las categorias</label></dd>
-			<dd><input type="checkbox" id="id22"><label for="id22">Tostadores super long text</label></dd>
-			<dd><input type="checkbox" id="id23"><label for="id23">Cafeterias super super long text</label></dd>
-			<dd><input type="checkbox" id="id24"><label for="id24">Importadores</label></dd>
-			<dd><input type="checkbox" id="id25"><label for="id25">Cafeterias super super long text</label></dd>
-			<dd><input type="checkbox" id="id26"><label for="id26">Importadores</label></dd>
-			<dd><input type="checkbox" id="id27"><label for="id27">Cafeterias super super long text</label></dd>
-			<dd><input type="checkbox" id="id28"><label for="id28">Importadores</label></dd>
+		<dl>
+			<dt><?php echo TEXT[3] ?></dt>
+			<dd>
+				<input type="checkbox" name="region" id="R0"
+					<?php echo $selectedRegions==[] ? 'checked disabled' : '' ?>>
+				<label for="id21">Todas las categorias</label>
+			</dd>
+			<?php
+				foreach ($locations as $id => $location)
+				{
+					echo '<dd><input type="checkbox" name="region', $id, '" id="R', $id, '"';
+
+					if (in_array($id, $selectedRegions))
+					{ echo ' checked'; }
+
+					echo '><label for="R', $id, '">', $location->region, '</label></dd>';
+				}
+			?>
 		</dl>
 		<div class="Button Center"><img src="/static/icon/filter.svg">Aplicar filtros</div>
 	</div>
@@ -74,32 +94,44 @@
 			</div>
 			<div class="Sticky">
 				<h2>Personaliza la buqueda</h2>
-				<div class="Box Filter">
-					<dl><!-- Category Filter -->
-						<dt>Categoria</dt>
-						<dd><input type="checkbox" id="id1"><label for="id1">Todas las categorias</label></dd>
-						<dd><input type="checkbox" id="id2"><label for="id2">Tostadores</label></dd>
-						<dd><input type="checkbox" id="id3"><label for="id3">Cafeterias</label></dd>
-						<dd><input type="checkbox" id="id4"><label for="id4">Importadores</label></dd>
+				<div class="Box Filter"><!-- Desktop menu (duplicate from Mobile filter menu) -->
+					<dl>
+						<dt><?php echo TEXT[1] ?></dt>
+						<dd>
+							<input type="checkbox" name="cat" id="C0"
+								<?php echo $selectedCategories==[] ? ' checked disabled' : '' ?>>
+							<label for="C0"><?php echo TEXT[2] ?></label>
+						</dd>
+						<?php
+							foreach ($categories as $id => $languages)
+							{
+								echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
+
+								if (in_array($id, $selectedCategories))
+								{ echo ' checked'; }
+
+								echo '><label for="C', $id, '">', $languages[$language], '</label></dd>';
+							}
+						?>
 					</dl>
-					<dl><!-- Location Filter -->
-						<dt>Comunidades autonomas</dt>
-						<dd><input type="checkbox" id="id1"><label for="id1">Todas las categorias</label></dd>
-						<dd><input type="checkbox" id="id2"><label for="id2">Tostadores</label></dd>
-						<dd><input type="checkbox" id="id3"><label for="id3">Cafeterias</label></dd>
-						<dd><input type="checkbox" id="id4"><label for="id4">Importadores</label></dd>
-						<dd><input type="checkbox" id="id2"><label for="id2">Tostadores</label></dd>
-						<dd><input type="checkbox" id="id3"><label for="id3">Cafeterias</label></dd>
-						<dd><input type="checkbox" id="id4"><label for="id4">Importadores</label></dd>
-						<dd><input type="checkbox" id="id2"><label for="id2">Tostadores</label></dd>
-						<dd><input type="checkbox" id="id3"><label for="id3">Cafeterias</label></dd>
-						<dd><input type="checkbox" id="id4"><label for="id4">Importadores</label></dd>
-						<dd><input type="checkbox" id="id2"><label for="id2">Tostadores</label></dd>
-						<dd><input type="checkbox" id="id3"><label for="id3">Cafeterias</label></dd>
-						<dd><input type="checkbox" id="id4"><label for="id4">Importadores</label></dd>
-						<dd><input type="checkbox" id="id2"><label for="id2">Tostadores</label></dd>
-						<dd><input type="checkbox" id="id3"><label for="id3">Cafeterias</label></dd>
-						<dd><input type="checkbox" id="id4"><label for="id4">Importadores</label></dd>
+					<dl>
+						<dt><?php echo TEXT[3] ?></dt>
+						<dd>
+							<input type="checkbox" name="region" id="R0"
+								<?php echo $selectedRegions==[] ? 'checked disabled' : '' ?>>
+							<label for="id21">Todas las categorias</label>
+						</dd>
+						<?php
+							foreach ($locations as $id => $location)
+							{
+								echo '<dd><input type="checkbox" name="region', $id, '" id="R', $id, '"';
+
+								if (in_array($id, $selectedRegions))
+								{ echo ' checked'; }
+
+								echo '><label for="R', $id, '">', $location->region, '</label></dd>';
+							}
+						?>
 					</dl>
 				</div>
 			</div>

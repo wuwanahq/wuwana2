@@ -167,6 +167,9 @@ dd {
 	color: white;
 	background-color: #161313}
 
+.Button:hover img {
+	filter: invert(100%)}
+
 .Button img {
 	margin-right: 4px}
 
