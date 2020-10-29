@@ -10,11 +10,11 @@ const
 /**
  * Database Source Name (PDO DSN). Use SQLite by default if this value is empty.
  * Examples:
- * MySQL socket --> 'mysql:unix_socket=/var/run/mysqld/mysqld.sock;dbname=Wuwana'
- * MySQL TCP/IP --> 'mysql:host=localhost;port=3306;dbname=Wuwana'
- * PostgreSQL ----> 'pgsql:host=localhost;port=5432;dbname=Wuwana'
- * MS SQL Server -> 'sqlsrv:Server=localhost,1521;Database=Wuwana'
- * Oracle DB -----> 'oci:dbname=//localhost:1521/Wuwana'
+ * MySQL socket -> 'mysql:unix_socket=/var/run/mysqld/mysqld.sock;dbname=Wuwana'
+ * MySQL TCP/IP -> 'mysql:host=localhost;port=3306;dbname=Wuwana'
+ * PostgreSQL ---> 'pgsql:host=localhost;port=5432;dbname=Wuwana'
+ * MSSQL Server -> 'sqlsrv:Server=localhost,1521;Database=Wuwana'
+ * Oracle DB ----> 'oci:dbname=//localhost:1521/Wuwana'
  * @var string PDO driver-specific connection string
  */
 DB_SOURCE = '',
