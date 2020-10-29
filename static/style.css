@@ -1,10 +1,4 @@
-@import url(
-	"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-);
-
-html {
-	scroll-behavior: smooth;
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 body {
 	font-family: "Roboto", sans-serif;
@@ -17,6 +11,9 @@ body {
 	justify-content: center;
 	align-items: center;
 	padding: 24px 16px}
+
+html {
+	scroll-behavior: smooth}
 
 hr {
 	background-color: #efeded;
@@ -55,7 +52,7 @@ input[type="checkbox"] {
 
 input, label {
 	vertical-align: middle;
-	cursor: pointer;}
+	cursor: pointer}
 
 label {
 	font-weight: 400;
@@ -93,8 +90,7 @@ dd {
 	overflow-y: scroll}
 
 .menu .Button.Center {
-	margin-bottom: 24px;
-}
+	margin-bottom: 24px}
 
 /* CSS TO MAKE THE LAYOUT */
 
@@ -146,7 +142,7 @@ dd {
 	font-size: 12px;
 	line-height: 14px;
 	font-weight: 700;
-	color: #161313;}
+	color: #161313}
 
 /* BUTTONS */
 
@@ -188,7 +184,7 @@ dd {
 	max-width: 40px;
 	border-radius: 50%;
 	border-width: 2px;
-	padding: 0px}
+	padding: 0}
 
 .Label.Circle {
 	font-size: 0.5rem;
@@ -221,7 +217,7 @@ dd {
 .Button.Center {
 	align-self: center;
 	padding: 2px 4px;
-	min-height: 24px;}
+	min-height: 24px}
 
 .Button.Absolute {
 	z-index: 1;
@@ -240,7 +236,7 @@ dd {
 	bottom: 0;
 	margin-right: 24px;
 	margin-bottom: 24px;
-	display: flex;}
+	display: flex}
 
 /*
 .Button.Social {
@@ -289,8 +285,7 @@ dd {
 	margin-right: 8px}
 
 .HeaderIcon:hover {
-	background-color: #fafafa;
-}
+	background-color: #fafafa}
 
 /* CARDS */
 
@@ -368,7 +363,7 @@ dd {
 	flex-wrap: wrap;
 	justify-content: flex-end;
 	justify-items: right;
-	margin-top: 8px;}
+	margin-top: 8px}
 
 /*
 .Badge {
@@ -388,8 +383,7 @@ dd {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0px 16px 8px 0px
-}
+    margin: 0 16px 8px 0}
 
 /* BOX */
 
@@ -510,8 +504,7 @@ dd {
 	margin-left: 16px}
 
 .Box.Profile .Tag.Region{
-	margin: 0 0 16px
-}
+	margin: 0 0 16px}
 
 .Box.Profile .Category {
 	margin-right: -4px}
@@ -577,20 +570,18 @@ dd {
 
 	.AboutSocial {
 		min-width: 100%;
-		margin-right: -4px;
-	}
+		margin-right: -4px}
 
 	.Box.About {
 		align-items: center;
 		padding-top: 24px;
-		padding-bottom: 0;}
-	
+		padding-bottom: 0}
+
 	.Hidden {
 		display: none;
 		flex-direction: column;
 		align-items: center;
-		width: 100%;
-	}
+		width: 100%}
 
 	/* MENU MOBILE */
 
@@ -725,7 +716,7 @@ dd {
 		margin-top: 0}
 }
 
-/* Random Class */
+/* RANDOM CLASSES... */
 
 .Black {
 	height: 40px;
