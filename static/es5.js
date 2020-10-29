@@ -62,13 +62,13 @@ function showMenu()
 	if (getComputedStyle(div).getPropertyValue("display") == "none")
 	{
 		div.style.display = "flex";
-		img.src = "static/icons/close.svg";
+		img.src = "static/icon/close.svg";
 		body.style.overflow = "hidden"
 	}
 	else
 	{
 		div.style.display = "none";
-		img.src = "static/icons/menu.svg";
+		img.src = "static/icon/menu.svg";
 		body.style.overflow = "auto"
 	}
 }
@@ -83,13 +83,13 @@ function hide() {
 	if (getComputedStyle(div).getPropertyValue("display") == "none")
 	{
 		div.style.display = "flex";
-		img.src = "static/icons/chevron-up.svg";
+		img.src = "static/icon/chevron-up.svg";
 		label.innerText = "Ver menos";
 	}
 	else 
 	{
 		div.style.display = "none";
-		img.src = "static/icons/chevron-down.svg";
+		img.src = "static/icon/chevron-down.svg";
 		label.innerText = "Ver mas";
 	}
 }
