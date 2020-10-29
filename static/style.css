@@ -216,6 +216,9 @@ dd {
 	background-color: #fafafa;
 	color: #161313}
 
+.Button.Toggle img {
+	filter: none}
+
 .Button.Center {
 	align-self: center;
 	padding: 2px 4px;
