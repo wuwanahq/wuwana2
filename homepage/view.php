@@ -5,22 +5,22 @@
 	<meta name="viewport" content="width=375">
 	<meta name="description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
-	<link rel="icon" type="image/png" href="/static/favicon16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="/static/favicon32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/static/favicon48.png" sizes="48x48">
-	<link rel="icon" type="image/png" href="/static/favicon64.png" sizes="64x64">
-	<link rel="icon" type="image/png" href="/static/favicon96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="/static/favicon160.png" sizes="160x160">
-	<link rel="icon" type="image/png" href="/static/favicon196.png" sizes="196x196">
-	<link rel="apple-touch-icon" href="/static/favicon57.png" sizes="57x57">
-	<link rel="apple-touch-icon" href="/static/favicon60.png" sizes="60x60">
-	<link rel="apple-touch-icon" href="/static/favicon72.png" sizes="72x72">
-	<link rel="apple-touch-icon" href="/static/favicon76.png" sizes="76x76">
-	<link rel="apple-touch-icon" href="/static/favicon114.png" sizes="114x114">
-	<link rel="apple-touch-icon" href="/static/favicon120.png" sizes="120x120">
-	<link rel="apple-touch-icon" href="/static/favicon144.png" sizes="144x144">
-	<link rel="apple-touch-icon" href="/static/favicon152.png" sizes="152x152">
-	<link rel="apple-touch-icon" href="/static/favicon180.png" sizes="180x180">
+	<link rel="icon" type="image/png" href="/static/favicon/16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="/static/favicon/32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/static/favicon/48.png" sizes="48x48">
+	<link rel="icon" type="image/png" href="/static/favicon/64.png" sizes="64x64">
+	<link rel="icon" type="image/png" href="/static/favicon/96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="/static/favicon/160.png" sizes="160x160">
+	<link rel="icon" type="image/png" href="/static/favicon/196.png" sizes="196x196">
+	<link rel="apple-touch-icon" href="/static/favicon/57.png" sizes="57x57">
+	<link rel="apple-touch-icon" href="/static/favicon/60.png" sizes="60x60">
+	<link rel="apple-touch-icon" href="/static/favicon/72.png" sizes="72x72">
+	<link rel="apple-touch-icon" href="/static/favicon/76.png" sizes="76x76">
+	<link rel="apple-touch-icon" href="/static/favicon/114.png" sizes="114x114">
+	<link rel="apple-touch-icon" href="/static/favicon/120.png" sizes="120x120">
+	<link rel="apple-touch-icon" href="/static/favicon/144.png" sizes="144x144">
+	<link rel="apple-touch-icon" href="/static/favicon/152.png" sizes="152x152">
+	<link rel="apple-touch-icon" href="/static/favicon/180.png" sizes="180x180">
 	<link rel="stylesheet" type="text/css" href="/static/style.css"/>
 	<script src="/static/es5.js" defer></script>
 </head>
@@ -28,7 +28,7 @@
 	<div id="popup">
 		<div>
 			<a href="#" class="ButtonRound">×</a>
-			<img src="/static/favicon96.png"><br><br>
+			<img src="/static/favicon/96.png"><br><br>
 			<?php echo TEXT[14] ?>
 			<br>
 			<a class="ButtonSquare" href="https://twitter.com/wuwanahq" target="_blank"><?php echo TEXT[13] ?></a>
