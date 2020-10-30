@@ -104,7 +104,7 @@ class DataAccess
 		return Category::fetchObjects($stmt);
 	}
 
-	public function getCompanies($categories = [], $regions = [])
+	public function getCompanies($categories = [], $regions = [], $limit = 0)
 	{
 		$sql = '';
 
@@ -136,6 +136,6 @@ class DataAccess
 			$stmt = $this->pdo->query($sql);
 		}
 
-		return Company::fetchObjects($stmt);
+		return Company::fetchObjects($stmt, $limit);
 	}
 }

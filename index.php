@@ -36,7 +36,12 @@ if (count($_GET) > 0)
 	}
 }
 
-$companies = $db->getCompanies($selectedCategories, $selectedRegions);
+$limit = 8;
+
+if (filter_has_var(INPUT_GET, 'show'))
+{ $limit = 0; }
+
+$companies = $db->getCompanies($selectedCategories, $selectedRegions, $limit);
 shuffle($companies);
 
 $language = WebApp\WebApp::getLanguageCode();
