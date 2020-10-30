@@ -35,6 +35,7 @@ h2 { /* Subtitle */
 	margin: 0 0 16px}
 
 h3 { /* Company Title */
+	color: #161313;
 	font-size: 1rem;
 	line-height: 1.3;
 	font-weight: 700;
@@ -73,23 +74,10 @@ dt {
 dd {
 	margin: 0 8px 8px 0;}
 
-/* DESKTOP HIDDEN ELEMENTS */
+/* Link style */
 
-.menu {
-	z-index: 10;
-	display: none;
-	flex-direction: column;
-	align-content: flex-start;
-	position: fixed;
-	background-color: white;
-	top: 48px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	overflow-y: scroll}
-
-.menu .Button.Center {
-	margin-bottom: 24px}
+.Center {
+	align-self: center}
 
 /* CSS TO MAKE THE LAYOUT */
 
