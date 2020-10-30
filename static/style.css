@@ -75,9 +75,6 @@ dd {
 
 /* DESKTOP HIDDEN ELEMENTS */
 
-.MobileAbout {
-	display: none}
-
 .menu {
 	z-index: 10;
 	display: none;
@@ -122,7 +119,10 @@ dd {
 .Sticky {
 	position: sticky;
 	top: 60px}
-
+	
+.Sticky .Button.Center {
+	display: none;
+}
 /* TEXT STYLE */
 
 .Tag {
@@ -386,12 +386,16 @@ dd {
 
 /* ABOUT US */
 
-.Box.About {
+.Hidden {
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	padding-bottom: 8px}
+	width: 100%}
+
+.Box.About {
+	align-items: center}
 
 .AboutCover {
-	height: 72px;
 	margin-bottom: 8px}
 
 .AboutCover img {
@@ -431,11 +435,15 @@ dd {
 .ItemLabel:last-child {
 	margin-right: 0}
 
+.Box.About .Button.Toggle {
+	display: none;}
+
+
 /* BANNER */
 
 .Box.Banner {
 	min-height: 230px;
-	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), transparent 60%), url("/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
+	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), transparent 60%), url("/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.jpg");
 	background-size: auto, cover;
 	justify-content: center;
 	background-position: 0 0, 50% 50%}
@@ -519,15 +527,20 @@ dd {
 {
 	/* TABLET GENERAL CHANGES */
 
+	.Container {
+		flex-direction: column}
+
+	.ColumnLeft {
+		min-width: 100%;
+        max-width: 100%}
+
 	.HeaderIcon {
 		display: inline}
 
-	.ColumnLeft.Home {
-		display: none}
 
 	.Box.Banner {
 		min-height: 230px;
-		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
+		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.jpg");
 		background-size: auto, cover;
 		justify-content: center;
 		background-position: 0 0, 50% 50%}
@@ -535,26 +548,55 @@ dd {
 
 	/* ABOUT US MOBILE */
 
-	.MobileAbout {
-		display: block;
-		width: 100%}
-
 	.AboutSocial {
 		min-width: 100%;
 		margin-right: -4px}
 
-	.Box.About {
-		align-items: center;
-		padding-top: 24px;
-		padding-bottom: 0}
-
 	.Hidden {
-		display: none;
-		flex-direction: column;
-		align-items: center;
-		width: 100%}
+		display: none}
+
+	.Box.About .Button.Toggle {
+		display: flex;
+	}
 
 	/* MENU MOBILE */
+
+	.Box.Filter {
+		box-shadow: none;}
+
+	.Sticky {
+		z-index: 10;
+		display: none;
+		flex-direction: column;
+		align-content: flex-start;
+		position: fixed;
+		padding: 16px;
+		background-color: white;
+		top: 48px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		overflow-y: scroll}
+
+	.Sticky .Button.Center {
+		display: flex}
+
+	.menu {
+		z-index: 2;
+		display: none;
+		flex-direction: column;
+		align-content: flex-start;
+		position: fixed;
+		background-color: white;
+		top: 48px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		overflow-y: scroll}
+	
+	.menu .Button.Center {
+		margin-bottom: 24px}
+
 
 	dl {
 		margin: 16px 16px 16px}
@@ -592,18 +634,6 @@ dd {
 		border-radius: 16px;
 		transition: color 200ms, background-color 200ms;
 		box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05)}
-
-	/* COMPANY PROFILE PAGE */
-
-	.Box.About.Company {
-		display: none}
-
-	.Container {
-		flex-direction: column}
-
-	.ColumnLeft.Company {
-		min-width: 100%;
-        max-width: 100%}
 }
 
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
@@ -614,7 +644,7 @@ dd {
 	.Box.Banner {
 		display: block;
 		min-height: 230px;
-		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png");
+		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url("/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.jpg");
 		background-size: auto, cover;
 		background-position: 0 0, 50% 50%}
 
