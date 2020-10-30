@@ -117,7 +117,7 @@
 			
 			<h1>Empresas destacadas</h1>
 			<div class="Box">
-				<a href="company">
+				<a class="NoStyle" href="company">
 					<div class="Card">
 						<div class="Logo">
 							<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
