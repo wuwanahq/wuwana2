@@ -228,10 +228,8 @@ dd {
 	z-index: 1;
 	position: absolute;
 	padding: 2px 4px;
-	right: 0;
-	bottom: 0;
-	margin-right: 24px;
-	margin-bottom: 24px}
+	right: 24px;
+	bottom: 24px}
 
 .Button.ToTop {
 	z-index: 3;
