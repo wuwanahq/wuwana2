@@ -74,23 +74,34 @@
 	</div>
 	<div class="Container">
 		<div class="ColumnLeft Home">
+
 			<div class="Box About">
-				<div class="AboutCover"><img src="/static/cover/oct2020.svg"></div>
+				<div class="AboutCover">
+					<img src="/static/cover/oct2020.svg">
+				</div>
 				<p class="AboutText">Encontrar la informacion que necesitas deberia ser mas facil.</p>
-				<div class="Button">Descubre que es Wuwana</div>
-				<hr class="AboutLine">
-				<h3>Contactanos</h3>
-				<div class="AboutSocial">
-					<div class="ItemLabel">
-						<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
-						<span class="Label Circle">Instagram</span>
-					</div>
-					<div class="ItemLabel">
-						<div class="Button Circle"><img src="/static/icon/whatsapp.svg"></div>
-						<span class="Label Circle">Whatsapp</span>
+				<div class="Hidden" id="AboutUs">
+					<div class="Button">Descubre que es Wuwana</div>
+					<hr class="AboutLine">
+					<h3>Contactanos</h3>
+					<div class="AboutSocial">
+						<div class="ItemLabel">
+							<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
+							<span class="Label Circle">Instagram</span>
+						</div>
+						<div class="ItemLabel">
+							<div class="Button Circle"><img src="/static/icon/whatsapp.svg"></div>
+							<span class="Label Circle">Whatsapp</span>
+						</div>
 					</div>
 				</div>
+				<hr>
+				<div class="Button Toggle" onclick="hide()">
+					<img id="ToggleAboutUsImg" src="/static/icon/chevron-down.svg">
+					<label class="TextButton" id="ToggleAboutUsLabel">Ver mas</label>
+				</div>
 			</div>
+
 			<div class="Sticky">
 				<h2>Personaliza la buqueda</h2>
 				<div class="Box Filter"><!-- Desktop menu (duplicate from Mobile filter menu) -->

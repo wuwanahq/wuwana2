@@ -378,12 +378,16 @@ dd {
 
 /* ABOUT US */
 
-.Box.About {
+.Hidden {
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	padding-bottom: 8px}
+	width: 100%}
+
+.Box.About {
+	align-items: center}
 
 .AboutCover {
-	height: 72px;
 	margin-bottom: 8px}
 
 .AboutCover img {
@@ -422,6 +426,10 @@ dd {
 
 .ItemLabel:last-child {
 	margin-right: 0}
+
+.Box.About .Button.Toggle {
+	display: none;}
+
 
 /* BANNER */
 
@@ -511,11 +519,16 @@ dd {
 {
 	/* TABLET GENERAL CHANGES */
 
+	.Container {
+		flex-direction: column}
+
+	.ColumnLeft {
+		min-width: 100%;
+        max-width: 100%}
+
 	.HeaderIcon {
 		display: inline}
 
-	.ColumnLeft.Home {
-		display: none}
 
 	.Box.Banner {
 		min-height: 230px;
@@ -527,24 +540,16 @@ dd {
 
 	/* ABOUT US MOBILE */
 
-	.MobileAbout {
-		display: block;
-		width: 100%}
-
 	.AboutSocial {
 		min-width: 100%;
 		margin-right: -4px}
 
-	.Box.About {
-		align-items: center;
-		padding-top: 24px;
-		padding-bottom: 0}
-
 	.Hidden {
-		display: none;
-		flex-direction: column;
-		align-items: center;
-		width: 100%}
+		display: none}
+
+	.Box.About .Button.Toggle {
+		display: flex;
+	}
 
 	/* MENU MOBILE */
 
@@ -584,18 +589,6 @@ dd {
 		border-radius: 16px;
 		transition: color 200ms, background-color 200ms;
 		box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05)}
-
-	/* COMPANY PROFILE PAGE */
-
-	.Box.About.Company {
-		display: none}
-
-	.Container {
-		flex-direction: column}
-
-	.ColumnLeft.Company {
-		min-width: 100%;
-        max-width: 100%}
 }
 
 /* LAYOUT CHANGES FOR MOBILE DEVICES */

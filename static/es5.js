@@ -76,7 +76,7 @@ function showMenu()
 // Hide & unhide
 
 function hide() {
-	var div = document.getElementById("AboutUsMobile");
+	var div = document.getElementById("AboutUs");
 	var img = document.getElementById ("ToggleAboutUsImg");
 	var label = document.getElementById ("ToggleAboutUsLabel");
 
