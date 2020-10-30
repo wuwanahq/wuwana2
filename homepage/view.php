@@ -31,47 +31,7 @@
 			<div class="HeaderIcon" onclick="showMenu()"><img id="TestImg" src="/static/icon/menu.svg"></div>
 		</div>
 	</header>
-	<div class="menu" id="menu"><!-- Mobile filter menu -->
-		<dl>
-			<dt><?php echo TEXT[1] ?></dt>
-			<dd>
-				<input type="checkbox" name="cat" id="C0"
-					<?php echo $selectedCategories==[] ? 'checked disabled' : '' ?>>
-				<label for="C0"><?php echo TEXT[2] ?></label>
-			</dd>
-			<?php
-				foreach ($categories as $id => $languages)
-				{
-					echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
 
-					if (in_array($id, $selectedCategories))
-					{ echo ' checked'; }
-
-					echo '><label for="C', $id, '">', $languages[$language], '</label></dd>';
-				}
-			?>
-		</dl>
-		<dl>
-			<dt><?php echo TEXT[3] ?></dt>
-			<dd>
-				<input type="checkbox" name="region" id="R0"
-					<?php echo $selectedRegions==[] ? 'checked disabled' : '' ?>>
-				<label for="R0"><?php echo TEXT[4] ?></label>
-			</dd>
-			<?php
-				foreach ($locations as $id => $location)
-				{
-					echo '<dd><input type="checkbox" name="region', $id, '" id="R', $id, '"';
-
-					if (in_array($id, $selectedRegions))
-					{ echo ' checked'; }
-
-					echo '><label for="R', $id, '">', $location->region, '</label></dd>';
-				}
-			?>
-		</dl>
-		<div class="Button Center"><img src="/static/icon/filter.svg">Aplicar filtros</div>
-	</div>
 	<div class="Container">
 		<div class="ColumnLeft Home">
 
@@ -101,10 +61,10 @@
 					<label class="TextButton" id="ToggleAboutUsLabel">Ver mas</label>
 				</div>
 			</div>
-
-			<div class="Sticky">
+			
+			<div class="Sticky" id="menu">
 				<h2>Personaliza la buqueda</h2>
-				<div class="Box Filter"><!-- Desktop menu (duplicate from Mobile filter menu) -->
+				<div class="Box Filter">
 					<dl>
 						<dt><?php echo TEXT[1] ?></dt>
 						<dd>
@@ -143,6 +103,7 @@
 							}
 						?>
 					</dl>
+					<div class="Button Center"><img src="/static/icon/filter.svg">Aplicar filtros</div>
 				</div>
 			</div>
 		</div>
@@ -153,32 +114,7 @@
 					<p class="BannerSubtitle"><?php echo TEXT[6] ?></p>
 				</div>
 			</div>
-			<div class="MobileAbout">
-				<div class="Box About">
-					<img src="/static/wuwana-black.svg">
-					<p class="AboutText">Encontrar un la informacion que necesitas deberia ser mas facil.</p>
-					<div class="Hidden" id="AboutUsMobile">
-						<div class="Button">Descubre que es Wuwana</div>
-						<hr class="AboutLine">
-						<h3>Contactanos</h3>
-						<div class="AboutSocial">
-							<div class="ItemLabel">
-								<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
-								<span class="Label Circle">Instagram</span>
-							</div>
-							<div class="ItemLabel">
-								<div class="Button Circle"><img src="/static/icon/whatsapp.svg"></div>
-								<span class="Label Circle">Whatsapp</span>
-							</div>
-						</div>
-					</div>
-					<hr>
-					<div class="Button Toggle" onclick="hide()">
-						<img id="ToggleAboutUsImg" src="/static/icon/chevron-down.svg">
-						<label class="TextButton" id="ToggleAboutUsLabel">Ver mas</label>
-					</div>
-				</div>
-			</div>
+			
 			<h1>Empresas destacadas</h1>
 			<div class="Box">
 				<div class="Card">

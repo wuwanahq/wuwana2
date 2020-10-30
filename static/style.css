@@ -72,9 +72,6 @@ dd {
 
 /* DESKTOP HIDDEN ELEMENTS */
 
-.MobileAbout {
-	display: none}
-
 .menu {
 	z-index: 10;
 	display: none;
@@ -119,7 +116,10 @@ dd {
 .Sticky {
 	position: sticky;
 	top: 60px}
-
+	
+.Sticky .Button.Center {
+	display: none;
+}
 /* TEXT STYLE */
 
 .Tag {
@@ -552,6 +552,43 @@ dd {
 	}
 
 	/* MENU MOBILE */
+
+	.Box.Filter {
+		box-shadow: none;}
+
+	.Sticky {
+		z-index: 10;
+		display: none;
+		flex-direction: column;
+		align-content: flex-start;
+		position: fixed;
+		padding: 16px;
+		background-color: white;
+		top: 48px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		overflow-y: scroll}
+
+	.Sticky .Button.Center {
+		display: flex}
+
+	.menu {
+		z-index: 2;
+		display: none;
+		flex-direction: column;
+		align-content: flex-start;
+		position: fixed;
+		background-color: white;
+		top: 48px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		overflow-y: scroll}
+	
+	.menu .Button.Center {
+		margin-bottom: 24px}
+
 
 	dl {
 		margin: 16px 16px 16px}
