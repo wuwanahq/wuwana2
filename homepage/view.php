@@ -75,8 +75,7 @@
 	<div class="Container">
 		<div class="ColumnLeft Home">
 			<div class="Box About">
-				<div class="AboutCover"><img src="/static/background/cover_picture_oct2020.png"></div>
-				<img src="/static/wuwana-black.svg">
+				<div class="AboutCover"><img src="/static/cover/oct2020.svg"></div>
 				<p class="AboutText">Encontrar un la informacion que necesitas deberia ser mas facil.</p>
 				<div class="Button">Descubre que es Wuwana</div>
 				<hr class="AboutLine">
