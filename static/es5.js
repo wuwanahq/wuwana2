@@ -1,7 +1,6 @@
 // ECMAScript 5
 "use strict";
 
-/*
 document.getElementById("C0").addEventListener("change", handleEventChangeFilterAll);
 document.getElementById("R0").addEventListener("change", handleEventChangeFilterAll);
 
@@ -16,7 +15,6 @@ for (var i=1; i < 50; ++i)
 	if (checkbox2 != null)
 	{ checkbox2.addEventListener("change", handleEventChangeFilter); }
 }
-*/
 
 function handleEventChangeFilter()
 {
@@ -52,7 +50,6 @@ function handleEventChangeFilterAll()
 }
 
 // Show menu
-
 function showMenu()
 {
 	var div = document.getElementById("menu");
@@ -63,19 +60,19 @@ function showMenu()
 	{
 		div.style.display = "flex";
 		img.src = "static/icon/close.svg";
-		body.style.overflow = "hidden"
+		body.style.overflow = "hidden";
 	}
 	else
 	{
 		div.style.display = "none";
 		img.src = "static/icon/menu.svg";
-		body.style.overflow = "auto"
+		body.style.overflow = "auto";
 	}
 }
 
 // Hide & unhide
-
-function hide() {
+function hide()
+{
 	var div = document.getElementById("AboutUsMobile");
 	var img = document.getElementById ("ToggleAboutUsImg");
 	var label = document.getElementById ("ToggleAboutUsLabel");
@@ -86,7 +83,7 @@ function hide() {
 		img.src = "static/icon/chevron-up.svg";
 		label.innerText = "Ver menos";
 	}
-	else 
+	else
 	{
 		div.style.display = "none";
 		img.src = "static/icon/chevron-down.svg";
