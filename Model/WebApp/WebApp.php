@@ -24,7 +24,7 @@ class WebApp
 
 	static function getLanguageCode()
 	{
-		if (substr(filter_input(INPUT_SERVER, 'SERVER_NAME'), -2)  == 'es')
+		if (substr(filter_input(INPUT_SERVER, 'SERVER_NAME'), -2)  == 'es' || filter_input(INPUT_GET, 'lang') == 'es')
 		{ return 'es'; }
 
 		return 'en';

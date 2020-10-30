@@ -27,7 +27,7 @@
 <body>
 	<header class="HeaderBar">
 		<div class="HeaderContainer">
-			<div class="HeaderLogo"><img src="/static/wuwana-black.svg"></div>
+			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg"></a></div>
 			<div class="HeaderIcon" onclick="showMenu()"><img id="TestImg" src="/static/icon/menu.svg"></div>
 		</div>
 	</header>
@@ -171,73 +171,110 @@
 			</div>
 			<h1>Empresas destacadas</h1>
 			<div class="Box">
-				<div class="Card">
-					<div class="Logo">
-						<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
-					</div>
-					<div class="CompanyMain">
-						<div class="CompanyContent">
-							<h3><a href="company">Company 1</a></h3>
-							<div class="Category">
-								<span class="Label">Tostador</span>
-								<span class="Label">Cafeteria</span>
-							</div>
-							<div class="Tag Region">Cataluna</div>
+				<a href="company">
+					<div class="Card">
+						<div class="Logo">
+							<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
 						</div>
-						<div class="BadgeArea"><!-- Badge area -->
-							<div class="ItemLabelBadge">
-								<img src="/static/badge/google-review.svg">
-								<span class="Label Circle">Google review</span>
+						<div class="CompanyMain">
+							<div class="CompanyContent">
+								<h3>Company 1</h3>
+								<div class="Category">
+									<span class="Label">Tostador</span>
+									<span class="Label">Cafeteria</span>
+								</div>
+								<div class="Tag Region">Cataluna</div>
 							</div>
-							<div class="ItemLabelBadge">
-								<img src="/static/badge/sustainability.svg">
-								<span class="Label Circle">Sostenible</span>
-							</div>
-							<div class="ItemLabelBadge">
-								<img src="/static/badge/social-impact.svg">
-								<span class="Label Circle">Compromiso social</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<hr>
-				<div class="Card">
-					<div class="Logo">
-						<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
-					</div>
-					<div class="CompanyMain">
-						<div class="CompanyContent">
-							<h3><a href="company">Company Long Name</a></h3>
-							<div class="Category">
-								<span class="Label">Tostador</span>
-								<span class="Label">Cafeteria</span>
-							</div>
-							<div class="Tag Region">Cataluna</div>
-						</div>
-						<div class="BadgeArea"><!-- Badge area -->
-							<div class="ItemLabelBadge">
-								<img src="/static/badge/google-review.svg">
-								<span class="Label Circle">Google review</span>
-							</div>
-							<div class="ItemLabelBadge">
-								<img src="/static/badge/sustainability.svg">
-								<span class="Label Circle">Sostenible</span>
-							</div>
-							<div class="ItemLabelBadge">
-								<img src="/static/badge/social-impact.svg">
-								<span class="Label Circle">Compromiso social</span>
-							</div>
-							<div class="ItemLabelBadge">
-								<img src="/static/badge/sca.svg">
-								<span class="Label Circle">Certificado</span>
+							<div class="BadgeArea"><!-- Badge area -->
+								<div class="ItemLabelBadge">
+									<img src="/static/badge/google-review.svg">
+									<span class="Label Circle">Google review</span>
+								</div>
+								<div class="ItemLabelBadge">
+									<img src="/static/badge/sustainability.svg">
+									<span class="Label Circle">Sostenible</span>
+								</div>
+								<div class="ItemLabelBadge">
+									<img src="/static/badge/social-impact.svg">
+									<span class="Label Circle">Compromiso social</span>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
+				<hr/>
+				<a href="company">
+					<div class="Card">
+						<div class="Logo">
+							<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
+						</div>
+						<div class="CompanyMain">
+							<div class="CompanyContent">
+								<h3>Company Long Name</h3>
+								<div class="Category">
+									<span class="Label">Tostador</span>
+									<span class="Label">Cafeteria</span>
+								</div>
+								<div class="Tag Region">Cataluna</div>
+							</div>
+							<div class="BadgeArea"><!-- Badge area -->
+								<div class="ItemLabelBadge">
+									<img src="/static/badge/google-review.svg">
+									<span class="Label Circle">Google review</span>
+								</div>
+								<div class="ItemLabelBadge">
+									<img src="/static/badge/sustainability.svg">
+									<span class="Label Circle">Sostenible</span>
+								</div>
+								<div class="ItemLabelBadge">
+									<img src="/static/badge/social-impact.svg">
+									<span class="Label Circle">Compromiso social</span>
+								</div>
+								<div class="ItemLabelBadge">
+									<img src="/static/badge/sca.svg">
+									<span class="Label Circle">Certificado</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
 			</div>
 			<h1>Otras empresas</h1>
-			<div class="Box Test"></div>
-			<div class="Button Center"><img src="static/icon/plus.svg">Ver mas empresas</div>
+			<div class="Box">
+				<?php
+					$counter = count($companies);
+
+					foreach ($companies as $company)
+					{
+						echo '<a href="company">';
+						echo  '<div class="Card">';
+						echo   '<div class="Logo">';
+						echo    '<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">';
+						echo   '</div>';
+						echo   '<div class="CompanyMain">';
+						echo    '<div class="CompanyContent">';
+						echo     '<h3>', $company->name, '</h3>';
+						echo     '<div class="Category">';
+
+						foreach ($company->categories as $category)
+						{ echo '<span class="Label">', $categories[$category][$language], '</span>'; }
+
+						echo     '</div>';
+						echo     '<div class="Tag Region">', $locations[$company->region]->region, '</div>';
+						echo    '</div>';
+						echo    '<div class="BadgeArea"></div>';
+						echo   '</div>';
+						echo  '</div>';
+						echo '</a>';
+
+						if (--$counter > 0)
+						{ echo '<hr>'; }
+					}
+				?>
+			</div>
+			<a href="?show=all">
+				<div class="Button Center"><img src="static/icon/plus.svg">Ver mas empresas</div>
+			</a>
 		</div>
 	</div>
 	<a href="#">

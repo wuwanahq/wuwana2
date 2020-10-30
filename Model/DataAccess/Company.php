@@ -50,12 +50,15 @@ class Company
 			. 'SocialMedia varchar(255) not null)';
 	}
 
-	static function fetchObjects(PDOStatement $stmt)
+	static function fetchObjects(PDOStatement $stmt, $limit = 0)
 	{
 		$companies = [];
 
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 		{
+			if ($limit > 0 && rand(0,9) > 0)
+			{ continue; }
+
 			$company = new Company();
 			$company->name = $row['Name'];
 			$company->logo = empty($row['Logo']) ? sprintf(self::NO_LOGO_ICON, rand(1,8)) : $row['Logo'];
@@ -74,6 +77,11 @@ class Company
 			}
 
 			$companies[(int)$row['ID']] = $company;
+
+			if ($limit == 1)
+			{ break; }
+
+			--$limit;
 		}
 
 		return $companies;

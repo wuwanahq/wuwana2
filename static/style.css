@@ -44,6 +44,9 @@ h3 { /* Company Title */
 p {
 	margin-top: 8px}
 
+a {
+	text-decoration: none}
+
 input[type="checkbox"] {
 	width: 16px;
 	height: 16px;
@@ -296,6 +299,11 @@ dd {
 .Card:hover {
 	background-color: #fafafa}
 
+/*
+.Card:hover h3 {
+	text-decoration: underline}
+*/
+
 .Logo {
 	width: 88px;
 	min-width: 88px;
@@ -310,10 +318,10 @@ dd {
 	object-fit: cover}
 
 .CompanyMain {
-	width: 100%;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between}
+	justify-content: space-between;
+	width: 100%}
 
 .CompanyContent {
 	display: flex;
