@@ -218,7 +218,7 @@
 					}
 				?>
 			</div>
-			<a href="?show=all">
+			<a class="Center" href="?show=all">
 				<div class="Button Center"><img src="static/icon/plus.svg">Ver mas empresas</div>
 			</a>
 		</div>
