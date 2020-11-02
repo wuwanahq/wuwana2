@@ -70,6 +70,22 @@ function showMenu()
 	}
 }
 
+// To fix bug of filter menu not appearing after table view
+
+let menu = document.getElementById("menu");
+
+window.addEventListener("resize", () => {
+	if (window.innerWidth > 800)
+	{
+		menu.style.display = "block";
+	}
+	else 
+	{
+		menu.style.display = "none";
+	}
+
+});
+
 // Hide & unhide
 
 function hide()
@@ -107,3 +123,4 @@ window.addEventListener("scroll", () => {
 		toTop.style.visibility = "hidden";
 	}
 });
+
