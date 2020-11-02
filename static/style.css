@@ -223,11 +223,14 @@ dd {
 	bottom: 24px}
 
 .Button.ToTop {
+	visibility: hidden;
+	opacity: 0;
 	z-index: 3;
 	position: fixed;
 	padding: 2px 4px;
 	right: 24px;
-	bottom: 24px}
+	bottom: 24px;
+	transition: visibility 0.3s linear,opacity 0.3s linear;}
 
 /* HEADER */
 

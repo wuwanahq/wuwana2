@@ -226,7 +226,7 @@
 		</div>
 	</div>
 	<a href="#">
-		<div class="Button ToTop"><img src="/static/icon/arrow-circle-top.svg">Volver arriba</div>
+		<div id="toTop" class="Button ToTop"><img src="/static/icon/arrow-circle-top.svg">Volver arriba</div>
 	</a>
 </body>
 </html>

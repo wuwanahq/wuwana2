@@ -91,3 +91,19 @@ function hide()
 		label.innerText = "Ver mas";
 	}
 }
+
+// Back to top button
+let toTop = document.getElementById("toTop");
+
+window.addEventListener("scroll", () => {
+	if (window.pageYOffset > 100)
+	{
+		toTop.style.opacity = 1;
+		toTop.style.visibility = "visible";
+	}
+	else
+	{
+		toTop.style.opacity = 0;
+		toTop.style.visibility = "hidden";
+	}
+});
