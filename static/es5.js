@@ -108,6 +108,26 @@ function hide()
 	}
 }
 
+// To fix bug of about us not appearing after table view
+
+let aboutUS = document.getElementById("AboutUs");
+let img = document.getElementById ("ToggleAboutUsImg");
+let label = document.getElementById ("ToggleAboutUsLabel");
+
+window.addEventListener("resize", () => {
+	if (window.innerWidth > 800)
+	{
+		aboutUS.style.display = "flex";
+	}
+	else 
+	{
+		aboutUS.style.display = "none";
+		img.src = "static/icon/chevron-down.svg";
+		label.innerText = "Ver mas";
+	}
+
+});
+
 // Back to top button
 let toTop = document.getElementById("toTop");
 
