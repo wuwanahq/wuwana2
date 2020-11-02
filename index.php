@@ -12,6 +12,8 @@ $db = new DataAccess\DataAccess(WebApp\WebApp::getDatabase());
 $categories = $db->getCategories();
 $locations = $db->getLocations(true);
 
+$limit = filter_has_var(INPUT_GET, 'show') ? 0 : 8;
+
 $selectedCategories = [];
 $selectedRegions = [];
 
@@ -34,12 +36,9 @@ if (count($_GET) > 0)
 			{ $selectedRegions[] = $key; }
 		}
 	}
+
+	$limit = 0;
 }
-
-$limit = 8;
-
-if (filter_has_var(INPUT_GET, 'show'))
-{ $limit = 0; }
 
 $companies = $db->getCompanies($selectedCategories, $selectedRegions, $limit);
 shuffle($companies);

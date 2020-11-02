@@ -56,7 +56,7 @@ class Company
 
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 		{
-			if ($limit > 0 && rand(0,9) > 0)
+			if ($limit > 0 && rand(0,1))
 			{ continue; }
 
 			$company = new Company();

@@ -61,10 +61,11 @@
 					<label class="TextButton" id="ToggleAboutUsLabel">Ver mas</label>
 				</div>
 			</div>
-			
+
 			<div class="Sticky" id="menu">
 				<h2>Personaliza la buqueda</h2>
 				<div class="Box Filter">
+					<form method="get" action="/">
 					<dl>
 						<dt><?php echo TEXT[1] ?></dt>
 						<dd>
@@ -103,6 +104,7 @@
 							}
 						?>
 					</dl>
+					</form>
 					<div class="Button Center"><img src="/static/icon/filter.svg">Aplicar filtros</div>
 				</div>
 			</div>
@@ -114,7 +116,7 @@
 					<p class="BannerSubtitle"><?php echo TEXT[6] ?></p>
 				</div>
 			</div>
-			
+
 			<h1>Empresas destacadas</h1>
 			<div class="Box">
 				<a class="NoStyle" href="company">
