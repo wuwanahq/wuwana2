@@ -39,6 +39,11 @@ if (filter_has_var(INPUT_GET, 'region'))
 	$limit = 0;
 }
 
+$user = null;
+
+if (filter_has_var(INPUT_POST, 'email'))
+{ $user = $db->getUser(filter_input(INPUT_POST, 'email')); }
+
 $companies = $db->getCompanies($selectedCategories, $selectedRegions, $limit);
 shuffle($companies);
 

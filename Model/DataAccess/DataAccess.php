@@ -13,6 +13,7 @@ class DataAccess
 	public function __construct(PDO $pdoInstance)
 	{
 		$this->pdo = $pdoInstance;
+		date_default_timezone_set('UTC');
 	}
 
 	private function createDatabase()
@@ -137,5 +138,34 @@ class DataAccess
 		}
 
 		return Company::fetchObjects($stmt, $limit);
+	}
+
+	public function getUser($email)
+	{
+		$email = $this->pdo->quote(trim($email));
+
+		$stmt = $this->pdo->query('select * from ' . User::TABLE_NAME . ' where Email=' . $email);
+		$user = User::fetchObject($stmt);
+
+		if ($user instanceof User)
+		{ return $user; }
+
+		$total = $this->pdo->query('select count(*) from ' . User::TABLE_NAME)->fetchColumn(0);
+		$companyID = $total === 0 ? '-1' : '0';
+		$code = rand(1000, 9999);
+		$time = time();
+
+		$result = $this->pdo->exec("insert into " . User::TABLE_NAME
+			. "(Email,CompanyID,LastAccessCode,LastLogin) values ($email,$companyID,$code,$time)");
+
+		if ($result == 0)  // or false
+		{ return null; }
+
+		$user = new User();
+		$user->email = $email;
+		$user->company = $companyID;
+		$user->lastAccessCode = $code;
+		$user->lastLogin = $time;
+		return $user;
 	}
 }

@@ -29,7 +29,11 @@
 		<div class="HeaderContainer">
 			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg"></a></div>
 			<?php
-				if (filter_has_var(INPUT_GET, 'login'))
+				if ($user != null)
+				{
+					echo $user->email;
+				}
+				elseif (filter_has_var(INPUT_GET, 'login'))
 				{
 					echo '<form method="post">';
 					echo  '<label for="email">Email: </label>';
