@@ -10,4 +10,4 @@ spl_autoload_register(function($className) {
 
 $language = WebApp\WebApp::getLanguageCode();
 //require 'text ' . $language . '.php';
-require 'view.php';
+require 'view edit.php';

@@ -55,7 +55,7 @@ input[type="checkbox"] {
 
 input, label {
 	vertical-align: middle;
-	cursor: pointer}
+	/*cursor: pointer*/} /* Why? */
 
 label {
 	font-weight: 400;
@@ -82,7 +82,7 @@ dd {
 /* CSS TO MAKE THE LAYOUT */
 
 .Container {
-	position: static;
+	/*position: static;*/ /* Why? */
 	display: flex;
 	width: 100%;
 	max-width: 1200px;
@@ -107,7 +107,7 @@ dd {
 .Sticky {
 	position: sticky;
 	top: 60px}
-	
+
 .Sticky .Button.Center {
 	display: none;
 }
@@ -584,7 +584,7 @@ dd {
 		right: 0;
 		bottom: 0;
 		overflow-y: scroll}
-	
+
 	.menu .Button.Center {
 		margin-bottom: 24px}
 

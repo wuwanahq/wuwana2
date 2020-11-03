@@ -1,8 +1,9 @@
-# Apache
+# Apache 2.4
+FallbackResource disabled
 <IfModule mod_expires.c>
 	ExpiresActive On
-	ExpiresDefault "now plus 9 hours"
+	ExpiresDefault "now plus 30 minutes"
 </IfModule>
 
 # Nginx
-#location /static/ { expires 9h; }
+#location /static/ { expires 30m; }

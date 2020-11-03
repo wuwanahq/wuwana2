@@ -28,13 +28,25 @@
 	<header class="HeaderBar">
 		<div class="HeaderContainer">
 			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg"></a></div>
-			<div class="HeaderIcon" onclick="showMenu()"><img id="TestImg" src="/static/icon/menu.svg"></div>
+			<?php
+				if (filter_has_var(INPUT_GET, 'login'))
+				{
+					echo '<form method="post">';
+					echo  '<label for="email">Email: </label>';
+					echo  '<input id="email" type="text" name="email"> <input type="submit" value="Login">';
+					echo '</form>';
+				}
+				else
+				{
+					echo '<div class="HeaderIcon" onclick="showMenu()">';
+					echo  '<img id="TestImg" src="/static/icon/menu.svg">';
+					echo '</div>';
+				}
+			?>
 		</div>
 	</header>
-
 	<div class="Container">
 		<div class="ColumnLeft Home">
-
 			<div class="Box About">
 				<div class="AboutCover">
 					<img src="/static/cover/oct2020.svg">
@@ -61,7 +73,6 @@
 					<label class="TextButton" id="ToggleAboutUsLabel">Ver mas</label>
 				</div>
 			</div>
-
 			<div class="Sticky" id="menu">
 				<h2>Personaliza la buqueda</h2>
 				<div class="Box Filter">

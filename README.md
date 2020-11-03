@@ -13,7 +13,7 @@ Then, in the project directory, run the PHP built-in web server:
 ```
 git clone https://github.com/wuwanahq/wuwana2.git
 cd wuwana2
-php -S 0:8000
+php -S 0:8000 router.php
 ```
 
 Now you can open the website with your browser:

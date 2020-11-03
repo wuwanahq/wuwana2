@@ -17,24 +17,23 @@ $limit = filter_has_var(INPUT_GET, 'show') ? 0 : 8;
 $selectedCategories = [];
 $selectedRegions = [];
 
-if (count($_GET) > 0)
+if (filter_has_var(INPUT_GET, 'cat'))
 {
-	if (!filter_has_var(INPUT_GET, 'cat'))
+	foreach ($categories as $key => $value)
 	{
-		foreach ($categories as $key => $value)
-		{
-			if (filter_has_var(INPUT_GET, 'cat' . $key))
-			{ $selectedCategories[] = $key; }
-		}
+		if (filter_has_var(INPUT_GET, 'cat' . $key))
+		{ $selectedCategories[] = $key; }
 	}
 
-	if (!filter_has_var(INPUT_GET, 'region'))
+	$limit = 0;
+}
+
+if (filter_has_var(INPUT_GET, 'region'))
+{
+	foreach ($locations as $key => $value)
 	{
-		foreach ($locations as $key => $value)
-		{
-			if (filter_has_var(INPUT_GET, 'region' . $key))
-			{ $selectedRegions[] = $key; }
-		}
+		if (filter_has_var(INPUT_GET, 'region' . $key))
+		{ $selectedRegions[] = $key; }
 	}
 
 	$limit = 0;

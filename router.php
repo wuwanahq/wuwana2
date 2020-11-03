@@ -1,18 +1,15 @@
 <?php
 /**
- * Controller for the company page.
- * @link https://wuwana.com/company
+ * Router for permanent link redirection to profile page.
+ * @link https://wuwana.com/company-name...
+ * @see /.htaccess Apache "FallbackResource" or Nginx "try_files" directive
  */
-
-spl_autoload_register(function($className) {
-	require 'Model/' . str_replace('\\', '/', $className) . '.php';
-});
 
 if ($_SERVER["REQUEST_URI"] == '/'
 	|| substr($_SERVER["REQUEST_URI"], 0, 2) == '/?'
-	|| substr($_SERVER["REQUEST_URI"], 0, 7) == '/static')
+	|| substr($_SERVER["REQUEST_URI"], 0, 8) == '/static/')
 {
-	return false;
+	return false;  // Serve the requested resource as-is with the PHP built-in web server
 }
 
-require 'company/view.php';
+require 'company/index.php';
