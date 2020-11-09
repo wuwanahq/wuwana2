@@ -5,7 +5,16 @@
 	<meta name="viewport" content="width=375">
 	<meta name="description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
+
+	<!-- Open Graph Image -->
 	<meta property="og:image" content="/static/Wuwana-link-2020.png"/>
+	<!--meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" /-->
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1264" />
+	<meta property="og:image:height" content="640" />
+	<meta property="og:image:alt" content="mosaic tiles of the wuwana logo in several colours" />
+
+	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="/static/favicon16.png" sizes="16x16">
 	<link rel="icon" type="image/png" href="/static/favicon32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="/static/favicon48.png" sizes="48x48">
