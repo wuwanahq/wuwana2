@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=375">
 	<meta name="description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
+	<meta property="og:image" content="/static/Wuwana-link-2020.png"/>
 	<link rel="icon" type="image/png" href="/static/favicon16.png" sizes="16x16">
 	<link rel="icon" type="image/png" href="/static/favicon32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="/static/favicon48.png" sizes="48x48">
