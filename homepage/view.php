@@ -8,11 +8,19 @@
 
 	<!-- Open Graph Image -->
 	<meta property="og:image" content="/static/Wuwana-link-2020.png"/>
-	<!--meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" /-->
+		<!--meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" /-->
 	<meta property="og:image:type" content="image/png" />
 	<meta property="og:image:width" content="1264" />
 	<meta property="og:image:height" content="640" />
 	<meta property="og:image:alt" content="mosaic tiles of the wuwana logo in several colours" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@wuwanahq">
+	<meta name="twitter:creator" content="@wuwanahq">
+	<meta name="twitter:title" content="?php echo TEXT[0] ?> | Wuwana">
+	<meta name="twitter:description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
+	<meta name="twitter:image" content="/static/Wuwana-link-2020.png">
 
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="/static/favicon16.png" sizes="16x16">
