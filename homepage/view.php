@@ -18,7 +18,7 @@
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@wuwanahq">
 	<meta name="twitter:creator" content="@wuwanahq">
-	<meta name="twitter:title" content="?php echo TEXT[0] ?> | Wuwana">
+	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
 	<meta name="twitter:description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
 	<meta name="twitter:image" content="/static/Wuwana-link-2020.png">
 	<meta name="twitter:image:alt" content="mosaic tiles of the wuwana logo in several colours" />
