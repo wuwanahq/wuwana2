@@ -78,81 +78,85 @@
 			</div>
 		</div>
 		<div class="ColumnMain">
-			<h2>Camden Coffee Roaster en Instagram</h2>
-			<div class="Box">
-				<div class="Button Absolute">
-					<img src="/static/icon/instagram.svg">
-					Ver en Instagram
-				</div>
-
-				<div class="InstagramInfo">
-					<h3>Camden Coffee Roaster</h3>
-					<p>
-						🖤Sólo buen café<br>
-						☕️Specialty Coffee Roasters<br>
-						🛒Tienda y Cafetería<br>
-						👇🏼Haz tu pedido<br>
-						info@camdencoffeeroasters.com
-						camdencoffeeroasters.com/tienda
-					</p>
-					<ul>
-						<li>
-							<div class="ItemLabel">
-								<span class="Number">40</span>
-								<span class="Text">Posts</span>
-							</div>
-						</li>
-						<li>
-							<div class="ItemLabel">
-								<span class="Number">1.034</span>
-								<span class="Text">Followers</span>
-							</div>
-						</li>
-						<li>
-							<div class="ItemLabel">
-								<span class="Number">470</span>
-								<span class="Text">Following</span>
-							</div>
-						</li>
-					</ul>
-				</div>
-
-				<div class="Aspect2-3">
-					<div class="InstagramGallery">
-						<div class="InstagramRow">
-							<div class="InstagramPicture">
-								<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
-							</div>
-							<div class="InstagramPicture">
-								<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
-							</div>
-						</div>
-						<div class="InstagramRow">
-							<div class="InstagramPicture">
-								<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
-							</div>
-							<div class="InstagramPicture">
-								<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
-							</div>
-						</div>
-						<div class="InstagramRow">
-							<div class="InstagramPicture">
-								<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
-							</div>
-							<div class="InstagramPicture">
-								<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
-							</div>
-						</div>
-						
+			<section>
+				<h2>Camden Coffee Roaster en Instagram</h2>
+				<div class="Box">
+					<div class="Button Absolute">
+						<img src="/static/icon/instagram.svg">
+						Ver en Instagram
 					</div>
+					<div class="InstagramInfo">
+						<h3>Camden Coffee Roaster</h3>
+						<p>
+							🖤Sólo buen café<br>
+							☕️Specialty Coffee Roasters<br>
+							🛒Tienda y Cafetería<br>
+							👇🏼Haz tu pedido<br>
+							info@camdencoffeeroasters.com
+							camdencoffeeroasters.com/tienda
+						</p>
+						<ul>
+							<li>
+								<div class="ItemLabel">
+									<span class="Number">40</span>
+									<span class="Text">Posts</span>
+								</div>
+							</li>
+							<li>
+								<div class="ItemLabel">
+									<span class="Number">1.034</span>
+									<span class="Text">Followers</span>
+								</div>
+							</li>
+							<li>
+								<div class="ItemLabel">
+									<span class="Number">470</span>
+									<span class="Text">Following</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="Aspect2-3">
+						<div class="InstagramGallery">
+							<div class="InstagramRow">
+								<div class="InstagramPicture">
+									<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+								</div>
+								<div class="InstagramPicture">
+									<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+								</div>
+							</div>
+							<div class="InstagramRow">
+								<div class="InstagramPicture">
+									<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+								</div>
+								<div class="InstagramPicture">
+									<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+								</div>
+							</div>
+							<div class="InstagramRow">
+								<div class="InstagramPicture">
+									<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+								</div>
+								<div class="InstagramPicture">
+									<img src="static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+								</div>
+							</div>
+							
+						</div>
 
+					</div>
 				</div>
+			</section>
 
-			</div>
+			<section>
+				<h2>Mapa</h2>
+				<div class="Box Test"></div>
+			</section>
 
-			<h2>Mapa</h2>
-			<div class="Box Test"></div>
-			<div class="Button Center"><img src="/static/icon/home.svg"> Volver a la pagina principal</div>
+			<a href="/"
+				<div class="Button Center"><img src="/static/icon/home.svg"> Volver a la pagina principal</div>
+			</a>	
 		</div>
 	</div>
 	<a href="#">

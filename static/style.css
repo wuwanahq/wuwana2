@@ -11,6 +11,9 @@ body {
 	align-items: center;
 	padding: 24px 16px}
 
+section {
+	width: 100%;}
+
 html {
 	scroll-behavior: smooth}
 
