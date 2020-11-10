@@ -134,15 +134,15 @@
 								<div class="Tag Region">Cataluna</div>
 							</div>
 							<div class="BadgeArea"><!-- Badge area -->
-								<div class="ItemLabelBadge">
+								<div class="ItemLabel">
 									<img src="/static/badge/google-review.svg">
 									<span class="Label Circle">Google review</span>
 								</div>
-								<div class="ItemLabelBadge">
+								<div class="ItemLabel">
 									<img src="/static/badge/sustainability.svg">
 									<span class="Label Circle">Sostenible</span>
 								</div>
-								<div class="ItemLabelBadge">
+								<div class="ItemLabel">
 									<img src="/static/badge/social-impact.svg">
 									<span class="Label Circle">Compromiso social</span>
 								</div>
@@ -166,19 +166,19 @@
 								<div class="Tag Region">Cataluna</div>
 							</div>
 							<div class="BadgeArea"><!-- Badge area -->
-								<div class="ItemLabelBadge">
+								<div class="ItemLabel">
 									<img src="/static/badge/google-review.svg">
 									<span class="Label Circle">Google review</span>
 								</div>
-								<div class="ItemLabelBadge">
+								<div class="ItemLabel">
 									<img src="/static/badge/sustainability.svg">
 									<span class="Label Circle">Sostenible</span>
 								</div>
-								<div class="ItemLabelBadge">
+								<div class="ItemLabel">
 									<img src="/static/badge/social-impact.svg">
 									<span class="Label Circle">Compromiso social</span>
 								</div>
-								<div class="ItemLabelBadge">
+								<div class="ItemLabel">
 									<img src="/static/badge/sca.svg">
 									<span class="Label Circle">Certificado</span>
 								</div>

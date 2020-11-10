@@ -43,6 +43,8 @@ h3 { /* Company Title */
 	margin-block-end: 0}
 
 p {
+	font-size: 1rem;
+	line-height: 1.5;
 	margin-top: 8px}
 
 a {
@@ -109,8 +111,12 @@ dd {
 	top: 60px}
 	
 .Sticky .Button.Center {
-	display: none;
-}
+	display: none}
+
+.Aspect2-3 {
+	padding-top: 150%; /* aspect ratio 2:3 */
+	position: relative}
+
 /* TEXT STYLE */
 
 .Tag {
@@ -341,6 +347,9 @@ dd {
 	justify-items: right;
 	margin-top: 8px}
 
+	.BadgeArea .ItemLabel {
+		margin: 0 16px 8px 0}
+
 .ItemLabelBadge {
     display: flex;
     flex-direction: column;
@@ -364,13 +373,6 @@ dd {
 .Box.Profile {
 	align-items: center;
 	padding-bottom: 8px}
-
-.Box.Aspect {
-	padding-top: 56.25%; /* aspect ratio 16:9 */
-	position: relative}
-
-.Box.Aspect.Mobile {
-	display: none}
 
 .Box.Filter {
 	overflow-y: scroll}
@@ -484,10 +486,32 @@ dd {
 	margin-bottom: 16px}
 
 .BadgeArea.Profile {
-	width: 88%;
+	width: 90%; /* Replicate 16px margin*/
 	justify-content: center}
 
-.ProfileInstagram {
+.InstagramInfo {
+	margin: 16px;
+	max-width: 40ch}
+
+	.InstagramInfo ul {
+		padding-inline-start: 0;
+		display: flex;
+		margin-bottom: 0}
+
+	.InstagramInfo li {
+		display: inline}
+
+	.InstagramInfo .ItemLabel {
+		margin: 0 16px 8px 0}
+
+	.InstagramInfo .Number {
+		font-size: 1.125rem;
+		font-weight: 500;}
+	
+	.InstagramInfo .Text {
+		font-size: 0.875rem}
+
+.InstagramGallery {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -501,17 +525,17 @@ dd {
 .InstagramRow {
 	display: flex;
 	justify-content: space-between;
-	height: 49.5%}
+	height: 33%}
 
 .InstagramPicture {
 	margin: 0px;
 	height: 100%;
-	width: 33%}
+	width: 49.7%}
 
-.InstagramPicture img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover}
+	.InstagramPicture img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover}
 
 /* LAYOUT CHANGES FOR TABLET DEVICES */
 @media screen and (max-width: 800px)
@@ -682,26 +706,6 @@ dd {
 		margin-left: 0}
 
 	/* COMPANY PROFILE */
-
-	.Box.Aspect {
-		display: none}
-
-	.Box.Aspect.Mobile {
-		display: flex;
-		padding-top: 133%}
-
-	.InstagramRow {
-		height: 33%}
-
-	.InstagramPicture {
-		margin: 0;
-		height: 100%;
-		width: 49.5%}
-
-	.InstagramPicture img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover}
 
 	.BadgeArea {
 		margin-top: 0}
