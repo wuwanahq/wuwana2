@@ -117,7 +117,7 @@
 				</div>
 			</div>
 
-			<h1>Empresas destacadas</h1>
+			<h2>Empresas destacadas</h2>
 			<div class="Box">
 				<a class="NoStyle" href="company">
 					<div class="Card">
@@ -187,7 +187,7 @@
 					</div>
 				</a>
 			</div>
-			<h1>Otras empresas</h1>
+			<h2>Otras empresas</h2>
 			<div class="Box">
 				<?php
 					$counter = count($companies);
