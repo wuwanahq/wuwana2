@@ -48,7 +48,10 @@
 				<h3 class="ProfileHeading">¿Por qué Camden Coffee Roaster?</h3>
 				<div class="BadgeArea Profile">
 					<div class="ItemLabel">
-						<img src="/static/badge/google-review.svg">
+						<div class="GoogleReview">
+								4,8
+								<span class="ReviewScale">/5</span>
+						</div>
 						<span class="Label Circle">Google review</span>
 					</div>
 					<div class="ItemLabel">

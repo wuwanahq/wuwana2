@@ -135,7 +135,10 @@
 							</div>
 							<div class="BadgeArea"><!-- Badge area -->
 								<div class="ItemLabel">
-									<img src="/static/badge/google-review.svg">
+									<div class="GoogleReview">
+											4,5
+											<span class="ReviewScale">/5</span>
+									</div>
 									<span class="Label Circle">Google review</span>
 								</div>
 								<div class="ItemLabel">
@@ -167,7 +170,10 @@
 							</div>
 							<div class="BadgeArea"><!-- Badge area -->
 								<div class="ItemLabel">
-									<img src="/static/badge/google-review.svg">
+									<div class="GoogleReview">
+											4,8
+											<span class="ReviewScale">/5</span>
+									</div>
 									<span class="Label Circle">Google review</span>
 								</div>
 								<div class="ItemLabel">
