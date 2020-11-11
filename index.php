@@ -9,6 +9,8 @@ spl_autoload_register(function($className) {
 });
 
 $db = new DataAccess\DataAccess(WebApp\WebApp::getDatabase());
+$user = new WebApp\UserSession($db);
+
 $categories = $db->getCategories();
 $locations = $db->getLocations(true);
 
@@ -39,10 +41,8 @@ if (filter_has_var(INPUT_GET, 'region'))
 	$limit = 0;
 }
 
-$user = null;
-
 if (filter_has_var(INPUT_POST, 'email'))
-{ $user = $db->getUser(filter_input(INPUT_POST, 'email')); }
+{ $user->login(filter_input(INPUT_POST, 'email')); }
 
 $companies = $db->getCompanies($selectedCategories, $selectedRegions, $limit);
 shuffle($companies);

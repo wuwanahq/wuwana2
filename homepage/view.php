@@ -31,7 +31,7 @@
 			<?php
 				if ($user != null)
 				{
-					echo $user->email;
+					echo $user->name;
 				}
 				elseif (filter_has_var(INPUT_GET, 'login'))
 				{

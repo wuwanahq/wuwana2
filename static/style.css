@@ -53,13 +53,20 @@ input[type="checkbox"] {
 	height: 16px;
 	margin: 0 8px 0 0}
 
-input, label {
+dl dd input,
+dl dd label {
 	vertical-align: middle;
-	/*cursor: pointer*/} /* Why? */
+	cursor: pointer}
 
-label {
+dl dd label {
 	font-weight: 400;
 	color: #545151}
+
+.Company .Profile form {
+	text-align: right}
+
+.Company .Profile form label {
+	font-size: 0.5rem}
 
 dl {
 	margin: 16px 16px 16px}
@@ -82,7 +89,6 @@ dd {
 /* CSS TO MAKE THE LAYOUT */
 
 .Container {
-	/*position: static;*/ /* Why? */
 	display: flex;
 	width: 100%;
 	max-width: 1200px;

@@ -31,9 +31,9 @@
 	</header>
 	<div class="Container">
 		<div class="ColumnLeft Company">
-			<div class="Box Profile"><!-- Company About -->
+			<div class="Box Profile">
 				<div class="Logo Profile">
-					<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
+					<img src="/static/favicon/96.png">
 				</div>
 				<h2 class="ProfileName">Camden Coffee Roaster</h2>
 				<div class="Category">
@@ -72,71 +72,84 @@
 						<span class="Label Circle">Whatsapp</span>
 					</div>
 				</div>
+				<form method="post">
+					<label for="permalink">Permanent link:</label>
+					<input id="permalink" type="text" size="26" value="https://wuwana.com/my-profile-page"><br>
+					<label for="insta">Instagram profile:</label>
+					<input id="insta" type="text" size="25" placeholder="https://instagram.com/username..."><br>
+					<label for="whatsapp">WhatsApp number:</label>
+					<input id="whatsapp" type="text" size="24" placeholder="+34 123 45 67 89"><br>
+					<label for="email">Email address:</label>
+					<input id="email" type="text" size="26" placeholder="me@email.com"><br>
+					<label for="website">Website URL:</label>
+					<input id="website" type="text" size="27" placeholder="https://www.my-website.com"><br>
+					<input type="submit" value="Update info sources">
+				</form>
 			</div>
 		</div>
 		<div class="ColumnMain">
 			<h1>Fotos de Camden Coffee Roaster en Instagram</h1>
 			<div class="Box Aspect">
-				<div class="Button Absolute"><img src="/static/icon/instagram.svg"> Ver en Instagram</div>
+				<div class="Button Absolute"><img src="/static/icon/instagram.svg">Ver en Instagram</div>
 
 				<div class="ProfileInstagram">
 					<div class="InstagramRow">
 						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+							<img src="/static/logo/square-azure.svg">
 						</div>
 						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+							<img src="/static/logo/square-citric.svg">
 						</div>
 						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+							<img src="/static/logo/square-factory-yellow.svg">
 						</div>
 					</div>
 					<div class="InstagramRow">
 						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png" >
+							<img src="/static/logo/square-storm.svg">
 						</div>
 						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+							<img src="/static/logo/square-sunflower.svg">
 						</div>
 						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+							<img src="/static/logo/square-tangerine.svg">
 						</div>
 					</div>
 				</div>
 			</div>
-
+			<!-- Code duplication for mobile -->
 			<div class="Box Aspect Mobile">
-				<div class="Button Absolute"><img src="/static/icon/instagram.svg"> Ver en Instagram</div>
+				<div class="Button Absolute"><img src="/static/icon/instagram.svg">Ver en Instagram</div>
 				<div class="ProfileInstagram">
 					<div class="InstagramRow">
 						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+							<img src="/static/logo/square-azure.svg">
 						</div>
 						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
-						</div>
-					</div>
-					<div class="InstagramRow">
-						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
-						</div>
-						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+							<img src="/static/logo/square-citric.svg">
 						</div>
 					</div>
 					<div class="InstagramRow">
 						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png" >
+							<img src="/static/logo/square-factory-yellow.svg">
 						</div>
 						<div class="InstagramPicture">
-							<img src="/static/background/ali-yahya-7_AZi5Fe-rU-unsplash.png">
+							<img src="/static/logo/square-storm.svg">
+						</div>
+					</div>
+					<div class="InstagramRow">
+						<div class="InstagramPicture">
+							<img src="/static/logo/square-sunflower.svg">
+						</div>
+						<div class="InstagramPicture">
+							<img src="/static/logo/square-tangerine.svg">
 						</div>
 					</div>
 				</div>
 			</div>
 			<h1>Mapa</h1>
 			<div class="Box Test"></div>
-			<div class="Button Center"><img src="/static/icon/home.svg"> Volver a la pagina principal</div>
+			<div class="Button Center"><img src="/static/icon/home.svg">Volver a la pagina principal</div>
 		</div>
 	</div>
 	<a href="#">

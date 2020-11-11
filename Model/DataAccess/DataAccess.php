@@ -140,32 +140,62 @@ class DataAccess
 		return Company::fetchObjects($stmt, $limit);
 	}
 
+	/**
+	 * Get the user with its email.
+	 * @param string $email Binary hash
+	 * @return \DataAccess\User
+	 */
 	public function getUser($email)
 	{
-		$email = $this->pdo->quote(trim($email));
+		$query = $this->pdo->prepare('select * from ' . User::TABLE_NAME . ' where Email=?');
+		$query->bindValue(1, $email, PDO::PARAM_LOB);
+		$query->execute();
+		$user = User::fetchObject($query);
 
-		$stmt = $this->pdo->query('select * from ' . User::TABLE_NAME . ' where Email=' . $email);
-		$user = User::fetchObject($stmt);
-
-		if ($user instanceof User)
+		if ($user ==! null)
 		{ return $user; }
 
 		$total = $this->pdo->query('select count(*) from ' . User::TABLE_NAME)->fetchColumn(0);
-		$companyID = $total === 0 ? '-1' : '0';
-		$code = rand(1000, 9999);
+		$companyID = $total == 0 ? '-1' : '0';
+		$code = rand(0, 32767);
 		$time = time();
 
-		$result = $this->pdo->exec("insert into " . User::TABLE_NAME
-			. "(Email,CompanyID,LastAccessCode,LastLogin) values ($email,$companyID,$code,$time)");
+		$query = $this->pdo->prepare(
+			'insert into ' . User::TABLE_NAME . ' (Email,CompanyID,AccessCode,LastLogin) values (?,?,?,?)');
 
-		if ($result == 0)  // or false
+		$query->bindValue(1, $email, PDO::PARAM_LOB);
+		$query->bindValue(2, $companyID, PDO::PARAM_INT);
+		$query->bindValue(3, $code, PDO::PARAM_INT);
+		$query->bindValue(4, $time, PDO::PARAM_INT);
+
+		if ($query->execute() == false)
 		{ return null; }
 
 		$user = new User();
 		$user->email = $email;
 		$user->company = $companyID;
-		$user->lastAccessCode = $code;
+		$user->accessCode = $code;
 		$user->lastLogin = $time;
 		return $user;
+	}
+
+	//TODO: public function setUserNewCode() {}
+
+	/**
+	 * Create a new user.
+	 * @param string $email
+	 * @param int $companyID
+	 * @return int Randomly generated code to login
+	 */
+	public function storeUser($email, $name, $companyID, $code)
+	{
+		$query = $this->pdo->prepare(
+			'insert into ' . User::TABLE_NAME . ' (Email,Name,CompanyID,AccessCode,LastLogin) values (?,?,?,?,0)');
+
+		$query->bindValue(1, $email, PDO::PARAM_LOB);
+		$query->bindValue(2, $name, PDO::PARAM_STR);
+		$query->bindValue(3, $companyID, PDO::PARAM_INT);
+		$query->bindValue(4, $code, PDO::PARAM_INT);
+		$query->execute();
 	}
 }

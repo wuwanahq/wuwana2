@@ -8,6 +8,12 @@ class Config {
 const
 
 /**
+ * Session lifetime.
+ * @var int Seconds
+ */
+SESSION_LIFETIME = 31536000,  // 365 days
+
+/**
  * Database Source Name (PDO DSN). Use SQLite by default if this value is empty.
  * Examples:
  * MySQL socket -> 'mysql:unix_socket=/var/run/mysqld/mysqld.sock;dbname=Wuwana'

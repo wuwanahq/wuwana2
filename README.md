@@ -3,7 +3,7 @@
 Simple business directory project used for https://wuwana.com
 
 Targeted browsers on desktop and mobile:  
-Mozilla Firefox 48+, Google Chrome 49+, Samsung Internet 5+, Microsoft Edge and Apple Safari 10+
+Mozilla Firefox 48+, Google Chrome 49+, Samsung Internet 5+, Apple Safari 10+, Microsoft Edge and Internet Explorer 11
 
 ## How to test locally
 
@@ -55,8 +55,9 @@ git clone https://github.com/wuwanahq/wuwana2.git
 - Modify the configuration's file for the database connection in `Model/WebApp/Config.php` and add your changes in Git:
 
 ```
-nano /var/www/wuwana2/Model/WebApp/Config.php
-git commit -a -m "local config"
+cd /var/www/wuwana2
+nano Model/WebApp/Config.php
+git update-index --skip-worktree Model/WebApp/Config.php
 ```
 
 - Open your browser then go to the "admin-wuwana" page to import your TSV files in the database.
