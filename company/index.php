@@ -5,7 +5,7 @@
  */
 
 spl_autoload_register(function($className) {
-	require '../Model/' . str_replace('\\', '/', $className) . '.php';
+	require '../Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
 $language = WebApp\WebApp::getLanguageCode();
