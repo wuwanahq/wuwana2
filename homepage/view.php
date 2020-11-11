@@ -25,10 +25,11 @@
 	<script src="/static/es5.js" defer></script>
 </head>
 <body>
+	<h1 class="VisuallyHidden">Wuwana</h1>
 	<header class="HeaderBar">
 		<div class="HeaderContainer">
-			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg"></a></div>
-			<div class="HeaderIcon" onclick="showMenu()"><img id="TestImg" src="/static/icon/menu.svg"></div>
+			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg" alt="Wuwana logo"></a></div>
+			<div class="HeaderIcon" onclick="showMenu()"><img id="TestImg" src="/static/icon/menu.svg" alt="Menu icon"></div>
 		</div>
 	</header>
 
@@ -112,7 +113,7 @@
 		<div class="ColumnMain Home">
 			<div class="Box Banner">
 				<div class="BannerText">
-					<h1 class="BannerTitle"><?php echo TEXT[5] ?></h1>
+					<h2 class="BannerTitle"><?php echo TEXT[5] ?></h2>
 					<p class="BannerSubtitle"><?php echo TEXT[6] ?></p>
 				</div>
 			</div>

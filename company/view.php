@@ -32,59 +32,87 @@
 	<div class="Container">
 		<div class="ColumnLeft Company">
 			<div class="Box Profile"><!-- Company About -->
-				<div class="Logo Profile">
-					<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
-				</div>
-				<h1 class="ProfileName">Camden Coffee Roaster</h1>
-				<div class="Category">
-					<span class="Label">Tostador</span>
-					<span class="Label">Cafeteria</span>
-				</div>
-				<div class="Tag Region">Cataluna</div>
-				<hr class="ProfileLine">
-				<h3 class="ProfileHeading">Sobre Camden Coffee Roaster</h3>
-				<br><br>
-				<hr class="ProfileLine">
-				<h3 class="ProfileHeading">¿Por qué Camden Coffee Roaster?</h3>
-				<div class="BadgeArea Profile">
-					<div class="ItemLabel">
-						<div class="GoogleReview">
-								4,8
-								<span class="ReviewScale">/5</span>
-						</div>
-						<span class="Label Circle">Google review</span>
+
+				<section class="CompanyAbout">	
+					<div class="Logo">
+						<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
 					</div>
-					<div class="ItemLabel">
-						<img src="/static/badge/sustainability.svg">
-						<span class="Label Circle">Sostenible</span>
-					</div>
-					<div class="ItemLabel">
-						<img src="/static/badge/social-impact.svg">
-						<span class="Label Circle">Compromiso social</span>
-					</div>
-				</div>
-				<hr class="ProfileLine">
-				<h3 class="ProfileHeading">Contacta con Camden Coffee Roaster</h3>
-				<div class="AboutSocial">
-					<div class="ItemLabel">
-						<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
-						<span class="Label Circle">Instagram</span>
-					</div>
-					<div class="ItemLabel">
-						<div class="Button Circle"><img src="/static/icon/whatsapp.svg"></div>
-						<span class="Label Circle">Whatsapp</span>
-					</div>
-				</div>
+					<h1>Camden Coffee Roaster</h1>
+					<ul class="Label">
+						<li>
+							Tostador
+						</li>
+						<li>
+							Cafeteria
+						</li>
+					</ul>
+					<div class="Tag Region">Cataluna</div>
+				</section>
+
+				<section class="CompanyDescription">
+					<hr>
+					<h3>Sobre Camden Coffee Roaster</h3>
+					<br><br>
+				</section>
+
+				<section class="CompanyWhy">
+					<hr>
+					<h3>¿Por qué Camden Coffee Roaster?</h3>
+					<ul>
+						<li>
+							<div class="ItemLabel">
+								<div class="GoogleReview">
+										4,8
+										<span class="ReviewScale">/5</span>
+								</div>
+								Google review
+							</div>
+						</li>
+						<li>
+							<div class="ItemLabel">
+								<img src="/static/badge/sustainability.svg">
+								Sostenible
+							</div>
+						</li>
+						<li>
+							<div class="ItemLabel">
+								<img src="/static/badge/social-impact.svg">
+								Compromiso social
+							</div>
+						</li>
+					</ul>
+				</section>
+				
+				<section class="ContactInfo">
+					<hr>
+					<h3>Contacta con Camden Coffee Roaster</h3>
+					<ul>
+						<li>
+							<a href="/">
+								<div class="ItemLabel">
+									<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
+									Instagram
+								</div>
+							</a>
+						</li>
+						<li>		
+							<a href="/">
+								<div class="ItemLabel">
+									<div class="Button Circle"><img src="/static/icon/whatsapp.svg"></div>
+									Whatsapp
+								</div>
+							</a>
+						</li>
+					</ul>
+				</section>
+
 			</div>
 		</div>
+
 		<div class="ColumnMain">
 			<section>
 				<h2>Camden Coffee Roaster en Instagram</h2>
 				<div class="Box">
-					<div class="Button Absolute">
-						<img src="/static/icon/instagram.svg">
-						Ver en Instagram
-					</div>
 					<div class="InstagramInfo">
 						<h3>Camden Coffee Roaster</h3>
 						<p>
@@ -146,6 +174,10 @@
 						</div>
 
 					</div>
+					<div class="Button Absolute">
+						<img src="/static/icon/instagram.svg">
+						Ver en Instagram
+					</div>
 				</div>
 			</section>
 
@@ -154,7 +186,7 @@
 				<div class="Box Test"></div>
 			</section>
 
-			<a href="/"
+			<a class="Center" href="/">
 				<div class="Button Center"><img src="/static/icon/home.svg"> Volver a la pagina principal</div>
 			</a>	
 		</div>

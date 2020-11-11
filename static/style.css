@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 body {
 	font-family: "Roboto", sans-serif;
 	display: flex;
@@ -12,7 +13,9 @@ body {
 	padding: 24px 16px}
 
 section {
-	width: 100%;}
+	width: 100%;
+	display: flex;
+	flex-direction: column;}
 
 html {
 	scroll-behavior: smooth}
@@ -130,7 +133,7 @@ dd {
 	padding: 4px;
 	margin-bottom: 8px}
 
-.Label {
+.Label li {
 	color: #8b8989;
 	font-size: 0.75rem;
 	line-height: 1.3;
@@ -186,7 +189,8 @@ dd {
 	max-width: 40px;
 	border-radius: 50%;
 	border-width: 2px;
-	padding: 0}
+	padding: 0;
+	margin-bottom: 4px;}
 
 .Label.Circle {
 	font-size: 0.5rem;
@@ -367,14 +371,6 @@ dd {
 	background-color: #ffffff;
 	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05)}
 
-.Box.Profile {
-	align-items: center;
-	padding-bottom: 8px}
-
-	.Box.Profile h1 {
-		line-height: 1.1;
-	}
-
 .Box.Filter {
 	overflow-y: scroll}
 
@@ -409,7 +405,7 @@ dd {
 	width: 100%}
 
 .AboutSocial {
-	max-width: 88%; /* This is to try to replicate padding 16px on left and right */
+	max-width: 90%; /* This is to try to replicate padding 16px on left and right */
 	margin: 8px 0 8px;
 	text-align: center;
 	justify-content: center;
@@ -417,17 +413,28 @@ dd {
 	flex-direction: row;
 	align-items: flex-start}
 
+	.AboutSocial a{
+		margin: 0px 4px}
+
 .ItemLabel {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 4px}
+	margin: 4px;
+	font-size: 0.5rem;
+	color: black;
+	margin: 4px 0px 0px;
+	max-width: 48px;
+	text-align: center}
 
-.ItemLabel:first-child {
-	margin-left: 0}
+	.ItemLabel:first-child {
+		margin-left: 0}
 
-.ItemLabel:last-child {
-	margin-right: 0}
+	.ItemLabel:last-child {
+		margin-right: 0}
+
+	.ItemLabel img {
+		margin-bottom: 4px}
 
 .Box.About .Button.Toggle {
 	display: none;}
@@ -460,35 +467,51 @@ dd {
 
 /* COMPANY PROFILE */
 
-.Logo.Profile {
-	margin: 16px 0px 8px}
+.Box.Profile {
+	align-items: center}
 
-.ProfileName {
-	max-width: 88%;
-	text-align: center;
-	margin-bottom: 8px}
+	.Box.Profile section {
+		margin: 0 0 8px;}
 
-.ProfileHeading {
-	max-width: 88%;
-	font-weight: 500;
-	text-align: left;
-	margin-bottom: 8px;
-	align-self: start;
-	margin-left: 16px}
+	.Box.Profile h1 {
+		line-height: 1.1;
+		max-width: 90%;
+		text-align: center;
+		margin-bottom: 8px}
 
-.Box.Profile .Tag.Region{
-	margin: 0 0 16px}
+	.Box.Profile h3 {
+		max-width: 90%;
+		font-weight: 500;
+		text-align: left;
+		margin-bottom: 8px;
+		align-self: start;
+		margin-left: 16px}
 
-.Box.Profile .Category {
-	margin-right: -4px}
+	.Box.Profile hr {
+		width: 100%;
+		margin-bottom: 16px}
 
-.ProfileLine {
-	width: 100%;
-	margin-bottom: 16px}
+	.Box.Profile ul {
+		padding-inline-start: 0;
+		display: flex;
+		align-self: center;
+		margin: 0 0 8px}
 
-.BadgeArea.Profile {
-	width: 90%; /* Replicate 16px margin*/
-	justify-content: center}
+	.Box.Profile li {
+		display: inline;
+		margin: 4px}
+
+	.Box.Profile .Logo {
+		margin: 8px 0px 8px}
+
+.CompanyAbout {
+	align-items: center;}
+
+	.CompanyAbout .Tag.Region {
+		margin: 8px 0px;
+	}
+
+/* Instagram Card*/
 
 .InstagramInfo {
 	margin: 16px;
@@ -503,7 +526,7 @@ dd {
 		display: inline}
 
 	.InstagramInfo .ItemLabel {
-		margin: 0 16px 8px 0}
+		margin: 0 24px 8px 0}
 
 	.InstagramInfo .Number {
 		font-size: 1.125rem;
@@ -540,6 +563,17 @@ dd {
 
 /* OTHER */
 
+.VisuallyHidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;}
+
 .GoogleReview {
 	display: flex;
 	justify-content: center;
@@ -551,7 +585,8 @@ dd {
 	color: #161313;
 	font-size: 20px;
 	font-weight: 500;
-	line-height: 1}
+	line-height: 1;
+	margin-bottom: 4px;}
 
 	.GoogleReview .ReviewScale {
 		font-size: 10px;
@@ -573,7 +608,6 @@ dd {
 
 	.HeaderIcon {
 		display: inline}
-
 
 	.Box.Banner {
 		min-height: 230px;
@@ -727,10 +761,6 @@ dd {
 		margin-right: 8px;
 		margin-left: 0}
 
-	/* COMPANY PROFILE */
-
-	.BadgeArea {
-		margin-top: 0}
 }
 
 /* RANDOM CLASSES... */
