@@ -192,13 +192,6 @@ dd {
 	padding: 0;
 	margin-bottom: 4px;}
 
-.Label.Circle {
-	font-size: 0.5rem;
-	color: black;
-	margin: 4px 0px 0px;
-	max-width: 48px;
-	text-align: center}
-
 .Button.Circle img {
 	margin: 8px}
 
@@ -361,19 +354,6 @@ dd {
 	justify-items: right;
 	margin-top: 8px}
 
-	.BadgeArea ul {
-		padding-inline-start: 0;
-		display: flex;
-		align-self: right;
-		margin: 0 0 8px}
-
-	.BadgeArea li {
-		display: inline;
-		margin: 4px}
-
-		.BadgeArea li:last-child {
-			margin-right: 0;}
-
 /* BOX */
 
 .Box {
@@ -435,21 +415,25 @@ dd {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 4px;
 	font-size: 0.5rem;
 	color: black;
-	margin: 4px 0px 0px;
+	margin: 4px 16px 0px 0px;
 	max-width: 48px;
 	text-align: center}
 
 	.ItemLabel:first-child {
 		margin-left: 0}
 
-	.ItemLabel:last-child {
-		margin-right: 0}
-
 	.ItemLabel img {
 		margin-bottom: 4px}
+
+	.ItemLabel span {
+		font-size: 0.5rem;
+		color: black;
+		margin: 0px;
+		max-width: 48px;
+		text-align: center
+	}
 
 .Box.About .Button.Toggle {
 	display: none;}

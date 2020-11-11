@@ -143,77 +143,27 @@
 									</ul>
 									<div class="Tag Region">Cataluna</div>
 								</div>
-								<div class="BadgeArea">
-									<ul>
-										<li>
-											<div class="ItemLabel">
-												<div class="GoogleReview">
-														4,8
-														<span class="ReviewScale">/5</span>
-												</div>
-												Google review
-											</div>
-										</li>
-										<li>
-											<div class="ItemLabel">
-												<img src="/static/badge/sustainability.svg">
-												Sostenible
-											</div>
-										</li>
-										<li>
-											<div class="ItemLabel">
-												<img src="/static/badge/social-impact.svg">
-												Compromiso social
-											</div>
-										</li>
-									</ul>
+								<div class="BadgeArea"><!-- Badge area -->
+									<div class="ItemLabel">
+										<div class="GoogleReview">
+											4,8
+											<span class="ReviewScale">/5</span>
+										</div>
+										Google review
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/sustainability.svg">
+										<span>Sostenible</span>
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/social-impact.svg">
+										<span>Compromiso social</span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</a>
 					<hr/>
-					<a href="company">
-						<div class="Card">
-							<div class="Logo">
-								<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
-							</div>
-							<div class="CompanyMain">
-								<div class="CompanyContent">
-									<h3>Company 1</h3>
-									<ul class="Label">
-										<li>Tostador</li>
-										<li>Cafeteria</li>
-									</ul>
-									<div class="Tag Region">Cataluna</div>
-								</div>
-								<div class="BadgeArea">
-									<ul>
-										<li>
-											<div class="ItemLabel">
-												<div class="GoogleReview">
-														4,8
-														<span class="ReviewScale">/5</span>
-												</div>
-												Google review
-											</div>
-										</li>
-										<li>
-											<div class="ItemLabel">
-												<img src="/static/badge/sustainability.svg">
-												Sostenible
-											</div>
-										</li>
-										<li>
-											<div class="ItemLabel">
-												<img src="/static/badge/social-impact.svg">
-												Compromiso social
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</a>
 				</div>
 			</section>
 
