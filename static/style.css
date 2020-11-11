@@ -333,8 +333,15 @@ dd {
 	align-items: flex-start;
 	margin-right: 24px}
 
-.Category {
-	margin-bottom: 8px}
+	.CompanyContent ul {
+		padding-inline-start: 0;
+		display: flex;
+		align-self: left;
+		margin: 0 0 8px}
+
+	.CompanyContent li {
+		display: inline;
+		margin: 4px 12px 0 0}
 
 .Tag.Region {
 	display: inline-block;
@@ -354,8 +361,18 @@ dd {
 	justify-items: right;
 	margin-top: 8px}
 
-	.BadgeArea .ItemLabel {
-		margin: 0 16px 8px 0}
+	.BadgeArea ul {
+		padding-inline-start: 0;
+		display: flex;
+		align-self: right;
+		margin: 0 0 8px}
+
+	.BadgeArea li {
+		display: inline;
+		margin: 4px}
+
+		.BadgeArea li:last-child {
+			margin-right: 0;}
 
 /* BOX */
 
@@ -382,8 +399,29 @@ dd {
 	align-items: center;
 	width: 100%}
 
+	.Hidden hr {
+		margin: 24px 0 16px}
+
 .Box.About {
 	align-items: center}
+
+	.Box.About p {
+		color: #545151;
+		font-size: 0.875rem;
+		line-height: 1.3;
+		text-align: center;
+		max-width: 90% /* This is to try to replicate padding 16px on left and right */}
+
+	.Box.About ul {
+		padding-inline-start: 0;
+		display: flex;
+		align-self: center;
+		margin: 0 0 8px;
+		max-width: 90%;/* This is to try to replicate padding 16px on left and right */}
+
+	.Box.About li {
+		display: inline;
+		margin: 4px}
 
 .AboutCover {
 	margin-bottom: 8px}
@@ -392,29 +430,6 @@ dd {
 	width: 100%;
 	height: 100%;
 	object-fit: cover}
-
-.AboutText {
-	color: #545151;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	text-align: center;
-	max-width: 90%} /* This is to try to replicate padding 16px on left and right */
-
-.AboutLine {
-	margin: 24px 0 16px;
-	width: 100%}
-
-.AboutSocial {
-	max-width: 90%; /* This is to try to replicate padding 16px on left and right */
-	margin: 8px 0 8px;
-	text-align: center;
-	justify-content: center;
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start}
-
-	.AboutSocial a{
-		margin: 0px 4px}
 
 .ItemLabel {
 	display: flex;
@@ -465,6 +480,7 @@ dd {
 	font-weight: 400;
 	margin: 0}
 
+
 /* COMPANY PROFILE */
 
 .Box.Profile {
@@ -488,7 +504,6 @@ dd {
 		margin-left: 16px}
 
 	.Box.Profile hr {
-		width: 100%;
 		margin-bottom: 16px}
 
 	.Box.Profile ul {

@@ -31,8 +31,7 @@
 	</header>
 	<div class="Container">
 		<div class="ColumnLeft Company">
-			<div class="Box Profile"><!-- Company About -->
-
+			<div class="Box Profile">
 				<section class="CompanyAbout">	
 					<div class="Logo">
 						<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
@@ -105,7 +104,6 @@
 						</li>
 					</ul>
 				</section>
-
 			</div>
 		</div>
 
@@ -180,17 +178,16 @@
 					</div>
 				</div>
 			</section>
-
 			<section>
 				<h2>Mapa</h2>
 				<div class="Box Test"></div>
 			</section>
-
 			<a class="Center" href="/">
 				<div class="Button Center"><img src="/static/icon/home.svg"> Volver a la pagina principal</div>
-			</a>	
+			</a>
 		</div>
 	</div>
+
 	<a href="#">
 		<div id="toTop" class="Button ToTop"><img src="/static/icon/arrow-circle-top.svg">Volver arriba</div>
 	</a>
