@@ -156,6 +156,14 @@
 										<span>Sostenible</span>
 									</div>
 									<div class="ItemLabel">
+										<img src="/static/badge/sustainability.svg">
+										<span>Sostenible</span>
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/sustainability.svg">
+										<span>Sostenible</span>
+									</div>
+									<div class="ItemLabel">
 										<img src="/static/badge/social-impact.svg">
 										<span>Compromiso social</span>
 									</div>

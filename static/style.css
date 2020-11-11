@@ -354,6 +354,9 @@ dd {
 	justify-items: right;
 	margin-top: 8px}
 
+	.BadgeArea .ItemLabel:last-child {
+		margin-right: 16px;}
+
 /* BOX */
 
 .Box {
@@ -423,6 +426,9 @@ dd {
 
 	.ItemLabel:first-child {
 		margin-left: 0}
+
+	.ItemLabel:last-child {
+		margin-right: 0;}
 
 	.ItemLabel img {
 		margin-bottom: 4px}
@@ -755,10 +761,6 @@ dd {
 		flex-wrap: wrap;
 		justify-content: flex-start;
 		align-items: flex-start}
-
-	.Badge {
-		margin-right: 8px;
-		margin-left: 0}
 
 }
 
