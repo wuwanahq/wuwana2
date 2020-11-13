@@ -9,6 +9,7 @@
 	<!-- Open Graph -->
 	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana" />
 	<meta property="og:type" content="website" />
+	<meta property="og:description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>" />
 
 	<!-- Open Graph Image -->
 	<meta property="og:image" content="/static/Wuwana-link-2020.png"/>
