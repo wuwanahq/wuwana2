@@ -6,6 +6,10 @@
 	<meta name="description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
 
+	<!-- Open Graph -->
+	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana" />
+	<meta property="og:type" content="website" />
+
 	<!-- Open Graph Image -->
 	<meta property="og:image" content="/static/Wuwana-link-2020.png"/>
 		<!--meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" /-->
