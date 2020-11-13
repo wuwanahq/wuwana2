@@ -1,27 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<?php include '../Templates/header.php' ?>
 	<title>Wuwana</title>
-	<link rel="icon" type="image/png" href="/static/favicon/16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="/static/favicon/32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/static/favicon/48.png" sizes="48x48">
-	<link rel="icon" type="image/png" href="/static/favicon/64.png" sizes="64x64">
-	<link rel="icon" type="image/png" href="/static/favicon/96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="/static/favicon/160.png" sizes="160x160">
-	<link rel="icon" type="image/png" href="/static/favicon/196.png" sizes="196x196">
-	<link rel="apple-touch-icon" href="/static/favicon/57.png" sizes="57x57">
-	<link rel="apple-touch-icon" href="/static/favicon/60.png" sizes="60x60">
-	<link rel="apple-touch-icon" href="/static/favicon/72.png" sizes="72x72">
-	<link rel="apple-touch-icon" href="/static/favicon/76.png" sizes="76x76">
-	<link rel="apple-touch-icon" href="/static/favicon/114.png" sizes="114x114">
-	<link rel="apple-touch-icon" href="/static/favicon/120.png" sizes="120x120">
-	<link rel="apple-touch-icon" href="/static/favicon/144.png" sizes="144x144">
-	<link rel="apple-touch-icon" href="/static/favicon/152.png" sizes="152x152">
-	<link rel="apple-touch-icon" href="/static/favicon/180.png" sizes="180x180">
-	<link rel="stylesheet" type="text/css" href="/static/style.css">
-	<script src="/static/es5.js" defer></script>
 </head>
 <body>
 	<header class="HeaderBar">
@@ -89,7 +70,7 @@
 								</div>
 							</a>
 						</li>
-						<li>		
+						<li>
 							<a href="/">
 								<div class="ItemLabel">
 									<div class="Button Circle">
@@ -101,6 +82,29 @@
 						</li>
 					</ul>
 				</section>
+				<?php
+					if (isset($user) && $user->isLogin() && $user->isAdmin())
+					{
+						echo '<form method="post">';
+						echo  '<label for="permalink">Permanent link:</label>';
+						echo  '<input id="permalink" type="text" size="26" value="https://wuwana.com/my-profile-page">';
+						echo  '<br>';
+						echo  '<label for="insta">Instagram profile:</label>';
+						echo  '<input id="insta" type="text" size="25" placeholder="https://instagram.com/username...">';
+						echo  '<br>';
+						echo  '<label for="whatsapp">WhatsApp number:</label>';
+						echo  '<input id="whatsapp" type="text" size="24" placeholder="+34 123 45 67 89"><br>';
+						echo  '<br>';
+						echo  '<label for="email">Email address:</label>';
+						echo  '<input id="email" type="text" size="26" placeholder="me@email.com"><br>';
+						echo  '<br>';
+						echo  '<label for="website">Website URL:</label>';
+						echo  '<input id="website" type="text" size="27" placeholder="https://www.my-website.com">';
+						echo  '<br>';
+						echo  '<input type="submit" value="Update info sources">';
+						echo '</form>';
+					}
+				?>
 			</div>
 		</div>
 		<div class="ColumnMain">
@@ -164,9 +168,7 @@
 									<img src="/static/logo/square-tangerine.svg">
 								</div>
 							</div>
-							
 						</div>
-
 					</div>
 					<div class="Button Absolute">
 						<img src="/static/icon/instagram.svg">

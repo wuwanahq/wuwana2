@@ -1,12 +1,12 @@
 <?php
-const TEXT = [
+const VIEW_TEXT = [
 0 => 'Specialty coffee',
 1 => 'Categories',
 2 => 'All categories',
 3 => 'Regions',
 4 => 'All regions',
-5 => 'Are you looking for specialty coffee?',
-6 => 'Find the providers you need quickly.',
+5 => '',
+6 => '',
 7 => 'What is Wuwana?',
 8 => 'The providers',
 9 => 'Go to Instagram',

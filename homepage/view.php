@@ -1,28 +1,8 @@
 <!DOCTYPE html>
 <html lang="<?php echo $language ?>">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta name="description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
-	<title><?php echo TEXT[0] ?> | Wuwana</title>
-	<link rel="icon" type="image/png" href="/static/favicon/16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="/static/favicon/32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/static/favicon/48.png" sizes="48x48">
-	<link rel="icon" type="image/png" href="/static/favicon/64.png" sizes="64x64">
-	<link rel="icon" type="image/png" href="/static/favicon/96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="/static/favicon/160.png" sizes="160x160">
-	<link rel="icon" type="image/png" href="/static/favicon/196.png" sizes="196x196">
-	<link rel="apple-touch-icon" href="/static/favicon/57.png" sizes="57x57">
-	<link rel="apple-touch-icon" href="/static/favicon/60.png" sizes="60x60">
-	<link rel="apple-touch-icon" href="/static/favicon/72.png" sizes="72x72">
-	<link rel="apple-touch-icon" href="/static/favicon/76.png" sizes="76x76">
-	<link rel="apple-touch-icon" href="/static/favicon/114.png" sizes="114x114">
-	<link rel="apple-touch-icon" href="/static/favicon/120.png" sizes="120x120">
-	<link rel="apple-touch-icon" href="/static/favicon/144.png" sizes="144x144">
-	<link rel="apple-touch-icon" href="/static/favicon/152.png" sizes="152x152">
-	<link rel="apple-touch-icon" href="/static/favicon/180.png" sizes="180x180">
-	<link rel="stylesheet" type="text/css" href="/static/style.css">
-	<script src="/static/es5.js" defer></script>
+	<?php include 'Templates/header.php' ?>
+	<title><?php echo VIEW_TEXT[0] ?> | Wuwana</title>
 </head>
 <body>
 	<h1 class="VisuallyHidden">Wuwana</h1>
@@ -97,11 +77,11 @@
 				<div class="Box Filter">
 					<form method="get" action="/">
 					<dl>
-						<dt><?php echo TEXT[1] ?></dt>
+						<dt><?php echo VIEW_TEXT[1] ?></dt>
 						<dd>
 							<input type="checkbox" name="cat" id="C0"
 								<?php echo $selectedCategories==[] ? ' checked disabled' : '' ?>>
-							<label for="C0"><?php echo TEXT[2] ?></label>
+							<label for="C0"><?php echo VIEW_TEXT[2] ?></label>
 						</dd>
 						<?php
 							foreach ($categories as $id => $languages)
@@ -116,11 +96,11 @@
 						?>
 					</dl>
 					<dl>
-						<dt><?php echo TEXT[3] ?></dt>
+						<dt><?php echo VIEW_TEXT[3] ?></dt>
 						<dd>
 							<input type="checkbox" name="region" id="R0"
 								<?php echo $selectedRegions==[] ? 'checked disabled' : '' ?>>
-							<label for="R0"><?php echo TEXT[4] ?></label>
+							<label for="R0"><?php echo VIEW_TEXT[4] ?></label>
 						</dd>
 						<?php
 							foreach ($locations as $id => $location)
@@ -142,11 +122,10 @@
 		<div class="ColumnMain">
 			<div class="Box Banner">
 				<div class="BannerText">
-					<h2 class="BannerTitle"><?php echo TEXT[5] ?></h2>
-					<p class="BannerSubtitle"><?php echo TEXT[6] ?></p>
+					<h2 class="BannerTitle"><?php echo TEMP_TEXT[0] ?></h2>
+					<p class="BannerSubtitle"><?php echo TEMP_TEXT[1] ?></p>
 				</div>
 			</div>
-
 			<section>
 				<h2>Empresas destacadas</h2>
 				<div class="Box">
@@ -195,7 +174,6 @@
 					<hr/>
 				</div>
 			</section>
-
 			<section>
 				<h2>Otras empresas</h2>
 				<div class="Box">
@@ -231,11 +209,9 @@
 					?>
 				</div>
 			</section>
-
 			<a class="Center" href="?show=all">
 				<div class="Button Center"><img src="static/icon/plus.svg">Ver mas empresas</div>
 			</a>
-
 		</div>
 	</div>
 	<a href="#">

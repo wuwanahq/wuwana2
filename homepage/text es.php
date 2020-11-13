@@ -1,12 +1,12 @@
 <?php
-const TEXT = [
+const VIEW_TEXT = [
 0 => 'Café de especialidad',
 1 => 'Categorías',
 2 => 'Todas las categorías',
 3 => 'Comunidades autónomas',
 4 => 'Todas las comunidades',
-5 => '¿Estás buscando café de especialidad?',
-6 => 'Encuentra los proveedores que necesitas rápidamente.',
+5 => '',
+6 => '',
 7 => '¿Qué es Wuwana?',
 8 => 'Las empresas',
 9 => 'Visitar Instagram',

@@ -8,6 +8,11 @@ use PDO;
  */
 class WebApp
 {
+	/**
+	 * Model factory for the database access.
+	 * @todo Data Access Object
+	 * @return PDO
+	 */
 	static function getDatabase()
 	{
 		$dbSource = Config::DB_SOURCE;
@@ -22,6 +27,10 @@ class WebApp
 		]);
 	}
 
+	/**
+	 * IETF codes (ISO 639).
+	 * @return string 2 characters
+	 */
 	static function getLanguageCode()
 	{
 		if (substr(filter_input(INPUT_SERVER, 'SERVER_NAME'), -2)  == 'es' || filter_input(INPUT_GET, 'lang') == 'es')
