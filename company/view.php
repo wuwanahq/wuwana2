@@ -32,124 +32,155 @@
 	<div class="Container">
 		<div class="ColumnLeft Company">
 			<div class="Box Profile">
-				<div class="Logo Profile">
-					<img src="/static/favicon/96.png">
-				</div>
-				<h2 class="ProfileName">Camden Coffee Roaster</h2>
-				<div class="Category">
-					<span class="Label">Tostador</span>
-					<span class="Label">Cafeteria</span>
-				</div>
-				<div class="Tag Region">Cataluna</div>
-				<hr class="ProfileLine">
-				<h3 class="ProfileHeading">Descripcion en Instagram</h3>
-				<br><br>
-				<hr class="ProfileLine">
-				<h3 class="ProfileHeading">Por que Camden Coffee Roaster?</h3>
-				<div class="BadgeArea Profile">
-					<div class="ItemLabelBadge">
-						<img src="/static/badge/google-review.svg">
-						<span class="Label Circle">Google review</span>
+				<section class="CompanyAbout">
+					<div class="Logo">
+						<img src="/static/favicon/96.png">
 					</div>
-					<div class="ItemLabelBadge">
-						<img src="/static/badge/sustainability.svg">
-						<span class="Label Circle">Sostenible</span>
-					</div>
-					<div class="ItemLabelBadge">
-						<img src="/static/badge/social-impact.svg">
-						<span class="Label Circle">Compromiso social</span>
-					</div>
-				</div>
-				<hr class="ProfileLine">
-				<h3 class="ProfileHeading">Contacta con Camden Coffee Roaster</h3>
-				<div class="AboutSocial">
-					<div class="ItemLabel">
-						<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
-						<span class="Label Circle">Instagram</span>
-					</div>
-					<div class="ItemLabel">
-						<div class="Button Circle"><img src="/static/icon/whatsapp.svg"></div>
-						<span class="Label Circle">Whatsapp</span>
-					</div>
-				</div>
-				<form method="post">
-					<label for="permalink">Permanent link:</label>
-					<input id="permalink" type="text" size="26" value="https://wuwana.com/my-profile-page"><br>
-					<label for="insta">Instagram profile:</label>
-					<input id="insta" type="text" size="25" placeholder="https://instagram.com/username..."><br>
-					<label for="whatsapp">WhatsApp number:</label>
-					<input id="whatsapp" type="text" size="24" placeholder="+34 123 45 67 89"><br>
-					<label for="email">Email address:</label>
-					<input id="email" type="text" size="26" placeholder="me@email.com"><br>
-					<label for="website">Website URL:</label>
-					<input id="website" type="text" size="27" placeholder="https://www.my-website.com"><br>
-					<input type="submit" value="Update info sources">
-				</form>
+					<h1>Camden Coffee Roaster</h1>
+					<ul class="Label">
+						<li>Tostador</li>
+						<li>Cafeteria</li>
+					</ul>
+					<div class="Tag Region">Cataluna</div>
+				</section>
+				<section class="CompanyDescription">
+					<hr>
+					<h3>Sobre Camden Coffee Roaster</h3>
+					<br><br>
+				</section>
+				<section class="CompanyWhy">
+					<hr>
+					<h3>¿Por qué Camden Coffee Roaster?</h3>
+					<ul>
+						<li>
+							<div class="ItemLabel">
+								<div class="GoogleReview">
+										4,8
+										<span class="ReviewScale">/5</span>
+								</div>
+								Google review
+							</div>
+						</li>
+						<li>
+							<div class="ItemLabel">
+								<img src="/static/badge/sustainability.svg">
+								Sostenible
+							</div>
+						</li>
+						<li>
+							<div class="ItemLabel">
+								<img src="/static/badge/social-impact.svg">
+								Compromiso social
+							</div>
+						</li>
+					</ul>
+				</section>
+				<section class="ContactInfo">
+					<hr>
+					<h3>Contacta con Camden Coffee Roaster</h3>
+					<ul>
+						<li>
+							<a href="/">
+								<div class="ItemLabel">
+									<div class="Button Circle">
+										<img src="/static/icon/instagram.svg">
+									</div>
+									Instagram
+								</div>
+							</a>
+						</li>
+						<li>		
+							<a href="/">
+								<div class="ItemLabel">
+									<div class="Button Circle">
+										<img src="/static/icon/whatsapp.svg">
+									</div>
+									Whatsapp
+								</div>
+							</a>
+						</li>
+					</ul>
+				</section>
 			</div>
 		</div>
 		<div class="ColumnMain">
-			<h1>Fotos de Camden Coffee Roaster en Instagram</h1>
-			<div class="Box Aspect">
-				<div class="Button Absolute"><img src="/static/icon/instagram.svg">Ver en Instagram</div>
+			<section>
+				<h2>Camden Coffee Roaster en Instagram</h2>
+				<div class="Box">
+					<div class="InstagramInfo">
+						<h3>Camden Coffee Roaster</h3>
+						<p>
+							🖤Sólo buen café<br>
+							☕️Specialty Coffee Roasters<br>
+							🛒Tienda y Cafetería<br>
+							👇🏼Haz tu pedido<br>
+							info@camdencoffeeroasters.com
+							camdencoffeeroasters.com/tienda
+						</p>
+						<ul>
+							<li>
+								<div class="ItemLabel">
+									<span class="Number">40</span>
+									<span class="Text">Posts</span>
+								</div>
+							</li>
+							<li>
+								<div class="ItemLabel">
+									<span class="Number">1.034</span>
+									<span class="Text">Followers</span>
+								</div>
+							</li>
+							<li>
+								<div class="ItemLabel">
+									<span class="Number">470</span>
+									<span class="Text">Following</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="Aspect2-3">
+						<div class="InstagramGallery">
+							<div class="InstagramRow">
+								<div class="InstagramPicture">
+									<img src="/static/logo/square-azure.svg">
+								</div>
+								<div class="InstagramPicture">
+									<img src="/static/logo/square-citric.svg">
+								</div>
+							</div>
+							<div class="InstagramRow">
+								<div class="InstagramPicture">
+									<img src="/static/logo/square-factory-yellow.svg">
+								</div>
+								<div class="InstagramPicture">
+									<img src="/static/logo/square-storm.svg">
+								</div>
+							</div>
+							<div class="InstagramRow">
+								<div class="InstagramPicture">
+									<img src="/static/logo/square-sunflower.svg">
+								</div>
+								<div class="InstagramPicture">
+									<img src="/static/logo/square-tangerine.svg">
+								</div>
+							</div>
+							
+						</div>
 
-				<div class="ProfileInstagram">
-					<div class="InstagramRow">
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-azure.svg">
-						</div>
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-citric.svg">
-						</div>
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-factory-yellow.svg">
-						</div>
 					</div>
-					<div class="InstagramRow">
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-storm.svg">
-						</div>
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-sunflower.svg">
-						</div>
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-tangerine.svg">
-						</div>
+					<div class="Button Absolute">
+						<img src="/static/icon/instagram.svg">
+						Ver en Instagram
 					</div>
 				</div>
-			</div>
-			<!-- Code duplication for mobile -->
-			<div class="Box Aspect Mobile">
-				<div class="Button Absolute"><img src="/static/icon/instagram.svg">Ver en Instagram</div>
-				<div class="ProfileInstagram">
-					<div class="InstagramRow">
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-azure.svg">
-						</div>
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-citric.svg">
-						</div>
-					</div>
-					<div class="InstagramRow">
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-factory-yellow.svg">
-						</div>
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-storm.svg">
-						</div>
-					</div>
-					<div class="InstagramRow">
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-sunflower.svg">
-						</div>
-						<div class="InstagramPicture">
-							<img src="/static/logo/square-tangerine.svg">
-						</div>
-					</div>
-				</div>
-			</div>
-			<h1>Mapa</h1>
-			<div class="Box Test"></div>
-			<div class="Button Center"><img src="/static/icon/home.svg">Volver a la pagina principal</div>
+			</section>
+			<section>
+				<h2>Mapa</h2>
+				<div class="Box Test"></div>
+			</section>
+			<a class="Center" href="/">
+				<div class="Button Center"><img src="/static/icon/home.svg"> Volver a la pagina principal</div>
+			</a>
 		</div>
 	</div>
 	<a href="#">

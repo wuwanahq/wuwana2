@@ -25,9 +25,10 @@
 	<script src="/static/es5.js" defer></script>
 </head>
 <body>
+	<h1 class="VisuallyHidden">Wuwana</h1>
 	<header class="HeaderBar">
 		<div class="HeaderContainer">
-			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg"></a></div>
+			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg" alt="Wuwana logo"></a></div>
 			<?php
 				if ($user->isLogin())
 				{
@@ -49,33 +50,41 @@
 				else
 				{
 					echo '<div class="HeaderIcon" onclick="showMenu()">';
-					echo  '<img id="TestImg" src="/static/icon/menu.svg">';
+					echo  '<img id="TestImg" src="/static/icon/menu.svg" alt="Menu icon">';
 					echo '</div>';
 				}
 			?>
 		</div>
 	</header>
 	<div class="Container">
-		<div class="ColumnLeft Home">
+		<div class="ColumnLeft">
 			<div class="Box About">
 				<div class="AboutCover">
 					<img src="/static/cover/oct2020.svg">
 				</div>
-				<p class="AboutText">Encontrar la informacion que necesitas deberia ser mas facil.</p>
+				<p>Encontrar la informacion que necesitas deberia ser mas facil.</p>
 				<div class="Hidden" id="AboutUs">
 					<div class="Button">Descubre que es Wuwana</div>
-					<hr class="AboutLine">
+					<hr>
 					<h3>Contactanos</h3>
-					<div class="AboutSocial">
-						<div class="ItemLabel">
-							<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
-							<span class="Label Circle">Instagram</span>
-						</div>
-						<div class="ItemLabel">
-							<div class="Button Circle"><img src="/static/icon/whatsapp.svg"></div>
-							<span class="Label Circle">Whatsapp</span>
-						</div>
-					</div>
+					<ul>
+						<li>
+							<a href="/">
+								<div class="ItemLabel">
+									<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
+									Instagram
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="/">
+								<div class="ItemLabel">
+									<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
+									Instagram
+								</div>
+							</a>
+						</li>
+					</ul>
 				</div>
 				<hr>
 				<div class="Button Toggle" onclick="hide()">
@@ -83,7 +92,7 @@
 					<label class="TextButton" id="ToggleAboutUsLabel">Ver mas</label>
 				</div>
 			</div>
-			<div class="Sticky" id="menu">
+			<section class="Sticky" id="menu">
 				<h2>Personaliza la buqueda</h2>
 				<div class="Box Filter">
 					<form method="get" action="/">
@@ -128,122 +137,105 @@
 					</form>
 					<div class="Button Center"><img src="/static/icon/filter.svg">Aplicar filtros</div>
 				</div>
-			</div>
+			</section>
 		</div>
-		<div class="ColumnMain Home">
+		<div class="ColumnMain">
 			<div class="Box Banner">
 				<div class="BannerText">
-					<h1 class="BannerTitle"><?php echo TEXT[5] ?></h1>
+					<h2 class="BannerTitle"><?php echo TEXT[5] ?></h2>
 					<p class="BannerSubtitle"><?php echo TEXT[6] ?></p>
 				</div>
 			</div>
 
-			<h1>Empresas destacadas</h1>
-			<div class="Box">
-				<a class="NoStyle" href="company">
-					<div class="Card">
-						<div class="Logo">
-							<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
-						</div>
-						<div class="CompanyMain">
-							<div class="CompanyContent">
-								<h3>Company 1</h3>
-								<div class="Category">
-									<span class="Label">Tostador</span>
-									<span class="Label">Cafeteria</span>
-								</div>
-								<div class="Tag Region">Cataluna</div>
+			<section>
+				<h2>Empresas destacadas</h2>
+				<div class="Box">
+					<a href="company">
+						<div class="Card">
+							<div class="Logo">
+								<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
 							</div>
-							<div class="BadgeArea"><!-- Badge area -->
-								<div class="ItemLabelBadge">
-									<img src="/static/badge/google-review.svg">
-									<span class="Label Circle">Google review</span>
+							<div class="CompanyMain">
+								<div class="CompanyContent">
+									<h3>Company 1</h3>
+									<ul class="Label">
+										<li>Tostador</li>
+										<li>Cafeteria</li>
+									</ul>
+									<div class="Tag Region">Cataluna</div>
 								</div>
-								<div class="ItemLabelBadge">
-									<img src="/static/badge/sustainability.svg">
-									<span class="Label Circle">Sostenible</span>
-								</div>
-								<div class="ItemLabelBadge">
-									<img src="/static/badge/social-impact.svg">
-									<span class="Label Circle">Compromiso social</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</a>
-				<hr/>
-				<a href="company">
-					<div class="Card">
-						<div class="Logo">
-							<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
-						</div>
-						<div class="CompanyMain">
-							<div class="CompanyContent">
-								<h3>Company Long Name</h3>
-								<div class="Category">
-									<span class="Label">Tostador</span>
-									<span class="Label">Cafeteria</span>
-								</div>
-								<div class="Tag Region">Cataluna</div>
-							</div>
-							<div class="BadgeArea"><!-- Badge area -->
-								<div class="ItemLabelBadge">
-									<img src="/static/badge/google-review.svg">
-									<span class="Label Circle">Google review</span>
-								</div>
-								<div class="ItemLabelBadge">
-									<img src="/static/badge/sustainability.svg">
-									<span class="Label Circle">Sostenible</span>
-								</div>
-								<div class="ItemLabelBadge">
-									<img src="/static/badge/social-impact.svg">
-									<span class="Label Circle">Compromiso social</span>
-								</div>
-								<div class="ItemLabelBadge">
-									<img src="/static/badge/sca.svg">
-									<span class="Label Circle">Certificado</span>
+								<div class="BadgeArea"><!-- Badge area -->
+									<div class="ItemLabel">
+										<div class="GoogleReview">
+											4,8
+											<span class="ReviewScale">/5</span>
+										</div>
+										Google review
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/sustainability.svg">
+										<span>Sostenible</span>
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/sustainability.svg">
+										<span>Sostenible</span>
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/sustainability.svg">
+										<span>Sostenible</span>
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/social-impact.svg">
+										<span>Compromiso social</span>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</a>
-			</div>
-			<h1>Otras empresas</h1>
-			<div class="Box">
-				<?php
-					$counter = count($companies);
+					</a>
+					<hr/>
+				</div>
+			</section>
 
-					foreach ($companies as $company)
-					{
-						echo '<a href="company">';
-						echo  '<div class="Card">';
-						echo   '<div class="Logo">';
-						echo    '<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">';
-						echo   '</div>';
-						echo   '<div class="CompanyMain">';
-						echo    '<div class="CompanyContent">';
-						echo     '<h3>', $company->name, '</h3>';
-						echo     '<div class="Category">';
+			<section>
+				<h2>Otras empresas</h2>
+				<div class="Box">
+					<?php
+						$counter = count($companies);
 
-						foreach ($company->categories as $category)
-						{ echo '<span class="Label">', $categories[$category][$language], '</span>'; }
+						foreach ($companies as $company)
+						{
+							echo '<a href="company">';
+							echo  '<div class="Card">';
+							echo   '<div class="Logo">';
+							echo    '<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">';
+							echo   '</div>';
+							echo   '<div class="CompanyMain">';
+							echo    '<div class="CompanyContent">';
+							echo     '<h3>', $company->name, '</h3>';
+							echo     '<ul class="Label">';
 
-						echo     '</div>';
-						echo     '<div class="Tag Region">', $locations[$company->region]->region, '</div>';
-						echo    '</div>';
-						echo    '<div class="BadgeArea"></div>';
-						echo   '</div>';
-						echo  '</div>';
-						echo '</a>';
+							foreach ($company->categories as $category)
+							{ echo '<li>', $categories[$category][$language], '</li>'; }
 
-						if (--$counter > 0)
-						{ echo '<hr>'; }
-					}
-				?>
-			</div>
+							echo     '</ul>';
+							echo     '<div class="Tag Region">', $locations[$company->region]->region, '</div>';
+							echo    '</div>';
+							echo    '<div class="BadgeArea"></div>';
+							echo   '</div>';
+							echo  '</div>';
+							echo '</a>';
+
+							if (--$counter > 0)
+							{ echo '<hr>'; }
+						}
+					?>
+				</div>
+			</section>
+
 			<a class="Center" href="?show=all">
 				<div class="Button Center"><img src="static/icon/plus.svg">Ver mas empresas</div>
 			</a>
+
 		</div>
 	</div>
 	<a href="#">
