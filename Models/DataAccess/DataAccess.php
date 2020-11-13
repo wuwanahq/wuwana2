@@ -18,7 +18,14 @@ class DataAccess
 
 	private function createDatabase()
 	{
-		foreach ([Category::getTableSchema(), Location::getTableSchema(), Company::getTableSchema()] as $sql)
+		$tables = [
+			Category::getTableSchema(),
+			Location::getTableSchema(),
+			Company::getTableSchema(),
+			User::getTableSchema()
+		];
+
+		foreach ($tables as $sql)
 		{
 			$result = $this->pdo->exec($sql);
 
@@ -36,6 +43,7 @@ class DataAccess
 			case 'Category': $sql = Category::getTableSchema(); break;
 			case 'Location': $sql = Location::getTableSchema(); break;
 			case 'Company':  $sql = Company::getTableSchema(); break;
+			case 'User':  $sql = User::getTableSchema(); break;
 			default: return;
 		}
 
@@ -152,42 +160,21 @@ class DataAccess
 		$query->execute();
 		$user = User::fetchObject($query);
 
-		if ($user ==! null)
-		{ return $user; }
-
-		$total = $this->pdo->query('select count(*) from ' . User::TABLE_NAME)->fetchColumn(0);
-		$companyID = $total == 0 ? '-1' : '0';
-		$code = rand(0, 32767);
-		$time = time();
-
-		$query = $this->pdo->prepare(
-			'insert into ' . User::TABLE_NAME . ' (Email,CompanyID,AccessCode,LastLogin) values (?,?,?,?)');
-
-		$query->bindValue(1, $email, PDO::PARAM_LOB);
-		$query->bindValue(2, $companyID, PDO::PARAM_INT);
-		$query->bindValue(3, $code, PDO::PARAM_INT);
-		$query->bindValue(4, $time, PDO::PARAM_INT);
-
-		if ($query->execute() == false)
+		if ($user == null)
 		{ return null; }
 
-		$user = new User();
-		$user->email = $email;
-		$user->company = $companyID;
-		$user->accessCode = $code;
-		$user->lastLogin = $time;
 		return $user;
 	}
-
-	//TODO: public function setUserNewCode() {}
 
 	/**
 	 * Create a new user.
 	 * @param string $email
+	 * @param string $name Username
 	 * @param int $companyID
-	 * @return int Randomly generated code to login
+	 * @param int $code
+	 * @return bool TRUE on success or FALSE on failure
 	 */
-	public function storeUser($email, $name, $companyID, $code)
+	public function insertUser($email, $name, $companyID, $code)
 	{
 		$query = $this->pdo->prepare(
 			'insert into ' . User::TABLE_NAME . ' (Email,Name,CompanyID,AccessCode,LastLogin) values (?,?,?,?,0)');
@@ -196,6 +183,22 @@ class DataAccess
 		$query->bindValue(2, $name, PDO::PARAM_STR);
 		$query->bindValue(3, $companyID, PDO::PARAM_INT);
 		$query->bindValue(4, $code, PDO::PARAM_INT);
+		return $query->execute();
+	}
+
+	public function updateUserCode($email, $code)
+	{
+		$query = $this->pdo->prepare(
+			'update ' . User::TABLE_NAME . ' set AccessCode=?,LastLogin=? where Email=?');
+
+		$query->bindValue(1, $code, PDO::PARAM_INT);
+		$query->bindValue(2, time(), PDO::PARAM_INT);
+		$query->bindValue(3, $email, PDO::PARAM_LOB);
 		$query->execute();
+	}
+
+	public function countUser()
+	{
+		return (int)$this->pdo->query('select count(*) from ' . User::TABLE_NAME)->fetchColumn(0);
 	}
 }

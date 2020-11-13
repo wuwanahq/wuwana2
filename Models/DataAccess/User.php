@@ -20,6 +20,7 @@ class User
 	];
 
 	public $email;
+	public $name;
 	public $company;
 	public $accessCode;
 	public $lastLogin;
@@ -38,15 +39,15 @@ class User
 	{
 		$row = $query->fetch(PDO::FETCH_ASSOC);
 
-		if (!isset($row[0]))
+		if (empty($row['Email']))
 		{ return null; }
 
 		$user = new User();
-		$user->email = $row[0]['Email'];
-		$user->name = $row[0]['Name'];
-		$user->company = $row[0]['CompanyID'];
-		$user->accessCode = $row[0]['AccessCode'];
-		$user->lastLogin = $row[0]['LastLogin'];
+		$user->email = $row['Email'];
+		$user->name = $row['Name'];
+		$user->company = $row['CompanyID'];
+		$user->accessCode = $row['AccessCode'];
+		$user->lastLogin = $row['LastLogin'];
 
 		return $user;
 	}

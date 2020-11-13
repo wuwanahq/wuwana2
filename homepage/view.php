@@ -29,15 +29,21 @@
 		<div class="HeaderContainer">
 			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg"></a></div>
 			<?php
-				if ($user != null)
+				if ($user->isLogin())
 				{
-					echo $user->name;
+					echo '<span>';
+					echo  $user->isAdmin() ? '<a href="/admin">Admin page</a>' : $user->companyID;
+					echo  ' | ', $_SESSION['Name'];
+					echo '</span>';
 				}
 				elseif (filter_has_var(INPUT_GET, 'login'))
 				{
 					echo '<form method="post">';
 					echo  '<label for="email">Email: </label>';
-					echo  '<input id="email" type="text" name="email"> <input type="submit" value="Login">';
+					echo  '<input id="email" type="text" name="email">';
+					echo  ' <input type="button" value="Send email" onclick="askEmail()">';
+					echo  '<label for="code">Code: </label>';
+					echo  '<input id="code" type="password" name="code"> <input type="submit" value="Login">';
 					echo '</form>';
 				}
 				else

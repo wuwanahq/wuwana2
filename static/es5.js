@@ -49,6 +49,18 @@ function handleEventChangeFilterAll()
 	{ this.form.submit(); }
 }
 
+function askEmail()
+{
+	var email = document.getElementById("email").value;
+	var form = new FormData();
+	var xhr = new XMLHttpRequest();
+
+	form.append("email", email);
+
+	xhr.open("post", "/ajax/email.php");
+	xhr.send(form);
+}
+
 // Show menu
 function showMenu()
 {
@@ -79,7 +91,7 @@ window.addEventListener("resize", () => {
 	{
 		menu.style.display = "block";
 	}
-	else 
+	else
 	{
 		menu.style.display = "none";
 	}
@@ -119,7 +131,7 @@ window.addEventListener("resize", () => {
 	{
 		aboutUS.style.display = "flex";
 	}
-	else 
+	else
 	{
 		aboutUS.style.display = "none";
 		img.src = "static/icon/chevron-down.svg";
