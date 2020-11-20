@@ -1,6 +1,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="<?php echo TEMP_TEXT[0], ' ', TEMP_TEXT[1] ?>">
+<meta property="og:type" content="website" />
+<meta property="og:description" content="<?php echo TEMP_TEXT[0], ' ', TEMP_TEXT[1] ?>" />
+<meta property="og:image" content="/static/Wuwana-link-2020.png"/>
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1264" />
+<meta property="og:image:height" content="640" />
+<meta property="og:image:alt" content="mosaic tiles of the wuwana logo in several colours" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wuwanahq">
+<meta name="twitter:creator" content="@wuwanahq">
+<meta name="twitter:description" content="<?php echo TEMP_TEXT[0], ' ', TEMP_TEXT[1] ?>">
+<meta name="twitter:image" content="https://wuwana.com/static/Wuwana-link-2020.png">
+<meta name="twitter:image:alt" content="mosaic tiles of the wuwana logo in several colours" />
 <link rel="icon" type="image/png" href="/static/favicon/16.png" sizes="16x16">
 <link rel="icon" type="image/png" href="/static/favicon/32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="/static/favicon/48.png" sizes="48x48">

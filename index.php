@@ -8,10 +8,8 @@ spl_autoload_register(function($className) {
 	require 'Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-$db = new DataAccess\DataAccess(WebApp\WebApp::getDatabase());
-
-$categories = $db->getCategories();
-$locations = $db->getLocations(true);
+$categories = WebApp\Data::getCategory()->selectAll();
+$locations = WebApp\Data::getLocation()->selectUsefulItemsOnly();
 
 $limit = filter_has_var(INPUT_GET, 'show') ? 0 : 8;
 
@@ -40,12 +38,12 @@ if (filter_has_var(INPUT_GET, 'region'))
 	$limit = 0;
 }
 
-$user = new WebApp\UserSession($db);
+$user = new WebApp\UserSession(WebApp\Data::getUser());
 
 if(filter_has_var(INPUT_GET, 'logout'))
 { $user->logout(); }
 
-$companies = $db->getCompanies($selectedCategories, $selectedRegions, $limit);
+$companies = WebApp\Data::getCompany()->selectCategoriesRegions($selectedCategories, $selectedRegions, $limit);
 shuffle($companies);
 
 $language = WebApp\WebApp::getLanguageCode();

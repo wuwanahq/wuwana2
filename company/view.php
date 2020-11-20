@@ -2,7 +2,9 @@
 <html>
 <head>
 	<?php include '../Templates/header.php' ?>
-	<title>Wuwana</title>
+	<meta name="twitter:title" content="<?php echo $company->name ?> | Wuwana">
+	<meta property="og:title" content="<?php echo $company->name ?> | Wuwana" />
+	<title><?php echo $company->name ?> | Wuwana</title>
 </head>
 <body>
 	<header class="HeaderBar">
@@ -15,23 +17,46 @@
 			<div class="Box Profile">
 				<section class="CompanyAbout">
 					<div class="Logo">
-						<img src="/static/favicon/96.png">
+						<img src="<?php echo $company->logo ?>">
 					</div>
-					<h1>Camden Coffee Roaster</h1>
+					<h1><?php echo $company->name ?></h1>
+					<?php
+						if (isset($user) && $user->isLogin() && $user->isAdmin())
+						{
+							echo '<form method="post">';
+							echo  '<textarea></textarea><br>';
+							echo  '<input type="submit" value="Update description">';
+							echo '</form>';
+						}
+					?>
 					<ul class="Label">
-						<li>Tostador</li>
-						<li>Cafeteria</li>
+						<?php
+							foreach ($company->tags as $tag)
+							{ echo '<li>', $tag, '</li>'; }
+						?>
 					</ul>
 					<div class="Tag Region">Cataluna</div>
 				</section>
 				<section class="CompanyDescription">
 					<hr>
-					<h3>Sobre Camden Coffee Roaster</h3>
+					<?php
+						if (isset($user) && $user->isLogin() && $user->isAdmin())
+						{
+							echo '<form method="post">';
+							echo  '<input type="text" placeholder="New company"><br>';
+							echo  '<input type="submit" value="Update name">';
+							echo '</form>';
+						}
+						else
+						{
+							echo '<h3>', $company->description, '</h3>';
+						}
+					?>
 					<br><br>
 				</section>
 				<section class="CompanyWhy">
 					<hr>
-					<h3>¿Por qué Camden Coffee Roaster?</h3>
+					<h3><?php printf(VIEW_TEXT[0], $company->name) ?></h3>
 					<ul>
 						<li>
 							<div class="ItemLabel">
@@ -58,7 +83,7 @@
 				</section>
 				<section class="ContactInfo">
 					<hr>
-					<h3>Contacta con Camden Coffee Roaster</h3>
+					<h3><?php printf(VIEW_TEXT[1], $company->name) ?></h3>
 					<ul>
 						<li>
 							<a href="/">
@@ -108,85 +133,77 @@
 			</div>
 		</div>
 		<div class="ColumnMain">
+			<?php
+				foreach ($company->socialMedias as $socialMedia)
+				{
+					if ($socialMedia->getType() != 'instagram')
+					{ continue; }
+
+					echo '<section>';
+					echo  '<h2>', sprintf(VIEW_TEXT[2], $company->name), '</h2>';
+					echo  '<div class="Box">';
+					echo   '<div class="InstagramInfo">';
+					echo    '<h3>', $socialMedia->profileName, '</h3>';
+					echo    '<p>', $socialMedia->biography, '<br>', $socialMedia->link, '</p>';
+					echo    '<ul>';
+					echo     '<li>';
+					echo      '<div class="ItemLabel">';
+					echo       '<span class="Number">', $socialMedia->instagramNbPost, '</span>';
+					echo       '<span class="Text">Posts</span>';
+					echo      '</div>';
+					echo     '</li>';
+					echo     '<li>';
+					echo      '<div class="ItemLabel">';
+					echo       '<span class="Number">', $socialMedia->instagramNbFollower, '</span>';
+					echo       '<span class="Text">Followers</span>';
+					echo      '</div>';
+					echo     '</li>';
+					echo     '<li>';
+					echo      '<div class="ItemLabel">';
+					echo       '<span class="Number">', $socialMedia->instagramNbFollowing, '</span>';
+					echo       '<span class="Text">Following</span>';
+					echo      '</div>';
+					echo     '</li>';
+					echo    '</ul>';
+					echo   '</div>';
+					echo   '<div class="Aspect2-3">';
+					echo    '<div class="InstagramGallery">';
+					echo     '<div class="InstagramRow">';
+					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[0], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[1], '"></div>';
+					echo     '</div>';
+					echo     '<div class="InstagramRow">';
+					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[2], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[3], '"></div>';
+					echo     '</div>';
+					echo     '<div class="InstagramRow">';
+					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[4], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[5], '"></div>';
+					echo     '</div>';
+					echo    '</div>';
+					echo   '</div>';
+					echo   '<div class="Button Absolute">';
+					echo    '<a href="', $socialMedia->url, '" target="_blank">';
+					echo     '<img src="/static/icon/instagram.svg">', VIEW_TEXT[6];
+					echo    '</a>';
+					echo   '</div>';
+					echo  '</div>';
+					echo '</section>';
+				}
+			?>
 			<section>
-				<h2>Camden Coffee Roaster en Instagram</h2>
-				<div class="Box">
-					<div class="InstagramInfo">
-						<h3>Camden Coffee Roaster</h3>
-						<p>
-							🖤Sólo buen café<br>
-							☕️Specialty Coffee Roasters<br>
-							🛒Tienda y Cafetería<br>
-							👇🏼Haz tu pedido<br>
-							info@camdencoffeeroasters.com
-							camdencoffeeroasters.com/tienda
-						</p>
-						<ul>
-							<li>
-								<div class="ItemLabel">
-									<span class="Number">40</span>
-									<span class="Text">Posts</span>
-								</div>
-							</li>
-							<li>
-								<div class="ItemLabel">
-									<span class="Number">1.034</span>
-									<span class="Text">Followers</span>
-								</div>
-							</li>
-							<li>
-								<div class="ItemLabel">
-									<span class="Number">470</span>
-									<span class="Text">Following</span>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="Aspect2-3">
-						<div class="InstagramGallery">
-							<div class="InstagramRow">
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-azure.svg">
-								</div>
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-citric.svg">
-								</div>
-							</div>
-							<div class="InstagramRow">
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-factory-yellow.svg">
-								</div>
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-storm.svg">
-								</div>
-							</div>
-							<div class="InstagramRow">
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-sunflower.svg">
-								</div>
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-tangerine.svg">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="Button Absolute">
-						<img src="/static/icon/instagram.svg">
-						Ver en Instagram
-					</div>
-				</div>
-			</section>
-			<section>
-				<h2>Mapa</h2>
+				<h2><?php echo VIEW_TEXT[3] ?></h2>
 				<div class="Box Test"></div>
 			</section>
 			<a class="Center" href="/">
-				<div class="Button Center"><img src="/static/icon/home.svg"> Volver a la pagina principal</div>
+				<div class="Button Center"><img src="/static/icon/home.svg"><?php echo VIEW_TEXT[4] ?></div>
 			</a>
 		</div>
 	</div>
 	<a href="#">
-		<div id="toTop" class="Button ToTop"><img src="/static/icon/arrow-circle-top.svg">Volver arriba</div>
+		<div id="toTop" class="Button ToTop">
+			<img src="/static/icon/arrow-circle-top.svg"><?php echo VIEW_TEXT[5] ?>
+		</div>
 	</a>
 </body>
 </html>

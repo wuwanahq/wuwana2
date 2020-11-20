@@ -1,31 +1,50 @@
 <?php
 namespace DataAccess;
 use PDO;
-use PDOStatement;
 
 /**
- * Data Access Object for company categories.
+ * Data access layer for stored categories.
  * @author Vince <vincent.boursier@gmail.com>
  */
-class Category
+class Category extends DataAccess
 {
-	const TABLE_NAME = 'Category';
-	const COLUMNS = [
-		'ID'      => PDO::PARAM_INT,
-		'English' => PDO::PARAM_STR,
-		'Spanish' => PDO::PARAM_STR,
-	];
-
-	static function getTableSchema()
+	private function createTable()
 	{
-		return 'create table ' . self::TABLE_NAME . ' ('
+		$result = $this->pdo->exec(
+			'create table Category ('
 			. 'ID smallint primary key,'
 			. 'English varchar(255) not null,'
-			. 'Spanish varchar(255) not null)';
+			. 'Spanish varchar(255) not null)');
+
+		if ($result === false)
+		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
 	}
 
-	static function fetchObjects(PDOStatement $stmt)
+	public function importData($filePath)
 	{
+		if ($this->pdo->exec('drop table Category') === false)
+		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
+
+		$this->createTable();
+
+		parent::insertData($filePath, 'Category', [
+			'ID'      => PDO::PARAM_INT,
+			'English' => PDO::PARAM_STR,
+			'Spanish' => PDO::PARAM_STR,
+		]);
+	}
+
+	public function selectAll()
+	{
+		$sql = 'select * from Category';
+		$stmt = $this->pdo->query($sql);
+
+		if ($stmt == false)
+		{
+			$this->createTable();
+			$stmt = $this->pdo->query($sql);
+		}
+
 		$categories = [];
 
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))

@@ -2,6 +2,8 @@
 <html lang="<?php echo $language ?>">
 <head>
 	<?php include 'Templates/header.php' ?>
+	<meta name="twitter:title" content="<?php echo VIEW_TEXT[0] ?> | Wuwana">
+	<meta property="og:title" content="<?php echo VIEW_TEXT[0] ?> | Wuwana" />
 	<title><?php echo VIEW_TEXT[0] ?> | Wuwana</title>
 </head>
 <body>
