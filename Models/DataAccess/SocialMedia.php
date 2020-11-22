@@ -43,10 +43,9 @@ class SocialMedia
 		$this->pictures = [];
 	}
 
-	private function createTable()
+	static function getTableSchema()
 	{
-		$result = $this->pdo->exec(
-			'create table SocialMedia ('
+		return 'create table SocialMedia ('
 			. 'ID int primary key,'
 			. 'URL varchar(255) not null,'
 			. 'CompanyID int not null,'
@@ -55,10 +54,7 @@ class SocialMedia
 			. 'Link varchar(255) not null,'
 			. 'Counter1 int not null,'
 			. 'Counter2 int not null,'
-			. 'Counter3 int not null)');
-
-		if ($result === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
+			. 'Counter3 int not null)';
 	}
 
 	public function getType()

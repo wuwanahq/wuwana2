@@ -2,15 +2,15 @@
 <html lang="<?php echo $language ?>">
 <head>
 	<?php include 'Templates/header.php' ?>
-	<meta name="twitter:title" content="<?php echo VIEW_TEXT[0] ?> | Wuwana">
-	<meta property="og:title" content="<?php echo VIEW_TEXT[0] ?> | Wuwana" />
-	<title><?php echo VIEW_TEXT[0] ?> | Wuwana</title>
+	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
+	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana" />
+	<title><?php echo TEXT[0] ?> | Wuwana</title>
 </head>
 <body>
 	<h1 class="VisuallyHidden">Wuwana</h1>
 	<header class="HeaderBar">
 		<div class="HeaderContainer">
-			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg" alt="Wuwana logo"></a></div>
+			<div class="HeaderLogo"><a href="/"><img src="/static/logo/wuwana.svg" alt="Wuwana logo"></a></div>
 			<?php
 				if ($user->isLogin())
 				{
@@ -42,7 +42,7 @@
 		<div class="ColumnLeft">
 			<div class="Box About">
 				<div class="AboutCover">
-					<img src="/static/cover/oct2020.svg">
+					<img src="/static/logo/ribbon.svg">
 				</div>
 				<p>Encontrar la informacion que necesitas deberia ser mas facil.</p>
 				<div class="Hidden" id="AboutUs">
@@ -79,11 +79,11 @@
 				<div class="Box Filter">
 					<form method="get" action="/">
 					<dl>
-						<dt><?php echo VIEW_TEXT[1] ?></dt>
+						<dt><?php echo TEXT[1] ?></dt>
 						<dd>
 							<input type="checkbox" name="cat" id="C0"
 								<?php echo $selectedCategories==[] ? ' checked disabled' : '' ?>>
-							<label for="C0"><?php echo VIEW_TEXT[2] ?></label>
+							<label for="C0"><?php echo TEXT[2] ?></label>
 						</dd>
 						<?php
 							foreach ($categories as $id => $languages)
@@ -98,11 +98,11 @@
 						?>
 					</dl>
 					<dl>
-						<dt><?php echo VIEW_TEXT[3] ?></dt>
+						<dt><?php echo TEXT[3] ?></dt>
 						<dd>
 							<input type="checkbox" name="region" id="R0"
 								<?php echo $selectedRegions==[] ? 'checked disabled' : '' ?>>
-							<label for="R0"><?php echo VIEW_TEXT[4] ?></label>
+							<label for="R0"><?php echo TEXT[4] ?></label>
 						</dd>
 						<?php
 							foreach ($locations as $id => $location)
@@ -134,7 +134,7 @@
 					<a href="company">
 						<div class="Card">
 							<div class="Logo">
-								<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
+								<img src="/static/logo/square1.svg">
 							</div>
 							<div class="CompanyMain">
 								<div class="CompanyContent">
@@ -187,7 +187,7 @@
 							echo '<a href="company">';
 							echo  '<div class="Card">';
 							echo   '<div class="Logo">';
-							echo    '<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">';
+							echo    '<img src="/static/logo/square', rand(1,8), '.svg">';
 							echo   '</div>';
 							echo   '<div class="CompanyMain">';
 							echo    '<div class="CompanyContent">';
@@ -212,7 +212,7 @@
 				</div>
 			</section>
 			<a class="Center" href="?show=all">
-				<div class="Button Center"><img src="static/icon/plus.svg">Ver mas empresas</div>
+				<div class="Button Center"><img src="/static/icon/plus.svg">Ver mas empresas</div>
 			</a>
 		</div>
 	</div>

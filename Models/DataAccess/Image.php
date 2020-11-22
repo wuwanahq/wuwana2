@@ -7,14 +7,10 @@ namespace DataAccess;
  */
 class Image
 {
-	private function createTable()
+	static function getTableSchema()
 	{
-		$result = $this->pdo->exec(
-			'create table Image ('
+		return 'create table Image ('
 			. 'SocialMediaID int not null,'
-			. 'URL varchar(255) not null)');
-
-		if ($result === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
+			. 'URL varchar(255) not null)';
 	}
 }

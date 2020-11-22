@@ -23,22 +23,28 @@ class Company extends DataAccess
 
 	private function createTable()
 	{
-		$result = $this->pdo->exec(
+		$queries = [
 			'create table Company ('
-			. 'ID int primary key,'
-			. 'PermaLink varchar(255) not null,'
-			. 'Name varchar(255) not null,'
-			. 'LogoURL varchar(255) not null,'
-			. 'Description varchar(255) not null,'
-			. 'Website varchar(255) not null,'
-			. 'PhoneNumber int not null,'
-			. 'Email varchar(255) not null,'
-			. 'LocationID smallint not null,'
-			. 'Tags varchar(255) not null,'
-			. 'LastUpdate int not null)');
+				. 'ID int primary key,'
+				. 'PermaLink varchar(255) not null,'
+				. 'Name varchar(255) not null,'
+				. 'LogoURL varchar(255) not null,'
+				. 'Description varchar(255) not null,'
+				. 'Website varchar(255) not null,'
+				. 'PhoneNumber int not null,'
+				. 'Email varchar(255) not null,'
+				. 'LocationID smallint not null,'
+				. 'Tags varchar(255) not null,'
+				. 'LastUpdate int not null)',
+			SocialMedia::getTableSchema(),
+			Image::getTableSchema()
+		];
 
-		if ($result === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
+		foreach ($queries as $query)
+		{
+			if ($this->pdo->exec($query) === false)
+			{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
+		}
 	}
 
 	public function importData($filePath)
@@ -146,7 +152,7 @@ class Company extends DataAccess
 
 			$company = new Company();
 			$company->name = $row['Name'];
-			$company->logo = empty($row['Logo']) ? sprintf(self::NO_LOGO_ICON, rand(1,8)) : $row['Logo'];
+			$company->logo = $row['Logo'];
 			$company->description = $row['Description'];
 			$company->website = $row['Website'];
 			$company->phoneNumber = $row['PhoneNumber'];

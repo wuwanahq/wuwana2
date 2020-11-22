@@ -1,5 +1,5 @@
 <?php
-const VIEW_TEXT = [
+const TEXT = [
 0 => 'Specialty coffee',
 1 => 'Categories',
 2 => 'All categories',

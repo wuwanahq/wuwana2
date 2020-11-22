@@ -1,5 +1,5 @@
 <?php
-const VIEW_TEXT = [
+const TEXT = [
 0 => '¿Por qué %s?',
 1 => 'Contacta con %s',
 2 => '%s en Instagram',

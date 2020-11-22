@@ -9,7 +9,7 @@
 <body>
 	<header class="HeaderBar">
 		<div class="HeaderContainer">
-			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg"></a></div>
+			<div class="HeaderLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
 		</div>
 	</header>
 	<div class="Container">
@@ -56,7 +56,7 @@
 				</section>
 				<section class="CompanyWhy">
 					<hr>
-					<h3><?php printf(VIEW_TEXT[0], $company->name) ?></h3>
+					<h3><?php printf(TEXT[0], $company->name) ?></h3>
 					<ul>
 						<li>
 							<div class="ItemLabel">
@@ -83,7 +83,7 @@
 				</section>
 				<section class="ContactInfo">
 					<hr>
-					<h3><?php printf(VIEW_TEXT[1], $company->name) ?></h3>
+					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
 						<li>
 							<a href="/">
@@ -140,7 +140,7 @@
 					{ continue; }
 
 					echo '<section>';
-					echo  '<h2>', sprintf(VIEW_TEXT[2], $company->name), '</h2>';
+					echo  '<h2>', sprintf(TEXT[2], $company->name), '</h2>';
 					echo  '<div class="Box">';
 					echo   '<div class="InstagramInfo">';
 					echo    '<h3>', $socialMedia->profileName, '</h3>';
@@ -184,7 +184,7 @@
 					echo   '</div>';
 					echo   '<div class="Button Absolute">';
 					echo    '<a href="', $socialMedia->url, '" target="_blank">';
-					echo     '<img src="/static/icon/instagram.svg">', VIEW_TEXT[6];
+					echo     '<img src="/static/icon/instagram.svg">', TEXT[6];
 					echo    '</a>';
 					echo   '</div>';
 					echo  '</div>';
@@ -192,17 +192,17 @@
 				}
 			?>
 			<section>
-				<h2><?php echo VIEW_TEXT[3] ?></h2>
+				<h2><?php echo TEXT[3] ?></h2>
 				<div class="Box Test"></div>
 			</section>
 			<a class="Center" href="/">
-				<div class="Button Center"><img src="/static/icon/home.svg"><?php echo VIEW_TEXT[4] ?></div>
+				<div class="Button Center"><img src="/static/icon/home.svg"><?php echo TEXT[4] ?></div>
 			</a>
 		</div>
 	</div>
 	<a href="#">
 		<div id="toTop" class="Button ToTop">
-			<img src="/static/icon/arrow-circle-top.svg"><?php echo VIEW_TEXT[5] ?>
+			<img src="/static/icon/arrow-circle-top.svg"><?php echo TEXT[5] ?>
 		</div>
 	</a>
 </body>
