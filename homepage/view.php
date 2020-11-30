@@ -46,7 +46,7 @@
 				</div>
 				<p>Encontrar la informacion que necesitas deberia ser mas facil.</p>
 				<div class="Hidden" id="AboutUs">
-					<div class="Button">Descubre que es Wuwana</div>
+					<div class="buttonMain">Descubre que es Wuwana</div>
 					<hr>
 					<h3>Contactanos</h3>
 					<ul>
