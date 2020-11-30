@@ -182,9 +182,9 @@
 					<?php
 						$counter = count($companies);
 
-						foreach ($companies as $company)
+						foreach ($companies as $permalink => $company)
 						{
-							echo '<a href="company">';
+							echo '<a href="company/', $permalink, '">';
 							echo  '<div class="Card">';
 							echo   '<div class="Logo">';
 							echo    '<img src="/static/logo/square', rand(1,8), '.svg">';
@@ -194,7 +194,7 @@
 							echo     '<h3>', $company->name, '</h3>';
 							echo     '<ul class="Label">';
 
-							foreach ($company->categories as $category)
+							foreach ($company->tags as $tag)
 							{ echo '<li>', $categories[$category][$language], '</li>'; }
 
 							echo     '</ul>';
@@ -216,8 +216,6 @@
 			</a>
 		</div>
 	</div>
-	<a href="#">
-		<div id="toTop" class="Button ToTop"><img src="/static/icon/arrow-circle-top.svg">Volver arriba</div>
-	</a>
+	<?php include 'Templates/footer.php' ?>
 </body>
 </html>

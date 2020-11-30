@@ -5,6 +5,5 @@ const TEXT = [
 2 => '%s en Instagram',
 3 => 'Mapa',
 4 => 'Volver a la pagina principal',
-5 => 'Volver arriba',
-6 => 'Ver en Instagram',
+5 => 'Ver en Instagram',
 ];

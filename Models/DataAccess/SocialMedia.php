@@ -33,7 +33,7 @@ class SocialMedia
 
 	public function __construct(array $row)
 	{
-		$this->url = $row['SocialMedia.URL'];
+		$this->url = 'https://' . $row['SocialMedia.URL'];
 		$this->profileName = $row['SocialMedia.ProfileName'];
 		$this->biography = $row['SocialMedia.Biography'];
 		$this->link = $row['SocialMedia.Link'];
@@ -45,16 +45,16 @@ class SocialMedia
 
 	static function getTableSchema()
 	{
-		return 'create table SocialMedia ('
-			. 'ID int primary key,'
-			. 'URL varchar(255) not null,'
-			. 'CompanyID int not null,'
-			. 'ProfileName varchar(255) not null,'
-			. 'Biography varchar(255) not null,'
-			. 'Link varchar(255) not null,'
-			. 'Counter1 int not null,'
-			. 'Counter2 int not null,'
-			. 'Counter3 int not null)';
+		return 'create table SocialMedia (
+			ID int primary key,
+			URL varchar(255) not null,
+			CompanyID int not null,
+			ProfileName varchar(255) not null,
+			Biography varchar(255) not null,
+			ExternalLink varchar(255) not null,
+			Counter1 int not null,
+			Counter2 int not null,
+			Counter3 int not null)';
 	}
 
 	public function getType()

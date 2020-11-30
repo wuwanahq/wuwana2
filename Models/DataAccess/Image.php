@@ -9,8 +9,8 @@ class Image
 {
 	static function getTableSchema()
 	{
-		return 'create table Image ('
-			. 'SocialMediaID int not null,'
-			. 'URL varchar(255) not null)';
+		return 'create table Image (
+			SocialMediaID int not null,
+			URL varchar(255) not null)';
 	}
 }

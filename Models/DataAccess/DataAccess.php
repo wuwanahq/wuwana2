@@ -1,6 +1,7 @@
 <?php
 namespace DataAccess;
 use PDO;
+use Scraper\CompanyData;
 
 /**
  * Abstract interface to the database.
@@ -17,6 +18,36 @@ abstract class DataAccess
 			$this->pdo = $pdo;
 			date_default_timezone_set('UTC');
 		}
+	}
+
+	abstract static function getTableSchema();
+
+	protected function createDatabase()
+	{
+		$this->createTable(Category::getTableSchema());
+
+		$this->createTable(User::getTableSchema());
+		$this->createTable(Tag::getTableSchema());
+
+		$this->createTable(Location::getTableSchema());
+		$this->createTable(Company::getTableSchema());
+		$this->createTable(SocialMedia::getTableSchema());
+		$this->createTable(Image::getTableSchema());
+
+		//TODO: insert fake companies to test
+	}
+
+	private function createTable($sql)
+	{
+		$tinyint = 'smallint';
+
+		switch ($this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME))
+		{
+			case 'oci': $tinyint = 'number(3)'; break;
+			case 'mysql': $tinyint = 'tinyint'; break;
+		}
+
+		$this->pdo->exec(str_replace('tinyint', $tinyint, $sql));
 	}
 
 	protected function insertData($filePath, $tableName, $columns)

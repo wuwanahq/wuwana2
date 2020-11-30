@@ -108,7 +108,7 @@ class UserSession
 		$hash = self::hash($email);
 		$code = rand(1, 9999);
 
-		$name = $email[0] . '…' . substr($email, strrpos($email, '@'));
+		$name = $email[0] . '…' . substr($email, strpos($email, '@'));
 		$companyID = $this->dao->countUser() === 0 ? -1 : 0;
 
 		if ($this->dao->insertUser($hash, $name, $companyID, $code))

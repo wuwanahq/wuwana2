@@ -16,18 +16,15 @@ class User extends DataAccess
 	public $accessCode;
 	public $lastLogin;
 
-	private function createTable()
+	static function getTableSchema()
 	{
-		$result = $this->pdo->exec(
-			'create table User ('
-			. 'Email char(' . strlen(hash(self::HASH_ALGO, '', true)) . ') primary key,'
+		return 'create table User ('
+			. 'Hash char(' . strlen(hash(self::HASH_ALGO, '', true)) . ') primary key,'
+			. 'Email varchar(255) not null,'
 			. 'Name varchar(255) not null,'
 			. 'CompanyID int not null,'
 			. 'AccessCode smallint not null,'
-			. 'LastLogin int not null)');
-
-		if ($result === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
+			. 'LastLogin int not null)';
 	}
 
 	public function importData($filePath)
@@ -47,14 +44,14 @@ class User extends DataAccess
 	}
 
 	/**
-	 * Find a user by email address.
-	 * @param string $email Binary hash
+	 * Find a user by its hashed email address.
+	 * @param string $hash Binary hash
 	 * @return \DataAccess\User
 	 */
-	public function selectEmail($email)
+	public function selectEmail($hash)
 	{
-		$query = $this->pdo->prepare('select * from User where Email=?');
-		$query->bindValue(1, $email, PDO::PARAM_LOB);
+		$query = $this->pdo->prepare('select * from User where Hash=?');
+		$query->bindValue(1, $hash, PDO::PARAM_LOB);
 		$query->execute();
 
 		$row = $query->fetch(PDO::FETCH_ASSOC);
@@ -74,33 +71,34 @@ class User extends DataAccess
 
 	/**
 	 * Create a new user.
-	 * @param string $email
-	 * @param string $name
+	 * @param string $hash Binary hash
+	 * @param string $email Shortened email address
 	 * @param int $companyID
 	 * @param int $code
 	 * @return bool Success or failure
 	 */
-	public function insertUser($email, $name, $companyID, $code)
+	public function insertUser($hash, $email, $companyID, $code)
 	{
 		$query = $this->pdo->prepare(
-			'insert into User (Email,Name,CompanyID,AccessCode,LastLogin) values (?,?,?,?,0)');
+			'insert into User (Hash,Email,Name,CompanyID,AccessCode,LastLogin) values (?,?,?,?,?,0)');
 
-		$query->bindValue(1, $email, PDO::PARAM_LOB);
-		$query->bindValue(2, $name, PDO::PARAM_STR);
-		$query->bindValue(3, $companyID, PDO::PARAM_INT);
-		$query->bindValue(4, $code, PDO::PARAM_INT);
+		$query->bindValue(1, $hash, PDO::PARAM_LOB);
+		$query->bindValue(2, $email, PDO::PARAM_STR);
+		$query->bindValue(3, $email, PDO::PARAM_STR);
+		$query->bindValue(4, $companyID, PDO::PARAM_INT);
+		$query->bindValue(5, $code, PDO::PARAM_INT);
 		return $query->execute();
 	}
 
 	// updateUserCode
-	public function updateCode($email, $code)
+	public function updateCode($hash, $code)
 	{
 		$query = $this->pdo->prepare(
-			'update User set AccessCode=?,LastLogin=? where Email=?');
+			'update User set AccessCode=?,LastLogin=? where Hash=?');
 
 		$query->bindValue(1, $code, PDO::PARAM_INT);
 		$query->bindValue(2, time(), PDO::PARAM_INT);
-		$query->bindValue(3, $email, PDO::PARAM_LOB);
+		$query->bindValue(3, $hash, PDO::PARAM_LOB);
 		$query->execute();
 	}
 

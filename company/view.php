@@ -184,7 +184,7 @@
 					echo   '</div>';
 					echo   '<div class="Button Absolute">';
 					echo    '<a href="', $socialMedia->url, '" target="_blank">';
-					echo     '<img src="/static/icon/instagram.svg">', TEXT[6];
+					echo     '<img src="/static/icon/instagram.svg">', TEXT[5];
 					echo    '</a>';
 					echo   '</div>';
 					echo  '</div>';
@@ -200,10 +200,6 @@
 			</a>
 		</div>
 	</div>
-	<a href="#">
-		<div id="toTop" class="Button ToTop">
-			<img src="/static/icon/arrow-circle-top.svg"><?php echo TEXT[5] ?>
-		</div>
-	</a>
+	<?php include '../Templates/footer.php' ?>
 </body>
 </html>

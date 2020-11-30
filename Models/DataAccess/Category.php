@@ -4,20 +4,17 @@ use PDO;
 
 /**
  * Data access layer for stored categories.
+ * @deprecated
  * @author Vince <vincent.boursier@gmail.com>
  */
 class Category extends DataAccess
 {
-	private function createTable()
+	static function getTableSchema()
 	{
-		$result = $this->pdo->exec(
-			'create table Category ('
-			. 'ID smallint primary key,'
-			. 'English varchar(255) not null,'
-			. 'Spanish varchar(255) not null)');
-
-		if ($result === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
+		return 'create table Category (
+			ID smallint primary key,
+			English varchar(255) not null,
+			Spanish varchar(255) not null)';
 	}
 
 	public function importData($filePath)
@@ -41,7 +38,7 @@ class Category extends DataAccess
 
 		if ($stmt == false)
 		{
-			$this->createTable();
+			$this->createDatabase();
 			$stmt = $this->pdo->query($sql);
 		}
 

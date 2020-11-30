@@ -27,7 +27,7 @@
 <body>
 	<header class="HeaderBar">
 		<div class="HeaderContainer">
-			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg"></a></div>
+			<div class="HeaderLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
 		</div>
 	</header>
 	<div class="Container">
@@ -131,8 +131,6 @@
 			</a>
 		</div>
 	</div>
-	<a href="#">
-		<div id="toTop" class="Button ToTop"><img src="/static/icon/arrow-circle-top.svg">Volver arriba</div>
-	</a>
+	<?php include '../Templates/footer.php' ?>
 </body>
 </html>

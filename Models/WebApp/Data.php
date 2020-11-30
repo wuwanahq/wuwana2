@@ -29,6 +29,8 @@ class Data
 				PDO::ATTR_PERSISTENT => true,
 				PDO::ATTR_EMULATE_PREPARES => false,
 				PDO::ATTR_STRINGIFY_FETCHES => false]);
+
+		return self::$pdoInstance;
 	}
 
 	public static function getCategory()
