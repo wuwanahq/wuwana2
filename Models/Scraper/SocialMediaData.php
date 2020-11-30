@@ -7,9 +7,10 @@ namespace Scraper;
  */
 class SocialMediaData
 {
+	public $link;
 	public $profileName;
 	public $fullName;
-	public $summary;
+	public $biography;
 	public $counter1;
 	public $counter2;
 	public $counter3;

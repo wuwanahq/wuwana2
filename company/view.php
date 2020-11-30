@@ -17,7 +17,7 @@
 			<div class="Box Profile">
 				<section class="CompanyAbout">
 					<div class="Logo">
-						<img src="<?php echo $company->logo ?>">
+						<img src="<?php echo $company->logoURL ?>">
 					</div>
 					<h1><?php echo $company->name ?></h1>
 					<?php
@@ -134,33 +134,30 @@
 		</div>
 		<div class="ColumnMain">
 			<?php
-				foreach ($company->socialMedias as $socialMedia)
+				if ($company->instagram != null)
 				{
-					if ($socialMedia->getType() != 'instagram')
-					{ continue; }
-
 					echo '<section>';
 					echo  '<h2>', sprintf(TEXT[2], $company->name), '</h2>';
 					echo  '<div class="Box">';
 					echo   '<div class="InstagramInfo">';
-					echo    '<h3>', $socialMedia->profileName, '</h3>';
-					echo    '<p>', $socialMedia->biography, '<br>', $socialMedia->link, '</p>';
+					echo    '<h3>', $company->instagram->profileName, '</h3>';
+					echo    '<p>', $company->instagram->biography, '<br>', $company->instagram->link, '</p>';
 					echo    '<ul>';
 					echo     '<li>';
 					echo      '<div class="ItemLabel">';
-					echo       '<span class="Number">', $socialMedia->instagramNbPost, '</span>';
+					echo       '<span class="Number">', $company->instagram->instagramNbPost, '</span>';
 					echo       '<span class="Text">Posts</span>';
 					echo      '</div>';
 					echo     '</li>';
 					echo     '<li>';
 					echo      '<div class="ItemLabel">';
-					echo       '<span class="Number">', $socialMedia->instagramNbFollower, '</span>';
+					echo       '<span class="Number">', $company->instagram->instagramNbFollower, '</span>';
 					echo       '<span class="Text">Followers</span>';
 					echo      '</div>';
 					echo     '</li>';
 					echo     '<li>';
 					echo      '<div class="ItemLabel">';
-					echo       '<span class="Number">', $socialMedia->instagramNbFollowing, '</span>';
+					echo       '<span class="Number">', $company->instagram->instagramNbFollowing, '</span>';
 					echo       '<span class="Text">Following</span>';
 					echo      '</div>';
 					echo     '</li>';
@@ -169,21 +166,21 @@
 					echo   '<div class="Aspect2-3">';
 					echo    '<div class="InstagramGallery">';
 					echo     '<div class="InstagramRow">';
-					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[0], '"></div>';
-					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[1], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[0], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[1], '"></div>';
 					echo     '</div>';
 					echo     '<div class="InstagramRow">';
-					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[2], '"></div>';
-					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[3], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[2], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[3], '"></div>';
 					echo     '</div>';
 					echo     '<div class="InstagramRow">';
-					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[4], '"></div>';
-					echo      '<div class="InstagramPicture"><img src="', $socialMedia->pictures[5], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[4], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[5], '"></div>';
 					echo     '</div>';
 					echo    '</div>';
 					echo   '</div>';
 					echo   '<div class="Button Absolute">';
-					echo    '<a href="', $socialMedia->url, '" target="_blank">';
+					echo    '<a href="', $company->instagram->url, '" target="_blank">';
 					echo     '<img src="/static/icon/instagram.svg">', TEXT[5];
 					echo    '</a>';
 					echo   '</div>';
