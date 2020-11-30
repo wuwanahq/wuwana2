@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Wuwana</title>
-	<link rel="icon" type="image/png" href="/static/favicon/16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="/static/favicon/32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/static/favicon/48.png" sizes="48x48">
-	<link rel="icon" type="image/png" href="/static/favicon/64.png" sizes="64x64">
-	<link rel="icon" type="image/png" href="/static/favicon/96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="/static/favicon/160.png" sizes="160x160">
-	<link rel="icon" type="image/png" href="/static/favicon/196.png" sizes="196x196">
-	<link rel="apple-touch-icon" href="/static/favicon/57.png" sizes="57x57">
-	<link rel="apple-touch-icon" href="/static/favicon/60.png" sizes="60x60">
-	<link rel="apple-touch-icon" href="/static/favicon/72.png" sizes="72x72">
-	<link rel="apple-touch-icon" href="/static/favicon/76.png" sizes="76x76">
-	<link rel="apple-touch-icon" href="/static/favicon/114.png" sizes="114x114">
-	<link rel="apple-touch-icon" href="/static/favicon/120.png" sizes="120x120">
-	<link rel="apple-touch-icon" href="/static/favicon/144.png" sizes="144x144">
-	<link rel="apple-touch-icon" href="/static/favicon/152.png" sizes="152x152">
-	<link rel="apple-touch-icon" href="/static/favicon/180.png" sizes="180x180">
-	<link rel="stylesheet" type="text/css" href="/static/style.css">
-	<script src="/static/es5.js" defer></script>
+	<?php include '../Templates/header.php' ?>
+	<meta name="twitter:title" content="<?php echo $company->name ?> | Wuwana">
+	<meta property="og:title" content="<?php echo $company->name ?> | Wuwana" />
+	<title><?php echo $company->name ?> | Wuwana</title>
 </head>
 <body>
 	<header class="HeaderBar">
 		<div class="HeaderContainer">
-			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg"></a></div>
+			<div class="HeaderLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
 		</div>
 	</header>
 	<div class="Container">
@@ -34,23 +17,46 @@
 			<div class="Box Profile">
 				<section class="CompanyAbout">
 					<div class="Logo">
-						<img src="/static/favicon/96.png">
+						<img src="<?php echo $company->logoURL ?>">
 					</div>
-					<h1>Camden Coffee Roaster</h1>
+					<h1><?php echo $company->name ?></h1>
+					<?php
+						if (isset($user) && $user->isLogin() && $user->isAdmin())
+						{
+							echo '<form method="post">';
+							echo  '<textarea></textarea><br>';
+							echo  '<input type="submit" value="Update description">';
+							echo '</form>';
+						}
+					?>
 					<ul class="Label">
-						<li>Tostador</li>
-						<li>Cafeteria</li>
+						<?php
+							foreach ($company->tags as $tag)
+							{ echo '<li>', $tag, '</li>'; }
+						?>
 					</ul>
 					<div class="Tag Region">Cataluna</div>
 				</section>
 				<section class="CompanyDescription">
 					<hr>
-					<h3>Sobre Camden Coffee Roaster</h3>
+					<?php
+						if (isset($user) && $user->isLogin() && $user->isAdmin())
+						{
+							echo '<form method="post">';
+							echo  '<input type="text" placeholder="New company"><br>';
+							echo  '<input type="submit" value="Update name">';
+							echo '</form>';
+						}
+						else
+						{
+							echo '<h3>', $company->description, '</h3>';
+						}
+					?>
 					<br><br>
 				</section>
 				<section class="CompanyWhy">
 					<hr>
-					<h3>¿Por qué Camden Coffee Roaster?</h3>
+					<h3><?php printf(TEXT[0], $company->name) ?></h3>
 					<ul>
 						<li>
 							<div class="ItemLabel">
@@ -77,7 +83,7 @@
 				</section>
 				<section class="ContactInfo">
 					<hr>
-					<h3>Contacta con Camden Coffee Roaster</h3>
+					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
 						<li>
 							<a href="/">
@@ -89,7 +95,7 @@
 								</div>
 							</a>
 						</li>
-						<li>		
+						<li>
 							<a href="/">
 								<div class="ItemLabel">
 									<div class="Button Circle">
@@ -101,90 +107,96 @@
 						</li>
 					</ul>
 				</section>
+				<?php
+					if (isset($user) && $user->isLogin() && $user->isAdmin())
+					{
+						echo '<form method="post">';
+						echo  '<label for="permalink">Permanent link:</label>';
+						echo  '<input id="permalink" type="text" size="26" value="https://wuwana.com/my-profile-page">';
+						echo  '<br>';
+						echo  '<label for="insta">Instagram profile:</label>';
+						echo  '<input id="insta" type="text" size="25" placeholder="https://instagram.com/username...">';
+						echo  '<br>';
+						echo  '<label for="whatsapp">WhatsApp number:</label>';
+						echo  '<input id="whatsapp" type="text" size="24" placeholder="+34 123 45 67 89"><br>';
+						echo  '<br>';
+						echo  '<label for="email">Email address:</label>';
+						echo  '<input id="email" type="text" size="26" placeholder="me@email.com"><br>';
+						echo  '<br>';
+						echo  '<label for="website">Website URL:</label>';
+						echo  '<input id="website" type="text" size="27" placeholder="https://www.my-website.com">';
+						echo  '<br>';
+						echo  '<input type="submit" value="Update info sources">';
+						echo '</form>';
+					}
+				?>
 			</div>
 		</div>
 		<div class="ColumnMain">
+			<?php
+				if ($company->instagram != null)
+				{
+					echo '<section>';
+					echo  '<h2>', sprintf(TEXT[2], $company->name), '</h2>';
+					echo  '<div class="Box">';
+					echo   '<div class="InstagramInfo">';
+					echo    '<h3>', $company->instagram->profileName, '</h3>';
+					echo    '<p>', $company->instagram->biography, '<br>', $company->instagram->link, '</p>';
+					echo    '<ul>';
+					echo     '<li>';
+					echo      '<div class="ItemLabel">';
+					echo       '<span class="Number">', $company->instagram->instagramNbPost, '</span>';
+					echo       '<span class="Text">Posts</span>';
+					echo      '</div>';
+					echo     '</li>';
+					echo     '<li>';
+					echo      '<div class="ItemLabel">';
+					echo       '<span class="Number">', $company->instagram->instagramNbFollower, '</span>';
+					echo       '<span class="Text">Followers</span>';
+					echo      '</div>';
+					echo     '</li>';
+					echo     '<li>';
+					echo      '<div class="ItemLabel">';
+					echo       '<span class="Number">', $company->instagram->instagramNbFollowing, '</span>';
+					echo       '<span class="Text">Following</span>';
+					echo      '</div>';
+					echo     '</li>';
+					echo    '</ul>';
+					echo   '</div>';
+					echo   '<div class="Aspect2-3">';
+					echo    '<div class="InstagramGallery">';
+					echo     '<div class="InstagramRow">';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[0], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[1], '"></div>';
+					echo     '</div>';
+					echo     '<div class="InstagramRow">';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[2], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[3], '"></div>';
+					echo     '</div>';
+					echo     '<div class="InstagramRow">';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[4], '"></div>';
+					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[5], '"></div>';
+					echo     '</div>';
+					echo    '</div>';
+					echo   '</div>';
+					echo   '<div class="Button Absolute">';
+					echo    '<a href="', $company->instagram->url, '" target="_blank">';
+					echo     '<img src="/static/icon/instagram.svg">', TEXT[5];
+					echo    '</a>';
+					echo   '</div>';
+					echo  '</div>';
+					echo '</section>';
+				}
+			?>
 			<section>
-				<h2>Camden Coffee Roaster en Instagram</h2>
-				<div class="Box">
-					<div class="InstagramInfo">
-						<h3>Camden Coffee Roaster</h3>
-						<p>
-							🖤Sólo buen café<br>
-							☕️Specialty Coffee Roasters<br>
-							🛒Tienda y Cafetería<br>
-							👇🏼Haz tu pedido<br>
-							info@camdencoffeeroasters.com
-							camdencoffeeroasters.com/tienda
-						</p>
-						<ul>
-							<li>
-								<div class="ItemLabel">
-									<span class="Number">40</span>
-									<span class="Text">Posts</span>
-								</div>
-							</li>
-							<li>
-								<div class="ItemLabel">
-									<span class="Number">1.034</span>
-									<span class="Text">Followers</span>
-								</div>
-							</li>
-							<li>
-								<div class="ItemLabel">
-									<span class="Number">470</span>
-									<span class="Text">Following</span>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="Aspect2-3">
-						<div class="InstagramGallery">
-							<div class="InstagramRow">
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-azure.svg">
-								</div>
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-citric.svg">
-								</div>
-							</div>
-							<div class="InstagramRow">
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-factory-yellow.svg">
-								</div>
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-storm.svg">
-								</div>
-							</div>
-							<div class="InstagramRow">
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-sunflower.svg">
-								</div>
-								<div class="InstagramPicture">
-									<img src="/static/logo/square-tangerine.svg">
-								</div>
-							</div>
-							
-						</div>
-
-					</div>
-					<div class="Button Absolute">
-						<img src="/static/icon/instagram.svg">
-						Ver en Instagram
-					</div>
-				</div>
-			</section>
-			<section>
-				<h2>Mapa</h2>
+				<h2><?php echo TEXT[3] ?></h2>
 				<div class="Box Test"></div>
 			</section>
 			<a class="Center" href="/">
-				<div class="Button Center"><img src="/static/icon/home.svg"> Volver a la pagina principal</div>
+				<div class="Button Center"><img src="/static/icon/home.svg"><?php echo TEXT[4] ?></div>
 			</a>
 		</div>
 	</div>
-	<a href="#">
-		<div id="toTop" class="Button ToTop"><img src="/static/icon/arrow-circle-top.svg">Volver arriba</div>
-	</a>
+	<?php include '../Templates/footer.php' ?>
 </body>
 </html>

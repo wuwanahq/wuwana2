@@ -1,34 +1,16 @@
 <!DOCTYPE html>
 <html lang="<?php echo $language ?>">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta name="description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
+	<?php include 'Templates/header.php' ?>
+	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
+	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana" />
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
-	<link rel="icon" type="image/png" href="/static/favicon/16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="/static/favicon/32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/static/favicon/48.png" sizes="48x48">
-	<link rel="icon" type="image/png" href="/static/favicon/64.png" sizes="64x64">
-	<link rel="icon" type="image/png" href="/static/favicon/96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="/static/favicon/160.png" sizes="160x160">
-	<link rel="icon" type="image/png" href="/static/favicon/196.png" sizes="196x196">
-	<link rel="apple-touch-icon" href="/static/favicon/57.png" sizes="57x57">
-	<link rel="apple-touch-icon" href="/static/favicon/60.png" sizes="60x60">
-	<link rel="apple-touch-icon" href="/static/favicon/72.png" sizes="72x72">
-	<link rel="apple-touch-icon" href="/static/favicon/76.png" sizes="76x76">
-	<link rel="apple-touch-icon" href="/static/favicon/114.png" sizes="114x114">
-	<link rel="apple-touch-icon" href="/static/favicon/120.png" sizes="120x120">
-	<link rel="apple-touch-icon" href="/static/favicon/144.png" sizes="144x144">
-	<link rel="apple-touch-icon" href="/static/favicon/152.png" sizes="152x152">
-	<link rel="apple-touch-icon" href="/static/favicon/180.png" sizes="180x180">
-	<link rel="stylesheet" type="text/css" href="/static/style.css">
-	<script src="/static/es5.js" defer></script>
 </head>
 <body>
 	<h1 class="VisuallyHidden">Wuwana</h1>
 	<header class="HeaderBar">
 		<div class="HeaderContainer">
-			<div class="HeaderLogo"><a href="/"><img src="/static/wuwana-black.svg" alt="Wuwana logo"></a></div>
+			<div class="HeaderLogo"><a href="/"><img src="/static/logo/wuwana.svg" alt="Wuwana logo"></a></div>
 			<?php
 				if ($user->isLogin())
 				{
@@ -60,11 +42,11 @@
 		<div class="ColumnLeft">
 			<div class="Box About">
 				<div class="AboutCover">
-					<img src="/static/cover/oct2020.svg">
+					<img src="/static/logo/ribbon.svg">
 				</div>
 				<p>Encontrar la informacion que necesitas deberia ser mas facil.</p>
 				<div class="Hidden" id="AboutUs">
-					<div class="Button">Descubre que es Wuwana</div>
+					<div class="buttonMain">Descubre que es Wuwana</div>
 					<hr>
 					<h3>Contactanos</h3>
 					<ul>
@@ -142,18 +124,17 @@
 		<div class="ColumnMain">
 			<div class="Box Banner">
 				<div class="BannerText">
-					<h2 class="BannerTitle"><?php echo TEXT[5] ?></h2>
-					<p class="BannerSubtitle"><?php echo TEXT[6] ?></p>
+					<h2 class="BannerTitle"><?php echo TEMP_TEXT[0] ?></h2>
+					<p class="BannerSubtitle"><?php echo TEMP_TEXT[1] ?></p>
 				</div>
 			</div>
-
 			<section>
 				<h2>Empresas destacadas</h2>
 				<div class="Box">
 					<a href="company">
 						<div class="Card">
 							<div class="Logo">
-								<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">
+								<img src="/static/logo/square1.svg">
 							</div>
 							<div class="CompanyMain">
 								<div class="CompanyContent">
@@ -195,26 +176,25 @@
 					<hr/>
 				</div>
 			</section>
-
 			<section>
 				<h2>Otras empresas</h2>
 				<div class="Box">
 					<?php
 						$counter = count($companies);
 
-						foreach ($companies as $company)
+						foreach ($companies as $permalink => $company)
 						{
-							echo '<a href="company">';
+							echo '<a href="company/', $permalink, '">';
 							echo  '<div class="Card">';
 							echo   '<div class="Logo">';
-							echo    '<img src="/static/background/117926628_3215393278552514_8264428497985741185_n1.png">';
+							echo    '<img src="/static/logo/square', rand(1,8), '.svg">';
 							echo   '</div>';
 							echo   '<div class="CompanyMain">';
 							echo    '<div class="CompanyContent">';
 							echo     '<h3>', $company->name, '</h3>';
 							echo     '<ul class="Label">';
 
-							foreach ($company->categories as $category)
+							foreach ($company->tags as $tag)
 							{ echo '<li>', $categories[$category][$language], '</li>'; }
 
 							echo     '</ul>';
@@ -231,15 +211,11 @@
 					?>
 				</div>
 			</section>
-
 			<a class="Center" href="?show=all">
-				<div class="Button Center"><img src="static/icon/plus.svg">Ver mas empresas</div>
+				<div class="Button Center"><img src="/static/icon/plus.svg">Ver mas empresas</div>
 			</a>
-
 		</div>
 	</div>
-	<a href="#">
-		<div id="toTop" class="Button ToTop"><img src="/static/icon/arrow-circle-top.svg">Volver arriba</div>
-	</a>
+	<?php include 'Templates/footer.php' ?>
 </body>
 </html>

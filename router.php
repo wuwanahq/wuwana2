@@ -5,11 +5,13 @@
  * @see /.htaccess Apache "FallbackResource" or Nginx "try_files" directive
  */
 
-if ($_SERVER["REQUEST_URI"] == '/'
-	|| substr($_SERVER["REQUEST_URI"], 0, 2) == '/?'
-	|| substr($_SERVER["REQUEST_URI"], 0, 8) == '/static/')
-{
-	return false;  // Serve the requested resource as-is with the PHP built-in web server
-}
+spl_autoload_register(function($className) {
+	require 'Models/' . str_replace('\\', '/', $className) . '.php';
+});
+
+$company = WebApp\Data::getCompanyInfo(str_replace('/', '', filter_input(INPUT_SERVER, 'REQUEST_URI')));
+
+if ($company == null)
+{ return false; }
 
 require 'company/index.php';
