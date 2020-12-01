@@ -140,7 +140,8 @@
 				?>
 			</div>
 		</section>
-		<div class="ColumnMain">
+		<section class="ColumnMain">
+			<section class="companyInstagram">
 			<?php
 				if ($company->instagram != null)
 				{
@@ -187,7 +188,7 @@
 					echo     '</div>';
 					echo    '</div>';
 					echo   '</div>';
-					echo   '<div class="Button Absolute">';
+					echo   '<div class="buttonIcon">';
 					echo    '<a href="', $company->instagram->url, '" target="_blank">';
 					echo     '<img src="/static/icon/instagram.svg">', TEXT[5];
 					echo    '</a>';
@@ -196,14 +197,11 @@
 					echo '</section>';
 				}
 			?>
-			<section>
-				<h2><?php echo TEXT[3] ?></h2>
-				<div class="Box Test"></div>
 			</section>
 			<a class="Center" href="/">
-				<div class="Button Center"><img src="/static/icon/home.svg"><?php echo TEXT[4] ?></div>
+				<div class="buttonIcon"><img src="/static/icon/home.svg"><?php echo TEXT[4] ?></div>
 			</a>
-		</div>
+			</section>
 	</div>
 	<?php include '../Templates/footer.php' ?>
 </body>
