@@ -13,9 +13,9 @@
 		</div>
 	</header>
 	<div class="Container">
-		<div class="ColumnLeft Company">
-			<div class="Box Profile">
-				<section class="CompanyAbout">
+		<section class="ColumnLeft">
+			<div class="companyPanel">
+				<section class="companyAbout">
 					<div class="Logo">
 						<img src="<?php echo $company->logoURL ?>">
 					</div>
@@ -34,10 +34,13 @@
 							foreach ($company->tags as $tag)
 							{ echo '<li>', $tag, '</li>'; }
 						?>
+						<li>Tagone</li>
+						<li>Tagtwo</li>
+						
 					</ul>
-					<div class="Tag Region">Cataluna</div>
+					<div class="tagRegion">Cataluna</div>
 				</section>
-				<section class="CompanyDescription">
+				<section class="companyDescription">
 					<hr>
 					<?php
 						if (isset($user) && $user->isLogin() && $user->isAdmin())
@@ -52,9 +55,14 @@
 							echo '<h3>', $company->description, '</h3>';
 						}
 					?>
-					<br><br>
+					<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae praesentium, doloremque alias ipsa odio inventore reiciendis soluta fugit earum sit natus deserunt. Velit maxime, eum recusandae sed eos commodi molestiae! </p>
 				</section>
-				<section class="CompanyWhy">
+				<section class="companyAddress">
+					<hr>
+					<h3>Address</h3>
+					<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae praesentium, doloremque alias ipsa odio inventore reiciendis soluta fugit earum sit natus deserunt. Velit maxime, eum recusandae sed eos commodi molestiae! </p>
+				</section>
+				<section class="companyWhy">
 					<hr>
 					<h3><?php printf(TEXT[0], $company->name) ?></h3>
 					<ul>
@@ -81,14 +89,14 @@
 						</li>
 					</ul>
 				</section>
-				<section class="ContactInfo">
+				<section class="contactInfo">
 					<hr>
 					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
 						<li>
 							<a href="/">
 								<div class="ItemLabel">
-									<div class="Button Circle">
+									<div class="buttonSocial">
 										<img src="/static/icon/instagram.svg">
 									</div>
 									Instagram
@@ -98,7 +106,7 @@
 						<li>
 							<a href="/">
 								<div class="ItemLabel">
-									<div class="Button Circle">
+									<div class="buttonSocial">
 										<img src="/static/icon/whatsapp.svg">
 									</div>
 									Whatsapp
@@ -131,7 +139,7 @@
 					}
 				?>
 			</div>
-		</div>
+		</section>
 		<div class="ColumnMain">
 			<?php
 				if ($company->instagram != null)
