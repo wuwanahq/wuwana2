@@ -39,7 +39,7 @@
 		</div>
 	</header>
 	<div class="Container">
-		<div class="ColumnLeft">
+		<section class="ColumnLeft">
 			<div class="Box About">
 				<div class="AboutCover">
 					<img src="/static/logo/ribbon.svg">
@@ -48,12 +48,12 @@
 				<div class="Hidden" id="AboutUs">
 					<div class="buttonMain">Descubre que es Wuwana</div>
 					<hr>
-					<h3>Contactanos</h3>
+					<h3>Contáctanos</h3>
 					<ul>
 						<li>
 							<a href="/">
 								<div class="ItemLabel">
-									<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
+									<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
 									Instagram
 								</div>
 							</a>
@@ -61,7 +61,7 @@
 						<li>
 							<a href="/">
 								<div class="ItemLabel">
-									<div class="Button Circle"><img src="/static/icon/instagram.svg"></div>
+									<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
 									Instagram
 								</div>
 							</a>
@@ -120,8 +120,8 @@
 					<div class="Button Center"><img src="/static/icon/filter.svg">Aplicar filtros</div>
 				</div>
 			</section>
-		</div>
-		<div class="ColumnMain">
+		</section>
+		<section class="ColumnMain">
 			<div class="Box Banner">
 				<div class="BannerText">
 					<h2 class="BannerTitle"><?php echo TEMP_TEXT[0] ?></h2>
@@ -212,9 +212,9 @@
 				</div>
 			</section>
 			<a class="Center" href="?show=all">
-				<div class="Button Center"><img src="/static/icon/plus.svg">Ver mas empresas</div>
+				<div class="buttonIcon"><img src="/static/icon/plus.svg">Ver mas empresas</div>
 			</a>
-		</div>
+		</section>
 	</div>
 	<?php include 'Templates/footer.php' ?>
 </body>
