@@ -414,15 +414,6 @@ dd {
 	align-self: center;
 	margin-bottom: 8px}
 
-.Button.Circle {
-	max-width: 40px;
-	border-radius: 50%;
-	border-width: 2px;
-	padding: 0;
-	margin-bottom: 4px;}
-
-.Button.Circle img {
-	margin: 8px}
 
 .Button.Toggle {
 	color: #161313;
@@ -444,19 +435,6 @@ dd {
 
 .Button.Toggle img {
 	filter: none}
-
-.Button.Center {
-	align-self: center;
-	padding: 2px 4px;
-	min-height: 24px}
-
-.Button.Absolute {
-	z-index: 1;
-	position: absolute;
-	padding: 2px 4px;
-	right: 24px;
-	bottom: 24px}
-
 
 
 /* HEADER */
@@ -856,6 +834,7 @@ dd {
 		flex-direction: column}
 
 	.ColumnLeft {
+		margin-bottom: 24px;
 		min-width: 100%;
         max-width: 100%}
 
