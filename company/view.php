@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo $language ?>">
 <head>
-	<?php include '../Templates/header.php' ?>
+	<?php include '../Templates/page metadata.php' ?>
 	<meta name="twitter:title" content="<?php echo $company->name ?> | Wuwana">
 	<meta property="og:title" content="<?php echo $company->name ?> | Wuwana" />
 	<title><?php echo $company->name ?> | Wuwana</title>
 </head>
 <body>
-	<header class="HeaderBar">
-		<div class="HeaderContainer">
-			<div class="HeaderLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
-		</div>
-	</header>
+	<?php include '../Templates/page header.php' ?>
 	<div class="Container">
 		<div class="ColumnLeft Company">
 			<div class="Box Profile">
 				<section class="CompanyAbout">
 					<div class="Logo">
-						<img src="<?php echo $company->logoURL ?>">
+						<img src="<?php echo $company->logo ?>">
 					</div>
 					<h1><?php echo $company->name ?></h1>
 					<?php
@@ -197,6 +193,6 @@
 			</a>
 		</div>
 	</div>
-	<?php include '../Templates/footer.php' ?>
+	<?php include '../Templates/page footer.php' ?>
 </body>
 </html>

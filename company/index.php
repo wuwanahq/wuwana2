@@ -25,17 +25,18 @@ if (filter_has_var(INPUT_POST, 'instagram') && filter_has_var(INPUT_POST, 'etc..
 }
 
 // To test
-$company = new Scraper\CompanyData();
+$company = new DataAccess\Company();
 $company->name = 'Example Coffee Shop';
-$company->description = 'This is an example';
+$company->description = 'Description about this company...';
 $company->email = 'jonathan@wuwana.com';
-$company->logoURL = '/static/logo/square1.svg';
+$company->logo = '/static/logo/square1.svg';
 $company->permalink = 'company';
-$company->phoneNumber = '0123456789';
+$company->phone = '34123456789';
 $company->region = 0;
 $company->website = 'https://wuwana.com';
-$company->address;
 $company->tags = [];
+$company->address;
+$company->socialMedias;
 $company->instagram = new DataAccess\SocialMedia([
 	'SocialMedia.URL' => 'https://www.instagram.com/levogirar',
 	'SocialMedia.ProfileName' => 'ExampleCoffeeShop',

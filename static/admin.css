@@ -1,0 +1,17 @@
+/* Temporary style to improve */
+
+.ColumnMain table {
+	width: 100%}
+
+.ColumnMain table input[type=text] {
+	width: 98%}
+
+.ColumnMain table th,
+.ColumnMain table td {
+	text-align: center}
+
+.ColumnMain table th:first-child,
+.ColumnMain table td:first-child,
+.ColumnMain table th:last-child,
+.ColumnMain table td:last-child {
+	width: 99px}
