@@ -278,13 +278,6 @@ dd {
 	filter: invert(100%)
 }
 
-.buttonMain:disabled {
-	background-color: #E3E1E1; /* Grey 20 */
-	border-style: none;
-	box-shadow: none;
-	cursor: not-allowed;
-}
-
 .buttonIcon.ToTop {
 	visibility: hidden;
 	opacity: 0;
@@ -317,6 +310,9 @@ dd {
 .buttonSpecial:disabled {
 	background-color: #E3E1E1; /* Grey 20 */
 	color: #545151; /* Grey 70 */
+	border-style: none;
+	box-shadow: none;
+	cursor: not-allowed;
 }
 
 .pill {
@@ -335,6 +331,8 @@ dd {
 	cursor: pointer
 }
 
+/* Pill */
+
 .pill:hover {
 	background-color: #E3E1E1; /* Grey 20 */
 }
@@ -346,6 +344,8 @@ dd {
 	box-shadow: none;
 	cursor: not-allowed;
 }
+
+/* Button Social */
 
 .buttonSocial {
 	display: flex;
@@ -372,6 +372,7 @@ dd {
 
 .buttonSocial:disabled {
 	background-color: #E3E1E1; /* Grey 20 */
+	cursor: not-allowed;
 }
 
 
@@ -648,6 +649,61 @@ dd {
 
 .Box.About .Button.Toggle {
 	display: none;}
+
+/* Panel */
+
+.boxPanel {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	min-height: 20px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	background-color: #ffffff;
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	padding-bottom: 16px;
+}
+.boxPanel hr {
+	margin: 16px 0;
+}
+
+.boxPanel h1 {
+	margin: 0 16px 8px;
+	font-weight: 700;
+}
+
+.boxPanel h3 {
+	margin: 0 16px 8px;
+}
+
+.boxPanel a {
+	color: #545151;
+}
+
+.iconLabelHorizontal {
+	padding: 4px 16px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color:  #545151;
+	font-weight: 500;
+	background-color: #E3E1E1
+}
+
+a .iconLabelHorizontal {
+	background-color: transparent;
+	font-weight: 400;
+}
+
+.iconLabelHorizontal:hover {
+	background-color: #E3E1E1;
+}
+
+.iconLabelHorizontal img {
+	margin-right: 8px;
+}
 
 
 /* BANNER */
