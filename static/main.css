@@ -27,7 +27,7 @@ body {
 	font-size: 16px;
 	display: flex;
 	flex-direction: column;
-	color: #161313;
+	color: black;
 	background-color: #f6f6f6;
 	margin: 0;
 	justify-content: center;
@@ -493,6 +493,10 @@ dd {
 .Card:hover {
 	background-color: #fafafa}
 
+.Card .tagRegion {
+	margin-top: auto;
+}
+
 /*
 .Card:hover h3 {
 	text-decoration: underline}
@@ -532,16 +536,6 @@ dd {
 	.CompanyContent li {
 		display: inline;
 		margin: 4px 12px 0 0}
-
-.Tag.Region {
-	display: inline-block;
-	color: #8b8989;
-	background-color: #ffffff;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #8b8989;
-	margin-top: auto;
-	margin-right: 8px}
 
 .BadgeArea {
 	display: flex;
@@ -898,19 +892,6 @@ a .iconLabelHorizontal {
 		background-size: auto, cover;
 		justify-content: center;
 		background-position: 0 0, 50% 50%}
-
-	/* ABOUT US MOBILE */
-
-	.AboutSocial {
-		min-width: 100%;
-		margin-right: -4px}
-
-	.Hidden {
-		display: none}
-
-	.Box.About .Button.Toggle {
-		display: flex;
-	}
 
 	/* MENU MOBILE */
 

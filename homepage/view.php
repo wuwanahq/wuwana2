@@ -109,7 +109,7 @@
 										<li>Tostador</li>
 										<li>Cafeteria</li>
 									</ul>
-									<div class="Tag Region">Cataluna</div>
+									<div class="tagRegion">Cataluna</div>
 								</div>
 								<div class="BadgeArea"><!-- Badge area -->
 									<div class="ItemLabel">
@@ -164,7 +164,7 @@
 							{ echo '<li>', $categories[$category][$language], '</li>'; }
 
 							echo     '</ul>';
-							echo     '<div class="Tag Region">', $locations[$company->region]->region, '</div>';
+							echo     '<div class="tagRegion">', $locations[$company->region]->region, '</div>';
 							echo    '</div>';
 							echo    '<div class="BadgeArea"></div>';
 							echo   '</div>';
