@@ -1,7 +1,7 @@
 <h1 class="VisuallyHidden">Wuwana</h1>
-<header class="HeaderBar">
+<header class="headerBar">
 	<div class="HeaderContainer">
-		<div class="HeaderLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
+		<div class="headerLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
 		<?php
 			if (isset($user) && $user->isLogin())
 			{

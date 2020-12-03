@@ -32,7 +32,7 @@ body {
 	margin: 0;
 	justify-content: center;
 	align-items: center;
-	padding: 24px 16px}
+	padding: 0 16px 24px}
 
 section {
 	width: 100%;
@@ -120,7 +120,7 @@ dd {
 	width: 100%;
 	max-width: 1200px;
 	justify-content: center;
-	margin-top: 48px}
+	margin-top: 24px}
 
 .ColumnLeft {
 	position: static;
@@ -440,9 +440,9 @@ dd {
 
 /* HEADER */
 
-.HeaderBar{
+.headerBar{
 	z-index: 99;
-	position: fixed;
+	position: sticky;
 	top: 0;
 	left: 0;
 	height: 48px;
@@ -458,18 +458,18 @@ dd {
 	align-content: space-between;
 	align-items: center;
 	width: 100%;
-	max-width: 1232px} /* 1200px + 16px padding left and right */
+	padding: 0 16px;
+	max-width: 1200px} /* Same as body max width */
 
-.HeaderLogo {
-	margin-left: 16px;
+.headerLogo {
 	height: 24px}
 
 .HeaderIcon {
-	padding: 8px;
 	border-radius: 8px;
+	padding: 8px;
+	margin-right: -8px;
 	cursor: pointer;
-	display: none;
-	margin-right: 8px}
+	display: none;}
 
 .HeaderIcon:hover {
 	background-color: #fafafa}
