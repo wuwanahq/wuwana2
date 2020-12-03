@@ -88,10 +88,10 @@
 			</section>
 		</section>
 		<section class="ColumnMain">
-			<div class="Box Banner">
-				<div class="BannerText">
-					<h2 class="BannerTitle"><?php echo TEMP_TEXT[0] ?></h2>
-					<p class="BannerSubtitle"><?php echo TEMP_TEXT[1] ?></p>
+			<div class="banner">
+				<div class="bannerText">
+					<h2><?php echo TEMP_TEXT[0] ?></h2>
+					<p><?php echo TEMP_TEXT[1] ?></p>
 				</div>
 			</div>
 			<section>

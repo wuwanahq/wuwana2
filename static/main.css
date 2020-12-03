@@ -567,15 +567,6 @@ dd {
 
 /* ABOUT US */
 
-.Hidden {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%}
-
-	.Hidden hr {
-		margin: 24px 0 16px}
-
 .ItemLabel {
 	display: flex;
 	flex-direction: column;
@@ -696,26 +687,34 @@ a .iconLabelHorizontal {
 
 /* BANNER */
 
-.Box.Banner {
+.banner {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
 	min-height: 230px;
+	width: 100%;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
 	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), transparent 60%),
 		url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg);
 	background-size: auto, cover;
 	justify-content: center;
 	background-position: 0 0, 50% 50%}
 
-.BannerText {
+.bannerText {
 	color: #ffffff;
 	margin-left: 24px;
 	max-width: 60ch}
 
-.BannerTitle {
+.bannerText h2 {
 	font-size: 2rem;
 	line-height: 2.4rem;
 	font-weight: 700;
 	margin: 0 0 8px 0}
 
-.BannerSubtitle {
+.bannerText p {
 	font-size: 1.5rem;
 	font-weight: 400;
 	margin: 0}
@@ -885,13 +884,9 @@ a .iconLabelHorizontal {
 	.HeaderIcon {
 		display: inline}
 
-	.Box.Banner {
-		min-height: 230px;
+	.banner {
 		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%),
-			url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg);
-		background-size: auto, cover;
-		justify-content: center;
-		background-position: 0 0, 50% 50%}
+			url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg)}
 
 	/* MENU MOBILE */
 
@@ -974,7 +969,7 @@ a .iconLabelHorizontal {
 {
 	/* BANNER */
 
-	.Box.Banner {
+	.banner {
 		display: block;
 		min-height: 180px;
 		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%),
@@ -982,23 +977,20 @@ a .iconLabelHorizontal {
 		background-size: auto, cover;
 		background-position: 0 0, 50% 50%}
 
-	.BannerText {
+	.bannerText {
 		align-self: flex-start;
 		color: #ffffff;
 		margin: 16px 0 0 16px;
 		max-width: 60ch}
 
-	.BannerTitle {
+	.bannerText h2 {
 		font-size: 1.5rem;
 		line-height: 1.3;
-		font-weight: 500;
-		margin: 0 0 8px 0}
+		font-weight: 500}
 
-	.BannerSubtitle {
+	.bannerText p {
 		font-size: 1rem;
-		list-style: 1.3;
-		font-weight: 400;
-		margin: 0}
+		list-style: 1.3}
 
 	/* COMPANY CARD */
 
