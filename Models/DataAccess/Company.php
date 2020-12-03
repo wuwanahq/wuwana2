@@ -16,8 +16,9 @@ class Company extends DataAccess
 	public $logo;
 	public $description;
 	public $website;
-	public $phone;
 	public $email;
+	public $phone;
+	public $address;
 	public $region;
 	public $tags;
 	public $socialMedias;
@@ -25,15 +26,16 @@ class Company extends DataAccess
 	static function getTableSchema()
 	{
 		return 'create table Company (
-			PermaLink varchar(100) primary key,
+			PermaLink varchar(250) primary key,
 			ID int not null,
-			Name varchar(100) not null,
+			Name varchar(250) not null,
 			LogoURL varchar(255) not null,
 			Description varchar(255) not null,
 			Website varchar(255) not null,
+			Email varchar(255) not null,
 			PhonePrefix tinyint not null,
 			PhoneNumber int not null,
-			Email varchar(255) not null,
+			Address varchar(255) not null,
 			LocationID smallint not null,
 			FirstTagID int not null,
 			SecondTagID int not null,
@@ -55,9 +57,10 @@ class Company extends DataAccess
 			'LogoURL'     => PDO::PARAM_STR,
 			'Description' => PDO::PARAM_STR,
 			'Website'     => PDO::PARAM_STR,
+			'Email'       => PDO::PARAM_STR,
 			'PhonePrefix' => PDO::PARAM_INT,
 			'PhoneNumber' => PDO::PARAM_INT,
-			'Email'       => PDO::PARAM_STR,
+			'Address'     => PDO::PARAM_STR,
 			'LocationID'  => PDO::PARAM_INT,
 			'Tags'        => PDO::PARAM_STR,
 			'LastUpdate'  => PDO::PARAM_INT,

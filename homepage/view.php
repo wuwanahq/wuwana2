@@ -1,43 +1,13 @@
 <!DOCTYPE html>
 <html lang="<?php echo $language ?>">
 <head>
-	<?php include 'Templates/header.php' ?>
+	<?php include 'Templates/page metadata.php' ?>
 	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
 	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana" />
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
 </head>
 <body>
-	<h1 class="VisuallyHidden">Wuwana</h1>
-	<header class="HeaderBar">
-		<div class="HeaderContainer">
-			<div class="HeaderLogo"><a href="/"><img src="/static/logo/wuwana.svg" alt="Wuwana logo"></a></div>
-			<?php
-				if ($user->isLogin())
-				{
-					echo '<span>';
-					echo  $user->isAdmin() ? '<a href="/admin">Admin page</a>' : $user->companyID;
-					echo  ' | ', $_SESSION['Name'];
-					echo '</span>';
-				}
-				elseif (filter_has_var(INPUT_GET, 'login'))
-				{
-					echo '<form method="post">';
-					echo  '<label for="email">Email: </label>';
-					echo  '<input id="email" type="text" name="email">';
-					echo  ' <input type="button" value="Send email" onclick="askEmail()">';
-					echo  '<label for="code">Code: </label>';
-					echo  '<input id="code" type="password" name="code"> <input type="submit" value="Login">';
-					echo '</form>';
-				}
-				else
-				{
-					echo '<div class="HeaderIcon" onclick="showMenu()">';
-					echo  '<img id="TestImg" src="/static/icon/menu.svg" alt="Menu icon">';
-					echo '</div>';
-				}
-			?>
-		</div>
-	</header>
+	<?php include 'Templates/page header.php' ?>
 	<div class="Container">
 		<section class="ColumnLeft">
 			<div class="Box About">
@@ -216,6 +186,6 @@
 			</a>
 		</section>
 	</div>
-	<?php include 'Templates/footer.php' ?>
+	<?php include 'Templates/page footer.php' ?>
 </body>
 </html>

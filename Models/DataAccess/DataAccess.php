@@ -1,7 +1,6 @@
 <?php
 namespace DataAccess;
 use PDO;
-use Scraper\CompanyData;
 
 /**
  * Abstract interface to the database.
@@ -24,6 +23,8 @@ abstract class DataAccess
 
 	protected function createDatabase()
 	{
+		//TODO: check if tables schema are up to date else upgrade it
+
 		$this->createTable(Category::getTableSchema());
 
 		$this->createTable(User::getTableSchema());
@@ -33,21 +34,27 @@ abstract class DataAccess
 		$this->createTable(Company::getTableSchema());
 		$this->createTable(SocialMedia::getTableSchema());
 		$this->createTable(Image::getTableSchema());
-
-		//TODO: insert fake companies to test
 	}
 
 	private function createTable($sql)
 	{
-		$tinyint = 'smallint';
-
 		switch ($this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME))
 		{
-			case 'oci': $tinyint = 'number(3)'; break;
-			case 'mysql': $tinyint = 'tinyint'; break;
-		}
+			case 'oci':
+				$this->pdo->exec(str_replace(
+					['tinyint', 'bigint'],
+					['number(3)', 'number(19)'],
+					$sql));
+				break;
 
-		$this->pdo->exec(str_replace('tinyint', $tinyint, $sql));
+			case 'mysql':
+				$this->pdo->exec($sql);
+				break;
+
+			default:
+				$this->pdo->exec(str_replace('tinyint', 'smallint', $sql));
+				break;
+		}
 	}
 
 	protected function insertData($filePath, $tableName, $columns)

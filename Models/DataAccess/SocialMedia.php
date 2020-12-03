@@ -11,10 +11,10 @@ class SocialMedia
 	public $profileName;
 	public $biography;
 	public $link;
+	public $pictures;
 	private $counter1;
 	private $counter2;
 	private $counter3;
-	public $pictures;
 
 	public function __get($property)
 	{

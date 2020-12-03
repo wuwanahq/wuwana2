@@ -30,5 +30,5 @@
 <link rel="apple-touch-icon" href="/static/favicon/144.png" sizes="144x144">
 <link rel="apple-touch-icon" href="/static/favicon/152.png" sizes="152x152">
 <link rel="apple-touch-icon" href="/static/favicon/180.png" sizes="180x180">
-<link rel="stylesheet" type="text/css" href="/static/style.css">
+<link rel="stylesheet" type="text/css" href="/static/main.css">
 <script src="/static/es5.js" defer></script>
