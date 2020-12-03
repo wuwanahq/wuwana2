@@ -15,7 +15,7 @@
 				echo '<form method="post">';
 				echo  '<label for="email">Email: </label>';
 				echo  '<input id="email" type="text" name="email">';
-				echo  ' <input type="button" value="Send email" onclick="askEmail()">';
+				echo  '<input type="button" value="Send email" onclick="askEmail()"> ';
 				echo  '<label for="code">Code: </label>';
 				echo  '<input id="code" type="password" name="code"> <input type="submit" value="Login">';
 				echo '</form>';
