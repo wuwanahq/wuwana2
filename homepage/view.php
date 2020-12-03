@@ -15,26 +15,23 @@
 					<img src="/static/logo/ribbon.svg">
 				</div>
 				<p>Encontrar la información que necesitas debería ser más fácil.</p>
-				<a href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" class="buttonMain">			Descubre qué es Wuwana
+				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" >
+					Descubre qué es Wuwana
 				</a>
 				<hr>
 				<section class="contactSection">
 					<h3>Contáctanos</h3>
 					<ul>
 						<li>
-							<a href="/">
-								<div class="ItemLabel">
-									<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
-									Instagram
-								</div>
+							<a class="ItemLabel" href="/">
+								<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
+								Instagram
 							</a>
 						</li>
 						<li>
-							<a href="/">
-								<div class="ItemLabel">
-									<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
-									Instagram
-								</div>
+							<a class="ItemLabel" href="/">
+								<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
+								Instagram
 							</a>
 						</li>
 					</ul>
@@ -97,44 +94,42 @@
 			<section>
 				<h2>Empresas destacadas</h2>
 				<div class="Box">
-					<a href="company">
-						<div class="Card">
-							<div class="Logo">
-								<img src="/static/logo/square1.svg">
+					<a class="Card" href="company">
+						<div class="Logo">
+							<img src="/static/logo/square1.svg">
+						</div>
+						<div class="CompanyMain">
+							<div class="CompanyContent">
+								<h3>Company 1</h3>
+								<ul class="Label">
+									<li>Tostador</li>
+									<li>Cafeteria</li>
+								</ul>
+								<div class="tagRegion">Cataluna</div>
 							</div>
-							<div class="CompanyMain">
-								<div class="CompanyContent">
-									<h3>Company 1</h3>
-									<ul class="Label">
-										<li>Tostador</li>
-										<li>Cafeteria</li>
-									</ul>
-									<div class="tagRegion">Cataluna</div>
+							<div class="BadgeArea">
+								<div class="ItemLabel">
+									<div class="GoogleReview">
+										4,8
+										<span class="ReviewScale">/5</span>
+									</div>
+									Google review
 								</div>
-								<div class="BadgeArea"><!-- Badge area -->
-									<div class="ItemLabel">
-										<div class="GoogleReview">
-											4,8
-											<span class="ReviewScale">/5</span>
-										</div>
-										Google review
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/sustainability.svg">
-										<span>Sostenible</span>
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/sustainability.svg">
-										<span>Sostenible</span>
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/sustainability.svg">
-										<span>Sostenible</span>
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/social-impact.svg">
-										<span>Compromiso social</span>
-									</div>
+								<div class="ItemLabel">
+									<img src="/static/badge/sustainability.svg">
+									<span>Sostenible</span>
+								</div>
+								<div class="ItemLabel">
+									<img src="/static/badge/sustainability.svg">
+									<span>Sostenible</span>
+								</div>
+								<div class="ItemLabel">
+									<img src="/static/badge/sustainability.svg">
+									<span>Sostenible</span>
+								</div>
+								<div class="ItemLabel">
+									<img src="/static/badge/social-impact.svg">
+									<span>Compromiso social</span>
 								</div>
 							</div>
 						</div>
@@ -150,8 +145,7 @@
 
 						foreach ($companies as $permalink => $company)
 						{
-							echo '<a href="company/', $permalink, '">';
-							echo  '<div class="Card">';
+							echo '<a class="Card" href="company/', $permalink, '">';
 							echo   '<div class="Logo">';
 							echo    '<img src="/static/logo/square', rand(1,8), '.svg">';
 							echo   '</div>';
@@ -167,8 +161,7 @@
 							echo     '<div class="tagRegion">', $locations[$company->region]->region, '</div>';
 							echo    '</div>';
 							echo    '<div class="BadgeArea"></div>';
-							echo   '</div>';
-							echo  '</div>';
+							echo   '</div>';;
 							echo '</a>';
 
 							if (--$counter > 0)
@@ -177,8 +170,9 @@
 					?>
 				</div>
 			</section>
-			<a class="Center" href="?show=all">
-				<div class="buttonIcon"><img src="/static/icon/plus.svg">Ver mas empresas</div>
+			<a class="buttonIcon Center" href="?show=all">
+				<img src="/static/icon/plus.svg">
+				Ver mas empresas
 			</a>
 		</section>
 	</div>

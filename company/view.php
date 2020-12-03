@@ -90,23 +90,22 @@
 					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
 						<li>
-							<a href="/">
-								<div class="ItemLabel">
+							<a class="ItemLabel" href="/">
+
 									<div class="buttonSocial">
 										<img src="/static/icon/instagram.svg">
 									</div>
 									Instagram
-								</div>
 							</a>
 						</li>
 						<li>
-							<a href="/">
-								<div class="ItemLabel">
+							<a class="ItemLabel" href="/">
+
 									<div class="buttonSocial">
 										<img src="/static/icon/whatsapp.svg">
 									</div>
 									Whatsapp
-								</div>
+
 							</a>
 						</li>
 					</ul>
@@ -184,18 +183,17 @@
 					echo     '</div>';
 					echo    '</div>';
 					echo   '</div>';
-					echo   '<div class="buttonIcon">';
-					echo    '<a href="', $company->instagram->url, '" target="_blank">';
+					echo    '<a class="buttonIcon" href="', $company->instagram->url, '" target="_blank">';
 					echo     '<img src="/static/icon/instagram.svg">', TEXT[5];
 					echo    '</a>';
-					echo   '</div>';
 					echo  '</div>';
 					echo '</section>';
 				}
 			?>
 			</section>
-			<a class="Center" href="/">
-				<div class="buttonIcon"><img src="/static/icon/home.svg"><?php echo TEXT[4] ?></div>
+			<a class="buttonIcon Center" href="/">
+				<img src="/static/icon/home.svg">
+				<?php echo TEXT[4] ?>
 			</a>
 			</section>
 	</div>
