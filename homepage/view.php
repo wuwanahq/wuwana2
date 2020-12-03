@@ -10,14 +10,15 @@
 	<?php include 'Templates/page header.php' ?>
 	<div class="Container">
 		<section class="ColumnLeft">
-			<div class="Box About">
-				<div class="AboutCover">
+			<div class="boxPanel">
+				<div class="panelCover">
 					<img src="/static/logo/ribbon.svg">
 				</div>
-				<p>Encontrar la informacion que necesitas deberia ser mas facil.</p>
-				<div class="Hidden" id="AboutUs">
-					<div class="buttonMain">Descubre que es Wuwana</div>
-					<hr>
+				<p>Encontrar la información que necesitas debería ser más fácil.</p>
+				<a href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" class="buttonMain">			Descubre qué es Wuwana
+				</a>
+				<hr>
+				<section class="contactSection">
 					<h3>Contáctanos</h3>
 					<ul>
 						<li>
@@ -37,12 +38,7 @@
 							</a>
 						</li>
 					</ul>
-				</div>
-				<hr>
-				<div class="Button Toggle" onclick="hide()">
-					<img id="ToggleAboutUsImg" src="/static/icon/chevron-down.svg">
-					<label class="TextButton" id="ToggleAboutUsLabel">Ver mas</label>
-				</div>
+				</section>
 			</div>
 			<section class="Sticky" id="menu">
 				<h2>Personaliza la buqueda</h2>

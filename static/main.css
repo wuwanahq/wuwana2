@@ -50,8 +50,7 @@ h1 { /* Title */
 	font-size: 1.5rem;
 	line-height: 1.3;
 	font-weight: 500;
-	margin-bottom: 16px;
-	margin-block-start: 0}
+	margin: 0 0 16px;}
 
 h2 { /* Subtitle */
 	font-size: 1.125rem;
@@ -64,8 +63,7 @@ h3 { /* Company Title */
 	font-size: 1rem;
 	line-height: 1.3;
 	font-weight: 700;
-	margin-block-start: 0;
-	margin-block-end: 0}
+	margin: 0;}
 
 p {
 	font-size: 1rem;
@@ -194,6 +192,7 @@ dd {
 	display: flex;
 	padding: 8px;
 	align-items: center;
+	align-self: center;
 	background-color: white;
 	color: black;
 	font-size: 12px;
@@ -375,6 +374,41 @@ dd {
 	cursor: not-allowed;
 }
 
+/* HEADER */
+
+.headerBar{
+	z-index: 99;
+	position: sticky;
+	top: 0;
+	left: 0;
+	height: 48px;
+	width: 100vw;
+	background-color: white;
+	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: center}
+
+.headerContainer {
+	display: flex;
+	justify-content: space-between;
+	align-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 0 16px;
+	max-width: 1200px} /* Same as body max width */
+
+.headerLogo {
+	height: 24px}
+
+.HeaderIcon {
+	border-radius: 8px;
+	padding: 8px;
+	margin-right: -8px;
+	cursor: pointer;
+	display: none;}
+
+.HeaderIcon:hover {
+	background-color: #fafafa}
 
 /* Old buttons */
 
@@ -436,43 +470,6 @@ dd {
 
 .Button.Toggle img {
 	filter: none}
-
-
-/* HEADER */
-
-.headerBar{
-	z-index: 99;
-	position: sticky;
-	top: 0;
-	left: 0;
-	height: 48px;
-	width: 100vw;
-	background-color: #ffffff;
-	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
-	display: flex;
-	justify-content: center}
-
-.HeaderContainer {
-	display: flex;
-	justify-content: space-between;
-	align-content: space-between;
-	align-items: center;
-	width: 100%;
-	padding: 0 16px;
-	max-width: 1200px} /* Same as body max width */
-
-.headerLogo {
-	height: 24px}
-
-.HeaderIcon {
-	border-radius: 8px;
-	padding: 8px;
-	margin-right: -8px;
-	cursor: pointer;
-	display: none;}
-
-.HeaderIcon:hover {
-	background-color: #fafafa}
 
 /* CARDS */
 
@@ -585,35 +582,6 @@ dd {
 	.Hidden hr {
 		margin: 24px 0 16px}
 
-.Box.About {
-	align-items: center}
-
-	.Box.About p {
-		color: #545151;
-		font-size: 0.875rem;
-		line-height: 1.3;
-		text-align: center;
-		max-width: 90%} /* This is to try to replicate padding 16px on left and right */
-
-	.Box.About ul {
-		padding-inline-start: 0;
-		display: flex;
-		align-self: center;
-		margin: 0 0 8px;
-		max-width: 90%} /* This is to try to replicate padding 16px on left and right */
-
-	.Box.About li {
-		display: inline;
-		margin: 4px}
-
-.AboutCover {
-	margin-bottom: 8px}
-
-.AboutCover img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover}
-
 .ItemLabel {
 	display: flex;
 	flex-direction: column;
@@ -665,6 +633,7 @@ dd {
 	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
 	padding-bottom: 16px;
 }
+
 .boxPanel hr {
 	margin: 16px 0;
 }
@@ -678,9 +647,30 @@ dd {
 	margin: 0 16px 8px;
 }
 
-.boxPanel a {
+.boxPanel p {
 	color: #545151;
+	font-size: 1rem;
+	line-height: 1.3;
+	margin: 0 16px 16px;
 }
+
+.boxPanel ul {
+	margin: 0 16px;
+	padding: 0;
+	display: flex;}
+
+.boxPanel li {
+	display: inline;
+	margin: 0 4px
+}
+
+.panelCover {
+	margin-bottom: 8px}
+
+	.panelCover img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover}
 
 .iconLabelHorizontal {
 	padding: 4px 16px;
@@ -703,6 +693,10 @@ a .iconLabelHorizontal {
 
 .iconLabelHorizontal img {
 	margin-right: 8px;
+}
+
+.contactSection {
+	align-items: center;
 }
 
 
@@ -742,7 +736,8 @@ a .iconLabelHorizontal {
 	overflow: hidden;
 	border-radius: 8px;
 	background-color: #ffffff;
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05)
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	margin-bottom: 24px;
 }
 
 .companyPanel h1 {
@@ -890,7 +885,6 @@ a .iconLabelHorizontal {
 		flex-direction: column}
 
 	.ColumnLeft {
-		margin-bottom: 24px;
 		min-width: 100%;
         max-width: 100%}
 
