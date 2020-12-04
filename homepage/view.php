@@ -23,15 +23,15 @@
 					<h3>Contáctanos</h3>
 					<ul>
 						<li>
-							<a class="ItemLabel" href="/">
+							<a class="ItemLabel" href="https://www.instagram.com/wuwana.es/" target="_blank">
 								<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
 								Instagram
 							</a>
 						</li>
 						<li>
-							<a class="ItemLabel" href="/">
-								<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
-								Instagram
+							<a class="ItemLabel" href="mailto:jonathan@wuwana.com">
+								<div class="buttonSocial"><img src="/static/icon/email.svg"></div>
+								Email
 							</a>
 						</li>
 					</ul>
