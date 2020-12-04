@@ -15,7 +15,7 @@
 ?>
 <div class="ColumnLeft">
 	<div class="boxPanel">
-		<div class="AboutCover"><img src="/static/logo/ribbon.svg"></div>
+		<div class="panelCover"><img src="/static/logo/ribbon.svg"></div>
 		<h1>Administrator's name</h1>
 		<a href=#>
 			<div class="iconLabelHorizontal">
@@ -47,13 +47,12 @@
 		</section>
 		
 	</div>
-	<section class="Sticky" id="menu">
-		<h2>Statistics</h2>
-		<div class="Box Filter">
-			2 companies<br>
-			4 users registered<br>
-			1 users connected this week<br>
-			2 users connected this month<br>
-		</div>
-	</section>
+	<h2>Statistics</h2>
+	<div>
+		2 companies<br>
+		4 users registered<br>
+		1 users connected this week<br>
+		2 users connected this month<br>
+	</div>
+
 </div>
