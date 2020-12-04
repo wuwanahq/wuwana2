@@ -57,7 +57,7 @@ function askEmail()
 
 	form.append("email", email);
 
-	xhr.open("post", "/ajax/email.php");
+	xhr.open("post", "/ajax/email");
 	xhr.send(form);
 }
 

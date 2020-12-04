@@ -63,7 +63,7 @@ class User extends DataAccess
 		$user->email = $row['Email'];
 		$user->name = $row['Name'];
 		$user->company = $row['CompanyID'];
-		$user->accessCode = $row['AccessCode'];
+		$user->accessCode = $row['AccessCode'] + 32768;
 		$user->lastLogin = $row['LastLogin'];
 
 		return $user;
@@ -86,7 +86,7 @@ class User extends DataAccess
 		$query->bindValue(2, $email, PDO::PARAM_STR);
 		$query->bindValue(3, $email, PDO::PARAM_STR);
 		$query->bindValue(4, $companyID, PDO::PARAM_INT);
-		$query->bindValue(5, $code, PDO::PARAM_INT);
+		$query->bindValue(5, $code - 32768, PDO::PARAM_INT);
 		return $query->execute();
 	}
 
@@ -96,7 +96,7 @@ class User extends DataAccess
 		$query = $this->pdo->prepare(
 			'update User set AccessCode=?,LastLogin=? where Hash=?');
 
-		$query->bindValue(1, $code, PDO::PARAM_INT);
+		$query->bindValue(1, $code - 32768, PDO::PARAM_INT);
 		$query->bindValue(2, time(), PDO::PARAM_INT);
 		$query->bindValue(3, $hash, PDO::PARAM_LOB);
 		$query->execute();

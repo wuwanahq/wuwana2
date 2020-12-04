@@ -107,7 +107,7 @@ class UserSession
 	private function generateCode($email)
 	{
 		$hash = self::hash($email);
-		$code = rand(1, 9999);
+		$code = rand(1, 65535);
 
 		$name = $email[0] . '…' . substr($email, strpos($email, '@'));
 		$companyID = $this->dao->countUser() === 0 ? -1 : 0;
