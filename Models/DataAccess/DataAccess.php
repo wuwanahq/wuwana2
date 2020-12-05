@@ -34,6 +34,12 @@ abstract class DataAccess
 		$this->createTable(Company::getTableSchema());
 		$this->createTable(SocialMedia::getTableSchema());
 		$this->createTable(Image::getTableSchema());
+
+		(new Location($this->pdo))->insertData(__DIR__ . '/default data/location.tsv');
+		(new Tag($this->pdo))->insertData(__DIR__ . '/default data/tag.tsv');
+		(new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
+		(new SocialMedia($this->pdo))->insertData(__DIR__ . '/default data/socialmedia.tsv');
+		(new User($this->pdo))->insertData(__DIR__ . '/default data/user.tsv');
 	}
 
 	private function createTable($sql)
@@ -74,7 +80,11 @@ abstract class DataAccess
 
 			foreach ($columns as $columnType)
 			{
-				$preparedStatement->bindValue($i+1, trim($values[$i]), $columnType);
+				if ($columnType == PDO::PARAM_LOB)
+				{ $preparedStatement->bindValue($i+1, hex2bin($values[$i]), $columnType); }
+				else
+				{ $preparedStatement->bindValue($i+1, trim($values[$i]), $columnType); }
+
 				++$i;
 			}
 

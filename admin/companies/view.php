@@ -12,6 +12,7 @@
 			<section>
 				<h2>Companies</h2>
 				<div class="Box">
+					<a href="/company">Add new company</a>
 					<table>
 						<thead>
 							<tr>

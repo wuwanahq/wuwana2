@@ -9,6 +9,7 @@ use PDO;
 class User extends DataAccess
 {
 	const HASH_ALGO = 'fnv164';
+	const CODE_MAX_VALUE = 9999;
 
 	public $email;
 	public $name;
@@ -63,7 +64,7 @@ class User extends DataAccess
 		$user->email = $row['Email'];
 		$user->name = $row['Name'];
 		$user->company = $row['CompanyID'];
-		$user->accessCode = $row['AccessCode'] + 32768;
+		$user->accessCode = str_pad($row['AccessCode'], 4, '0', STR_PAD_LEFT);
 		$user->lastLogin = $row['LastLogin'];
 
 		return $user;
@@ -86,7 +87,7 @@ class User extends DataAccess
 		$query->bindValue(2, $email, PDO::PARAM_STR);
 		$query->bindValue(3, $email, PDO::PARAM_STR);
 		$query->bindValue(4, $companyID, PDO::PARAM_INT);
-		$query->bindValue(5, $code - 32768, PDO::PARAM_INT);
+		$query->bindValue(5, $code, PDO::PARAM_INT);
 		return $query->execute();
 	}
 
@@ -96,9 +97,19 @@ class User extends DataAccess
 		$query = $this->pdo->prepare(
 			'update User set AccessCode=?,LastLogin=? where Hash=?');
 
-		$query->bindValue(1, $code - 32768, PDO::PARAM_INT);
+		$query->bindValue(1, $code, PDO::PARAM_INT);
 		$query->bindValue(2, time(), PDO::PARAM_INT);
 		$query->bindValue(3, $hash, PDO::PARAM_LOB);
+		$query->execute();
+	}
+
+	public function updateCompany($id, $hash)
+	{
+		$query = $this->pdo->prepare(
+			'update User set CompanyID=? where Hash=?');
+
+		$query->bindValue(1, $id, PDO::PARAM_INT);
+		$query->bindValue(2, $hash, PDO::PARAM_LOB);
 		$query->execute();
 	}
 
@@ -106,5 +117,10 @@ class User extends DataAccess
 	public function countAll()
 	{
 		return (int)$this->pdo->query('select count(*) from User')->fetchColumn(0);
+	}
+
+	public function countAdmin()
+	{
+		return (int)$this->pdo->query('select count(*) from User where CompanyID < 0')->fetchColumn(0);
 	}
 }

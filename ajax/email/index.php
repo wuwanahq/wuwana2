@@ -4,7 +4,7 @@
  */
 
 spl_autoload_register(function($className) {
-	require '../Models/' . str_replace('\\', '/', $className) . '.php';
+	require '../../Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
 if (!filter_has_var(INPUT_POST, 'email'))

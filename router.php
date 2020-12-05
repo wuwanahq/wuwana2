@@ -9,13 +9,9 @@ spl_autoload_register(function($className) {
 	require 'Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-return false;
-
-/*
 $company = WebApp\Data::getCompanyInfo(str_replace('/', '', filter_input(INPUT_SERVER, 'REQUEST_URI')));
 
 if ($company == null)
 { return false; }
 
 require 'company/index.php';
-*/

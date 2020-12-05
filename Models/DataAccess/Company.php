@@ -12,6 +12,7 @@ class Company extends DataAccess
 {
 	const VALUES_DELIMITER = ';';
 
+	public $permalink;
 	public $name;
 	public $logo;
 	public $description;
@@ -21,7 +22,8 @@ class Company extends DataAccess
 	public $address;
 	public $region;
 	public $tags;
-	public $socialMedias;
+	public $instagram;
+	public $facebook;
 
 	static function getTableSchema()
 	{
@@ -41,6 +43,16 @@ class Company extends DataAccess
 			SecondTagID int not null,
 			OtherTags varchar(255) not null,
 			LastUpdate int not null)';
+	}
+
+	public function getPermalink()
+	{
+		$host = filter_input(INPUT_SERVER, 'HTTP_HOST');
+
+		if (strlen($host) < 5)
+		{ $host = filter_input(INPUT_SERVER, 'SERVER_NAME'); }
+
+		return $host . '/' . $this->permalink;
 	}
 
 	public function importData($filePath)
@@ -67,6 +79,11 @@ class Company extends DataAccess
 		]);
 	}
 
+	/**
+	 * Get a company by its permanent link.
+	 * @param string $permalink
+	 * @return \DataAccess\Company
+	 */
 	public function selectPermalink($permalink)
 	{
 		$query = $this->pdo->query(
@@ -85,6 +102,7 @@ class Company extends DataAccess
 			if ($company == null)
 			{
 				$company = new Company();
+				$company->permalink = $row['Company.PermaLink'];
 				$company->name = $row['Company.Name'];
 				$company->logo = $row['Company.LogoURL'];
 				$company->description = $row['Company.Description'];
@@ -94,14 +112,24 @@ class Company extends DataAccess
 				$company->tags = explode(self::VALUES_DELIMITER, $row['Company.Tags']);
 				$company->phone =
 					$row['Company.PhonePrefix'] . str_pad($row['Company.PhoneNumber'], 9, '0', STR_PAD_LEFT);
-
-				$company->socialMedias = [];
 			}
 
-			if (!isset($company->socialMedias['SocialMedia.ID']))
-			{ $company->socialMedias[] = new SocialMedia($row); }
+			$socialMedia = new SocialMedia($row);
 
-			$company->socialMedias['SocialMedia.ID']->pictures[] = $row['Image.URL'];
+			switch ($socialMedia)
+			{
+				case 'instagram':
+					if (empty($company->instagram))
+					{ $company->instagram = $socialMedia; }
+					$company->instagram->pictures[] = $row['Image.URL'];
+					break;
+
+				case 'facebook':
+					if (empty($company->facebook))
+					{ $company->facebook = $socialMedia; }
+					$company->facebook->pictures[] = $row['Image.URL'];
+					break;
+			}
 		}
 
 		return $company;

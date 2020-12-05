@@ -33,7 +33,7 @@ class SocialMedia
 
 	public function __construct(array $row)
 	{
-		$this->url = 'https://' . $row['SocialMedia.URL'];
+		$this->url = 'https://www.' . $row['SocialMedia.URL'];
 		$this->profileName = $row['SocialMedia.ProfileName'];
 		$this->biography = $row['SocialMedia.Biography'];
 		$this->link = $row['SocialMedia.Link'];

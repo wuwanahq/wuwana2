@@ -15,48 +15,34 @@
 					<div class="Logo">
 						<img src="<?php echo $company->logo ?>">
 					</div>
-					<h1><?php echo $company->name ?></h1>
 					<?php
-						if (isset($user) && $user->isLogin() && $user->isAdmin())
-						{
-							echo '<form method="post">';
-							echo  '<textarea></textarea><br>';
-							echo  '<input type="submit" value="Update description">';
-							echo '</form>';
-						}
+						if (isset($user) && $user->isAdmin())
+						{ echo '<input type="text" value="', $company->name, '">'; }
+						else
+						{ echo '<h1>', $company->name, '</h1>'; }
 					?>
 					<ul class="Label">
 						<?php
 							foreach ($company->tags as $tag)
 							{ echo '<li>', $tag, '</li>'; }
 						?>
-						<li>Tagone</li>
-						<li>Tagtwo</li>
-						
 					</ul>
-					<div class="tagRegion">Cataluna</div>
+					<div class="tagRegion"><?php echo $company->region ?></div>
 				</section>
 				<section class="companyDescription">
 					<hr>
+					<h3><?php printf(TEXT[6], $company->name) ?></h3>
 					<?php
-						if (isset($user) && $user->isLogin() && $user->isAdmin())
-						{
-							echo '<form method="post">';
-							echo  '<input type="text" placeholder="New company"><br>';
-							echo  '<input type="submit" value="Update name">';
-							echo '</form>';
-						}
+						if (isset($user) && $user->isAdmin())
+						{ echo '<textarea>', $company->description, '</textarea><br>'; }
 						else
-						{
-							echo '<h3>', $company->description, '</h3>';
-						}
+						{ echo '<p>', $company->description, '</p>'; }
 					?>
-					<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae praesentium, doloremque alias ipsa odio inventore reiciendis soluta fugit earum sit natus deserunt. Velit maxime, eum recusandae sed eos commodi molestiae! </p>
 				</section>
 				<section class="companyAddress">
 					<hr>
-					<h3>Address</h3>
-					<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae praesentium, doloremque alias ipsa odio inventore reiciendis soluta fugit earum sit natus deserunt. Velit maxime, eum recusandae sed eos commodi molestiae! </p>
+					<h3><?php echo TEXT[7] ?></h3>
+					<p><?php echo $company->address ?></p>
 				</section>
 				<section class="companyWhy">
 					<hr>
@@ -89,46 +75,57 @@
 					<hr>
 					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
-						<li>
-							<a href="/">
-								<div class="ItemLabel">
-									<div class="buttonSocial">
-										<img src="/static/icon/instagram.svg">
-									</div>
-									Instagram
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="/">
-								<div class="ItemLabel">
-									<div class="buttonSocial">
-										<img src="/static/icon/whatsapp.svg">
-									</div>
-									Whatsapp
-								</div>
-							</a>
-						</li>
+						<?php
+							if (isset($company->instagram->url))
+							{
+								echo '<li>';
+								echo  '<a href="', $company->instagram->url, '" target="_blank">';
+								echo   '<div class="ItemLabel">';
+								echo    '<div class="buttonSocial">';
+								echo     '<img src="/static/icon/instagram.svg">';
+								echo    '</div>';
+								echo    'Instagram';
+								echo   '</div>';
+								echo  '</a>';
+								echo '</li>';
+							}
+
+							if (isset($company->phone))
+							{
+								echo '<li>';
+								echo  '<a href="https://wa.me/', $company->phone, '?text=';
+									printf(TEXT[8], $company->name);
+								echo  '" target="_blank">';
+								echo   '<div class="ItemLabel">';
+								echo    '<div class="buttonSocial">';
+								echo     '<img src="/static/icon/whatsapp.svg">';
+								echo    '</div>';
+								echo    'WhatsApp';
+								echo   '</div>';
+								echo  '</a>';
+								echo '</li>';
+							}
+						?>
 					</ul>
 				</section>
 				<?php
-					if (isset($user) && $user->isLogin() && $user->isAdmin())
+					if (isset($user) && $user->isAdmin())
 					{
 						echo '<form method="post">';
 						echo  '<label for="permalink">Permanent link:</label>';
-						echo  '<input id="permalink" type="text" size="26" value="https://wuwana.com/my-profile-page">';
+						echo  '<input id="permalink" type="text" size="26" value="', $company->permalink, '">';
 						echo  '<br>';
 						echo  '<label for="insta">Instagram profile:</label>';
-						echo  '<input id="insta" type="text" size="25" placeholder="https://instagram.com/username...">';
+						echo  '<input id="insta" type="text" size="25" value="', $company->instagram->url, '">';
 						echo  '<br>';
 						echo  '<label for="whatsapp">WhatsApp number:</label>';
-						echo  '<input id="whatsapp" type="text" size="24" placeholder="+34 123 45 67 89"><br>';
+						echo  '<input id="whatsapp" type="text" size="24" value="', $company->phone, '"><br>';
 						echo  '<br>';
 						echo  '<label for="email">Email address:</label>';
-						echo  '<input id="email" type="text" size="26" placeholder="me@email.com"><br>';
+						echo  '<input id="email" type="text" size="26" value="', $company->email, '"><br>';
 						echo  '<br>';
 						echo  '<label for="website">Website URL:</label>';
-						echo  '<input id="website" type="text" size="27" placeholder="https://www.my-website.com">';
+						echo  '<input id="website" type="text" size="27" value="', $company->website, '">';
 						echo  '<br>';
 						echo  '<input type="submit" value="Update info sources">';
 						echo '</form>';
@@ -139,10 +136,12 @@
 		<section class="ColumnMain">
 			<section class="companyInstagram">
 			<?php
-				if ($company->instagram != null)
+				if (isset($company->instagram))
 				{
 					echo '<section>';
-					echo  '<h2>', sprintf(TEXT[2], $company->name), '</h2>';
+					echo  '<h2>';
+						printf(TEXT[2], $company->name);
+					echo  '</h2>';
 					echo  '<div class="Box">';
 					echo   '<div class="InstagramInfo">';
 					echo    '<h3>', $company->instagram->profileName, '</h3>';
