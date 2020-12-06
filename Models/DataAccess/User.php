@@ -28,15 +28,11 @@ class User extends DataAccess
 			. 'LastLogin int not null)';
 	}
 
-	public function importData($filePath)
+	public function insertData($filePath)
 	{
-		if ($this->pdo->exec('drop table User') === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-
-		$this->createTable();
-
-		parent::insertData($filePath, 'User', [
-			'Email'      => PDO::PARAM_LOB,
+		parent::importData($filePath, 'User', [
+			'Hash'       => PDO::PARAM_LOB,
+			'Email'      => PDO::PARAM_STR,
 			'Name'       => PDO::PARAM_STR,
 			'CompanyID'  => PDO::PARAM_INT,
 			'AccessCode' => PDO::PARAM_INT,

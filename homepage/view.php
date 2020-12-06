@@ -154,10 +154,10 @@
 
 						foreach ($companies as $permalink => $company)
 						{
-							echo '<a href="company/', $permalink, '">';
+							echo '<a href="/', $permalink, '">';
 							echo  '<div class="Card">';
 							echo   '<div class="Logo">';
-							echo    '<img src="/static/logo/square', rand(1,8), '.svg">';
+							echo    '<img src="', $company->logo, '">';
 							echo   '</div>';
 							echo   '<div class="CompanyMain">';
 							echo    '<div class="CompanyContent">';
@@ -165,7 +165,7 @@
 							echo     '<ul class="Label">';
 
 							foreach ($company->tags as $tag)
-							{ echo '<li>', $categories[$category][$language], '</li>'; }
+							{ echo '<li>', $tag, '</li>'; }
 
 							echo     '</ul>';
 							echo     '<div class="Tag Region">', $locations[$company->region]->region, '</div>';

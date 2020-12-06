@@ -20,12 +20,15 @@ class SocialMedia
 	{
 		switch ($property)
 		{
-			case 'instagramNbPost': return $this->counter1;
-			case 'instagramNbFollower': return $this->counter2;
-			case 'instagramNbFollowing': return $this->counter3;
-			case 'facecookNbLike': return $this->counter1;
-			case 'facebookNbFollow': return $this->counter2;
-			case 'facebookNbCheckin': return $this->counter3;
+			// Instagram
+			case 'nbPost': return $this->counter1;
+			case 'nbFollower': return $this->counter2;
+			case 'nbFollowing': return $this->counter3;
+
+			// Facebook
+			case 'nbLike': return $this->counter1;
+			case 'nbFollow': return $this->counter2;
+			case 'nbCheckin': return $this->counter3;
 		}
 
 		trigger_error('Undefined property ' . $property, E_USER_ERROR);

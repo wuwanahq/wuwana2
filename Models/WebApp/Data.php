@@ -45,7 +45,7 @@ class Data
 
 	public static function getCompanyInfo($permalink)
 	{
-		$company = WebApp\Data::getCompany()->selectPermalink($permalink);
+		$company = self::getCompany()->selectPermalink($permalink);
 
 		if ($company == null)
 		{ return null; }

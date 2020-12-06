@@ -17,14 +17,14 @@ class Category extends DataAccess
 			Spanish varchar(255) not null)';
 	}
 
-	public function importData($filePath)
+	public function insertData($filePath)
 	{
 		if ($this->pdo->exec('drop table Category') === false)
 		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
 
 		$this->createTable();
 
-		parent::insertData($filePath, 'Category', [
+		parent::importData($filePath, 'Category', [
 			'ID'      => PDO::PARAM_INT,
 			'English' => PDO::PARAM_STR,
 			'Spanish' => PDO::PARAM_STR,

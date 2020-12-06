@@ -37,8 +37,7 @@ abstract class DataAccess
 
 		(new Location($this->pdo))->insertData(__DIR__ . '/default data/location.tsv');
 		(new Tag($this->pdo))->insertData(__DIR__ . '/default data/tag.tsv');
-		(new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
-		(new SocialMedia($this->pdo))->insertData(__DIR__ . '/default data/socialmedia.tsv');
+		(new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv', __DIR__ . '/default data/socialmedia.tsv');
 		(new User($this->pdo))->insertData(__DIR__ . '/default data/user.tsv');
 	}
 
@@ -63,7 +62,7 @@ abstract class DataAccess
 		}
 	}
 
-	protected function insertData($filePath, $tableName, $columns)
+	protected function importData($filePath, $tableName, $columns)
 	{
 		$preparedStatement = $this->pdo->prepare(
 			'insert into ' . $tableName . ' ('
@@ -90,5 +89,7 @@ abstract class DataAccess
 
 			$preparedStatement->execute();
 		}
+
+		fclose($file);
 	}
 }

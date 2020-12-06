@@ -19,14 +19,9 @@ class Location extends DataAccess
 			RegionName varchar(255) not null)';
 	}
 
-	public function importData($filePath)
+	public function insertData($filePath)
 	{
-		if ($this->pdo->exec('drop table Location') === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-
-		$this->createTable();
-
-		parent::insertData($filePath, 'Location', [
+		parent::importData($filePath, 'Location', [
 			'ID'          => PDO::PARAM_INT,
 			'CountryCode' => PDO::PARAM_STR,
 			'RegionName'  => PDO::PARAM_STR,
@@ -61,7 +56,7 @@ class Location extends DataAccess
 		{
 			$location = new self();
 			$location->country = $row['CountryCode'];
-			$location->region = $row['Region'];
+			$location->region = $row['RegionName'];
 
 			$locations[(int)$row['ID']] = $location;
 		}

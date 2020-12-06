@@ -44,7 +44,6 @@ if(filter_has_var(INPUT_GET, 'logout'))
 { $user->logout(); }
 
 $companies = WebApp\Data::getCompany()->selectCategoriesRegions($selectedCategories, $selectedRegions, $limit);
-shuffle($companies);
 
 $language = WebApp\WebApp::getLanguageCode();
 require 'Templates/text ' . $language . '.php';

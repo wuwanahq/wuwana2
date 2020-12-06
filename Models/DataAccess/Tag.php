@@ -16,20 +16,17 @@ class Tag extends DataAccess implements Iterator
 	{
 		return 'create table Tag (
 			ID int primary key,
-			Names varchar(255) not null,
+			Visible tinyint not null,
+			Name varchar(255) not null,
 			Keywords varchar(255) not null)';
 	}
 
-	public function importData($filePath)
+	public function insertData($filePath)
 	{
-		if ($this->pdo->exec('drop table Tag') === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-
-		$this->createTable();
-
-		parent::insertData($filePath, 'Tag', [
+		parent::importData($filePath, 'Tag', [
 			'ID'       => PDO::PARAM_INT,
-			'Names'    => PDO::PARAM_STR,
+			'Visible'  => PDO::PARAM_INT,
+			'Name'    => PDO::PARAM_STR,
 			'Keywords' => PDO::PARAM_STR,
 		]);
 	}
@@ -41,7 +38,7 @@ class Tag extends DataAccess implements Iterator
 
 	public function key()
 	{
-		return $this->currentRow['Names'];
+		return $this->currentRow['Name'];
 	}
 
 	public function next()

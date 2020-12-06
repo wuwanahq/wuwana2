@@ -12,7 +12,6 @@ class Company extends DataAccess
 {
 	const VALUES_DELIMITER = ';';
 
-	public $permalink;
 	public $name;
 	public $logo;
 	public $description;
@@ -45,24 +44,9 @@ class Company extends DataAccess
 			LastUpdate int not null)';
 	}
 
-	public function getPermalink()
+	public function insertData($companyFilePath, $socialMediaFilePath)
 	{
-		$host = filter_input(INPUT_SERVER, 'HTTP_HOST');
-
-		if (strlen($host) < 5)
-		{ $host = filter_input(INPUT_SERVER, 'SERVER_NAME'); }
-
-		return $host . '/' . $this->permalink;
-	}
-
-	public function importData($filePath)
-	{
-		if ($this->pdo->exec('drop table Company') === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-
-		$this->createTable();
-
-		parent::insertData($filePath, 'Company', [
+		parent::importData($companyFilePath, 'Company', [
 			'PermaLink'   => PDO::PARAM_STR,
 			'ID'          => PDO::PARAM_INT,
 			'Name'        => PDO::PARAM_STR,
@@ -74,9 +58,34 @@ class Company extends DataAccess
 			'PhoneNumber' => PDO::PARAM_INT,
 			'Address'     => PDO::PARAM_STR,
 			'LocationID'  => PDO::PARAM_INT,
-			'Tags'        => PDO::PARAM_STR,
+			'FirstTagID'  => PDO::PARAM_INT,
+			'SecondTagID' => PDO::PARAM_INT,
+			'OtherTags'   => PDO::PARAM_STR,
 			'LastUpdate'  => PDO::PARAM_INT,
 		]);
+
+		//TODO: move this part in the SocialMedia DAO
+		parent::importData($socialMediaFilePath, 'SocialMedia', [
+			'ID'           => PDO::PARAM_INT,
+			'URL'          => PDO::PARAM_STR,
+			'CompanyID'    => PDO::PARAM_INT,
+			'ProfileName'  => PDO::PARAM_STR,
+			'Biography'    => PDO::PARAM_STR,
+			'ExternalLink' => PDO::PARAM_STR,
+			'Counter1'     => PDO::PARAM_INT,
+			'Counter2'     => PDO::PARAM_INT,
+			'Counter3'     => PDO::PARAM_INT,
+		]);
+	}
+
+	public function getPermalink()
+	{
+		$host = filter_input(INPUT_SERVER, 'HTTP_HOST');
+
+		if (strlen($host) < 5)
+		{ $host = filter_input(INPUT_SERVER, 'SERVER_NAME'); }
+
+		return $host . '/' . $this->permalink;
 	}
 
 	/**
@@ -86,30 +95,48 @@ class Company extends DataAccess
 	 */
 	public function selectPermalink($permalink)
 	{
-		$query = $this->pdo->query(
-			'select * from Company
-				inner join SocialMedia on Company.ID=SocialMedia.CompanyID
-				inner join Image on SocialMedia.ID=Image.SocialMediaID
-				where Company.PermaLink=?'
-		);
+		$sql = 'select
+			Company.Name,
+			Company.LogoURL,
+			Company.Description,
+			Company.Website,
+			Company.Email,
+			Company.LocationID
+			Company.PhonePrefix,
+			Company.PhoneNumber,
+			T1.Name as TagName1,
+			T2.Name as TagName2
+			from Company
+			inner join SocialMedia on Company.ID=SocialMedia.CompanyID
+			left join Image on SocialMedia.ID=Image.SocialMediaID
+			inner join Tag as T1 on Company.FirstTagID=T1.ID
+			inner join Tag as T2 on Company.SecondTagID=T2.ID
+			where Company.PermaLink=?';
+
+		$query = $this->pdo->query($sql);
+
+		if ($query == false)
+		{
+			$this->createDatabase();
+			$query = $this->pdo->query($sql);
+		}
 
 		$query->bindValue(1, $permalink, PDO::PARAM_STR);
 		$query->execute();
 		$company = null;
 
-		while ($row = $query->fetch(PDO::FETCH_ASSOC))
+		while ($row = $query->fetch(PDO::FETCH_NUM))
 		{
 			if ($company == null)
 			{
 				$company = new Company();
-				$company->permalink = $row['Company.PermaLink'];
 				$company->name = $row['Company.Name'];
 				$company->logo = $row['Company.LogoURL'];
 				$company->description = $row['Company.Description'];
 				$company->website = $row['Company.Website'];
 				$company->email = $row['Company.Email'];
 				$company->region = (int)$row['Company.LocationID'];
-				$company->tags = explode(self::VALUES_DELIMITER, $row['Company.Tags']);
+				$company->tags = [$row['TagName1'], $row['TagName2']];
 				$company->phone =
 					$row['Company.PhonePrefix'] . str_pad($row['Company.PhoneNumber'], 9, '0', STR_PAD_LEFT);
 			}
@@ -152,12 +179,22 @@ class Company extends DataAccess
 		if (!empty($regions[0]))
 		{
 			if ($sql == '')
-			{ $sql = ' where LocationID in (' . implode(',', $regions) . ')'; }
+			{ $sql = ' where Company.LocationID in (' . implode(',', $regions) . ')'; }
 			else
-			{ $sql .= ' and LocationID in (' . implode(',', $regions) . ')'; }
+			{ $sql .= ' and Company.LocationID in (' . implode(',', $regions) . ')'; }
 		}
 
-		$sql = 'select * from Company' . $sql . ' order by LastUpdate desc';
+		$sql = "select
+			Company.PermaLink as CompanyPermaLink,
+			Company.Name as CompanyName,
+			Company.LogoURL as CompanyLogoURL,
+			Company.LocationID as CompanyLocationID,
+			T1.Name as TagName1,
+			T2.Name as TagName2
+			from Company
+			inner join Tag as T1 on Company.FirstTagID=T1.ID
+			inner join Tag as T2 on Company.SecondTagID=T2.ID
+			$sql order by Company.LastUpdate desc";
 
 		$stmt = $this->pdo->query($sql);
 
@@ -177,16 +214,17 @@ class Company extends DataAccess
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 		{
 			$company = new Company();
-			$company->name = $row['Name'];
-			$company->logo = $row['LogoURL'];
+			$company->name = $row['CompanyName'];
+			$company->logo = $row['CompanyLogoURL'];
 			//$company->description = $row['Description'];
 			//$company->website = $row['Website'];
 			//$company->phone = $row['PhonePrefix'] . str_pad($row['PhoneNumber'], 9, '0', STR_PAD_LEFT);
 			//$company->email = $row['Email'];
-			$company->region = (int)$row['LocationID'];
-			$company->tags = explode(self::VALUES_DELIMITER, $row['Company.Tags']);
+			$company->region = (int)$row['CompanyLocationID'];
+			$company->tags = [$row['TagName1'], $row['TagName2']];
+			//$company->tags = explode(self::VALUES_DELIMITER, $row['Company.Tags']);
 
-			$companies[$row['Company.PermaLink']] = $company;
+			$companies[$row['CompanyPermaLink']] = $company;
 
 			if (--$limit == 0)
 			{ break; }

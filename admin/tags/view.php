@@ -17,7 +17,7 @@
 						<thead>
 							<tr>
 								<th>Visible?</th>
-								<th>Tag</th>
+								<th>Tag name</th>
 								<th>Keywords</th>
 								<th></th>
 							</tr>
