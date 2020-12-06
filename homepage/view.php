@@ -45,7 +45,7 @@
 				</div>
 			</div>
 			<section class="Sticky" id="menu">
-				<h2>Personaliza la buqueda</h2>
+				<h2><?php echo TEXT[8] ?></h2>
 				<div class="Box Filter">
 					<form method="get" action="/">
 					<dl>
@@ -87,7 +87,7 @@
 						?>
 					</dl>
 					</form>
-					<div class="Button Center"><img src="/static/icon/filter.svg">Aplicar filtros</div>
+					<div class="Button Center"><img src="/static/icon/filter.svg"><?php echo TEXT[7] ?></div>
 				</div>
 			</section>
 		</section>
@@ -98,6 +98,7 @@
 					<p class="BannerSubtitle"><?php echo TEMP_TEXT[1] ?></p>
 				</div>
 			</div>
+<!--
 			<section>
 				<h2>Empresas destacadas</h2>
 				<div class="Box">
@@ -115,7 +116,7 @@
 									</ul>
 									<div class="Tag Region">Cataluna</div>
 								</div>
-								<div class="BadgeArea"><!-- Badge area -->
+								<div class="BadgeArea">
 									<div class="ItemLabel">
 										<div class="GoogleReview">
 											4,8
@@ -146,8 +147,9 @@
 					<hr/>
 				</div>
 			</section>
+-->
 			<section>
-				<h2>Otras empresas</h2>
+				<h2><?php echo TEXT[5] ?></h2>
 				<div class="Box">
 					<?php
 						$counter = count($companies);
@@ -182,7 +184,7 @@
 				</div>
 			</section>
 			<a class="Center" href="?show=all">
-				<div class="buttonIcon"><img src="/static/icon/plus.svg">Ver mas empresas</div>
+				<div class="buttonIcon"><img src="/static/icon/plus.svg"><?php echo TEXT[6] ?></div>
 			</a>
 		</section>
 	</div>

@@ -20,4 +20,14 @@ class WebApp
 
 		return 'en';
 	}
+
+	static function getPermalink()
+	{
+		$host = filter_input(INPUT_SERVER, 'HTTP_HOST');
+
+		if (strlen($host) < 5)
+		{ $host = filter_input(INPUT_SERVER, 'SERVER_NAME'); }
+
+		return $host . filter_input(INPUT_SERVER, 'REQUEST_URI');
+	}
 }

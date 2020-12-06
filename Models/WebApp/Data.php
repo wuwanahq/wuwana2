@@ -10,7 +10,8 @@ use PDO;
 class Data
 {
 	const DEFAULT_IMAGE = '/static/logo/square%u.svg';
-	const NB_IMAGE = 8;
+	const NB_DEFAULT_IMAGE = 8;
+	const NB_INSTAGRAM_PICTURE = 6;
 
 	private static $pdoInstance = null;
 
@@ -51,14 +52,14 @@ class Data
 		{ return null; }
 
 		if ($company->logo == '')
-		{ $company->logo = sprintf(self::DEFAULT_IMAGE, rand(1, self::NB_IMAGE)); }
+		{ $company->logo = sprintf(self::DEFAULT_IMAGE, rand(1, self::NB_DEFAULT_IMAGE)); }
 
-		foreach ($company->socialMedias as $socialMedia)
+		if (isset($company->instagram))
 		{
-			for ($i=0; $i < 6; ++$i)
+			for ($i=0; $i < self::NB_INSTAGRAM_PICTURE; ++$i)
 			{
-				if (empty($socialMedia->pictures[$i]))
-				{ $socialMedia->pictures[$i] = sprintf(self::DEFAULT_IMAGE, rand(1, self::NB_IMAGE)); }
+				if (empty($company->instagram->pictures[$i]))
+				{ $company->instagram->pictures[$i] = sprintf(self::DEFAULT_IMAGE, rand(1, self::NB_DEFAULT_IMAGE)); }
 			}
 		}
 

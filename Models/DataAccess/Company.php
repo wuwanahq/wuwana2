@@ -78,16 +78,6 @@ class Company extends DataAccess
 		]);
 	}
 
-	public function getPermalink()
-	{
-		$host = filter_input(INPUT_SERVER, 'HTTP_HOST');
-
-		if (strlen($host) < 5)
-		{ $host = filter_input(INPUT_SERVER, 'SERVER_NAME'); }
-
-		return $host . '/' . $this->permalink;
-	}
-
 	/**
 	 * Get a company by its permanent link.
 	 * @param string $permalink
@@ -96,17 +86,27 @@ class Company extends DataAccess
 	public function selectPermalink($permalink)
 	{
 		$sql = 'select
-			Company.Name,
-			Company.LogoURL,
-			Company.Description,
-			Company.Website,
-			Company.Email,
-			Company.LocationID
-			Company.PhonePrefix,
-			Company.PhoneNumber,
+			Company.Name as CompanyName,
+			Company.LogoURL as CompanyLogoURL,
+			Company.Description as CompanyDescription,
+			Company.Website as CompanyWebsite,
+			Company.Email as CompanyEmail,
+			Company.Address as CompanyAddress,
+			Location.RegionName as LocationRegionName,
+			Company.PhonePrefix as CompanyPhonePrefix,
+			Company.PhoneNumber as CompanyPhoneNumber,
 			T1.Name as TagName1,
-			T2.Name as TagName2
+			T2.Name as TagName2,
+			SocialMedia.URL as SocialMediaURL,
+			SocialMedia.ProfileName as SocialMediaProfileName,
+			SocialMedia.Biography as SocialMediaBiography,
+			SocialMedia.ExternalLink as SocialMediaExternalLink,
+			SocialMedia.Counter1 as SocialMediaCounter1,
+			SocialMedia.Counter2 as SocialMediaCounter2,
+			SocialMedia.Counter3 as SocialMediaCounter3,
+			Image.URL as ImageURL
 			from Company
+			inner join Location on Company.LocationID=Location.ID
 			inner join SocialMedia on Company.ID=SocialMedia.CompanyID
 			left join Image on SocialMedia.ID=Image.SocialMediaID
 			inner join Tag as T1 on Company.FirstTagID=T1.ID
@@ -125,36 +125,41 @@ class Company extends DataAccess
 		$query->execute();
 		$company = null;
 
-		while ($row = $query->fetch(PDO::FETCH_NUM))
+		while ($row = $query->fetch(PDO::FETCH_ASSOC))
 		{
 			if ($company == null)
 			{
 				$company = new Company();
-				$company->name = $row['Company.Name'];
-				$company->logo = $row['Company.LogoURL'];
-				$company->description = $row['Company.Description'];
-				$company->website = $row['Company.Website'];
-				$company->email = $row['Company.Email'];
-				$company->region = (int)$row['Company.LocationID'];
+				$company->name = $row['CompanyName'];
+				$company->logo = $row['CompanyLogoURL'];
+				$company->description = $row['CompanyDescription'];
+				$company->website = $row['CompanyWebsite'];
+				$company->email = $row['CompanyEmail'];
+				$company->address = $row['CompanyAddress'];
+				$company->region = $row['LocationRegionName'];
 				$company->tags = [$row['TagName1'], $row['TagName2']];
-				$company->phone =
-					$row['Company.PhonePrefix'] . str_pad($row['Company.PhoneNumber'], 9, '0', STR_PAD_LEFT);
+
+				if ($row['CompanyPhonePrefix'] != 0 && $row['CompanyPhoneNumber'] != 0)
+				{
+					$company->phone =
+						$row['CompanyPhonePrefix'] . str_pad($row['CompanyPhoneNumber'], 9, '0', STR_PAD_LEFT);
+				}
 			}
 
 			$socialMedia = new SocialMedia($row);
 
-			switch ($socialMedia)
+			switch ($socialMedia->getType())
 			{
 				case 'instagram':
 					if (empty($company->instagram))
 					{ $company->instagram = $socialMedia; }
-					$company->instagram->pictures[] = $row['Image.URL'];
+					$company->instagram->pictures[] = $row['ImageURL'];
 					break;
 
 				case 'facebook':
 					if (empty($company->facebook))
 					{ $company->facebook = $socialMedia; }
-					$company->facebook->pictures[] = $row['Image.URL'];
+					$company->facebook->pictures[] = $row['ImageURL'];
 					break;
 			}
 		}

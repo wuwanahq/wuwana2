@@ -14,4 +14,10 @@ $company = WebApp\Data::getCompanyInfo(str_replace('/', '', filter_input(INPUT_S
 if ($company == null)
 { return false; }
 
-require 'company/index.php';
+$user = new WebApp\UserSession(WebApp\Data::getUser());
+
+$root = '';
+$language = WebApp\WebApp::getLanguageCode();
+require 'Templates/text ' . $language . '.php';
+require 'company/text ' . $language . '.php';
+require 'company/view.php';

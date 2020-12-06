@@ -36,13 +36,13 @@ class SocialMedia
 
 	public function __construct(array $row)
 	{
-		$this->url = 'https://www.' . $row['SocialMedia.URL'];
-		$this->profileName = $row['SocialMedia.ProfileName'];
-		$this->biography = $row['SocialMedia.Biography'];
-		$this->link = $row['SocialMedia.Link'];
-		$this->counter1 = $row['SocialMedia.Counter1'];
-		$this->counter2 = $row['SocialMedia.Counter2'];
-		$this->counter3 = $row['SocialMedia.Counter3'];
+		$this->url = 'https://www.' . $row['SocialMediaURL'];
+		$this->profileName = $row['SocialMediaProfileName'];
+		$this->biography = $row['SocialMediaBiography'];
+		$this->link = $row['SocialMediaExternalLink'];
+		$this->counter1 = $row['SocialMediaCounter1'];
+		$this->counter2 = $row['SocialMediaCounter2'];
+		$this->counter3 = $row['SocialMediaCounter3'];
 		$this->pictures = [];
 	}
 
@@ -62,6 +62,6 @@ class SocialMedia
 
 	public function getType()
 	{
-		return substr($this->url, 0, strpos($this->url, '.'));
+		return substr($this->url, 12, strpos($this->url, '.', 12) - 12);  // 12 to avoid "https://www."
 	}
 }
