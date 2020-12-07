@@ -26,9 +26,25 @@ class Tag extends DataAccess implements Iterator
 		parent::importData($filePath, 'Tag', [
 			'ID'       => PDO::PARAM_INT,
 			'Visible'  => PDO::PARAM_INT,
-			'Name'    => PDO::PARAM_STR,
+			'Name'     => PDO::PARAM_STR,
 			'Keywords' => PDO::PARAM_STR,
 		]);
+	}
+
+	public function rewind()
+	{
+		$this->query = $this->pdo->query('select * from Tag');
+		$this->currentRow = $this->query->fetch(PDO::FETCH_ASSOC);
+	}
+
+	public function valid()
+	{
+		return $this->currentRow != false;
+	}
+
+	public function next()
+	{
+		$this->currentRow = $this->query->fetch(PDO::FETCH_ASSOC);
 	}
 
 	public function current()
@@ -41,18 +57,8 @@ class Tag extends DataAccess implements Iterator
 		return $this->currentRow['Name'];
 	}
 
-	public function next()
+	public function isVisibleTag()
 	{
-		$this->currentRow = $this->query->fetch(PDO::FETCH_ASSOC);
-	}
-
-	public function rewind()
-	{
-		$this->query = $this->pdo->query('select * from Tag');
-	}
-
-	public function valid()
-	{
-		return $this->currentRow != false;
+		return $this->currentRow['Visible'] == 1;
 	}
 }

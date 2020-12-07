@@ -10,9 +10,24 @@
 		<?php include '../../Templates/admin menu.php' ?>
 		<div class="ColumnMain">
 			<section>
+				<h2>New company</h2>
+				<div class="Box">
+					<form method="post">
+						<label for="instagram">Instagram profile URL:</label>
+						<input id="instagram" name="instagram" type="text" size="80">
+						<br>
+						<label for="website">Website URL:</label>
+						<input id="website" name="website" type="text" size="89">
+						<br>
+						<label for="email">Email address:</label>
+						<input id="email" name="email" type="text" size="81">
+						<input type="submit" value="Add">
+					</form>
+				</div>
+			</section>
+			<section>
 				<h2>Companies</h2>
 				<div class="Box">
-					<a href="/company">Add new company</a>
 					<table>
 						<thead>
 							<tr>

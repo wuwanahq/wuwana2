@@ -16,9 +16,9 @@ class SocialMedia
 	private $counter2;
 	private $counter3;
 
-	public function __get($property)
+	public function __get($name)
 	{
-		switch ($property)
+		switch ($name)
 		{
 			// Instagram
 			case 'nbPost': return $this->counter1;
@@ -31,18 +31,38 @@ class SocialMedia
 			case 'nbCheckin': return $this->counter3;
 		}
 
-		trigger_error('Undefined property ' . $property, E_USER_ERROR);
+		trigger_error('Undefined property ' . $name, E_USER_ERROR);
 	}
 
-	public function __construct(array $row)
+	public function __set($name, $value)
 	{
-		$this->url = 'https://www.' . $row['SocialMediaURL'];
-		$this->profileName = $row['SocialMediaProfileName'];
-		$this->biography = $row['SocialMediaBiography'];
-		$this->link = $row['SocialMediaExternalLink'];
-		$this->counter1 = $row['SocialMediaCounter1'];
-		$this->counter2 = $row['SocialMediaCounter2'];
-		$this->counter3 = $row['SocialMediaCounter3'];
+		switch ($name)
+		{
+			// Instagram
+			case 'nbPost': $this->counter1 = $value; break;
+			case 'nbFollower': $this->counter2 = $value; break;
+			case 'nbFollowing': $this->counter3 = $value; break;
+
+			// Facebook
+			case 'nbLike': $this->counter1 = $value; break;
+			case 'nbFollow': $this->counter2 = $value; break;
+			case 'nbCheckin': $this->counter3 = $value; break;
+		}
+	}
+
+	public function __construct(array $row = null)
+	{
+		if ($row != null)
+		{
+			$this->url = 'https://www.' . $row['SocialMediaURL'];
+			$this->profileName = $row['SocialMediaProfileName'];
+			$this->biography = $row['SocialMediaBiography'];
+			$this->link = $row['SocialMediaExternalLink'];
+			$this->counter1 = $row['SocialMediaCounter1'];
+			$this->counter2 = $row['SocialMediaCounter2'];
+			$this->counter3 = $row['SocialMediaCounter3'];
+		}
+
 		$this->pictures = [];
 	}
 

@@ -2,7 +2,6 @@
 namespace DataAccess;
 use PDO;
 use PDOStatement;
-use Scraper\CompanyData;
 
 /**
  * Data access layer for stored companies.
@@ -238,26 +237,63 @@ class Company extends DataAccess
 		return $companies;
 	}
 
-	public function insertNew(CompanyData $company)
+	public function insert()
 	{
 		$query = $this->pdo->prepare('insert into Company (
 			ID,PermaLink,Name,Description,LogoURL,Website,PhonePrefix,PhoneNumber,
-				Email,LocationID,FirstTagID,SecondTagID,OtherTags,LastUpdate)
-			values (coalesce(max(ID)+1,0),?,?,?,?,?,?,?,?,?,?,?,?,?)');
+				Email,Address,LocationID,FirstTagID,SecondTagID,OtherTags,LastUpdate)
+			values (3,?,?,?,?,?,?,?,?,?,?,?,?,?)');
 
-		$query->bindValue(1, str_replace(' ', '_', $company->name), PDO::PARAM_STR);
-		$query->bindValue(2, $company->name, PDO::PARAM_STR);
-		$query->bindValue(3, $company->description, PDO::PARAM_STR);
-		$query->bindValue(4, $company->logoURL, PDO::PARAM_STR);
-		$query->bindValue(5, $company->website, PDO::PARAM_STR);
-		$query->bindValue(6, substr($company->phoneNumber, 0, -9), PDO::PARAM_INT);
-		$query->bindValue(7, substr($company->phoneNumber, -9), PDO::PARAM_INT);
-		$query->bindValue(8, $company->email, PDO::PARAM_STR);
-		$query->bindValue(9, $company->region, PDO::PARAM_STR);
-		$query->bindValue(10, $company->tags[0], PDO::PARAM_INT);
-		$query->bindValue(11, $company->tags[1], PDO::PARAM_INT);
-		$query->bindValue(12, $company->tags, PDO::PARAM_STR);
-		$query->bindValue(13, time(), PDO::PARAM_INT);
+		$debug = $this->pdo->errorInfo();
+
+		$permalink = str_replace(' ', '-', strtolower($this->name));
+		$query->bindValue(1, $permalink, PDO::PARAM_STR);
+		$query->bindValue(2, $this->name, PDO::PARAM_STR);
+		$query->bindValue(3, $this->description, PDO::PARAM_STR);
+		$query->bindValue(4, $this->logo, PDO::PARAM_STR);
+		$query->bindValue(5, $this->website, PDO::PARAM_STR);
+		$query->bindValue(6, substr($this->phoneNumber, 0, -9), PDO::PARAM_INT);
+		$query->bindValue(7, substr($this->phoneNumber, -9), PDO::PARAM_INT);
+		$query->bindValue(8, $this->email, PDO::PARAM_STR);
+		$query->bindValue(9, $this->address, PDO::PARAM_STR);
+		$query->bindValue(10, $this->region, PDO::PARAM_STR);
+		$query->bindValue(11, $this->tags[0], PDO::PARAM_INT);
+		$query->bindValue(12, $this->tags[1], PDO::PARAM_INT);
+		$query->bindValue(13, $this->tags, PDO::PARAM_STR);
+		$query->bindValue(14, time(), PDO::PARAM_INT);
 		$query->execute();
+
+		$query = $this->pdo->query('select ID from Company where PermaLink=?');
+		$query->bindValue(1, $permalink, PDO::PARAM_STR);
+		$query->execute();
+		$id = $query->fetch(PDO::FETCH_NUM)[0];
+
+		$query = $this->pdo->prepare('insert into SocialMedia
+			(ID, URL, CompanyID, ProfileName, Biography, ExternalLink, Counter1, Counter2, Counter3)
+			values (coalesce(max(ID)+1,0),?,?,?,?,?,?,?,?)');
+
+		$query->bindValue(1, $this->instagram->url, PDO::PARAM_STR);
+		$query->bindValue(2, $id, PDO::PARAM_INT);
+		$query->bindValue(3, $this->instagram->profileName, PDO::PARAM_STR);
+		$query->bindValue(4, $this->instagram->link, PDO::PARAM_STR);
+		$query->bindValue(5, $this->instagram->counter1, PDO::PARAM_INT);
+		$query->bindValue(6, $this->instagram->counter2, PDO::PARAM_INT);
+		$query->bindValue(7, $this->instagram->counter3, PDO::PARAM_INT);
+		$query->execute();
+
+		$query = $this->pdo->query('select ID from SocialMedia where CompanyID=? and URL=?');
+		$query->bindValue(1, $id, PDO::PARAM_INT);
+		$query->bindValue(1, $this->instagram->url, PDO::PARAM_STR);
+		$query->execute();
+		$id = $query->fetch(PDO::FETCH_NUM)[0];
+
+		$query = $this->pdo->prepare('insert into Image (SocialMediaID, URL) values (?,?)');
+		$query->bindValue(1, $id, PDO::PARAM_INT);
+
+		foreach ($this->instagram->pictures as $picture)
+		{
+			$query->bindValue(2, $picture, PDO::PARAM_STR);
+			$query->execute();
+		}
 	}
 }

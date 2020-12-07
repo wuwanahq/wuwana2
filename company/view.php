@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="<?php echo $language ?>">
 <head>
-	<?php include $root . 'Templates/page metadata.php' ?>
+	<?php include 'Templates/page metadata.php' ?>
 	<meta name="twitter:title" content="<?php echo $company->name ?> | Wuwana">
 	<meta property="og:title" content="<?php echo $company->name ?> | Wuwana" />
 	<title><?php echo $company->name ?> | Wuwana</title>
 </head>
 <body>
-	<?php include $root . 'Templates/page header.php' ?>
+	<?php include 'Templates/page header.php' ?>
 	<div class="Container">
 		<section class="ColumnLeft">
 			<div class="companyPanel">
@@ -116,7 +116,8 @@
 						echo  '<input id="permalink" type="text" size="26" value="', WebApp\WebApp::getPermalink(), '">';
 						echo  '<br>';
 						echo  '<label for="insta">Instagram profile:</label>';
-						echo  '<input id="insta" type="text" size="25" value="', $company->instagram->url, '">';
+						echo  '<input id="insta" type="text" size="25" value="',
+							empty($company->instagram->url) ? '' : $company->instagram->url, '">';
 						echo  '<br>';
 						echo  '<label for="whatsapp">WhatsApp number:</label>';
 						echo  '<input id="whatsapp" type="text" size="24" value="', $company->phone, '"><br>';
@@ -198,6 +199,6 @@
 			</a>
 			</section>
 	</div>
-	<?php include $root . 'Templates/page footer.php' ?>
+	<?php include 'Templates/page footer.php' ?>
 </body>
 </html>

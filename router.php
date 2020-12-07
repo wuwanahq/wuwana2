@@ -1,6 +1,7 @@
 <?php
 /**
  * Router for permanent link redirection to profile page.
+ * And controller for the company page.
  * @link https://wuwana.com/company-name...
  * @see /.htaccess Apache "FallbackResource" or Nginx "try_files" directive
  */

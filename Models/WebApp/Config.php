@@ -11,7 +11,7 @@ const
  * Session lifetime.
  * @var int Seconds
  */
-SESSION_LIFETIME = 300,  // 5 minutes
+SESSION_LIFETIME = 600,  // 10 minutes
 
 /**
  * Database Source Name (PDO DSN). Use SQLite by default if this value is empty.
