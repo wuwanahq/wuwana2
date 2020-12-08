@@ -8,6 +8,9 @@ use PDO;
  */
 abstract class DataAccess
 {
+	const INT_MIN = -2147483648;
+	const INT_MAX = 2147483647;
+
 	protected $pdo;
 
 	public function __construct(PDO $pdo = null)

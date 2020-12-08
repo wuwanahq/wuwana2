@@ -9,6 +9,10 @@ use Iterator;
  */
 class Tag extends DataAccess implements Iterator
 {
+	public $name;
+	public $keywords;
+	public $isVisible;
+
 	private $query;
 	private $currentRow;
 
@@ -49,12 +53,16 @@ class Tag extends DataAccess implements Iterator
 
 	public function current()
 	{
-		return $this->currentRow['Keywords'];
+		$tag = new Tag();
+		$tag->name = $this->currentRow['Name'];
+		$tag->keywords = $this->currentRow['Keywords'];
+		$tag->isVisible = $this->currentRow['Visible'] == 1;
+		return $tag;
 	}
 
 	public function key()
 	{
-		return $this->currentRow['Name'];
+		return $this->currentRow['ID'];
 	}
 
 	public function isVisibleTag()

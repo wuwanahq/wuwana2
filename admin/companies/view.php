@@ -31,8 +31,8 @@
 					<table>
 						<thead>
 							<tr>
-								<th>Permalink</th>
 								<th>Name</th>
+								<th>Description</th>
 								<th>Location</th>
 								<th>Tags</th>
 								<th>Last update</th>
@@ -40,22 +40,21 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td><a href="/example-company1">wuwana.com/example-company1</a></td>
-								<td>Example Company n°1</td>
-								<td>Madrid</td>
-								<td>CoffeeShop Roaster</td>
-								<td>10min ago</td>
-								<td><input type="button" value="Delete"></td>
-							</tr>
-							<tr>
-								<td><a href="/example-company2">wuwana.com/example-company2</a></td>
-								<td>Example Company n°2</td>
-								<td>Valencia</td>
-								<td>Importer Coffee</td>
-								<td>20min ago</td>
-								<td><input type="button" value="Delete"></td>
-							</tr>
+							<?php
+								foreach ($companies as $company)
+								{
+									echo '<tr>';
+									echo  '<td><a href="http://', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
+									echo   $company->name;
+									echo  '</a></td>';
+									echo  '<td>', substr($company->description, 0, 30), '...</td>';
+									echo  '<td>', $company->region, '</td>';
+									echo  '<td>', implode(' ', $company->tags), '</td>';
+									echo  '<td>', date('Y-m-d H:i', $company->lastUpdate), '</td>';
+									echo  '<td><input type="button" value="Delete" disabled></td>';
+									echo '</tr>';
+								}
+							?>
 						</tbody>
 					</table>
 				</div>

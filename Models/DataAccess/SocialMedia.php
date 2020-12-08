@@ -10,11 +10,11 @@ class SocialMedia
 	public $url;
 	public $profileName;
 	public $biography;
-	public $link;
+	public $link = '';
 	public $pictures;
-	private $counter1;
-	private $counter2;
-	private $counter3;
+	public $counter1 = 0;
+	public $counter2 = 0;
+	public $counter3 = 0;
 
 	public function __get($name)
 	{

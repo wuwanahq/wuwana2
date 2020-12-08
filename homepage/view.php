@@ -48,6 +48,7 @@
 				<h2><?php echo TEXT[8] ?></h2>
 				<div class="Box Filter">
 					<form method="get" action="/">
+<!--
 					<dl>
 						<dt><?php echo TEXT[1] ?></dt>
 						<dd>
@@ -67,6 +68,7 @@
 							}
 						?>
 					</dl>
+-->
 					<dl>
 						<dt><?php echo TEXT[3] ?></dt>
 						<dd>

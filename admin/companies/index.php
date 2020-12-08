@@ -1,7 +1,7 @@
 <?php
 /**
  * Controller for the admin page.
- * @link https://wuwana.com/admin
+ * @link https://wuwana.com/admin/companies
  */
 
 spl_autoload_register(function($className) {
@@ -23,6 +23,8 @@ if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 
 	$company->insert();
 }
+
+$companies = WebApp\Data::getCompany()->selectAll();
 
 $language = WebApp\WebApp::getLanguageCode();
 require '../../Templates/text ' . $language . '.php';

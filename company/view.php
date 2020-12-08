@@ -39,6 +39,7 @@
 						{ echo '<p>', $company->description, '</p>'; }
 					?>
 				</section>
+<!--
 				<section class="companyAddress">
 					<hr>
 					<h3><?php echo TEXT[7] ?></h3>
@@ -71,6 +72,7 @@
 						</li>
 					</ul>
 				</section>
+-->
 				<section class="contactInfo">
 					<hr>
 					<h3><?php printf(TEXT[1], $company->name) ?></h3>
@@ -90,7 +92,7 @@
 								echo '</li>';
 							}
 
-							if (isset($company->phone))
+							if (isset($company->phone) && (int)$company->phone = 0)
 							{
 								echo '<li>';
 								echo  '<a href="https://wa.me/', $company->phone, '?text=';
@@ -146,7 +148,7 @@
 					echo  '<div class="Box">';
 					echo   '<div class="InstagramInfo">';
 					echo    '<h3>', $company->instagram->profileName, '</h3>';
-					echo    '<p>', $company->instagram->biography, '<br>', $company->instagram->link, '</p>';
+					echo    '<p>', nl2br($company->instagram->biography), '<br>', $company->instagram->link, '</p>';
 					echo    '<ul>';
 					echo     '<li>';
 					echo      '<div class="ItemLabel">';

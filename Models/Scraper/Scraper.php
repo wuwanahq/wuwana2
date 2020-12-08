@@ -26,10 +26,10 @@ class Scraper
 		$this->company = \WebApp\Data::getCompany();
 
 		if (strpos($url, 'instagram.com') !== false)
-		{ $company->instagram = $this->scrapeInstagram($url); }
+		{ $this->scrapeInstagram($url); }
 
 		if (strpos($url, 'facebook.com') !== false)
-		{ $company->facebook = $this->scrapeFacebook($url); }
+		{ $this->scrapeFacebook($url); }
 
 		return $this->company;
 	}
@@ -38,12 +38,12 @@ class Scraper
 	{
 		$tags = [];
 
-		foreach ($this->tagKeywords as $tagName => $KeywordRegex)
+		foreach ($this->tagKeywords as $id => $tag)
 		{
-			$score = preg_match_all('/' . $KeywordRegex . '/i', $content);
+			$score = preg_match_all('/' . $tag->keywords . '/i', $content);
 
 			if ($score > 0)
-			{ $tags[$tagName] = $this->tagKeywords->isVisibleTag() ? $score * 1000 : $score; }
+			{ $tags[$id] = $this->tag->isVisible ? $score * 1000 : $score; }
 		}
 
 		arsort($tags, SORT_NUMERIC);
@@ -64,15 +64,19 @@ class Scraper
 		$this->company->description = $json->graphql->user->biography;
 		$this->company->logo = $json->graphql->user->profile_pic_url;
 		$this->company->website = $json->graphql->user->external_url;
+		$this->company->region = rand(1, 19);
 
 		if (isset($json->graphql->user->business_email))
 		{ $this->company->email = $json->graphql->user->business_email; }
 
 		$this->company->instagram = new DataAccess\SocialMedia();
-		$this->company->instagram->url = $json->graphql->user->username;
+
+		if (isset($json->graphql->user->external_url))
+		{ $this->company->instagram->link = $json->graphql->user->external_url; }
+
+		$this->company->instagram->url = 'instagram.com/' . $json->graphql->user->username;
 		$this->company->instagram->profileName = $json->graphql->user->full_name;
 		$this->company->instagram->biography = $json->graphql->user->biography;
-		$this->company->instagram->link = $json->graphql->user->external_url;
 		$this->company->instagram->nbPost = $json->graphql->user->edge_owner_to_timeline_media->count;
 		$this->company->instagram->nbFollower = $json->graphql->user->edge_followed_by->count;
 		$this->company->instagram->nbFollowing = $json->graphql->user->edge_follow->count;
