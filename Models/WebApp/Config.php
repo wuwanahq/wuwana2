@@ -30,13 +30,6 @@ DB_SOURCE = '',
  * @var string
  */
 DB_USERNAME = 'root',
-DB_PASSWORD = '',
-
-/**
- * Password to protect the admin-wuwana page.
- * @link https://wuwana.com/admin-wuwana
- * @var string
- */
-ADMIN_PASSWORD = '';
+DB_PASSWORD = '';
 
 }

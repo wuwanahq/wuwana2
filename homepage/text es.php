@@ -8,5 +8,5 @@ const TEXT = [
 5 => 'Empresas',
 6 => 'Ver mas empresas',
 7 => 'Aplicar filtros',
-8 => 'Personaliza la buqueda',
+8 => 'Personaliza la búqueda',
 ];

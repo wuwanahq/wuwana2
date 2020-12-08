@@ -11,8 +11,8 @@
 .ColumnMain table {
 	margin: 16px 0 16px;
 	width: 98%;
-	border: 1px solid black;
-	border-collapse: collapse;}
+	/*border: 1px solid black;
+	border-collapse: collapse;*/}
 
 .ColumnMain table input[type=text] {
 	width: 98%}
@@ -20,10 +20,4 @@
 .ColumnMain table th,
 .ColumnMain table td {
 	text-align: center;
-	border: 1px solid black;}
-
-.ColumnMain table th:first-child,
-.ColumnMain table td:first-child,
-.ColumnMain table th:last-child,
-.ColumnMain table td:last-child {
-	width: 99px}
+	/*border: 1px solid black;*/}

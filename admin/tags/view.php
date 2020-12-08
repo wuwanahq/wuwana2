@@ -16,10 +16,10 @@
 					<table>
 						<thead>
 							<tr>
-								<th>Visible?</th>
-								<th>Tag name</th>
-								<th>Keywords</th>
-								<th></th>
+								<th style="width:50px">Visible</th>
+								<th style="width:99px">Tag name</th>
+								<th>Keywords (regular expression)</th>
+								<th style="width:50px"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -39,7 +39,7 @@
 									<td><input type="checkbox" name="Visible"></td>
 									<td><input type="text" name="TagName"></td>
 									<td><input type="text" name="Keywords"></td>
-									<td><input type="submit" value="Add new tag"></td>
+									<td><input type="submit" value="Add"></td>
 								</form>
 							</tr>
 						</tbody>

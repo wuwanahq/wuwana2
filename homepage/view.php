@@ -15,7 +15,7 @@
 					<img src="/static/logo/ribbon.svg">
 				</div>
 				<p>Encontrar la información que necesitas debería ser más fácil.</p>
-				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" >
+				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
 					Descubre qué es Wuwana
 				</a>
 				<hr>
@@ -43,13 +43,13 @@
 					<form method="get" action="/">
 <!--
 					<dl>
-						<dt><?php echo TEXT[1] ?></dt>
+						<dt><?php /* echo TEXT[1] */ ?></dt>
 						<dd>
 							<input type="checkbox" name="cat" id="C0"
 								<?php echo $selectedCategories==[] ? ' checked disabled' : '' ?>>
 							<label for="C0"><?php echo TEXT[2] ?></label>
 						</dd>
-						<?php
+						<?php /*
 							foreach ($categories as $id => $languages)
 							{
 								echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
@@ -58,7 +58,7 @@
 								{ echo ' checked'; }
 
 								echo '><label for="C', $id, '">', $languages[$language], '</label></dd>';
-							}
+							} */
 						?>
 					</dl>
 -->

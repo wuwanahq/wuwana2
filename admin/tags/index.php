@@ -8,12 +8,15 @@ spl_autoload_register(function($className) {
 	require '../../Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'TagName'))
+$user = new WebApp\UserSession(WebApp\Data::getUser());
+
+if ($user->isAdmin() && filter_has_var(INPUT_POST, 'TagName'))
 {
-	$tag = new DataAccess\Tag();
-	$tag->name = filter_input(INPUT_POST, 'TagName');
-	$tag->keywords = filter_input(INPUT_POST, 'Keywords');
+	$tag = WebApp\Data::getTagIterator();
+	$tag->name = trim(filter_input(INPUT_POST, 'TagName'));
+	$tag->keywords = strtolower(trim(filter_input(INPUT_POST, 'Keywords')));
 	$tag->isVisible = filter_has_var(INPUT_POST, 'Visible');
+	$tag->store();
 }
 
 $tags = WebApp\Data::getTagIterator();

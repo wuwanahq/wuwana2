@@ -43,7 +43,7 @@ class Scraper
 			$score = preg_match_all('/' . $tag->keywords . '/i', $content);
 
 			if ($score > 0)
-			{ $tags[$id] = $this->tag->isVisible ? $score * 1000 : $score; }
+			{ $tags[$id] = $tag->isVisible ? $score * 1000 : $score; }
 		}
 
 		arsort($tags, SORT_NUMERIC);

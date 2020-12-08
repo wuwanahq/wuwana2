@@ -35,6 +35,21 @@ class Tag extends DataAccess implements Iterator
 		]);
 	}
 
+	public function store()
+	{
+		$query = $this->pdo->query('select coalesce(max(ID)+1,' . self::INT_MIN . ') from Tag');
+		$query->execute();
+		$id = $query->fetchColumn(0);
+
+		$query = $this->pdo->prepare('insert into Tag (ID,Visible,Name,Keywords)
+			values ((select coalesce(max(ID)+1,' . self::INT_MIN . ') from Tag),?,?,?)');
+
+		$query->bindValue(1, $this->isVisible ? 1 : 0, PDO::PARAM_INT);
+		$query->bindValue(2, $this->name, PDO::PARAM_STR);
+		$query->bindValue(3, $this->keywords, PDO::PARAM_STR);
+		$query->execute();
+	}
+
 	public function rewind()
 	{
 		$this->query = $this->pdo->query('select * from Tag');
