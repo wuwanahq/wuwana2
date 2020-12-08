@@ -2,6 +2,7 @@
 <html lang="<?php echo $language ?>">
 <head>
 	<?php include '../../Templates/page metadata.php' ?>
+	<link rel="stylesheet" type="text/css" href="/static/admin.css">
 	<title>Admin page | Wuwana</title>
 </head>
 <body>

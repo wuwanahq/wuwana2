@@ -10,39 +10,32 @@
 	<?php include 'Templates/page header.php' ?>
 	<div class="Container">
 		<section class="ColumnLeft">
-			<div class="Box About">
-				<div class="AboutCover">
+			<div class="boxPanel">
+				<div class="panelCover">
 					<img src="/static/logo/ribbon.svg">
 				</div>
-				<p>Encontrar la informacion que necesitas deberia ser mas facil.</p>
-				<div class="Hidden" id="AboutUs">
-					<div class="buttonMain">Descubre que es Wuwana</div>
-					<hr>
+				<p>Encontrar la información que necesitas debería ser más fácil.</p>
+				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" >
+					Descubre qué es Wuwana
+				</a>
+				<hr>
+				<section class="contactSection">
 					<h3>Contáctanos</h3>
 					<ul>
 						<li>
-							<a href="/">
-								<div class="ItemLabel">
-									<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
-									Instagram
-								</div>
+							<a class="ItemLabel" href="https://www.instagram.com/wuwana.es/" target="_blank">
+								<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
+								Instagram
 							</a>
 						</li>
 						<li>
-							<a href="/">
-								<div class="ItemLabel">
-									<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
-									Instagram
-								</div>
+							<a class="ItemLabel" href="mailto:jonathan@wuwana.com">
+								<div class="buttonSocial"><img src="/static/icon/email.svg"></div>
+								Email
 							</a>
 						</li>
 					</ul>
-				</div>
-				<hr>
-				<div class="Button Toggle" onclick="hide()">
-					<img id="ToggleAboutUsImg" src="/static/icon/chevron-down.svg">
-					<label class="TextButton" id="ToggleAboutUsLabel">Ver mas</label>
-				</div>
+				</section>
 			</div>
 			<section class="Sticky" id="menu">
 				<h2><?php echo TEXT[8] ?></h2>
@@ -94,20 +87,28 @@
 			</section>
 		</section>
 		<section class="ColumnMain">
-			<div class="Box Banner">
-				<div class="BannerText">
-					<h2 class="BannerTitle"><?php echo TEMP_TEXT[0] ?></h2>
-					<p class="BannerSubtitle"><?php echo TEMP_TEXT[1] ?></p>
+			<div class="banner">
+				<div class="bannerText">
+					<h2><?php echo TEMP_TEXT[0] ?></h2>
+					<p><?php echo TEMP_TEXT[1] ?></p>
 				</div>
 			</div>
 <!--
 			<section>
 				<h2>Empresas destacadas</h2>
 				<div class="Box">
-					<a href="company">
-						<div class="Card">
-							<div class="Logo">
-								<img src="/static/logo/square1.svg">
+					<a class="Card" href="company">
+						<div class="Logo">
+							<img src="/static/logo/square1.svg">
+						</div>
+						<div class="CompanyMain">
+							<div class="CompanyContent">
+								<h3>Company 1</h3>
+								<ul class="Label">
+									<li>Tostador</li>
+									<li>Cafeteria</li>
+								</ul>
+								<div class="tagRegion">Cataluna</div>
 							</div>
 							<div class="CompanyMain">
 								<div class="CompanyContent">
@@ -158,25 +159,25 @@
 
 						foreach ($companies as $permalink => $company)
 						{
-							echo '<a href="/', $permalink, '">';
-							echo  '<div class="Card">';
+							echo '<a class="Card" href="/', $permalink, '">';
 							echo   '<div class="Logo">';
-							echo    '<img src="', $company->logo, '">';
+							echo     '<img src="', $company->logo, '">';
 							echo   '</div>';
 							echo   '<div class="CompanyMain">';
-							echo    '<div class="CompanyContent">';
-							echo     '<h3>', $company->name, '</h3>';
-							echo     '<ul class="Label">';
+							echo     '<div class="CompanyContent">';
+							echo       '<h3>', $company->name, '</h3>';
+							echo       '<ul class="Label">';
 
 							foreach ($company->tags as $tag)
-							{ echo '<li>', $tag, '</li>'; }
+							{
+								echo     '<li>', $tag, '</li>';
+							}
 
-							echo     '</ul>';
-							echo     '<div class="Tag Region">', $locations[$company->region]->region, '</div>';
-							echo    '</div>';
-							echo    '<div class="BadgeArea"></div>';
+							echo       '</ul>';
+							echo       '<div class="tagRegion">', $locations[$company->region]->region, '</div>';
+							echo     '</div>';
+							echo     '<div class="BadgeArea"></div>';
 							echo   '</div>';
-							echo  '</div>';
 							echo '</a>';
 
 							if (--$counter > 0)
@@ -185,8 +186,9 @@
 					?>
 				</div>
 			</section>
-			<a class="Center" href="?show=all">
-				<div class="buttonIcon"><img src="/static/icon/plus.svg"><?php echo TEXT[6] ?></div>
+			<a class="buttonIcon Center" href="?show=all">
+				<img src="/static/icon/plus.svg">
+				<?php echo TEXT[6] ?>
 			</a>
 		</section>
 	</div>

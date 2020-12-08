@@ -81,13 +81,11 @@
 							if (isset($company->instagram->url))
 							{
 								echo '<li>';
-								echo  '<a href="', $company->instagram->url, '" target="_blank">';
-								echo   '<div class="ItemLabel">';
-								echo    '<div class="buttonSocial">';
-								echo     '<img src="/static/icon/instagram.svg">';
-								echo    '</div>';
-								echo    'Instagram';
+								echo  '<a class="ItemLabel" href="', $company->instagram->url, '" target="_blank">';
+								echo   '<div class="buttonSocial">';
+								echo    '<img src="/static/icon/instagram.svg">';
 								echo   '</div>';
+								echo   'Instagram';
 								echo  '</a>';
 								echo '</li>';
 							}
@@ -95,15 +93,13 @@
 							if (isset($company->phone) && (int)$company->phone = 0)
 							{
 								echo '<li>';
-								echo  '<a href="https://wa.me/', $company->phone, '?text=';
+								echo  '<a class="ItemLabel" href="https://wa.me/', $company->phone, '?text=';
 									printf(TEXT[8], $company->name);
-								echo  '" target="_blank">';
-								echo   '<div class="ItemLabel">';
-								echo    '<div class="buttonSocial">';
-								echo     '<img src="/static/icon/whatsapp.svg">';
-								echo    '</div>';
-								echo    'WhatsApp';
+								echo    '" target="_blank">';
+								echo   '<div class="buttonSocial">';
+								echo    '<img src="/static/icon/whatsapp.svg">';
 								echo   '</div>';
+								echo   'WhatsApp';
 								echo  '</a>';
 								echo '</li>';
 							}
@@ -186,18 +182,17 @@
 					echo     '</div>';
 					echo    '</div>';
 					echo   '</div>';
-					echo   '<div class="buttonIcon">';
-					echo    '<a href="', $company->instagram->url, '" target="_blank">';
+					echo    '<a class="buttonIcon" href="', $company->instagram->url, '" target="_blank">';
 					echo     '<img src="/static/icon/instagram.svg">', TEXT[5];
 					echo    '</a>';
-					echo   '</div>';
 					echo  '</div>';
 					echo '</section>';
 				}
 			?>
 			</section>
-			<a class="Center" href="/">
-				<div class="buttonIcon"><img src="/static/icon/home.svg"><?php echo TEXT[4] ?></div>
+			<a class="buttonIcon Center" href="/">
+				<img src="/static/icon/home.svg">
+				<?php echo TEXT[4] ?>
 			</a>
 			</section>
 	</div>
