@@ -3,7 +3,7 @@
 Simple business directory project used for https://wuwana.com
 
 Targeted browsers on desktop and mobile:  
-Google Chrome 49+, Mozilla Firefox 48+, Samsung Internet 5+, Apple Safari 9+ and Microsoft Edge
+Mozilla Firefox 48+, Google Chrome 49+, Samsung Internet 5+, Apple Safari 10+, Microsoft Edge and Internet Explorer 11
 
 ## How to test locally
 
@@ -13,8 +13,11 @@ Then, in the project directory, run the PHP built-in web server:
 ```
 git clone https://github.com/wuwanahq/wuwana2.git
 cd wuwana2
-php -S 0:8000
+php -S 0:8000 router.php
 ```
+
+> This WebApp only needs **PHP 5.6 or newer** to work.  
+> PHP is already installed on Mac but you need to install it on **Windows** or **Linux**.
 
 Now you can open the website with your browser:
 
@@ -52,11 +55,12 @@ cd /var/www
 git clone https://github.com/wuwanahq/wuwana2.git
 ```
 
-- Modify the configuration's file for the database connection in `Model/WebApp/Config.php` and add your changes in Git:
+- Modify the configuration's file for the database connection in `Models/WebApp/Config.php` and add your changes in Git:
 
 ```
-nano /var/www/wuwana2/Model/WebApp/Config.php
-git commit -a -m "local config"
+cd /var/www/wuwana2
+nano Models/WebApp/Config.php
+git update-index --skip-worktree Models/WebApp/Config.php
 ```
 
 - Open your browser then go to the "admin-wuwana" page to import your TSV files in the database.
@@ -71,7 +75,7 @@ This part is for webmasters who just have a website hosting service.
 If it's your case, check if your hosting solution is compatible with PHP, then...
 
 - Clone the project on your computer: `git clone https://github.com/wuwanahq/wuwana2.git`
-- Modify the configuration's file to add your database connection parameters in `Model/WebApp/Config.php`
+- Modify the configuration's file to add your database connection parameters in `Models/WebApp/Config.php`
 - In the Command Prompt type `git commit -a -m "local config"`
 - Copy all project's files at the root of your web hosting service with a FTP client.
 - Open your browser then go to the "admin-wuwana" page to import your TSV files in the database.

@@ -1,163 +1,197 @@
 <!DOCTYPE html>
 <html lang="<?php echo $language ?>">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=375">
-	<meta name="description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
-	<title><?php echo TEXT[0] ?> | Wuwana</title>
-
-	<!-- Open Graph -->
-	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana" />
-	<meta property="og:type" content="website" />
-	<meta property="og:description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>" />
-
-	<!-- Open Graph Image -->
-	<meta property="og:image" content="/static/Wuwana-link-2020.png"/>
-		<!--meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" /-->
-	<meta property="og:image:type" content="image/png" />
-	<meta property="og:image:width" content="1264" />
-	<meta property="og:image:height" content="640" />
-	<meta property="og:image:alt" content="mosaic tiles of the wuwana logo in several colours" />
-
-	<!-- Twitter Card -->
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="@wuwanahq">
-	<meta name="twitter:creator" content="@wuwanahq">
+	<?php include 'Templates/page metadata.php' ?>
 	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
-	<meta name="twitter:description" content="<?php echo TEXT[5], ' ', TEXT[6] ?>">
-	<meta name="twitter:image" content="https://wuwana.com/static/Wuwana-link-2020.png">
-	<meta name="twitter:image:alt" content="mosaic tiles of the wuwana logo in several colours" />
-
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="/static/favicon16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="/static/favicon32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/static/favicon48.png" sizes="48x48">
-	<link rel="icon" type="image/png" href="/static/favicon64.png" sizes="64x64">
-	<link rel="icon" type="image/png" href="/static/favicon96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="/static/favicon160.png" sizes="160x160">
-	<link rel="icon" type="image/png" href="/static/favicon196.png" sizes="196x196">
-	<link rel="apple-touch-icon" href="/static/favicon57.png" sizes="57x57">
-	<link rel="apple-touch-icon" href="/static/favicon60.png" sizes="60x60">
-	<link rel="apple-touch-icon" href="/static/favicon72.png" sizes="72x72">
-	<link rel="apple-touch-icon" href="/static/favicon76.png" sizes="76x76">
-	<link rel="apple-touch-icon" href="/static/favicon114.png" sizes="114x114">
-	<link rel="apple-touch-icon" href="/static/favicon120.png" sizes="120x120">
-	<link rel="apple-touch-icon" href="/static/favicon144.png" sizes="144x144">
-	<link rel="apple-touch-icon" href="/static/favicon152.png" sizes="152x152">
-	<link rel="apple-touch-icon" href="/static/favicon180.png" sizes="180x180">
-	<link rel="stylesheet" type="text/css" href="/static/style.css"/>
-	<script src="/static/es5.js" defer></script>
+	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana" />
+	<title><?php echo TEXT[0] ?> | Wuwana</title>
 </head>
 <body>
-	<div id="popup">
-		<div>
-			<a href="#" class="ButtonRound">×</a>
-			<img src="/static/favicon96.png"><br><br>
-			<?php echo TEXT[14] ?>
-			<br>
-			<a class="ButtonSquare" href="https://twitter.com/wuwanahq" target="_blank"><?php echo TEXT[13] ?></a>
-		</div>
+	<?php include 'Templates/page header.php' ?>
+	<div class="Container">
+		<section class="ColumnLeft">
+			<div class="boxPanel">
+				<div class="panelCover">
+					<img src="/static/logo/ribbon.svg">
+				</div>
+				<p>Encontrar la información que necesitas debería ser más fácil.</p>
+				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
+					Descubre qué es Wuwana
+				</a>
+				<hr>
+				<section class="contactSection">
+					<h3>Contáctanos</h3>
+					<ul>
+						<li>
+							<a class="ItemLabel" href="https://www.instagram.com/wuwana.es/" target="_blank">
+								<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
+								Instagram
+							</a>
+						</li>
+						<li>
+							<a class="ItemLabel" href="mailto:jonathan@wuwana.com">
+								<div class="buttonSocial"><img src="/static/icon/email.svg"></div>
+								Email
+							</a>
+						</li>
+					</ul>
+				</section>
+			</div>
+			<section class="Sticky" id="menu">
+				<h2><?php echo TEXT[8] ?></h2>
+				<div class="Box Filter">
+					<form method="get" action="/">
+<!--
+					<dl>
+						<dt><?php /* echo TEXT[1] */ ?></dt>
+						<dd>
+							<input type="checkbox" name="cat" id="C0"
+								<?php echo $selectedCategories==[] ? ' checked disabled' : '' ?>>
+							<label for="C0"><?php echo TEXT[2] ?></label>
+						</dd>
+						<?php /*
+							foreach ($categories as $id => $languages)
+							{
+								echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
+
+								if (in_array($id, $selectedCategories))
+								{ echo ' checked'; }
+
+								echo '><label for="C', $id, '">', $languages[$language], '</label></dd>';
+							} */
+						?>
+					</dl>
+-->
+					<dl>
+						<dt><?php echo TEXT[3] ?></dt>
+						<dd>
+							<input type="checkbox" name="region" id="R0"
+								<?php echo $selectedRegions==[] ? 'checked disabled' : '' ?>>
+							<label for="R0"><?php echo TEXT[4] ?></label>
+						</dd>
+						<?php
+							foreach ($locations as $id => $location)
+							{
+								echo '<dd><input type="checkbox" name="region', $id, '" id="R', $id, '"';
+
+								if (in_array($id, $selectedRegions))
+								{ echo ' checked'; }
+
+								echo '><label for="R', $id, '">', $location->region, '</label></dd>';
+							}
+						?>
+					</dl>
+					</form>
+					<div class="Button Center"><img src="/static/icon/filter.svg"><?php echo TEXT[7] ?></div>
+				</div>
+			</section>
+		</section>
+		<section class="ColumnMain">
+			<div class="banner">
+				<div class="bannerText">
+					<h2><?php echo TEMP_TEXT[0] ?></h2>
+					<p><?php echo TEMP_TEXT[1] ?></p>
+				</div>
+			</div>
+<!--
+			<section>
+				<h2>Empresas destacadas</h2>
+				<div class="Box">
+					<a class="Card" href="company">
+						<div class="Logo">
+							<img src="/static/logo/square1.svg">
+						</div>
+						<div class="CompanyMain">
+							<div class="CompanyContent">
+								<h3>Company 1</h3>
+								<ul class="Label">
+									<li>Tostador</li>
+									<li>Cafeteria</li>
+								</ul>
+								<div class="tagRegion">Cataluna</div>
+							</div>
+							<div class="CompanyMain">
+								<div class="CompanyContent">
+									<h3>Company 1</h3>
+									<ul class="Label">
+										<li>Tostador</li>
+										<li>Cafeteria</li>
+									</ul>
+									<div class="Tag Region">Cataluna</div>
+								</div>
+								<div class="BadgeArea">
+									<div class="ItemLabel">
+										<div class="GoogleReview">
+											4,8
+											<span class="ReviewScale">/5</span>
+										</div>
+										Google review
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/sustainability.svg">
+										<span>Sostenible</span>
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/sustainability.svg">
+										<span>Sostenible</span>
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/sustainability.svg">
+										<span>Sostenible</span>
+									</div>
+									<div class="ItemLabel">
+										<img src="/static/badge/social-impact.svg">
+										<span>Compromiso social</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+					<hr/>
+				</div>
+			</section>
+-->
+			<section>
+				<h2><?php echo TEXT[5] ?></h2>
+				<div class="Box">
+					<?php
+						$counter = count($companies);
+
+						foreach ($companies as $permalink => $company)
+						{
+							echo '<a class="Card" href="/', $permalink, '">';
+							echo   '<div class="Logo">';
+							echo     '<img src="', $company->logo, '">';
+							echo   '</div>';
+							echo   '<div class="CompanyMain">';
+							echo     '<div class="CompanyContent">';
+							echo       '<h3>', $company->name, '</h3>';
+							echo       '<ul class="Label">';
+
+							foreach ($company->tags as $tag)
+							{
+								echo     '<li>', $tag, '</li>';
+							}
+
+							echo       '</ul>';
+							echo       '<div class="tagRegion">', $locations[$company->region]->region, '</div>';
+							echo     '</div>';
+							echo     '<div class="BadgeArea"></div>';
+							echo   '</div>';
+							echo '</a>';
+
+							if (--$counter > 0)
+							{ echo '<hr>'; }
+						}
+					?>
+				</div>
+			</section>
+			<a class="buttonIcon Center" href="?show=all">
+				<img src="/static/icon/plus.svg">
+				<?php echo TEXT[6] ?>
+			</a>
+		</section>
 	</div>
-	<form id="menu" method="get" action="/">
-		<div class="Desktop"><a href="/"><img src="/static/wuwana-white.svg"></a></div>
-		<div class="Mobile">
-			<a href="#menu" class="Symbol">≡</a>
-			<input type="submit" class="Symbol" value="×">
-			<a href="/"><img src="/static/wuwana-black.svg"></a>
-		</div>
-		<div class="Filters">
-			<span class="Title"><?php echo TEXT[1] ?></span>
-			<dl>
-				<dt>
-					<input id="C0" type="checkbox" name="cat"
-						<?php if ($selectedCategories == []) { echo 'checked disabled'; } ?>>
-					<label for="C0"><?php echo TEXT[2] ?></label>
-				</dt>
-				<?php
-					foreach ($categories as $id => $languages)
-					{
-						echo '<dd><input type="checkbox" name="cat', $id, '" id="C', $id, '"';
-
-						if (in_array($id, $selectedCategories))
-						{ echo ' checked'; }
-
-						echo '><label for="C', $id, '">', $languages[$language], '</label></dd>';
-					}
-				?>
-			</dl>
-			<span class="Title"><?php echo TEXT[3] ?></span>
-			<dl>
-				<dt>
-					<input id="R0" type="checkbox" name="region"
-						<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>>
-					<label for="R0"><?php echo TEXT[4] ?></label>
-				</dt>
-				<?php
-					foreach ($locations as $id => $location)
-					{
-						echo '<dd><input type="checkbox" name="region', $id, '" id="R', $id, '"';
-
-						if (in_array($id, $selectedRegions))
-						{ echo ' checked'; }
-
-						echo '><label for="R', $id, '">',
-							str_replace(' ', '&nbsp;', $location->region), // Avoid to break long filter names on mobile
-							'</label></dd>';
-					}
-				?>
-			</dl>
-		</div>
-	</form>
-	<div class="Content">
-		<div class="Hero">
-			<span class="Text1"><?php echo TEXT[5] ?></span>
-			<br><br>
-			<span class="Text2"><?php echo TEXT[6] ?></span>
-			<a href="#popup" class="ButtonRound"><?php echo TEXT[7] ?></a>
-		</div>
-		<span class="Title"><?php echo TEXT[8] ?></span>
-		<div>
-			<?php
-				foreach ($companies as $company)
-				{
-					echo '<div class="Card">';
-
-					if ($company->region > 0)
-					{
-						echo '<span class="GeoLoc"><img src="/static/geoloc.png">',
-							$locations[$company->region]->region,
-						'</span>';
-					}
-
-					echo '<img src="', $company->logo, '">',
-						'<p class="Text"><span class="Title">', $company->name, '</span>',
-						'<br><br>', $company->description, '</p><hr>';
-
-					foreach ($company->categories as $category)
-					{ echo '<span class="Tag">', $categories[$category][$language], '</span>'; }
-
-					echo '<br><br>';
-
-					if (!empty($company->socialMedia))
-					{ echo '<a href="', $company->socialMedia, '" target="_blank">', TEXT[9], '</a> &nbsp; '; }
-					elseif (!empty($company->website))
-					{ echo '<a href="', $company->website, '" target="_blank">', TEXT[10], '</a> &nbsp; '; }
-
-					if (!empty($company->phoneNumber))
-					{
-						echo '<a target="_blank" href="https://wa.me/', $company->phoneNumber, '?text=';
-						printf(TEXT[15], $company->name);
-						echo '">', TEXT[11], '</a> &nbsp; ';
-					}
-					elseif (!empty($company->email))
-					{
-						echo '<a href="mailto:', $company->email, '">', TEXT[12], '</a> &nbsp; ';
-					}
-
-					echo '</div>';
-				}
-			?>
-		</div>
-	</div>
+	<?php include 'Templates/page footer.php' ?>
 </body>
 </html>

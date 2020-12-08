@@ -1,0 +1,5 @@
+# Apache 2.4
+FallbackResource /router.php
+
+# Nginx
+#location / { try_files $uri /router.php =404; }

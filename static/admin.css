@@ -1,0 +1,23 @@
+/* Temporary style to improve */
+
+.Box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	overflow: hidden}
+
+.ColumnMain table {
+	margin: 16px 0 16px;
+	width: 98%;
+	/*border: 1px solid black;
+	border-collapse: collapse;*/}
+
+.ColumnMain table input[type=text] {
+	width: 98%}
+
+.ColumnMain table th,
+.ColumnMain table td {
+	text-align: center;
+	/*border: 1px solid black;*/}

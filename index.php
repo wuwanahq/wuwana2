@@ -5,40 +5,48 @@
  */
 
 spl_autoload_register(function($className) {
-	require 'Model/' . str_replace('\\', '/', $className) . '.php';
+	require 'Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-$db = new DataAccess\DataAccess(WebApp\WebApp::getDatabase());
-$categories = $db->getCategories();
-$locations = $db->getLocations(true);
+$categories = WebApp\Data::getCategory()->selectAll();
+$locations = WebApp\Data::getLocation()->selectUsefulItemsOnly();
+
+$limit = filter_has_var(INPUT_GET, 'show') ? 0 : 8;
 
 $selectedCategories = [];
 $selectedRegions = [];
 
-if (count($_GET) > 0)
+/*
+if (filter_has_var(INPUT_GET, 'cat'))
 {
-	if (!filter_has_var(INPUT_GET, 'cat'))
+	foreach ($categories as $key => $value)
 	{
-		foreach ($categories as $key => $value)
-		{
-			if (filter_has_var(INPUT_GET, 'cat' . $key))
-			{ $selectedCategories[] = $key; }
-		}
+		if (filter_has_var(INPUT_GET, 'cat' . $key))
+		{ $selectedCategories[] = $key; }
 	}
 
-	if (!filter_has_var(INPUT_GET, 'region'))
+	$limit = 0;
+}
+*/
+
+foreach ($locations as $key => $value)
+{
+	if (filter_has_var(INPUT_GET, 'region' . $key))
 	{
-		foreach ($locations as $key => $value)
-		{
-			if (filter_has_var(INPUT_GET, 'region' . $key))
-			{ $selectedRegions[] = $key; }
-		}
+		$selectedRegions[] = $key;
+		$limit = 0;
 	}
 }
 
-$companies = $db->getCompanies($selectedCategories, $selectedRegions);
-shuffle($companies);
+$user = new WebApp\UserSession(WebApp\Data::getUser());
+
+if(filter_has_var(INPUT_GET, 'logout'))
+{ $user->logout(); }
+
+//$companies = WebApp\Data::getCompany()->selectCategoriesRegions($selectedCategories, $selectedRegions, $limit);
+$companies = WebApp\Data::getCompany()->selectCategoriesRegions([], $selectedRegions, $limit);
 
 $language = WebApp\WebApp::getLanguageCode();
-require 'homepage/text/' . $language . '.php';
+require 'Templates/text ' . $language . '.php';
+require 'homepage/text ' . $language . '.php';
 require 'homepage/view.php';
