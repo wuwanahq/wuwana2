@@ -2,6 +2,7 @@
 <html lang="<?php echo $language ?>">
 <head>
 	<?php include '../../Templates/page metadata.php' ?>
+	<link rel="stylesheet" type="text/css" href="/static/admin.css">
 	<title>Admin page | Wuwana</title>
 </head>
 <body>
@@ -10,13 +11,29 @@
 		<?php include '../../Templates/admin menu.php' ?>
 		<div class="ColumnMain">
 			<section>
+				<h2>New company</h2>
+				<div class="Box">
+					<form method="post">
+						<label for="instagram">Instagram profile URL:</label>
+						<input id="instagram" name="instagram" type="text" size="80">
+						<br>
+						<label for="website">Website URL:</label>
+						<input id="website" name="website" type="text" size="89">
+						<br>
+						<label for="email">Email address:</label>
+						<input id="email" name="email" type="text" size="81">
+						<input type="submit" value="Add">
+					</form>
+				</div>
+			</section>
+			<section>
 				<h2>Companies</h2>
 				<div class="Box">
 					<table>
 						<thead>
 							<tr>
-								<th>Permalink</th>
 								<th>Name</th>
+								<th>Description</th>
 								<th>Location</th>
 								<th>Tags</th>
 								<th>Last update</th>
@@ -24,22 +41,21 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td><a href="/example-company1">wuwana.com/example-company1</a></td>
-								<td>Example Company n°1</td>
-								<td>Madrid</td>
-								<td>CoffeeShop Roaster</td>
-								<td>10min ago</td>
-								<td><input type="button" value="Delete"></td>
-							</tr>
-							<tr>
-								<td><a href="/example-company2">wuwana.com/example-company2</a></td>
-								<td>Example Company n°2</td>
-								<td>Valencia</td>
-								<td>Importer Coffee</td>
-								<td>20min ago</td>
-								<td><input type="button" value="Delete"></td>
-							</tr>
+							<?php
+								foreach ($companies as $company)
+								{
+									echo '<tr>';
+									echo  '<td><a href="http://', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
+									echo   $company->name;
+									echo  '</a></td>';
+									echo  '<td>', substr($company->description, 0, 30), '...</td>';
+									echo  '<td>', $company->region, '</td>';
+									echo  '<td>', implode(' ', $company->tags), '</td>';
+									echo  '<td>', date('Y-m-d H:i', $company->lastUpdate), '</td>';
+									echo  '<td><input type="button" value="Delete" disabled></td>';
+									echo '</tr>';
+								}
+							?>
 						</tbody>
 					</table>
 				</div>

@@ -9,6 +9,7 @@ use PDO;
 class User extends DataAccess
 {
 	const HASH_ALGO = 'fnv164';
+	const CODE_MAX_VALUE = 9999;
 
 	public $email;
 	public $name;
@@ -27,15 +28,11 @@ class User extends DataAccess
 			. 'LastLogin int not null)';
 	}
 
-	public function importData($filePath)
+	public function insertData($filePath)
 	{
-		if ($this->pdo->exec('drop table User') === false)
-		{ trigger_error(implode(' ', $this->pdo->errorInfo()), E_USER_ERROR); }
-
-		$this->createTable();
-
-		parent::insertData($filePath, 'User', [
-			'Email'      => PDO::PARAM_LOB,
+		parent::importData($filePath, 'User', [
+			'Hash'       => PDO::PARAM_LOB,
+			'Email'      => PDO::PARAM_STR,
 			'Name'       => PDO::PARAM_STR,
 			'CompanyID'  => PDO::PARAM_INT,
 			'AccessCode' => PDO::PARAM_INT,
@@ -63,7 +60,7 @@ class User extends DataAccess
 		$user->email = $row['Email'];
 		$user->name = $row['Name'];
 		$user->company = $row['CompanyID'];
-		$user->accessCode = $row['AccessCode'];
+		$user->accessCode = str_pad($row['AccessCode'], 4, '0', STR_PAD_LEFT);
 		$user->lastLogin = $row['LastLogin'];
 
 		return $user;
@@ -102,9 +99,24 @@ class User extends DataAccess
 		$query->execute();
 	}
 
+	public function updateCompany($id, $hash)
+	{
+		$query = $this->pdo->prepare(
+			'update User set CompanyID=? where Hash=?');
+
+		$query->bindValue(1, $id, PDO::PARAM_INT);
+		$query->bindValue(2, $hash, PDO::PARAM_LOB);
+		$query->execute();
+	}
+
 	// countUser
 	public function countAll()
 	{
 		return (int)$this->pdo->query('select count(*) from User')->fetchColumn(0);
+	}
+
+	public function countAdmin()
+	{
+		return (int)$this->pdo->query('select count(*) from User where CompanyID < 0')->fetchColumn(0);
 	}
 }

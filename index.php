@@ -16,6 +16,7 @@ $limit = filter_has_var(INPUT_GET, 'show') ? 0 : 8;
 $selectedCategories = [];
 $selectedRegions = [];
 
+/*
 if (filter_has_var(INPUT_GET, 'cat'))
 {
 	foreach ($categories as $key => $value)
@@ -26,16 +27,15 @@ if (filter_has_var(INPUT_GET, 'cat'))
 
 	$limit = 0;
 }
+*/
 
-if (filter_has_var(INPUT_GET, 'region'))
+foreach ($locations as $key => $value)
 {
-	foreach ($locations as $key => $value)
+	if (filter_has_var(INPUT_GET, 'region' . $key))
 	{
-		if (filter_has_var(INPUT_GET, 'region' . $key))
-		{ $selectedRegions[] = $key; }
+		$selectedRegions[] = $key;
+		$limit = 0;
 	}
-
-	$limit = 0;
 }
 
 $user = new WebApp\UserSession(WebApp\Data::getUser());
@@ -43,8 +43,8 @@ $user = new WebApp\UserSession(WebApp\Data::getUser());
 if(filter_has_var(INPUT_GET, 'logout'))
 { $user->logout(); }
 
-$companies = WebApp\Data::getCompany()->selectCategoriesRegions($selectedCategories, $selectedRegions, $limit);
-shuffle($companies);
+//$companies = WebApp\Data::getCompany()->selectCategoriesRegions($selectedCategories, $selectedRegions, $limit);
+$companies = WebApp\Data::getCompany()->selectCategoriesRegions([], $selectedRegions, $limit);
 
 $language = WebApp\WebApp::getLanguageCode();
 require 'Templates/text ' . $language . '.php';

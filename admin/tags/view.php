@@ -16,54 +16,31 @@
 					<table>
 						<thead>
 							<tr>
-								<th>Visible?</th>
-								<th>Tag</th>
-								<th>Keywords</th>
-								<th></th>
+								<th style="width:50px">Visible</th>
+								<th style="width:99px">Tag name</th>
+								<th>Keywords (regular expression)</th>
+								<th style="width:50px"></th>
 							</tr>
 						</thead>
 						<tbody>
+							<?php
+								foreach ($tags as $id => $tag)
+								{
+									echo '<tr>';
+									echo  '<td><input type="checkbox" ', $tag->isVisible ? 'checked' : '', '></td>';
+									echo  '<td><input type="text" value="', $tag->name, '"></td>';
+									echo  '<td><input type="text" value="', $tag->keywords, '"></td>';
+									echo  '<td><input type="button" value="Update" disabled></td>';
+									echo '</tr>';
+								}
+							?>
 							<tr>
-								<td><input type="checkbox" checked></td>
-								<td><input type="text" value="Roaster"></td>
-								<td><input type="text" value="roaster;tostador (roaster|tostador|etc)"></td>
-								<td><input type="button" value="Update" disabled></td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" checked></td>
-								<td><input type="text" value="CoffeeShop"></td>
-								<td><input type="text" value="coffee shop;cafetería;café"></td>
-								<td><input type="button" value="Update" disabled></td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" checked></td>
-								<td><input type="text" value="Importer"></td>
-								<td><input type="text" value="importer;importador;importateur"></td>
-								<td><input type="button" value="Update" disabled></td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" checked></td>
-								<td><input type="text" value="Restaurant"></td>
-								<td><input type="text" value="restaurant;restaurante"></td>
-								<td><input type="button" value="Update" disabled></td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td><input type="text" value="SpecialtyCoffee"></td>
-								<td><input type="text" value="specialty coffee;café de especialidad"></td>
-								<td><input type="button" value="Update" disabled></td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td><input type="text" value="Coffee"></td>
-								<td><input type="text" value="coffee;café"></td>
-								<td><input type="button" value="Update" disabled></td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
-								<td><input type="button" value="Add"></td>
+								<form method="post">
+									<td><input type="checkbox" name="Visible"></td>
+									<td><input type="text" name="TagName"></td>
+									<td><input type="text" name="Keywords"></td>
+									<td><input type="submit" value="Add"></td>
+								</form>
 							</tr>
 						</tbody>
 					</table>

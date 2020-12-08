@@ -20,4 +20,25 @@ class WebApp
 
 		return 'en';
 	}
+
+	static function getPermalink()
+	{
+		$host = self::getHostname();
+		$requestURL = filter_input(INPUT_SERVER, 'REQUEST_URI');
+
+		if ($requestURL == '/company')
+		{ $requestURL = '/...'; }
+
+		return $host . $requestURL;
+	}
+
+	static function getHostname()
+	{
+		$host = filter_input(INPUT_SERVER, 'HTTP_HOST');
+
+		if (strlen($host) < 5)
+		{ return filter_input(INPUT_SERVER, 'SERVER_NAME'); }
+
+		return $host;
+	}
 }

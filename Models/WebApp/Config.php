@@ -11,7 +11,7 @@ const
  * Session lifetime.
  * @var int Seconds
  */
-SESSION_LIFETIME = 300,  // 5 minutes
+SESSION_LIFETIME = 600,  // 10 minutes
 
 /**
  * Database Source Name (PDO DSN). Use SQLite by default if this value is empty.
@@ -30,13 +30,6 @@ DB_SOURCE = '',
  * @var string
  */
 DB_USERNAME = 'root',
-DB_PASSWORD = '',
-
-/**
- * Password to protect the admin-wuwana page.
- * @link https://wuwana.com/admin-wuwana
- * @var string
- */
-ADMIN_PASSWORD = '';
+DB_PASSWORD = '';
 
 }

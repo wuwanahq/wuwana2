@@ -1,6 +1,5 @@
 <?php
 namespace WebApp;
-use DataAccess\DataAccess;
 use DataAccess\User;
 
 /**
@@ -10,21 +9,13 @@ use DataAccess\User;
 class UserSession
 {
 	const HASH_ALGO = 'sha256';
-	private $dao;
+	private $user;
 
-	public function __construct(DataAccess $dao)
+	public function __construct(User $dataAccessObject)
 	{
-		$this->dao = $dao;
-		$login = filter_input(INPUT_GET, 'login');
+		$this->user = $dataAccessObject;
 
-		if (strlen($login) == 20)
-		{
-			$this->login(
-				hex2bin(substr($login, 0, 16)),
-				substr($login, 16)
-			);
-		}
-		elseif (filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'code'))
+		if (filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'code'))
 		{
 			$this->login(
 				self::hash(strtolower(trim(filter_input(INPUT_POST, 'email')))),
@@ -43,7 +34,7 @@ class UserSession
 
 	private function login($email, $code)
 	{
-		$user = $this->dao->getUser($email);
+		$user = $this->user->selectEmail($email);
 
 		if ($user instanceof User && $user->accessCode === $code)
 		{
@@ -77,24 +68,26 @@ class UserSession
 		session_destroy();
 	}
 
-	public function sendEmail($email)
+	/**
+	 * Send the access code by email.
+	 * @param string $address Email address
+	 * @param string $subject Title
+	 * @param string $message HTML body of the Email
+	 */
+	public function sendEmail($toAddress, $fromAddress, $subject, $messageBody)
 	{
-		$email = strtolower(trim($email));
-		$hash = self::hash($email);
-		$code = $this->generateCode($email);
+		$toAddress = strtolower(trim($toAddress));
+		//$hash = self::hash($address);
+		$code = $this->generateCode($toAddress);
+		$subject = sprintf($subject, $code);
 
 		mail(
-			$email,
-			'Your access code is ' . $code,
-			'To login you just need to copy the code "' . $code . '" on Wuwana.com',
-			['From' => 'Login Wuwana.com <login@wuwana.com>']
-		);
-
-		mail(
-			$email,
-			'Login link',
-			'https://wuwana.com?login=' . bin2hex($hash) . $code,
-			['From' => 'Login Wuwana.com <login@wuwana.com>']
+			$address,
+			$subject,
+			'<html><head><title>' . $subject . '</title></head><body>'
+			. sprintf($messageBody, $code)
+			. '</body></html>',
+			['From' => $fromAddress]
 		);
 	}
 
@@ -105,16 +98,17 @@ class UserSession
 	 */
 	private function generateCode($email)
 	{
-		$hash = self::hash($email);
-		$code = rand(1, 9999);
-
 		$name = $email[0] . '…' . substr($email, strpos($email, '@'));
-		$companyID = $this->dao->countUser() === 0 ? -1 : 0;
+		$email = self::hash($email);
+		$code = rand(1, User::CODE_MAX_VALUE);
+		$companyID = $this->user->countAdmin() === 0 ? -1 : 0;
 
-		if ($this->dao->insertUser($hash, $name, $companyID, $code))
+		if ($this->user->insertUser($email, $name, $companyID, $code))
 		{ return $code; }
+		elseif ($companyID == -1)
+		{ $this->user->updateCompany($companyID, $email); }
 
-		$this->dao->updateUserCode($hash, $code);
+		$this->user->updateCode($email, $code);
 		return $code;
 	}
 

@@ -27,12 +27,12 @@ body {
 	font-size: 16px;
 	display: flex;
 	flex-direction: column;
-	color: #161313;
+	color: black;
 	background-color: #f6f6f6;
 	margin: 0;
 	justify-content: center;
 	align-items: center;
-	padding: 24px 16px}
+	padding: 0 16px 24px}
 
 section {
 	width: 100%;
@@ -50,8 +50,7 @@ h1 { /* Title */
 	font-size: 1.5rem;
 	line-height: 1.3;
 	font-weight: 500;
-	margin-bottom: 16px;
-	margin-block-start: 0}
+	margin: 0 0 16px;}
 
 h2 { /* Subtitle */
 	font-size: 1.125rem;
@@ -64,8 +63,7 @@ h3 { /* Company Title */
 	font-size: 1rem;
 	line-height: 1.3;
 	font-weight: 700;
-	margin-block-start: 0;
-	margin-block-end: 0}
+	margin: 0;}
 
 p {
 	font-size: 1rem;
@@ -120,7 +118,7 @@ dd {
 	width: 100%;
 	max-width: 1200px;
 	justify-content: center;
-	margin-top: 48px}
+	margin-top: 24px}
 
 .ColumnLeft {
 	position: static;
@@ -194,6 +192,7 @@ dd {
 	display: flex;
 	padding: 8px;
 	align-items: center;
+	align-self: center;
 	background-color: white;
 	color: black;
 	font-size: 12px;
@@ -278,13 +277,6 @@ dd {
 	filter: invert(100%)
 }
 
-.buttonMain:disabled {
-	background-color: #E3E1E1; /* Grey 20 */
-	border-style: none;
-	box-shadow: none;
-	cursor: not-allowed;
-}
-
 .buttonIcon.ToTop {
 	visibility: hidden;
 	opacity: 0;
@@ -317,6 +309,9 @@ dd {
 .buttonSpecial:disabled {
 	background-color: #E3E1E1; /* Grey 20 */
 	color: #545151; /* Grey 70 */
+	border-style: none;
+	box-shadow: none;
+	cursor: not-allowed;
 }
 
 .pill {
@@ -335,6 +330,8 @@ dd {
 	cursor: pointer
 }
 
+/* Pill */
+
 .pill:hover {
 	background-color: #E3E1E1; /* Grey 20 */
 }
@@ -346,6 +343,8 @@ dd {
 	box-shadow: none;
 	cursor: not-allowed;
 }
+
+/* Button Social */
 
 .buttonSocial {
 	display: flex;
@@ -372,8 +371,44 @@ dd {
 
 .buttonSocial:disabled {
 	background-color: #E3E1E1; /* Grey 20 */
+	cursor: not-allowed;
 }
 
+/* HEADER */
+
+.headerBar{
+	z-index: 99;
+	position: sticky;
+	top: 0;
+	left: 0;
+	height: 48px;
+	width: 100vw;
+	background-color: white;
+	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: center}
+
+.headerContainer {
+	display: flex;
+	justify-content: space-between;
+	align-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 0 16px;
+	max-width: 1200px} /* Same as body max width */
+
+.headerLogo {
+	height: 24px}
+
+.HeaderIcon {
+	border-radius: 8px;
+	padding: 8px;
+	margin-right: -8px;
+	cursor: pointer;
+	display: none;}
+
+.HeaderIcon:hover {
+	background-color: #fafafa}
 
 /* Old buttons */
 
@@ -436,43 +471,6 @@ dd {
 .Button.Toggle img {
 	filter: none}
 
-
-/* HEADER */
-
-.HeaderBar{
-	z-index: 99;
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 48px;
-	width: 100vw;
-	background-color: #ffffff;
-	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
-	display: flex;
-	justify-content: center}
-
-.HeaderContainer {
-	display: flex;
-	justify-content: space-between;
-	align-content: space-between;
-	align-items: center;
-	width: 100%;
-	max-width: 1232px} /* 1200px + 16px padding left and right */
-
-.HeaderLogo {
-	margin-left: 16px;
-	height: 24px}
-
-.HeaderIcon {
-	padding: 8px;
-	border-radius: 8px;
-	cursor: pointer;
-	display: none;
-	margin-right: 8px}
-
-.HeaderIcon:hover {
-	background-color: #fafafa}
-
 /* CARDS */
 
 .Card {
@@ -494,6 +492,10 @@ dd {
 
 .Card:hover {
 	background-color: #fafafa}
+
+.Card .tagRegion {
+	margin-top: auto;
+}
 
 /*
 .Card:hover h3 {
@@ -535,16 +537,6 @@ dd {
 		display: inline;
 		margin: 4px 12px 0 0}
 
-.Tag.Region {
-	display: inline-block;
-	color: #8b8989;
-	background-color: #ffffff;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #8b8989;
-	margin-top: auto;
-	margin-right: 8px}
-
 .BadgeArea {
 	display: flex;
 	flex-direction: row;
@@ -574,44 +566,6 @@ dd {
 	overflow-y: scroll}
 
 /* ABOUT US */
-
-.Hidden {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%}
-
-	.Hidden hr {
-		margin: 24px 0 16px}
-
-.Box.About {
-	align-items: center}
-
-	.Box.About p {
-		color: #545151;
-		font-size: 0.875rem;
-		line-height: 1.3;
-		text-align: center;
-		max-width: 90%} /* This is to try to replicate padding 16px on left and right */
-
-	.Box.About ul {
-		padding-inline-start: 0;
-		display: flex;
-		align-self: center;
-		margin: 0 0 8px;
-		max-width: 90%} /* This is to try to replicate padding 16px on left and right */
-
-	.Box.About li {
-		display: inline;
-		margin: 4px}
-
-.AboutCover {
-	margin-bottom: 8px}
-
-.AboutCover img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover}
 
 .ItemLabel {
 	display: flex;
@@ -649,29 +603,118 @@ dd {
 .Box.About .Button.Toggle {
 	display: none;}
 
+/* Panel */
+
+.boxPanel {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	min-height: 20px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	background-color: #ffffff;
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	padding-bottom: 16px;
+}
+
+.boxPanel hr {
+	margin: 16px 0;
+}
+
+.boxPanel h1 {
+	margin: 0 16px 8px;
+	font-weight: 700;
+}
+
+.boxPanel h3 {
+	margin: 0 16px 8px;
+}
+
+.boxPanel p {
+	color: #545151;
+	font-size: 1rem;
+	line-height: 1.3;
+	margin: 0 16px 16px;
+}
+
+.boxPanel ul {
+	margin: 0 16px;
+	padding: 0;
+	display: flex;}
+
+.boxPanel li {
+	display: inline;
+	margin: 0 4px
+}
+
+.panelCover {
+	margin-bottom: 8px}
+
+	.panelCover img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover}
+
+.iconLabelHorizontal {
+	padding: 4px 16px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color:  #545151;
+	font-weight: 500;
+	background-color: #E3E1E1
+}
+
+a .iconLabelHorizontal {
+	background-color: transparent;
+	font-weight: 400;
+}
+
+.iconLabelHorizontal:hover {
+	background-color: #E3E1E1;
+}
+
+.iconLabelHorizontal img {
+	margin-right: 8px;
+}
+
+.contactSection {
+	align-items: center;
+}
+
 
 /* BANNER */
 
-.Box.Banner {
+.banner {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
 	min-height: 230px;
+	width: 100%;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
 	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), transparent 60%),
 		url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg);
 	background-size: auto, cover;
 	justify-content: center;
 	background-position: 0 0, 50% 50%}
 
-.BannerText {
+.bannerText {
 	color: #ffffff;
 	margin-left: 24px;
 	max-width: 60ch}
 
-.BannerTitle {
+.bannerText h2 {
 	font-size: 2rem;
 	line-height: 2.4rem;
 	font-weight: 700;
 	margin: 0 0 8px 0}
 
-.BannerSubtitle {
+.bannerText p {
 	font-size: 1.5rem;
 	font-weight: 400;
 	margin: 0}
@@ -686,7 +729,8 @@ dd {
 	overflow: hidden;
 	border-radius: 8px;
 	background-color: #ffffff;
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05)
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	margin-bottom: 24px;
 }
 
 .companyPanel h1 {
@@ -834,33 +878,15 @@ dd {
 		flex-direction: column}
 
 	.ColumnLeft {
-		margin-bottom: 24px;
 		min-width: 100%;
         max-width: 100%}
 
 	.HeaderIcon {
 		display: inline}
 
-	.Box.Banner {
-		min-height: 230px;
+	.banner {
 		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%),
-			url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg);
-		background-size: auto, cover;
-		justify-content: center;
-		background-position: 0 0, 50% 50%}
-
-	/* ABOUT US MOBILE */
-
-	.AboutSocial {
-		min-width: 100%;
-		margin-right: -4px}
-
-	.Hidden {
-		display: none}
-
-	.Box.About .Button.Toggle {
-		display: flex;
-	}
+			url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg)}
 
 	/* MENU MOBILE */
 
@@ -943,7 +969,7 @@ dd {
 {
 	/* BANNER */
 
-	.Box.Banner {
+	.banner {
 		display: block;
 		min-height: 180px;
 		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%),
@@ -951,23 +977,20 @@ dd {
 		background-size: auto, cover;
 		background-position: 0 0, 50% 50%}
 
-	.BannerText {
+	.bannerText {
 		align-self: flex-start;
 		color: #ffffff;
 		margin: 16px 0 0 16px;
 		max-width: 60ch}
 
-	.BannerTitle {
+	.bannerText h2 {
 		font-size: 1.5rem;
 		line-height: 1.3;
-		font-weight: 500;
-		margin: 0 0 8px 0}
+		font-weight: 500}
 
-	.BannerSubtitle {
+	.bannerText p {
 		font-size: 1rem;
-		list-style: 1.3;
-		font-weight: 400;
-		margin: 0}
+		list-style: 1.3}
 
 	/* COMPANY CARD */
 

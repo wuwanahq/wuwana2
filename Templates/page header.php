@@ -1,12 +1,12 @@
 <h1 class="VisuallyHidden">Wuwana</h1>
-<header class="HeaderBar">
-	<div class="HeaderContainer">
-		<div class="HeaderLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
+<header class="headerBar">
+	<div class="headerContainer">
+		<div class="headerLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
 		<?php
 			if (isset($user) && $user->isLogin())
 			{
 				echo '<span>';
-				echo  $user->isAdmin() ? '<a href="/admin">Admin page</a>' : $user->companyID;
+				echo  $user->isAdmin() ? '<a href="/admin/companies">Admin page</a>' : $user->companyID;
 				echo  ' | ', $_SESSION['Name'];
 				echo '</span>';
 			}
@@ -15,7 +15,7 @@
 				echo '<form method="post">';
 				echo  '<label for="email">Email: </label>';
 				echo  '<input id="email" type="text" name="email">';
-				echo  ' <input type="button" value="Send email" onclick="askEmail()">';
+				echo  '<input type="button" value="Send email" onclick="askEmail()"> ';
 				echo  '<label for="code">Code: </label>';
 				echo  '<input id="code" type="password" name="code"> <input type="submit" value="Login">';
 				echo '</form>';

@@ -8,6 +8,9 @@ use PDO;
  */
 abstract class DataAccess
 {
+	const INT_MIN = -2147483648;
+	const INT_MAX = 2147483647;
+
 	protected $pdo;
 
 	public function __construct(PDO $pdo = null)
@@ -34,6 +37,11 @@ abstract class DataAccess
 		$this->createTable(Company::getTableSchema());
 		$this->createTable(SocialMedia::getTableSchema());
 		$this->createTable(Image::getTableSchema());
+
+		(new Location($this->pdo))->insertData(__DIR__ . '/default data/location.tsv');
+		(new Tag($this->pdo))->insertData(__DIR__ . '/default data/tag.tsv');
+		(new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv', __DIR__ . '/default data/socialmedia.tsv');
+		(new User($this->pdo))->insertData(__DIR__ . '/default data/user.tsv');
 	}
 
 	private function createTable($sql)
@@ -57,7 +65,7 @@ abstract class DataAccess
 		}
 	}
 
-	protected function insertData($filePath, $tableName, $columns)
+	protected function importData($filePath, $tableName, $columns)
 	{
 		$preparedStatement = $this->pdo->prepare(
 			'insert into ' . $tableName . ' ('
@@ -74,11 +82,17 @@ abstract class DataAccess
 
 			foreach ($columns as $columnType)
 			{
-				$preparedStatement->bindValue($i+1, trim($values[$i]), $columnType);
+				if ($columnType == PDO::PARAM_LOB)
+				{ $preparedStatement->bindValue($i+1, hex2bin($values[$i]), $columnType); }
+				else
+				{ $preparedStatement->bindValue($i+1, trim($values[$i]), $columnType); }
+
 				++$i;
 			}
 
 			$preparedStatement->execute();
 		}
+
+		fclose($file);
 	}
 }

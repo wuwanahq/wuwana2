@@ -1,7 +1,7 @@
 // ECMAScript 5
 "use strict";
 
-document.getElementById("C0").addEventListener("change", handleEventChangeFilterAll);
+//document.getElementById("C0").addEventListener("change", handleEventChangeFilterAll);
 document.getElementById("R0").addEventListener("change", handleEventChangeFilterAll);
 
 for (var i=1; i < 50; ++i)
@@ -57,7 +57,7 @@ function askEmail()
 
 	form.append("email", email);
 
-	xhr.open("post", "/ajax/email.php");
+	xhr.open("post", "/ajax/email");
 	xhr.send(form);
 }
 
