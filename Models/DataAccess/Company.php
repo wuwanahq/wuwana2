@@ -114,12 +114,12 @@ class Company extends DataAccess
 			left join Tag as T2 on Company.SecondTagID=T2.ID
 			where Company.PermaLink=?';
 
-		$query = $this->pdo->query($sql);
+		$query = $this->pdo->prepare($sql);
 
 		if ($query == false)
 		{
 			$this->createDatabase();
-			$query = $this->pdo->query($sql);
+			$query = $this->pdo->prepare($sql);
 		}
 
 		$query->bindValue(1, $permalink, PDO::PARAM_STR);
