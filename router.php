@@ -12,15 +12,25 @@ spl_autoload_register(function($className) {
 
 $requestURL = str_replace('/', '', filter_input(INPUT_SERVER, 'REQUEST_URI'));
 
-if (strpos($requestURL, '.') !== false)
+if ($requestURL == '' || $requestURL[0] == '?' || strpos($requestURL, '.') !== false)
 {
-	if (php_sapi_name() == 'cli')
+	if (php_sapi_name() == 'cli-server')
 	{ return false; }
 	else
 	{ http_response_code(404); }
+
+	exit;
 }
 
 $company = WebApp\Data::getCompanyInfo($requestURL);
+
+if ($company == null)
+{
+	trigger_error('Requested URL ' . filter_input(INPUT_SERVER, 'REQUEST_URI') . ' not found', E_USER_NOTICE);
+	http_response_code(404);
+	exit;
+}
+
 $user = new WebApp\UserSession(WebApp\Data::getUser());
 
 $language = WebApp\WebApp::getLanguageCode();
