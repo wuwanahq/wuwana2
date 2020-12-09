@@ -13,7 +13,7 @@
 			<div class="companyPanel">
 				<section class="companyAbout">
 					<div class="Logo">
-						<img src="<?php echo $company->logo ?>">
+						<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name, ' logo' ?>" >
 					</div>
 					<?php
 						if (isset($user) && $user->isAdmin())
