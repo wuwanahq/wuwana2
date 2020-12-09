@@ -636,6 +636,7 @@ dd {
 	color: #545151;
 	font-size: 1rem;
 	line-height: 1.3;
+	text-align: center;
 	margin: 0 16px 16px;
 }
 
@@ -735,6 +736,7 @@ a .iconLabelHorizontal {
 
 .companyPanel h1 {
 	line-height: 1.2;
+	text-align: center;
 	margin: 0 16px 4px;
 }
 
@@ -873,6 +875,28 @@ a .iconLabelHorizontal {
 @media screen and (max-width: 800px)
 {
 	/* TABLET GENERAL CHANGES */
+
+	h1 {
+		font-size: 1.75rem;
+	}
+	
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	h3 {
+		font-size: 1.125rem;
+	}
+
+	.buttonMain,
+	.buttonIcon,
+	.buttonSocial {
+		font-size: 1rem;
+	}
+
+	.ItemLabel {
+		font-size: 0.75rem;
+	}
 
 	.Container {
 		flex-direction: column}
