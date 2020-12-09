@@ -14,13 +14,13 @@
 				<div class="panelCover">
 					<img src="/static/logo/ribbon.svg">
 				</div>
-				<p>Encontrar la información que necesitas debería ser más fácil.</p>
+				<p><?php echo TEXT[9] ?></p>
 				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
-					Descubre qué es Wuwana
+					<?php echo TEXT[10] ?>
 				</a>
 				<hr>
 				<section class="contactSection">
-					<h3>Contáctanos</h3>
+					<h3><?php echo TEXT[11] ?></h3>
 					<ul>
 						<li>
 							<a class="ItemLabel" href="https://www.instagram.com/wuwana.es/" target="_blank">
