@@ -1,4 +1,5 @@
 # Apache 2.4
+DirectoryIndex index.php
 FallbackResource /router.php
 
 # Nginx

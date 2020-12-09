@@ -10,14 +10,19 @@ spl_autoload_register(function($className) {
 	require 'Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-$company = WebApp\Data::getCompanyInfo(str_replace('/', '', filter_input(INPUT_SERVER, 'REQUEST_URI')));
+$requestURL = str_replace('/', '', filter_input(INPUT_SERVER, 'REQUEST_URI'));
 
-if ($company == null)
-{ return false; }
+if (strpos($requestURL, '.') !== false)
+{
+	if (php_sapi_name() == 'cli')
+	{ return false; }
+	else
+	{ http_response_code(404); }
+}
 
+$company = WebApp\Data::getCompanyInfo($requestURL);
 $user = new WebApp\UserSession(WebApp\Data::getUser());
 
-$root = '';
 $language = WebApp\WebApp::getLanguageCode();
 require 'Templates/text ' . $language . '.php';
 require 'company/text ' . $language . '.php';
