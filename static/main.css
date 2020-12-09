@@ -771,10 +771,10 @@ a .iconLabelHorizontal {
 
 	.companyAbout li {
 		display: inline;
-		margin: 0 12px 0 0}
+		margin: 0 6px 0 0}
 
 		.companyAbout li:last-child {
-			margin: 0;
+			margin-right: 0;
 		}
 
 	.companyAbout .tagRegion {
