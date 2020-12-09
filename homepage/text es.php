@@ -9,4 +9,7 @@ const TEXT = [
 6 => 'Ver mas empresas',
 7 => 'Aplicar filtros',
 8 => 'Personaliza la búqueda',
+9 => 'Encontrar la información que necesitas debería ser más fácil.',
+10 => 'Descubre qué es Wuwana',
+11 => 'Contáctanos'
 ];

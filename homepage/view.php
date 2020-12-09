@@ -12,15 +12,15 @@
 		<section class="ColumnLeft">
 			<div class="boxPanel">
 				<div class="panelCover">
-					<img src="/static/logo/ribbon.svg">
+					<img src="/static/logo/ribbon.svg" alt="wuwana ribbon">
 				</div>
-				<p>Encontrar la información que necesitas debería ser más fácil.</p>
+				<p><?php echo TEXT[9] ?></p>
 				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
-					Descubre qué es Wuwana
+					<?php echo TEXT[10] ?>
 				</a>
 				<hr>
 				<section class="contactSection">
-					<h3>Contáctanos</h3>
+					<h3><?php echo TEXT[11] ?></h3>
 					<ul>
 						<li>
 							<a class="ItemLabel" href="https://www.instagram.com/wuwana.es/" target="_blank">
@@ -66,8 +66,8 @@
 						<dt><?php echo TEXT[3] ?></dt>
 						<dd>
 							<input type="checkbox" name="region" id="R0"
-								<?php echo $selectedRegions==[] ? 'checked disabled' : '' ?>>
-							<label for="R0"><?php echo TEXT[4] ?></label>
+								<?php echo $selectedRegions==[] ? 'checked disabled' : '' ?>
+								><label for="R0"><?php echo TEXT[4] ?></label>
 						</dd>
 						<?php
 							foreach ($locations as $id => $location)
@@ -161,7 +161,7 @@
 						{
 							echo '<a class="Card" href="/', $permalink, '">';
 							echo   '<div class="Logo">';
-							echo     '<img src="', $company->logo, '">';
+							echo     '<img src="', $company->logo, '" alt="', $company->name, ' logo">';
 							echo   '</div>';
 							echo   '<div class="CompanyMain">';
 							echo     '<div class="CompanyContent">';

@@ -13,7 +13,7 @@
 			<div class="companyPanel">
 				<section class="companyAbout">
 					<div class="Logo">
-						<img src="<?php echo $company->logo ?>">
+						<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name, ' logo' ?>" >
 					</div>
 					<?php
 						if (isset($user) && $user->isAdmin())
@@ -144,7 +144,8 @@
 					echo  '<div class="Box">';
 					echo   '<div class="InstagramInfo">';
 					echo    '<h3>', $company->instagram->profileName, '</h3>';
-					echo    '<p>', nl2br($company->instagram->biography), '<br>', $company->instagram->link, '</p>';
+					echo    '<p>', nl2br($company->instagram->biography), '<br>';
+					echo    '<a>', $company->instagram->link, '</a></p>';
 					echo    '<ul>';
 					echo     '<li>';
 					echo      '<div class="ItemLabel">';
