@@ -871,6 +871,37 @@ a .iconLabelHorizontal {
 		position: relative;
 		top: 4px}
 
+
+/* 404 PAGE */
+
+.error-page {
+	justify-content: center;
+	text-align: center;
+}
+
+.error-page .Box {
+	max-width: 800px;
+}
+
+.error-page h1 {
+	font-size: 2rem;
+}
+
+.error-explanation p {
+	align-self: center;
+	max-width: 48ch;
+	margin: -8px 0 24px;
+}
+
+.error-image {
+	max-width: 320px;
+}
+
+	.error-image img {
+		width: 100%;
+		object-fit: cover
+	}
+
 /* LAYOUT CHANGES FOR TABLET DEVICES */
 @media screen and (max-width: 800px)
 {
