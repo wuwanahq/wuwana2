@@ -13,16 +13,14 @@ abstract class DataAccess
 
 	protected $pdo;
 
-	public function __construct(PDO $pdo = null)
+	public function __construct(PDO $pdo)
 	{
-		if ($pdo instanceof PDO)
-		{
-			$this->pdo = $pdo;
-			date_default_timezone_set('UTC');
-		}
+		$this->pdo = $pdo;
+		date_default_timezone_set('UTC');
 	}
 
 	abstract static function getTableSchema();
+	abstract public function insertData($filePath);
 
 	protected function createDatabase()
 	{
@@ -40,7 +38,8 @@ abstract class DataAccess
 
 		(new Location($this->pdo))->insertData(__DIR__ . '/default data/location.tsv');
 		(new Tag($this->pdo))->insertData(__DIR__ . '/default data/tag.tsv');
-		(new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv', __DIR__ . '/default data/socialmedia.tsv');
+		(new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
+		(new SocialMedia($this->pdo))->insertData( __DIR__ . '/default data/socialmedia.tsv');
 		(new User($this->pdo))->insertData(__DIR__ . '/default data/user.tsv');
 	}
 

@@ -8,9 +8,6 @@ use PDO;
  */
 class Location extends DataAccess
 {
-	public $country;
-	public $region;
-
 	static function getTableSchema()
 	{
 		return 'create table Location (
@@ -30,14 +27,15 @@ class Location extends DataAccess
 
 	//TODO: public function exportData()
 
-	public function selectUsefulItemsOnly()
+	public function selectUsefulItemsOnly($countryCode)
 	{
-		return $this->fetchQuery('select * from Location where ID in (select LocationID from Company)');
+		return $this->fetchQuery("select * from Location where CountryCode='" . $countryCode[0] . $countryCode[1]
+			. "' and ID in (select LocationID from Company)");
 	}
 
-	public function selectAll()
+	public function selectCountry($code)
 	{
-		return $this->fetchQuery('select * from Location');
+		return $this->fetchQuery("select ID,RegionName from Location where CountryCode='" . $code[0] . $code[1] . "'");
 	}
 
 	private function fetchQuery($sql)
@@ -53,13 +51,7 @@ class Location extends DataAccess
 		$locations = [];
 
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-		{
-			$location = new self();
-			$location->country = $row['CountryCode'];
-			$location->region = $row['RegionName'];
-
-			$locations[(int)$row['ID']] = $location;
-		}
+		{ $locations[(int)$row['ID']] = $row['RegionName']; }
 
 		return $locations;
 	}

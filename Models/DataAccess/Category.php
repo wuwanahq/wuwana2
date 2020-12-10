@@ -4,7 +4,7 @@ use PDO;
 
 /**
  * Data access layer for stored categories.
- * @deprecated
+ * @deprecated To update!
  * @author Vince <vincent.boursier@gmail.com>
  */
 class Category extends DataAccess

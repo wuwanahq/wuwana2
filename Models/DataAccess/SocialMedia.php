@@ -1,71 +1,13 @@
 <?php
 namespace DataAccess;
+use PDO;
 
 /**
  * Data access layer for stored social media.
  * @author Vince <vincent.boursier@gmail.com>
  */
-class SocialMedia
+class SocialMedia extends DataAccess
 {
-	public $url;
-	public $profileName;
-	public $biography;
-	public $link = '';
-	public $pictures;
-	public $counter1 = 0;
-	public $counter2 = 0;
-	public $counter3 = 0;
-
-	public function __get($name)
-	{
-		switch ($name)
-		{
-			// Instagram
-			case 'nbPost': return $this->counter1;
-			case 'nbFollower': return $this->counter2;
-			case 'nbFollowing': return $this->counter3;
-
-			// Facebook
-			case 'nbLike': return $this->counter1;
-			case 'nbFollow': return $this->counter2;
-			case 'nbCheckin': return $this->counter3;
-		}
-
-		trigger_error('Undefined property ' . $name, E_USER_ERROR);
-	}
-
-	public function __set($name, $value)
-	{
-		switch ($name)
-		{
-			// Instagram
-			case 'nbPost': $this->counter1 = $value; break;
-			case 'nbFollower': $this->counter2 = $value; break;
-			case 'nbFollowing': $this->counter3 = $value; break;
-
-			// Facebook
-			case 'nbLike': $this->counter1 = $value; break;
-			case 'nbFollow': $this->counter2 = $value; break;
-			case 'nbCheckin': $this->counter3 = $value; break;
-		}
-	}
-
-	public function __construct(array $row = null)
-	{
-		if ($row != null)
-		{
-			$this->url = 'https://www.' . $row['SocialMediaURL'];
-			$this->profileName = $row['SocialMediaProfileName'];
-			$this->biography = $row['SocialMediaBiography'];
-			$this->link = $row['SocialMediaExternalLink'];
-			$this->counter1 = $row['SocialMediaCounter1'];
-			$this->counter2 = $row['SocialMediaCounter2'];
-			$this->counter3 = $row['SocialMediaCounter3'];
-		}
-
-		$this->pictures = [];
-	}
-
 	static function getTableSchema()
 	{
 		return 'create table SocialMedia (
@@ -80,8 +22,45 @@ class SocialMedia
 			Counter3 int not null)';
 	}
 
-	public function getType()
+	public function insertData($filePath)
 	{
-		return substr($this->url, 12, strpos($this->url, '.', 12) - 12);  // 12 to avoid "https://www."
+		parent::importData($filePath, 'SocialMedia', [
+			'ID'           => PDO::PARAM_INT,
+			'URL'          => PDO::PARAM_STR,
+			'CompanyID'    => PDO::PARAM_INT,
+			'ProfileName'  => PDO::PARAM_STR,
+			'Biography'    => PDO::PARAM_STR,
+			'ExternalLink' => PDO::PARAM_STR,
+			'Counter1'     => PDO::PARAM_INT,
+			'Counter2'     => PDO::PARAM_INT,
+			'Counter3'     => PDO::PARAM_INT,
+		]);
+	}
+
+	public function insert(SocialMediaObject $socialMedia, $companyID)
+	{
+		$query = $this->pdo->query('select coalesce(max(ID)+1,' . self::INT_MIN . ') from SocialMedia');
+		$query->execute();
+		$id = $query->fetchAll(PDO::FETCH_COLUMN,0)[0];
+
+		$query = $this->pdo->prepare('insert into SocialMedia
+			(ID, URL, CompanyID, ProfileName, Biography, ExternalLink, Counter1, Counter2, Counter3)
+			values (?,?,?,?,?,?,?,?,?)');
+
+		$query->bindValue(1, $id, PDO::PARAM_INT);
+		$query->bindValue(2, $socialMedia->url, PDO::PARAM_STR);
+		$query->bindValue(3, $companyID, PDO::PARAM_INT);
+		$query->bindValue(4, $socialMedia->profileName, PDO::PARAM_STR);
+		$query->bindValue(5, $socialMedia->biography, PDO::PARAM_STR);
+		$query->bindValue(6, $socialMedia->link, PDO::PARAM_STR);
+		$query->bindValue(7, $socialMedia->counter1, PDO::PARAM_INT);
+		$query->bindValue(8, $socialMedia->counter2, PDO::PARAM_INT);
+		$query->bindValue(9, $socialMedia->counter3, PDO::PARAM_INT);
+
+		if ($query->execute())
+		{
+			$image = new Image($this->pdo);
+			$image->insert($socialMedia->pictures, $id);
+		}
 	}
 }

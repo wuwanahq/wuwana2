@@ -46,6 +46,9 @@ class Data
 
 	public static function getCompanyInfo($permalink)
 	{
+		if ($permalink == '' || $permalink[0] == '?' || strpos($permalink, '.') !== false)
+		{ return null; }
+
 		$company = self::getCompany()->selectPermalink($permalink);
 
 		if ($company == null)
@@ -77,6 +80,12 @@ class Data
 	}
 
 	public static function getTagIterator()
+	{
+		$tag = new DataAccess\Tag(self::getPdoInstance());
+		return $tag->selectAll();
+	}
+
+	public static function getTag()
 	{
 		return new DataAccess\Tag(self::getPdoInstance());
 	}

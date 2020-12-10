@@ -1,6 +1,7 @@
 <?php
 namespace WebApp;
 use DataAccess\User;
+use DataAccess\UserObject;
 
 /**
  * User session.
@@ -11,9 +12,9 @@ class UserSession
 	const HASH_ALGO = 'sha256';
 	private $user;
 
-	public function __construct(User $dataAccessObject)
+	public function __construct(User $dataAccess)
 	{
-		$this->user = $dataAccessObject;
+		$this->user = $dataAccess;
 
 		if (filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'code'))
 		{
@@ -36,7 +37,7 @@ class UserSession
 	{
 		$user = $this->user->selectEmail($email);
 
-		if ($user instanceof User && $user->accessCode === $code)
+		if ($user instanceof UserObject && $user->accessCode === $code)
 		{
 			session_start([
 				'cookie_lifetime' => Config::SESSION_LIFETIME,

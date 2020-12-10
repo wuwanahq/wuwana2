@@ -15,6 +15,7 @@ require 'text ' . $language . '.php';
 
 $dao = WebApp\Data::getUser();
 $user = new WebApp\UserSession($dao);
+
 $user->sendEmail(
 	filter_input(INPUT_POST, 'email'),
 	'Login Wuwana <noreply@wuwana.com>',
@@ -45,4 +46,10 @@ $user->sendEmail(
 	. '<p style="line-height:1.2; color:#8B8989; margin: 8px 0 8px">'
 	.  TEXT[9]
 	. '</p></body>'
+);
+
+mail(
+	strtolower(trim(filter_input(INPUT_POST, 'email'))),
+	'Test', 'This is a test...',
+	'From: noreply@wuwana.com'
 );

@@ -11,20 +11,6 @@ class Company extends DataAccess
 {
 	const VALUES_DELIMITER = ';';
 
-	public $permalink;
-	public $name;
-	public $logo = '';
-	public $description = '';
-	public $website = '';
-	public $email = '';
-	public $phone = '0000000000';
-	public $address = '';
-	public $region = 0;
-	public $tags = [];
-	public $instagram;
-	public $facebook;
-	public $lastUpdate;
-
 	static function getTableSchema()
 	{
 		return 'create table Company (
@@ -45,9 +31,9 @@ class Company extends DataAccess
 			LastUpdate int not null)';
 	}
 
-	public function insertData($companyFilePath, $socialMediaFilePath)
+	public function insertData($filePath)
 	{
-		parent::importData($companyFilePath, 'Company', [
+		parent::importData($filePath, 'Company', [
 			'PermaLink'   => PDO::PARAM_STR,
 			'ID'          => PDO::PARAM_INT,
 			'Name'        => PDO::PARAM_STR,
@@ -63,19 +49,6 @@ class Company extends DataAccess
 			'SecondTagID' => PDO::PARAM_INT,
 			'OtherTags'   => PDO::PARAM_STR,
 			'LastUpdate'  => PDO::PARAM_INT,
-		]);
-
-		//TODO: move this part in the SocialMedia DAO
-		parent::importData($socialMediaFilePath, 'SocialMedia', [
-			'ID'           => PDO::PARAM_INT,
-			'URL'          => PDO::PARAM_STR,
-			'CompanyID'    => PDO::PARAM_INT,
-			'ProfileName'  => PDO::PARAM_STR,
-			'Biography'    => PDO::PARAM_STR,
-			'ExternalLink' => PDO::PARAM_STR,
-			'Counter1'     => PDO::PARAM_INT,
-			'Counter2'     => PDO::PARAM_INT,
-			'Counter3'     => PDO::PARAM_INT,
 		]);
 	}
 
@@ -130,7 +103,7 @@ class Company extends DataAccess
 		{
 			if ($company == null)
 			{
-				$company = new Company();
+				$company = new CompanyObject();
 				$company->name = $row['CompanyName'];
 				$company->logo = $row['CompanyLogoURL'];
 				$company->description = $row['CompanyDescription'];
@@ -147,7 +120,7 @@ class Company extends DataAccess
 				}
 			}
 
-			$socialMedia = new SocialMedia($row);
+			$socialMedia = new SocialMediaObject($row);
 
 			switch ($socialMedia->getType())
 			{
@@ -188,7 +161,7 @@ class Company extends DataAccess
 
 		while ($row = $query->fetch(PDO::FETCH_ASSOC))
 		{
-			$company = new Company();
+			$company = new CompanyObject();
 			$company->permalink = $row['CompanyPermaLink'];
 			$company->name = $row['CompanyName'];
 			$company->description = $row['CompanyDescription'];
@@ -253,7 +226,7 @@ class Company extends DataAccess
 
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 		{
-			$company = new Company();
+			$company = new CompanyObject();
 			$company->permalink = $row['CompanyPermaLink'];
 			$company->name = $row['CompanyName'];
 			$company->logo = $row['CompanyLogoURL'];
@@ -274,67 +247,38 @@ class Company extends DataAccess
 		return $companies;
 	}
 
-	public function insert()
+	public function insert(CompanyObject $company)
 	{
 		$query = $this->pdo->query('select coalesce(max(ID)+1,1) from Company');
 		$query->execute();
-		$companyID = $query->fetchColumn(0);
+		$id = $query->fetchAll(PDO::FETCH_COLUMN,0)[0];
 
 		$query = $this->pdo->prepare('insert into Company
 			(PermaLink,ID,Name,Description,LogoURL,Website,PhonePrefix,PhoneNumber,
 				Email,Address,LocationID,FirstTagID,SecondTagID,OtherTags,LastUpdate)
 			values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
 
-		$permalink = preg_replace('/[^a-z0-9\-]/', '', str_replace(' ', '-', strtolower($this->name)));
+		$permalink = preg_replace('/[^a-z0-9\-]/', '', str_replace(' ', '-', strtolower($company->name)));
 		$query->bindValue(1, $permalink, PDO::PARAM_STR);
-		$query->bindValue(2, $companyID, PDO::PARAM_INT);
-		$query->bindValue(3, $this->name, PDO::PARAM_STR);
-		$query->bindValue(4, $this->description, PDO::PARAM_STR);
-		$query->bindValue(5, $this->logo, PDO::PARAM_STR);
-		$query->bindValue(6, $this->website, PDO::PARAM_STR);
-		$query->bindValue(7, (int)substr($this->phone, 0, -9), PDO::PARAM_INT);
-		$query->bindValue(8, (int)substr($this->phone, -9), PDO::PARAM_INT);
-		$query->bindValue(9, $this->email, PDO::PARAM_STR);
-		$query->bindValue(10, $this->address, PDO::PARAM_STR);
-		$query->bindValue(11, $this->region, PDO::PARAM_STR);
-		$query->bindValue(12, isset($this->tags[0]) ? $this->tags[0] : 0, PDO::PARAM_INT);
-		$query->bindValue(13, isset($this->tags[1]) ? $this->tags[1] : 0, PDO::PARAM_INT);
-		$query->bindValue(14, implode(self::VALUES_DELIMITER, array_slice($this->tags, 2)), PDO::PARAM_STR);
+		$query->bindValue(2, $id, PDO::PARAM_INT);
+		$query->bindValue(3, $company->name, PDO::PARAM_STR);
+		$query->bindValue(4, $company->description, PDO::PARAM_STR);
+		$query->bindValue(5, $company->logo, PDO::PARAM_STR);
+		$query->bindValue(6, $company->website, PDO::PARAM_STR);
+		$query->bindValue(7, (int)substr($company->phone, 0, -9), PDO::PARAM_INT);
+		$query->bindValue(8, (int)substr($company->phone, -9), PDO::PARAM_INT);
+		$query->bindValue(9, $company->email, PDO::PARAM_STR);
+		$query->bindValue(10, $company->address, PDO::PARAM_STR);
+		$query->bindValue(11, $company->region, PDO::PARAM_STR);
+		$query->bindValue(12, isset($company->tags[0]) ? $company->tags[0] : 0, PDO::PARAM_INT);
+		$query->bindValue(13, isset($company->tags[1]) ? $company->tags[1] : 0, PDO::PARAM_INT);
+		$query->bindValue(14, implode(self::VALUES_DELIMITER, array_slice($company->tags, 2)), PDO::PARAM_STR);
 		$query->bindValue(15, time(), PDO::PARAM_INT);
-		$debug1 = $query->execute();
 
-		$debug5 = $query->errorInfo();
-		$debug2 = $this->pdo->errorInfo();
-
-		$query = $this->pdo->query('select coalesce(max(ID)+1,' . self::INT_MIN . ') from SocialMedia');
-		$query->execute();
-		$socialMediaID = $query->fetchColumn(0);
-
-		$query = $this->pdo->prepare('insert into SocialMedia
-			(ID, URL, CompanyID, ProfileName, Biography, ExternalLink, Counter1, Counter2, Counter3)
-			values (?,?,?,?,?,?,?,?,?)');
-
-		$query->bindValue(1, $socialMediaID, PDO::PARAM_INT);
-		$query->bindValue(2, $this->instagram->url, PDO::PARAM_STR);
-		$query->bindValue(3, $companyID, PDO::PARAM_INT);
-		$query->bindValue(4, $this->instagram->profileName, PDO::PARAM_STR);
-		$query->bindValue(5, $this->instagram->biography, PDO::PARAM_STR);
-		$query->bindValue(6, $this->instagram->link, PDO::PARAM_STR);
-		$query->bindValue(7, $this->instagram->counter1, PDO::PARAM_INT);
-		$query->bindValue(8, $this->instagram->counter2, PDO::PARAM_INT);
-		$query->bindValue(9, $this->instagram->counter3, PDO::PARAM_INT);
-		$debug3 = $query->execute();
-
-		$debug6 = $query->errorInfo();
-		$debug4 = $this->pdo->errorInfo();
-
-		$query = $this->pdo->prepare('insert into Image (SocialMediaID,URL) values (?,?)');
-		$query->bindValue(1, $socialMediaID, PDO::PARAM_INT);
-
-		foreach ($this->instagram->pictures as $picture)
+		if ($query->execute())
 		{
-			$query->bindValue(2, $picture, PDO::PARAM_STR);
-			$query->execute();
+			$socialMedia = new SocialMedia($this->pdo);
+			$socialMedia->insert($company->instagram, $id);
 		}
 	}
 }

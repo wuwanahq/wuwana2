@@ -1,27 +1,16 @@
 <?php
 /**
- * Router for permanent link redirection to profile page.
- * And controller for the company page.
+ * Router for permanent link redirection to profile page and controller for the company page.
  * @link https://wuwana.com/company-name...
- * @see /.htaccess Apache "FallbackResource" or Nginx "try_files" directive
+ * @see http://httpd.apache.org/docs/current/mod/mod_dir.html#fallbackresource Apache FallbackResource directive (mod_dir)
+ * @see http://nginx.org/en/docs/http/ngx_http_core_module.html#try_files Nginx "try_files" directive (core module)
  */
 
 spl_autoload_register(function($className) {
 	require 'Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-$requestURL = str_replace('/', '', filter_input(INPUT_SERVER, 'REQUEST_URI'));
-
-if ($requestURL == '' || $requestURL[0] == '?' || strpos($requestURL, '.') !== false)
-{
-	if (php_sapi_name() == 'cli-server')
-	{ return false; }
-
-	http_response_code(404);
-	exit;
-}
-
-$company = WebApp\Data::getCompanyInfo($requestURL);
+$company = WebApp\Data::getCompanyInfo(str_replace('/', '', filter_input(INPUT_SERVER, 'REQUEST_URI')));
 
 if ($company == null)
 {
