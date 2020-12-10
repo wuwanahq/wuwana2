@@ -16,9 +16,8 @@ if ($requestURL == '' || $requestURL[0] == '?' || strpos($requestURL, '.') !== f
 {
 	if (php_sapi_name() == 'cli-server')
 	{ return false; }
-	else
-	{ http_response_code(404); }
 
+	http_response_code(404);
 	exit;
 }
 
@@ -26,6 +25,9 @@ $company = WebApp\Data::getCompanyInfo($requestURL);
 
 if ($company == null)
 {
+	if (php_sapi_name() == 'cli-server')
+	{ return false; }
+
 	trigger_error('Requested URL ' . filter_input(INPUT_SERVER, 'REQUEST_URI') . ' not found', E_USER_NOTICE);
 	http_response_code(404);
 	exit;
