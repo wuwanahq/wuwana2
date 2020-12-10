@@ -87,7 +87,7 @@ class UserSession
 			'<html><head><title>' . $subject . '</title></head><body>'
 			. sprintf($messageBody, $code)
 			. '</body></html>',
-			['From' => $fromAddress]
+			'From: ' . $fromAddress
 		);
 	}
 
