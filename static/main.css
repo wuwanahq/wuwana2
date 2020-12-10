@@ -654,8 +654,8 @@ dd {
 	margin-bottom: 8px}
 
 	.panelCover img {
-		width: 100%;
-		height: 100%;
+		text-align: center;
+		height: 28px;
 		object-fit: cover}
 
 .iconLabelHorizontal {
