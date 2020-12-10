@@ -954,7 +954,6 @@ a .iconLabelHorizontal {
 		flex-direction: column;
 		align-content: flex-start;
 		position: fixed;
-		padding: 16px;
 		background-color: white;
 		top: 48px;
 		left: 0;
@@ -964,6 +963,10 @@ a .iconLabelHorizontal {
 
 	.Sticky .Button.Center {
 		display: flex}
+
+	.Sticky h2 {
+		margin: 16px 16px;
+	}
 
 	.menu {
 		z-index: 2;
@@ -981,8 +984,12 @@ a .iconLabelHorizontal {
 	.menu .Button.Center {
 		margin-bottom: 24px}
 
+	dl dd label {
+		font-weight: 500;
+		color: black}
+
 	dl {
-		margin: 16px 16px 16px}
+		margin: 0 16px 24px}
 
 	dl label {
 		display: inline-block;
