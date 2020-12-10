@@ -12,7 +12,7 @@
 		<section class="ColumnLeft">
 			<div class="boxPanel">
 				<div class="panelCover">
-					<img src="/static/logo/ribbon.svg" alt="wuwana ribbon">
+					<img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon">
 				</div>
 				<p><?php echo TEXT[9] ?></p>
 				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
