@@ -78,7 +78,7 @@
 					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
 						<?php
-							if (isset($company->instagram->url))
+							if (!empty($company->instagram->url))
 							{
 								echo '<li>';
 								echo  '<a class="ItemLabel" href="', $company->instagram->url, '" target="_blank">';
@@ -86,6 +86,18 @@
 								echo    '<img src="/static/icon/instagram.svg">';
 								echo   '</div>';
 								echo   'Instagram';
+								echo  '</a>';
+								echo '</li>';
+							}
+
+							if (!empty($company->website))
+							{
+								echo '<li>';
+								echo  '<a class="ItemLabel" href="', $company->website, '" target="_blank">';
+								echo   '<div class="buttonSocial">';
+								echo    '<img src="/static/icon/globe.svg">';
+								echo   '</div>';
+								echo   'Web';
 								echo  '</a>';
 								echo '</li>';
 							}
@@ -100,6 +112,18 @@
 								echo    '<img src="/static/icon/whatsapp.svg">';
 								echo   '</div>';
 								echo   'WhatsApp';
+								echo  '</a>';
+								echo '</li>';
+							}
+
+							if (!empty($company->email))
+							{
+								echo '<li>';
+								echo  '<a class="ItemLabel" href="mailto:', $company->email, '" >';
+								echo   '<div class="buttonSocial">';
+								echo    '<img src="/static/icon/email.svg">';
+								echo   '</div>';
+								echo   'Email';
 								echo  '</a>';
 								echo '</li>';
 							}
@@ -145,7 +169,7 @@
 					echo   '<div class="InstagramInfo">';
 					echo    '<h3>', $company->instagram->profileName, '</h3>';
 					echo    '<p>', nl2br($company->instagram->biography), '<br>';
-					echo    '<a href="', $company->instagram->link, '">', $company->instagram->link, '</a></p>';
+					echo    '<a href="', $company->instagram->link, '" target="_blank">', $company->instagram->link, '</a></p>';
 					echo    '<ul>';
 					echo     '<li>';
 					echo      '<div class="ItemLabel">';

@@ -1,7 +1,9 @@
 <?php
 namespace Scraper;
-use Iterator;
-use DataAccess;
+use DataAccess\User;
+use DataAccess\TagsIterator;
+use DataAccess\CompanyObject;
+use DataAccess\SocialMediaObject;
 
 /**
  * Web Scraper.
@@ -9,21 +11,17 @@ use DataAccess;
  */
 class Scraper
 {
-	const NB_INSTAGRAM_PICTURE = \WebApp\Data::NB_INSTAGRAM_PICTURE;
-
 	private $tagKeywords;
 	private $company;
-	private $user;
 
-	public function __construct(Iterator $tagKeywords, \DataAccess\User $user)
+	public function __construct(TagsIterator $tagKeywords)
 	{
 		$this->tagKeywords = $tagKeywords;
-		$this->user = $user;
 	}
 
 	public function extractData($url)
 	{
-		$this->company = \WebApp\Data::getCompany();
+		$this->company = new CompanyObject();
 
 		if (strpos($url, 'instagram.com') !== false)
 		{ $this->scrapeInstagram($url); }
@@ -48,8 +46,8 @@ class Scraper
 
 		arsort($tags, SORT_NUMERIC);
 
-		foreach ($tags as $tagName => $unused)
-		{ $this->company->tags[] = $tagName; }
+		foreach ($tags as $id => $unused)
+		{ $this->company->tags[] = $id; }
 	}
 
 	private function scrapeInstagram($url)
@@ -63,16 +61,18 @@ class Scraper
 		$this->company->name = $json->graphql->user->full_name;
 		$this->company->description = $json->graphql->user->biography;
 		$this->company->logo = $json->graphql->user->profile_pic_url;
-		$this->company->website = $json->graphql->user->external_url;
 		$this->company->region = rand(1, 19);
 
 		if (isset($json->graphql->user->business_email))
 		{ $this->company->email = $json->graphql->user->business_email; }
 
-		$this->company->instagram = new DataAccess\SocialMedia();
+		$this->company->instagram = new SocialMediaObject();
 
 		if (isset($json->graphql->user->external_url))
-		{ $this->company->instagram->link = $json->graphql->user->external_url; }
+		{
+			$this->company->website = $json->graphql->user->external_url;
+			$this->company->instagram->link = $json->graphql->user->external_url;
+		}
 
 		$this->company->instagram->url = 'instagram.com/' . $json->graphql->user->username;
 		$this->company->instagram->profileName = $json->graphql->user->full_name;
@@ -81,7 +81,7 @@ class Scraper
 		$this->company->instagram->nbFollower = $json->graphql->user->edge_followed_by->count;
 		$this->company->instagram->nbFollowing = $json->graphql->user->edge_follow->count;
 
-		for ($i=0; $i < self::NB_INSTAGRAM_PICTURE; ++$i)
+		for ($i=0; $i < \WebApp\Data::NB_INSTAGRAM_PICTURE; ++$i)
 		{
 			if (empty($json->graphql->user->edge_owner_to_timeline_media->edges[$i]->node->thumbnail_src))
 			{ break; }

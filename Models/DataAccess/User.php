@@ -11,12 +11,6 @@ class User extends DataAccess
 	const HASH_ALGO = 'fnv164';
 	const CODE_MAX_VALUE = 9999;
 
-	public $email;
-	public $name;
-	public $company;
-	public $accessCode;
-	public $lastLogin;
-
 	static function getTableSchema()
 	{
 		return 'create table User ('
@@ -56,7 +50,7 @@ class User extends DataAccess
 		if (empty($row['Email']))
 		{ return null; }
 
-		$user = new User();
+		$user = new UserObject();
 		$user->email = $row['Email'];
 		$user->name = $row['Name'];
 		$user->company = $row['CompanyID'];
@@ -112,11 +106,11 @@ class User extends DataAccess
 	// countUser
 	public function countAll()
 	{
-		return (int)$this->pdo->query('select count(*) from User')->fetchColumn(0);
+		return (int)$this->pdo->query('select count(*) from User')->fetchAll(PDO::FETCH_COLUMN, 0)[0];
 	}
 
 	public function countAdmin()
 	{
-		return (int)$this->pdo->query('select count(*) from User where CompanyID < 0')->fetchColumn(0);
+		return (int)$this->pdo->query('select count(*) from User where CompanyID < 0')->fetchAll(PDO::FETCH_COLUMN,0)[0];
 	}
 }

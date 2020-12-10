@@ -12,7 +12,7 @@
 		<section class="ColumnLeft">
 			<div class="boxPanel">
 				<div class="panelCover">
-					<img src="/static/logo/ribbon.svg" alt="wuwana ribbon">
+					<img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon">
 				</div>
 				<p><?php echo TEXT[9] ?></p>
 				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
@@ -70,14 +70,14 @@
 								><label for="R0"><?php echo TEXT[4] ?></label>
 						</dd>
 						<?php
-							foreach ($locations as $id => $location)
+							foreach ($locations as $id => $regionName)
 							{
 								echo '<dd><input type="checkbox" name="region', $id, '" id="R', $id, '"';
 
 								if (in_array($id, $selectedRegions))
 								{ echo ' checked'; }
 
-								echo '><label for="R', $id, '">', $location->region, '</label></dd>';
+								echo '><label for="R', $id, '">', $regionName, '</label></dd>';
 							}
 						?>
 					</dl>
@@ -174,7 +174,7 @@
 							}
 
 							echo       '</ul>';
-							echo       '<div class="tagRegion">', $locations[$company->region]->region, '</div>';
+							echo       '<div class="tagRegion">', $locations[$company->region], '</div>';
 							echo     '</div>';
 							echo     '<div class="BadgeArea"></div>';
 							echo   '</div>';

@@ -9,7 +9,7 @@ spl_autoload_register(function($className) {
 });
 
 $categories = WebApp\Data::getCategory()->selectAll();
-$locations = WebApp\Data::getLocation()->selectUsefulItemsOnly();
+$locations = WebApp\Data::getLocation()->selectUsefulItemsOnly('es');
 
 $limit = filter_has_var(INPUT_GET, 'show') ? 0 : 8;
 
@@ -29,11 +29,11 @@ if (filter_has_var(INPUT_GET, 'cat'))
 }
 */
 
-foreach ($locations as $key => $value)
+foreach ($locations as $id => $unused)
 {
-	if (filter_has_var(INPUT_GET, 'region' . $key))
+	if (filter_has_var(INPUT_GET, 'region' . $id))
 	{
-		$selectedRegions[] = $key;
+		$selectedRegions[] = $id;
 		$limit = 0;
 	}
 }
