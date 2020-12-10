@@ -82,7 +82,7 @@ class UserSession
 		$subject = sprintf($subject, $code);
 
 		mail(
-			$address,
+			$toAddress,
 			$subject,
 			'<html><head><title>' . $subject . '</title></head><body>'
 			. sprintf($messageBody, $code)
