@@ -20,7 +20,7 @@ class UserSession
 		{
 			$this->login(
 				self::hash(strtolower(trim(filter_input(INPUT_POST, 'email')))),
-				filter_input(INPUT_POST, 'code')
+				trim(filter_input(INPUT_POST, 'code'))
 			);
 		}
 		elseif (filter_has_var(INPUT_COOKIE, session_name()))
@@ -37,7 +37,7 @@ class UserSession
 	{
 		$user = $this->user->selectEmail($email);
 
-		if ($user instanceof UserObject && $user->accessCode === $code)
+		if ($user instanceof UserObject && $user->accessCode == $code)
 		{
 			session_start([
 				'cookie_lifetime' => Config::SESSION_LIFETIME,

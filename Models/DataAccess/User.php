@@ -45,10 +45,12 @@ class User extends DataAccess
 		$query->bindValue(1, $hash, PDO::PARAM_LOB);
 		$query->execute();
 
-		$row = $query->fetch(PDO::FETCH_ASSOC);
+		$row = $query->fetchAll(PDO::FETCH_ASSOC);
 
-		if (empty($row['Email']))
+		if (empty($row))
 		{ return null; }
+
+		$row = $row[0];
 
 		$user = new UserObject();
 		$user->email = $row['Email'];
@@ -56,7 +58,6 @@ class User extends DataAccess
 		$user->company = $row['CompanyID'];
 		$user->accessCode = str_pad($row['AccessCode'], 4, '0', STR_PAD_LEFT);
 		$user->lastLogin = $row['LastLogin'];
-
 		return $user;
 	}
 
