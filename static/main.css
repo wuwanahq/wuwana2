@@ -812,6 +812,10 @@ a .iconLabelHorizontal {
 	.InstagramInfo .Text {
 		font-size: 0.875rem}
 
+	.InstagramInfo a:hover {
+		text-decoration: underline;
+	}
+
 .InstagramGallery {
 	display: flex;
 	flex-direction: column;
