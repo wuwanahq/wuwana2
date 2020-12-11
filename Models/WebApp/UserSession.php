@@ -25,11 +25,14 @@ class UserSession
 		}
 		elseif (filter_has_var(INPUT_COOKIE, session_name()))
 		{
-			session_start([
+			$debug = session_start([
 				'cookie_lifetime' => Config::SESSION_LIFETIME,
 				'gc_maxlifetime' => Config::SESSION_LIFETIME,
 				'read_and_close' => true
 			]);
+
+			trigger_error('DEBUG - Session already started? ' . var_export($debug, true));
+			trigger_error('DEBUG - Session=' . var_export($_SESSION, true));
 		}
 	}
 
@@ -37,23 +40,33 @@ class UserSession
 	{
 		$user = $this->user->selectEmail($email);
 
+		trigger_error('DEBUG - Login with email=' . var_export($email, true) . ' and code=' . var_export($code, true));
+		trigger_error('DEBUG - User=' . var_export($user, true));
+
 		if ($user instanceof UserObject && $user->accessCode == $code)
 		{
-			session_start([
+			$debug = session_start([
 				'cookie_lifetime' => Config::SESSION_LIFETIME,
 				'gc_maxlifetime' => Config::SESSION_LIFETIME
 			]);
 
+			trigger_error('DEBUG - Session started? ' . var_export($debug, true));
+
 			$_SESSION['Name'] = $user->name;
 			$_SESSION['CompanyID'] = $user->company;
 
-			session_write_close();
+			trigger_error('DEBUG - Session=' . var_export($_SESSION, true));
+
+			$debug2 = session_write_close();
+			trigger_error('DEBUG - Session written? ' . var_export($debug2, true));
+			trigger_error('DEBUG - Session=' . var_export($_SESSION, true));
 		}
 	}
 
 	public function logout()
 	{
-		session_start();
+		$debug = session_start();
+		trigger_error('DEBUG - Session destroyed? ' . var_export($debug, true));
 		$_SESSION = [];
 
 		if (ini_get('session.use_cookies'))
@@ -82,7 +95,11 @@ class UserSession
 		$code = $this->generateCode($toAddress);
 		$subject = sprintf($subject, $code);
 
-		mail(
+		trigger_error('DEBUG - 1st email toAddress=' . var_export($toAddress, true));
+		trigger_error('DEBUG - 1st email fromAddress=' . var_export($fromAddress, true));
+		trigger_error('DEBUG - 1st email subject=' . var_export($subject, true));
+
+		$debug = mail(
 			$toAddress,
 			$subject,
 			'<html><head><title>' . $subject . '</title></head><body>'
@@ -90,6 +107,8 @@ class UserSession
 			. '</body></html>',
 			'From: ' . $fromAddress
 		);
+
+		trigger_error('DEBUG - 1st email sent? ' . var_export($debug, true));
 	}
 
 	/**
@@ -101,8 +120,13 @@ class UserSession
 	{
 		$name = $email[0] . '…' . substr($email, strpos($email, '@'));
 		$email = self::hash($email);
+
+		trigger_error('DEBUG - Email hash=' . bin2hex($email));
+
 		$code = rand(1, User::CODE_MAX_VALUE);
 		$companyID = $this->user->countAdmin() === 0 ? -1 : 0;
+
+		trigger_error('DEBUG - CompanyID=' . var_export($companyID, true));
 
 		if ($this->user->insertUser($email, $name, $companyID, $code))
 		{ return $code; }

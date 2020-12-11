@@ -10,7 +10,7 @@ spl_autoload_register(function($className) {
 
 $user = new WebApp\UserSession(WebApp\Data::getUser());
 
-if ($user->isAdmin() && filter_has_var(INPUT_POST, 'instagram'))
+if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 {
 	$scraper = new Scraper\Scraper(WebApp\Data::getTagIterator());
 	$company = $scraper->extractData(filter_input(INPUT_POST, 'instagram'));

@@ -10,12 +10,12 @@ spl_autoload_register(function($className) {
 if (!filter_has_var(INPUT_POST, 'email'))
 { exit; }
 
+trigger_error('DEBUG - Posted email=' . filter_input(INPUT_POST, 'email'));
+
 $language = WebApp\WebApp::getLanguageCode();
 require 'text ' . $language . '.php';
 
-$dao = WebApp\Data::getUser();
-$user = new WebApp\UserSession($dao);
-
+$user = new WebApp\UserSession(WebApp\Data::getUser());
 $user->sendEmail(
 	filter_input(INPUT_POST, 'email'),
 	'Login Wuwana <noreply@wuwana.com>',
@@ -48,8 +48,10 @@ $user->sendEmail(
 	. '</p></body>'
 );
 
-mail(
+$debug = mail(
 	strtolower(trim(filter_input(INPUT_POST, 'email'))),
 	'Test', 'This is a test...',
 	'From: noreply@wuwana.com'
 );
+
+trigger_error('DEBUG - 2nd email sent? ' . var_export($debug,true));
