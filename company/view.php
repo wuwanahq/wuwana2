@@ -169,7 +169,7 @@
 					echo   '<div class="InstagramInfo">';
 					echo    '<h3>', $company->instagram->profileName, '</h3>';
 					echo    '<p>', nl2br($company->instagram->biography), '<br>';
-					echo    '<a href="', $company->instagram->link, '" target="_blank">', $company->instagram->link, '</a></p>';
+					echo    '<a href="', $company->instagram->link, '" target="_blank">', str_replace(['http://','https://'], '', $company->instagram->link), '</a></p>';
 					echo    '<ul>';
 					echo     '<li>';
 					echo      '<div class="ItemLabel">';

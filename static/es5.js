@@ -98,47 +98,47 @@ window.addEventListener("resize", () => {
 
 });
 
-// Hide & unhide
+// // Hide & unhide
 
-function hide()
-{
-	var div = document.getElementById("AboutUs");
-	var img = document.getElementById ("ToggleAboutUsImg");
-	var label = document.getElementById ("ToggleAboutUsLabel");
+// function hide()
+// {
+// 	var div = document.getElementById("AboutUs");
+// 	var img = document.getElementById ("ToggleAboutUsImg");
+// 	var label = document.getElementById ("ToggleAboutUsLabel");
 
-	if (getComputedStyle(div).getPropertyValue("display") == "none")
-	{
-		div.style.display = "flex";
-		img.src = "static/icon/chevron-up.svg";
-		label.innerText = "Ver menos";
-	}
-	else
-	{
-		div.style.display = "none";
-		img.src = "static/icon/chevron-down.svg";
-		label.innerText = "Ver mas";
-	}
-}
+// 	if (getComputedStyle(div).getPropertyValue("display") == "none")
+// 	{
+// 		div.style.display = "flex";
+// 		img.src = "static/icon/chevron-up.svg";
+// 		label.innerText = "Ver menos";
+// 	}
+// 	else
+// 	{
+// 		div.style.display = "none";
+// 		img.src = "static/icon/chevron-down.svg";
+// 		label.innerText = "Ver mas";
+// 	}
+// }
 
-// To fix bug of about us not appearing after table view
+// // To fix bug of about us not appearing after table view
 
-let aboutUS = document.getElementById("AboutUs");
-let img = document.getElementById ("ToggleAboutUsImg");
-let label = document.getElementById ("ToggleAboutUsLabel");
+// let aboutUS = document.getElementById("AboutUs");
+// let img = document.getElementById ("ToggleAboutUsImg");
+// let label = document.getElementById ("ToggleAboutUsLabel");
 
-window.addEventListener("resize", () => {
-	if (window.innerWidth > 800)
-	{
-		aboutUS.style.display = "flex";
-	}
-	else
-	{
-		aboutUS.style.display = "none";
-		img.src = "static/icon/chevron-down.svg";
-		label.innerText = "Ver mas";
-	}
+// window.addEventListener("resize", () => {
+// 	if (window.innerWidth > 800)
+// 	{
+// 		aboutUS.style.display = "flex";
+// 	}
+// 	else
+// 	{
+// 		aboutUS.style.display = "none";
+// 		img.src = "static/icon/chevron-down.svg";
+// 		label.innerText = "Ver mas";
+// 	}
 
-});
+// });
 
 // Back to top button
 let toTop = document.getElementById("toTop");

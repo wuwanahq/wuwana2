@@ -12,4 +12,5 @@ const TEXT = [
 9 => 'Finding the information you need should be easier.',
 10 => 'What is Wuwana?',
 11 => 'Contact us',
+12 => '⚠️ Warning ⚠️: this site is under construction. Some information might not be correct.',
 ];

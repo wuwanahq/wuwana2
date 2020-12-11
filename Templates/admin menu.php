@@ -15,7 +15,7 @@
 ?>
 <div class="ColumnLeft">
 	<div class="boxPanel">
-		<div class="panelCover"><img src="/static/logo/ribbon.svg"></div>
+		<div class="panelCover"><img src="/static/logo/ribbon-long.svg"></div>
 		<h1>Administrator's name</h1>
 		<a href=#>
 			<div class="iconLabelHorizontal">
