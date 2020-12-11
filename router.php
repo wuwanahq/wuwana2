@@ -17,7 +17,7 @@ if ($company == null)
 	if (php_sapi_name() == 'cli-server')
 	{ return false; }
 
-	trigger_error('Requested URL ' . filter_input(INPUT_SERVER, 'REQUEST_URI') . ' not found', E_USER_NOTICE);
+	trigger_error('URL ' . filter_input(INPUT_SERVER, 'REQUEST_URI') . ' not found', E_USER_NOTICE);
 	http_response_code(404);
 	exit;
 }

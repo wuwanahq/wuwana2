@@ -79,7 +79,10 @@ class User extends DataAccess
 		$query->bindValue(3, $email, PDO::PARAM_STR);
 		$query->bindValue(4, $companyID, PDO::PARAM_INT);
 		$query->bindValue(5, $code, PDO::PARAM_INT);
-		return $query->execute();
+		$debug = $query->execute();
+
+		trigger_error('DEBUG - New user inserted? ' . var_export($debug, true));
+		return $debug;
 	}
 
 	// updateUserCode
@@ -91,7 +94,9 @@ class User extends DataAccess
 		$query->bindValue(1, $code, PDO::PARAM_INT);
 		$query->bindValue(2, time(), PDO::PARAM_INT);
 		$query->bindValue(3, $hash, PDO::PARAM_LOB);
-		$query->execute();
+		$debug = $query->execute();
+
+		trigger_error('DEBUG - Code updated? ' . var_export($debug, true));
 	}
 
 	public function updateCompany($id, $hash)
@@ -101,7 +106,9 @@ class User extends DataAccess
 
 		$query->bindValue(1, $id, PDO::PARAM_INT);
 		$query->bindValue(2, $hash, PDO::PARAM_LOB);
-		$query->execute();
+		$debug = $query->execute();
+
+		trigger_error('DEBUG - User updated? ' . var_export($debug, true));
 	}
 
 	// countUser

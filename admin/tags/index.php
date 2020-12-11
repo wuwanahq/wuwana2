@@ -10,7 +10,7 @@ spl_autoload_register(function($className) {
 
 $user = new WebApp\UserSession(WebApp\Data::getUser());
 
-if ($user->isAdmin() && filter_has_var(INPUT_POST, 'TagName'))
+if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'TagName'))
 {
 	$tag = new DataAccess\TagObject();
 	$tag->name = trim(filter_input(INPUT_POST, 'TagName'));
