@@ -93,6 +93,11 @@
 					<p><?php echo TEMP_TEXT[1] ?></p>
 				</div>
 			</div>
+
+			<div class="information-error-box">
+				<div class="information-error-vertical"></div>
+				<h2><?php echo TEXT[12] ?></h2>
+			</div>
 <!--
 			<section>
 				<h2>Empresas destacadas</h2>
