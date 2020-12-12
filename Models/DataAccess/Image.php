@@ -27,17 +27,11 @@ class Image extends DataAccess
 	{
 		$query = $this->pdo->prepare('insert into Image (SocialMediaID,URL) values (?,?)');
 
-		$debug1 = $query->errorInfo();
-		$debug2 = $this->pdo->errorInfo();
-
 		foreach ($imageLinks as $picture)
 		{
 			$query->bindValue(1, $socialMediaID, PDO::PARAM_INT);
 			$query->bindValue(2, $picture, PDO::PARAM_STR);
 			$query->execute();
-
-			$debug1 = $query->errorInfo();
-			$debug2 = $this->pdo->errorInfo();
 		}
 	}
 }

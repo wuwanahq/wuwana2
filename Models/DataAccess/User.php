@@ -97,6 +97,8 @@ class User extends DataAccess
 		$debug = $query->execute();
 
 		trigger_error('DEBUG - Code updated? ' . var_export($debug, true));
+		trigger_error('DEBUG - Query error info=' . var_export($query->errorInfo(), true));
+		trigger_error('DEBUG - PDO error info=' . var_export($this->pdo->errorInfo(), true));
 	}
 
 	public function updateCompany($id, $hash)
@@ -119,6 +121,13 @@ class User extends DataAccess
 
 	public function countAdmin()
 	{
-		return (int)$this->pdo->query('select count(*) from User where CompanyID < 0')->fetchAll(PDO::FETCH_COLUMN,0)[0];
+		$query = $this->pdo->query('select count(*) from User where CompanyID < 0');
+		$nb = $query->fetchAll(PDO::FETCH_COLUMN, 0)[0];
+		$debug = $query->closeCursor();
+
+		trigger_error('DEBUG - Total admin=' . var_export($nb, true));
+		trigger_error('DEBUG - Cursor closed? ' . var_export($debug, true));
+
+		return (int)$nb;
 	}
 }
