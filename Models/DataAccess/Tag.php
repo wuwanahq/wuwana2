@@ -32,9 +32,6 @@ class Tag extends DataAccess
 		$query = $this->pdo->prepare('insert into Tag (ID,Visible,Name,Keywords)
 			select coalesce(max(ID)+1,' . self::INT_MIN . '),?,?,? from Tag');
 
-		//$debug1 = $query->errorInfo();
-		$debug2 = $this->pdo->errorInfo();
-
 		$query->bindValue(1, $tag->isVisible ? 1 : 0, PDO::PARAM_INT);
 		$query->bindValue(2, $tag->name, PDO::PARAM_STR);
 		$query->bindValue(3, $tag->keywords, PDO::PARAM_STR);
