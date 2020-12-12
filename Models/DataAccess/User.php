@@ -13,7 +13,7 @@ class User extends DataAccess
 
 	static function getTableSchema()
 	{
-		return 'create table User ('
+		return 'create table UserAccount ('
 			. 'Hash char(' . strlen(hash(self::HASH_ALGO, '', true)) . ') primary key,'
 			. 'Email varchar(255) not null,'
 			. 'Name varchar(255) not null,'
@@ -24,7 +24,7 @@ class User extends DataAccess
 
 	public function insertData($filePath)
 	{
-		parent::importData($filePath, 'User', [
+		parent::importData($filePath, 'UserAccount', [
 			'Hash'       => PDO::PARAM_LOB,
 			'Email'      => PDO::PARAM_STR,
 			'Name'       => PDO::PARAM_STR,
@@ -41,7 +41,7 @@ class User extends DataAccess
 	 */
 	public function selectEmail($hash)
 	{
-		$query = $this->pdo->prepare('select * from User where Hash=?');
+		$query = $this->pdo->prepare('select * from UserAccount where Hash=?');
 		$query->bindValue(1, $hash, PDO::PARAM_LOB);
 		$query->execute();
 
@@ -72,7 +72,7 @@ class User extends DataAccess
 	public function insertUser($hash, $email, $companyID, $code)
 	{
 		$query = $this->pdo->prepare(
-			'insert into User (Hash,Email,Name,CompanyID,AccessCode,LastLogin) values (?,?,?,?,?,0)');
+			'insert into UserAccount (Hash,Email,Name,CompanyID,AccessCode,LastLogin) values (?,?,?,?,?,0)');
 
 		$query->bindValue(1, $hash, PDO::PARAM_LOB);
 		$query->bindValue(2, $email, PDO::PARAM_STR);
@@ -89,7 +89,7 @@ class User extends DataAccess
 	public function updateCode($hash, $code)
 	{
 		$query = $this->pdo->prepare(
-			'update User set AccessCode=?,LastLogin=? where Hash=?');
+			'update UserAccount set AccessCode=?,LastLogin=? where Hash=?');
 
 		$query->bindValue(1, $code, PDO::PARAM_INT);
 		$query->bindValue(2, time(), PDO::PARAM_INT);
@@ -104,7 +104,7 @@ class User extends DataAccess
 	public function updateCompany($id, $hash)
 	{
 		$query = $this->pdo->prepare(
-			'update User set CompanyID=? where Hash=?');
+			'update UserAccount set CompanyID=? where Hash=?');
 
 		$query->bindValue(1, $id, PDO::PARAM_INT);
 		$query->bindValue(2, $hash, PDO::PARAM_LOB);
@@ -116,12 +116,12 @@ class User extends DataAccess
 	// countUser
 	public function countAll()
 	{
-		return (int)$this->pdo->query('select count(*) from User')->fetchAll(PDO::FETCH_COLUMN, 0)[0];
+		return (int)$this->pdo->query('select count(*) from UserAccount')->fetchAll(PDO::FETCH_COLUMN, 0)[0];
 	}
 
 	public function countAdmin()
 	{
-		$query = $this->pdo->query('select count(*) from User where CompanyID < 0');
+		$query = $this->pdo->query('select count(*) from UserAccount where CompanyID < 0');
 		$nb = $query->fetchAll(PDO::FETCH_COLUMN, 0)[0];
 		$debug = $query->closeCursor();
 
