@@ -94,4 +94,16 @@ abstract class DataAccess
 
 		fclose($file);
 	}
+
+	protected function quote($string, $parameterType = PDO::PARAM_STR)
+	{
+		switch ($parameterType)
+		{
+			case PDO::PARAM_INT: return (string)((int)$string);
+			case PDO::PARAM_LOB: return "x'" . bin2hex($string) . "'";
+		}
+
+		// case PDO::PARAM_STR
+		return "'" . str_replace("'", "''", $string) . "'";
+	}
 }

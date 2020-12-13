@@ -88,17 +88,27 @@ class User extends DataAccess
 	// updateUserCode
 	public function updateCode($hash, $code)
 	{
-		$query = $this->pdo->prepare(
-			'update UserAccount set AccessCode=?,LastLogin=? where Hash=?');
+		$result = $this->pdo->exec(
+			'update UserAccount set AccessCode=' . $this->quote($code, PDO::PARAM_INT)
+			. ',LastLogin=' . time()
+			. ' where Hash=' . $this->quote($hash, PDO::PARAM_LOB));
 
-		$query->bindValue(1, $code, PDO::PARAM_INT);
-		$query->bindValue(2, time(), PDO::PARAM_INT);
-		$query->bindValue(3, $hash, PDO::PARAM_LOB);
-		$debug = $query->execute();
+		trigger_error('DEBUG - Update code returned ' . var_export($result, true));
 
-		trigger_error('DEBUG - Code updated? ' . var_export($debug, true));
-		trigger_error('DEBUG - Query error info=' . var_export($query->errorInfo(), true));
-		trigger_error('DEBUG - PDO error info=' . var_export($this->pdo->errorInfo(), true));
+		if ($result == 0)  // or false
+		{
+			// For whatever reason the code below refuse to work with MariaDB v10.1
+			// even when the execute method return true!
+			$query = $this->pdo->prepare('update UserAccount set AccessCode=?,LastLogin=? where Hash=?');
+			$query->bindValue(1, $code, PDO::PARAM_INT);
+			$query->bindValue(2, time(), PDO::PARAM_INT);
+			$query->bindValue(3, $hash, PDO::PARAM_LOB);
+			$debug = $query->execute();
+
+			trigger_error('DEBUG - Code updated? ' . var_export($debug, true));
+			trigger_error('DEBUG - Query error info=' . var_export($query->errorInfo(), true));
+			trigger_error('DEBUG - PDO error info=' . var_export($this->pdo->errorInfo(), true));
+		}
 	}
 
 	public function updateCompany($id, $hash)
