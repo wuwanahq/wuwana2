@@ -41,11 +41,18 @@ class User extends DataAccess
 	 */
 	public function selectEmail($hash)
 	{
+		trigger_error('DEBUG - Email hash=' . bin2hex($hash));
+
 		$query = $this->pdo->prepare('select * from UserAccount where Hash=?');
 		$query->bindValue(1, $hash, PDO::PARAM_LOB);
-		$query->execute();
+		$debug = $query->execute();
+
+		trigger_error('DEBUG - Email found? ' . var_export($debug, true));
+		trigger_error('DEBUG - Select query info=' . var_export($query->errorInfo(), true));
+		trigger_error('DEBUG - Select query PDO info=' . var_export($this->pdo->errorInfo(), true));
 
 		$row = $query->fetchAll(PDO::FETCH_ASSOC);
+		trigger_error('DEBUG - Row=' . var_export($row, true));
 
 		if (empty($row))
 		{ return null; }
@@ -58,6 +65,7 @@ class User extends DataAccess
 		$user->company = $row['CompanyID'];
 		$user->accessCode = str_pad($row['AccessCode'], 4, '0', STR_PAD_LEFT);
 		$user->lastLogin = $row['LastLogin'];
+		trigger_error('DEBUG - UserObject=' . var_export($user, true));
 		return $user;
 	}
 
@@ -88,27 +96,17 @@ class User extends DataAccess
 	// updateUserCode
 	public function updateCode($hash, $code)
 	{
-		$result = $this->pdo->exec(
-			'update UserAccount set AccessCode=' . $this->quote($code, PDO::PARAM_INT)
-			. ',LastLogin=' . time()
-			. ' where Hash=' . $this->quote($hash, PDO::PARAM_LOB));
+		// For whatever reason the code below refuse to work with MariaDB v10.1
+		// even when the execute method return true!
+		$query = $this->pdo->prepare('update UserAccount set AccessCode=?,LastLogin=? where Hash=?');
+		$query->bindValue(1, $code, PDO::PARAM_INT);
+		$query->bindValue(2, time(), PDO::PARAM_INT);
+		$query->bindValue(3, $hash, PDO::PARAM_LOB);
+		$debug = $query->execute();
 
-		trigger_error('DEBUG - Update code returned ' . var_export($result, true));
-
-		if ($result == 0)  // or false
-		{
-			// For whatever reason the code below refuse to work with MariaDB v10.1
-			// even when the execute method return true!
-			$query = $this->pdo->prepare('update UserAccount set AccessCode=?,LastLogin=? where Hash=?');
-			$query->bindValue(1, $code, PDO::PARAM_INT);
-			$query->bindValue(2, time(), PDO::PARAM_INT);
-			$query->bindValue(3, $hash, PDO::PARAM_LOB);
-			$debug = $query->execute();
-
-			trigger_error('DEBUG - Code updated? ' . var_export($debug, true));
-			trigger_error('DEBUG - Query error info=' . var_export($query->errorInfo(), true));
-			trigger_error('DEBUG - PDO error info=' . var_export($this->pdo->errorInfo(), true));
-		}
+		trigger_error('DEBUG - Code updated? ' . var_export($debug, true));
+		trigger_error('DEBUG - Query error info=' . var_export($query->errorInfo(), true));
+		trigger_error('DEBUG - PDO error info=' . var_export($this->pdo->errorInfo(), true));
 	}
 
 	public function updateCompany($id, $hash)
