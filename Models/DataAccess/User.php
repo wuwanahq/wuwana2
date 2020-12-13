@@ -14,7 +14,7 @@ class User extends DataAccess
 	static function getTableSchema()
 	{
 		return 'create table UserAccount ('
-			. 'Hash char(' . strlen(hash(self::HASH_ALGO, '', true)) . ') primary key,'
+			. 'Hash binary(' . strlen(hash(self::HASH_ALGO, '', true)) . ') primary key,'
 			. 'Email varchar(255) not null,'
 			. 'Name varchar(255) not null,'
 			. 'CompanyID int not null,'
