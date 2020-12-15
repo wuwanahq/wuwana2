@@ -61,6 +61,23 @@ function askEmail()
 	xhr.send(form);
 }
 
+// Show language popup on mobile
+function showLang()
+{
+	var div = document.getElementById("popup-lang");
+	var body = document.body;
+
+	if (getComputedStyle(div).getPropertyValue("display") == "none")
+	{
+		div.style.display = "flex";
+	}
+	else
+	{
+		div.style.display = "none";
+	}
+}
+
+
 // Show menu
 function showMenu()
 {

@@ -1,7 +1,16 @@
 <h1 class="VisuallyHidden">Wuwana</h1>
 <header class="headerBar">
 	<div class="headerContainer">
+		<div class="header-lang" onclick="showLang()">
+			<div class="lang">ES</div>
+			<div class="popup-lang" id="popup-lang">
+				<h2>Change language</h2>
+				<a href="#">English</a>
+				<a href="#">Español</a>
+			</div>
+		</div>
 		<div class="headerLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
+		<div class="header-invisible"></div>
 		<?php
 			if (isset($user) && $user->isLogin())
 			{
