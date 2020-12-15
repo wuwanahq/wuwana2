@@ -4,7 +4,7 @@
 		<div class="header-lang" onclick="showLang()">
 			<div class="lang">ES</div>
 			<div class="popup-lang" id="popup-lang">
-				<h2>Change language</h2>
+				<h2><?php echo TEMP_TEXT[3] ?></h2>
 				<a href="#">English</a>
 				<a href="#">Español</a>
 			</div>
