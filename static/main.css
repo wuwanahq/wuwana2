@@ -406,6 +406,7 @@ dd {
 	padding: 8px;
 	font-weight: 700;
 	border-radius: 8px;
+	cursor: pointer;
 }
 
 	.lang:hover {
@@ -433,6 +434,12 @@ dd {
 
 /* POP-UP */
 
+.popup-title {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
 .header-lang:hover .popup-lang {
 	display: flex;
 }
@@ -451,17 +458,21 @@ dd {
 }
 
 .popup-lang h2 {
-	margin: 0 24px 24px 0;
+	margin: 0 16px 24px 0;
+	line-height: 1.3;
 }
 
 .popup-lang a {
-	margin-bottom: 16px;
+	padding: 8px;
+	margin: 0 -8px;
 	font-weight: 700;
 	color: black;
+	border-radius: 8px;
 }
 
 .popup-lang a:hover {
 	text-decoration: underline;
+	background-color: #fafafa;
 }
 
 /* Old buttons */

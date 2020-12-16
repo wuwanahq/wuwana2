@@ -4,7 +4,10 @@
 		<div class="header-lang" onclick="showLang()">
 			<div class="lang">ES</div>
 			<div class="popup-lang" id="popup-lang">
-				<h2><?php echo TEMP_TEXT[3] ?></h2>
+				<div class="popup-title">
+					<h2><?php echo TEMP_TEXT[3] ?></h2>
+					<img src="/static/icon/close.svg" id="popup-lang-close">
+				</div>
 				<a href="#">English</a>
 				<a href="#">Español</a>
 			</div>

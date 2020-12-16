@@ -64,16 +64,16 @@ function askEmail()
 // Show language popup on mobile
 function showLang()
 {
-	var div = document.getElementById("popup-lang");
+	var divLang = document.getElementById("popup-lang");
 	var body = document.body;
 
-	if (getComputedStyle(div).getPropertyValue("display") == "none")
+	if (getComputedStyle(divLang).getPropertyValue("display") == "none")
 	{
-		div.style.display = "flex";
+		divLang.style.display = "flex";
 	}
 	else
 	{
-		div.style.display = "none";
+		divLang.style.display = "none";
 	}
 }
 
@@ -82,14 +82,25 @@ function showLang()
 function showMenu()
 {
 	var div = document.getElementById("menu");
+	var divLang = document.getElementById("popup-lang");
 	var img = document.getElementById("TestImg");
 	var body = document.body;
 
 	if (getComputedStyle(div).getPropertyValue("display") == "none")
 	{
-		div.style.display = "flex";
-		img.src = "static/icon/close.svg";
-		body.style.overflow = "hidden";
+		if (divLang.style.display == "flex")
+		{
+			divLang.style.display = "none";
+			div.style.display = "flex";
+			img.src = "static/icon/close.svg";
+			body.style.overflow = "hidden";
+		}
+		else 
+		{
+			div.style.display = "flex";
+			img.src = "static/icon/close.svg";
+			body.style.overflow = "hidden";
+		}	
 	}
 	else
 	{
