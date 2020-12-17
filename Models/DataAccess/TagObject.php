@@ -7,7 +7,6 @@ namespace DataAccess;
  */
 class TagObject
 {
-	public $name;
+	public $names;
 	public $keywords;
-	public $isVisible;
 }

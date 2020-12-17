@@ -124,14 +124,14 @@ class UserSession
 		trigger_error('DEBUG - Email hash=' . bin2hex($email));
 
 		$code = rand(1, User::CODE_MAX_VALUE);
-		$companyID = $this->user->countAdmin() === 0 ? -1 : 0;
+		$adminLevel = $this->user->countAdmin() === 0 ? 1 : 0;
 
-		trigger_error('DEBUG - CompanyID=' . var_export($companyID, true));
+		trigger_error('DEBUG - AdminLevel=' . var_export($adminLevel, true));
 
-		if ($this->user->insertUser($email, $name, $companyID, $code))
+		if ($this->user->insertUser($email, $name, 0, $code, $adminLevel))
 		{ return $code; }
-		elseif ($companyID == -1)
-		{ $this->user->updateCompany($companyID, $email); }
+		elseif ($adminLevel == 1)
+		{ $this->user->updateAdminLevel($adminLevel, $email); }
 
 		$this->user->updateCode($email, $code);
 		return $code;
@@ -140,16 +140,16 @@ class UserSession
 	/**
 	 * Hash twice an email address.
 	 * @param string $email
-	 * @return string Binary hash
+	 * @return string Hexadecimal hash
 	 */
 	static function hash($email)
 	{
-		return hash(User::HASH_ALGO, hash(self::HASH_ALGO, $email, true), true);
+		return hash(User::HASH_ALGO, hash(self::HASH_ALGO, $email, true), false);
 	}
 
 	public function isAdmin()
 	{
-		return isset($_SESSION['CompanyID']) && $_SESSION['CompanyID'] < 0;
+		return isset($_SESSION['AdminLevel']) && $_SESSION['AdminLevel'] > 0;
 	}
 
 	public function isLogin()

@@ -7,7 +7,7 @@ namespace DataAccess;
  */
 class SocialMediaObject
 {
-	public $url;
+	private $url;
 	public $profileName;
 	public $biography;
 	public $link = '';
@@ -20,6 +20,8 @@ class SocialMediaObject
 	{
 		switch ($name)
 		{
+			case 'url': return $this->url;
+
 			// Instagram
 			case 'nbPost': return $this->counter1;
 			case 'nbFollower': return $this->counter2;
@@ -38,6 +40,10 @@ class SocialMediaObject
 	{
 		switch ($name)
 		{
+			case 'url':
+				$this->url = str_replace(['https://www.', 'https://'], '', $value);
+				break;
+
 			// Instagram
 			case 'nbPost': $this->counter1 = $value; break;
 			case 'nbFollower': $this->counter2 = $value; break;
@@ -47,6 +53,8 @@ class SocialMediaObject
 			case 'nbLike': $this->counter1 = $value; break;
 			case 'nbFollow': $this->counter2 = $value; break;
 			case 'nbCheckin': $this->counter3 = $value; break;
+
+			default: trigger_error('Undefined property ' . $name, E_USER_ERROR);
 		}
 	}
 
@@ -67,5 +75,10 @@ class SocialMediaObject
 	public function getType()
 	{
 		return substr($this->url, 12, strpos($this->url, '.', 12) - 12);  // 12 to avoid "https://www."
+	}
+
+	public function getUsername()
+	{
+		return str_replace('https://www.instagram.com/', '', $this->url);
 	}
 }

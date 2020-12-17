@@ -8,8 +8,8 @@ use PDO;
  */
 abstract class DataAccess
 {
+	const VALUES_DELIMITER = ';';
 	const INT_MIN = -2147483648;
-	const INT_MAX = 2147483647;
 
 	protected $pdo;
 
@@ -81,10 +81,14 @@ abstract class DataAccess
 
 			foreach ($columns as $columnType)
 			{
-				if ($columnType == PDO::PARAM_LOB)
-				{ $preparedStatement->bindValue($i+1, hex2bin($values[$i]), $columnType); }
+				$value = trim($values[$i]);
+
+				if ($columnType != PDO::PARAM_STR && $value == '')
+				{ $preparedStatement->bindValue($i+1, null, $columnType); }
+				elseif ($columnType == PDO::PARAM_LOB)
+				{ $preparedStatement->bindValue($i+1, hex2bin($value), $columnType); }
 				else
-				{ $preparedStatement->bindValue($i+1, trim($values[$i]), $columnType); }
+				{ $preparedStatement->bindValue($i+1, $value, $columnType); }
 
 				++$i;
 			}
@@ -93,17 +97,5 @@ abstract class DataAccess
 		}
 
 		fclose($file);
-	}
-
-	protected function quote($string, $parameterType = PDO::PARAM_STR)
-	{
-		switch ($parameterType)
-		{
-			case PDO::PARAM_INT: return (string)((int)$string);
-			case PDO::PARAM_LOB: return "x'" . bin2hex($string) . "'";
-		}
-
-		// case PDO::PARAM_STR
-		return "'" . str_replace("'", "''", $string) . "'";
 	}
 }

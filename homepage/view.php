@@ -172,12 +172,7 @@
 							echo     '<div class="CompanyContent">';
 							echo       '<h3>', $company->name, '</h3>';
 							echo       '<ul class="Label">';
-
-							foreach ($company->tags as $tag)
-							{
-								echo     '<li>', $tag, '</li>';
-							}
-
+							echo         '<li>', implode('</li><li>', $company->tags), '</li>';
 							echo       '</ul>';
 							echo       '<div class="tagRegion">', $locations[$company->region], '</div>';
 							echo     '</div>';

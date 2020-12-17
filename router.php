@@ -10,7 +10,9 @@ spl_autoload_register(function($className) {
 	require 'Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-$company = WebApp\Data::getCompanyInfo(str_replace('/', '', filter_input(INPUT_SERVER, 'REQUEST_URI')));
+$language = WebApp\WebApp::getLanguageCode();
+
+$company = WebApp\Data::getCompanyInfo(str_replace('/', '', filter_input(INPUT_SERVER, 'REQUEST_URI')), $language);
 
 if ($company == null)
 {
@@ -24,7 +26,6 @@ if ($company == null)
 
 $user = new WebApp\UserSession(WebApp\Data::getUser());
 
-$language = WebApp\WebApp::getLanguageCode();
 require 'Templates/text ' . $language . '.php';
 require 'company/text ' . $language . '.php';
 require 'company/view.php';
