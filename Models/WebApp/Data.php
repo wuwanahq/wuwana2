@@ -44,12 +44,12 @@ class Data
 		return new DataAccess\Company(self::getPdoInstance());
 	}
 
-	public static function getCompanyInfo($permalink)
+	public static function getCompanyInfo($permalink, $tagsLanguage)
 	{
 		if ($permalink == '' || $permalink[0] == '?' || strpos($permalink, '.') !== false)
 		{ return null; }
 
-		$company = self::getCompany()->selectPermalink($permalink);
+		$company = self::getCompany()->selectPermalink($permalink, $tagsLanguage);
 
 		if ($company == null)
 		{ return null; }
@@ -77,12 +77,6 @@ class Data
 	public static function getUser()
 	{
 		return new DataAccess\User(self::getPdoInstance());
-	}
-
-	public static function getTagIterator()
-	{
-		$tag = new DataAccess\Tag(self::getPdoInstance());
-		return $tag->selectAll();
 	}
 
 	public static function getTag()

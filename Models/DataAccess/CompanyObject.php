@@ -16,7 +16,8 @@ class CompanyObject
 	public $phone = '0000000000';
 	public $address = '';
 	public $region = 0;
-	public $tags = [];
+	public $visibleTags = [];
+	public $otherTags;
 	public $instagram;
 	public $facebook;
 	public $lastUpdate;

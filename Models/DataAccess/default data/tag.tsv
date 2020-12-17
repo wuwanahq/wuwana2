@@ -1,3 +1,4 @@
-ID	Visible	Names	Keywords
--2147483648	0	Coffee	coffee|cafe|café
--2147483647	1	SpecialtyCoffee	specialty coffee|café de especialidad
+ID	Names	Keywords
+Coffee	Coffee;Café	☕️|coffee|caf[eéè]
+Specialty	Specialty;Especialidad	specialty|especialidad
+SpecialtyCoffee	Specialty coffee;Café de especialidad	

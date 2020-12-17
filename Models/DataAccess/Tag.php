@@ -8,38 +8,64 @@ use PDO;
  */
 class Tag extends DataAccess
 {
+	static function getLanguageIndex($languageCode)
+	{
+		if ($languageCode == 'es')
+		{ return 1; }
+
+		return 0;
+	}
+
 	static function getTableSchema()
 	{
 		return 'create table Tag (
-			ID int primary key,
-			Visible tinyint not null,
-			Name varchar(255) not null,
+			ID varchar(250) primary key,
+			Names varchar(255) not null,
 			Keywords varchar(255) not null)';
 	}
 
 	public function insertData($filePath)
 	{
 		parent::importData($filePath, 'Tag', [
-			'ID'       => PDO::PARAM_INT,
-			'Visible'  => PDO::PARAM_INT,
-			'Name'     => PDO::PARAM_STR,
+			'ID'       => PDO::PARAM_STR,
+			'Names'    => PDO::PARAM_STR,
 			'Keywords' => PDO::PARAM_STR,
 		]);
 	}
 
-	public function insert(TagObject $tag)
+	public function insert($id, TagObject $tag)
 	{
-		$query = $this->pdo->prepare('insert into Tag (ID,Visible,Name,Keywords)
-			select coalesce(max(ID)+1,' . self::INT_MIN . '),?,?,? from Tag');
+		$tagNames = explode(parent::VALUES_DELIMITER, $tag->names);
 
-		$query->bindValue(1, $tag->isVisible ? 1 : 0, PDO::PARAM_INT);
-		$query->bindValue(2, $tag->name, PDO::PARAM_STR);
+		foreach ($this->selectBaseTags() as $tagID => $currentTag)
+		{
+			$currentTagNames = explode(parent::VALUES_DELIMITER, $currentTag->names);
+
+			$query = $this->pdo->prepare("insert into Tag (ID,Names,Keywords) values (?,?,'')");
+			$query->bindValue(1, $id . $tagID, PDO::PARAM_STR);
+			$query->bindValue(
+				2,
+				$tagNames[0] . ' ' . $currentTagNames[0] . parent::VALUES_DELIMITER .
+					$tagNames[1] . ' ' . $currentTagNames[1],
+				PDO::PARAM_STR);
+
+			$query->execute();
+		}
+
+		$query = $this->pdo->prepare('insert into Tag (ID,Names,Keywords) values (?,?,?)');
+		$query->bindValue(1, $id, PDO::PARAM_STR);
+		$query->bindValue(2, $tag->names, PDO::PARAM_STR);
 		$query->bindValue(3, $tag->keywords, PDO::PARAM_STR);
 		$query->execute();
 	}
 
-	public function selectAll()
+	public function selectBaseTags()
 	{
-		return new TagsIterator($this->pdo->query('select * from Tag'));
+		return new TagsIterator($this->pdo->query("select * from Tag where Keywords <> ''"));
+	}
+
+	public function selectCombinations()
+	{
+		return new TagsIterator($this->pdo->query("select * from Tag where Keywords = ''"));
 	}
 }

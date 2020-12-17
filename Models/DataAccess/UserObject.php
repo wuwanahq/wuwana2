@@ -10,6 +10,7 @@ class UserObject
 	public $email;
 	public $name;
 	public $company;
+	public $adminLevel;
 	public $accessCode;
 	public $lastLogin;
 }

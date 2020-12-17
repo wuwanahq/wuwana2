@@ -22,10 +22,7 @@
 						{ echo '<h1>', $company->name, '</h1>'; }
 					?>
 					<ul class="Label">
-						<?php
-							foreach ($company->tags as $tag)
-							{ echo '<li>', $tag, '</li>'; }
-						?>
+						<li><?php echo implode('</li><li>', $company->tags) ?></li>
 					</ul>
 					<div class="tagRegion"><?php echo $company->region ?></div>
 				</section>
@@ -78,7 +75,7 @@
 					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
 						<?php
-							if (!empty($company->instagram->url))
+							if ($company->instagram->url != '')
 							{
 								echo '<li>';
 								echo  '<a class="ItemLabel" href="', $company->instagram->url, '" target="_blank">';

@@ -1,2 +1,2 @@
 PermaLink	ID	Name	LogoURL	Description	Website	Email	PhonePrefix	PhoneNumber	Address	LocationID	FirstTagID	SecondTagID	OtherTags	LastUpdate
-wuwana	1	Wuwana	/static/favicon/96.png	A webapp to help users find local coffee suppliers in Spain	https://wuwana.com	jonathan@wuwana.com	0	0	Madrid	9	-2147483647	-2147483648		0
+wuwana	-2147483648	Wuwana	/static/favicon/96.png	A webapp to help users find local coffee suppliers in Spain	https://wuwana.com	jonathan@wuwana.com	0	0	Madrid	9	SpecialtyCoffee		Coffee;Specialty	1608048335

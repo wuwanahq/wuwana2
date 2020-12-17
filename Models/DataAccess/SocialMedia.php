@@ -11,9 +11,9 @@ class SocialMedia extends DataAccess
 	static function getTableSchema()
 	{
 		return 'create table SocialMedia (
-			ID int primary key,
-			URL varchar(255) not null,
 			CompanyID int not null,
+			ID tinyint not null,
+			URL varchar(255) not null,
 			ProfileName varchar(255) not null,
 			Biography varchar(255) not null,
 			ExternalLink varchar(255) not null,
@@ -25,9 +25,9 @@ class SocialMedia extends DataAccess
 	public function insertData($filePath)
 	{
 		parent::importData($filePath, 'SocialMedia', [
+			'CompanyID'    => PDO::PARAM_INT,
 			'ID'           => PDO::PARAM_INT,
 			'URL'          => PDO::PARAM_STR,
-			'CompanyID'    => PDO::PARAM_INT,
 			'ProfileName'  => PDO::PARAM_STR,
 			'Biography'    => PDO::PARAM_STR,
 			'ExternalLink' => PDO::PARAM_STR,
@@ -39,17 +39,16 @@ class SocialMedia extends DataAccess
 
 	public function insert(SocialMediaObject $socialMedia, $companyID)
 	{
-		$query = $this->pdo->query('select coalesce(max(ID)+1,' . self::INT_MIN . ') from SocialMedia');
-		$query->execute();
-		$id = $query->fetchAll(PDO::FETCH_COLUMN,0)[0];
+		$query = $this->pdo->query('select coalesce(max(ID)+1,0) from SocialMedia where CompanyID=' . $companyID);
+		$id = $query->fetchAll(PDO::FETCH_COLUMN, 0)[0];
 
 		$query = $this->pdo->prepare('insert into SocialMedia
-			(ID, URL, CompanyID, ProfileName, Biography, ExternalLink, Counter1, Counter2, Counter3)
+			(CompanyID, ID, URL, ProfileName, Biography, ExternalLink, Counter1, Counter2, Counter3)
 			values (?,?,?,?,?,?,?,?,?)');
 
-		$query->bindValue(1, $id, PDO::PARAM_INT);
-		$query->bindValue(2, $socialMedia->url, PDO::PARAM_STR);
-		$query->bindValue(3, $companyID, PDO::PARAM_INT);
+		$query->bindValue(1, $companyID, PDO::PARAM_INT);
+		$query->bindValue(2, $id, PDO::PARAM_INT);
+		$query->bindValue(3, $socialMedia->url, PDO::PARAM_STR);
 		$query->bindValue(4, $socialMedia->profileName, PDO::PARAM_STR);
 		$query->bindValue(5, $socialMedia->biography, PDO::PARAM_STR);
 		$query->bindValue(6, $socialMedia->link, PDO::PARAM_STR);
@@ -60,7 +59,7 @@ class SocialMedia extends DataAccess
 		if ($query->execute())
 		{
 			$image = new Image($this->pdo);
-			$image->insert($socialMedia->pictures, $id);
+			$image->insert($socialMedia->pictures, $companyID, $id);
 		}
 	}
 }
