@@ -8,12 +8,6 @@ class Config {
 const
 
 /**
- * Session lifetime.
- * @var int Seconds
- */
-SESSION_LIFETIME = 1800,  // 30 minutes
-
-/**
  * Database Source Name (PDO DSN). Use SQLite by default if this value is empty.
  * Examples:
  * MySQL socket -> 'mysql:unix_socket=/var/run/mysqld/mysqld.sock;dbname=Wuwana'
@@ -30,6 +24,24 @@ DB_SOURCE = '',
  * @var string
  */
 DB_USERNAME = 'root',
-DB_PASSWORD = '';
+DB_PASSWORD = '',
+
+/**
+ * Session lifetime.
+ * @var int Seconds
+ */
+SESSION_LIFETIME = 1800,  // 30 minutes
+
+/**
+ * Available languages on the website.
+ * The first of the list is the language by default if none are selected and if the device language isn't in this list.
+ * @var string[] Language code (ISO 639-1) => Language name
+ */
+LANGUAGES = [
+	'en' => 'English',
+	'es' => 'Español',
+	'fr' => 'Français',
+	'zh' => '中文',
+];
 
 }
