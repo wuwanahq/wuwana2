@@ -1,17 +1,11 @@
 <?php
 	$sections = [
-		'Companies'   => '/admin/companies',
-		'Users'       => '/admin/users',
-		'Tags'        => '/admin/tags',
-		'Categories'  => '/admin/categories',
-		'Database' => '/admin/database'];
-
-	$icons = [
-		'Companies'   => 'company_grey50.svg',
-		'Users'       => 'users_grey50.svg',
-		'Tags'        => 'tag_grey50.svg',
-		'Categories'  => 'label_grey50.svg',
-		'Database'		=> 'dns_grey50.svg'];
+		'/admin/companies'  => ['Companies', 'company_grey50.svg'],
+		'/admin/users'      => ['Users', 'users_grey50.svg'],
+		'/admin/tags'       => ['Tags', 'tag_grey50.svg'],
+		'/admin/categories' => ['Categories', 'label_grey50.svg'],
+		'/admin/database'   => ['Database', 'dns_grey50.svg']
+	];
 ?>
 <div class="ColumnLeft">
 	<div class="boxPanel">
@@ -27,25 +21,24 @@
 		<section class="adminControl">
 			<h3>Admin controls</h3>
 			<?php
-				foreach ($sections as $name => $url)
+				$request = substr(filter_input(INPUT_SERVER, 'REQUEST_URI'), 0, 11);
+				foreach ($sections as $url => $section)
 				{
-					if (filter_input(INPUT_SERVER, 'REQUEST_URI') != $url)
-					{
-						echo '<a href="', $url, '">';
-					}
+					$sectionURL = substr($url, 0, 11);
+
+					if ($request != $sectionURL)
+					{ echo '<a href="', $url, '">'; }
 
 					echo '<div class="iconLabelHorizontal">';
-					echo  '<img src="/static/icon/', $icons[$name], '">';
-					echo $name, '</div>';
+					echo   '<img src="/static/icon/', $section[1], '">', $section[0];
+					echo '</div>';
 
-					if (filter_input(INPUT_SERVER, 'REQUEST_URI') != $url)
-					{
-						echo '</a>';
-					}
+					if ($request != $sectionURL)
+					{ echo '</a>'; }
 				}
 			?>
 		</section>
-		
+
 	</div>
 	<h2>Statistics</h2>
 	<div>

@@ -397,6 +397,23 @@ dd {
 	padding: 0 16px;
 	max-width: 1200px} /* Same as body max width */
 
+.header-lang {
+	display: flex;
+	flex-direction: row;
+}
+
+.lang {
+	padding: 12px;
+	margin-left: -4px;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+	.lang:hover {
+		background-color: #E3E1E1;
+	}
+
 .headerLogo {
 	height: 24px}
 
@@ -408,7 +425,61 @@ dd {
 	display: none;}
 
 .HeaderIcon:hover {
-	background-color: #fafafa}
+	background-color:#E3E1E1}
+
+.header-invisible { /* used to make the header layout */
+	visibility: hidden;
+	width: 16px;
+	height: 16px;
+}
+
+/* POP-UP */
+
+.popup-title {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+.popup-title img:hover {
+	cursor: pointer;
+}
+
+.header-lang:hover .popup-lang {
+	display: flex;
+}
+
+.popup-lang {
+	top: 40px;
+	position: absolute;
+	display: none;
+	flex-direction: column;
+	white-space: nowrap;
+	padding: 16px;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 8px;
+	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
+}
+
+.popup-lang h2 {
+	font-weight: 700;
+	margin: 0 16px 16px 0;
+	line-height: 1.3;
+}
+
+.popup-lang a {
+	padding: 8px;
+	margin: 0 -8px;
+	font-weight: 400;
+	color: black;
+	border-radius: 8px;
+}
+
+.popup-lang a:hover {
+	text-decoration: underline;
+	background-color: #fafafa;
+}
 
 /* Old buttons */
 
@@ -927,6 +998,10 @@ a .iconLabelHorizontal {
 @media screen and (max-width: 800px)
 {
 	/* TABLET GENERAL CHANGES */
+
+	.header-invisible { /* used to make the header layout */
+		display: none;
+	}
 
 	h1 {
 		font-size: 1.75rem;

@@ -13,6 +13,11 @@ if (!filter_has_var(INPUT_POST, 'email'))
 trigger_error('DEBUG - Posted email=' . filter_input(INPUT_POST, 'email'));
 
 $language = WebApp\WebApp::getLanguageCode();
+
+//TODO: create an email in every languages
+if ($language != 'es')
+{ $language = 'en'; }
+
 require 'text ' . $language . '.php';
 
 $user = new WebApp\UserSession(WebApp\Data::getUser());

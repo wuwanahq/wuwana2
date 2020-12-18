@@ -61,18 +61,46 @@ function askEmail()
 	xhr.send(form);
 }
 
+// Show language popup on mobile
+function showLang()
+{
+	var divLang = document.getElementById("popup-lang");
+	var body = document.body;
+
+	if (getComputedStyle(divLang).getPropertyValue("display") == "none")
+	{
+		divLang.style.display = "flex";
+	}
+	else
+	{
+		divLang.style.display = "none";
+	}
+}
+
+
 // Show menu
 function showMenu()
 {
 	var div = document.getElementById("menu");
+	var divLang = document.getElementById("popup-lang");
 	var img = document.getElementById("TestImg");
 	var body = document.body;
 
 	if (getComputedStyle(div).getPropertyValue("display") == "none")
 	{
-		div.style.display = "flex";
-		img.src = "static/icon/close.svg";
-		body.style.overflow = "hidden";
+		if (divLang.style.display == "flex")
+		{
+			divLang.style.display = "none";
+			div.style.display = "flex";
+			img.src = "static/icon/close.svg";
+			body.style.overflow = "hidden";
+		}
+		else 
+		{
+			div.style.display = "flex";
+			img.src = "static/icon/close.svg";
+			body.style.overflow = "hidden";
+		}	
 	}
 	else
 	{
@@ -141,18 +169,27 @@ window.addEventListener("resize", () => {
 // });
 
 // Back to top button
-let toTop = document.getElementById("toTop");
+var lastScrollTop = 0;
 
-window.addEventListener("scroll", () => {
-	if (window.pageYOffset > 100)
+window.addEventListener("scroll", function(){ 
+	var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+	var toTop = document.getElementById("toTop");
+
+	if (st > lastScrollTop){
+		toTop.style.opacity = 0;
+		toTop.style.visibility = "hidden";
+	}
+	else if (st < lastScrollTop && window.pageYOffset > 500)
 	{
 		toTop.style.opacity = 1;
-		toTop.style.visibility = "visible";
+		toTop.style.visibility = "visible"
 	}
-	else
+	else 
 	{
 		toTop.style.opacity = 0;
 		toTop.style.visibility = "hidden";
 	}
-});
+
+   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+}, false);
 
