@@ -23,14 +23,28 @@ function handleEventLoad()
 	document.getElementById("FollowingCount").value = graphql.user.edge_follow.count;
 	document.getElementById("FollowerCount").value = graphql.user.edge_followed_by.count;
 	document.getElementById("PostCount").value = graphql.user.edge_owner_to_timeline_media.count;
-
 	document.getElementById("ProfilePicURL").value = graphql.user.profile_pic_url;
-	document.getElementById("ThumbnailSrc0").value = graphql.user.edge_owner_to_timeline_media.edges[0].node.thumbnail_src;
-	document.getElementById("ThumbnailSrc1").value = graphql.user.edge_owner_to_timeline_media.edges[1].node.thumbnail_src;
-	document.getElementById("ThumbnailSrc2").value = graphql.user.edge_owner_to_timeline_media.edges[2].node.thumbnail_src;
-	document.getElementById("ThumbnailSrc3").value = graphql.user.edge_owner_to_timeline_media.edges[3].node.thumbnail_src;
-	document.getElementById("ThumbnailSrc4").value = graphql.user.edge_owner_to_timeline_media.edges[4].node.thumbnail_src;
-	document.getElementById("ThumbnailSrc5").value = graphql.user.edge_owner_to_timeline_media.edges[5].node.thumbnail_src;
 
+	var extraInfo = graphql.user.category_name + ";" + graphql.user.business_category_name;
+
+	for (var i=0; i < 6; i++)
+	{
+		if (typeof graphql.user.edge_owner_to_timeline_media.edges[i] === "undefined")
+		{ break; }
+
+		document.getElementById("ThumbnailSrc" + i).value =
+			graphql.user.edge_owner_to_timeline_media.edges[i].node.thumbnail_src;
+
+		for (var j=0; j < 9; j++)
+		{
+			if (typeof graphql.user.edge_owner_to_timeline_media.edges[i].node.edge_media_to_caption.edges[j] == "undefined")
+			{ break; }
+
+			extraInfo += ";"
+				+ graphql.user.edge_owner_to_timeline_media.edges[i].node.edge_media_to_caption.edges[j].node.text;
+		}
+	}
+
+	document.getElementById("ExtraInfo").value = extraInfo;
 	document.getElementById("button").disabled = false;
 }

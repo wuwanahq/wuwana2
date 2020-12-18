@@ -21,4 +21,14 @@ class CompanyObject
 	public $instagram;
 	public $facebook;
 	public $lastUpdate;
+
+	public function getDefaultPermalink()
+	{
+		$permalink = preg_replace('/[^a-z0-9\-]/', '', str_replace(' ', '-', strtolower($this->name)));
+
+		if (strlen($permalink) < 4 && $this->instagram instanceof SocialMediaObject)
+		{ $permalink = $this->instagram->getUsername(); }
+
+		return $permalink;
+	}
 }
