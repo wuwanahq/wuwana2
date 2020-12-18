@@ -1,7 +1,8 @@
 <?php
 namespace Scraper;
 use DataAccess\User;
-use DataAccess\TagsIterator;
+use DataAccess\Tag;
+use DataAccess\Company;
 use DataAccess\CompanyObject;
 use DataAccess\SocialMediaObject;
 
@@ -11,43 +12,118 @@ use DataAccess\SocialMediaObject;
  */
 class Scraper
 {
-	private $tagKeywords;
-	private $company;
+	private $storedTag;
+	private $storedCompany;
 
-	public function __construct(TagsIterator $tagKeywords)
+	public function __construct(Tag $tag, Company $company)
 	{
-		$this->tagKeywords = $tagKeywords;
+		$this->storedTag = $tag;
+		$this->storedCompany = $company;
 	}
 
-	public function extractData($url)
+	public function storeCompany($website, $email, $businessEmail, $picture, $text, SocialMediaObject $instagram)
 	{
-		$this->company = new CompanyObject();
+		$company = new CompanyObject();
+		$company->name = $instagram->profileName;
+		$company->description = $instagram->biography;
+		$company->logo = $picture;
+		$company->region = rand(1, 19);
+		$company->instagram = $instagram;
 
-		if (strpos($url, 'instagram.com') !== false)
-		{ $this->scrapeInstagram($url); }
+		if (strpos($email, '@') > 0)
+		{ $company->email = $email; }
+		elseif (strpos($businessEmail, '@') > 0)
+		{ $company->email = $businessEmail; }
 
-		if (strpos($url, 'facebook.com') !== false)
-		{ $this->scrapeFacebook($url); }
+		if (!empty($website))
+		{ $company->website = $website; }
+		elseif (!empty($instagram->link))
+		{ $company->website = $instagram->link; }
 
-		return $this->company;
+		$content = $instagram->profileName
+			. ';' . $instagram->getUsername()
+			. ';' . $instagram->biography
+			. ';' . $text;
+
+		$company->otherTags = $this->getBasicTags($content);
+		$company->visibleTags = $this->getCombinedTags($content, $company->otherTags);
+
+		if (empty($company->visibleTags[0]) && isset($company->otherTags[0]))
+		{ $company->visibleTags[0] = array_shift($company->otherTags); }
+
+		while (count($company->visibleTags) > 2)
+		{ array_unshift($company->otherTags, array_pop($company->visibleTags)); }
+
+		$this->storedCompany->insert($company);
 	}
 
-	private function scanTags($content)
+	private function getBasicTags($content)
 	{
 		$tags = [];
 
-		foreach ($this->tagKeywords as $id => $tag)
+		foreach ($this->storedTag->selectBaseTags() as $id => $tag)
 		{
 			$score = preg_match_all('/' . $tag->keywords . '/i', $content);
 
 			if ($score > 0)
-			{ $tags[$id] = $tag->isVisible ? $score * 1000 : $score; }
+			{ $tags[$id] = $score; }
 		}
 
 		arsort($tags, SORT_NUMERIC);
+		return array_keys($tags);
+	}
 
-		foreach ($tags as $id => $unused)
-		{ $this->company->tags[] = $id; }
+	private function getCombinedTags($content, array $basicTags)
+	{
+		$basicTags = array_flip($basicTags);
+
+		foreach ($this->storedTag->selectBaseTags() as $id => $tag)
+		{
+			if (isset($basicTags[$id]))
+			{ $basicTags[$id] = $tag->keywords; }
+		}
+
+		$tags = [];
+
+		foreach ($this->storedTag->selectCombinations() as $id => $tag)
+		{
+			if (isset($basicTags[$id]))
+			{ $basicTags[$id] = $tag->keywords; }
+
+			foreach ($basicTags as $id1 => $regex1)
+			{
+				foreach ($basicTags as $id2 => $regex2)
+				{
+					if ($id == $id1 . $id2)
+					{
+						$tags[$id1 . $id2] = 0;
+						break 2;
+					}
+				}
+			}
+		}
+
+		foreach ($basicTags as $id1 => $regex1)
+		{
+			foreach ($basicTags as $id2 => $regex2)
+			{
+				if ($id1 == $id2)
+				{ continue; }
+
+				$score = preg_match_all('/(' . $regex1 . ')[a-z ]{0,9}(' . $regex2 . ')/i', $content);
+
+				if ($score == 0)  // or false
+				{ continue; }
+
+				if (isset($tags[$id1 . $id2]))
+				{ $tags[$id1 . $id2] += $score; }
+				elseif (isset($tags[$id2 . $id1]))
+				{ $tags[$id2 . $id1] += $score; }
+			}
+		}
+
+		arsort($tags, SORT_NUMERIC);
+		return array_keys($tags);
 	}
 
 	private function scrapeInstagram($url)

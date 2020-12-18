@@ -25,8 +25,8 @@ class Company extends DataAccess
 			PhoneNumber int not null,
 			Address varchar(255) not null,
 			LocationID smallint not null,
-			FirstTagID int not null,
-			SecondTagID int not null,
+			FirstTagID varchar(250) not null,
+			SecondTagID varchar(250) not null,
 			OtherTags varchar(255) not null,
 			LastUpdate int not null)';
 	}
@@ -45,8 +45,8 @@ class Company extends DataAccess
 			'PhoneNumber' => PDO::PARAM_INT,
 			'Address'     => PDO::PARAM_STR,
 			'LocationID'  => PDO::PARAM_INT,
-			'FirstTagID'  => PDO::PARAM_INT,
-			'SecondTagID' => PDO::PARAM_INT,
+			'FirstTagID'  => PDO::PARAM_STR,
+			'SecondTagID' => PDO::PARAM_STR,
 			'OtherTags'   => PDO::PARAM_STR,
 			'LastUpdate'  => PDO::PARAM_INT,
 		]);
@@ -57,7 +57,7 @@ class Company extends DataAccess
 	 * @param string $permalink
 	 * @return \DataAccess\Company
 	 */
-	public function selectPermalink($permalink)
+	public function selectPermalink($permalink, $tagsLanguage)
 	{
 		$sql = 'select
 			Company.Name as CompanyName,
@@ -69,8 +69,8 @@ class Company extends DataAccess
 			Location.RegionName as LocationRegionName,
 			Company.PhonePrefix as CompanyPhonePrefix,
 			Company.PhoneNumber as CompanyPhoneNumber,
-			T1.Name as TagName1,
-			T2.Name as TagName2,
+			T1.Names as TagName1,
+			T2.Names as TagName2,
 			SocialMedia.URL as SocialMediaURL,
 			SocialMedia.ProfileName as SocialMediaProfileName,
 			SocialMedia.Biography as SocialMediaBiography,
@@ -82,7 +82,7 @@ class Company extends DataAccess
 			from Company
 			inner join Location on Company.LocationID=Location.ID
 			inner join SocialMedia on Company.ID=SocialMedia.CompanyID
-			left join Image on SocialMedia.ID=Image.SocialMediaID
+			left join Image on SocialMedia.CompanyID=Image.CompanyID and SocialMedia.ID=Image.SocialMediaID
 			left join Tag as T1 on Company.FirstTagID=T1.ID
 			left join Tag as T2 on Company.SecondTagID=T2.ID
 			where Company.PermaLink=?';
@@ -111,7 +111,18 @@ class Company extends DataAccess
 				$company->email = $row['CompanyEmail'];
 				$company->address = $row['CompanyAddress'];
 				$company->region = $row['LocationRegionName'];
-				$company->tags = [$row['TagName1'], $row['TagName2']];
+
+				if ($row['TagName1'] != '')
+				{
+					$company->tags[] =
+						explode(parent::VALUES_DELIMITER, $row['TagName1'])[Tag::getLanguageIndex($tagsLanguage)];
+				}
+
+				if ($row['TagName2'] != '')
+				{
+					$company->tags[] =
+						explode(parent::VALUES_DELIMITER, $row['TagName2'])[Tag::getLanguageIndex($tagsLanguage)];
+				}
 
 				if ($row['CompanyPhonePrefix'] != 0 && $row['CompanyPhoneNumber'] != 0)
 				{
@@ -141,7 +152,7 @@ class Company extends DataAccess
 		return $company;
 	}
 
-	public function selectAll()
+	public function selectAll($tagsLanguage = null)
 	{
 		$query = $this->pdo->query('select
 			Company.PermaLink as CompanyPermaLink,
@@ -149,8 +160,11 @@ class Company extends DataAccess
 			Company.Description as CompanyDescription,
 			Company.LastUpdate as CompanyLastUpdate,
 			Location.RegionName as LocationRegionName,
-			T1.Name as TagName1,
-			T2.Name as TagName2
+			Company.FirstTagID as CompanyFirstTagID,
+			Company.SecondTagID as CompanySecondTagID,
+			Company.OtherTags as CompanyOtherTags,
+			T1.Names as TagName1,
+			T2.Names as TagName2
 			from Company
 			left join Tag as T1 on Company.FirstTagID=T1.ID
 			left join Tag as T2 on Company.SecondTagID=T2.ID
@@ -166,8 +180,22 @@ class Company extends DataAccess
 			$company->name = $row['CompanyName'];
 			$company->description = $row['CompanyDescription'];
 			$company->region = $row['LocationRegionName'];
-			$company->tags = [$row['TagName1'], $row['TagName2']];
 			$company->lastUpdate = $row['CompanyLastUpdate'];
+			$company->otherTags = $row['CompanyOtherTags'];
+
+			if ($row['TagName1'] != '')
+			{
+				$company->visibleTags[] = $tagsLanguage == null
+					? $row['CompanyFirstTagID']
+					: explode(parent::VALUES_DELIMITER, $row['TagName1'])[Tag::getLanguageIndex($tagsLanguage)];
+			}
+
+			if ($row['TagName2'] != '')
+			{
+				$company->visibleTags[] = $tagsLanguage == null
+					? $row['CompanySecondTagID']
+					: explode(parent::VALUES_DELIMITER, $row['TagName2'])[Tag::getLanguageIndex($tagsLanguage)];
+			}
 
 			$companies[] = $company;
 		}
@@ -175,7 +203,7 @@ class Company extends DataAccess
 		return $companies;
 	}
 
-	public function selectCategoriesRegions($categories = [], $regions = [], $limit = 0)
+	public function selectCategoriesRegions($tagsLanguage, $categories = [], $regions = [], $limit = 0)
 	{
 		$sql = '';
 
@@ -202,8 +230,8 @@ class Company extends DataAccess
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
 			Company.LocationID as CompanyLocationID,
-			T1.Name as TagName1,
-			T2.Name as TagName2
+			T1.Names as TagName1,
+			T2.Names as TagName2
 			from Company
 			inner join Tag as T1 on Company.FirstTagID=T1.ID
 			left join Tag as T2 on Company.SecondTagID=T2.ID
@@ -217,10 +245,10 @@ class Company extends DataAccess
 			$stmt = $this->pdo->query($sql);
 		}
 
-		return Company::fetchObjects($stmt, $limit);
+		return Company::fetchObjects($stmt, $tagsLanguage, $limit);
 	}
 
-	static function fetchObjects(PDOStatement $stmt, $limit = 0)
+	static function fetchObjects(PDOStatement $stmt, $tagsLanguage, $limit = 0)
 	{
 		$companies = [];
 
@@ -235,8 +263,18 @@ class Company extends DataAccess
 			//$company->phone = $row['PhonePrefix'] . str_pad($row['PhoneNumber'], 9, '0', STR_PAD_LEFT);
 			//$company->email = $row['Email'];
 			$company->region = (int)$row['CompanyLocationID'];
-			$company->tags = [$row['TagName1'], $row['TagName2']];
-			//$company->tags = explode(self::VALUES_DELIMITER, $row['Company.Tags']);
+
+			if ($row['TagName1'] != '')
+			{
+				$company->tags[] =
+					explode(parent::VALUES_DELIMITER, $row['TagName1'])[Tag::getLanguageIndex($tagsLanguage)];
+			}
+
+			if ($row['TagName2'] != '')
+			{
+				$company->tags[] =
+					explode(parent::VALUES_DELIMITER, $row['TagName2'])[Tag::getLanguageIndex($tagsLanguage)];
+			}
 
 			$companies[$row['CompanyPermaLink']] = $company;
 
@@ -249,7 +287,13 @@ class Company extends DataAccess
 
 	public function insert(CompanyObject $company)
 	{
-		$query = $this->pdo->query('select coalesce(max(ID)+1,1) from Company');
+		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
+		$i = count($company->otherTags);
+
+		while(strlen($otherTags) > 255)
+		{ $otherTags = implode(self::VALUES_DELIMITER, array_slice($company->otherTags, 0, --$i)); }
+
+		$query = $this->pdo->query('select coalesce(max(ID)+1,' . self::INT_MIN . ') from Company');
 		$query->execute();
 		$id = $query->fetchAll(PDO::FETCH_COLUMN,0)[0];
 
@@ -258,27 +302,33 @@ class Company extends DataAccess
 				Email,Address,LocationID,FirstTagID,SecondTagID,OtherTags,LastUpdate)
 			values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
 
-		$permalink = preg_replace('/[^a-z0-9\-]/', '', str_replace(' ', '-', strtolower($company->name)));
-		$query->bindValue(1, $permalink, PDO::PARAM_STR);
-		$query->bindValue(2, $id, PDO::PARAM_INT);
-		$query->bindValue(3, $company->name, PDO::PARAM_STR);
-		$query->bindValue(4, $company->description, PDO::PARAM_STR);
-		$query->bindValue(5, $company->logo, PDO::PARAM_STR);
-		$query->bindValue(6, $company->website, PDO::PARAM_STR);
-		$query->bindValue(7, (int)substr($company->phone, 0, -9), PDO::PARAM_INT);
-		$query->bindValue(8, (int)substr($company->phone, -9), PDO::PARAM_INT);
-		$query->bindValue(9, $company->email, PDO::PARAM_STR);
-		$query->bindValue(10, $company->address, PDO::PARAM_STR);
-		$query->bindValue(11, $company->region, PDO::PARAM_STR);
-		$query->bindValue(12, isset($company->tags[0]) ? $company->tags[0] : 0, PDO::PARAM_INT);
-		$query->bindValue(13, isset($company->tags[1]) ? $company->tags[1] : 0, PDO::PARAM_INT);
-		$query->bindValue(14, implode(self::VALUES_DELIMITER, array_slice($company->tags, 2)), PDO::PARAM_STR);
-		$query->bindValue(15, time(), PDO::PARAM_INT);
+		$permalink = $company->getDefaultPermalink();
+		$i = 0;
 
-		if ($query->execute())
+		do
 		{
-			$socialMedia = new SocialMedia($this->pdo);
-			$socialMedia->insert($company->instagram, $id);
+			if (++$i > 1)
+			{ $permalink .= $i; }
+
+			$query->bindValue(1, $permalink, PDO::PARAM_STR);
+			$query->bindValue(2, $id, PDO::PARAM_INT);
+			$query->bindValue(3, $company->name, PDO::PARAM_STR);
+			$query->bindValue(4, $company->description, PDO::PARAM_STR);
+			$query->bindValue(5, $company->logo, PDO::PARAM_STR);
+			$query->bindValue(6, $company->website, PDO::PARAM_STR);
+			$query->bindValue(7, (int)substr($company->phone, 0, -9), PDO::PARAM_INT);
+			$query->bindValue(8, (int)substr($company->phone, -9), PDO::PARAM_INT);
+			$query->bindValue(9, $company->email, PDO::PARAM_STR);
+			$query->bindValue(10, $company->address, PDO::PARAM_STR);
+			$query->bindValue(11, $company->region, PDO::PARAM_INT);
+			$query->bindValue(12, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
+			$query->bindValue(13, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
+			$query->bindValue(14, $otherTags, PDO::PARAM_STR);
+			$query->bindValue(15, time(), PDO::PARAM_INT);
 		}
+		while ($query->execute() == false);
+
+		$socialMedia = new SocialMedia($this->pdo);
+		$socialMedia->insert($company->instagram, $id);
 	}
 }

@@ -36,9 +36,8 @@ class TagsIterator implements Iterator
 	public function current()
 	{
 		$tag = new TagObject();
-		$tag->name = $this->currentRow['Name'];
+		$tag->names = $this->currentRow['Names'];
 		$tag->keywords = $this->currentRow['Keywords'];
-		$tag->isVisible = $this->currentRow['Visible'] == 1;
 		return $tag;
 	}
 

@@ -43,10 +43,11 @@ $user = new WebApp\UserSession(WebApp\Data::getUser());
 if(filter_has_var(INPUT_GET, 'logout'))
 { $user->logout(); }
 
-//$companies = WebApp\Data::getCompany()->selectCategoriesRegions($selectedCategories, $selectedRegions, $limit);
-$companies = WebApp\Data::getCompany()->selectCategoriesRegions([], $selectedRegions, $limit);
-
 $language = WebApp\WebApp::getLanguageCode();
+
+//$companies = WebApp\Data::getCompany()->selectCategoriesRegions($selectedCategories, $selectedRegions, $limit);
+$companies = WebApp\Data::getCompany()->selectCategoriesRegions($language, [], $selectedRegions, $limit);
+
 require 'Templates/text ' . $language . '.php';
 require 'homepage/text ' . $language . '.php';
 require 'homepage/view.php';

@@ -12,16 +12,26 @@ $user = new WebApp\UserSession(WebApp\Data::getUser());
 
 if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 {
-	$scraper = new Scraper\Scraper(WebApp\Data::getTagIterator());
-	$company = $scraper->extractData(filter_input(INPUT_POST, 'instagram'));
+	$instagram = new DataAccess\SocialMediaObject();
+	$instagram->url = filter_input(INPUT_POST, 'instagram');
+	$instagram->link = filter_input(INPUT_POST, 'ExternalURL');
+	$instagram->profileName = filter_input(INPUT_POST, 'FullName');
+	$instagram->biography = filter_input(INPUT_POST, 'Biography');
+	$instagram->nbPost = filter_input(INPUT_POST, 'PostCount');
+	$instagram->nbFollower = filter_input(INPUT_POST, 'FollowerCount');
+	$instagram->nbFollowing = filter_input(INPUT_POST, 'FollowingCount');
 
-	if (filter_input(INPUT_POST, 'website') != null)  // or false or empty string
-	{ $company->website = filter_input(INPUT_POST, 'website'); }
+	for ($i=0; filter_has_var(INPUT_POST, 'ThumbnailSrc' . $i); ++$i)
+	{ $instagram->pictures[] = filter_input(INPUT_POST, 'ThumbnailSrc' . $i); }
 
-	if (filter_input(INPUT_POST, 'email') != null)  // or false or empty string
-	{ $company->email = filter_input(INPUT_POST, 'email'); }
-
-	WebApp\Data::getCompany()->insert($company);
+	$scraper = new Scraper\Scraper(WebApp\Data::getTag(), WebApp\Data::getCompany());
+	$scraper->storeCompany(
+		filter_input(INPUT_POST, 'website'),
+		filter_input(INPUT_POST, 'email'),
+		filter_input(INPUT_POST, 'BusinessEmail'),
+		filter_input(INPUT_POST, 'ProfilePicURL'),
+		filter_input(INPUT_POST, 'ExtraInfo'),
+		$instagram);
 }
 
 //TODO: create CompaniesIterator

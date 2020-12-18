@@ -11,26 +11,29 @@ class Image extends DataAccess
 	static function getTableSchema()
 	{
 		return 'create table Image (
-			SocialMediaID int not null,
+			CompanyID int not null,
+			SocialMediaID tinyint not null,
 			URL varchar(500) not null)';
 	}
 
 	public function insertData($filePath)
 	{
 		parent::importData($filePath, 'Image', [
+			'CompanyID'     => PDO::PARAM_INT,
 			'SocialMediaID' => PDO::PARAM_INT,
 			'URL'           => PDO::PARAM_STR,
 		]);
 	}
 
-	public function insert(array $imageLinks, $socialMediaID)
+	public function insert(array $imageLinks, $companyID, $socialMediaID)
 	{
-		$query = $this->pdo->prepare('insert into Image (SocialMediaID,URL) values (?,?)');
+		$query = $this->pdo->prepare('insert into Image (CompanyID,SocialMediaID,URL) values (?,?,?)');
+		$query->bindParam(1, $companyID, PDO::PARAM_INT);
+		$query->bindParam(2, $socialMediaID, PDO::PARAM_INT);
 
 		foreach ($imageLinks as $picture)
 		{
-			$query->bindValue(1, $socialMediaID, PDO::PARAM_INT);
-			$query->bindValue(2, $picture, PDO::PARAM_STR);
+			$query->bindParam(3, $picture, PDO::PARAM_STR);
 			$query->execute();
 		}
 	}

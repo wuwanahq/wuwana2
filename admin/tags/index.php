@@ -10,17 +10,18 @@ spl_autoload_register(function($className) {
 
 $user = new WebApp\UserSession(WebApp\Data::getUser());
 
-if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'TagName'))
+if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'TagNames'))
 {
 	$tag = new DataAccess\TagObject();
-	$tag->name = trim(filter_input(INPUT_POST, 'TagName'));
+	$tag->names = trim(filter_input(INPUT_POST, 'TagNames'));
 	$tag->keywords = strtolower(trim(filter_input(INPUT_POST, 'Keywords')));
-	$tag->isVisible = filter_has_var(INPUT_POST, 'Visible');
 
-	WebApp\Data::getTag()->insert($tag);
+	WebApp\Data::getTag()->insert(filter_input(INPUT_POST, 'TagID'), $tag);
 }
 
-$tags = WebApp\Data::getTagIterator();
+$tags = WebApp\Data::getTag();
+$baseTags = $tags->selectBaseTags();
+$combinedTags = $tags->selectCombinations();
 
 $language = WebApp\WebApp::getLanguageCode();
 require '../../Templates/text ' . $language . '.php';
