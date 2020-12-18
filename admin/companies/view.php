@@ -16,7 +16,7 @@
 				<div class="Box">
 					<form method="post">
 						<label for="instagram">Instagram profile URL:</label>
-						<input id="instagram" name="instagram" type="text" size="80" onchange="scrape()" onpaste="scrape()">
+						<input id="instagram" name="instagram" type="text" size="80" onchange="scrape()">
 						<br>
 						<label for="website">Website URL:</label>
 						<input id="website" name="website" type="text" size="89">
@@ -37,6 +37,7 @@
 						<input type="hidden" id="ThumbnailSrc3" name="ThumbnailSrc3">
 						<input type="hidden" id="ThumbnailSrc4" name="ThumbnailSrc4">
 						<input type="hidden" id="ThumbnailSrc5" name="ThumbnailSrc5">
+						<input type="hidden" id="ExtraInfo" name="ExtraInfo">
 						<input type="submit" id="button" value="Add" disabled>
 					</form>
 				</div>
@@ -51,7 +52,6 @@
 								<th>Description</th>
 								<th>Location</th>
 								<th>Visible tags</th>
-								<th>Other tags</th>
 								<th>Last update</th>
 								<th></th>
 							</tr>
@@ -64,10 +64,11 @@
 									echo   '<td><a href="http://', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
 									echo     $company->name;
 									echo   '</a></td>';
-									echo   '<td>', substr($company->description, 0, 20), '…</td>';
+									echo   '<td title="', $company->description, '">', substr($company->description,0,9), '…</td>';
 									echo   '<td>', $company->region, '</td>';
-									echo   '<td>', implode(' ', $company->visibleTags), '</td>';
-									echo   '<td>', $company->otherTags, '</td>';
+									echo   '<td title="Other tags: ', $company->otherTags, '">';
+									echo     implode(' ', $company->visibleTags);
+									echo   '</td>';
 									echo   '<td>', date('Y-m-d H:i', $company->lastUpdate), '</td>';
 									echo   '<td><input type="button" value="Delete" disabled></td>';
 									echo '</tr>';

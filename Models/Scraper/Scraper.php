@@ -21,7 +21,7 @@ class Scraper
 		$this->storedCompany = $company;
 	}
 
-	public function storeCompany($website, $email, $businessEmail, $picture, SocialMediaObject $instagram)
+	public function storeCompany($website, $email, $businessEmail, $picture, $text, SocialMediaObject $instagram)
 	{
 		$company = new CompanyObject();
 		$company->name = $instagram->profileName;
@@ -42,7 +42,8 @@ class Scraper
 
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()
-			. ';' . $instagram->biography;
+			. ';' . $instagram->biography
+			. ';' . $text;
 
 		$company->otherTags = $this->getBasicTags($content);
 		$company->visibleTags = $this->getCombinedTags($content, $company->otherTags);

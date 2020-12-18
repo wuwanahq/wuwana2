@@ -30,6 +30,7 @@ if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 		filter_input(INPUT_POST, 'email'),
 		filter_input(INPUT_POST, 'BusinessEmail'),
 		filter_input(INPUT_POST, 'ProfilePicURL'),
+		filter_input(INPUT_POST, 'ExtraInfo'),
 		$instagram);
 }
 

@@ -302,27 +302,33 @@ class Company extends DataAccess
 				Email,Address,LocationID,FirstTagID,SecondTagID,OtherTags,LastUpdate)
 			values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
 
-		$permalink = preg_replace('/[^a-z0-9\-]/', '', str_replace(' ', '-', strtolower($company->name)));
-		$query->bindValue(1, $permalink, PDO::PARAM_STR);
-		$query->bindValue(2, $id, PDO::PARAM_INT);
-		$query->bindValue(3, $company->name, PDO::PARAM_STR);
-		$query->bindValue(4, $company->description, PDO::PARAM_STR);
-		$query->bindValue(5, $company->logo, PDO::PARAM_STR);
-		$query->bindValue(6, $company->website, PDO::PARAM_STR);
-		$query->bindValue(7, (int)substr($company->phone, 0, -9), PDO::PARAM_INT);
-		$query->bindValue(8, (int)substr($company->phone, -9), PDO::PARAM_INT);
-		$query->bindValue(9, $company->email, PDO::PARAM_STR);
-		$query->bindValue(10, $company->address, PDO::PARAM_STR);
-		$query->bindValue(11, $company->region, PDO::PARAM_INT);
-		$query->bindValue(12, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
-		$query->bindValue(13, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
-		$query->bindValue(14, $otherTags, PDO::PARAM_STR);
-		$query->bindValue(15, time(), PDO::PARAM_INT);
+		$permalink = $company->getDefaultPermalink();
+		$i = 0;
 
-		if ($query->execute())
+		do
 		{
-			$socialMedia = new SocialMedia($this->pdo);
-			$socialMedia->insert($company->instagram, $id);
+			if (++$i > 1)
+			{ $permalink .= $i; }
+
+			$query->bindValue(1, $permalink, PDO::PARAM_STR);
+			$query->bindValue(2, $id, PDO::PARAM_INT);
+			$query->bindValue(3, $company->name, PDO::PARAM_STR);
+			$query->bindValue(4, $company->description, PDO::PARAM_STR);
+			$query->bindValue(5, $company->logo, PDO::PARAM_STR);
+			$query->bindValue(6, $company->website, PDO::PARAM_STR);
+			$query->bindValue(7, (int)substr($company->phone, 0, -9), PDO::PARAM_INT);
+			$query->bindValue(8, (int)substr($company->phone, -9), PDO::PARAM_INT);
+			$query->bindValue(9, $company->email, PDO::PARAM_STR);
+			$query->bindValue(10, $company->address, PDO::PARAM_STR);
+			$query->bindValue(11, $company->region, PDO::PARAM_INT);
+			$query->bindValue(12, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
+			$query->bindValue(13, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
+			$query->bindValue(14, $otherTags, PDO::PARAM_STR);
+			$query->bindValue(15, time(), PDO::PARAM_INT);
 		}
+		while ($query->execute() == false);
+
+		$socialMedia = new SocialMedia($this->pdo);
+		$socialMedia->insert($company->instagram, $id);
 	}
 }
