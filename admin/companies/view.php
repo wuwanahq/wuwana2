@@ -61,7 +61,7 @@
 								foreach ($companies as $company)
 								{
 									echo '<tr>';
-									echo   '<td><a href="http://', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
+									echo   '<td><a href="', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
 									echo     $company->name;
 									echo   '</a></td>';
 									echo   '<td title="', $company->description, '">', substr($company->description,0,9), '…</td>';
