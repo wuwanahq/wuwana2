@@ -2,9 +2,14 @@
 <html lang="<?php echo $language ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
-	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
-	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana" />
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
+	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana">
+	<meta property="og:image" content="/static/Wuwana-link-2020.png">
+	<meta property="og:image:type" content="image/png">
+	<meta property="og:image:width" content="1264">
+	<meta property="og:image:height" content="640">
+	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
+	<meta name="twitter:image" content="https://wuwana.com/static/Wuwana-link-2020.png">
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>

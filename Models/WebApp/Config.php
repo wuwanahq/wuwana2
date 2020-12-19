@@ -27,6 +27,12 @@ DB_USERNAME = 'root',
 DB_PASSWORD = '',
 
 /**
+ * Redirect HTTP connections to HTTPS or let the user choose its protocol.
+ * @var boolean true or false
+ */
+FORCE_HTTPS = false,
+
+/**
  * Session lifetime.
  * @var int Seconds
  */

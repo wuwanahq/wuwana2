@@ -2,9 +2,14 @@
 <html lang="<?php echo $language ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
-	<meta name="twitter:title" content="<?php echo $company->name ?> | Wuwana">
-	<meta property="og:title" content="<?php echo $company->name ?> | Wuwana" />
 	<title><?php echo $company->name ?> | Wuwana</title>
+	<meta property="og:title" content="<?php echo $company->name ?> | Wuwana">
+	<meta property="og:image" content="<?php echo $company->logo ?>">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="150">
+	<meta property="og:image:height" content="150">
+	<meta name="twitter:title" content="<?php echo $company->name ?> | Wuwana">
+	<meta name="twitter:image" content="<?php echo $company->logo ?>">
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>

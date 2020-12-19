@@ -1,7 +1,5 @@
 <?php
 namespace WebApp;
-use DataAccess;
-use PDO;
 
 /**
  * WebApp's common functions.
@@ -15,7 +13,7 @@ class WebApp
 	 */
 	static function getLanguageCode()
 	{
-		$hostname = self::getHostname();
+		$hostname = self::getHostname(true);
 
 		if (strlen($hostname) > 3)
 		{
@@ -66,13 +64,44 @@ class WebApp
 		return $host . $requestURL;
 	}
 
-	static function getHostname()
+	static function getHostname($excludeProtocol = false)
 	{
 		$host = filter_input(INPUT_SERVER, 'HTTP_HOST');
 
 		if (strlen($host) < 5)
 		{ return filter_input(INPUT_SERVER, 'SERVER_NAME'); }
 
-		return $host;
+		if ($excludeProtocol)
+		{ return $host; }
+
+		if (Config::FORCE_HTTPS || filter_input(INPUT_SERVER,'HTTPS') == 'on')
+		{ return 'https://' . $host; }
+
+		return 'http://' . $host;
+	}
+
+	static function changeSubdomain($subdomain)
+	{
+		$host = filter_input(INPUT_SERVER, 'HTTP_HOST');
+
+		if (strlen($host) < 5)
+		{ $host = filter_input(INPUT_SERVER, 'SERVER_NAME'); }
+
+		if ($host[2] == '.')
+		{
+			$host[0] = subdomain[0];
+			$host[1] = subdomain[1];
+		}
+		else
+		{
+			$host = $subdomain . '.' . $host;
+		}
+
+		$host .= filter_input(INPUT_SERVER, 'REQUEST_URI');
+
+		if (Config::FORCE_HTTPS || filter_input(INPUT_SERVER,'HTTPS') == 'on')
+		{ return 'https://' . $host; }
+
+		return 'http://' . $host;
 	}
 }

@@ -12,7 +12,7 @@
 				</div>
 				<?php
 					foreach (WebApp\Config::LANGUAGES as $code => $lang)
-					{ echo '<a href="', $code, '.', WebApp\WebApp::getHostname(), '">', $lang, '</a>'; }
+					{ echo '<a href="', WebApp\WebApp::changeSubdomain($code), '">', $lang, '</a>'; }
 				?>
 			</div>
 		</div>
