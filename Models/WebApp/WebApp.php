@@ -89,8 +89,8 @@ class WebApp
 
 		if ($host[2] == '.')
 		{
-			$host[0] = subdomain[0];
-			$host[1] = subdomain[1];
+			$host[0] = $subdomain[0];
+			$host[1] = $subdomain[1];
 		}
 		else
 		{
