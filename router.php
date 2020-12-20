@@ -11,8 +11,9 @@ spl_autoload_register(function($className) {
 });
 
 $language = WebApp\WebApp::getLanguageCode();
-
 $company = WebApp\Data::getCompanyInfo(str_replace('/', '', filter_input(INPUT_SERVER, 'REQUEST_URI')), $language);
+
+require 'Templates/text ' . $language . '.php';
 
 if ($company == null)
 {
@@ -21,11 +22,12 @@ if ($company == null)
 
 	trigger_error('URL ' . filter_input(INPUT_SERVER, 'REQUEST_URI') . ' not found', E_USER_NOTICE);
 	http_response_code(404);
+	require '404/text ' . $language . '.php';
+	require '404/view.php';
 	exit;
 }
 
 $user = new WebApp\UserSession(WebApp\Data::getUser());
 
-require 'Templates/text ' . $language . '.php';
 require 'company/text ' . $language . '.php';
 require 'company/view.php';
