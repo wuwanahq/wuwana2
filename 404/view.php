@@ -1,20 +1,23 @@
 <!DOCTYPE html>
+<html lang="<?php echo $language ?>">
 <head>
-	<link rel="stylesheet" type="text/css" href="static/main.css">
+	<?php include 'Templates/page metadata.php' ?>
 </head>
 <body class="error-page">
-	<header class="headerBar"></header>
+	<?php include 'Templates/page header.php' ?>
 	<div class="error-image">
-		<img src="static/picture/error.svg" alt="two people holding a website page">
+		<img src="/static/picture/error.svg">
 	</div>
 	<section class="error-explanation">
-		<h1>Oops!</h1>
-		<p>It seems that we cannot find the page you are looking for. Don't worry, this happens when the page has been deleted or the link has changed.</p>
+		<h1><?php echo TEXT[0] ?></h1>
+		<p><?php echo TEXT[1] ?></p>
 	</section>
+<!--
 	<section class="error-companies">
-		<h2>Did you mean?</h2>
+		<h2><?php echo TEXT[2] ?></h2>
 		<div class="Box Center">
 			<?php
+			/*
 				$counter = count($companies);
 
 				foreach ($companies as $permalink => $company)
@@ -43,12 +46,13 @@
 					if (--$counter > 0)
 					{ echo '<hr>'; }
 				}
+			*/
 			?>
 		</div>
 	</section>
+-->
 	<a class="buttonIcon Center" href="/">
-		<img src="static/icon/home.svg">
-		Take me home, instead
+		<img src="/static/icon/home.svg"><?php echo TEXT[3] ?>
 	</a>
-
 </body>
+</html>

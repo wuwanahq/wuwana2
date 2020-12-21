@@ -87,12 +87,16 @@ class WebApp
 		if (strlen($host) < 5)
 		{ $host = filter_input(INPUT_SERVER, 'SERVER_NAME'); }
 
-		if ($host[2] == '.')
+		if ($host[2] == '.')  // xx.wuwana.com
 		{
 			$host[0] = $subdomain[0];
 			$host[1] = $subdomain[1];
 		}
-		else
+		elseif ($host[3] == '.')  // www.wuwana.com
+		{
+			$host = $subdomain . substr($host, 3);
+		}
+		else  // wuwana.com
 		{
 			$host = $subdomain . '.' . $host;
 		}
