@@ -1,7 +1,7 @@
 <?php
 const TEXT = [
 0 => 'Oops!',
-1 => "It seems that we cannot find the page you are looking for. Don't worry, this happens when the page has been deleted or the link has changed.",
-2 => 'Did you mean?',
-3 => 'Take me home, instead',
+1 => "我们似乎找不到你要找的页面。别担心，当页面被删除或链接改变时，就会出现这种情况。",
+2 => '你的意思是？',
+3 => '返回顶部',
 ];
