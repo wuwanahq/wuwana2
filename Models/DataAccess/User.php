@@ -43,18 +43,11 @@ class User extends DataAccess
 	 */
 	public function selectEmail($hash)
 	{
-		trigger_error('DEBUG - Email hash=' . $hash);
-
 		$query = $this->pdo->prepare('select * from UserAccount where Hash=?');
 		$query->bindValue(1, $hash, PDO::PARAM_STR);
-		$debug = $query->execute();
-
-		trigger_error('DEBUG - Email found? ' . var_export($debug, true));
-		trigger_error('DEBUG - Select query info=' . var_export($query->errorInfo(), true));
-		trigger_error('DEBUG - Select query PDO info=' . var_export($this->pdo->errorInfo(), true));
+		$query->execute();
 
 		$row = $query->fetchAll(PDO::FETCH_ASSOC);
-		trigger_error('DEBUG - Row=' . var_export($row, true));
 
 		if (empty($row))
 		{ return null; }
@@ -68,7 +61,6 @@ class User extends DataAccess
 		$user->adminLevel = $row['AdminLevel'];
 		$user->accessCode = str_pad($row['AccessCode'], 4, '0', STR_PAD_LEFT);
 		$user->lastLogin = $row['LastLogin'];
-		trigger_error('DEBUG - UserObject=' . var_export($user, true));
 		return $user;
 	}
 
@@ -83,7 +75,9 @@ class User extends DataAccess
 	public function insertUser($hash, $email, $companyID, $code, $adminLevel)
 	{
 		$query = $this->pdo->prepare(
-			'insert into UserAccount (Hash,Email,Name,CompanyID,AdminLevel,AccessCode,LastLogin) values (?,?,?,?,?,0)');
+			'insert into UserAccount (Hash,Email,Name,CompanyID,AdminLevel,AccessCode,LastLogin) values (?,?,?,?,?,?,0)');
+
+		$debug = $this->pdo->errorInfo();
 
 		$query->bindValue(1, $hash, PDO::PARAM_STR);
 		$query->bindValue(2, $email, PDO::PARAM_STR);

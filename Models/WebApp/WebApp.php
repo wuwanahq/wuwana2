@@ -7,6 +7,8 @@ namespace WebApp;
  */
 class WebApp
 {
+	const MEMORY_LIMIT = 1048576;  // 1 MB
+
 	/**
 	 * Return the selected language code by sub-domain, domain, user device language or the default language.
 	 * @return string 2 characters (ISO 639-1)

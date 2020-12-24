@@ -16,13 +16,14 @@ function handleEventLoad()
 	var index2 = html.indexOf(";</script>", index1);
 	var graphql = JSON.parse(html.substring(index1, index2)).entry_data.ProfilePage[0].graphql;
 
-	document.getElementById("Biography").value = graphql.user.biography;
-	document.getElementById("BusinessEmail").value = graphql.user.business_email;
+	document.getElementById("email").value = graphql.user.business_email;
+	document.getElementById("biography").value = graphql.user.biography;
+	document.getElementById("website").value = graphql.user.external_url;
 	document.getElementById("ExternalURL").value = graphql.user.external_url;
-	document.getElementById("FullName").value = graphql.user.full_name;
-	document.getElementById("FollowingCount").value = graphql.user.edge_follow.count;
-	document.getElementById("FollowerCount").value = graphql.user.edge_followed_by.count;
-	document.getElementById("PostCount").value = graphql.user.edge_owner_to_timeline_media.count;
+	document.getElementById("name").value = graphql.user.full_name;
+	document.getElementById("following").value = graphql.user.edge_follow.count;
+	document.getElementById("followers").value = graphql.user.edge_followed_by.count;
+	document.getElementById("posts").value = graphql.user.edge_owner_to_timeline_media.count;
 	document.getElementById("ProfilePicURL").value = graphql.user.profile_pic_url;
 
 	var extraInfo = graphql.user.category_name + ";" + graphql.user.business_category_name;

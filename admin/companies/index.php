@@ -15,11 +15,11 @@ if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 	$instagram = new DataAccess\SocialMediaObject();
 	$instagram->url = filter_input(INPUT_POST, 'instagram');
 	$instagram->link = filter_input(INPUT_POST, 'ExternalURL');
-	$instagram->profileName = filter_input(INPUT_POST, 'FullName');
-	$instagram->biography = filter_input(INPUT_POST, 'Biography');
-	$instagram->nbPost = filter_input(INPUT_POST, 'PostCount');
-	$instagram->nbFollower = filter_input(INPUT_POST, 'FollowerCount');
-	$instagram->nbFollowing = filter_input(INPUT_POST, 'FollowingCount');
+	$instagram->profileName = filter_input(INPUT_POST, 'name');
+	$instagram->biography = filter_input(INPUT_POST, 'biography');
+	$instagram->nbPost = filter_input(INPUT_POST, 'posts');
+	$instagram->nbFollower = filter_input(INPUT_POST, 'followers');
+	$instagram->nbFollowing = filter_input(INPUT_POST, 'following');
 
 	for ($i=0; filter_has_var(INPUT_POST, 'ThumbnailSrc' . $i); ++$i)
 	{ $instagram->pictures[] = filter_input(INPUT_POST, 'ThumbnailSrc' . $i); }
@@ -28,7 +28,6 @@ if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 	$scraper->storeCompany(
 		filter_input(INPUT_POST, 'website'),
 		filter_input(INPUT_POST, 'email'),
-		filter_input(INPUT_POST, 'BusinessEmail'),
 		filter_input(INPUT_POST, 'ProfilePicURL'),
 		filter_input(INPUT_POST, 'ExtraInfo'),
 		$instagram);
@@ -41,3 +40,6 @@ $language = WebApp\WebApp::getLanguageCode();
 require '../../Templates/text ' . $language . '.php';
 //require 'text ' . $language . '.php';
 require 'view.php';
+
+if (memory_get_peak_usage() > WebApp\WebApp::MEMORY_LIMIT)
+{ trigger_error(memory_get_peak_usage() . ' Bytes of memory used', E_USER_NOTICE); }

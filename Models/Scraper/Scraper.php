@@ -21,7 +21,7 @@ class Scraper
 		$this->storedCompany = $company;
 	}
 
-	public function storeCompany($website, $email, $businessEmail, $picture, $text, SocialMediaObject $instagram)
+	public function storeCompany($website, $email, $picture, $text, SocialMediaObject $instagram)
 	{
 		$company = new CompanyObject();
 		$company->name = $instagram->profileName;
@@ -32,8 +32,6 @@ class Scraper
 
 		if (strpos($email, '@') > 0)
 		{ $company->email = $email; }
-		elseif (strpos($businessEmail, '@') > 0)
-		{ $company->email = $businessEmail; }
 
 		if (!empty($website))
 		{ $company->website = $website; }
@@ -43,6 +41,7 @@ class Scraper
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()
 			. ';' . $instagram->biography
+			. ';' . $company->website
 			. ';' . $text;
 
 		$company->otherTags = $this->getBasicTags($content);
