@@ -60,3 +60,6 @@ $debug = mail(
 );
 
 trigger_error('DEBUG - 2nd email sent? ' . var_export($debug,true));
+
+if (memory_get_peak_usage() > WebApp\WebApp::MEMORY_LIMIT)
+{ trigger_error(memory_get_peak_usage() . ' Bytes of memory used', E_USER_NOTICE); }

@@ -40,9 +40,6 @@ class UserSession
 	{
 		$user = $this->user->selectEmail($email);
 
-		trigger_error('DEBUG - Login with email=' . var_export($email, true) . ' and code=' . var_export($code, true));
-		trigger_error('DEBUG - User=' . var_export($user, true));
-
 		if ($user instanceof UserObject && $user->accessCode == $code)
 		{
 			$debug = session_start([
@@ -54,6 +51,7 @@ class UserSession
 
 			$_SESSION['Name'] = $user->name;
 			$_SESSION['CompanyID'] = $user->company;
+			$_SESSION['AdminLevel'] = $user->adminLevel;
 
 			trigger_error('DEBUG - Session=' . var_export($_SESSION, true));
 
@@ -61,6 +59,9 @@ class UserSession
 			trigger_error('DEBUG - Session written? ' . var_export($debug2, true));
 			trigger_error('DEBUG - Session=' . var_export($_SESSION, true));
 		}
+
+		trigger_error('DEBUG - Login with email=' . var_export($email, true) . ' and code=' . var_export($code, true));
+		trigger_error('DEBUG - User=' . var_export($user, true));
 	}
 
 	public function logout()
@@ -121,7 +122,7 @@ class UserSession
 		$name = $email[0] . '…' . substr($email, strpos($email, '@'));
 		$email = self::hash($email);
 
-		trigger_error('DEBUG - Email hash=' . bin2hex($email));
+		trigger_error('DEBUG - Email hash=' . $email);
 
 		$code = rand(1, User::CODE_MAX_VALUE);
 		$adminLevel = $this->user->countAdmin() === 0 ? 1 : 0;

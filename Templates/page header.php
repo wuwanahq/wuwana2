@@ -22,7 +22,7 @@
 			if (isset($user) && $user->isLogin())
 			{
 				echo '<span>';
-				echo   $user->isAdmin() ? '<a href="/admin/companies">Admin page</a>' : $user->companyID;
+				echo   $user->isAdmin() ? '<a href="/admin/companies">Admin page</a>' : $_SESSION['CompanyID'];
 				echo   ' | ', $_SESSION['Name'];
 				echo '</span>';
 			}

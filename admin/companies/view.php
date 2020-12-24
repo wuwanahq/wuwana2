@@ -16,20 +16,22 @@
 				<div class="Box">
 					<form method="post">
 						<label for="instagram">Instagram profile URL:</label>
-						<input id="instagram" name="instagram" type="text" size="80" onchange="scrape()">
+						<input id="instagram" name="instagram" type="text" size="70" onchange="scrape()">
 						<br>
 						<label for="website">Website URL:</label>
-						<input id="website" name="website" type="text" size="89">
+						<input id="website" name="website" type="text" size="79">
 						<br>
 						<label for="email">Email address:</label>
-						<input id="email" name="email" type="text" size="81">
-						<input type="hidden" id="Biography" name="Biography">
-						<input type="hidden" id="BusinessEmail" name="BusinessEmail">
-						<input type="hidden" id="ExternalURL" name="ExternalURL">
-						<input type="hidden" id="FullName" name="FullName">
-						<input type="hidden" id="FollowingCount" name="FollowingCount">
-						<input type="hidden" id="FollowerCount" name="FollowerCount">
-						<input type="hidden" id="PostCount" name="PostCount">
+						<input id="email" name="email" type="text" size="77">
+						<br>
+						<label for="name">Company name:</label>
+						<input id="name" name="name" type="text" size="75">
+						<br>
+						<textarea id="biography" name="biography" rows="9" cols="90"></textarea>
+						<br>
+						<input type="text" id="posts" name="posts" size="9" readonly>posts
+						<input type="text" id="followers" name="followers" size="9" style="margin-left:73px" readonly>followers
+						<input type="text" id="following" name="following" size="9" style="margin-left:73px" readonly>following
 						<input type="hidden" id="ProfilePicURL" name="ProfilePicURL">
 						<input type="hidden" id="ThumbnailSrc0" name="ThumbnailSrc0">
 						<input type="hidden" id="ThumbnailSrc1" name="ThumbnailSrc1">
@@ -37,8 +39,9 @@
 						<input type="hidden" id="ThumbnailSrc3" name="ThumbnailSrc3">
 						<input type="hidden" id="ThumbnailSrc4" name="ThumbnailSrc4">
 						<input type="hidden" id="ThumbnailSrc5" name="ThumbnailSrc5">
+						<input type="hidden" id="ExternalURL" name="ExternalURL">
 						<input type="hidden" id="ExtraInfo" name="ExtraInfo">
-						<input type="submit" id="button" value="Add" disabled>
+						<input type="submit" id="button" value="Add" style="margin-left:73px" disabled>
 					</form>
 				</div>
 			</section>
