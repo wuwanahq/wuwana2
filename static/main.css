@@ -1131,7 +1131,7 @@ a .iconLabelHorizontal {
 @media screen and (max-width: 500px)
 {
 	body {
-		padding: 0 8px 24px}
+		padding: 0 8px 24px;
 	}
 	
 	/* BANNER */
