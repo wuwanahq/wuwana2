@@ -19,6 +19,12 @@
 		<div class="headerLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
 		<div class="header-invisible"></div>
 		<?php
+			$requestURL = filter_input(INPUT_SERVER, 'REQUEST_URI');
+			$position = strpos($requestURL, '?');
+
+			if ($position > 0)
+			{ $requestURL = substr($requestURL, 0, $position); }
+
 			if (isset($user) && $user->isLogin())
 			{
 				echo '<span>';
@@ -36,7 +42,7 @@
 				echo   '<input id="code" type="password" name="code"> <input type="submit" value="Login">';
 				echo '</form>';
 			}
-			elseif (filter_input(INPUT_SERVER, 'REQUEST_URI') == '/')
+			elseif ($requestURL == '/')
 			{
 				echo '<div class="HeaderIcon" onclick="showMenu()">';
 				echo   '<img id="TestImg" src="/static/icon/menu.svg">';
