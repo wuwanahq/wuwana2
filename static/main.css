@@ -1130,6 +1130,10 @@ a .iconLabelHorizontal {
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
 @media screen and (max-width: 500px)
 {
+	body {
+		padding: 0 8px 24px;
+	}
+	
 	/* BANNER */
 
 	.banner {

@@ -19,11 +19,21 @@ for (var i=1; i < 50; ++i)
 function handleEventChangeFilter()
 {
 	if (getComputedStyle(this).getPropertyValue("display") == "none")
-	{
-		// Mobile
-		var checkbox = document.getElementById(this.id.substr(0,1) + "0");
-		checkbox.disabled = false;
-		checkbox.checked = false;
+	{ //Mobile
+		let changeUrl = function()
+		{
+				let region_url = ''
+				let region_array = document.querySelectorAll('input[name]')
+				region_array.forEach((elem) => {
+					   if(elem.checked && elem.name != 'region') {
+							region_url += elem.name + '=on&'}
+			})
+			window.location = '?' + region_url.slice(0, -1)
+		}
+	
+		let submit_button = document.querySelector(".Button.Center")
+	
+		submit_button.addEventListener('click', changeUrl)
 	}
 	else
 	{
