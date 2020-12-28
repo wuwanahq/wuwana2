@@ -8,12 +8,12 @@
 </head>
 <body>
 	<?php include '../../Templates/page header.php' ?>
-	<div class="Container">
+	<div class="container">
 		<?php include '../../Templates/admin menu.php' ?>
-		<div class="ColumnMain">
+		<div class="column-main">
 			<section>
-				<h2>New company</h2>
-				<div class="box-16">
+				<h2>Add new company</h2>
+				<div class="box pad-16">
 					<form method="post">
 						<div class="form-layout-column">
 							<div class="form-label-wrapper">
@@ -46,19 +46,19 @@
 							<textarea id="biography" name="biography" rows="6" class="form-input"></textarea>
 						</div>
 						<div class="form-layout-row">
-							<div class="form-layout-column">
+							<div class="form-layout-column" style="margin-right: 24px;">
 								<div class="form-label-wrapper">
 									<label class="form-label">Posts</label>
 								</div>
 								<input type="text" id="posts" name="posts" size="6" readonly class="form-input">
 							</div>
-							<div class="form-layout-column">
+							<div class="form-layout-column" style="margin-right: 24px;">
 								<div class="form-label-wrapper">
 									<label class="form-label">Followers</label>
 								</div>
 								<input type="text" id="followers" name="followers" size="6" readonly class="form-input">
 							</div>
-							<div class="form-layout-column">
+							<div class="form-layout-column" style="margin-right: 24px;">
 								<div class="form-label-wrapper">
 									<label class="form-label">Following</label>
 								</div>
@@ -80,7 +80,7 @@
 			</section>
 			<section>
 				<h2>Companies</h2>
-				<div class="Box">
+				<div class="box pad-16">
 					<table>
 						<thead>
 							<tr>

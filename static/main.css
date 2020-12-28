@@ -3,24 +3,30 @@
 	font-family: "Roboto";
 	font-weight: 400; /* regular (normal) */
 	src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format("woff2"),
-		url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5g.woff) format('woff')}
+		url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5g.woff) format('woff')
+}
 
 /* https://fonts.googleapis.com/css2?family=Roboto:wght@500 (latin) */
 @font-face {
 	font-family: "Roboto";
 	font-weight: 500; /* medium */
 	src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2) format("woff2"),
-		url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9vAA.woff) format('woff')}
+		url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9vAA.woff) format('woff')
+}
 
 /* https://fonts.googleapis.com/css2?family=Roboto:wght@700 (latin) */
 @font-face {
 	font-family: "Roboto";
 	font-weight: 700; /* bold */
 	src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2) format("woff2"),
-		url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlvAA.woff) format('woff')}
+		url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlvAA.woff) format('woff')
+}
+
+/* GENERAL BODY */
 
 html {
-	scroll-behavior: smooth}
+	scroll-behavior: smooth
+}
 
 body {
 	font-family: "Roboto", sans-serif;
@@ -32,119 +38,282 @@ body {
 	margin: 0;
 	justify-content: center;
 	align-items: center;
-	padding: 0 16px 24px}
+	padding: 0 16px 24px;
+}
 
 section {
 	width: 100%;
 	display: flex;
-	flex-direction: column;}
+	flex-direction: column;
+}
 
 hr {
 	background-color: #efeded;
 	width: 100%;
 	margin: 0;
 	border: 0;
-	height: 1px}
+	height: 1px;
+}
 
 h1 { /* Title */
 	font-size: 1.5rem;
 	line-height: 1.3;
 	font-weight: 500;
-	margin: 0 0 16px;}
+	margin: 0 0 16px;
+}
 
 h2 { /* Subtitle */
 	font-size: 1.125rem;
 	line-height: 1.3;
 	font-weight: 500;
-	margin: 0 0 16px}
+	margin: 0 0 8px;
+}
 
 h3 { /* Company Title */
 	color: #161313;
 	font-size: 1rem;
 	line-height: 1.3;
 	font-weight: 700;
-	margin: 0;}
+	margin: 0;
+}
 
 p {
 	font-size: 1rem;
 	line-height: 1.5;
-	margin-top: 8px}
+	margin-top: 8px;
+}
 
 a {
-	text-decoration: none}
+	text-decoration: none;
+}
+
+.Company .Profile form {
+	text-align: right;
+}
+
+.Company .Profile form label {
+	font-size: 0.5rem;
+}
+
+/* INPUT CSS */
 
 input[type="checkbox"] {
 	width: 16px;
 	height: 16px;
-	margin: 0 8px 0 0}
+	margin: 0 8px 0 0;
+}
 
-dl dd input,
-dl dd label {
-	vertical-align: middle;
-	cursor: pointer}
-
-dl dd label {
-	font-weight: 400;
-	color: #545151}
-
-.Company .Profile form {
-	text-align: right}
-
-.Company .Profile form label {
-	font-size: 0.5rem}
+/* The Description List Element */
 
 dl {
-	margin: 16px 16px 16px}
+	margin: 0;
+}
 
 dt {
 	font-size: 1rem;
 	line-height: 1.5;
-	font-weight: 700;
-	margin: 0 0 16px 0;
-	margin-block-start: 0}
+	font-weight: 500;
+	margin: 0 0 8px 0;
+	margin-block-start: 0;
+}
 
 dd {
-	margin: 0 8px 8px 0;}
+	margin: 0 0 8px;
+}
 
-/* Position */
+dl dd input,
+dl dd label {
+	vertical-align: middle;
+	cursor: pointer;
+}
 
-.Center {
-	align-self: center}
+dl dd label {
+	font-weight: 400;
+	color: #545151;
+}
+
+/* Form and Labels */
+
+.form-layout-column {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}
+
+.form-layout-row {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 16px;
+}
+
+.form-label-wrapper {
+	margin: 0 0 4px;
+}
+
+.form-label {
+	font-size: 0.875rem;
+}
+
+.form-input {
+	margin: 0;
+	padding: 4px 8px;
+	border-radius: 8px;
+	border: 1px solid #8b8989;
+	font-size: 1rem;
+}
 
 /* CSS TO MAKE THE LAYOUT */
 
-.Container {
+.container {
 	display: flex;
 	width: 100%;
 	max-width: 1200px;
-	justify-content: center;
-	margin-top: 24px}
+	margin-top: 16px;
+}
 
-.ColumnLeft {
+.column-left {
 	position: static;
 	min-width: 280px;
 	max-width: 280px;
 	height: auto;
 	margin-right: 24px;
-	align-self: stretch}
+	align-self: stretch;
+}
 
-.ColumnMain {
+.column-main {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	width: 100%;
-	height: auto}
+	height: auto;
+}
 
-.Sticky {
+/* Modification */
+
+.flow-y {
+	overflow-y: scroll;
+}
+
+.pad-16 {
+	padding: 16px;
+}
+
+.center {
+	align-self: center;
+}
+
+.sticky {
 	position: sticky;
-	top: 60px}
+	top: 60px;
+}
 
-.Sticky .Button.Center {
-	display: none}
+.sticky .buttonIcon.center {
+	display: none;
+}
+
+/* BOXES & PANELS */
+
+.box {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	width: auto;
+	min-height: 20px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	background-color: #ffffff;
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+}
 
 .Aspect2-3 {
 	padding-top: 150%; /* aspect ratio 2:3 */
-	position: relative}
+	position: relative;
+}
+
+/* Panel */
+
+.boxPanel {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	width: auto;
+	min-height: 20px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	background-color: #ffffff;
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	padding-bottom: 16px;
+}
+
+.boxPanel hr {
+	margin: 16px 0;
+}
+
+.boxPanel h1 {
+	margin: 0 16px 8px;
+	font-weight: 700;
+}
+
+.boxPanel h3 {
+	margin: 0 16px 8px;
+}
+
+.boxPanel p {
+	color: #545151;
+	font-size: 1rem;
+	line-height: 1.3;
+	text-align: center;
+	margin: 0 16px 16px;
+}
+
+.boxPanel ul {
+	margin: 0 16px;
+	padding: 0;
+	display: flex;}
+
+.boxPanel li {
+	display: inline;
+	margin: 0 4px
+}
+
+.panelCover {
+	margin-bottom: 8px;
+}
+
+.panelCover img {
+	text-align: center;
+	height: 28px;
+	object-fit: cover
+}
+
+.iconLabelHorizontal {
+	padding: 4px 16px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color:  #545151;
+	font-weight: 500;
+	background-color: #E3E1E1
+}
+
+a .iconLabelHorizontal {
+	background-color: transparent;
+	font-weight: 400;
+}
+
+.iconLabelHorizontal:hover {
+	background-color: #E3E1E1;
+}
+
+.iconLabelHorizontal img {
+	margin-right: 8px;
+}
+
+.contactSection {
+	align-items: center;
+}
 
 /* TEXT STYLE */
 
@@ -178,12 +347,6 @@ dd {
 	font-weight: 400;
 	margin-right: 8px}
 
-.TextButton {
-	font-size: 12px;
-	line-height: 14px;
-	font-weight: 700;
-	color: #161313}
-
 /* BUTTONS */
 
 /* Button Main */
@@ -191,13 +354,14 @@ dd {
 .buttonMain {
 	display: flex;
 	padding: 8px;
+	margin: 0;
 	align-items: center;
 	align-self: center;
 	background-color: white;
 	color: black;
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 1.3;
-	font-weight: 700;
+	font-weight: 500;
 	border-style: solid;
 	border-color: black;
 	border-width: 1px;
@@ -231,7 +395,7 @@ dd {
 	cursor: not-allowed;
 }
 
-/* Button Icon */
+/* Button With Left Icon */
 
 .buttonIcon {
 	display: flex;
@@ -239,9 +403,9 @@ dd {
 	align-items: center;
 	background-color: white;
 	color: black;
-	font-size: 12px;
+	font-size: 14px;
 	align-items: center;
-	font-weight: 700;
+	font-weight: 500;
 	border-style: solid;
 	border-color: black;
 	border-width: 1px;
@@ -282,7 +446,8 @@ dd {
 	position: fixed;
 	right: 24px;
 	bottom: 24px;
-	transition: visibility 0.3s linear,opacity 0.3s linear;}
+	transition: visibility 0.3s linear,opacity 0.3s linear;
+}
 
 /* Button Special */
 
@@ -291,9 +456,9 @@ dd {
 	align-items: center;
 	background-color: black;
 	color: white;
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 1.3;
-	font-weight: 700;
+	font-weight: 500;
 	border-radius: 8px;
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
@@ -311,6 +476,8 @@ dd {
 	cursor: not-allowed;
 }
 
+/* Pill */
+
 .pill {
 	padding: 8px 16px;
 	align-items: center;
@@ -327,8 +494,6 @@ dd {
 	cursor: pointer
 }
 
-/* Pill */
-
 .pill:hover {
 	background-color: #E3E1E1; /* Grey 20 */
 }
@@ -341,7 +506,7 @@ dd {
 	cursor: not-allowed;
 }
 
-/* Button Social */
+/* Button Social Circle */
 
 .buttonSocial {
 	display: flex;
@@ -394,12 +559,12 @@ dd {
 	padding: 0 16px;
 	max-width: 1200px} /* Same as body max width */
 
-.header-lang {
+.header-lang { /* Language selection container */
 	display: flex;
 	flex-direction: row;
 }
 
-.lang {
+.lang { /* The language selection */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -411,21 +576,21 @@ dd {
 	cursor: pointer;
 }
 
-	.lang:hover {
-		background-color: #E3E1E1;
-	}
+.lang:hover {
+	background-color: #E3E1E1;
+}
 
 .headerLogo {
 	height: 24px}
 
-.HeaderIcon {
+.header-icon {
 	border-radius: 8px;
 	padding: 8px;
 	margin-right: -8px;
 	cursor: pointer;
 	display: none;}
 
-.HeaderIcon:hover {
+.header-icon:hover {
 	background-color:#E3E1E1}
 
 .header-invisible { /* used to make the header layout */
@@ -436,6 +601,19 @@ dd {
 }
 
 /* POP-UP */
+
+.popup-lang {
+	top: 40px;
+	position: absolute;
+	display: none;
+	flex-direction: column;
+	white-space: nowrap;
+	padding: 16px;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 8px;
+	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
+}
 
 .popup-title {
 	display: flex;
@@ -449,19 +627,6 @@ dd {
 
 .header-lang:hover .popup-lang {
 	display: flex;
-}
-
-.popup-lang {
-	top: 40px;
-	position: absolute;
-	display: none;
-	flex-direction: column;
-	white-space: nowrap;
-	padding: 16px;
-	background-color: white;
-	border: 1px solid black;
-	border-radius: 8px;
-	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
 }
 
 .popup-lang h2 {
@@ -482,67 +647,6 @@ dd {
 	text-decoration: underline;
 	background-color: #fafafa;
 }
-
-/* Old buttons */
-
-.Button {
-	color: #161313;
-	display: flex;
-	padding: 8px;
-	align-items: center;
-	border-style: solid;
-	border-width: 1px;
-	border-color: black;
-	border-radius: 8px;
-	background-color: white;
-	overflow: hidden;
-	font-size: 12px;
-	line-height: 14px;
-	font-weight: 700;
-	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
-	transition: color 200ms, background-color 200ms;
-	cursor: pointer}
-
-.Button:hover {
-	color: white;
-	background-color: #161313}
-
-.Button:hover img {
-	filter: invert(100%)}
-
-.Button img {
-	margin-right: 4px}
-
-.Button.Pill {
-	padding: 8px 16px;
-	font-size: 0.875rem;
-	line-height: 1;
-	border-radius: 16px;
-	font-weight: 500;
-	align-self: center;
-	margin-bottom: 8px}
-
-
-.Button.Toggle {
-	color: #161313;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	width: 100%;
-	border-style: none;
-	border-radius: 0;
-	box-shadow: none;
-	padding: 4px 0 ;
-	margin: 0;
-	text-decoration: none;
-	transition: color 200ms, background-color 200ms}
-
-.Button.Toggle:hover {
-	background-color: #fafafa;
-	color: #161313}
-
-.Button.Toggle img {
-	filter: none}
 
 /* CARDS */
 
@@ -583,6 +687,14 @@ dd {
 	overflow: hidden;
 	margin-right: 16px}
 
+.logo-s {
+	width: 24px;
+	min-width: 24px;
+	height: 24px;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
 .Logo img {
 	width: 100%;
 	height: 100%;
@@ -621,68 +733,6 @@ dd {
 	.BadgeArea .ItemLabel:last-child {
 		margin-right: 16px;}
 
-/* BOX */
-
-.Box {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	overflow: hidden;
-	width: auto;
-	min-height: 20px;
-	margin-bottom: 24px;
-	border-radius: 8px;
-	background-color: #ffffff;
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05)}
-
-.Box.Filter {
-	overflow-y: scroll}
-
-.box-16 {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	overflow: hidden;
-	width: auto;
-	padding: 16px;
-	margin-bottom: 24px;
-	border-radius: 8px;
-	background-color: #ffffff;
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05)
-}
-
-/* FORM */
-.form-layout-column {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 16px;
-}
-
-.form-layout-row {
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 16px;
-}
-
-	.form-layout-row .form-layout-column {
-		margin: 0 20px 0 0;
-	}
-
-.form-label-wrapper {
-	margin: 0 0 4px;
-}
-
-.form-label {
-	font-size: 0.875rem;
-}
-
-.form-input {
-	margin: 0;
-	padding: 4px 8px;
-	border-radius: 8px;
-	border: 1px solid #8b8989;
-	font-size: 1rem;
-}
 
 /* ABOUT US */
 
@@ -721,88 +771,6 @@ dd {
 
 .Box.About .Button.Toggle {
 	display: none;}
-
-/* Panel */
-
-.boxPanel {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	overflow: hidden;
-	width: 100%;
-	min-height: 20px;
-	margin-bottom: 24px;
-	border-radius: 8px;
-	background-color: #ffffff;
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
-	padding-bottom: 16px;
-}
-
-.boxPanel hr {
-	margin: 16px 0;
-}
-
-.boxPanel h1 {
-	margin: 0 16px 8px;
-	font-weight: 700;
-}
-
-.boxPanel h3 {
-	margin: 0 16px 8px;
-}
-
-.boxPanel p {
-	color: #545151;
-	font-size: 1rem;
-	line-height: 1.3;
-	text-align: center;
-	margin: 0 16px 16px;
-}
-
-.boxPanel ul {
-	margin: 0 16px;
-	padding: 0;
-	display: flex;}
-
-.boxPanel li {
-	display: inline;
-	margin: 0 4px
-}
-
-.panelCover {
-	margin-bottom: 8px}
-
-	.panelCover img {
-		text-align: center;
-		height: 28px;
-		object-fit: cover}
-
-.iconLabelHorizontal {
-	padding: 4px 16px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	color:  #545151;
-	font-weight: 500;
-	background-color: #E3E1E1
-}
-
-a .iconLabelHorizontal {
-	background-color: transparent;
-	font-weight: 400;
-}
-
-.iconLabelHorizontal:hover {
-	background-color: #E3E1E1;
-}
-
-.iconLabelHorizontal img {
-	margin-right: 8px;
-}
-
-.contactSection {
-	align-items: center;
-}
 
 
 /* BANNER */
@@ -1073,26 +1041,25 @@ a .iconLabelHorizontal {
 		font-size: 0.75rem;
 	}
 
-	.Container {
-		flex-direction: column}
+	.container {
+		flex-direction: column;
+	}
 
-	.ColumnLeft {
+	.column-left {
 		min-width: 100%;
-        max-width: 100%}
+		max-width: 100%;
+	} /* This makes the column to expand on the entire screen */
 
-	.HeaderIcon {
+	.header-icon {
 		display: inline}
 
 	.banner {
-		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%),
-			url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg)}
+		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg);
+	}
 
 	/* MENU MOBILE */
 
-	.Box.Filter {
-		box-shadow: none;}
-
-	.Sticky {
+	.sticky {
 		z-index: 10;
 		display: none;
 		flex-direction: column;
@@ -1103,13 +1070,18 @@ a .iconLabelHorizontal {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		overflow-y: scroll}
+		overflow-y: scroll;
+	}
 
-	.Sticky .Button.Center {
+	.sticky .box {
+		box-shadow: none;
+	}
+
+	.sticky .buttonIcon.center {
 		display: flex}
 
-	.Sticky h2 {
-		margin: 16px 16px;
+	.sticky h2 {
+		margin: 16px;
 	}
 
 	.menu {
@@ -1124,9 +1096,6 @@ a .iconLabelHorizontal {
 		right: 0;
 		bottom: 0;
 		overflow-y: scroll}
-
-	.menu .Button.Center {
-		margin-bottom: 24px}
 
 	dl dd label {
 		font-weight: 500;
@@ -1146,28 +1115,28 @@ a .iconLabelHorizontal {
 		font-size: 0.875rem;
 		line-height: 1;
 		border-radius: 16px;
-		font-weight: 500;
-		align-self: center}
+		font-weight: 400;
+		align-self: center
+	}
 
 	dl input {
 		display: none}
 
 	dl input:checked + label {
 		color: white;
-		background-color: #161313}
-
-	dt {
-		font-size: 1rem;
-		line-height: 1.5;
-		font-weight: 700;
-		margin: 0 0 16px 0;
-		margin-block-start: 0}
+		background-color: #161313
+	}
 
 	dd {
 		display: inline-block;
 		border-radius: 16px;
 		transition: color 200ms, background-color 200ms;
-		box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05)}
+		margin: 4px;
+	}
+
+	dd:first-child {
+		margin-left: 0;
+	}
 }
 
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
@@ -1222,15 +1191,3 @@ a .iconLabelHorizontal {
 		justify-content: flex-start;
 		align-items: flex-start}
 }
-
-/* RANDOM CLASSES... */
-
-.Black {
-	height: 40px;
-	width: 40px;
-	background-color: black}
-
-.Box.Test {
-	padding-top: 56.25%;
-	background-color: blue;
-	position: relative}

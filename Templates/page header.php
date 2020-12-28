@@ -44,14 +44,14 @@
 			}
 			elseif ($requestURL == '/')
 			{
-				echo '<div class="HeaderIcon" onclick="showMenu()">';
-				echo   '<img id="TestImg" src="/static/icon/menu.svg">';
+				echo '<div class="header-icon" onclick="showMenu()">';
+				echo   '<img id="menu-icon" src="/static/icon/menu.svg">';
 				echo '</div>';
 			}
 			else
 			{
-				echo '<div class="HeaderIcon" onclick="showMenu()">';
-				echo   '<a href="/"><img id="TestImg" src="/static/icon/home.svg"></a>';
+				echo '<div class="header-icon" onclick="showMenu()">';
+				echo   '<a href="/"><img id="menu-icon" src="/static/icon/home.svg"></a>';
 				echo '</div>';
 			}
 		?>

@@ -13,14 +13,14 @@
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
-	<div class="Container">
-		<section class="ColumnLeft">
+	<div class="container">
+		<section class="column-left">
 			<div class="boxPanel">
 				<div class="panelCover">
 					<img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon">
 				</div>
 				<p><?php echo TEXT[9] ?></p>
-				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
+				<a class="buttonMain center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
 					<?php echo TEXT[10] ?>
 				</a>
 				<hr>
@@ -42,9 +42,9 @@
 					</ul>
 				</section>
 			</div>
-			<section class="Sticky" id="menu">
+			<section class="sticky" id="menu">
 				<h2><?php echo TEXT[8] ?></h2>
-				<div class="Box Filter">
+				<div class="box pad-16 flow-y">
 					<form method="get" action="/">
 <!--
 					<dl>
@@ -87,11 +87,11 @@
 						?>
 					</dl>
 					</form>
-					<div class="Button Center"><img src="/static/icon/filter.svg"><?php echo TEXT[7] ?></div>
+					<div class="buttonIcon center"><img src="/static/icon/filter.svg"><?php echo TEXT[7] ?></div>
 				</div>
 			</section>
 		</section>
-		<section class="ColumnMain">
+		<section class="column-main">
 			<div class="banner">
 				<div class="bannerText">
 					<h2><?php echo TEMP_TEXT[0] ?></h2>
@@ -103,67 +103,9 @@
 				<div class="information-error-vertical"></div>
 				<h2><?php echo TEXT[12] ?></h2>
 			</div>
-<!--
-			<section>
-				<h2>Empresas destacadas</h2>
-				<div class="Box">
-					<a class="Card" href="company">
-						<div class="Logo">
-							<img src="/static/logo/square1.svg">
-						</div>
-						<div class="CompanyMain">
-							<div class="CompanyContent">
-								<h3>Company 1</h3>
-								<ul class="Label">
-									<li>Tostador</li>
-									<li>Cafeteria</li>
-								</ul>
-								<div class="tagRegion">Cataluna</div>
-							</div>
-							<div class="CompanyMain">
-								<div class="CompanyContent">
-									<h3>Company 1</h3>
-									<ul class="Label">
-										<li>Tostador</li>
-										<li>Cafeteria</li>
-									</ul>
-									<div class="Tag Region">Cataluna</div>
-								</div>
-								<div class="BadgeArea">
-									<div class="ItemLabel">
-										<div class="GoogleReview">
-											4,8
-											<span class="ReviewScale">/5</span>
-										</div>
-										Google review
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/sustainability.svg">
-										<span>Sostenible</span>
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/sustainability.svg">
-										<span>Sostenible</span>
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/sustainability.svg">
-										<span>Sostenible</span>
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/social-impact.svg">
-										<span>Compromiso social</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-					<hr/>
-				</div>
-			</section>
--->
 			<section>
 				<h2><?php echo TEXT[5] ?></h2>
-				<div class="Box">
+				<div class="box">
 					<?php
 						$counter = count($companies);
 
@@ -191,7 +133,7 @@
 					?>
 				</div>
 			</section>
-			<a class="buttonIcon Center" href="?show=all">
+			<a class="buttonIcon center" href="?show=all">
 				<img src="/static/icon/plus.svg">
 				<?php echo TEXT[6] ?>
 			</a>

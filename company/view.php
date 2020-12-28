@@ -13,8 +13,8 @@
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
-	<div class="Container">
-		<section class="ColumnLeft">
+	<div class="container">
+		<section class="column-left">
 			<div class="companyPanel">
 				<section class="companyAbout">
 					<div class="Logo">
@@ -158,7 +158,7 @@
 				?>
 			</div>
 		</section>
-		<section class="ColumnMain">
+		<section class="column-main">
 			<section class="companyInstagram">
 			<?php
 				if (isset($company->instagram))
@@ -167,7 +167,7 @@
 					echo  '<h2>';
 						printf(TEXT[2], $company->name);
 					echo  '</h2>';
-					echo  '<div class="Box">';
+					echo  '<div class="box">';
 					echo   '<div class="InstagramInfo">';
 					echo    '<h3>', $company->instagram->profileName, '</h3>';
 					echo    '<p>', nl2br($company->instagram->biography), '<br>';
@@ -217,7 +217,7 @@
 				}
 			?>
 			</section>
-			<a class="buttonIcon Center" href="/">
+			<a class="buttonIcon center" href="/">
 				<img src="/static/icon/home.svg">
 				<?php echo TEXT[4] ?>
 			</a>

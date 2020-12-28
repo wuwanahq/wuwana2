@@ -6,12 +6,12 @@
 </head>
 <body>
 	<?php include '../../Templates/page header.php' ?>
-	<div class="Container">
+	<div class="container">
 		<?php include '../../Templates/admin menu.php' ?>
-		<div class="ColumnMain">
+		<div class="column-main">
 			<section>
 				<h2>Users</h2>
-				<div class="Box">
+				<div class="box pad-16">
 					<table>
 						<thead>
 							<tr>

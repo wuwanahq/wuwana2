@@ -7,12 +7,12 @@
 </head>
 <body>
 	<?php include '../../Templates/page header.php' ?>
-	<div class="Container">
+	<div class="container">
 		<?php include '../../Templates/admin menu.php' ?>
-		<div class="ColumnMain">
+		<div class="column-main">
 			<section>
 				<h2>Base tags</h2>
-				<div class="Box">
+				<div class="box">
 					<table>
 						<thead>
 							<tr>
@@ -48,7 +48,7 @@
 			</section>
 			<section>
 				<h2>Combined tags</h2>
-				<div class="Box">
+				<div class="box">
 					<table>
 						<thead>
 							<tr>

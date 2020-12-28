@@ -31,7 +31,7 @@ function handleEventChangeFilter()
 			window.location = '?' + region_url.slice(0, -1)
 		}
 	
-		let submit_button = document.querySelector(".Button.Center")
+		let submit_button = document.querySelector(".buttonIcon.center")
 	
 		submit_button.addEventListener('click', changeUrl)
 	}
@@ -88,12 +88,12 @@ function showLang()
 }
 
 
-// Show menu
+// Show menu on mobile
 function showMenu()
 {
 	var div = document.getElementById("menu");
 	var divLang = document.getElementById("popup-lang");
-	var img = document.getElementById("TestImg");
+	var img = document.getElementById("menu-icon");
 	var body = document.body;
 
 	if (getComputedStyle(div).getPropertyValue("display") == "none")
