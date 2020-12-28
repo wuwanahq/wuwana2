@@ -26,7 +26,7 @@
 						else
 						{ echo '<h1>', $company->name, '</h1>'; }
 					?>
-					<ul class="Label">
+					<ul class="area-tag">
 						<li><?php echo implode('</li><li>', $company->tags) ?></li>
 					</ul>
 					<div class="tagRegion"><?php echo $company->region ?></div>

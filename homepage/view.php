@@ -87,7 +87,7 @@
 						?>
 					</dl>
 					</form>
-					<div class="buttonIcon center"><img src="/static/icon/filter.svg"><?php echo TEXT[7] ?></div>
+					<div id="apply-filter" class="buttonIcon center mobile"><img src="/static/icon/filter.svg"><?php echo TEXT[7] ?></div>
 				</div>
 			</section>
 		</section>
@@ -98,7 +98,6 @@
 					<p><?php echo TEMP_TEXT[1] ?></p>
 				</div>
 			</div>
-
 			<div class="information-error-box">
 				<div class="information-error-vertical"></div>
 				<h2><?php echo TEXT[12] ?></h2>
@@ -118,10 +117,13 @@
 							echo   '<div class="CompanyMain">';
 							echo     '<div class="CompanyContent">';
 							echo       '<h3>', $company->name, '</h3>';
-							echo       '<ul class="Label">';
+							echo       '<ul class="tag-area">';
 							echo         '<li>', implode('</li><li>', $company->tags), '</li>';
 							echo       '</ul>';
-							echo       '<div class="tagRegion">', $locations[$company->region], '</div>';
+							echo       '<div class="button-icon-small">'; 
+							echo         '<img src=/static/icon/small/map-small-grey50.svg>';
+							echo         $locations[$company->region];
+							echo       '</div>';
 							echo     '</div>';
 							echo     '<div class="BadgeArea"></div>';
 							echo   '</div>';
