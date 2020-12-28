@@ -19,10 +19,12 @@
 				<div class="panelCover">
 					<img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon">
 				</div>
-				<p><?php echo TEXT[9] ?></p>
-				<a class="buttonMain center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
-					<?php echo TEXT[10] ?>
-				</a>
+				<section>
+					<p><?php echo TEXT[9] ?></p>
+					<a class="buttonMain center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
+						<?php echo TEXT[10] ?>
+					</a>
+				</section>
 				<hr>
 				<section class="contactSection">
 					<h3><?php echo TEXT[11] ?></h3>
