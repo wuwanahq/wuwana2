@@ -28,13 +28,13 @@
 					<h3><?php echo TEXT[11] ?></h3>
 					<ul>
 						<li>
-							<a class="ItemLabel" href="https://www.instagram.com/wuwana.es/" target="_blank">
+							<a class="item-label" href="https://www.instagram.com/wuwana.es/" target="_blank">
 								<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
 								Instagram
 							</a>
 						</li>
 						<li>
-							<a class="ItemLabel" href="mailto:jonathan@wuwana.com">
+							<a class="item-label" href="mailto:jonathan@wuwana.com">
 								<div class="buttonSocial"><img src="/static/icon/email.svg"></div>
 								Email
 							</a>
@@ -110,22 +110,22 @@
 
 						foreach ($companies as $permalink => $company)
 						{
-							echo '<a class="Card" href="/', $permalink, '">';
-							echo   '<div class="Logo">';
+							echo '<a class="card" href="/', $permalink, '">';
+							echo   '<div class="logo-main margin-r16">';
 							echo     '<img src="', $company->logo, '" alt="', $company->name, ' logo">';
 							echo   '</div>';
-							echo   '<div class="CompanyMain">';
-							echo     '<div class="CompanyContent">';
+							echo   '<div class="company-card-wrapper">';
+							echo     '<div class="company-card-info">';
 							echo       '<h3>', $company->name, '</h3>';
 							echo       '<ul class="tag-area">';
 							echo         '<li>', implode('</li><li>', $company->tags), '</li>';
 							echo       '</ul>';
-							echo       '<div class="button-icon-small">'; 
+							echo       '<div class="button-icon-small margin-t-auto">'; 
 							echo         '<img src=/static/icon/small/map-small-grey50.svg>';
 							echo         $locations[$company->region];
 							echo       '</div>';
 							echo     '</div>';
-							echo     '<div class="BadgeArea"></div>';
+							echo     '<div class="company-card-badge-wrapper"></div>';
 							echo   '</div>';
 							echo '</a>';
 

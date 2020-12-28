@@ -1,8 +1,8 @@
 <h1 class="VisuallyHidden">Wuwana</h1>
 <header class="headerBar">
 	<div class="headerContainer">
-		<div class="header-lang" onclick="showLang()">
-			<div class="lang">
+		<div class="header-lang-wrapper" onclick="showLang()">
+			<div class="header-lang">
 				<?php echo $language == 'zh' ? WebApp\Config::LANGUAGES[$language] : strtoupper($language) ?>
 			</div>
 			<div class="popup-lang" id="popup-lang">
