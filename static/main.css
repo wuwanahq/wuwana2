@@ -830,6 +830,7 @@ a .iconLabelHorizontal {
 }
 
 /* ----- PAGES -----*/
+
 /* COMPANY PROFILE PAGE */
 /* companyPanel Sections */ 
 
@@ -855,6 +856,11 @@ a .iconLabelHorizontal {
 	text-align: left;
 	margin: 0;
 	line-height: 1.5;
+}
+
+.company-contact ul {
+	display: flex;
+	justify-content: center;
 }
 
 /* Instagram Card */

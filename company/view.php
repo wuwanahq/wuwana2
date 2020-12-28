@@ -79,7 +79,7 @@
 					</ul>
 				</section>
 -->
-				<section class="contactSection">
+				<section class="company-contact">
 					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
 						<?php
