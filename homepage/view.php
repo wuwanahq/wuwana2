@@ -13,28 +13,30 @@
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
-	<div class="Container">
-		<section class="ColumnLeft">
+	<div class="container">
+		<section class="column-left">
 			<div class="boxPanel">
 				<div class="panelCover">
 					<img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon">
 				</div>
-				<p><?php echo TEXT[9] ?></p>
-				<a class="buttonMain Center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
-					<?php echo TEXT[10] ?>
-				</a>
+				<section>
+					<p><?php echo TEXT[9] ?></p>
+					<a class="buttonMain center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
+						<?php echo TEXT[10] ?>
+					</a>
+				</section>
 				<hr>
 				<section class="contactSection">
 					<h3><?php echo TEXT[11] ?></h3>
 					<ul>
 						<li>
-							<a class="ItemLabel" href="https://www.instagram.com/wuwana.es/" target="_blank">
+							<a class="item-label" href="https://www.instagram.com/wuwana.es/" target="_blank">
 								<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
 								Instagram
 							</a>
 						</li>
 						<li>
-							<a class="ItemLabel" href="mailto:jonathan@wuwana.com">
+							<a class="item-label" href="mailto:jonathan@wuwana.com">
 								<div class="buttonSocial"><img src="/static/icon/email.svg"></div>
 								Email
 							</a>
@@ -42,9 +44,9 @@
 					</ul>
 				</section>
 			</div>
-			<section class="Sticky" id="menu">
+			<section class="sticky" id="menu">
 				<h2><?php echo TEXT[8] ?></h2>
-				<div class="Box Filter">
+				<div class="box filter">
 					<form method="get" action="/">
 <!--
 					<dl>
@@ -87,101 +89,45 @@
 						?>
 					</dl>
 					</form>
-					<div class="Button Center"><img src="/static/icon/filter.svg"><?php echo TEXT[7] ?></div>
+					<div id="apply-filter" class="buttonIcon center mobile"><img src="/static/icon/filter.svg"><?php echo TEXT[7] ?></div>
 				</div>
 			</section>
 		</section>
-		<section class="ColumnMain">
+		<section class="column-main">
 			<div class="banner">
 				<div class="bannerText">
 					<h2><?php echo TEMP_TEXT[0] ?></h2>
 					<p><?php echo TEMP_TEXT[1] ?></p>
 				</div>
 			</div>
-
 			<div class="information-error-box">
 				<div class="information-error-vertical"></div>
 				<h2><?php echo TEXT[12] ?></h2>
 			</div>
-<!--
-			<section>
-				<h2>Empresas destacadas</h2>
-				<div class="Box">
-					<a class="Card" href="company">
-						<div class="Logo">
-							<img src="/static/logo/square1.svg">
-						</div>
-						<div class="CompanyMain">
-							<div class="CompanyContent">
-								<h3>Company 1</h3>
-								<ul class="Label">
-									<li>Tostador</li>
-									<li>Cafeteria</li>
-								</ul>
-								<div class="tagRegion">Cataluna</div>
-							</div>
-							<div class="CompanyMain">
-								<div class="CompanyContent">
-									<h3>Company 1</h3>
-									<ul class="Label">
-										<li>Tostador</li>
-										<li>Cafeteria</li>
-									</ul>
-									<div class="Tag Region">Cataluna</div>
-								</div>
-								<div class="BadgeArea">
-									<div class="ItemLabel">
-										<div class="GoogleReview">
-											4,8
-											<span class="ReviewScale">/5</span>
-										</div>
-										Google review
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/sustainability.svg">
-										<span>Sostenible</span>
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/sustainability.svg">
-										<span>Sostenible</span>
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/sustainability.svg">
-										<span>Sostenible</span>
-									</div>
-									<div class="ItemLabel">
-										<img src="/static/badge/social-impact.svg">
-										<span>Compromiso social</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-					<hr/>
-				</div>
-			</section>
--->
 			<section>
 				<h2><?php echo TEXT[5] ?></h2>
-				<div class="Box">
+				<div class="box">
 					<?php
 						$counter = count($companies);
 
 						foreach ($companies as $permalink => $company)
 						{
-							echo '<a class="Card" href="/', $permalink, '">';
-							echo   '<div class="Logo">';
+							echo '<a class="card" href="/', $permalink, '">';
+							echo   '<div class="logo-main margin-r16">';
 							echo     '<img src="', $company->logo, '" alt="', $company->name, ' logo">';
 							echo   '</div>';
-							echo   '<div class="CompanyMain">';
-							echo     '<div class="CompanyContent">';
+							echo   '<div class="company-card-wrapper">';
+							echo     '<div class="company-card-info">';
 							echo       '<h3>', $company->name, '</h3>';
-							echo       '<ul class="Label">';
+							echo       '<ul class="tag-area">';
 							echo         '<li>', implode('</li><li>', $company->tags), '</li>';
 							echo       '</ul>';
-							echo       '<div class="tagRegion">', $locations[$company->region], '</div>';
+							echo       '<div class="button-icon-small margin-t-auto">'; 
+							echo         '<img src=/static/icon/small/map-small-grey50.svg>';
+							echo         $locations[$company->region];
+							echo       '</div>';
 							echo     '</div>';
-							echo     '<div class="BadgeArea"></div>';
+							echo     '<div class="company-card-badge-wrapper"></div>';
 							echo   '</div>';
 							echo '</a>';
 
@@ -191,7 +137,7 @@
 					?>
 				</div>
 			</section>
-			<a class="buttonIcon Center" href="?show=all">
+			<a class="buttonIcon center" href="?show=all">
 				<img src="/static/icon/plus.svg">
 				<?php echo TEXT[6] ?>
 			</a>

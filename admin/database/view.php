@@ -6,12 +6,12 @@
 </head>
 <body>
 	<?php include '../../Templates/page header.php' ?>
-	<div class="Container">
+	<div class="container">
 		<?php include '../../Templates/admin menu.php' ?>
-		<div class="ColumnMain">
+		<div class="column-main">
 			<section>
 				<h2>Import database</h2>
-				<div class="Box">
+				<div class="box pad-16">
 					<form>
 						<label for="f1">User table:</label><input id="f1" name="f1" type="file"><br>
 						<label for="f2">Company table:</label><input id="f2" name="f2" type="file"><br>
@@ -25,7 +25,7 @@
 			</section>
 			<section>
 				<h2>Export database</h2>
-				<div class="Box">
+				<div class="box pad-16">
 					<a href="#">Download table User</a><br>
 					<a href="#">Download table Company</a><br>
 					<a href="#">Download table SocialMedia</a><br>

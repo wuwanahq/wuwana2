@@ -8,30 +8,63 @@
 </head>
 <body>
 	<?php include '../../Templates/page header.php' ?>
-	<div class="Container">
+	<div class="container">
 		<?php include '../../Templates/admin menu.php' ?>
-		<div class="ColumnMain">
+		<div class="column-main">
 			<section>
-				<h2>New company</h2>
-				<div class="Box">
+				<h2>Add new company</h2>
+				<div class="box pad-16">
 					<form method="post">
-						<label for="instagram">Instagram profile URL:</label>
-						<input id="instagram" name="instagram" type="text" size="70" onchange="scrape()">
-						<br>
-						<label for="website">Website URL:</label>
-						<input id="website" name="website" type="text" size="79">
-						<br>
-						<label for="email">Email address:</label>
-						<input id="email" name="email" type="text" size="77">
-						<br>
-						<label for="name">Company name:</label>
-						<input id="name" name="name" type="text" size="75">
-						<br>
-						<textarea id="biography" name="biography" rows="9" cols="90"></textarea>
-						<br>
-						<input type="text" id="posts" name="posts" size="9" readonly>posts
-						<input type="text" id="followers" name="followers" size="9" style="margin-left:73px" readonly>followers
-						<input type="text" id="following" name="following" size="9" style="margin-left:73px" readonly>following
+						<div class="form-layout-column">
+							<div class="form-label-wrapper">
+								<label for="instagram" class="form-label">Instagram profile URL</label>
+							</div>
+							<input id="instagram" name="instagram" type="url" class="form-input" onchange="scrape()">
+						</div>
+						<div class="form-layout-column">
+							<div class="form-label-wrapper">
+								<label for="website" class="form-label">Website URL</label>
+							</div>
+							<input id="website" name="website" type="url" class="form-input">
+						</div>
+						<div class="form-layout-column">
+							<div class="form-label-wrapper">
+								<label for="email" class="form-label">Company email</label>
+							</div>
+							<input id="email" name="email" type="email" class="form-input">
+						</div>
+						<div class="form-layout-column">
+							<div class="form-label-wrapper">
+								<label for="name" class="form-label">Company name</label>
+							</div>
+							<input id="name" name="name" type="text" class="form-input">
+						</div>
+						<div class="form-layout-column">
+							<div class="form-label-wrapper">
+								<label for="biography" class="form-label">Biography</label>
+							</div>
+							<textarea id="biography" name="biography" rows="6" class="form-input"></textarea>
+						</div>
+						<div class="form-layout-row">
+							<div class="form-layout-column" style="margin-right: 24px;">
+								<div class="form-label-wrapper">
+									<label class="form-label">Posts</label>
+								</div>
+								<input type="text" id="posts" name="posts" size="6" readonly class="form-input">
+							</div>
+							<div class="form-layout-column" style="margin-right: 24px;">
+								<div class="form-label-wrapper">
+									<label class="form-label">Followers</label>
+								</div>
+								<input type="text" id="followers" name="followers" size="6" readonly class="form-input">
+							</div>
+							<div class="form-layout-column" style="margin-right: 24px;">
+								<div class="form-label-wrapper">
+									<label class="form-label">Following</label>
+								</div>
+								<input type="text" id="following" name="following" size="6" readonly class="form-input">
+							</div>
+						</div>
 						<input type="hidden" id="ProfilePicURL" name="ProfilePicURL">
 						<input type="hidden" id="ThumbnailSrc0" name="ThumbnailSrc0">
 						<input type="hidden" id="ThumbnailSrc1" name="ThumbnailSrc1">
@@ -41,13 +74,13 @@
 						<input type="hidden" id="ThumbnailSrc5" name="ThumbnailSrc5">
 						<input type="hidden" id="ExternalURL" name="ExternalURL">
 						<input type="hidden" id="ExtraInfo" name="ExtraInfo">
-						<input type="submit" id="button" value="Add" style="margin-left:73px" disabled>
+						<input type="submit" id="button" value="Add company" class="buttonMain" disabled>
 					</form>
 				</div>
 			</section>
 			<section>
 				<h2>Companies</h2>
-				<div class="Box">
+				<div class="box pad-16">
 					<table>
 						<thead>
 							<tr>

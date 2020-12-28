@@ -13,11 +13,11 @@
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
-	<div class="Container">
-		<section class="ColumnLeft">
-			<div class="companyPanel">
+	<div class="container">
+		<section class="column-left">
+			<div class="boxPanel">
 				<section class="companyAbout">
-					<div class="Logo">
+					<div class="logo-main">
 						<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name, ' logo' ?>" >
 					</div>
 					<?php
@@ -26,13 +26,16 @@
 						else
 						{ echo '<h1>', $company->name, '</h1>'; }
 					?>
-					<ul class="Label">
+					<ul class="tag-area">
 						<li><?php echo implode('</li><li>', $company->tags) ?></li>
 					</ul>
-					<div class="tagRegion"><?php echo $company->region ?></div>
+					<div class="button-icon-small margin-t16">
+						<img src=/static/icon/small/map-small-grey50.svg>
+						<?php echo $company->region ?>
+					</div>
 				</section>
+				<hr>
 				<section class="companyDescription">
-					<hr>
 					<h3><?php printf(TEXT[6], $company->name) ?></h3>
 					<?php
 						if (isset($user) && $user->isAdmin())
@@ -41,9 +44,10 @@
 						{ echo '<p>', $company->description, '</p>'; }
 					?>
 				</section>
+				<hr>
 <!--
 				<section class="companyAddress">
-					<hr>
+					
 					<h3><?php echo TEXT[7] ?></h3>
 					<p><?php echo $company->address ?></p>
 				</section>
@@ -75,15 +79,14 @@
 					</ul>
 				</section>
 -->
-				<section class="contactInfo">
-					<hr>
+				<section class="company-contact">
 					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
 						<?php
 							if ($company->instagram->url != '')
 							{
 								echo '<li>';
-								echo  '<a class="ItemLabel" href="', $company->instagram->url, '" target="_blank">';
+								echo  '<a class="item-label" href="', $company->instagram->url, '" target="_blank">';
 								echo   '<div class="buttonSocial">';
 								echo    '<img src="/static/icon/instagram.svg">';
 								echo   '</div>';
@@ -95,7 +98,7 @@
 							if (!empty($company->website))
 							{
 								echo '<li>';
-								echo  '<a class="ItemLabel" href="', $company->website, '" target="_blank">';
+								echo  '<a class="item-label" href="', $company->website, '" target="_blank">';
 								echo   '<div class="buttonSocial">';
 								echo    '<img src="/static/icon/globe.svg">';
 								echo   '</div>';
@@ -107,7 +110,7 @@
 							if (isset($company->phone) && (int)$company->phone = 0)
 							{
 								echo '<li>';
-								echo  '<a class="ItemLabel" href="https://wa.me/', $company->phone, '?text=';
+								echo  '<a class="item-label" href="https://wa.me/', $company->phone, '?text=';
 									printf(TEXT[8], $company->name);
 								echo    '" target="_blank">';
 								echo   '<div class="buttonSocial">';
@@ -121,7 +124,7 @@
 							if (!empty($company->email))
 							{
 								echo '<li>';
-								echo  '<a class="ItemLabel" href="mailto:', $company->email, '" >';
+								echo  '<a class="item-label" href="mailto:', $company->email, '" >';
 								echo   '<div class="buttonSocial">';
 								echo    '<img src="/static/icon/email.svg">';
 								echo   '</div>';
@@ -158,8 +161,8 @@
 				?>
 			</div>
 		</section>
-		<section class="ColumnMain">
-			<section class="companyInstagram">
+		<section class="column-main">
+			<section class="instagram">
 			<?php
 				if (isset($company->instagram))
 				{
@@ -167,26 +170,26 @@
 					echo  '<h2>';
 						printf(TEXT[2], $company->name);
 					echo  '</h2>';
-					echo  '<div class="Box">';
+					echo  '<div class="box">';
 					echo   '<div class="InstagramInfo">';
 					echo    '<h3>', $company->instagram->profileName, '</h3>';
 					echo    '<p>', nl2br($company->instagram->biography), '<br>';
 					echo    '<a href="', $company->instagram->link, '" target="_blank">', str_replace(['http://','https://'], '', $company->instagram->link), '</a></p>';
 					echo    '<ul>';
 					echo     '<li>';
-					echo      '<div class="ItemLabel">';
+					echo      '<div class="item-label">';
 					echo       '<span class="Number">', $company->instagram->nbPost, '</span>';
 					echo       '<span class="Text">Posts</span>';
 					echo      '</div>';
 					echo     '</li>';
 					echo     '<li>';
-					echo      '<div class="ItemLabel">';
+					echo      '<div class="item-label">';
 					echo       '<span class="Number">', $company->instagram->nbFollower, '</span>';
 					echo       '<span class="Text">Followers</span>';
 					echo      '</div>';
 					echo     '</li>';
 					echo     '<li>';
-					echo      '<div class="ItemLabel">';
+					echo      '<div class="item-label">';
 					echo       '<span class="Number">', $company->instagram->nbFollowing, '</span>';
 					echo       '<span class="Text">Following</span>';
 					echo      '</div>';
@@ -217,7 +220,7 @@
 				}
 			?>
 			</section>
-			<a class="buttonIcon Center" href="/">
+			<a class="buttonIcon center" href="/">
 				<img src="/static/icon/home.svg">
 				<?php echo TEXT[4] ?>
 			</a>

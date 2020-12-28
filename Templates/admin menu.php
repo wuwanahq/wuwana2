@@ -7,7 +7,7 @@
 		'/admin/database'   => ['Database', 'dns_grey50.svg']
 	];
 ?>
-<div class="ColumnLeft">
+<div class="column-left">
 	<div class="boxPanel">
 		<div class="panelCover"><img src="/static/logo/ribbon-long.svg"></div>
 		<h1>Administrator's name</h1>

@@ -15,7 +15,7 @@
 <!--
 	<section class="error-companies">
 		<h2><?php echo TEXT[2] ?></h2>
-		<div class="Box Center">
+		<div class="box center">
 			<?php
 			/*
 				$counter = count($companies);

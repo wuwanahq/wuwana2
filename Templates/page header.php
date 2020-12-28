@@ -1,8 +1,8 @@
 <h1 class="VisuallyHidden">Wuwana</h1>
 <header class="headerBar">
 	<div class="headerContainer">
-		<div class="header-lang" onclick="showLang()">
-			<div class="lang">
+		<div class="header-lang-wrapper" onclick="showLang()">
+			<div class="header-lang">
 				<?php echo $language == 'zh' ? WebApp\Config::LANGUAGES[$language] : strtoupper($language) ?>
 			</div>
 			<div class="popup-lang" id="popup-lang">
@@ -44,14 +44,14 @@
 			}
 			elseif ($requestURL == '/')
 			{
-				echo '<div class="HeaderIcon" onclick="showMenu()">';
-				echo   '<img id="TestImg" src="/static/icon/menu.svg">';
+				echo '<div class="header-icon" onclick="showMenu()">';
+				echo   '<img id="menu-icon" src="/static/icon/menu.svg">';
 				echo '</div>';
 			}
 			else
 			{
-				echo '<div class="HeaderIcon" onclick="showMenu()">';
-				echo   '<a href="/"><img id="TestImg" src="/static/icon/home.svg"></a>';
+				echo '<div class="header-icon" onclick="showMenu()">';
+				echo   '<a href="/"><img id="menu-icon" src="/static/icon/home.svg"></a>';
 				echo '</div>';
 			}
 		?>
