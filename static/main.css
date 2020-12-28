@@ -822,10 +822,15 @@ a .iconLabelHorizontal {
 	margin: 0
 }
 
+/* Filter Area */
+
+.filter {
+	padding: 16px;
+	overflow-y: scroll;
+}
+
 /* ----- PAGES -----*/
-
 /* COMPANY PROFILE PAGE */
-
 /* companyPanel Sections */ 
 
 .companyAbout {
@@ -1067,10 +1072,12 @@ a .iconLabelHorizontal {
 	/* MENU MOBILE */
 	.sticky {
 		z-index: 10;
-		display: none;
+		display: none; /* Display flex with JS */
 		flex-direction: column;
 		align-content: flex-start;
 		position: fixed;
+		width: auto;
+		padding: 16px;
 		background-color: white;
 		top: 48px;
 		left: 0;
@@ -1079,36 +1086,21 @@ a .iconLabelHorizontal {
 		overflow-y: scroll;
 	}
 
-	.sticky .box {
+	.sticky .box{
 		box-shadow: none;
 	}
 
-	.sticky .buttonIcon.center {
-		display: flex}
-
-	.sticky h2 {
-		margin: 16px;
+	.sticky .filter{
+		padding: 0;
 	}
 
-	.menu {
-		z-index: 2;
-		display: none;
-		flex-direction: column;
-		align-content: flex-start;
-		position: fixed;
-		background-color: white;
-		top: 48px;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		overflow-y: scroll}
-
-	dl dd label {
-		font-weight: 500;
-		color: black}
+	.sticky .buttonIcon {
+		display: flex
+	}
 
 	dl {
-		margin: 0 16px 24px}
+		margin: 0 0 24px
+	}
 
 	dl label {
 		display: inline-block;
@@ -1126,11 +1118,16 @@ a .iconLabelHorizontal {
 	}
 
 	dl input {
-		display: none}
+		display: none;
+	}
 
 	dl input:checked + label {
 		color: white;
-		background-color: #161313
+		background-color: black;
+	}
+
+	dt {
+		font-size: 1.125rem;
 	}
 
 	dd {
@@ -1142,6 +1139,11 @@ a .iconLabelHorizontal {
 
 	dd:first-child {
 		margin-left: 0;
+	}
+
+	dl dd label {
+		font-weight: 500;
+		color: black
 	}
 
 	/* ----- MODIFIER ----- */
@@ -1157,49 +1159,50 @@ a .iconLabelHorizontal {
 	body {
 		padding: 0 8px 24px;
 	}
-	
-	/* BANNER */
 
+	/* ----- COMPONENTS ----- */
+
+	/* BANNER */
 	.banner {
 		display: block;
 		min-height: 180px;
 		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%),
 			url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg);
 		background-size: auto, cover;
-		background-position: 0 0, 50% 50%}
+		background-position: 0 0, 50% 50%
+	}
 
 	.bannerText {
 		align-self: flex-start;
 		color: #ffffff;
 		margin: 16px 0 0 16px;
-		max-width: 60ch}
+		max-width: 60ch
+	}
 
 	.bannerText h2 {
 		font-size: 1.5rem;
 		line-height: 1.3;
-		font-weight: 500}
+		font-weight: 500
+	}
 
 	.bannerText p {
 		font-size: 1rem;
-		list-style: 1.3}
+		list-style: 1.3
+	}
 
 	/* COMPANY CARD */
-
-	.CompanyMain {
+	.company-card-wrapper {
 		width: 100%;
 		display: flex;
 		flex-direction: column}
 
-	.Tag.Region {
-		margin-top: 16px;
-		margin-bottom: 8px}
-
-	.BadgeArea {
+	.company-card-badge-wrapper {
 		display: flex;
 		flex-direction: row;
 		width: 100%;
 		min-width: 100px;
 		flex-wrap: wrap;
 		justify-content: flex-start;
-		align-items: flex-start}
+		align-items: flex-start
+	}
 }

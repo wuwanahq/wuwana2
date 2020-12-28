@@ -46,7 +46,7 @@
 			</div>
 			<section class="sticky" id="menu">
 				<h2><?php echo TEXT[8] ?></h2>
-				<div class="box pad-16 flow-y">
+				<div class="box filter">
 					<form method="get" action="/">
 <!--
 					<dl>
