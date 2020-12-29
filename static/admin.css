@@ -70,6 +70,7 @@ a .icon-label-h {
 	font-size: 0.875rem;
 	font-weight: 400;
 	min-width: 100px;
+	white-space: nowrap;
 }
 
 #box-table tr {
@@ -83,6 +84,7 @@ a .icon-label-h {
 	color: #545151;
 	font-size: 0.875rem;
 	font-weight: 400;
+	white-space: nowrap;
 }
 
 tr:nth-child(even) {
