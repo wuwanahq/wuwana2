@@ -133,11 +133,7 @@ table input[type=text]:disabled {
 	font-size: 1rem;
 }
 
-/* Statistics tab */
-
-#section-table {
-	overflow:hidden
-}
+/* TABLE LAYOUT & STYLE */
 
 .scroll-h {
 	display: flex;
@@ -151,9 +147,7 @@ table input[type=text]:disabled {
 	display: flex;
 	position: relative;
 	overflow:hidden;
-	max-width: 500px;
-	/* max-width: 500px; instead of 100% of width */
-	/* padding: 8px; */
+	max-width: auto; /* This changes with JS */
 	min-height: 20px;
 	margin-bottom: 24px;
 	border-radius: 4px;
@@ -176,7 +170,7 @@ table input[type=text]:disabled {
 	color: #8b8989;
 	font-size: 0.875rem;
 	font-weight: 400;
-	min-width: 300px;
+	min-width: 150px;
 }
 
 #box-table tr {
@@ -189,5 +183,9 @@ table input[type=text]:disabled {
 	text-align: left;
 	color: #545151;
 	font-size: 0.875rem;
-	font-weight: 500;
+	font-weight: 400;
+}
+
+.table-visual-pad {
+	min-width: 16px;
 }

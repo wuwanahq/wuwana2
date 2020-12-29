@@ -56,7 +56,7 @@
 								</tr>
 							</tbody>
 						</table>
-						<div style="min-width: 16px; height:16px;"></div>
+						<div class="table-visual-pad"></div>
 					</div>
 				</div>
 			</section>

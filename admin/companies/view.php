@@ -80,39 +80,43 @@
 			</section>
 			<section>
 				<h2>Companies</h2>
-				<div class="box">
-					<table>
-						<thead>
-							<tr>
-								<th>Logo</th>
-								<th>Company Name</th>
-								<th>Location</th>
-								<th>Visible tags</th>
-								<th>Last update</th>
-								<th id="entry-button"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-								foreach ($companies as $company)
-								{
-									echo '<tr>';
-									echo   '<td><div class="logo-small"><img src=" ', $company->logo ,' " alt="', $company->name, ' logo"></div></td>';
-									echo   '<td><a href="', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
-									echo     $company->name;
-									echo   '</a></td>';
-									// echo   '<td title="', $company->description, '">', substr($company->description,0,9), '…</td>';
-									echo   '<td>', $company->region, '</td>';
-									echo   '<td title="Other tags: ', $company->otherTags, '">';
-									echo     implode(' ', $company->visibleTags);
-									echo   '</td>';
-									echo   '<td>', date('Y-m-d H:i', $company->lastUpdate), '</td>';
-									echo   '<td><input type="button" value="Delete" disabled></td>';
-									echo '</tr>';
-								}
-							?>
-						</tbody>
-					</table>
+				<div id="box-table">
+					<div class="scroll-h">
+						<table>
+							<thead>
+								<tr>
+									<th style="min-width: 32px;">Logo</th>
+									<th style="min-width: 240px;">Company Name</th>
+									<th style="min-width: 150px;">Location</th>
+									<th style="min-width: 150px;">Visible tags</th>
+									<th>Last update</th>
+									<th id="entry-button"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+									foreach ($companies as $company)
+									{
+										echo '<tr>';
+										echo   '<td><div class="logo-small"><img src=" ', $company->logo ,' " alt="', $company->name, ' logo"></div></td>';
+										echo   '<td><a href="', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
+										echo     $company->name;
+										echo   '</a></td>';
+										// echo   '<td title="', $company->description, '">', substr($company->description,0,9), '…</td>';
+										echo   '<td>', $company->region, '</td>';
+										echo   '<td title="Other tags: ', $company->otherTags, '">';
+										echo     implode(' ', $company->visibleTags);
+										echo   '</td>';
+										echo   '<td>', date('Y-m-d H:i', $company->lastUpdate), '</td>';
+										echo   '<td><input type="button" value="Delete" disabled></td>';
+										echo '</tr>';
+									}
+								?>
+							</tbody>
+						</table>
+						<div class="table-visual-pad"></div>
+					</div>
+					
 				</div>
 			</section>
 		</div>
