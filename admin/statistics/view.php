@@ -11,8 +11,54 @@
 	<div class="container">
 		<?php include '../../Templates/admin menu.php' ?>
 		<div class="column-main">
-			<section>
+			<section id="section-table">
 				<h2>Statistics</h2>
+				<div id="box-table">
+					<div class="scroll-h">
+						<table>
+							<thead>
+								<tr>
+									<th>column-one</th>
+									<th>column-two</th>
+									<th>column-three</th>
+									<th>column-four</th>
+									<th>column-five</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>one</td>
+									<td>two</td>
+									<td>three</td>
+									<td>four</td>
+									<td>five</td>
+								</tr>
+								<tr>
+									<td>one</td>
+									<td>two</td>
+									<td>three</td>
+									<td>four</td>
+									<td>five</td>
+								</tr>
+								<tr>
+									<td>one</td>
+									<td>two</td>
+									<td>three</td>
+									<td>four</td>
+									<td>five</td>
+								</tr>
+								<tr>
+									<td>one</td>
+									<td>two</td>
+									<td>three</td>
+									<td>four</td>
+									<td>five</td>
+								</tr>
+							</tbody>
+						</table>
+						<div style="min-width: 16px; height:16px;"></div>
+					</div>
+				</div>
 			</section>
 		</div>
 	</div>

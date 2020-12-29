@@ -37,7 +37,7 @@ a .icon-label-h {
 }
 
 /* Table Layout */
-.column-main table {
+/* .column-main table {
 	border-collapse: collapse;
 	border-radius: 8px;
 	overflow: hidden;
@@ -93,7 +93,7 @@ table input[type=text]:disabled {
 
 #entry-button {
 	width: 40px;
-}
+} */
 
 /* Tags Tab */
 
@@ -131,4 +131,63 @@ table input[type=text]:disabled {
 	border-radius: 8px;
 	border: 1px solid #8b8989;
 	font-size: 1rem;
+}
+
+/* Statistics tab */
+
+#section-table {
+	overflow:hidden
+}
+
+.scroll-h {
+	display: flex;
+	flex-direction: row;
+	overflow: hidden;
+	overflow-x: scroll;
+	padding: 8px 16px 16px;
+}
+
+#box-table {
+	display: flex;
+	position: relative;
+	overflow:hidden;
+	max-width: 500px;
+	/* max-width: 500px; instead of 100% of width */
+	/* padding: 8px; */
+	min-height: 20px;
+	margin-bottom: 24px;
+	border-radius: 4px;
+	background-color: #ffffff;
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+}
+
+#box-table table {
+	border-collapse: collapse;
+	border-left-style: hidden;
+	border-right-style: hidden;
+	overflow: hidden;
+	margin: 0;
+}
+
+#box-table th {
+	border: 1px solid #E3E1E1;
+	padding: 5px 8px 6px;
+	text-align: left;
+	color: #8b8989;
+	font-size: 0.875rem;
+	font-weight: 400;
+	min-width: 300px;
+}
+
+#box-table tr {
+	height: 32px;
+}
+
+#box-table td {
+	border: 1px solid #E3E1E1;
+	padding: 5px 8px 6px;
+	text-align: left;
+	color: #545151;
+	font-size: 0.875rem;
+	font-weight: 500;
 }
