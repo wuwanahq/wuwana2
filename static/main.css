@@ -515,29 +515,6 @@ dl dd label {
 	object-fit: cover
 }
 
-.iconLabelHorizontal {
-	padding: 4px 16px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	color:  #545151;
-	font-weight: 500;
-	background-color: #E3E1E1
-}
-
-a .iconLabelHorizontal {
-	background-color: transparent;
-	font-weight: 400;
-}
-
-.iconLabelHorizontal:hover {
-	background-color: #E3E1E1;
-}
-
-.iconLabelHorizontal img {
-	margin-right: 8px;
-}
-
 .contactSection {
 	align-items: center;
 }

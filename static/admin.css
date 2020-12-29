@@ -1,23 +1,85 @@
-/* Temporary style to improve */
+/* Admin Control Panel */
 
-.Box {
+.boxPanel section {
+	padding: 16px 0;
+}
+
+.boxPanel h1,
+.boxPanel h3 {
+	margin: 0 16px 8px;
+}
+
+.icon-label-h {
+	padding: 4px 16px;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	flex-direction: row;
 	align-items: center;
-	position: relative;
-	overflow: hidden}
+	color:  #545151;
+	font-weight: 500;
+	background-color: #E3E1E1
+}
 
-.ColumnMain table {
-	margin: 16px 0 16px;
-	width: 98%;
-	/*border: 1px solid black;
-	border-collapse: collapse;*/}
+a .icon-label-h {
+	background-color: transparent;
+	font-weight: 400;
+}
 
-.ColumnMain table input[type=text] {
+.icon-label-h:hover {
+	background-color: #E3E1E1;
+}
+
+.icon-label-h img {
+	margin-right: 8px;
+}
+
+/* Companies Tab */
+
+.test {
+	overflow: scroll;
+}
+
+.column-main table {
+	border-collapse: collapse;
+	border-radius: 8px;
+	overflow: hidden;
+	margin: 0;
+}
+
+.column-main thead {
+	text-align: center;
+	background-color: #E3E1E1;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.column-main th {
+	padding: 8px;
+	margin-bottom: 16px;
+	font-size: 0.875rem;
+	font-weight: 500;
+}
+
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.column-main td {
+	text-align: center;
+	padding: 4px;
+	font-size: 0.875rem;
+	font-weight: 400;
+	color: #545151;
+}
+
+table tbody .logo-small {
+	margin: auto;
+}
+
+
+.column-main table input[type=text] {
 	width: 98%}
 
-.ColumnMain table th,
-.ColumnMain table td {
-	text-align: center;
-	/*border: 1px solid black;*/}
+
+/* .column-main table td {
+	text-align: left;
+	border: 1px solid black;} */

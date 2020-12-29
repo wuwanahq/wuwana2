@@ -4,6 +4,7 @@
 	<?php include '../../Templates/page metadata.php' ?>
 	<title>Admin page | Wuwana</title>
 	<link rel="stylesheet" type="text/css" href="/static/admin.css">
+	<script src="/static/admin.js" defer></script>
 </head>
 <body>
 	<?php include '../../Templates/page header.php' ?>

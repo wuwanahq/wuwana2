@@ -84,8 +84,8 @@
 					<table>
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Description</th>
+								<th>Logo</th>
+								<th>Company Name</th>
 								<th>Location</th>
 								<th>Visible tags</th>
 								<th>Last update</th>
@@ -97,10 +97,11 @@
 								foreach ($companies as $company)
 								{
 									echo '<tr>';
+									echo   '<td><div class="logo-small"><img src=" ', $company->logo ,' " alt="', $company->name, ' logo"></div></td>';
 									echo   '<td><a href="', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
 									echo     $company->name;
 									echo   '</a></td>';
-									echo   '<td title="', $company->description, '">', substr($company->description,0,9), '…</td>';
+									// echo   '<td title="', $company->description, '">', substr($company->description,0,9), '…</td>';
 									echo   '<td>', $company->region, '</td>';
 									echo   '<td title="Other tags: ', $company->otherTags, '">';
 									echo     implode(' ', $company->visibleTags);
