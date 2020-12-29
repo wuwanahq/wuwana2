@@ -1,9 +1,5 @@
 /* Admin Control Panel */
 
-.sticky {
-
-}
-
 .boxPanel section {
 	padding: 16px 0;
 }
@@ -34,103 +30,6 @@ a .icon-label-h {
 
 .icon-label-h img {
 	margin-right: 8px;
-}
-
-/* Table Layout */
-/* .column-main table {
-	border-collapse: collapse;
-	border-radius: 8px;
-	overflow: hidden;
-	margin: 0;
-}
-
-.column-main thead {
-	text-align: center;
-	background-color: #E3E1E1;
-	border-radius: 8px;
-	overflow: hidden;
-}
-
-.column-main th {
-	padding: 8px;
-	margin-bottom: 16px;
-	font-size: 0.875rem;
-	font-weight: 500;
-}
-
-tr:nth-child(even) {
-    background-color: #fafafa;
-}
-
-.column-main td {
-	text-align: center;
-	padding: 4px;
-	font-size: 0.875rem;
-	font-weight: 400;
-	color: #545151;
-}
-
-table tbody .logo-small {
-	margin: auto;
-}
-
-table input[type=text] {
-	padding: 4px 8px;
-	border-radius: 4px;
-	border: 1px solid #E3E1E1;
-	font-size: 0.75rem;
-	width: 90%
-}
-
-table input[type=text]:disabled {
-	background-color: #FBF7F7;
-}
-
-#entry-id {
-	width: 100px;
-	min-width: 40px;
-}
-
-#entry-button {
-	width: 40px;
-} */
-
-/* Tags Tab */
-
-.tag-tab td {
-	width: auto;
-	margin: 4px;
-}
-
-/* Form and Labels */
-
-.form-layout-column {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 16px;
-}
-
-.form-layout-row {
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 16px;
-}
-
-.form-label-wrapper {
-	margin: 0 0 4px;
-}
-
-.form-label {
-	font-size: 0.875rem;
-	font-weight: 500;
-}
-
-.form-input {
-	margin: 0;
-	padding: 4px 8px;
-	border-radius: 8px;
-	border: 1px solid #8b8989;
-	font-size: 1rem;
 }
 
 /* TABLE LAYOUT & STYLE */
@@ -170,7 +69,7 @@ table input[type=text]:disabled {
 	color: #8b8989;
 	font-size: 0.875rem;
 	font-weight: 400;
-	min-width: 150px;
+	min-width: 100px;
 }
 
 #box-table tr {
@@ -186,6 +85,65 @@ table input[type=text]:disabled {
 	font-weight: 400;
 }
 
-.table-visual-pad {
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+#box-table input[type=text] {
+	padding: 4px 8px;
+	border-radius: 4px;
+	border: 1px solid #E3E1E1;
+	font-size: 0.75rem;
+	width: 90%
+}
+
+#box-table input[type=text]:disabled {
+	background-color: #FBF7F7;
+}
+
+#section-table #box-table #entry-button {
+	min-width: 40px;
+}
+
+#section-table #box-table .scroll-h div {
 	min-width: 16px;
+}
+
+/* Form and Labels */
+
+.form-layout-column {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}
+
+.form-layout-row {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 16px;
+}
+
+.form-label-wrapper {
+	margin: 0 0 4px;
+}
+
+.form-label {
+	font-size: 0.875rem;
+	font-weight: 500;
+}
+
+.form-input {
+	margin: 0;
+	padding: 4px 8px;
+	border-radius: 8px;
+	border: 1px solid #8b8989;
+	font-size: 1rem;
+}
+
+/* ----- ADMIN TABS -----*/
+/* Tags Tab */
+
+.tag-tab td {
+	width: auto;
+	margin: 4px;
 }

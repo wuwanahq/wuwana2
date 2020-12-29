@@ -31,7 +31,7 @@
 							<div class="form-label-wrapper">
 								<label for="email" class="form-label">Company email</label>
 							</div>
-							<input id="email" name="email" type="email" class="form-input">
+							<input id="email" name="email" type="text" class="form-input">
 						</div>
 						<div class="form-layout-column">
 							<div class="form-label-wrapper">
@@ -78,7 +78,7 @@
 					</form>
 				</div>
 			</section>
-			<section>
+			<section id="section-table">
 				<h2>Companies</h2>
 				<div id="box-table">
 					<div class="scroll-h">
@@ -88,9 +88,9 @@
 									<th style="min-width: 32px;">Logo</th>
 									<th style="min-width: 240px;">Company Name</th>
 									<th style="min-width: 150px;">Location</th>
-									<th style="min-width: 150px;">Visible tags</th>
+									<th>Visible tags</th>
 									<th>Last update</th>
-									<th id="entry-button"></th>
+									<th style="min-width: 32px" id="entry-button"></th>
 								</tr>
 							</thead>
 							<tbody>

@@ -11,40 +11,43 @@
 	<div class="container">
 		<?php include '../../Templates/admin menu.php' ?>
 		<div class="column-main">
-			<section>
+			<section id="section-table">
 				<h2>Categories</h2>
-				<div class="box">
-					<table>
-						<thead>
-							<tr>
-								<th>Category</th>
-								<th>Tags combination</th>
-								<th id="entry-button"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><input type="text" value="Coffee Shop"></td>
-								<td><input type="text" value="CoffeeShop + SpecialtyCoffee"></td>
-								<td><input type="button" value="Update" disabled></td>
-							</tr>
-							<tr>
-								<td><input type="text" value="Roaster"></td>
-								<td><input type="text" value="Roaster + SpecialtyCoffee"></td>
-								<td><input type="button" value="Update" disabled></td>
-							</tr>
-							<tr>
-								<td><input type="text" value="Importer"></td>
-								<td><input type="text" value="Importer + SpecialtyCoffee"></td>
-								<td><input type="button" value="Update" disabled></td>
-							</tr>
-							<tr>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
-								<td><input type="button" value="Add"></td>
-							</tr>
-						</tbody>
-					</table>
+				<div id="box-table">
+					<div class="scroll-h">
+						<table>
+							<thead>
+								<tr>
+									<th>Category</th>
+									<th style="min-width: 200px;">Tags combination</th>
+									<th id="entry-button"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="text" value="Coffee Shop"></td>
+									<td><input type="text" value="CoffeeShop + SpecialtyCoffee"></td>
+									<td><input type="button" value="Update" disabled></td>
+								</tr>
+								<tr>
+									<td><input type="text" value="Roaster"></td>
+									<td><input type="text" value="Roaster + SpecialtyCoffee"></td>
+									<td><input type="button" value="Update" disabled></td>
+								</tr>
+								<tr>
+									<td><input type="text" value="Importer"></td>
+									<td><input type="text" value="Importer + SpecialtyCoffee"></td>
+									<td><input type="button" value="Update" disabled></td>
+								</tr>
+								<tr>
+									<td><input type="text"></td>
+									<td><input type="text"></td>
+									<td><input type="button" value="Add"></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="table-visual-pad"></div>
+					</div>	
 				</div>
 			</section>
 		</div>
