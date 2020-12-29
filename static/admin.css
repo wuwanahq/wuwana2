@@ -1,5 +1,9 @@
 /* Admin Control Panel */
 
+.sticky {
+
+}
+
 .boxPanel section {
 	padding: 16px 0;
 }
@@ -32,12 +36,7 @@ a .icon-label-h {
 	margin-right: 8px;
 }
 
-/* Companies Tab */
-
-.test {
-	overflow: scroll;
-}
-
+/* Table Layout */
 .column-main table {
 	border-collapse: collapse;
 	border-radius: 8px;
@@ -75,11 +74,61 @@ table tbody .logo-small {
 	margin: auto;
 }
 
+table input[type=text] {
+	padding: 4px 8px;
+	border-radius: 4px;
+	border: 1px solid #E3E1E1;
+	font-size: 0.75rem;
+	width: 90%
+}
 
-.column-main table input[type=text] {
-	width: 98%}
+table input[type=text]:disabled {
+	background-color: #FBF7F7;
+}
 
+#entry-id {
+	width: 100px;
+	min-width: 40px;
+}
 
-/* .column-main table td {
-	text-align: left;
-	border: 1px solid black;} */
+#entry-button {
+	width: 40px;
+}
+
+/* Tags Tab */
+
+.tag-tab td {
+	width: auto;
+	margin: 4px;
+}
+
+/* Form and Labels */
+
+.form-layout-column {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}
+
+.form-layout-row {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 16px;
+}
+
+.form-label-wrapper {
+	margin: 0 0 4px;
+}
+
+.form-label {
+	font-size: 0.875rem;
+	font-weight: 500;
+}
+
+.form-input {
+	margin: 0;
+	padding: 4px 8px;
+	border-radius: 8px;
+	border: 1px solid #8b8989;
+	font-size: 1rem;
+}

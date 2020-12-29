@@ -9,7 +9,7 @@
 	];
 ?>
 <div class="column-left">
-	<div class="boxPanel sticky">
+	<div class="boxPanel">
 		<div class="panelCover"><img src="/static/logo/ribbon-long.svg"></div>
 		<section>
 			<h1>Administrator's name</h1>

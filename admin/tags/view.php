@@ -10,20 +10,28 @@
 	<?php include '../../Templates/page header.php' ?>
 	<div class="container">
 		<?php include '../../Templates/admin menu.php' ?>
-		<div class="column-main">
+		<div class="column-main tag-tab">
 			<section>
 				<h2>Base tags</h2>
 				<div class="box">
 					<table>
 						<thead>
 							<tr>
-								<th style="width:50px">ID</th>
-								<th style="width:99px">Tag names (english;spanish)</th>
+								<th id="entry-id">ID</th>
+								<th>Tag names (english;spanish)</th>
 								<th>Keywords (<a href="https://regex101.com" target="_blank">regular expression</a>)</th>
-								<th style="width:50px"></th>
+								<th id="entry-button"></th>
 							</tr>
 						</thead>
 						<tbody>
+							<tr>
+								<form method="post">
+									<td><input type="text" name="TagID" placeholder="Beer"></td>
+									<td><input type="text" name="TagNames" placeholder="Beer;Cerveza"></td>
+									<td><input type="text" name="Keywords" placeholder="beer|cerve[sz]a[s]?"></td>
+									<td><input type="submit" value="Add"></td>
+								</form>
+							</tr>
 							<?php
 								foreach ($baseTags as $id => $tag)
 								{
@@ -35,14 +43,6 @@
 									echo '</tr>';
 								}
 							?>
-							<tr>
-								<form method="post">
-									<td><input type="text" name="TagID"></td>
-									<td><input type="text" name="TagNames"></td>
-									<td><input type="text" name="Keywords"></td>
-									<td><input type="submit" value="Add"></td>
-								</form>
-							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -53,9 +53,9 @@
 					<table>
 						<thead>
 							<tr>
-								<th style="width:99px">ID</th>
+								<th id="entry-id">ID</th>
 								<th>Tag names (english;spanish)</th>
-								<th style="width:50px"></th>
+								<th id="entry-button"></th>
 							</tr>
 						</thead>
 						<tbody>

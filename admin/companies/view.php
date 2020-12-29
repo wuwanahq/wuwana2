@@ -80,7 +80,7 @@
 			</section>
 			<section>
 				<h2>Companies</h2>
-				<div class="box pad-16">
+				<div class="box">
 					<table>
 						<thead>
 							<tr>
@@ -89,7 +89,7 @@
 								<th>Location</th>
 								<th>Visible tags</th>
 								<th>Last update</th>
-								<th></th>
+								<th id="entry-button"></th>
 							</tr>
 						</thead>
 						<tbody>

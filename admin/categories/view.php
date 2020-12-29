@@ -13,13 +13,13 @@
 		<div class="column-main">
 			<section>
 				<h2>Categories</h2>
-				<div class="box pad-16">
+				<div class="box">
 					<table>
 						<thead>
 							<tr>
 								<th>Category</th>
 								<th>Tags combination</th>
-								<th></th>
+								<th id="entry-button"></th>
 							</tr>
 						</thead>
 						<tbody>
