@@ -86,7 +86,6 @@ a .icon-label-h {
 	font-size: 0.875rem;
 	font-weight: 400;
 	white-space: nowrap;
-	/* min-width: 100px; */
 }
 
 tr:nth-child(even) {
@@ -108,11 +107,9 @@ tr:nth-child(even) {
 	border: solid 1px #E3E1E1;
 }
 
-#box-table input[type=text]:disabled {
-	color: #545151;
-	font-style: oblique;
-	font-weight: 500;
-	cursor: not-allowed;
+#box-table .disabled-text {
+	color: #8b8989;
+	font-style: italic;
 }
 
 #section-table #box-table #entry-id {
@@ -150,7 +147,7 @@ tr:nth-child(even) {
 	margin: 0;
 	padding: 4px 8px;
 	border-radius: 8px;
-	border: 1px solid #8b8989;
+	border: 1px solid #E3E1E1;
 	font-size: 1rem;
 }
 

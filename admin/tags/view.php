@@ -37,7 +37,7 @@
 									foreach ($baseTags as $id => $tag)
 									{
 										echo '<tr>';
-										echo   '<td><input type="text" value="', $id, '" disabled></td>';
+										echo   '<td class="disabled-text">', $id, '</td>';
 										echo   '<td><input type="text" value="', $tag->names, '"></td>';
 										echo   '<td><input type="text" value="', $tag->keywords, '"></td>';
 										echo   '<td><input type="button" value="Update" disabled></td>';
@@ -67,7 +67,7 @@
 									foreach ($combinedTags as $id => $tag)
 									{
 										echo '<tr>';
-										echo   '<td><input type="text" value="', $id, '" disabled></td>';
+										echo   '<td class="disabled-text">', $id, '</td>';
 										echo   '<td><input type="text" value="', $tag->names, '"></td>';
 										echo   '<td><input type="button" value="Update" disabled></td>';
 										echo '</tr>';
