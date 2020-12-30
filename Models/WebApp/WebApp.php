@@ -7,6 +7,12 @@ namespace WebApp;
  */
 class WebApp
 {
+	const VERSION = '2.1.0';
+
+	/**
+	 * Min memory usage to store it in PHP logs.
+	 * @var int Bytes
+	 */
 	const MEMORY_LIMIT = 1048576;  // 1 MB
 
 	/**
@@ -55,6 +61,20 @@ class WebApp
 		{ return $code; }
 	}
 
+	static function getURL()
+	{
+		$url = filter_input(INPUT_SERVER, 'REQUEST_URI');
+		$position = strpos($url, '?');
+
+		if ($position > 0)
+		{ $url = substr($url, 0, $position); }
+
+		if ($url == '/' || substr($url, -1) != '/')
+		{ return $url; }
+
+		return substr($url, 0, -1);
+	}
+
 	static function getPermalink()
 	{
 		$host = self::getHostname();
@@ -89,16 +109,16 @@ class WebApp
 		if (strlen($host) < 5)
 		{ $host = filter_input(INPUT_SERVER, 'SERVER_NAME'); }
 
-		if ($host[2] == '.')  // xx.wuwana.com
+		if ($host[2] == '.')  // Example: es.wuwana.com
 		{
 			$host[0] = $subdomain[0];
 			$host[1] = $subdomain[1];
 		}
-		elseif ($host[3] == '.')  // www.wuwana.com
+		elseif ($host[3] == '.')  // Example: www.wuwana.com
 		{
 			$host = $subdomain . substr($host, 3);
 		}
-		else  // wuwana.com
+		else  // Example: wuwana.com
 		{
 			$host = $subdomain . '.' . $host;
 		}

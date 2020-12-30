@@ -1,14 +1,8 @@
 <?php
 /**
- * Controller for the admin page.
+ * Controller for the admin page to manage companies.
  * @link https://wuwana.com/admin/companies
  */
-
-spl_autoload_register(function($className) {
-	require '../../Models/' . str_replace('\\', '/', $className) . '.php';
-});
-
-$user = new WebApp\UserSession(WebApp\Data::getUser());
 
 if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 {
@@ -35,11 +29,3 @@ if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 
 //TODO: create CompaniesIterator
 $companies = WebApp\Data::getCompany()->selectAll();
-
-$language = WebApp\WebApp::getLanguageCode();
-require '../../Templates/text ' . $language . '.php';
-//require 'text ' . $language . '.php';
-require 'view.php';
-
-if (memory_get_peak_usage() > WebApp\WebApp::MEMORY_LIMIT)
-{ trigger_error(memory_get_peak_usage() . ' Bytes of memory used', E_USER_NOTICE); }

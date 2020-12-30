@@ -9,5 +9,5 @@ const TEXT = [
 6 => "Si vous n'avez pas fait cette demande, vous pouvez ignorer cet e-mail",
 7 => "Meilleures salutations,",
 8 => "L'équipe Wuwana",
-9 => "Chez Wuwana, nous facilitons les affaires. C'est pourquoi nous utilisons ce simple code de connexion afin que vous n'ayez pas d'autre mot de passe à gérer".
+9 => "Chez Wuwana, nous facilitons les affaires. C'est pourquoi nous utilisons ce simple code de connexion afin que vous n'ayez pas d'autre mot de passe à gérer",
 ];
