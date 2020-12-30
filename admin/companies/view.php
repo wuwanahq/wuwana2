@@ -31,7 +31,7 @@
 							<div class="form-label-wrapper">
 								<label for="email" class="form-label">Company email</label>
 							</div>
-							<input id="email" name="email" type="email" class="form-input">
+							<input id="email" name="email" type="text" class="form-input">
 						</div>
 						<div class="form-layout-column">
 							<div class="form-label-wrapper">
@@ -78,40 +78,45 @@
 					</form>
 				</div>
 			</section>
-			<section>
+			<section id="section-table">
 				<h2>Companies</h2>
-				<div class="box pad-16">
-					<table>
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Description</th>
-								<th>Location</th>
-								<th>Visible tags</th>
-								<th>Last update</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-								foreach ($companies as $company)
-								{
-									echo '<tr>';
-									echo   '<td><a href="', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
-									echo     $company->name;
-									echo   '</a></td>';
-									echo   '<td title="', $company->description, '">', substr($company->description,0,9), '…</td>';
-									echo   '<td>', $company->region, '</td>';
-									echo   '<td title="Other tags: ', $company->otherTags, '">';
-									echo     implode(' ', $company->visibleTags);
-									echo   '</td>';
-									echo   '<td>', date('Y-m-d H:i', $company->lastUpdate), '</td>';
-									echo   '<td><input type="button" value="Delete" disabled></td>';
-									echo '</tr>';
-								}
-							?>
-						</tbody>
-					</table>
+				<div id="box-table">
+					<div class="scroll-h">
+						<table>
+							<thead>
+								<tr>
+									<th style="min-width: 32px;">Logo</th>
+									<th style="min-width: 240px;">Company Name</th>
+									<th style="min-width: 150px;">Location</th>
+									<th>Visible tags</th>
+									<th>Last update</th>
+									<th style="min-width: 32px" id="entry-button"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+									foreach ($companies as $company)
+									{
+										echo '<tr>';
+										echo   '<td><div class="logo-small"><img src = "https://instagram.fymq2-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/118864590_252863045871428_6260297577990075586_n.jpg?_nc_ht=instagram.fymq2-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=6Ks7w0FmbeUAX8BbgTI&tp=1&oh=aaa1286031bb0a19bd300ab28fee0aac&oe=6015C4CC" alt="', $company->name, ' logo"></div></td>';
+										echo   '<td><a href="', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
+										echo     $company->name;
+										echo   '</a></td>';
+										// echo   '<td title="', $company->description, '">', substr($company->description,0,9), '…</td>';
+										echo   '<td>', $company->region, '</td>';
+										echo   '<td title="Other tags: ', $company->otherTags, '">';
+										echo     implode(' ', $company->visibleTags);
+										echo   '</td>';
+										echo   '<td>', date('Y-m-d H:i', $company->lastUpdate), '</td>';
+										echo   '<td><input type="button" value="Delete" disabled></td>';
+										echo '</tr>';
+									}
+								?>
+							</tbody>
+						</table>
+						<div class="table-visual-pad"></div>
+					</div>
+					
 				</div>
 			</section>
 		</div>

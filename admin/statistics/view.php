@@ -12,42 +12,52 @@
 		<?php include '../../Templates/admin menu.php' ?>
 		<div class="column-main">
 			<section id="section-table">
-				<h2>Categories</h2>
+				<h2>Statistics</h2>
 				<div id="box-table">
 					<div class="scroll-h">
 						<table>
 							<thead>
 								<tr>
-									<th>Category</th>
-									<th style="min-width: 200px;">Tags combination</th>
-									<th id="entry-button"></th>
+									<th>column-one</th>
+									<th>column-two</th>
+									<th>column-three</th>
+									<th>column-four</th>
+									<th>column-five</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td><input type="text" value="Coffee Shop"></td>
-									<td><input type="text" value="CoffeeShop + SpecialtyCoffee"></td>
-									<td><input type="button" value="Update" disabled></td>
+									<td>one</td>
+									<td>two</td>
+									<td>three</td>
+									<td>four</td>
+									<td>five</td>
 								</tr>
 								<tr>
-									<td><input type="text" value="Roaster"></td>
-									<td><input type="text" value="Roaster + SpecialtyCoffee"></td>
-									<td><input type="button" value="Update" disabled></td>
+									<td>one</td>
+									<td>two</td>
+									<td>three</td>
+									<td>four</td>
+									<td>five</td>
 								</tr>
 								<tr>
-									<td><input type="text" value="Importer"></td>
-									<td><input type="text" value="Importer + SpecialtyCoffee"></td>
-									<td><input type="button" value="Update" disabled></td>
+									<td>one</td>
+									<td>two</td>
+									<td>three</td>
+									<td>four</td>
+									<td>five</td>
 								</tr>
 								<tr>
-									<td><input type="text"></td>
-									<td><input type="text"></td>
-									<td><input type="button" value="Add"></td>
+									<td>one</td>
+									<td>two</td>
+									<td>three</td>
+									<td>four</td>
+									<td>five</td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="table-visual-pad"></div>
-					</div>	
+					</div>
 				</div>
 			</section>
 		</div>

@@ -49,3 +49,31 @@ function handleEventLoad()
 	document.getElementById("ExtraInfo").value = extraInfo;
 	document.getElementById("button").disabled = false;
 }
+
+// To dynamically change the max-width of box-table
+
+var box = document.getElementById("box-table");
+
+function boxTableSize() {
+	if (window.innerWidth < 800) {
+		box.style.maxWidth = window.innerWidth + "px";
+	}
+	if (window.innerWidth > 800)
+	{
+		box.style.maxWidth = Math.min(896, window.innerWidth - 336) + "px";
+	}
+}
+
+window.addEventListener("load", boxTableSize());
+window.addEventListener("resize", function() {
+	if (window.innerWidth < 800) {
+		box.style.maxWidth = window.innerWidth + "px";
+	}
+	if (window.innerWidth > 800)
+	{
+		box.style.maxWidth = Math.min(896, window.innerWidth - 336) + "px";
+	}
+})
+
+// The following code does not work
+// window.addEventListener("resize", boxTableSize());
