@@ -2,11 +2,12 @@
 <html lang="<?php echo $language ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
+	<link rel="stylesheet" type="text/css" href="/static/404.css">
 </head>
 <body class="error-page">
 	<?php include 'Templates/page header.php' ?>
 	<div class="error-image">
-		<img src="/static/picture/error.svg">
+		<img src="https://instagram.fymq2-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/118864590_252863045871428_6260297577990075586_n.jpg?_nc_ht=instagram.fymq2-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=6Ks7w0FmbeUAX8BbgTI&tp=1&oh=aaa1286031bb0a19bd300ab28fee0aac&oe=6015C4CC">
 	</div>
 	<section class="error-explanation">
 		<h1><?php echo TEXT[0] ?></h1>
