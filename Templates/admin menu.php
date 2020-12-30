@@ -4,8 +4,8 @@
 		'/admin/companies'  => ['Companies', 'company_grey50.svg'],
 		'/admin/users'      => ['Users', 'users_grey50.svg'],
 		'/admin/tags'       => ['Tags', 'tag_grey50.svg'],
-		'/admin/categories' => ['Categories', 'label_grey50.svg']
-		// '/admin/database'   => ['Database', 'dns_grey50.svg']
+		'/admin/categories' => ['Categories', 'label_grey50.svg'],
+		'/admin/database'   => ['Database', 'dns_grey50.svg']
 	];
 ?>
 <div class="column-left">
@@ -40,13 +40,6 @@
 					{ echo '</a>'; }
 				}
 			?>
-			<br>
-			<a href="/admin/database">
-				<div class="icon-label-h">
-					<img src="/static/icon/dns_grey50.svg">
-					Database
-				</div>
-			</a>
 		</section>
 	</div>
 </div>
