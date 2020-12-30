@@ -1,26 +1,20 @@
 <?php
 /**
- * Async controller for login request by email.
+ * Controller for the async login by email.
+ * HTTP param POST "email"
+ * @link https://wuwana.com/ajax/email XMLHttpRequest (JavaScript)
  */
-
-spl_autoload_register(function($className) {
-	require '../../Models/' . str_replace('\\', '/', $className) . '.php';
-});
 
 if (!filter_has_var(INPUT_POST, 'email'))
 { exit; }
 
-trigger_error('DEBUG - Posted email=' . filter_input(INPUT_POST, 'email'));
+// DEBUG
+mail(
+	strtolower(trim(filter_input(INPUT_POST, 'email'))),
+	'Test', 'This is a test...',
+	'From: noreply@wuwana.com'
+);
 
-$language = WebApp\WebApp::getLanguageCode();
-
-//TODO: create an email in every languages
-if ($language != 'es')
-{ $language = 'en'; }
-
-require 'text ' . $language . '.php';
-
-$user = new WebApp\UserSession(WebApp\Data::getUser());
 $user->sendEmail(
 	filter_input(INPUT_POST, 'email'),
 	'Login Wuwana <noreply@wuwana.com>',
@@ -52,14 +46,3 @@ $user->sendEmail(
 	.  TEXT[9]
 	. '</p></body>'
 );
-
-$debug = mail(
-	strtolower(trim(filter_input(INPUT_POST, 'email'))),
-	'Test', 'This is a test...',
-	'From: noreply@wuwana.com'
-);
-
-trigger_error('DEBUG - 2nd email sent? ' . var_export($debug,true));
-
-if (memory_get_peak_usage() > WebApp\WebApp::MEMORY_LIMIT)
-{ trigger_error(memory_get_peak_usage() . ' Bytes of memory used', E_USER_NOTICE); }

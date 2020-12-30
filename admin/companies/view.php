@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="<?php echo $language ?>">
 <head>
-	<?php include '../../Templates/page metadata.php' ?>
+	<?php include 'Templates/page metadata.php' ?>
 	<title>Admin page | Wuwana</title>
 	<link rel="stylesheet" type="text/css" href="/static/admin.css">
 	<script src="/static/admin.js" defer></script>
 </head>
 <body>
-	<?php include '../../Templates/page header.php' ?>
+	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<?php include '../../Templates/admin menu.php' ?>
+		<?php include 'Templates/admin menu.php' ?>
 		<div class="column-main">
 			<section>
 				<h2>Add new company</h2>
@@ -116,11 +116,11 @@
 						</table>
 						<div class="table-visual-pad"></div>
 					</div>
-					
+
 				</div>
 			</section>
 		</div>
 	</div>
-	<?php include '../../Templates/page footer.php' ?>
+	<?php include 'Templates/page footer.php' ?>
 </body>
 </html>
