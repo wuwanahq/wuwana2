@@ -85,12 +85,12 @@
 						<table>
 							<thead>
 								<tr>
-									<th style="min-width: 32px;">Logo</th>
+									<th>Logo</th>
 									<th style="min-width: 240px;">Company Name</th>
 									<th style="min-width: 150px;">Location</th>
 									<th>Visible tags</th>
 									<th>Last update</th>
-									<th style="min-width: 32px" id="entry-button"></th>
+									<th id="entry-button"></th>
 								</tr>
 							</thead>
 							<tbody>

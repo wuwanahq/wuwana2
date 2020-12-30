@@ -27,9 +27,9 @@
 							<tbody>
 								<tr>
 									<form method="post">
-										<td><input type="text" name="TagID" placeholder="Beer"></td>
-										<td><input type="text" name="TagNames" placeholder="Beer;Cerveza"></td>
-										<td><input type="text" name="Keywords" placeholder="beer|cerve[sz]a[s]?"></td>
+										<td><input type="text" name="TagID"></td>
+										<td><input type="text" name="TagNames"></td>
+										<td><input type="text" name="Keywords"></td>
 										<td><input type="submit" value="Add"></td>
 									</form>
 								</tr>

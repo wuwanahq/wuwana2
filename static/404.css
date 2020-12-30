@@ -10,6 +10,7 @@
 	margin: 24px;
 	max-width: 320px;
 	border-radius: 40px;
+	overflow: hidden;
 }
 
 .error-image img {
