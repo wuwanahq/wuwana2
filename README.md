@@ -86,5 +86,5 @@ Later, if you want to update the WebApp, just run `git pull` on your computer in
 
 ## Open source license
 
-This project is distributed under the [Mozilla Public License 2.0](blob/master/LICENSE) (MPL-2.0 License).  
+This project is distributed under the [Mozilla Public License 2.0](LICENSE) (MPL-2.0 License).  
 To sumarize you can fork, modify, distribute or use it even for commercial use but you can **not** reuse the name "Wuwana" in your website name or the Wuwana logo.

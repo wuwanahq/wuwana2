@@ -7,8 +7,6 @@ namespace WebApp;
  */
 class WebApp
 {
-	const VERSION = '2.1.0';
-
 	/**
 	 * Min memory usage to store it in PHP logs.
 	 * @var int Bytes

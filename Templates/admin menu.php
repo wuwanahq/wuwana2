@@ -39,5 +39,5 @@
 			?>
 		</section>
 	</div>
-	Wuwana v<?php echo WebApp\WebApp::VERSION ?>
+	Wuwana v2.1.1
 </div>

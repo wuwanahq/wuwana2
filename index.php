@@ -1,6 +1,6 @@
 <?php
 /**
- * Router for each page controllers (WebApp entry point).
+ * Router or front controller (WebApp entry point).
  * @see http://httpd.apache.org/docs/current/mod/mod_dir.html#fallbackresource Apache FallbackResource directive (mod_dir)
  * @see http://nginx.org/en/docs/http/ngx_http_core_module.html#try_files Nginx "try_files" directive (core module)
  * @see https://www.php.net/manual/en/features.commandline.webserver.php PHP built-in web server using a router script
