@@ -283,6 +283,7 @@ dl dd label {
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
 	overflow: hidden;
+	white-space: nowrap;
 }
 
 .buttonMain a {
@@ -322,6 +323,7 @@ dl dd label {
 	border-radius: 8px;
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
+	white-space: nowrap;
 }
 
 .button-second:hover {
@@ -354,6 +356,7 @@ dl dd label {
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
 	overflow: hidden;
+	white-space: nowrap;
 }
 
 .buttonIcon a {
@@ -392,6 +395,7 @@ dl dd label {
 	background-color: #ffffff;
 	border: solid 1px #8b8989;
 	border-radius: 8px;
+	white-space: nowrap;
 }
 
 .button-icon-small img {

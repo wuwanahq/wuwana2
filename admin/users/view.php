@@ -12,44 +12,6 @@
 		<?php include 'Templates/admin menu.php' ?>
 		<div class="column-main">
 			<section id="section-table">
-				<h2>New Users</h2> <!-- Show latest 5 users -->
-				<div id="box-table">
-					<div class="scroll-h">
-						<table>
-							<thead>
-								<tr>
-									<th>Email</th>
-									<th>Name</th>
-									<th>Company</th>
-									<th>Access code</th>
-									<th>Last login</th>
-									<th id="entry-button"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>j…@wuwana.com</td>
-									<td>Jonathan</td>
-									<td>ADMIN</td>
-									<td>12345</td>
-									<td>2 days ago</td>
-									<td><input type="button" value="Delete"></td>
-								</tr>
-								<tr>
-									<td>v…@gmail.com</td>
-									<td>Vince</td>
-									<td>Example Company n°1</td>
-									<td>74537</td>
-									<td>1 week ago</td>
-									<td><input type="button" value="Delete"></td>
-								</tr>
-							</tbody>
-						</table>
-						<div></div>
-					</div>
-				</div>
-			</section>
-			<section id="section-table">
 				<h2>Total Users: <span>4</span></h2>
 				<div id="box-table">
 					<div class="scroll-h">

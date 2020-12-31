@@ -46,7 +46,7 @@
 								</tr>
 							</tbody>
 						</table>
-						<div class="table-visual-pad"></div>
+						<div></div>
 					</div>
 				</div>
 			</section>
