@@ -24,22 +24,20 @@
 		<section class="adminControl">
 			<h3>Admin controls</h3>
 			<?php
-				$request = substr(filter_input(INPUT_SERVER, 'REQUEST_URI'), 0, 11);
-				foreach ($sections as $url => $section)
+				foreach ($sections as $sectionURL => $section)
 				{
-					$sectionURL = substr($url, 0, 11);
-
-					if ($request != $sectionURL)
-					{ echo '<a href="', $url, '">'; }
+					if ($url != $sectionURL)
+					{ echo '<a href="', $sectionURL, '">'; }
 
 					echo '<div class="icon-label-h">';
 					echo   '<img src="/static/icon/', $section[1], '">', $section[0];
 					echo '</div>';
 
-					if ($request != $sectionURL)
+					if ($url != $sectionURL)
 					{ echo '</a>'; }
 				}
 			?>
 		</section>
 	</div>
+	Wuwana v<?php echo WebApp\WebApp::VERSION ?>
 </div>
