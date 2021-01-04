@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo $language ?>">
+<html lang="<?php echo $language->code ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
 	<title><?php echo $company->name ?> | Wuwana</title>
@@ -47,7 +47,7 @@
 				<hr>
 <!--
 				<section class="companyAddress">
-					
+
 					<h3><?php echo TEXT[7] ?></h3>
 					<p><?php echo $company->address ?></p>
 				</section>
@@ -178,19 +178,19 @@
 					echo    '<ul>';
 					echo     '<li>';
 					echo      '<div class="item-label">';
-					echo       '<span class="Number">', $company->instagram->nbPost, '</span>';
+					echo       '<span class="Number">', $language->formatShortNumber($company->instagram->nbPost), '</span>';
 					echo       '<span class="Text">Posts</span>';
 					echo      '</div>';
 					echo     '</li>';
 					echo     '<li>';
 					echo      '<div class="item-label">';
-					echo       '<span class="Number">', $company->instagram->nbFollower, '</span>';
+					echo       '<span class="Number">', $language->formatShortNumber($company->instagram->nbFollower), '</span>';
 					echo       '<span class="Text">Followers</span>';
 					echo      '</div>';
 					echo     '</li>';
 					echo     '<li>';
 					echo      '<div class="item-label">';
-					echo       '<span class="Number">', $company->instagram->nbFollowing, '</span>';
+					echo       '<span class="Number">', $language->formatShortNumber($company->instagram->nbFollowing), '</span>';
 					echo       '<span class="Text">Following</span>';
 					echo      '</div>';
 					echo     '</li>';

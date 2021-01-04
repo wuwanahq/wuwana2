@@ -3,7 +3,7 @@
 	<div class="headerContainer">
 		<div class="header-lang-wrapper" onclick="showLang()">
 			<div class="header-lang">
-				<?php echo $language == 'zh' ? WebApp\Config::LANGUAGES[$language] : strtoupper($language) ?>
+				<?php echo $language->code == 'zh' ? WebApp\Language::CODES[$language->code] : strtoupper($language->code) ?>
 			</div>
 			<div class="popup-lang" id="popup-lang">
 				<div class="popup-title">
@@ -11,7 +11,7 @@
 					<img src="/static/icon/close.svg" id="popup-lang-close">
 				</div>
 				<?php
-					foreach (WebApp\Config::LANGUAGES as $code => $lang)
+					foreach (WebApp\Language::CODES as $code => $lang)
 					{ echo '<a href="', WebApp\WebApp::changeSubdomain($code), '">', $lang, '</a>'; }
 				?>
 			</div>

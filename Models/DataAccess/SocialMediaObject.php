@@ -23,14 +23,14 @@ class SocialMediaObject
 			case 'url': return $this->url;
 
 			// Instagram
-			case 'nbPost': return self::shortNumber($this->counter1);
-			case 'nbFollower': return self::shortNumber($this->counter2);
-			case 'nbFollowing': return self::shortNumber($this->counter3);
+			case 'nbPost': return $this->counter1;
+			case 'nbFollower': return $this->counter2;
+			case 'nbFollowing': return $this->counter3;
 
 			// Facebook
-			case 'nbLike': return self::shortNumber($this->counter1);
-			case 'nbFollow': return self::shortNumber($this->counter2);
-			case 'nbCheckin': return self::shortNumber($this->counter3);
+			case 'nbLike': return $this->counter1;
+			case 'nbFollow': return $this->counter2;
+			case 'nbCheckin': return $this->counter3;
 		}
 
 		trigger_error('Undefined property ' . $name, E_USER_ERROR);
@@ -80,17 +80,5 @@ class SocialMediaObject
 	public function getUsername()
 	{
 		return str_replace('https://www.instagram.com/', '', $this->url);
-	}
-
-	//TODO: This is not supposed to be here because it's related to the user language
-	static function shortNumber($number)
-	{
-		if ($number >= 1000000)
-		{ return round($number / 1000000, 1) . 'M'; }
-
-		if ($number >= 10000)
-		{ return round($number / 1000, 1) . 'k'; }
-
-		return $number;
 	}
 }

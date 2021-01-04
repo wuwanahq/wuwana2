@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo $language ?>">
+<html lang="<?php echo $language->code ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
 	<title>Admin page | Wuwana</title>
@@ -107,7 +107,7 @@
 										echo   '<td title="Other tags: ', $company->otherTags, '">';
 										echo     implode(' ', $company->visibleTags);
 										echo   '</td>';
-										echo   '<td>', date('Y-m-d H:i', $company->lastUpdate), '</td>';
+										echo   '<td>', $language->formatDate($company->lastUpdate), '</td>';
 										echo   '<td><input type="button" value="Delete" disabled></td>';
 										echo '</tr>';
 									}
