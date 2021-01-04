@@ -1,6 +1,5 @@
 # Apache 2.4
-DirectoryIndex index.php
-FallbackResource /router.php
+FallbackResource /index.php
 
 # Nginx
-#location / { try_files $uri /router.php =404; }
+#location / { try_files $uri /index.php =404; }

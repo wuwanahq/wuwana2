@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo $language ?>">
+<html lang="<?php echo $language->code ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
@@ -122,7 +122,7 @@
 							echo       '<ul class="tag-area">';
 							echo         '<li>', implode('</li><li>', $company->tags), '</li>';
 							echo       '</ul>';
-							echo       '<div class="button-icon-small margin-t-auto">'; 
+							echo       '<div class="button-icon-small margin-t-auto">';
 							echo         '<img src=/static/icon/small/map-small-grey50.svg>';
 							echo         $locations[$company->region];
 							echo       '</div>';

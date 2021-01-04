@@ -11,16 +11,16 @@ spl_autoload_register(function($className) {
 });
 
 // Global variables available in all views and controllers
-$language = WebApp\WebApp::getLanguageCode();
+$language = WebApp\WebApp::getLanguage();
 $user = new WebApp\UserSession(WebApp\Data::getUser());
 $url = WebApp\WebApp::getURL();
 
-require 'Templates/text ' . $language . '.php';
+require 'Templates/text ' . $language->code . '.php';
 
 switch ($url)
 {
 	case '/':
-		require 'homepage/text ' . $language . '.php';
+		require 'homepage/text ' . $language->code . '.php';
 		require 'homepage/controller.php';
 		require 'homepage/view.php';
 		break;
@@ -37,7 +37,7 @@ switch ($url)
 		break;
 
 	case '/ajax/email':
-		require 'ajax/email/text ' . $language . '.php';
+		require 'ajax/email/text ' . $language->code . '.php';
 		require 'ajax/email/controller.php';
 		break;  // There is no view with AJAX request
 
@@ -46,16 +46,16 @@ switch ($url)
 		{ return false; }
 
 		// Controller for the company page
-		$company = WebApp\Data::getCompanyInfo(str_replace('/', '', $url), $language);
+		$company = WebApp\Data::getCompanyInfo(str_replace('/', '', $url), $language->code);
 
 		if ($company instanceof DataAccess\CompanyObject)
 		{
-			require 'company/text ' . $language . '.php';
+			require 'company/text ' . $language->code . '.php';
 			require 'company/view.php';
 		}
 		else  // No permalink found so display the error page
 		{
-			require '404/text ' . $language . '.php';
+			require '404/text ' . $language->code . '.php';
 			require '404/controller.php';
 			require '404/view.php';
 		}

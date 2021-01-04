@@ -36,18 +36,6 @@ FORCE_HTTPS = false,
  * Session lifetime.
  * @var int Seconds
  */
-SESSION_LIFETIME = 1800,  // 30 minutes
-
-/**
- * Available languages on the website.
- * The first of the list is the language by default if none are selected and if the device language isn't in this list.
- * @var string[] Language code (ISO 639-1) => Language name
- */
-LANGUAGES = [
-	'en' => 'English',
-	'es' => 'Español',
-	'fr' => 'Français',
-	'zh' => '中文',
-];
+SESSION_LIFETIME = 1800;  // 30 minutes
 
 }

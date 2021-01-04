@@ -14,34 +14,19 @@ class WebApp
 	const MEMORY_LIMIT = 1048576;  // 1 MB
 
 	/**
-	 * Return the selected language code by sub-domain, domain, user device language or the default language.
-	 * @return string 2 characters (ISO 639-1)
+	 * Return the selected language according to the sub-domain, user device language or the default language.
+	 * @return \WebApp\Language
 	 */
-	static function getLanguageCode()
+	static function getLanguage()
 	{
 		$hostname = self::getHostname(true);
 
-		if (strlen($hostname) > 3)
+		if (strlen($hostname) > 6 && $hostname[2] == '.')
 		{
-			$code = substr($hostname, 0, 3);  // Sub-domain
+			$subdomain = $hostname[0] . $hostname[1];
 
-			if ($code[2] == '.')
-			{
-				$code = $code[0] . $code[1];
-
-				if (isset(Config::LANGUAGES[$code]))
-				{ return $code; }
-			}
-
-			$code = substr($hostname, -3);  // Domain
-
-			if ($code[0] == '.')
-			{
-				$code = $code[1] . $code[2];
-
-				if (isset(Config::LANGUAGES[$code]))
-				{ return $code; }
-			}
+			if (isset(Language::CODES[$subdomain]))
+			{ return new Language($subdomain); }
 		}
 
 		if (filter_has_var(INPUT_SERVER, 'HTTP_ACCEPT_LANGUAGE'))
@@ -50,13 +35,12 @@ class WebApp
 			{
 				$code = substr($language, 0, 2);
 
-				if (isset(Config::LANGUAGES[$code]))
-				{ return $code; }
+				if (isset(Language::CODES[$code]))
+				{ return new Language($code); }
 			}
 		}
 
-		foreach (Config::LANGUAGES as $code => $language)
-		{ return $code; }
+		return new Language('en');
 	}
 
 	static function getURL()

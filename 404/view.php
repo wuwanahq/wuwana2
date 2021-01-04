@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo $language ?>">
+<html lang="<?php echo $language->code ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
 	<link rel="stylesheet" type="text/css" href="/static/404.css">
@@ -12,7 +12,6 @@
 		</div>
 		<h1><?php echo TEXT[0] ?></h1>
 		<p><?php echo TEXT[1] ?></p>
-
 <!--
 		<section class="error-companies">
 			<h2><?php echo TEXT[2] ?></h2>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo $language ?>">
+<html lang="<?php echo $language->code ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
 	<title>Admin page | Wuwana</title>
@@ -12,6 +12,16 @@
 		<?php include 'Templates/admin menu.php' ?>
 		<div class="column-main">
 			<section>
+				<h2>Export database</h2>
+				<div class="box pad-16">
+					<a href="?export=user">Download table User</a><br>
+					<a href="?export=company">Download table Company</a><br>
+					<a href="?export=socialmedia">Download table SocialMedia</a><br>
+					<a href="?export=image">Download table Image</a><br>
+					<a href="?export=tag">Download table Tag</a><br>
+				</div>
+			</section>
+			<section>
 				<h2>Import database</h2>
 				<div class="box pad-16">
 					<form>
@@ -23,16 +33,6 @@
 						<label for="f6">Category table:</label><input id="f6" name="f6" type="file"><br>
 						<input type="submit">
 					</form>
-				</div>
-			</section>
-			<section>
-				<h2>Export database</h2>
-				<div class="box pad-16">
-					<a href="#">Download table User</a><br>
-					<a href="#">Download table Company</a><br>
-					<a href="#">Download table SocialMedia</a><br>
-					<a href="#">Download table Image</a><br>
-					<a href="#">Download table ...</a><br>
 				</div>
 			</section>
 		</div>
