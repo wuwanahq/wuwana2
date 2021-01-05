@@ -10,6 +10,7 @@
 	<meta property="og:image:height" content="150">
 	<meta name="twitter:title" content="<?php echo $company->name ?> | Wuwana">
 	<meta name="twitter:image" content="<?php echo $company->logo ?>">
+	<link rel="stylesheet" type="text/css" href="/static/css/company.css">
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>

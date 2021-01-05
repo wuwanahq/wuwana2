@@ -2,7 +2,7 @@
 <html lang="<?php echo $language->code ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
-	<link rel="stylesheet" type="text/css" href="/static/404.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/404.css">
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
