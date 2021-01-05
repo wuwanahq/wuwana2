@@ -15,8 +15,8 @@
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
 		<section class="column-left">
-			<div class="boxPanel">
-				<section class="companyAbout">
+			<div class="box-panel">
+				<section class="company-about">
 					<div class="logo-main">
 						<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name, ' logo' ?>" >
 					</div>
@@ -35,7 +35,7 @@
 					</div>
 				</section>
 				<hr>
-				<section class="companyDescription">
+				<section class="company-description">
 					<h3><?php printf(TEXT[6], $company->name) ?></h3>
 					<?php
 						if (isset($user) && $user->isAdmin())
@@ -87,7 +87,7 @@
 							{
 								echo '<li>';
 								echo  '<a class="item-label" href="', $company->instagram->url, '" target="_blank">';
-								echo   '<div class="buttonSocial">';
+								echo   '<div class="button-social">';
 								echo    '<img src="/static/icon/instagram.svg">';
 								echo   '</div>';
 								echo   'Instagram';
@@ -99,7 +99,7 @@
 							{
 								echo '<li>';
 								echo  '<a class="item-label" href="', $company->website, '" target="_blank">';
-								echo   '<div class="buttonSocial">';
+								echo   '<div class="button-social">';
 								echo    '<img src="/static/icon/globe.svg">';
 								echo   '</div>';
 								echo   'Web';
@@ -113,7 +113,7 @@
 								echo  '<a class="item-label" href="https://wa.me/', $company->phone, '?text=';
 									printf(TEXT[8], $company->name);
 								echo    '" target="_blank">';
-								echo   '<div class="buttonSocial">';
+								echo   '<div class="button-social">';
 								echo    '<img src="/static/icon/whatsapp.svg">';
 								echo   '</div>';
 								echo   'WhatsApp';
@@ -125,7 +125,7 @@
 							{
 								echo '<li>';
 								echo  '<a class="item-label" href="mailto:', $company->email, '" >';
-								echo   '<div class="buttonSocial">';
+								echo   '<div class="button-social">';
 								echo    '<img src="/static/icon/email.svg">';
 								echo   '</div>';
 								echo   'Email';
@@ -171,48 +171,48 @@
 						printf(TEXT[2], $company->name);
 					echo  '</h2>';
 					echo  '<div class="box">';
-					echo   '<div class="InstagramInfo">';
+					echo   '<div class="instagram-info">';
 					echo    '<h3>', $company->instagram->profileName, '</h3>';
 					echo    '<p>', nl2br($company->instagram->biography), '<br>';
 					echo    '<a href="', $company->instagram->link, '" target="_blank">', str_replace(['http://','https://'], '', $company->instagram->link), '</a></p>';
 					echo    '<ul>';
 					echo     '<li>';
 					echo      '<div class="item-label">';
-					echo       '<span class="Number">', $language->formatShortNumber($company->instagram->nbPost), '</span>';
-					echo       '<span class="Text">Posts</span>';
+					echo       '<span class="number">', $language->formatShortNumber($company->instagram->nbPost), '</span>';
+					echo       '<span class="text">Posts</span>';
 					echo      '</div>';
 					echo     '</li>';
 					echo     '<li>';
 					echo      '<div class="item-label">';
-					echo       '<span class="Number">', $language->formatShortNumber($company->instagram->nbFollower), '</span>';
-					echo       '<span class="Text">Followers</span>';
+					echo       '<span class="number">', $language->formatShortNumber($company->instagram->nbFollower), '</span>';
+					echo       '<span class="text">Followers</span>';
 					echo      '</div>';
 					echo     '</li>';
 					echo     '<li>';
 					echo      '<div class="item-label">';
-					echo       '<span class="Number">', $language->formatShortNumber($company->instagram->nbFollowing), '</span>';
-					echo       '<span class="Text">Following</span>';
+					echo       '<span class="number">', $language->formatShortNumber($company->instagram->nbFollowing), '</span>';
+					echo       '<span class="text">Following</span>';
 					echo      '</div>';
 					echo     '</li>';
 					echo    '</ul>';
 					echo   '</div>';
 					echo   '<div class="Aspect2-3">';
-					echo    '<div class="InstagramGallery">';
-					echo     '<div class="InstagramRow">';
-					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[0], '"></div>';
-					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[1], '"></div>';
+					echo    '<div class="instagram-gallery">';
+					echo     '<div class="instagram-row">';
+					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[0], '"></div>';
+					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[1], '"></div>';
 					echo     '</div>';
-					echo     '<div class="InstagramRow">';
-					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[2], '"></div>';
-					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[3], '"></div>';
+					echo     '<div class="instagram-row">';
+					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[2], '"></div>';
+					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[3], '"></div>';
 					echo     '</div>';
-					echo     '<div class="InstagramRow">';
-					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[4], '"></div>';
-					echo      '<div class="InstagramPicture"><img src="', $company->instagram->pictures[5], '"></div>';
+					echo     '<div class="instagram-row">';
+					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[4], '"></div>';
+					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[5], '"></div>';
 					echo     '</div>';
 					echo    '</div>';
 					echo   '</div>';
-					echo    '<a class="buttonIcon" href="', $company->instagram->url, '" target="_blank">';
+					echo    '<a class="button-icon" href="', $company->instagram->url, '" target="_blank">';
 					echo     '<img src="/static/icon/instagram.svg">', TEXT[5];
 					echo    '</a>';
 					echo  '</div>';
@@ -220,7 +220,7 @@
 				}
 			?>
 			</section>
-			<a class="buttonIcon center" href="/">
+			<a class="button-icon center" href="/">
 				<img src="/static/icon/home.svg">
 				<?php echo TEXT[4] ?>
 			</a>
