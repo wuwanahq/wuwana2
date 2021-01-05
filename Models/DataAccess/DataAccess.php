@@ -98,4 +98,42 @@ abstract class DataAccess
 
 		fclose($file);
 	}
+
+	protected function exportTable($name)
+	{
+		$query = $this->pdo->query('select * from ' . $name);
+		$line = '';
+
+		foreach ($query->fetch(PDO::FETCH_ASSOC) as $columnName => $columnValue)
+		{
+			echo $columnName;
+
+			if ($line != '')
+			{
+				echo "\t";
+				$line .= "\t";
+			}
+
+			$line .= $columnValue;
+		}
+
+		echo "\n", $line, "\n";
+
+		while ($columns = $query->fetch(PDO::FETCH_ASSOC))
+		{
+			$lineIsEmpty = true;
+
+			foreach ($columns as $column)
+			{
+				if ($lineIsEmpty)
+				{ $lineIsEmpty = false; }
+				else
+				{ echo "\t"; }
+
+				echo $column;
+			}
+
+			echo "\n";
+		}
+	}
 }

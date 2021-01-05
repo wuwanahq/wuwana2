@@ -36,6 +36,11 @@ class User extends DataAccess
 		]);
 	}
 
+	public function exportData()
+	{
+		parent::exportTable('UserAccount');
+	}
+
 	/**
 	 * Find a user by its hashed email address.
 	 * @param string $hash Binary hash

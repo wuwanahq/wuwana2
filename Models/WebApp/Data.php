@@ -83,4 +83,14 @@ class Data
 	{
 		return new DataAccess\Tag(self::getPdoInstance());
 	}
+
+	public static function getSocialMedia()
+	{
+		return new DataAccess\SocialMedia(self::getPdoInstance());
+	}
+
+	public static function getImage()
+	{
+		return new DataAccess\Image(self::getPdoInstance());
+	}
 }

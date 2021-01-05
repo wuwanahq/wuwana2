@@ -37,6 +37,11 @@ class SocialMedia extends DataAccess
 		]);
 	}
 
+	public function exportData()
+	{
+		parent::exportTable('SocialMedia');
+	}
+
 	public function insert(SocialMediaObject $socialMedia, $companyID)
 	{
 		$query = $this->pdo->query('select coalesce(max(ID)+1,0) from SocialMedia where CompanyID=' . $companyID);

@@ -34,6 +34,7 @@ class Language
 	public function __construct($code)
 	{
 		$this->code = isset(self::CODES[$code]) ? $code : 'en';
+		date_default_timezone_set('UTC');
 	}
 
 	/**
@@ -80,6 +81,9 @@ class Language
 	public function formatDate($timestamp)
 	{
 		$interval = time() - $timestamp;
+
+		if ($interval < 2)  // minimum interval
+		{ $interval = 2; }
 
 		if ($interval <= 90)  // seconds
 		{

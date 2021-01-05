@@ -14,11 +14,12 @@
 			<section>
 				<h2>Export database</h2>
 				<div class="box pad-16">
-					<a href="?export=user">Download table User</a><br>
-					<a href="?export=company">Download table Company</a><br>
-					<a href="?export=socialmedia">Download table SocialMedia</a><br>
-					<a href="?export=image">Download table Image</a><br>
-					<a href="?export=tag">Download table Tag</a><br>
+					<a href="?export=UserAccount">Download table User (TSV file)</a><br>
+					<a href="?export=Company">Download table Company (TSV file)</a><br>
+					<a href="?export=SocialMedia">Download table SocialMedia (TSV file)</a><br>
+					<a href="?export=Image">Download table Image (TSV file)</a><br>
+					<a href="?export=Tag">Download table Tag (TSV file)</a><br>
+					<a href="?export=schema">Download database schema (SQL script)</a><br>
 				</div>
 			</section>
 			<section>
