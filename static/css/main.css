@@ -36,6 +36,8 @@
 	--red800: #BE3C32;
 	--red500: #EC5540;
 
+	--azure700: #527BCC;
+
 	/* Font size */
 	--font-xxs: 0.625rem;
 	--font-xs: 0.75rem;
@@ -43,6 +45,7 @@
 	--font-m: 1rem;
 	--font-l: 1.125rem;
 	--font-xl: 1.5rem;
+	--font-xxl: 1.75rem;
 }
 
 /* GENERAL BODY */
@@ -106,16 +109,10 @@ p {
 	margin-top: 8px;
 }
 
-a {
-	text-decoration: none;
-}
-
-.Company .Profile form {
-	text-align: right;
-}
-
-.Company .Profile form label {
-	font-size: 0.5rem;
+a,
+a:active,
+a:visited {
+  text-decoration: none;
 }
 
 /* ----- INPUT CSS ----- */
@@ -234,15 +231,7 @@ dl dd label {
 
 .item-label div {
 	margin-bottom: 4px;
-}
-
-/* .item-label span {
-	font-size: 0.5rem;
-	color: var(--black);
-	margin: 0px;
-	max-width: 48px;
-	text-align: center
-} */
+} 
 
 /* ----- BOXES & CARDS ----- */
 
@@ -732,7 +721,8 @@ dl dd label {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	margin-right: 24px
+	margin-right: 24px;
+	height: 100%;
 }
 
 .company-card-info ul {
@@ -909,7 +899,7 @@ dl dd label {
 {
 	/* TABLET GENERAL CHANGES */
 	h1 {
-		font-size: 1.75rem;
+		font-size: var(--font-xxl);
 	}
 	
 	h2 {
@@ -1070,7 +1060,7 @@ dl dd label {
 
 	.banner-text p {
 		font-size: var(--font-m);
-		list-style: 1.3
+		line-height: 1.3;
 	}
 
 	/* COMPANY CARD */
