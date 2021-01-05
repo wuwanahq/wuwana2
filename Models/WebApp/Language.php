@@ -111,7 +111,7 @@ class Language
 			return round($interval / 60) . ' minutes ago';
 		}
 
-		if ($interval < 86400)  // 24 hours
+		if ($interval <= 82800)  // 23 hours
 		{
 			switch ($this->code)
 			{

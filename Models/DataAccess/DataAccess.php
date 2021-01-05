@@ -106,14 +106,13 @@ abstract class DataAccess
 
 		foreach ($query->fetch(PDO::FETCH_ASSOC) as $columnName => $columnValue)
 		{
-			echo $columnName;
-
 			if ($line != '')
 			{
 				echo "\t";
 				$line .= "\t";
 			}
 
+			echo $columnName;
 			$line .= $columnValue;
 		}
 

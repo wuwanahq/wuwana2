@@ -19,9 +19,10 @@
 					<a href="?export=SocialMedia">Download table SocialMedia (TSV file)</a><br>
 					<a href="?export=Image">Download table Image (TSV file)</a><br>
 					<a href="?export=Tag">Download table Tag (TSV file)</a><br>
-					<a href="?export=schema">Download database schema (SQL script)</a><br>
+					<a href="?export=schema">Download database schema (SQL script)</a>
 				</div>
 			</section>
+<!--
 			<section>
 				<h2>Import database</h2>
 				<div class="box pad-16">
@@ -36,6 +37,7 @@
 					</form>
 				</div>
 			</section>
+-->
 		</div>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
