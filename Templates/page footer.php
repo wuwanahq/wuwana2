@@ -5,13 +5,13 @@
 	<hr>
 	<ul>
 		<li>
-			<a href="/wuwana">About Wuwana™</a>
+			<a href="/wuwana"><?php echo TEMP_TEXT[4] ?></a>
 		</li>
 		<li>
-			<a href="/">Our privacy policy</a> 
+			<a href="/"><?php echo TEMP_TEXT[5] ?></a> 
 		</li>
 		<li>
-			<a href="https://github.com/wuwanahq/wuwana2">We ❤️ Open Source</a>
+			<a href="https://github.com/wuwanahq/wuwana2"><?php echo TEMP_TEXT[6] ?></a>
 		</li>
 	</ul>
 </footer>
