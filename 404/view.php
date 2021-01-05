@@ -52,7 +52,7 @@
 		</section>
 -->
 	</div>
-	<a class="buttonIcon Center" href="/">
+	<a class="button-icon Center" href="/">
 		<img src="/static/icon/home.svg"><?php echo TEXT[3] ?>
 	</a>
 </body>
