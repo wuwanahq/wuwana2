@@ -1,6 +1,8 @@
-/* 404 PAGE */
+/* CSS for the 404 PAGE */
 
 .error-page-wrapper {
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	text-align: center;
 	max-width: 800px;
@@ -11,6 +13,7 @@
 	max-width: 320px;
 	border-radius: 40px;
 	overflow: hidden;
+	align-self: center;
 }
 
 .error-image img {

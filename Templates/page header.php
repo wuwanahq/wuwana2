@@ -1,6 +1,6 @@
-<h1 class="VisuallyHidden">Wuwana</h1>
-<header class="headerBar">
-	<div class="headerContainer">
+<h1 class="visually-hidden">Wuwana</h1>
+<header class="header-bar">
+	<div class="header-container">
 		<div class="header-lang-wrapper" onclick="showLang()">
 			<div class="header-lang">
 				<?php echo $language->code == 'zh' ? WebApp\Language::CODES[$language->code] : strtoupper($language->code) ?>
@@ -16,7 +16,7 @@
 				?>
 			</div>
 		</div>
-		<div class="headerLogo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
+		<div class="header-logo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
 		<div class="header-invisible"></div>
 		<?php
 			if (isset($user) && $user->isLogin())
