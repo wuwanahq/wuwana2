@@ -25,6 +25,11 @@ class Image extends DataAccess
 		]);
 	}
 
+	public function exportData()
+	{
+		parent::exportTable('Image');
+	}
+
 	public function insert(array $imageLinks, $companyID, $socialMediaID)
 	{
 		$query = $this->pdo->prepare('insert into Image (CompanyID,SocialMediaID,URL) values (?,?,?)');

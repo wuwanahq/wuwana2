@@ -52,6 +52,11 @@ class Company extends DataAccess
 		]);
 	}
 
+	public function exportData()
+	{
+		parent::exportTable('Company');
+	}
+
 	/**
 	 * Get a company by its permanent link.
 	 * @param string $permalink

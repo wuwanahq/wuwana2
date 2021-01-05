@@ -34,6 +34,7 @@ class Language
 	public function __construct($code)
 	{
 		$this->code = isset(self::CODES[$code]) ? $code : 'en';
+		date_default_timezone_set('UTC');
 	}
 
 	/**
@@ -81,6 +82,9 @@ class Language
 	{
 		$interval = time() - $timestamp;
 
+		if ($interval < 2)  // minimum interval
+		{ $interval = 2; }
+
 		if ($interval <= 90)  // seconds
 		{
 			switch ($this->code)
@@ -107,7 +111,7 @@ class Language
 			return round($interval / 60) . ' minutes ago';
 		}
 
-		if ($interval < 86400)  // 24 hours
+		if ($interval <= 82800)  // 23 hours
 		{
 			switch ($this->code)
 			{

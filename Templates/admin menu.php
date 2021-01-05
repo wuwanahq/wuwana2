@@ -39,5 +39,5 @@
 			?>
 		</section>
 	</div>
-	Wuwana v2.1.2
+	Wuwana v2.1.3
 </div>

@@ -33,6 +33,11 @@ class Tag extends DataAccess
 		]);
 	}
 
+	public function exportData()
+	{
+		parent::exportTable('Tag');
+	}
+
 	public function insert($id, TagObject $tag)
 	{
 		$tagNames = explode(parent::VALUES_DELIMITER, $tag->names);
