@@ -15,29 +15,29 @@
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
 		<section class="column-left">
-			<div class="boxPanel">
-				<div class="panelCover">
+			<div class="box-panel">
+				<div class="panel-cover">
 					<img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon">
 				</div>
 				<section>
 					<p><?php echo TEXT[9] ?></p>
-					<a class="buttonMain center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
+					<a class="button-main center" href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" target="_blank">
 						<?php echo TEXT[10] ?>
 					</a>
 				</section>
 				<hr>
-				<section class="contactSection">
+				<section class="contact-section">
 					<h3><?php echo TEXT[11] ?></h3>
 					<ul>
 						<li>
 							<a class="item-label" href="https://www.instagram.com/wuwana.es/" target="_blank">
-								<div class="buttonSocial"><img src="/static/icon/instagram.svg"></div>
+								<div class="button-social"><img src="/static/icon/instagram.svg"></div>
 								Instagram
 							</a>
 						</li>
 						<li>
 							<a class="item-label" href="mailto:jonathan@wuwana.com">
-								<div class="buttonSocial"><img src="/static/icon/email.svg"></div>
+								<div class="button-social"><img src="/static/icon/email.svg"></div>
 								Email
 							</a>
 						</li>
@@ -89,13 +89,13 @@
 						?>
 					</dl>
 					</form>
-					<div id="apply-filter" class="buttonIcon center mobile"><img src="/static/icon/filter.svg"><?php echo TEXT[7] ?></div>
+					<div id="apply-filter" class="button-icon center mobile"><img src="/static/icon/filter.svg"><?php echo TEXT[7] ?></div>
 				</div>
 			</section>
 		</section>
 		<section class="column-main">
 			<div class="banner">
-				<div class="bannerText">
+				<div class="banner-text">
 					<h2><?php echo TEMP_TEXT[0] ?></h2>
 					<p><?php echo TEMP_TEXT[1] ?></p>
 				</div>
@@ -137,7 +137,7 @@
 					?>
 				</div>
 			</section>
-			<a class="buttonIcon center" href="?show=all">
+			<a class="button-icon center" href="?show=all">
 				<img src="/static/icon/plus.svg">
 				<?php echo TEXT[6] ?>
 			</a>

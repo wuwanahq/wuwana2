@@ -1,11 +1,12 @@
-/* Admin Control Panel */
+/* CSS for the admin pages */
 
-.boxPanel section {
+/* Admin Control Panel */
+.box-panel section {
 	padding: 16px 0;
 }
 
-.boxPanel h1,
-.boxPanel h3 {
+.box-panel h1,
+.box-panel h3 {
 	margin: 0 16px 8px;
 }
 
