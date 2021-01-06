@@ -1,0 +1,50 @@
+/* CSS for the Privacy Policy Page */
+
+.privacy-wrapper {
+	max-width: 60ch;
+	width: 100%;
+	text-align: left;
+}
+
+body {
+	background-color: var(--white);
+}
+
+section {
+	margin: 24px 0 12px;
+}
+
+h1 {
+	font-size: var(--font-xxl);
+	font-weight: 700;
+	margin: 8px 0 8px
+}
+
+h2 {
+	margin-bottom: 16px;
+}
+
+h3 {
+	margin-bottom: 8px;
+}
+
+p {
+	margin: 0 0 12px;
+}
+
+#privacy-intro h3 {
+	font-weight: 400;
+	font-size: var(--font-s);
+	color: var(--grey700);
+	margin-bottom: 32px;
+}
+
+ol {
+	margin: 0;
+}
+
+li {
+	font-size: var(--s);
+	color: var(--grey700);
+	margin: 8px;
+}

@@ -648,6 +648,10 @@ footer li:first-child {
 	font-weight: 500;
 }
 
+footer li:last-child {
+	margin-right: 0;
+}
+
 footer li a {
 	font-size: var(--font-s);
 	color: var(--grey700);
