@@ -66,7 +66,7 @@ body {
 	margin: 0;
 	justify-content: center;
 	align-items: center;
-	padding: 0 16px 24px;
+	padding: 0 16px;
 }
 
 section {
@@ -613,6 +613,55 @@ dl dd label {
 	margin-right: -8px;
 }
 
+/* FOOTER */
+
+footer {
+	width: 100%;
+	max-width: 1200px; /* Same as body max width */
+	margin-top: 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+footer ul {
+	width: 100%;
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	margin: 0;
+	padding: 8px 0 24px;
+	margin-block-start: 0;
+	padding-inline-start: 0;
+}
+
+footer li {
+	display: flex;
+	margin: 0 16px 8px 0;
+	white-space: nowrap;
+	line-height: 2;
+}
+
+footer li:first-child {
+	font-weight: 500;
+}
+
+footer li:last-child {
+	margin-right: 0;
+}
+
+footer li a {
+	font-size: var(--font-s);
+	color: var(--grey700);
+}
+
+footer li a:hover {
+	text-decoration: underline;
+}
+
+
 /* POP-UP */
 
 .popup-lang {
@@ -1019,6 +1068,15 @@ dl dd label {
 	dl dd label {
 		font-weight: 500;
 		color: var(--black)
+	}
+
+	/* FOOTER */
+	footer ul {
+		flex-direction: column;
+	}
+
+	footer li:last-child {
+		margin-bottom: 0;
 	}
 
 	/* ----- MODIFIER ----- */
