@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<?php include 'Templates/page metadata.php' ?>
+	<title><?php echo TEXT[0] ?> | Wuwana</title>
+	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana">
+	<meta property="og:image" content="/static/Wuwana-link-2020.png">
+	<meta property="og:image:type" content="image/png">
+	<meta property="og:image:width" content="1264">
+	<meta property="og:image:height" content="640">
+	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
+	<meta name="twitter:image" content="https://wuwana.com/static/Wuwana-link-2020.png">
 	<link rel="stylesheet" type="text/css" href="/static/css/privacy.css">
 </head>
 <body>
-	<div class="header-bar"></div>
+	<?php include 'Templates/page header.php' ?>
 	<div class="privacy-wrapper">
 		<section id="privacy-intro">
 			<h1><?php echo TEXT[0] ?></h1>
@@ -43,9 +49,9 @@
 			<p><?php echo TEXT[22] ?></p>
 			<ol>
 				<li><?php echo TEXT[23] ?></li>
-				<li><?php echo TEXT[23] ?></li>
 			</ol>
 		</section>
 	</div>
+	<?php include 'Templates/page footer.php' ?>
 </body>
 </html>

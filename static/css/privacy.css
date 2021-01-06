@@ -8,7 +8,6 @@
 
 body {
 	background-color: var(--white);
-	padding-bottom: 40px;
 }
 
 section {
@@ -23,10 +22,12 @@ h1 {
 }
 
 h2 {
+	font-size: var(--font-xxl);
 	margin-bottom: 16px;
 }
 
 h3 {
+	font-size: var(--font-l);
 	margin-top: 8px;
 	margin-bottom: 8px;
 }
@@ -44,11 +45,12 @@ p {
 
 ol {
 	margin: 0;
-	padding-inline-start: 16px;
+	padding-inline-start: 10px;
+	list-style-type: lower-roman;
 }
 
 li {
-	font-size: var(--font-s);
+	font-size: var(--font-m);
 	color: var(--grey700);
 	margin: 8px;
 }

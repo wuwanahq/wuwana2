@@ -4,14 +4,51 @@
 <footer>
 	<hr>
 	<ul>
-		<li>
-			<a href="/wuwana"><?php echo TEMP_TEXT[4] ?></a>
-		</li>
-		<li>
-			<a href="/privacy"><?php echo TEMP_TEXT[5] ?></a> 
-		</li>
-		<li>
-			<a href="https://github.com/wuwanahq/wuwana2"><?php echo TEMP_TEXT[6] ?></a>
-		</li>
+		<?php
+			if ($url == '/privacy')
+			{
+				echo '<li>';
+				echo   '<a href="/wuwana">';
+				echo      TEMP_TEXT[4] ;
+				echo   '</a>';
+				echo '</li>';	
+				echo '<li>';
+				echo   '<a href="https://github.com/wuwanahq/wuwana2">';
+				echo      TEMP_TEXT[6] ;
+				echo   '</a>';
+				echo '</li>';
+			}
+			elseif ($url == '/wuwana')
+			{
+				echo '<li>';
+				echo   '<a href="/privacy">';
+				echo      TEMP_TEXT[5] ;
+				echo   '</a>';
+				echo '</li>';	
+				echo '<li>';
+				echo   '<a href="https://github.com/wuwanahq/wuwana2">';
+				echo      TEMP_TEXT[6] ;
+				echo   '</a>';
+				echo '</li>';
+			}
+			else 
+			{
+				echo '<li>';
+				echo   '<a href="/wuwana">';
+				echo      TEMP_TEXT[4] ;
+				echo   '</a>';
+				echo '</li>';	
+				echo '<li>';
+				echo   '<a href="/privacy">';
+				echo      TEMP_TEXT[5] ;
+				echo   '</a>';
+				echo '</li>';
+				echo '<li>';
+				echo   '<a href="https://github.com/wuwanahq/wuwana2">';
+				echo      TEMP_TEXT[6] ;
+				echo   '</a>';
+				echo '</li>';
+			}
+		?>
 	</ul>
 </footer>

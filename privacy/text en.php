@@ -2,7 +2,7 @@
 const TEXT = [
 // Text for Introduction section
 0 => 'Our privacy policy',
-1 => 'Version: ', // Update to the latest modification date
+1 => 'Version: ',
 2 => 'Hi there,',
 3 => 'We at Wuwana care about privacy, and we do our best to defend your privacy. That is why we only collect and use minimum data from our users.',
 4 => 'Here, you will find complete details about how Wuwana uses data and what we collect about you on this page.',
@@ -33,4 +33,5 @@ const TEXT = [
 
 // Text for change log
 23 => "January 7th, 2021 - First publish"
+// Remember to update the HTML number code (below H1)
 ];
