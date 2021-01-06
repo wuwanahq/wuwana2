@@ -13,7 +13,7 @@
 				echo   '</a>';
 				echo '</li>';	
 				echo '<li>';
-				echo   '<a href="https://github.com/wuwanahq/wuwana2">';
+				echo   '<a href="https://github.com/wuwanahq/wuwana2" target=”_blank”>';
 				echo      TEMP_TEXT[6] ;
 				echo   '</a>';
 				echo '</li>';
@@ -26,7 +26,7 @@
 				echo   '</a>';
 				echo '</li>';	
 				echo '<li>';
-				echo   '<a href="https://github.com/wuwanahq/wuwana2">';
+				echo   '<a href="https://github.com/wuwanahq/wuwana2" target=”_blank”>';
 				echo      TEMP_TEXT[6] ;
 				echo   '</a>';
 				echo '</li>';
@@ -44,7 +44,7 @@
 				echo   '</a>';
 				echo '</li>';
 				echo '<li>';
-				echo   '<a href="https://github.com/wuwanahq/wuwana2">';
+				echo   '<a href="https://github.com/wuwanahq/wuwana2" target=”_blank”>';
 				echo      TEMP_TEXT[6] ;
 				echo   '</a>';
 				echo '</li>';

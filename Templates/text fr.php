@@ -6,5 +6,5 @@ const TEMP_TEXT = [
 3 => "Langues",
 4 => "À propos de Wuwana™",
 5 => "Politiques de confidentiaité",
-6 => "Nous ❤️ l'open source",
+6 => "Nous ❤️l'open source",
 ];
