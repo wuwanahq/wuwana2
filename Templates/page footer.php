@@ -8,7 +8,7 @@
 			<a href="/wuwana"><?php echo TEMP_TEXT[4] ?></a>
 		</li>
 		<li>
-			<a href="/"><?php echo TEMP_TEXT[5] ?></a> 
+			<a href="/privacy"><?php echo TEMP_TEXT[5] ?></a> 
 		</li>
 		<li>
 			<a href="https://github.com/wuwanahq/wuwana2"><?php echo TEMP_TEXT[6] ?></a>

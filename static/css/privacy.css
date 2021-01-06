@@ -1,13 +1,14 @@
 /* CSS for the Privacy Policy Page */
 
 .privacy-wrapper {
-	max-width: 60ch;
+	max-width: 70ch;
 	width: 100%;
 	text-align: left;
 }
 
 body {
 	background-color: var(--white);
+	padding-bottom: 40px;
 }
 
 section {
@@ -15,7 +16,8 @@ section {
 }
 
 h1 {
-	font-size: var(--font-xxl);
+	font-size: 3rem;
+	line-height: 1;
 	font-weight: 700;
 	margin: 8px 0 8px
 }
@@ -25,6 +27,7 @@ h2 {
 }
 
 h3 {
+	margin-top: 8px;
 	margin-bottom: 8px;
 }
 
@@ -32,7 +35,7 @@ p {
 	margin: 0 0 12px;
 }
 
-#privacy-intro h3 {
+#privacy-intro span {
 	font-weight: 400;
 	font-size: var(--font-s);
 	color: var(--grey700);
@@ -41,10 +44,11 @@ p {
 
 ol {
 	margin: 0;
+	padding-inline-start: 16px;
 }
 
 li {
-	font-size: var(--s);
+	font-size: var(--font-s);
 	color: var(--grey700);
 	margin: 8px;
 }
