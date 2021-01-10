@@ -13,14 +13,14 @@ class User extends DataAccess
 
 	static function getTableSchema()
 	{
-		return 'create table UserAccount ('
-			. 'Hash char(' . strlen(hash(self::HASH_ALGO, '', false)) . ') primary key,'
-			. 'Email varchar(250) not null,'
-			. 'Name varchar(250) not null,'
-			. 'CompanyID int null,'
-			. 'AdminLevel tinyint not null,'
-			. 'AccessCode smallint not null,'
-			. 'LastLogin int not null)';
+		return 'create table UserAccount (
+			Hash char(' . strlen(hash(self::HASH_ALGO, '', false)) . ') primary key,
+			Email varchar(250) not null,
+			Name varchar(250) not null,
+			CompanyID int null,
+			AdminLevel tinyint not null,
+			AccessCode smallint not null,
+			LastLogin int not null)';
 	}
 
 	public function insertData($filePath)
