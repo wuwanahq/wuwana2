@@ -17,7 +17,7 @@ const
  * Oracle DB ----> 'oci:dbname=//localhost:1521/Wuwana'
  * @var string PDO driver-specific connection string
  */
-DB_SOURCE = '',
+DB_SOURCE = 'mysql:host=localhost;port=3306;dbname=Wuwana',
 
 /**
  * User name and password to connect to the database.

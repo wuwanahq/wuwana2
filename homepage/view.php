@@ -10,6 +10,7 @@
 	<meta property="og:image:height" content="640">
 	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
 	<meta name="twitter:image" content="https://wuwana.com/static/Wuwana-link-2020.png">
+	<script src="/static/dhtml/homepage.js" defer></script>
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>

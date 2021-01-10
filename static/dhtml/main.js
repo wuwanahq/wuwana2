@@ -1,64 +1,6 @@
 // ECMAScript 5
 "use strict";
 
-//document.getElementById("C0").addEventListener("change", handleEventChangeFilterAll);
-document.getElementById("R0").addEventListener("change", handleEventChangeFilterAll);
-
-for (var i=1; i < 50; ++i)
-{
-	var checkbox1 = document.getElementById("C" + i);
-	var checkbox2 = document.getElementById("R" + i);
-
-	if (checkbox1 != null)
-	{ checkbox1.addEventListener("change", handleEventChangeFilter); }
-
-	if (checkbox2 != null)
-	{ checkbox2.addEventListener("change", handleEventChangeFilter); }
-}
-
-function handleEventChangeFilter()
-{
-	if (getComputedStyle(this).getPropertyValue("display") == "none")
-	{ //Mobile
-		let changeUrl = function()
-		{
-				let region_url = ''
-				let region_array = document.querySelectorAll('input[name]')
-				region_array.forEach((elem) => {
-					   if(elem.checked && elem.name != 'region') {
-							region_url += elem.name + '=on&'}
-			})
-			window.location = '?' + region_url.slice(0, -1)
-		}
-	
-		let submit_button = document.getElementById('apply-filter')
-	
-		submit_button.addEventListener('click', changeUrl)
-	}
-	else
-	{
-		// Desktop
-		this.form.submit();
-	}
-}
-
-function handleEventChangeFilterAll()
-{
-	var prefix = this.id.substr(0,1);
-
-	for (var i=1; i < 50; ++i)
-	{
-		var checkbox = document.getElementById(prefix + i);
-
-		if (checkbox != null)
-		{ checkbox.checked = false; }
-	}
-
-	// Desktop only
-	if (getComputedStyle(this).getPropertyValue("display") != "none")
-	{ this.form.submit(); }
-}
-
 function askEmail()
 {
 	var email = document.getElementById("email").value;
@@ -104,12 +46,12 @@ function showMenu()
 			img.src = "static/icon/close.svg";
 			body.style.overflow = "hidden";
 		}
-		else 
+		else
 		{
 			div.style.display = "flex";
 			img.src = "static/icon/close.svg";
 			body.style.overflow = "hidden";
-		}	
+		}
 	}
 	else
 	{
@@ -138,7 +80,7 @@ window.addEventListener("resize", () => {
 // Back to top button
 var lastScrollTop = 0;
 
-window.addEventListener("scroll", function(){ 
+window.addEventListener("scroll", function(){
 	var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
 	var toTop = document.getElementById("toTop");
 
@@ -151,7 +93,7 @@ window.addEventListener("scroll", function(){
 		toTop.style.opacity = 1;
 		toTop.style.visibility = "visible"
 	}
-	else 
+	else
 	{
 		toTop.style.opacity = 0;
 		toTop.style.visibility = "hidden";

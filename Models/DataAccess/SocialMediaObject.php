@@ -81,4 +81,9 @@ class SocialMediaObject
 	{
 		return str_replace('https://www.instagram.com/', '', $this->url);
 	}
+
+	public function getHtmlBiography()
+	{
+		return str_replace("\v", '<br>', $this->biography);
+	}
 }
