@@ -31,6 +31,12 @@
 	justify-content: center;
 }
 
+#last-updated {
+	margin: -16px 0 24px;
+	font-size: var(--font-s);
+	color: var(--grey700);
+}
+
 /* Instagram Card */
 
 .instagram .button-icon {

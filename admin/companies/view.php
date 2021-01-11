@@ -3,6 +3,7 @@
 <head>
 	<?php include 'Templates/page metadata.php' ?>
 	<title>Admin page | Wuwana</title>
+	<meta property="og:title" content="Admin page | Wuwana">
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/admin.css">
 	<script src="/static/dhtml/admin.js" defer></script>
 </head>
@@ -74,13 +75,13 @@
 						<input type="hidden" id="ThumbnailSrc5" name="ThumbnailSrc5">
 						<input type="hidden" id="ExternalURL" name="ExternalURL">
 						<input type="hidden" id="ExtraInfo" name="ExtraInfo">
-						<input type="submit" id="button" value="Add company" class="buttonMain" disabled>
+						<input type="submit" id="button" value="Add company" class="button-main" disabled>
 					</form>
 				</div>
 			</section>
 			<section id="section-table">
 				<h2>Companies</h2>
-				<div id="box-table">
+				<div class="box-table">
 					<div class="scroll-h">
 						<table>
 							<thead>

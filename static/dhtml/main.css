@@ -193,6 +193,7 @@ dl dd label {
 	width: 100%;
 	max-width: 1200px;
 	margin-top: 16px;
+	min-height: 80vh /* To have footer at the buttom of the page */
 }
 
 .column-left {
@@ -642,6 +643,7 @@ footer li {
 	margin: 0 16px 8px 0;
 	white-space: nowrap;
 	line-height: 2;
+	font-size: var(--font-s);
 }
 
 footer li:first-child {
@@ -653,7 +655,6 @@ footer li:last-child {
 }
 
 footer li a {
-	font-size: var(--font-s);
 	color: var(--grey700);
 }
 

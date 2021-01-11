@@ -178,6 +178,9 @@
 					}
 				?>
 			</div>
+			<div id="last-updated"> 
+				<?php echo TEXT[9], $company->lastUpdate ?>
+			</div>
 		</section>
 		<section class="column-main">
 			<?php

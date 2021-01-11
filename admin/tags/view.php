@@ -3,6 +3,7 @@
 <head>
 	<?php include 'Templates/page metadata.php' ?>
 	<title>Admin page | Wuwana</title>
+	<meta property="og:title" content="Admin page | Wuwana">
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/admin.css">
 	<script src="/static/dhtml/admin.js" defer></script>
 </head>
@@ -13,7 +14,7 @@
 		<div class="column-main tag-tab">
 			<section id="section-table">
 				<h2>Base tags</h2>
-				<div id="box-table">
+				<div class="box-table">
 					<div class="scroll-h">
 						<table>
 							<thead>
@@ -52,7 +53,7 @@
 			</section>
 			<section id="section-table">
 				<h2>Combined tags</h2>
-				<div id="box-table">
+				<div class="box-table">
 					<div class="scroll-h">
 						<table>
 							<thead>
