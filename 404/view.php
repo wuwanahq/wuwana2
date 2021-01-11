@@ -2,7 +2,8 @@
 <html lang="<?php echo $language->code ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
-	<link rel="stylesheet" type="text/css" href="/static/css/404.css">
+	<title>Wuwana</title>
+	<link rel="stylesheet" type="text/css" href="/static/dhtml/404.css">
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>

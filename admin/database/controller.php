@@ -13,31 +13,31 @@ if (filter_has_var(INPUT_GET, 'export'))
 	{
 		case 'UserAccount':
 			header('Content-Disposition: attachment; filename="UserAccount' . date('Y-m-d') . '.tsv"');
-			header('Content-Type: text/csv');
+			header('Content-Type: text/tab-separated-values');
 			WebApp\Data::getUser()->exportData();
 			exit;
 
 		case 'Company':
 			header('Content-Disposition: attachment; filename="Company' . date('Y-m-d') . '.tsv"');
-			header('Content-Type: text/csv');
+			header('Content-Type: text/tab-separated-values');
 			WebApp\Data::getCompany()->exportData();
 			exit;
 
 		case 'SocialMedia':
 			header('Content-Disposition: attachment; filename="SocialMedia' . date('Y-m-d') . '.tsv"');
-			header('Content-Type: text/csv');
+			header('Content-Type: text/tab-separated-values');
 			WebApp\Data::getSocialMedia()->exportData();
 			exit;
 
 		case 'Image':
 			header('Content-Disposition: attachment; filename="Image' . date('Y-m-d') . '.tsv"');
-			header('Content-Type: text/csv');
+			header('Content-Type: text/tab-separated-values');
 			WebApp\Data::getImage()->exportData();
 			exit;
 
 		case 'Tag':
 			header('Content-Disposition: attachment; filename="Tag' . date('Y-m-d') . '.tsv"');
-			header('Content-Type: text/csv');
+			header('Content-Type: text/tab-separated-values');
 			WebApp\Data::getTag()->exportData();
 			exit;
 

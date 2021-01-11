@@ -10,7 +10,7 @@
 	<meta property="og:image:height" content="150">
 	<meta name="twitter:title" content="<?php echo $company->name ?> | Wuwana">
 	<meta name="twitter:image" content="<?php echo $company->logo ?>">
-	<link rel="stylesheet" type="text/css" href="/static/css/company.css">
+	<link rel="stylesheet" type="text/css" href="/static/dhtml/company.css">
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
@@ -31,7 +31,7 @@
 						<li><?php echo implode('</li><li>', $company->tags) ?></li>
 					</ul>
 					<div class="button-icon-small margin-t16">
-						<img src=/static/icon/small/map-small-grey50.svg>
+						<img src="/static/icon/small/map-small-grey50.svg">
 						<?php echo $company->region ?>
 					</div>
 				</section>
@@ -86,52 +86,63 @@
 						<?php
 							if ($company->instagram->url != '')
 							{
-								echo '<li>';
-								echo  '<a class="item-label" href="', $company->instagram->url, '" target="_blank">';
-								echo   '<div class="button-social">';
-								echo    '<img src="/static/icon/instagram.svg">';
-								echo   '</div>';
-								echo   'Instagram';
-								echo  '</a>';
-								echo '</li>';
+								printf('
+									<li>
+										<a class="item-label" href="%s" target="_blank">
+											<div class="button-social">
+												<img src="/static/icon/instagram.svg">
+											</div>
+											Instagram
+										</a>
+									</li>',
+									$company->instagram->url
+								);
 							}
 
 							if (!empty($company->website))
 							{
-								echo '<li>';
-								echo  '<a class="item-label" href="', $company->website, '" target="_blank">';
-								echo   '<div class="button-social">';
-								echo    '<img src="/static/icon/globe.svg">';
-								echo   '</div>';
-								echo   'Web';
-								echo  '</a>';
-								echo '</li>';
+								printf('
+									<li>
+										<a class="item-label" href="%s" target="_blank">
+											<div class="button-social">
+												<img src="/static/icon/globe.svg">
+											</div>
+											Web
+										</a>
+									</li>',
+									$company->website
+								);
 							}
 
 							if (isset($company->phone) && (int)$company->phone = 0)
 							{
-								echo '<li>';
-								echo  '<a class="item-label" href="https://wa.me/', $company->phone, '?text=';
-									printf(TEXT[8], $company->name);
-								echo    '" target="_blank">';
-								echo   '<div class="button-social">';
-								echo    '<img src="/static/icon/whatsapp.svg">';
-								echo   '</div>';
-								echo   'WhatsApp';
-								echo  '</a>';
-								echo '</li>';
+								printf('
+									<li>
+										<a class="item-label" href="https://wa.me/%s?text=%s" target="_blank">
+											<div class="button-social">
+												<img src="/static/icon/whatsapp.svg">
+											</div>
+											WhatsApp
+										</a>
+									</li>',
+									$company->phone,
+									sprintf(TEXT[8], $company->name)
+								);
 							}
 
 							if (!empty($company->email))
 							{
-								echo '<li>';
-								echo  '<a class="item-label" href="mailto:', $company->email, '" >';
-								echo   '<div class="button-social">';
-								echo    '<img src="/static/icon/email.svg">';
-								echo   '</div>';
-								echo   'Email';
-								echo  '</a>';
-								echo '</li>';
+								printf('
+									<li>
+										<a class="item-label" href="mailto:%s">
+											<div class="button-social">
+												<img src="/static/icon/email.svg">
+											</div>
+											Email
+										</a>
+									</li>',
+									$company->email
+								);
 							}
 						?>
 					</ul>
@@ -139,93 +150,110 @@
 				<?php
 					if (isset($user) && $user->isAdmin())
 					{
-						echo '<form method="post">';
-						echo  '<label for="permalink">Permanent link:</label>';
-						echo  '<input id="permalink" type="text" size="26" value="', WebApp\WebApp::getPermalink(), '">';
-						echo  '<br>';
-						echo  '<label for="insta">Instagram profile:</label>';
-						echo  '<input id="insta" type="text" size="25" value="',
-							empty($company->instagram->url) ? '' : $company->instagram->url, '">';
-						echo  '<br>';
-						echo  '<label for="whatsapp">WhatsApp number:</label>';
-						echo  '<input id="whatsapp" type="text" size="24" value="', $company->phone, '"><br>';
-						echo  '<br>';
-						echo  '<label for="email">Email address:</label>';
-						echo  '<input id="email" type="text" size="26" value="', $company->email, '"><br>';
-						echo  '<br>';
-						echo  '<label for="website">Website URL:</label>';
-						echo  '<input id="website" type="text" size="27" value="', $company->website, '">';
-						echo  '<br>';
-						echo  '<input type="submit" value="Update info sources">';
-						echo '</form>';
+						printf('
+							<form method="post">
+								<label for="permalink">Permanent link:</label>
+								<input id="permalink" type="text" size="26" value="%s">
+								<br>
+								<label for="insta">Instagram profile:</label>
+								<input id="insta" type="text" size="25" value="%s">
+								<br>
+								<label for="whatsapp">WhatsApp number:</label>
+								<input id="whatsapp" type="text" size="24" value="%s">
+								<br><br>
+								<label for="email">Email address:</label>
+								<input id="email" type="text" size="26" value="%s">
+								<br><br>
+								<label for="website">Website URL:</label>
+								<input id="website" type="text" size="27" value="%s">
+								<br>
+								<input type="submit" value="Update info sources">
+							</form>',
+							WebApp\WebApp::getPermalink(),
+							$company->instagram->url,
+							$company->phone,
+							$company->email,
+							$company->website
+						);
 					}
 				?>
 			</div>
 		</section>
 		<section class="column-main">
-			<section class="instagram">
 			<?php
 				if (isset($company->instagram))
 				{
-					echo '<section>';
-					echo  '<h2>';
-						printf(TEXT[2], $company->name);
-					echo  '</h2>';
-					echo  '<div class="box">';
-					echo   '<div class="instagram-info">';
-					echo    '<h3>', $company->instagram->profileName, '</h3>';
-					echo    '<p>', nl2br($company->instagram->biography), '<br>';
-					echo    '<a href="', $company->instagram->link, '" target="_blank">', str_replace(['http://','https://'], '', $company->instagram->link), '</a></p>';
-					echo    '<ul>';
-					echo     '<li>';
-					echo      '<div class="item-label">';
-					echo       '<span class="number">', $language->formatShortNumber($company->instagram->nbPost), '</span>';
-					echo       '<span class="text">Posts</span>';
-					echo      '</div>';
-					echo     '</li>';
-					echo     '<li>';
-					echo      '<div class="item-label">';
-					echo       '<span class="number">', $language->formatShortNumber($company->instagram->nbFollower), '</span>';
-					echo       '<span class="text">Followers</span>';
-					echo      '</div>';
-					echo     '</li>';
-					echo     '<li>';
-					echo      '<div class="item-label">';
-					echo       '<span class="number">', $language->formatShortNumber($company->instagram->nbFollowing), '</span>';
-					echo       '<span class="text">Following</span>';
-					echo      '</div>';
-					echo     '</li>';
-					echo    '</ul>';
-					echo   '</div>';
-					echo   '<div class="Aspect2-3">';
-					echo    '<div class="instagram-gallery">';
-					echo     '<div class="instagram-row">';
-					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[0], '"></div>';
-					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[1], '"></div>';
-					echo     '</div>';
-					echo     '<div class="instagram-row">';
-					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[2], '"></div>';
-					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[3], '"></div>';
-					echo     '</div>';
-					echo     '<div class="instagram-row">';
-					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[4], '"></div>';
-					echo      '<div class="instagram-picture"><img src="', $company->instagram->pictures[5], '"></div>';
-					echo     '</div>';
-					echo    '</div>';
-					echo   '</div>';
-					echo    '<a class="button-icon" href="', $company->instagram->url, '" target="_blank">';
-					echo     '<img src="/static/icon/instagram.svg">', TEXT[5];
-					echo    '</a>';
-					echo  '</div>';
-					echo '</section>';
+					printf('
+						<section class="instagram"><section>
+							<h2>%s</h2>
+							<div class="box">
+								<div class="instagram-info">
+									<h3>%s</h3>
+									<p>%s<br><a href="%s" target="_blank">%s</a></p>
+									<ul>
+										<li>
+											<div class="item-label">
+												<span class="number">%s</span>
+												<span class="text">Posts</span>
+											</div>
+										</li>
+										<li>
+											<div class="item-label">
+												<span class="number">%s</span>
+												<span class="text">Followers</span>
+											</div>
+										</li>
+										<li>
+											<div class="item-label">
+												<span class="number">%s</span>
+												<span class="text">Following</span>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="Aspect2-3"><div class="instagram-gallery">
+									<div class="instagram-row">
+										<div class="instagram-picture"><img src="%s"></div>
+										<div class="instagram-picture"><img src="%s"></div>
+									</div>
+									<div class="instagram-row">
+										<div class="instagram-picture"><img src="%s"></div>
+										<div class="instagram-picture"><img src="%s"></div>
+									</div>
+									<div class="instagram-row">
+										<div class="instagram-picture"><img src="%s"></div>
+										<div class="instagram-picture"><img src="%s"></div>
+									</div>
+								</div></div>
+								<a class="button-icon" href="%s" target="_blank">
+									<img src="/static/icon/instagram.svg">%s
+								</a>
+							</div>
+						</section></section>',
+						sprintf(TEXT[2], $company->name),
+						$company->instagram->profileName,
+						$company->instagram->getHtmlBiography(),
+						$company->instagram->link,
+						str_replace(['http://','https://'], '', $company->instagram->link),
+						$language->formatShortNumber($company->instagram->nbPost),
+						$language->formatShortNumber($company->instagram->nbFollower),
+						$language->formatShortNumber($company->instagram->nbFollowing),
+						$company->instagram->pictures[0],
+						$company->instagram->pictures[1],
+						$company->instagram->pictures[2],
+						$company->instagram->pictures[3],
+						$company->instagram->pictures[4],
+						$company->instagram->pictures[5],
+						$company->instagram->url,
+						TEXT[5]
+					);
 				}
 			?>
-			</section>
 			<a class="button-icon center" href="/">
 				<img src="/static/icon/home.svg">
 				<?php echo TEXT[4] ?>
 			</a>
-			</section>
+		</section>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>

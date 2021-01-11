@@ -3,8 +3,8 @@
 <head>
 	<?php include 'Templates/page metadata.php' ?>
 	<title>Admin page | Wuwana</title>
-	<link rel="stylesheet" type="text/css" href="/static/css/admin.css">
-	<script src="/static/admin.js" defer></script>
+	<link rel="stylesheet" type="text/css" href="/static/dhtml/admin.css">
+	<script src="/static/dhtml/admin.js" defer></script>
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>

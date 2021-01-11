@@ -9,7 +9,7 @@
 	<meta property="og:image:height" content="640">
 	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
 	<meta name="twitter:image" content="https://wuwana.com/static/Wuwana-link-2020.png">
-	<link rel="stylesheet" type="text/css" href="/static/css/privacy.css">
+	<link rel="stylesheet" type="text/css" href="/static/dhtml/privacy.css">
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>

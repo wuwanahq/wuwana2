@@ -23,17 +23,26 @@ class Scraper
 
 	public function storeCompany($website, $email, $picture, $text, SocialMediaObject $instagram)
 	{
+		if (filter_var($instagram->link, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) == false)
+		{ return; }
+
+		$reservedChars = ["\r\n", "\n\r", "\r", "\n", "\t"];
+		$instagram->profileName = str_replace($reservedChars, '', $instagram->profileName);
+		$instagram->biography = str_replace($reservedChars, "\v", $instagram->biography);
+
 		$company = new CompanyObject();
 		$company->name = $instagram->profileName;
-		$company->description = $instagram->biography;
-		$company->logo = $picture;
+		$company->description = str_replace("\v", ' ', $instagram->biography);
 		$company->region = rand(1, 19);
 		$company->instagram = $instagram;
 
-		if (strpos($email, '@') > 0)
+		if (filter_var($email, FILTER_VALIDATE_EMAIL) === $email)
 		{ $company->email = $email; }
 
-		if (!empty($website))
+		if (!empty($picture) && filter_var($picture, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) === $picture)
+		{ $company->logo = $picture; }
+
+		if (!empty($website) && filter_var($website, FILTER_VALIDATE_URL) === $website)
 		{ $company->website = $website; }
 		elseif (!empty($instagram->link))
 		{ $company->website = $instagram->link; }
