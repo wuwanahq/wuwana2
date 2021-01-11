@@ -178,8 +178,8 @@
 					}
 				?>
 			</div>
-			<div id="last-updated"> 
-				<?php echo TEXT[9], $company->lastUpdate ?>
+			<div id="last-updated">
+				<?php echo TEXT[9], ' ', $language->formatDate($company->lastUpdate) ?>
 			</div>
 		</section>
 		<section class="column-main">

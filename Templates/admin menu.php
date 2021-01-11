@@ -39,5 +39,5 @@
 			?>
 		</section>
 	</div>
-	<div id="version"> Wuwana v2.1.6 </div>
+	<div id="version">Wuwana v2.1.7</div>
 </div>
