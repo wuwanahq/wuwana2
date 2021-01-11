@@ -13,6 +13,11 @@
 				echo   '</a>';
 				echo '</li>';	
 				echo '<li>';
+				echo    '<span style="text-decoration: underline">';
+				echo       TEMP_TEXT[5] ;
+				echo    '</span>' ;  
+				echo '</li>';
+				echo '<li>';
 				echo   '<a href="https://github.com/wuwanahq/wuwana2" target=”_blank”>';
 				echo      TEMP_TEXT[6] ;
 				echo   '</a>';
@@ -21,10 +26,15 @@
 			elseif ($url == '/wuwana')
 			{
 				echo '<li>';
+				echo    '<span style="text-decoration: underline">';
+				echo      TEMP_TEXT[4] ;
+				echo    '</span>' ;
+				echo '</li>';	
+				echo '<li>';
 				echo   '<a href="/privacy">';
 				echo      TEMP_TEXT[5] ;
 				echo   '</a>';
-				echo '</li>';	
+				echo '</li>';
 				echo '<li>';
 				echo   '<a href="https://github.com/wuwanahq/wuwana2" target=”_blank”>';
 				echo      TEMP_TEXT[6] ;
