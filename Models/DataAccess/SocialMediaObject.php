@@ -84,6 +84,6 @@ class SocialMediaObject
 
 	public function getHtmlBiography()
 	{
-		return str_replace("\v", '<br>', $this->biography);
+		return str_replace('  ', '<br>', $this->biography);
 	}
 }

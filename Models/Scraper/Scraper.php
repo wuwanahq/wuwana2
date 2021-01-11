@@ -26,13 +26,13 @@ class Scraper
 		if (filter_var($instagram->link, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) == false)
 		{ return; }
 
-		$reservedChars = ["\r\n", "\n\r", "\r", "\n", "\t"];
-		$instagram->profileName = str_replace($reservedChars, '', $instagram->profileName);
-		$instagram->biography = str_replace($reservedChars, "\v", $instagram->biography);
+		$specialCharacters = ["\r\n", "\n\r", "\r", "\n", "\t", "\v", "\f", "\e"];
+		$instagram->profileName = str_replace($specialCharacters, '', $instagram->profileName);
+		$instagram->biography = str_replace($specialCharacters, '  ', $instagram->biography);
 
 		$company = new CompanyObject();
 		$company->name = $instagram->profileName;
-		$company->description = str_replace("\v", ' ', $instagram->biography);
+		$company->description = str_replace('  ', ' ', $instagram->biography);
 		$company->region = rand(1, 19);
 		$company->instagram = $instagram;
 
