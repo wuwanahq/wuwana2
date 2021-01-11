@@ -25,6 +25,12 @@ switch ($url)
 		require 'homepage/view.php';
 		break;
 
+	case '/privacy':
+		$page = substr($url, 1);
+		require $page . '/text ' . $language->code . '.php';
+		require $page . '/view.php';
+		break;
+
 	case '/admin/statistics':
 	case '/admin/categories':
 	case '/admin/companies':
