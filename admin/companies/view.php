@@ -81,7 +81,7 @@
 			</section>
 			<section id="section-table">
 				<h2>Companies</h2>
-				<div id="box-table">
+				<div class="box-table">
 					<div class="scroll-h">
 						<table>
 							<thead>

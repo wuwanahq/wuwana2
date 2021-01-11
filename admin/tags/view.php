@@ -14,7 +14,7 @@
 		<div class="column-main tag-tab">
 			<section id="section-table">
 				<h2>Base tags</h2>
-				<div id="box-table">
+				<div class="box-table">
 					<div class="scroll-h">
 						<table>
 							<thead>
@@ -53,7 +53,7 @@
 			</section>
 			<section id="section-table">
 				<h2>Combined tags</h2>
-				<div id="box-table">
+				<div class="box-table">
 					<div class="scroll-h">
 						<table>
 							<thead>

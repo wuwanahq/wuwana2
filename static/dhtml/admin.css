@@ -41,11 +41,11 @@ a .icon-label-h {
 
 /* TABLE LAYOUT & STYLE */
 
-#box-table {
+.box-table {
 	display: flex;
 	position: relative;
 	overflow:hidden;
-	max-width: auto; /* This changes with JS */
+	max-width: calc(100vw - 337px);
 	min-height: 20px;
 	margin-bottom: 24px;
 	border-radius: 4px;
@@ -62,7 +62,7 @@ a .icon-label-h {
 	width: 100%;
 }
 
-#box-table table {
+.box-table table {
 	border-collapse: collapse;
 	border-left-style: hidden;
 	border-right-style: hidden;
@@ -71,7 +71,7 @@ a .icon-label-h {
 	width: 100%;
 }
 
-#box-table th {
+.box-table th {
 	border: 1px solid #E3E1E1;
 	padding: 5px 8px 6px;
 	text-align: left;
@@ -81,11 +81,11 @@ a .icon-label-h {
 	white-space: nowrap;
 }
 
-#box-table tr {
+.box-table tr {
 	height: 32px;
 }
 
-#box-table td {
+.box-table td {
 	border: 1px solid #E3E1E1;
 	padding: 5px 8px 6px;
 	text-align: left;
@@ -99,7 +99,7 @@ tr:nth-child(even) {
     background-color: #fafafa;
 }
 
-#box-table input[type=text] {
+.box-table input[type=text] {
 	padding: 4px 0;
 	margin: auto;
 	border: solid 1px transparent;
@@ -110,20 +110,20 @@ tr:nth-child(even) {
 	align-self: center;
 }
 
-#box-table input[type=text]:hover {
+.box-table input[type=text]:hover {
 	border: solid 1px #E3E1E1;
 }
 
-#box-table .disabled-text {
+.box-table .disabled-text {
 	color: #8b8989;
 	font-style: italic;
 }
 
-#section-table #box-table #entry-id {
+#section-table .box-table #entry-id {
 	min-width: 100px;
 }
 
-#section-table #box-table .scroll-h div {
+#section-table .box-table .scroll-h div {
 	min-width: 16px;
 }
 
@@ -162,4 +162,10 @@ tr:nth-child(even) {
 /* Company Tab */
 #section-table #box-table .scroll-h table .logo-small {
 	margin: auto;
+}
+
+@media screen and (max-width: 800px) {
+	.box-table {
+		max-width: 100vh;
+	}
 }

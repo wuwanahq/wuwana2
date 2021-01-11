@@ -14,7 +14,7 @@
 		<div class="column-main">
 			<section id="section-table">
 				<h2>Categories</h2>
-				<div id="box-table">
+				<div class="box-table">
 					<div class="scroll-h">
 						<table>
 							<thead>
