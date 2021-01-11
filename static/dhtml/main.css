@@ -193,6 +193,7 @@ dl dd label {
 	width: 100%;
 	max-width: 1200px;
 	margin-top: 16px;
+	min-height: 80vh /* To have footer at the buttom of the page */
 }
 
 .column-left {
