@@ -3,6 +3,7 @@
 <head>
 	<?php include 'Templates/page metadata.php' ?>
 	<title>Admin page | Wuwana</title>
+	<meta property="og:title" content="Admin page | Wuwana">
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/admin.css">
 	<script src="/static/dhtml/admin.js" defer></script>
 </head>
