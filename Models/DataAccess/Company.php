@@ -83,7 +83,8 @@ class Company extends DataAccess
 			SocialMedia.Counter1 as SocialMediaCounter1,
 			SocialMedia.Counter2 as SocialMediaCounter2,
 			SocialMedia.Counter3 as SocialMediaCounter3,
-			Image.URL as ImageURL
+			Image.URL as ImageURL,
+			Company.LastUpdate as CompanyLastUpdate
 			from Company
 			inner join Location on Company.LocationID=Location.ID
 			inner join SocialMedia on Company.ID=SocialMedia.CompanyID
@@ -116,6 +117,7 @@ class Company extends DataAccess
 				$company->email = $row['CompanyEmail'];
 				$company->address = $row['CompanyAddress'];
 				$company->region = $row['LocationRegionName'];
+				$company->lastUpdate = $row['CompanyLastUpdate'];
 
 				if ($row['TagName1'] != '')
 				{
