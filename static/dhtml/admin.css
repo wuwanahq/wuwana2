@@ -33,6 +33,12 @@ a .icon-label-h {
 	margin-right: 8px;
 }
 
+#version {
+	margin: -16px 0 24px;
+	font-size: var(--font-s);
+	color: var(--grey700);
+}
+
 /* TABLE LAYOUT & STYLE */
 
 #box-table {
