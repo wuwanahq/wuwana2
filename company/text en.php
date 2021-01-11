@@ -9,4 +9,5 @@ const TEXT = [
 6 => 'About %s',
 7 => 'Address',
 8 => 'Hello %s, I found you through wuwana.com and I would like to know more about you.',
+9 => 'Last update: ',
 ];
