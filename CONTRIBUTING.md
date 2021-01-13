@@ -1,6 +1,6 @@
 # Contributing to the Wuwana project
 
-Looking to contribute? Welcome here developer friend! 🤓  
+Looking to contribute? Welcome here friend developer! 🤓  
 Wuwana is written in PHP and follows the [MVC design pattern](https://en.wikipedia.org/wiki/Model–view–controller) without any framework.
 
 This basic technology stack choice was made to...
