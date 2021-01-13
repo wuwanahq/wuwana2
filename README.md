@@ -68,7 +68,7 @@ Later, if you want to update the WebApp, just run `git pull` in the project dire
 ### PHP shared web hosting
 
 This part is for webmasters who just have a website hosting service.  
-If it's your case, check if your hosting solution is compatible with PHP 5.6+ and an URL rewrite engine (Apache mod_rewrite, FallbackResource directive or Nginx "try_files" directive.  
+If it's your case, check if your hosting solution is compatible with PHP 5.6+ and able to rewrite URL (Apache mod_rewrite, FallbackResource directive or Nginx "try_files" directive).  
 Then...
 
 - Clone the project on your computer: `git clone https://github.com/wuwanahq/wuwana2.git`
