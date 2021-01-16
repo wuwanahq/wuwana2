@@ -19,7 +19,7 @@
 			<div class="box-panel">
 				<section class="company-about">
 					<div class="logo-main">
-						<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name, ' logo' ?>" >
+						<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name ?> logo" >
 					</div>
 					<?php
 						if (isset($user) && $user->isAdmin())
@@ -31,7 +31,7 @@
 						<li><?php echo implode('</li><li>', $company->tags) ?></li>
 					</ul>
 					<div class="button-icon-small margin-t16">
-						<img src="/static/icon/small/map-small-grey50.svg">
+						<img src="/static/icon/tiny/map.svg">
 						<?php echo $company->region ?>
 					</div>
 				</section>
@@ -83,175 +83,146 @@
 				<section class="company-contact">
 					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
-						<?php
-							if ($company->instagram->url != '')
-							{
-								printf('
-									<li>
-										<a class="item-label" href="%s" target="_blank">
-											<div class="button-social">
-												<img src="/static/icon/instagram.svg">
-											</div>
-											Instagram
-										</a>
-									</li>',
-									$company->instagram->url
-								);
-							}
-
-							if (!empty($company->website))
-							{
-								printf('
-									<li>
-										<a class="item-label" href="%s" target="_blank">
-											<div class="button-social">
-												<img src="/static/icon/globe.svg">
-											</div>
-											Web
-										</a>
-									</li>',
-									$company->website
-								);
-							}
-
-							if (isset($company->phone) && (int)$company->phone = 0)
-							{
-								printf('
-									<li>
-										<a class="item-label" href="https://wa.me/%s?text=%s" target="_blank">
-											<div class="button-social">
-												<img src="/static/icon/whatsapp.svg">
-											</div>
-											WhatsApp
-										</a>
-									</li>',
-									$company->phone,
-									sprintf(TEXT[8], $company->name)
-								);
-							}
-
-							if (!empty($company->email))
-							{
-								printf('
-									<li>
-										<a class="item-label" href="mailto:%s">
-											<div class="button-social">
-												<img src="/static/icon/email.svg">
-											</div>
-											Email
-										</a>
-									</li>',
-									$company->email
-								);
-							}
-						?>
+						<?php if ($company->instagram->url != ''): ?>
+							<li>
+								<a class="item-label" href="<?php echo $company->instagram->url ?>" target="_blank">
+									<div class="button-social">
+										<img src="/static/icon/instagram.svg">
+									</div>
+									Instagram
+								</a>
+							</li>
+						<?php endif ?>
+						<?php if (!empty($company->website)): ?>
+							<li>
+								<a class="item-label" href="<?php echo $company->website ?>" target="_blank">
+									<div class="button-social">
+										<img src="/static/icon/globe.svg">
+									</div>
+									Web
+								</a>
+							</li>
+						<?php endif ?>
+						<?php if (isset($company->phone) && (int)$company->phone = 0): ?>
+							<li>
+								<a class="item-label" target="_blank" href="https://wa.me/<?php
+								 echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>">
+									<div class="button-social">
+										<img src="/static/icon/whatsapp.svg">
+									</div>
+									WhatsApp
+								</a>
+							</li>
+						<?php endif ?>
+						<?php if (!empty($company->email)): ?>
+							<li>
+								<a class="item-label" href="mailto:<?php echo $company->email ?>">
+									<div class="button-social">
+										<img src="/static/icon/email.svg">
+									</div>
+									Email
+								</a>
+							</li>
+						<?php endif ?>
 					</ul>
 				</section>
-				<?php
-					if (isset($user) && $user->isAdmin())
-					{
-						printf('
-							<form method="post">
-								<label for="permalink">Permanent link:</label>
-								<input id="permalink" type="text" size="26" value="%s">
-								<br>
-								<label for="insta">Instagram profile:</label>
-								<input id="insta" type="text" size="25" value="%s">
-								<br>
-								<label for="whatsapp">WhatsApp number:</label>
-								<input id="whatsapp" type="text" size="24" value="%s">
-								<br><br>
-								<label for="email">Email address:</label>
-								<input id="email" type="text" size="26" value="%s">
-								<br><br>
-								<label for="website">Website URL:</label>
-								<input id="website" type="text" size="27" value="%s">
-								<br>
-								<input type="submit" value="Update info sources">
-							</form>',
-							WebApp\WebApp::getPermalink(),
-							$company->instagram->url,
-							$company->phone,
-							$company->email,
-							$company->website
-						);
-					}
-				?>
+				<?php if (isset($user) && $user->isAdmin()): ?>
+					<form method="post">
+						<label for="permalink">Permanent link:</label>
+						<input id="permalink" type="text" size="26" value="<?php echo WebApp\WebApp::getPermalink() ?>">
+						<br>
+						<label for="insta">Instagram profile:</label>
+						<input id="insta" type="text" size="25" value="<?php echo $company->instagram->url ?>">
+						<br>
+						<label for="whatsapp">WhatsApp number:</label>
+						<input id="whatsapp" type="text" size="24" value="<?php echo $company->phone ?>">
+						<br><br>
+						<label for="email">Email address:</label>
+						<input id="email" type="text" size="26" value="<?php echo $company->email ?>">
+						<br><br>
+						<label for="website">Website URL:</label>
+						<input id="website" type="text" size="27" value="<?php echo $company->website ?>">
+						<br>
+						<input type="submit" value="Update info sources">
+					</form>
+				<?php endif ?>
 			</div>
 			<div id="last-updated">
 				<?php echo TEXT[9], ' ', $language->formatDate($company->lastUpdate) ?>
 			</div>
 		</section>
 		<section class="column-main">
-			<?php
-				if (isset($company->instagram))
-				{
-					printf('
-						<section class="instagram"><section>
-							<h2>%s</h2>
-							<div class="box">
-								<div class="instagram-info">
-									<h3>%s</h3>
-									<p>%s<br><a href="%s" target="_blank">%s</a></p>
-									<ul>
-										<li>
-											<div class="item-label">
-												<span class="number">%s</span>
-												<span class="text">Posts</span>
-											</div>
-										</li>
-										<li>
-											<div class="item-label">
-												<span class="number">%s</span>
-												<span class="text">Followers</span>
-											</div>
-										</li>
-										<li>
-											<div class="item-label">
-												<span class="number">%s</span>
-												<span class="text">Following</span>
-											</div>
-										</li>
-									</ul>
-								</div>
-								<div class="Aspect2-3"><div class="instagram-gallery">
-									<div class="instagram-row">
-										<div class="instagram-picture"><img src="%s"></div>
-										<div class="instagram-picture"><img src="%s"></div>
-									</div>
-									<div class="instagram-row">
-										<div class="instagram-picture"><img src="%s"></div>
-										<div class="instagram-picture"><img src="%s"></div>
-									</div>
-									<div class="instagram-row">
-										<div class="instagram-picture"><img src="%s"></div>
-										<div class="instagram-picture"><img src="%s"></div>
-									</div>
-								</div></div>
-								<a class="button-icon" href="%s" target="_blank">
-									<img src="/static/icon/instagram.svg">%s
+			<?php if (isset($company->instagram)): ?>
+				<section class="instagram"><section>
+					<h2><?php printf(TEXT[2], $company->name) ?></h2>
+					<div class="box">
+						<div class="instagram-info">
+							<h3><?php echo $company->instagram->profileName ?></h3>
+							<p>
+								<?php echo $company->instagram->getHtmlBiography() ?><br>
+								<a href="<?php echo $company->instagram->link ?>" target="_blank">
+									<?php echo str_replace(['http://','https://'], '', $company->instagram->link) ?>
 								</a>
+							</p>
+							<ul>
+								<li>
+									<div class="item-label">
+										<span class="number">
+											<?php echo $language->formatShortNumber($company->instagram->nbPost) ?>
+										</span>
+										<span class="text">Posts</span>
+									</div>
+								</li>
+								<li>
+									<div class="item-label">
+										<span class="number">
+											<?php echo $language->formatShortNumber($company->instagram->nbFollower) ?>
+										</span>
+										<span class="text">Followers</span>
+									</div>
+								</li>
+								<li>
+									<div class="item-label">
+										<span class="number">
+											<?php echo $language->formatShortNumber($company->instagram->nbFollowing) ?>
+										</span>
+										<span class="text">Following</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="Aspect2-3"><div class="instagram-gallery">
+							<div class="instagram-row">
+								<div class="instagram-picture">
+									<img src="<?php echo $company->instagram->pictures[0] ?>">
+								</div>
+								<div class="instagram-picture">
+									<img src="<?php echo $company->instagram->pictures[1] ?>">
+								</div>
 							</div>
-						</section></section>',
-						sprintf(TEXT[2], $company->name),
-						$company->instagram->profileName,
-						$company->instagram->getHtmlBiography(),
-						$company->instagram->link,
-						str_replace(['http://','https://'], '', $company->instagram->link),
-						$language->formatShortNumber($company->instagram->nbPost),
-						$language->formatShortNumber($company->instagram->nbFollower),
-						$language->formatShortNumber($company->instagram->nbFollowing),
-						$company->instagram->pictures[0],
-						$company->instagram->pictures[1],
-						$company->instagram->pictures[2],
-						$company->instagram->pictures[3],
-						$company->instagram->pictures[4],
-						$company->instagram->pictures[5],
-						$company->instagram->url,
-						TEXT[5]
-					);
-				}
-			?>
+							<div class="instagram-row">
+								<div class="instagram-picture">
+									<img src="<?php echo $company->instagram->pictures[2] ?>">
+								</div>
+								<div class="instagram-picture">
+									<img src="<?php echo $company->instagram->pictures[3] ?>">
+								</div>
+							</div>
+							<div class="instagram-row">
+								<div class="instagram-picture">
+									<img src="<?php echo $company->instagram->pictures[4] ?>">
+								</div>
+								<div class="instagram-picture">
+									<img src="<?php echo $company->instagram->pictures[5] ?>">
+								</div>
+							</div>
+						</div></div>
+						<a class="button-icon" href="<?php echo $company->instagram->url ?>" target="_blank">
+							<img src="/static/icon/instagram.svg"><?php echo TEXT[5] ?>
+						</a>
+					</div>
+				</section></section>
+			<?php endif ?>
 			<a class="button-icon center" href="/">
 				<img src="/static/icon/home.svg">
 				<?php echo TEXT[4] ?>

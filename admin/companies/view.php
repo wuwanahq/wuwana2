@@ -47,19 +47,19 @@
 							<textarea id="biography" name="biography" rows="6" class="form-input"></textarea>
 						</div>
 						<div class="form-layout-row">
-							<div class="form-layout-column" style="margin-right: 24px;">
+							<div class="form-layout-column" style="margin-right:24px">
 								<div class="form-label-wrapper">
 									<label class="form-label">Posts</label>
 								</div>
 								<input type="text" id="posts" name="posts" size="6" readonly class="form-input">
 							</div>
-							<div class="form-layout-column" style="margin-right: 24px;">
+							<div class="form-layout-column" style="margin-right:24px">
 								<div class="form-label-wrapper">
 									<label class="form-label">Followers</label>
 								</div>
 								<input type="text" id="followers" name="followers" size="6" readonly class="form-input">
 							</div>
-							<div class="form-layout-column" style="margin-right: 24px;">
+							<div class="form-layout-column" style="margin-right:24px">
 								<div class="form-label-wrapper">
 									<label class="form-label">Following</label>
 								</div>
@@ -87,37 +87,36 @@
 							<thead>
 								<tr>
 									<th>Logo</th>
-									<th style="min-width: 240px;">Company Name</th>
-									<th style="min-width: 150px;">Location</th>
+									<th style="min-width:240px">Company Name</th>
+									<th style="min-width:150px">Location</th>
 									<th>Visible tags</th>
 									<th>Last update</th>
 									<th id="entry-button"></th>
 								</tr>
 							</thead>
 							<tbody>
-								<?php
-									foreach ($companies as $company)
-									{
-										echo '<tr>';
-										echo   '<td><div class="logo-small"><img src = "https://instagram.fymq2-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/118864590_252863045871428_6260297577990075586_n.jpg?_nc_ht=instagram.fymq2-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=6Ks7w0FmbeUAX8BbgTI&tp=1&oh=aaa1286031bb0a19bd300ab28fee0aac&oe=6015C4CC" alt="', $company->name, ' logo"></div></td>';
-										echo   '<td><a href="', WebApp\WebApp::getHostname(), '/', $company->permalink, '">';
-										echo     $company->name;
-										echo   '</a></td>';
-										// echo   '<td title="', $company->description, '">', substr($company->description,0,9), '…</td>';
-										echo   '<td>', $company->region, '</td>';
-										echo   '<td title="Other tags: ', $company->otherTags, '">';
-										echo     implode(' ', $company->visibleTags);
-										echo   '</td>';
-										echo   '<td>', $language->formatDate($company->lastUpdate), '</td>';
-										echo   '<td><input type="button" value="Delete" disabled></td>';
-										echo '</tr>';
-									}
-								?>
+								<?php foreach ($companies as $company): ?>
+									<tr>
+										<td><div class="logo-small">
+											<img src="https://instagram.fymq2-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/118864590_252863045871428_6260297577990075586_n.jpg?_nc_ht=instagram.fymq2-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=6Ks7w0FmbeUAX8BbgTI&tp=1&oh=aaa1286031bb0a19bd300ab28fee0aac&oe=6015C4CC">
+										</div></td>
+										<td title="<?php echo $company->description ?>">
+											<a href="<?php echo WebApp\WebApp::getHostname(), '/', $company->permalink ?>">
+												<?php echo $company->name ?>
+											</a>
+										</td>
+										<td><?php echo $company->region ?></td>
+										<td title="Other tags: <?php echo $company->otherTags ?>">
+											<?php echo implode(' ', $company->visibleTags) ?>
+										</td>
+										<td><?php echo $language->formatDate($company->lastUpdate) ?></td>
+										<td><input type="button" value="Delete" disabled></td>
+									</tr>
+								<?php endforeach ?>
 							</tbody>
 						</table>
 						<div class="table-visual-pad"></div>
 					</div>
-
 				</div>
 			</section>
 		</div>

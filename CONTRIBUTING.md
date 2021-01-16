@@ -33,7 +33,7 @@ Web root
 │  │  ├─ WebApp.php     <- Common functions used for the WebApp
 │  │  ├─ Config.php     <- Configuration file
 │  │  └─ ...
-│  ├─ DataAccess        <- Access to the database (all SQL are here)
+│  ├─ DataAccess        <- Access to the database (all SQL queries are here)
 │  │  ├─ DataAccess.php
 │  │  ├─ Company.php
 │  │  ├─ CompanyObject.php
@@ -49,11 +49,18 @@ Web root
 │  ├─ page metadata.php
 │  └─ text...           <- Text translations
 ├─ ajax                 <- Handle JavaScript XmlHttpRequest (AJAX)
+│  └─ ...
 ├─ static               <- All static ressources
 │  ├─ favicon
 │  ├─ dhtml             <- CSS + JavaScript files
-│  └─ picture, logo...
-└─ ...                  <- All other folders related to a page have the same files as the homepage
+│  ├─ logo              <- Wuwana logo under trademark™
+│  ├─ image             <- Pictures and backgrounds (jpg & png)
+│  ├─ icon              <- Small SVG icons
+│  │  ├─ gray
+│  │  ├─ tiny
+│  │  └─ ...
+│  └─ badge, etc...
+└─ ...                 <- All other folders related to a page have the same files as the homepage
 ```
 
 ## Naming convention
@@ -83,5 +90,5 @@ We try to respect the following naming rules. 😇
 
 - lowercase: Folder related to a page
 - PascalCase: PHP classes, interfaces and namespaces (folder)
-- lowercase: other PHP files like controller, view, text translation...
+- lowercase: Other PHP files like controller, view, text translation...
 - lowercase: Everything inside the "static" folder

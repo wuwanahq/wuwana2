@@ -3,8 +3,8 @@ namespace WebApp;
 
 /**
  * Language.
- * @author Vince <vincent.boursier@gmail.com>
  * @property-read string $code Current language code (ISO 639-1)
+ * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
  */
 class Language
 {

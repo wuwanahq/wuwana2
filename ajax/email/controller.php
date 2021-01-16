@@ -3,6 +3,7 @@
  * Controller for the async login by email.
  * HTTP param POST "email"
  * @link https://wuwana.com/ajax/email XMLHttpRequest (JavaScript)
+ * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
  */
 
 if (!filter_has_var(INPUT_POST, 'email'))
