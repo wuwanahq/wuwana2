@@ -2,6 +2,7 @@
 /**
  * Controller for the home page.
  * @link https://wuwana.com/
+ * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
  */
 
 $categories = WebApp\Data::getCategory()->selectAll();
@@ -39,3 +40,4 @@ if(filter_has_var(INPUT_GET, 'logout'))
 
 //$companies = WebApp\Data::getCompany()->selectCategoriesRegions($selectedCategories, $selectedRegions, $limit);
 $companies = WebApp\Data::getCompany()->selectCategoriesRegions($language, [], $selectedRegions, $limit);
+$counter = count($companies);

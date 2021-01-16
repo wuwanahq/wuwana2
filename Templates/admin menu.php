@@ -1,11 +1,11 @@
 <?php
 	$sections = [
-		'/admin/statistics' => ['Statistics', 'chart-bar_grey50.svg'],
-		'/admin/companies'  => ['Companies', 'company_grey50.svg'],
-		'/admin/users'      => ['Users', 'users_grey50.svg'],
-		'/admin/tags'       => ['Tags', 'tag_grey50.svg'],
-		'/admin/categories' => ['Categories', 'label_grey50.svg'],
-		'/admin/database'   => ['Database', 'dns_grey50.svg']
+		'/admin/statistics' => ['Statistics', 'chart-bar.svg'],
+		'/admin/companies'  => ['Companies', 'company.svg'],
+		'/admin/users'      => ['Users', 'users.svg'],
+		'/admin/tags'       => ['Tags', 'tag.svg'],
+		'/admin/categories' => ['Categories', 'label.svg'],
+		'/admin/database'   => ['Database', 'dns.svg']
 	];
 ?>
 <div class="column-left">
@@ -15,7 +15,7 @@
 			<h1>Administrator's name</h1>
 			<a href=#>
 				<div class="icon-label-h">
-					<img src="/static/icon/close_grey50.svg">
+					<img src="/static/icon/gray/close.svg">
 					Logout
 				</div>
 			</a>
@@ -23,21 +23,15 @@
 		<hr>
 		<section class="admin-control">
 			<h3>Admin controls</h3>
-			<?php
-				foreach ($sections as $sectionURL => $section)
-				{
-					if ($url != $sectionURL)
-					{ echo '<a href="', $sectionURL, '">'; }
-
-					echo '<div class="icon-label-h">';
-					echo   '<img src="/static/icon/', $section[1], '">', $section[0];
-					echo '</div>';
-
-					if ($url != $sectionURL)
-					{ echo '</a>'; }
-				}
-			?>
+			<?php foreach ($sections as $sectionURL => $section): ?>
+				<?php if ($url != $sectionURL) { echo '<a href="', $sectionURL, '">'; } ?>
+				<div class="icon-label-h">
+					<img src="/static/icon/gray/<?php echo $section[1] ?>">
+					<?php echo $section[0] ?>
+				</div>
+				<?php if ($url != $sectionURL) { echo '</a>'; } ?>
+			<?php endforeach ?>
 		</section>
 	</div>
-	<div id="version">Wuwana v2.1.7</div>
+	<div id="version">Wuwana v2.1.8</div>
 </div>

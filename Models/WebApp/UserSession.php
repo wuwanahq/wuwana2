@@ -5,7 +5,7 @@ use DataAccess\UserObject;
 
 /**
  * User session.
- * @author Vince <vincent.boursier@gmail.com>
+ * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
  */
 class UserSession
 {

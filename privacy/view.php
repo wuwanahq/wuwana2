@@ -3,12 +3,12 @@
 	<?php include 'Templates/page metadata.php' ?>
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
 	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana">
-	<meta property="og:image" content="/static/Wuwana-link-2020.png">
+	<meta property="og:image" content="/static/image/wuwana-link-2020.png">
 	<meta property="og:image:type" content="image/png">
 	<meta property="og:image:width" content="1264">
 	<meta property="og:image:height" content="640">
 	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
-	<meta name="twitter:image" content="https://wuwana.com/static/Wuwana-link-2020.png">
+	<meta name="twitter:image" content="https://wuwana.com/static/image/wuwana-link-2020.png">
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/privacy.css">
 </head>
 <body>

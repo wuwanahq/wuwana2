@@ -25,7 +25,7 @@
 }
 
 /* VARIABLES */
-:root { 
+:root {
 	/* Colour */
 	--black: #161313;
 	--grey700: #545151;
@@ -234,7 +234,7 @@ dl dd label {
 
 .item-label div {
 	margin-bottom: 4px;
-} 
+}
 
 /* ----- BOXES & CARDS ----- */
 
@@ -322,8 +322,8 @@ dl dd label {
 }
 
 .button-main:disabled {
-	background-color: var(--grey200); 
-	color:  var(--grey700);  
+	background-color: var(--grey200);
+	color:  var(--grey700);
 	border-style: none;
 	box-shadow: none;
 	cursor: not-allowed;
@@ -350,7 +350,7 @@ dl dd label {
 }
 
 .button-second:disabled {
-	background-color: var(--grey200); 
+	background-color: var(--grey200);
 	color:  var(--grey700);
 	border-style: none;
 	box-shadow: none;
@@ -447,7 +447,7 @@ dl dd label {
 }
 
 .button-social:disabled {
-	background-color: var(--grey200); 
+	background-color: var(--grey200);
 	cursor: not-allowed;
 }
 
@@ -468,12 +468,12 @@ dl dd label {
 }
 
 .pill:hover {
-	background-color: var(--grey200); 
+	background-color: var(--grey200);
 }
 
 .pill:disabled {
-	background-color: var(--grey200); 
-	color:  var(--grey700);  
+	background-color: var(--grey200);
+	color:  var(--grey700);
 	border-style: none;
 	box-shadow: none;
 	cursor: not-allowed;
@@ -847,7 +847,7 @@ footer li a:hover {
 	border-radius: 8px;
 	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
 	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), transparent 60%),
-		url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg);
+		url(/static/image/ali-yahya-7_AZi5Fe-rU.jpg);
 	background-size: auto, cover;
 	justify-content: center;
 	background-position: 0 0, 50% 50%
@@ -953,7 +953,7 @@ footer li a:hover {
 	h1 {
 		font-size: var(--font-xxl);
 	}
-	
+
 	h2 {
 		font-size: var(--font-xl);
 	}
@@ -970,7 +970,7 @@ footer li a:hover {
 	.column-left { /* This makes the column to expand on the entire screen */
 		min-width: 100%;
 		max-width: 100%;
-	} 
+	}
 
 	.item-label {
 		font-size: var(--font-xs);
@@ -991,7 +991,7 @@ footer li a:hover {
 		display: inline}
 
 	.banner {
-		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg);
+		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url(/static/image/ali-yahya-7_AZi5Fe-rU.jpg);
 	}
 
 	/* MENU MOBILE */
@@ -1101,7 +1101,7 @@ footer li a:hover {
 		display: block;
 		min-height: 180px;
 		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%),
-			url(/static/picture/ali-yahya-7_AZi5Fe-rU.jpg);
+			url(/static/image/ali-yahya-7_AZi5Fe-rU.jpg);
 		background-size: auto, cover;
 		background-position: 0 0, 50% 50%
 	}

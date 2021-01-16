@@ -4,7 +4,7 @@ use PDO;
 
 /**
  * Abstract interface to the database.
- * @author Vince <vincent.boursier@gmail.com>
+ * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
  */
 abstract class DataAccess
 {
