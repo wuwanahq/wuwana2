@@ -542,6 +542,11 @@ dl dd label {
 	align-items: center;
 }
 
+.contact-section label {
+	margin-bottom: 8px;
+	font-weight: 500;
+}
+
 .tag-area li {
 	color: var(--grey500);
 	font-size: var(--font-xs);

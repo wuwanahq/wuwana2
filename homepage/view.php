@@ -29,7 +29,7 @@
 				</section>
 				<hr>
 				<section class="contact-section">
-					<h3><?php echo TEXT[11] ?></h3>
+					<label><?php echo TEXT[11] ?></label>
 					<ul>
 						<li>
 							<a class="item-label" href="https://www.instagram.com/wuwana.es/" target="_blank" rel="noopener">
