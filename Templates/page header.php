@@ -13,7 +13,7 @@
 			<div class="popup-lang" id="popup-lang">
 				<div class="popup-title">
 					<h2><?php echo TEMP_TEXT[3] ?></h2>
-					<img src="/static/icon/close.svg" id="popup-lang-close">
+					<img src="/static/icon/close.svg" id="popup-lang-close" aria-hidden="true">
 				</div>
 				<?php
 					foreach (WebApp\Language::CODES as $code => $lang)
@@ -21,7 +21,7 @@
 				?>
 			</div>
 		</div>
-		<div class="header-logo"><a href="/"><img src="/static/logo/wuwana.svg"></a></div>
+		<div class="header-logo"><a href="/"><img src="/static/logo/wuwana.svg" alt="wuwana logo"></a></div>
 		<div class="header-invisible"></div>
 		<?php if (isset($user) && $user->isLogin()): ?>
 			<span>
@@ -40,11 +40,11 @@
 			</form>
 		<?php elseif ($url == '/'): ?>
 			<div class="header-icon" onclick="showMenu()">
-				<img id="menu-icon" src="/static/icon/menu.svg">
+				<img id="menu-icon" src="/static/icon/menu.svg" alt="menu option">
 			</div>
 		<?php else: ?>
 			<div class="header-icon" onclick="showMenu()">
-				<a href="/"><img id="menu-icon" src="/static/icon/home.svg"></a>
+				<a href="/"><img id="menu-icon" src="/static/icon/home.svg" alt="home icon"></a>
 			</div>
 		<?php endif ?>
 	</div>

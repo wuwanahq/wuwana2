@@ -10,12 +10,12 @@
 ?>
 <div class="column-left">
 	<div class="box-panel">
-		<div class="panel-cover"><img src="/static/logo/ribbon-long.svg"></div>
+		<div class="panel-cover"><img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon logo"></div>
 		<section>
 			<h1>Administrator's name</h1>
 			<a href=#>
 				<div class="icon-label-h">
-					<img src="/static/icon/gray/close.svg">
+					<img src="/static/icon/gray/close.svg" aria-hidden="true">
 					Logout
 				</div>
 			</a>
@@ -26,7 +26,7 @@
 			<?php foreach ($sections as $sectionURL => $section): ?>
 				<?php if ($url != $sectionURL) { echo '<a href="', $sectionURL, '">'; } ?>
 				<div class="icon-label-h">
-					<img src="/static/icon/gray/<?php echo $section[1] ?>">
+					<img src="/static/icon/gray/<?php echo $section[1] ?>" aria-hidden="true">
 					<?php echo $section[0] ?>
 				</div>
 				<?php if ($url != $sectionURL) { echo '</a>'; } ?>
