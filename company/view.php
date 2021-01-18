@@ -31,7 +31,7 @@
 						<li><?php echo implode('</li><li>', $company->tags) ?></li>
 					</ul>
 					<div class="button-icon-small margin-t16">
-						<img src="/static/icon/tiny/map.svg">
+						<img src="/static/icon/tiny/map.svg" aria-hidden="true">
 						<?php echo $company->region ?>
 					</div>
 				</section>
@@ -87,7 +87,7 @@
 							<li>
 								<a class="item-label" href="<?php echo $company->instagram->url ?>" target="_blank">
 									<div class="button-social">
-										<img src="/static/icon/instagram.svg">
+										<img src="/static/icon/instagram.svg" aria-hidden="true">
 									</div>
 									Instagram
 								</a>
@@ -97,7 +97,7 @@
 							<li>
 								<a class="item-label" href="<?php echo $company->website ?>" target="_blank">
 									<div class="button-social">
-										<img src="/static/icon/globe.svg">
+										<img src="/static/icon/globe.svg" aria-hidden="true">
 									</div>
 									Web
 								</a>
@@ -108,7 +108,7 @@
 								<a class="item-label" target="_blank" href="https://wa.me/<?php
 								 echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>">
 									<div class="button-social">
-										<img src="/static/icon/whatsapp.svg">
+										<img src="/static/icon/whatsapp.svg" aria-hidden="true">
 									</div>
 									WhatsApp
 								</a>
@@ -118,7 +118,7 @@
 							<li>
 								<a class="item-label" href="mailto:<?php echo $company->email ?>">
 									<div class="button-social">
-										<img src="/static/icon/email.svg">
+										<img src="/static/icon/email.svg" aria-hidden="true">
 									</div>
 									Email
 								</a>
@@ -218,13 +218,14 @@
 							</div>
 						</div></div>
 						<a class="button-icon" href="<?php echo $company->instagram->url ?>" target="_blank">
-							<img src="/static/icon/instagram.svg"><?php echo TEXT[5] ?>
+							<img src="/static/icon/instagram.svg" aria-hidden="true">
+							<?php echo TEXT[5] ?>
 						</a>
 					</div>
 				</section></section>
 			<?php endif ?>
 			<a class="button-icon center" href="/">
-				<img src="/static/icon/home.svg">
+				<img src="/static/icon/home.svg" ari>
 				<?php echo TEXT[4] ?>
 			</a>
 		</section>

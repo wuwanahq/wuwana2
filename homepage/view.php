@@ -18,7 +18,7 @@
 		<section class="column-left">
 			<div class="box-panel">
 				<div class="panel-cover">
-					<img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon">
+					<img src="/static/logo/ribbon-long.svg" alt="wuwana logo ribbon">
 				</div>
 				<section>
 					<p><?php echo TEXT[9] ?></p>
@@ -33,13 +33,13 @@
 					<ul>
 						<li>
 							<a class="item-label" href="https://www.instagram.com/wuwana.es/" target="_blank">
-								<div class="button-social"><img src="/static/icon/instagram.svg"></div>
+								<div class="button-social"><img src="/static/icon/instagram.svg" aria-hidden="true"></div>
 								Instagram
 							</a>
 						</li>
 						<li>
 							<a class="item-label" href="mailto:jonathan@wuwana.com">
-								<div class="button-social"><img src="/static/icon/email.svg"></div>
+								<div class="button-social"><img src="/static/icon/email.svg" aria-hidden="true"></div>
 								Email
 							</a>
 						</li>
@@ -98,7 +98,7 @@
 										<li><?php echo implode('</li><li>', $company->tags) ?></li>
 									</ul>
 									<div class="button-icon-small margin-t-auto">
-										<img src="/static/icon/tiny/map.svg">
+										<img src="/static/icon/tiny/map.svg" aria-hidden="true">
 										<?php echo $locations[$company->region] ?>
 									</div>
 								</div>
@@ -110,7 +110,7 @@
 				</div>
 			</section>
 			<a class="button-icon center" href="?show=all">
-				<img src="/static/icon/plus.svg">
+				<img src="/static/icon/plus.svg" aria-hidden="true">
 				<?php echo TEXT[6] ?>
 			</a>
 		</section>
