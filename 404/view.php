@@ -53,8 +53,8 @@
 		</section>
 -->
 	</div>
-	<a class="button-icon Center" href="/" rel="noopener">
-		<img src="/static/icon/home.svg" aria-hidden="true"><?php echo TEXT[3] ?>
+	<a class="button-icon Center" href="/">
+		<img src="/static/icon/home.svg" alt=""><?php echo TEXT[3] ?>
 	</a>
 </body>
 </html>

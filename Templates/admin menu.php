@@ -15,7 +15,7 @@
 			<h1>Administrator's name</h1>
 			<a href=#>
 				<div class="icon-label-h">
-					<img src="/static/icon/gray/close.svg" aria-hidden="true">
+					<img src="/static/icon/gray/close.svg" alt="">
 					Logout
 				</div>
 			</a>
@@ -26,7 +26,7 @@
 			<?php foreach ($sections as $sectionURL => $section): ?>
 				<?php if ($url != $sectionURL) { echo '<a href="', $sectionURL, '">'; } ?>
 				<div class="icon-label-h">
-					<img src="/static/icon/gray/<?php echo $section[1] ?>" aria-hidden="true">
+					<img src="/static/icon/gray/<?php echo $section[1] ?>" alt="">
 					<?php echo $section[0] ?>
 				</div>
 				<?php if ($url != $sectionURL) { echo '</a>'; } ?>

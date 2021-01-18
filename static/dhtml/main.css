@@ -506,6 +506,12 @@ dl dd label {
 	font-weight: 700;
 }
 
+.box-panel h2 {
+	text-align: center;
+	font-size: var(--font-xl);
+	font-weight: 700;
+}
+
 .box-panel h3 {
 	margin: 0 0 8px;
 }
@@ -540,11 +546,6 @@ dl dd label {
 
 .contact-section {
 	align-items: center;
-}
-
-.contact-section label {
-	margin-bottom: 8px;
-	font-weight: 500;
 }
 
 .tag-area li {

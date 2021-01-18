@@ -1,6 +1,6 @@
 <a href="#">
 	<div id="toTop" class="button-icon back-top">
-		<img src="/static/icon/arrow-circle-top.svg" aria-hidden="true"><?php echo TEMP_TEXT[2] ?>
+		<img src="/static/icon/arrow-circle-top.svg" alt=""><?php echo TEMP_TEXT[2] ?>
 	</div>
 </a>
 <footer>
@@ -11,7 +11,7 @@
 				if ($url == '/wuwana')
 				{ echo '<span style="text-decoration:underline">', TEMP_TEXT[4], '</span>'; }
 				else
-				{ echo '<a href="/wuwana" rel="noopener">', TEMP_TEXT[4], '</a>'; }
+				{ echo '<a href="/wuwana">', TEMP_TEXT[4], '</a>'; }
 			?>
 		</li>
 		<li>
@@ -19,7 +19,7 @@
 				if ($url == '/privacy')
 				{ echo '<span style="text-decoration:underline">', TEMP_TEXT[5], '</span>'; }
 				else
-				{ echo '<a href="/privacy" rel="noopener">', TEMP_TEXT[5], '</a>'; }
+				{ echo '<a href="/privacy">', TEMP_TEXT[5], '</a>'; }
 			?>
 		</li>
 		<li>

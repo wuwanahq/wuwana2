@@ -21,6 +21,7 @@
 					<img src="/static/logo/ribbon-long.svg" alt="wuwana logo ribbon">
 				</div>
 				<section>
+					<h2><?php echo TEXT[13] ?></h2>
 					<p><?php echo TEXT[9] ?></p>
 					<a class="button-main center" target="_blank"
 					 href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" rel="noopener">
@@ -29,17 +30,17 @@
 				</section>
 				<hr>
 				<section class="contact-section">
-					<label><?php echo TEXT[11] ?></label>
+					<h3><?php echo TEXT[11] ?></h3>
 					<ul>
 						<li>
 							<a class="item-label" href="https://www.instagram.com/wuwana.es/" target="_blank" rel="noopener">
-								<div class="button-social"><img src="/static/icon/instagram.svg" aria-hidden="true"></div>
+								<div class="button-social"><img src="/static/icon/instagram.svg" alt=""></div>
 								Instagram
 							</a>
 						</li>
 						<li>
 							<a class="item-label" href="mailto:jonathan@wuwana.com">
-								<div class="button-social"><img src="/static/icon/email.svg" aria-hidden="true"></div>
+								<div class="button-social"><img src="/static/icon/email.svg" alt=""></div>
 								Email
 							</a>
 						</li>
@@ -87,7 +88,7 @@
 				<h2><?php echo TEXT[5] ?></h2>
 				<div class="box">
 					<?php foreach ($companies as $permalink => $company): ?>
-						<a class="card" href="/<?php echo $permalink ?>" rel="noopener">
+						<a class="card" href="/<?php echo $permalink ?>">
 							<div class="logo-main margin-r16">
 								<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name ?> logo">
 							</div>
@@ -98,7 +99,7 @@
 										<li><?php echo implode('</li><li>', $company->tags) ?></li>
 									</ul>
 									<div class="button-icon-small margin-t-auto">
-										<img src="/static/icon/tiny/map.svg" aria-hidden="true">
+										<img src="/static/icon/tiny/map.svg" alt="">
 										<?php echo $locations[$company->region] ?>
 									</div>
 								</div>
@@ -110,7 +111,7 @@
 				</div>
 			</section>
 			<a class="button-icon center" href="?show=all">
-				<img src="/static/icon/plus.svg" aria-hidden="true">
+				<img src="/static/icon/plus.svg" alt="">
 				<?php echo TEXT[6] ?>
 			</a>
 		</section>
