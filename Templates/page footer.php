@@ -11,7 +11,7 @@
 				if ($url == '/wuwana')
 				{ echo '<span style="text-decoration:underline">', TEMP_TEXT[4], '</span>'; }
 				else
-				{ echo '<a href="/wuwana">', TEMP_TEXT[4], '</a>'; }
+				{ echo '<a href="/wuwana" rel="noopener">', TEMP_TEXT[4], '</a>'; }
 			?>
 		</li>
 		<li>
@@ -19,11 +19,11 @@
 				if ($url == '/privacy')
 				{ echo '<span style="text-decoration:underline">', TEMP_TEXT[5], '</span>'; }
 				else
-				{ echo '<a href="/privacy">', TEMP_TEXT[5], '</a>'; }
+				{ echo '<a href="/privacy" rel="noopener">', TEMP_TEXT[5], '</a>'; }
 			?>
 		</li>
 		<li>
-			<a href="https://github.com/wuwanahq/wuwana2" target=”_blank”><?php echo TEMP_TEXT[6] ?></a>
+			<a href="https://github.com/wuwanahq/wuwana2" target=”_blank” rel="noopener"><?php echo TEMP_TEXT[6] ?></a>
 		</li>
 	</ul>
 </footer>

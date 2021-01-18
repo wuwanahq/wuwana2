@@ -23,7 +23,7 @@
 				<section>
 					<p><?php echo TEXT[9] ?></p>
 					<a class="button-main center" target="_blank"
-					 href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302">
+					 href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" rel="noopener">
 						<?php echo TEXT[10] ?>
 					</a>
 				</section>
@@ -32,7 +32,7 @@
 					<h3><?php echo TEXT[11] ?></h3>
 					<ul>
 						<li>
-							<a class="item-label" href="https://www.instagram.com/wuwana.es/" target="_blank">
+							<a class="item-label" href="https://www.instagram.com/wuwana.es/" target="_blank" rel="noopener">
 								<div class="button-social"><img src="/static/icon/instagram.svg" aria-hidden="true"></div>
 								Instagram
 							</a>
@@ -87,7 +87,7 @@
 				<h2><?php echo TEXT[5] ?></h2>
 				<div class="box">
 					<?php foreach ($companies as $permalink => $company): ?>
-						<a class="card" href="/<?php echo $permalink ?>">
+						<a class="card" href="/<?php echo $permalink ?>" rel="noopener">
 							<div class="logo-main margin-r16">
 								<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name ?> logo">
 							</div>

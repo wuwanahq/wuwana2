@@ -85,7 +85,7 @@
 					<ul>
 						<?php if ($company->instagram->url != ''): ?>
 							<li>
-								<a class="item-label" href="<?php echo $company->instagram->url ?>" target="_blank">
+								<a class="item-label" href="<?php echo $company->instagram->url ?>" target="_blank" rel="noopener">
 									<div class="button-social">
 										<img src="/static/icon/instagram.svg" aria-hidden="true">
 									</div>
@@ -95,7 +95,7 @@
 						<?php endif ?>
 						<?php if (!empty($company->website)): ?>
 							<li>
-								<a class="item-label" href="<?php echo $company->website ?>" target="_blank">
+								<a class="item-label" href="<?php echo $company->website ?>" target="_blank" rel="noopener">
 									<div class="button-social">
 										<img src="/static/icon/globe.svg" aria-hidden="true">
 									</div>
@@ -106,7 +106,7 @@
 						<?php if (isset($company->phone) && (int)$company->phone = 0): ?>
 							<li>
 								<a class="item-label" target="_blank" href="https://wa.me/<?php
-								 echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>">
+								 echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>" rel="noopener">
 									<div class="button-social">
 										<img src="/static/icon/whatsapp.svg" aria-hidden="true">
 									</div>
@@ -160,7 +160,7 @@
 							<h3><?php echo $company->instagram->profileName ?></h3>
 							<p>
 								<?php echo $company->instagram->getHtmlBiography() ?><br>
-								<a href="<?php echo $company->instagram->link ?>" target="_blank">
+								<a href="<?php echo $company->instagram->link ?>" target="_blank" rel="noopener">
 									<?php echo str_replace(['http://','https://'], '', $company->instagram->link) ?>
 								</a>
 							</p>
@@ -217,14 +217,14 @@
 								</div>
 							</div>
 						</div></div>
-						<a class="button-icon" href="<?php echo $company->instagram->url ?>" target="_blank">
+						<a class="button-icon" href="<?php echo $company->instagram->url ?>" target="_blank" rel="noopener">
 							<img src="/static/icon/instagram.svg" aria-hidden="true">
 							<?php echo TEXT[5] ?>
 						</a>
 					</div>
 				</section></section>
 			<?php endif ?>
-			<a class="button-icon center" href="/">
+			<a class="button-icon center" href="/" rel="noopener">
 				<img src="/static/icon/home.svg" ari>
 				<?php echo TEXT[4] ?>
 			</a>

@@ -21,12 +21,12 @@
 				?>
 			</div>
 		</div>
-		<div class="header-logo"><a href="/"><img src="/static/logo/wuwana.svg" alt="wuwana logo"></a></div>
+		<div class="header-logo"><a href="/"><img src="/static/logo/wuwana.svg" alt="wuwana logo" rel="noopener"></a></div>
 		<div class="header-invisible"></div>
 		<?php if (isset($user) && $user->isLogin()): ?>
 			<span>
 				<?php
-					echo $user->isAdmin() ? '<a href="/admin/companies">Admin page</a>' : $_SESSION['CompanyID'];
+					echo $user->isAdmin() ? '<a href="/admin/companies" rel="noopener">Admin page</a>' : $_SESSION['CompanyID'];
 					echo ' | ', $_SESSION['Name'];
 				?>
 			</span>
@@ -40,11 +40,11 @@
 			</form>
 		<?php elseif ($url == '/'): ?>
 			<div class="header-icon" onclick="showMenu()">
-				<img id="menu-icon" src="/static/icon/menu.svg" alt="menu option">
+				<img id="menu-icon" src="/static/icon/menu.svg" alt="menu icon">
 			</div>
 		<?php else: ?>
 			<div class="header-icon" onclick="showMenu()">
-				<a href="/"><img id="menu-icon" src="/static/icon/home.svg" alt="home icon"></a>
+				<a href="/"><img id="menu-icon" src="/static/icon/home.svg" alt="home icon" rel="noopener"></a>
 			</div>
 		<?php endif ?>
 	</div>
