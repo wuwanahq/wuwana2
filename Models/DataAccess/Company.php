@@ -210,6 +210,14 @@ class Company extends DataAccess
 		return $companies;
 	}
 
+	/**
+	 * Return companies in the selected region.
+	 * @param string $tagsLanguage
+	 * @param array $categories DEPRECATED
+	 * @param array $regions
+	 * @param int $limit
+	 * @return array
+	 */
 	public function selectCategoriesRegions($tagsLanguage, $categories = [], $regions = [], $limit = 0)
 	{
 		$sql = '';

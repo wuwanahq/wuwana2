@@ -13,7 +13,7 @@
 		<div class="panel-cover"><img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon logo"></div>
 		<section>
 			<h1>Administrator's name</h1>
-			<a href=#>
+			<a href="#">
 				<div class="icon-label-h">
 					<img src="/static/icon/gray/close.svg" alt="">
 					Logout
@@ -33,5 +33,5 @@
 			<?php endforeach ?>
 		</section>
 	</div>
-	<div id="version">Wuwana v2.1.9</div>
+	<div id="version">Wuwana v2.1.10</div>
 </div>

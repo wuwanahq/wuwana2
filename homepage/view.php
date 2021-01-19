@@ -10,6 +10,7 @@
 	<meta property="og:image:height" content="640">
 	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
 	<meta name="twitter:image" content="https://wuwana.com/static/image/wuwana-link-2020.png">
+	<link rel="stylesheet" type="text/css" href="/static/dhtml/homepage.css">
 	<script src="/static/dhtml/homepage.js" defer></script>
 </head>
 <body>
@@ -51,25 +52,25 @@
 				<h2><?php echo TEXT[8] ?></h2>
 				<div class="box filter">
 					<form method="get" action="/">
-					<dl>
-						<dt><?php echo TEXT[3] ?></dt>
-						<dd>
-							<input type="checkbox" name="region" id="R0"
-								<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>
-								><label for="R0"><?php echo TEXT[4] ?></label>
-						</dd>
-						<?php foreach ($locations as $id => $regionName): ?>
+						<dl>
+							<dt><?php echo TEXT[3] ?></dt>
 							<dd>
-								<input type="checkbox" name="region<?php echo $id ?>" id="R<?php echo $id ?>"
-								 <?php if (in_array($id, $selectedRegions)) { echo 'checked'; } ?>
-								  ><label for="R<?php echo $id ?>"><?php echo $regionName ?></label>
+								<input type="checkbox" name="region" id="R0"
+									<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>
+									><label for="R0"><?php echo TEXT[4] ?></label>
 							</dd>
-						<?php endforeach ?>
-					</dl>
+							<?php foreach ($locations as $id => $regionName): ?>
+								<dd>
+									<input type="checkbox" name="region<?php echo $id ?>" id="R<?php echo $id ?>"
+									 <?php if (in_array($id, $selectedRegions)) { echo 'checked'; } ?>
+									  ><label for="R<?php echo $id ?>"><?php echo $regionName ?></label>
+								</dd>
+							<?php endforeach ?>
+						</dl>
+						<div class="mobile" style="text-align:center">
+							<input type="submit" value="<?php echo TEXT[7] ?>" class="button-filter">
+						</div>
 					</form>
-					<div id="apply-filter" class="button-icon center mobile"><img src="/static/icon/filter.svg">
-						<?php echo TEXT[7] ?>
-					</div>
 				</div>
 			</section>
 		</section>

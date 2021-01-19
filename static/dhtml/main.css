@@ -786,7 +786,7 @@ footer li a:hover {
 .company-card-info ul {
 	padding-inline-start: 0;
 	display: flex;
-	align-self: left;
+	/*align-self: left;*/ /* align-self doesn't take left or right value */
 	margin: 0 0 8px
 }
 
@@ -943,7 +943,7 @@ footer li a:hover {
 
 .visually-hidden { /* SEO - Title of the website */
 	border: 0;
-	clip: rect(0 0 0 0);
+	clip: rect(0,0,0,0);
 	height: 1px;
 	width: 1px;
 	margin: -1px;
@@ -1089,7 +1089,7 @@ footer li a:hover {
 	/* ----- MODIFIER ----- */
 
 	.mobile { /* Display none on desktop */
-		display: flex;
+		display: inherit;
 	}
 }
 
