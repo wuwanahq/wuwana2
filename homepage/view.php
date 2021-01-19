@@ -18,12 +18,13 @@
 		<section class="column-left">
 			<div class="box-panel">
 				<div class="panel-cover">
-					<img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon">
+					<img src="/static/logo/ribbon-long.svg" alt="wuwana logo ribbon">
 				</div>
 				<section>
+					<h2><?php echo TEXT[13] ?></h2>
 					<p><?php echo TEXT[9] ?></p>
 					<a class="button-main center" target="_blank"
-					 href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302">
+					 href="https://medium.com/wuwana/qué-es-wuwana-7c2defac2302" rel="noopener">
 						<?php echo TEXT[10] ?>
 					</a>
 				</section>
@@ -32,14 +33,14 @@
 					<h3><?php echo TEXT[11] ?></h3>
 					<ul>
 						<li>
-							<a class="item-label" href="https://www.instagram.com/wuwana.es/" target="_blank">
-								<div class="button-social"><img src="/static/icon/instagram.svg"></div>
+							<a class="item-label" href="https://www.instagram.com/wuwana.es/" target="_blank" rel="noopener">
+								<div class="button-social"><img src="/static/icon/instagram.svg" alt=""></div>
 								Instagram
 							</a>
 						</li>
 						<li>
 							<a class="item-label" href="mailto:jonathan@wuwana.com">
-								<div class="button-social"><img src="/static/icon/email.svg"></div>
+								<div class="button-social"><img src="/static/icon/email.svg" alt=""></div>
 								Email
 							</a>
 						</li>
@@ -98,7 +99,7 @@
 										<li><?php echo implode('</li><li>', $company->tags) ?></li>
 									</ul>
 									<div class="button-icon-small margin-t-auto">
-										<img src="/static/icon/tiny/map.svg">
+										<img src="/static/icon/tiny/map.svg" alt="">
 										<?php echo $locations[$company->region] ?>
 									</div>
 								</div>
@@ -110,7 +111,7 @@
 				</div>
 			</section>
 			<a class="button-icon center" href="?show=all">
-				<img src="/static/icon/plus.svg">
+				<img src="/static/icon/plus.svg" alt="">
 				<?php echo TEXT[6] ?>
 			</a>
 		</section>

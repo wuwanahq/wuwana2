@@ -1,6 +1,6 @@
 <a href="#">
 	<div id="toTop" class="button-icon back-top">
-		<img src="/static/icon/arrow-circle-top.svg"><?php echo TEMP_TEXT[2] ?>
+		<img src="/static/icon/arrow-circle-top.svg" alt=""><?php echo TEMP_TEXT[2] ?>
 	</div>
 </a>
 <footer>
@@ -23,7 +23,7 @@
 			?>
 		</li>
 		<li>
-			<a href="https://github.com/wuwanahq/wuwana2" target=”_blank”><?php echo TEMP_TEXT[6] ?></a>
+			<a href="https://github.com/wuwanahq/wuwana2" target=”_blank” rel="noopener"><?php echo TEMP_TEXT[6] ?></a>
 		</li>
 	</ul>
 </footer>
