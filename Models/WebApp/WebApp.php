@@ -8,10 +8,10 @@ namespace WebApp;
 class WebApp
 {
 	/**
-	 * Min memory usage to store it in PHP logs.
+	 * Minimum memory usage noticeable in PHP logs.
 	 * @var int Bytes
 	 */
-	const MEMORY_LIMIT = 1048576;  // 1 MB
+	const MEMORY_LIMIT = 819200;  // 800 KB
 
 	/**
 	 * Return the selected language according to the sub-domain, user device language or the default language.

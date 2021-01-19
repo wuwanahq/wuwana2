@@ -1,0 +1,16 @@
+/* Real submit button */
+
+.button-filter {
+	padding: 8px 9px 8px 30px;
+	background-image: url(/static/icon/filter.svg);
+	background-size: 24px 24px;
+	background-position: left 4px center;
+	background-color: white;
+	background-repeat: no-repeat;
+	font-size: 1rem;
+	font-weight: 500;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 8px;
+}

@@ -27,5 +27,5 @@ if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 		$instagram);
 }
 
-//TODO: create CompaniesIterator
+//TODO: create CompanyIterator
 $companies = WebApp\Data::getCompany()->selectAll();

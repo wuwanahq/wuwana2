@@ -5,4 +5,6 @@
  */
 
 http_response_code(404);
-trigger_error('URL ' . filter_input(INPUT_SERVER, 'REQUEST_URI') . ' not found', E_USER_NOTICE);
+
+if (php_sapi_name() != 'cli-server')
+{ trigger_error('URL ' . filter_input(INPUT_SERVER, 'REQUEST_URI') . ' not found', E_USER_NOTICE); }
