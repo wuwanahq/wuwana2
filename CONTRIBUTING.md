@@ -8,7 +8,7 @@ This basic technology stack choice was made to...
 - keep the source code as simple as possible even for junior developers
 - use a very low amount of memory per request (PHP memory_limit can be set to 1MB)
 
-To contribute you just need to create a pull request when your modifications are done in order to be approuve by another contributor.
+To contribute you just need to create a pull request when your modifications are done in order to be approved by another contributor.
 
 ## Targeted browsers
 
