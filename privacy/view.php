@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="<?php echo $language->code ?>">
 <head>
 	<?php include 'Templates/page metadata.php' ?>
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
