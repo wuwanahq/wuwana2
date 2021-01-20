@@ -14,58 +14,91 @@
 		<div class="column-main">
 			<section>
 				<h2>Add new company</h2>
-				<div class="box pad-16">
+				<div class="box pad-16" id="new-company">
 					<form method="post">
-						<div class="form-layout-column">
-							<div class="form-label-wrapper">
-								<label for="instagram" class="form-label">Instagram profile URL</label>
-							</div>
-							<input id="instagram" name="instagram" type="url" class="form-input" onchange="scrape()">
-						</div>
-						<div class="form-layout-column">
-							<div class="form-label-wrapper">
-								<label for="website" class="form-label">Website URL</label>
-							</div>
-							<input id="website" name="website" type="url" class="form-input">
-						</div>
-						<div class="form-layout-column">
-							<div class="form-label-wrapper">
-								<label for="email" class="form-label">Company email</label>
-							</div>
-							<input id="email" name="email" type="text" class="form-input">
-						</div>
-						<div class="form-layout-column">
-							<div class="form-label-wrapper">
-								<label for="name" class="form-label">Company name</label>
-							</div>
-							<input id="name" name="name" type="text" class="form-input">
-						</div>
-						<div class="form-layout-column">
-							<div class="form-label-wrapper">
-								<label for="biography" class="form-label">Biography</label>
-							</div>
-							<textarea id="biography" name="biography" rows="6" class="form-input"></textarea>
-						</div>
-						<div class="form-layout-row">
-							<div class="form-layout-column" style="margin-right:24px">
+						<section>
+							<div class="form-layout-column">
 								<div class="form-label-wrapper">
-									<label class="form-label">Posts</label>
+									<label for="name" class="form-label">Company name</label>
 								</div>
-								<input type="text" id="posts" name="posts" size="6" readonly class="form-input">
+								<input id="name" name="name" type="text" class="form-input">
 							</div>
-							<div class="form-layout-column" style="margin-right:24px">
+							<div class="form-layout-column">
 								<div class="form-label-wrapper">
-									<label class="form-label">Followers</label>
+									<label for="address" class="form-label">Address</label>
 								</div>
-								<input type="text" id="followers" name="followers" size="6" readonly class="form-input">
+								<textarea id="address" name="address" type="text" class="form-input"></textarea>
 							</div>
-							<div class="form-layout-column" style="margin-right:24px">
+							<div class="form-layout-column">
 								<div class="form-label-wrapper">
-									<label class="form-label">Following</label>
+									<label for="email" class="form-label">Email</label>
 								</div>
-								<input type="text" id="following" name="following" size="6" readonly class="form-input">
+								<input id="email" name="email" type="text" class="form-input">
 							</div>
-						</div>
+							<div class="form-layout-column">
+								<div class="form-label-wrapper">
+									<label for="whatsapp" class="form-label">Whatsapp</label>
+								</div>
+								<input id="whatsapp" name="whatsapp" type="text" class="form-input">
+							</div>
+							<div class="form-layout-column">
+								<div class="form-label-wrapper">
+									<label for="phone" class="form-label">Phone</label>
+								</div>
+								<input id="phone" name="phone" type="text" class="form-input">
+							</div>
+						</section>
+						<hr>
+						<section>
+							<img src="/static/logo/square1.svg">
+							<div class="form-layout-column">
+								<div class="form-label-wrapper">
+									<label for="instagram" class="form-label">Instagram profile URL</label>
+								</div>
+								<input id="instagram" name="instagram" type="url" class="form-input" onchange="scrape()">
+							</div>
+							<div class="form-layout-column">
+								<div class="form-label-wrapper">
+									<label for="biography" class="form-label">Biography</label>
+								</div>
+								<textarea id="biography" name="biography" class="form-input"></textarea>
+							</div>
+							<div class="form-layout-row">
+								<div class="form-layout-column">
+									<div class="form-label-wrapper">
+										<label class="form-label">Posts</label>
+									</div>
+									<input type="text" id="posts" name="posts" size="6" readonly class="form-input">
+								</div>
+								<div class="form-layout-column">
+									<div class="form-label-wrapper">
+										<label class="form-label">Followers</label>
+									</div>
+									<input type="text" id="followers" name="followers" size="6" readonly class="form-input">
+								</div>
+								<div class="form-layout-column">
+									<div class="form-label-wrapper">
+										<label class="form-label">Following</label>
+									</div>
+									<input type="text" id="following" name="following" size="6" readonly class="form-input">
+								</div>
+							</div>
+						</section>
+						<hr>
+						<section>
+							<div class="form-layout-column">
+								<div class="form-label-wrapper">
+									<label for="website" class="form-label">Website URL</label>
+								</div>
+								<input id="website" name="website" type="url" class="form-input">
+							</div>
+							<div class="form-layout-column">
+								<div class="form-label-wrapper">
+									<label for="description" class="form-label">Description</label>
+								</div>
+								<textarea id="description" name="description" class="form-input"></textarea>
+							</div>
+						</section>
 						<input type="hidden" id="ProfilePicURL" name="ProfilePicURL">
 						<input type="hidden" id="ThumbnailSrc0" name="ThumbnailSrc0">
 						<input type="hidden" id="ThumbnailSrc1" name="ThumbnailSrc1">
