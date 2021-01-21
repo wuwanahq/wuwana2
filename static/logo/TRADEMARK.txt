@@ -1,0 +1,4 @@
+All files in this directory are under trademark™.
+You must replace ALL this files with your own logo before:
+- publishing your website online with a different domain name
+- distributing a modified fork not intended to be merged into the original project
