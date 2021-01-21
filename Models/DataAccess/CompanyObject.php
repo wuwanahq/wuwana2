@@ -22,6 +22,39 @@ class CompanyObject
 	public $facebook;
 	public $lastUpdate;
 
+	public function generatePermalink()
+	{
+		if (isset($this->instagram->profileName))
+		{
+			$permalink =
+				preg_replace('/[^a-z0-9\-]/', '', str_replace(' ', '-', strtolower($this->instagram->profileName)));
+
+			if (strlen($permalink) > 2 && $permalink[0] != '-')
+			{
+				$this->permalink = $permalink;
+				return;
+			}
+		}
+
+		if (isset($this->instagram))
+		{
+			$permalink =
+				preg_replace('/[^a-z0-9\-]/', '', str_replace(' ', '-', strtolower($this->instagram->getUsername())));
+
+			if (strlen($permalink) > 2 && $permalink[0] != '-')
+			{
+				$this->permalink = $permalink;
+				return;
+			}
+		}
+	}
+
+	public function setName($name)
+	{
+		$name =
+			preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $name));
+	}
+
 	public function getDefaultPermalink()
 	{
 		$permalink = preg_replace('/[^a-z0-9\-]/', '', str_replace(' ', '-', strtolower($this->name)));

@@ -7,10 +7,10 @@ namespace DataAccess;
  */
 class SocialMediaObject
 {
-	private $url;
+	public $pageURL;
 	public $profileName;
 	public $biography;
-	public $link = '';
+	public $externalLink = '';
 	public $pictures = [];
 	public $counter1 = 0;
 	public $counter2 = 0;
@@ -20,8 +20,6 @@ class SocialMediaObject
 	{
 		switch ($name)
 		{
-			case 'url': return $this->url;
-
 			// Instagram
 			case 'nbPost': return $this->counter1;
 			case 'nbFollower': return $this->counter2;
@@ -40,10 +38,6 @@ class SocialMediaObject
 	{
 		switch ($name)
 		{
-			case 'url':
-				$this->url = str_replace(['https://www.', 'https://'], '', $value);
-				break;
-
 			// Instagram
 			case 'nbPost': $this->counter1 = $value; break;
 			case 'nbFollower': $this->counter2 = $value; break;
@@ -62,24 +56,34 @@ class SocialMediaObject
 	{
 		if ($row != null)
 		{
-			$this->url = 'https://www.' . $row['SocialMediaURL'];
+			$this->pageURL = $row['SocialMediaURL'];
 			$this->profileName = $row['SocialMediaProfileName'];
 			$this->biography = $row['SocialMediaBiography'];
-			$this->link = $row['SocialMediaExternalLink'];
+			$this->externalLink = $row['SocialMediaExternalLink'];
 			$this->counter1 = $row['SocialMediaCounter1'];
 			$this->counter2 = $row['SocialMediaCounter2'];
 			$this->counter3 = $row['SocialMediaCounter3'];
 		}
 	}
 
-	public function getType()
+	public function setFullPageURL($url)
 	{
-		return substr($this->url, 12, strpos($this->url, '.', 12) - 12);  // 12 to avoid "https://www."
+		$this->pageURL = str_replace(['https://www.', 'https://'], '', $url);
+	}
+
+	public function getFullPageURL()
+	{
+		return 'https://' . $this->pageURL;
+	}
+
+	public function getWebsite()
+	{
+		return substr($this->pageURL, 0, strpos($this->pageURL, '/'));
 	}
 
 	public function getUsername()
 	{
-		return str_replace('https://www.instagram.com/', '', $this->url);
+		return substr($this->pageURL, strpos($this->pageURL, '/'));
 	}
 
 	public function getHtmlBiography()
