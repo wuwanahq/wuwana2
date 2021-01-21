@@ -46,7 +46,7 @@ class Scraper
 		elseif (!empty($instagram->link))
 		{ $company->website = $instagram->link; }
 
-		$company->description = $this->getWebsiteDescription($company->website);
+		$company->description = $this->getWebsiteDescription( 'https://camdencoffeeroasters.com' ); //to test
 
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()
@@ -142,14 +142,36 @@ class Scraper
 	 */
 	private function getWebsiteDescription($url)
 	{
+		// To Do: a better way to select find $metaEnd, something like "> or " > or " />
+
 		$html = file_get_contents($url);
 
-		$positionStart = strpos($html, '<meta name="description" content="') + 34;
-		$positionEnd = strpos($html, '" />', $positionStart);
+		// Find meta description
+		$metaStart = strpos($html, '<meta name="description" content="') + 34;
+		$metaEnd = strpos($html, '">', $metaStart);
+		$metaDescription = substr($html, $metaStart, $metaEnd - $metaStart);
 
-		//TODO...
+		// Find Open Graph description
+		$ogStart = strpos($html, '<meta property="og:description" content="') + 41;
+		$ogEnd = strpos($html, '">', $ogStart);
+		$ogDescription = substr($html, $ogStart, $ogEnd - $ogStart);
 
-		return substr($html, $positionStart, $positionEnd - $positionStart);
+		// Find Twitter card description
+		$twitterStart = strpos($html, '<meta name="twitter:description" content="') + 42;
+		$twitterEnd = strpos($html, '">', $twitterStart);
+		$twitterDescription = substr($html, $twitterStart, $twitterEnd - $twitterStart);
+
+		// Use the longest description
+		$websiteDescriptions = array($metaDescription, $ogDescription, $twitterDescription);
+		function sortbyLength ($a,$b) {
+			return strlen($b)-strlen($a);
+		}
+		usort($websiteDescriptions, function($a,$b) {
+			return strlen($b)-strlen($a);
+		});
+
+		return $websiteDescriptions[0];
+
 	}
 
 	private function scrapeInstagram($url)
