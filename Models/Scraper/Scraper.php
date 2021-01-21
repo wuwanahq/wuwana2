@@ -32,7 +32,6 @@ class Scraper
 
 		$company = new CompanyObject();
 		$company->name = $instagram->profileName;
-		$company->description = str_replace('  ', ' ', $instagram->biography);
 		$company->region = rand(1, 19);
 		$company->instagram = $instagram;
 
@@ -46,6 +45,8 @@ class Scraper
 		{ $company->website = $website; }
 		elseif (!empty($instagram->link))
 		{ $company->website = $instagram->link; }
+
+		$company->description = $this->getWebsiteDescription($company->website);
 
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()
@@ -132,6 +133,23 @@ class Scraper
 
 		arsort($tags, SORT_NUMERIC);
 		return array_keys($tags);
+	}
+
+	/**
+	 * Get the website description.
+	 * @param string $url Website URL
+	 * @return string Description website
+	 */
+	private function getWebsiteDescription($url)
+	{
+		$html = file_get_contents($url);
+
+		$positionStart = strpos($html, '<meta name="description" content="') + 34;
+		$positionEnd = strpos($html, '" />', $positionStart);
+
+		//TODO...
+
+		return substr($html, $positionStart, $positionEnd - $positionStart);
 	}
 
 	private function scrapeInstagram($url)
