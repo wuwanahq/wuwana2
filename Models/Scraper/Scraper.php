@@ -140,46 +140,40 @@ class Scraper
 	 * @param string $url Website URL
 	 * @return string Description website
 	 * Resource:
-	 * https://www.codespeedy.com/get-meta-tags-of-a-web-page-in-php/
-	 * https://stackoverflow.com/questions/7454644/how-to-get-open-graph-protocol-of-a-webpage-by-php
+	 * - https://www.codespeedy.com/get-meta-tags-of-a-web-page-in-php/
+	 * - https://stackoverflow.com/questions/7454644/how-to-get-open-graph-protocol-of-a-webpage-by-php
+	 * Limitations:
+	 * - Shopify sites -> Shopify prevents scraping
+	 * - Sites using React-helmet
 	 */
 	private function getWebsiteDescription($url)
 	{
-		// Get Website meta tags
+		// To get meta description and twitter description
 		$metas = get_meta_tags($url);
 		$webDescription = $metas['description'];
+		$twitterDescription = $metas['twitter:description'];
 
-		// Store website description
-		return $webDescription[0];
+		// To get open graph description
+		$html = file_get_contents($url);
+		$positionStart = strpos($html, '<meta property="og:description" content="') + 41;
+		$positionEnd = strpos($html, '"', $positionStart);
+		$ogDescription = substr($html, $positionStart, $positionEnd - $positionStart);
 
-		// To Do: a better way to select find $metaEnd, something like "> or " > or " />
+		// Create array
+		$descriptions = [$webDescription, $twitterDescription, $ogDescription];
 
-		// // Find meta description
-		// $metaStart = strpos($html, '<meta name="description" content="') + 34;
-		// $metaEnd = strpos($html, '">', $metaStart);
-		// $metaDescription = substr($html, $metaStart, $metaEnd - $metaStart);
+		// Sort array from longest to shortest and return longest
+		usort($descriptions, function($a,$b) 
+			{
+				return strlen($b)-strlen($a);
+			}
+		);
 
-		// // Find Open Graph description
-		// $ogStart = strpos($html, '<meta property="og:description" content="') + 41;
-		// $ogEnd = strpos($html, '">', $ogStart);
-		// $ogDescription = substr($html, $ogStart, $ogEnd - $ogStart);
-
-		// // Find Twitter card description
-		// $twitterStart = strpos($html, '<meta name="twitter:description" content="') + 42;
-		// $twitterEnd = strpos($html, '">', $twitterStart);
-		// $twitterDescription = substr($html, $twitterStart, $twitterEnd - $twitterStart);
-
-		// // Use the longest description
-		// $websiteDescriptions = array($metaDescription, $ogDescription, $twitterDescription);
-		// function sortbyLength ($a,$b) {
-		// 	return strlen($b)-strlen($a);
-		// }
-		// usort($websiteDescriptions, function($a,$b) {
-		// 	return strlen($b)-strlen($a);
-		// });
-
-		// return $websiteDescriptions[0];
-
+		// TO DO
+		// Shopify
+		// react-helmet
+		
+		return $descriptions[0];
 	}
 
 	private function scrapeInstagram($url)
