@@ -46,7 +46,7 @@ class Scraper
 		elseif (!empty($instagram->link))
 		{ $company->website = $instagram->link; }
 
-		$company->description = $this->getWebsiteDescription( 'https://camdencoffeeroasters.com' ); //to test
+		$company->description = $this->getWebsiteDescription($website);
 
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()
