@@ -139,38 +139,46 @@ class Scraper
 	 * Get the website description.
 	 * @param string $url Website URL
 	 * @return string Description website
+	 * Resource:
+	 * https://www.codespeedy.com/get-meta-tags-of-a-web-page-in-php/
+	 * https://stackoverflow.com/questions/7454644/how-to-get-open-graph-protocol-of-a-webpage-by-php
 	 */
 	private function getWebsiteDescription($url)
 	{
+		// Get Website meta tags
+		$metas = get_meta_tags($url);
+		$webDescription = $metas['description'];
+
+		// Store website description
+		return $webDescription[0];
+
 		// To Do: a better way to select find $metaEnd, something like "> or " > or " />
 
-		$html = file_get_contents($url);
+		// // Find meta description
+		// $metaStart = strpos($html, '<meta name="description" content="') + 34;
+		// $metaEnd = strpos($html, '">', $metaStart);
+		// $metaDescription = substr($html, $metaStart, $metaEnd - $metaStart);
 
-		// Find meta description
-		$metaStart = strpos($html, '<meta name="description" content="') + 34;
-		$metaEnd = strpos($html, '">', $metaStart);
-		$metaDescription = substr($html, $metaStart, $metaEnd - $metaStart);
+		// // Find Open Graph description
+		// $ogStart = strpos($html, '<meta property="og:description" content="') + 41;
+		// $ogEnd = strpos($html, '">', $ogStart);
+		// $ogDescription = substr($html, $ogStart, $ogEnd - $ogStart);
 
-		// Find Open Graph description
-		$ogStart = strpos($html, '<meta property="og:description" content="') + 41;
-		$ogEnd = strpos($html, '">', $ogStart);
-		$ogDescription = substr($html, $ogStart, $ogEnd - $ogStart);
+		// // Find Twitter card description
+		// $twitterStart = strpos($html, '<meta name="twitter:description" content="') + 42;
+		// $twitterEnd = strpos($html, '">', $twitterStart);
+		// $twitterDescription = substr($html, $twitterStart, $twitterEnd - $twitterStart);
 
-		// Find Twitter card description
-		$twitterStart = strpos($html, '<meta name="twitter:description" content="') + 42;
-		$twitterEnd = strpos($html, '">', $twitterStart);
-		$twitterDescription = substr($html, $twitterStart, $twitterEnd - $twitterStart);
+		// // Use the longest description
+		// $websiteDescriptions = array($metaDescription, $ogDescription, $twitterDescription);
+		// function sortbyLength ($a,$b) {
+		// 	return strlen($b)-strlen($a);
+		// }
+		// usort($websiteDescriptions, function($a,$b) {
+		// 	return strlen($b)-strlen($a);
+		// });
 
-		// Use the longest description
-		$websiteDescriptions = array($metaDescription, $ogDescription, $twitterDescription);
-		function sortbyLength ($a,$b) {
-			return strlen($b)-strlen($a);
-		}
-		usort($websiteDescriptions, function($a,$b) {
-			return strlen($b)-strlen($a);
-		});
-
-		return $websiteDescriptions[0];
+		// return $websiteDescriptions[0];
 
 	}
 
