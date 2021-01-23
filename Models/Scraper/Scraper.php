@@ -46,7 +46,12 @@ class Scraper
 		elseif (!empty($instagram->link))
 		{ $company->website = $instagram->link; }
 
-		$company->description = $this->getWebsiteDescription($website);
+		$company->description = $this->getWebsiteDescription($this->website);
+
+		if (empty($company->description))
+		{
+		$company->description = str_replace('  ', ' ', $instagram->biography);
+		}
 
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()
@@ -144,36 +149,55 @@ class Scraper
 	 * - https://stackoverflow.com/questions/7454644/how-to-get-open-graph-protocol-of-a-webpage-by-php
 	 * Limitations:
 	 * - Shopify sites -> Shopify prevents scraping
-	 * - Sites using React-helmet
 	 */
+
 	private function getWebsiteDescription($url)
 	{
-		// To get meta description and twitter description
-		$metas = get_meta_tags($url);
-		$webDescription = $metas['description'];
-		$twitterDescription = $metas['twitter:description'];
-
-		// To get open graph description
-		$html = file_get_contents($url);
-		$positionStart = strpos($html, '<meta property="og:description" content="') + 41;
-		$positionEnd = strpos($html, '"', $positionStart);
-		$ogDescription = substr($html, $positionStart, $positionEnd - $positionStart);
-
-		// Create array
-		$descriptions = [$webDescription, $twitterDescription, $ogDescription];
-
-		// Sort array from longest to shortest and return longest
-		usort($descriptions, function($a,$b) 
-			{
-				return strlen($b)-strlen($a);
-			}
-		);
-
-		// TO DO
-		// Shopify
-		// react-helmet
-		
-		return $descriptions[0];
+	  $html = file_get_contents($url);  // Download the HTML page
+	  $position = stripos($html, '</head>');
+	
+	  if ($position == false)  // or 0
+	  { return ''; }  // We can not do anything without the <head> part
+	
+	  // Remove the <body> part to only parse the <head> (optimization)
+	  $html = substr($html, 0, $position) . '</head><body></body></html>';
+	  $dom = new DOMDocument();
+	  $dom->loadHTML($html);
+	
+	  $metas = [];
+	
+	  foreach ($dom->getElementsByTagName('meta') as $meta)
+	  {
+		if ($meta->hasAttribute('property'))
+		{ $metas[strtolower($meta->getAttribute('property'))] = trim($meta->getAttribute('content')); }
+		elseif ($meta->hasAttribute('name'))
+		{ $metas[strtolower($meta->getAttribute('name'))] = trim($meta->getAttribute('content')); }
+	  }
+	
+	  // Now we can choose which description we prefer if we found many!
+	
+	  if (!empty($metas['description']))
+	  { return $metas['description']; }
+	
+	  if (!empty($metas['og:description']))
+	  { return $metas['og:description']; }
+	
+	  if (!empty($metas['twitter:description']))
+	  { return $metas['twitter:description']; }
+	
+	  // If there were no description available maybe we can use the page title...
+	  $title = $dom->getElementsByTagName('title')->item(0);
+	
+	  if ($title != null && !empty($title->nodeValue))
+	  { return trim($title->nodeValue); }
+	
+	  if (!empty($metas['og:title']))
+	  { return $metas['og:title']; }
+	
+	  if (!empty($metas['twitter:title']))
+	  { return $metas['twitter:title']; }
+	
+	  return '';
 	}
 
 	private function scrapeInstagram($url)
