@@ -172,7 +172,7 @@ class NLP_Wuwana():
                     print("ERROR Processing query row: ", str(e))
                     
         else:
-            print("WARNING: NO results in SQL.")
+            print("WARNING: NO rows for that ID.")
 
         #update tags - execute querys
         for i in updates_list:

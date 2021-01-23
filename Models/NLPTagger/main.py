@@ -22,10 +22,7 @@ def main():
     # command line arguments control
     if(args.onlyid):
         if args.onlyid.lower() == 'false':
-            if click.confirm('ATENTION: Yo have selected False as onlyid. This will process and replace the tags for every row in company table. Do you want to continue?', default=True):
-                pass
-            else:
-                sys.exit()    
+            sys.exit("no valid ID")
     else:
         sys.exit("--onlyid arg missing. Please, insert one company id")  
             
@@ -47,7 +44,7 @@ def main():
                 weight_field=config.weight_field,
                 desc_field=config.desc_field )
     nlp_obj.process_query_companies(onlyid = args.onlyid, lib = config.lib.lower())
-    #nlp_obj.process_query_companies(onlyid = False, lib = config.lib.lower())
+
 
 
 if __name__ == "__main__":

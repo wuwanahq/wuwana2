@@ -30,6 +30,8 @@ There is a config file that defines general aspects of the script:
 - languages = ["es","fr","zh-cn"] # list of languages to be translated, apart from english. Same order is followed in output.
 - spacy_model = "./en_core_web_lg" # spacy pretrained model.
 
+There is also another file with database parameters, called database_config.py.
+
 
 # USE
 
@@ -41,8 +43,8 @@ being ID the Id of the company table we want to update. This command will launch
 from desc_field column (in company table), will extract main topics (including weights), for them. Those topics will be stored
 in the following table/fields:
 
-- Table Tag: This table that have tags ID and descriptions is updated with all new tags discovered.
-- Table Company: For the id selected, 4 columns will be updated: FirstTagID (main tag), SecondTagID (second main tag), OtherTags (rest of them) and NLPInfoTag (or other field selected uin config file, with the 
+- Table Tag: This table that have tags ID and descriptions (translated according to languages in config file) is updated with all new tags discovered.
+- Table Company: For the id selected, 4 columns will be updated: FirstTagID (main tag), SecondTagID (second main tag), OtherTags (rest of them) and NLPInfoTag (or other field selected in config file, with the 
 weights returned by NLP algos). 
 
 
