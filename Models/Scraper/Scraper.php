@@ -32,7 +32,6 @@ class Scraper
 
 		$company = new CompanyObject();
 		$company->name = $instagram->profileName;
-		$company->description = str_replace('  ', ' ', $instagram->biography);
 		$company->region = rand(1, 19);
 		$company->instagram = $instagram;
 
@@ -46,6 +45,13 @@ class Scraper
 		{ $company->website = $website; }
 		elseif (!empty($instagram->link))
 		{ $company->website = $instagram->link; }
+
+		$company->description = $this->getWebsiteDescription($this->website);
+
+		if (empty($company->description))
+		{
+		$company->description = str_replace('  ', ' ', $instagram->biography);
+		}
 
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()
@@ -132,6 +138,65 @@ class Scraper
 
 		arsort($tags, SORT_NUMERIC);
 		return array_keys($tags);
+	}
+
+	/**
+	 * Get the website description.
+	 * @param string $url Website URL
+	 * @return string Description website
+	 * Resource:
+	 * - https://www.codespeedy.com/get-meta-tags-of-a-web-page-in-php/
+	 * - https://stackoverflow.com/questions/7454644/how-to-get-open-graph-protocol-of-a-webpage-by-php
+	 * Limitations:
+	 * - Shopify sites -> Shopify prevents scraping
+	 */
+	private function getWebsiteDescription($url)
+	{
+	  $html = file_get_contents($url);  // Download the HTML page
+	  $position = stripos($html, '</head>');
+	
+	  if ($position == false)  // or 0
+	  { return ''; }  // We can not do anything without the <head> part
+	
+	  // Remove the <body> part to only parse the <head> (optimization)
+	  $html = substr($html, 0, $position) . '</head><body></body></html>';
+	  $dom = new DOMDocument();
+	  $dom->loadHTML($html);
+	
+	  $metas = [];
+	
+	  foreach ($dom->getElementsByTagName('meta') as $meta)
+	  {
+		if ($meta->hasAttribute('property'))
+		{ $metas[strtolower($meta->getAttribute('property'))] = trim($meta->getAttribute('content')); }
+		elseif ($meta->hasAttribute('name'))
+		{ $metas[strtolower($meta->getAttribute('name'))] = trim($meta->getAttribute('content')); }
+	  }
+	
+	  // Now we can choose which description we prefer if we found many!
+	
+	  if (!empty($metas['description']))
+	  { return $metas['description']; }
+	
+	  if (!empty($metas['og:description']))
+	  { return $metas['og:description']; }
+	
+	  if (!empty($metas['twitter:description']))
+	  { return $metas['twitter:description']; }
+	
+	  // If there were no description available maybe we can use the page title...
+	  $title = $dom->getElementsByTagName('title')->item(0);
+	
+	  if ($title != null && !empty($title->nodeValue))
+	  { return trim($title->nodeValue); }
+	
+	  if (!empty($metas['og:title']))
+	  { return $metas['og:title']; }
+	
+	  if (!empty($metas['twitter:title']))
+	  { return $metas['twitter:title']; }
+	
+	  return '';
 	}
 
 	private function scrapeInstagram($url)
