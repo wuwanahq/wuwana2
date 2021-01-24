@@ -150,7 +150,6 @@ class Scraper
 	 * Limitations:
 	 * - Shopify sites -> Shopify prevents scraping
 	 */
-
 	private function getWebsiteDescription($url)
 	{
 	  $html = file_get_contents($url);  // Download the HTML page
