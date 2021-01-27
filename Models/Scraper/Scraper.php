@@ -1,6 +1,5 @@
 <?php
 namespace Scraper;
-use DataAccess\User;
 use DataAccess\Tag;
 use DataAccess\Company;
 use DataAccess\CompanyObject;
@@ -23,15 +22,11 @@ class Scraper
 
 	public function storeCompany($website, $email, $picture, $text, SocialMediaObject $instagram)
 	{
-		if (filter_var($instagram->link, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) == false)
+		if (empty($instagram->pageURL))
 		{ return; }
 
-		$specialCharacters = ["\r\n", "\n\r", "\r", "\n", "\t", "\v", "\f", "\e"];
-		$instagram->profileName = str_replace($specialCharacters, '', $instagram->profileName);
-		$instagram->biography = str_replace($specialCharacters, '  ', $instagram->biography);
-
 		$company = new CompanyObject();
-		$company->name = $instagram->profileName;
+		$company->setName($instagram->profileName);
 		$company->description = str_replace('  ', ' ', $instagram->biography);
 		$company->region = rand(1, 19);
 		$company->instagram = $instagram;
@@ -42,10 +37,10 @@ class Scraper
 		if (!empty($picture) && filter_var($picture, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) === $picture)
 		{ $company->logo = $picture; }
 
-		if (!empty($website) && filter_var($website, FILTER_VALIDATE_URL) === $website)
-		{ $company->website = $website; }
-		elseif (!empty($instagram->link))
-		{ $company->website = $instagram->link; }
+		$company->setWebsite($website);
+
+		if (empty($company->website) && !empty($instagram->externalLink))
+		{ $company->setWebsite($instagram->externalLink); }
 
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()

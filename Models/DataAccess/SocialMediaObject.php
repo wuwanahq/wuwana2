@@ -66,12 +66,31 @@ class SocialMediaObject
 		}
 	}
 
-	public function setFullPageURL($url)
+	/**
+	 * Sanitize then store profile name.
+	 * @param string $name
+	 */
+	public function setProfileName($name)
 	{
-		$this->pageURL = str_replace(['https://www.', 'https://'], '', $url);
+		$this->profileName = trim(str_replace(["\r\n", "\n\r", "\r", "\n", "\t", "\v", "\f", "\e"], ' ', $name));
 	}
 
-	public function getFullPageURL()
+	/**
+	 * Sanitize then store biography text.
+	 * @param string $text
+	 */
+	public function setBiography($text)
+	{
+		$this->biography = trim(str_replace(["\r\n", "\n\r", "\r", "\n", "\t", "\v", "\f", "\e"], '  ', $text));
+	}
+
+	public function setPageURL($url)
+	{
+		if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) === $url)
+		{ $this->pageURL = rtrim(str_replace(['https://www.', 'https://'], '', trim($url)), '/'); }
+	}
+
+	public function getPageURL()
 	{
 		return 'https://' . $this->pageURL;
 	}
@@ -83,7 +102,7 @@ class SocialMediaObject
 
 	public function getUsername()
 	{
-		return substr($this->pageURL, strpos($this->pageURL, '/'));
+		return substr($this->pageURL, strpos($this->pageURL, '/') +1);
 	}
 
 	public function getHtmlBiography()

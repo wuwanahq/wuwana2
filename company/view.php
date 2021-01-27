@@ -28,7 +28,7 @@
 						{ echo '<h1>', $company->name, '</h1>'; }
 					?>
 					<ul class="tag-area">
-						<li><?php echo implode('</li><li>', $company->tags) ?></li>
+						<li><?php echo implode('</li><li>', $company->visibleTags) ?></li>
 					</ul>
 					<div class="button-icon-small margin-t16">
 						<img src="/static/icon/tiny/map.svg" alt="">
@@ -83,9 +83,9 @@
 				<section class="company-contact">
 					<h3><?php printf(TEXT[1], $company->name) ?></h3>
 					<ul>
-						<?php if ($company->instagram->url != ''): ?>
+						<?php if ($company->instagram->pageURL != ''): ?>
 							<li>
-								<a class="item-label" href="<?php echo $company->instagram->url ?>" target="_blank" rel="noopener">
+								<a class="item-label" href="<?php echo $company->instagram->getPageURL() ?>" target="_blank" rel="noopener">
 									<div class="button-social">
 										<img src="/static/icon/instagram.svg" alt="">
 									</div>
@@ -132,7 +132,7 @@
 						<input id="permalink" type="text" size="26" value="<?php echo WebApp\WebApp::getPermalink() ?>">
 						<br>
 						<label for="insta">Instagram profile:</label>
-						<input id="insta" type="text" size="25" value="<?php echo $company->instagram->url ?>">
+						<input id="insta" type="text" size="25" value="<?php echo $company->instagram->pageURL ?>">
 						<br>
 						<label for="whatsapp">WhatsApp number:</label>
 						<input id="whatsapp" type="text" size="24" value="<?php echo $company->phone ?>">
@@ -160,8 +160,8 @@
 							<h3><?php echo $company->instagram->profileName ?></h3>
 							<p>
 								<?php echo $company->instagram->getHtmlBiography() ?><br>
-								<a href="<?php echo $company->instagram->link ?>" target="_blank" rel="noopener">
-									<?php echo str_replace(['http://','https://'], '', $company->instagram->link) ?>
+								<a href="<?php echo $company->instagram->externalLink ?>" target="_blank" rel="noopener">
+									<?php echo str_replace(['http://','https://'], '', $company->instagram->externalLink) ?>
 								</a>
 							</p>
 							<ul>
@@ -217,7 +217,7 @@
 								</div>
 							</div>
 						</div></div>
-						<a class="button-icon" href="<?php echo $company->instagram->url ?>" target="_blank" rel="noopener">
+						<a class="button-icon" href="<?php echo $company->instagram->pageURL ?>" target="_blank" rel="noopener">
 							<img src="/static/icon/instagram.svg" alt="">
 							<?php echo TEXT[5] ?>
 						</a>
