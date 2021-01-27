@@ -53,10 +53,10 @@ class SocialMedia extends DataAccess
 
 		$query->bindValue(1, $companyID, PDO::PARAM_INT);
 		$query->bindValue(2, $id, PDO::PARAM_INT);
-		$query->bindValue(3, $socialMedia->url, PDO::PARAM_STR);
+		$query->bindValue(3, $socialMedia->pageURL, PDO::PARAM_STR);
 		$query->bindValue(4, $socialMedia->profileName, PDO::PARAM_STR);
 		$query->bindValue(5, $socialMedia->biography, PDO::PARAM_STR);
-		$query->bindValue(6, $socialMedia->link, PDO::PARAM_STR);
+		$query->bindValue(6, $socialMedia->externalLink, PDO::PARAM_STR);
 		$query->bindValue(7, $socialMedia->counter1, PDO::PARAM_INT);
 		$query->bindValue(8, $socialMedia->counter2, PDO::PARAM_INT);
 		$query->bindValue(9, $socialMedia->counter3, PDO::PARAM_INT);

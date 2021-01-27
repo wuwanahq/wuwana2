@@ -21,7 +21,7 @@
 				?>
 			</div>
 		</div>
-		<div class="header-logo"><a href="/"><img src="/static/logo/wuwana.svg" alt="wuwana logo"></a></div>
+		<div class="header-logo"><a href="/"><img src="/static/logo/website.svg" alt="wuwana logo"></a></div>
 		<div class="header-invisible"></div>
 		<?php if (isset($user) && $user->isLogin()): ?>
 			<span>

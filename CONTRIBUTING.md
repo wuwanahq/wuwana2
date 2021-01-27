@@ -3,10 +3,11 @@
 Looking to contribute? Welcome here friend developer! 🤓  
 Wuwana is written in PHP and follows the [MVC design pattern](https://en.wikipedia.org/wiki/Model–view–controller) without any framework.
 
-This basic technology stack choice was made to...
+The choice to use only vanilla PHP was made to...
 
 - keep the source code as simple as possible even for junior developers
-- use a very low amount of memory per request (PHP memory_limit can be set to 1MB)
+- keep the memory footprint per request extremely low (PHP memory_limit can be set to **2MB**)
+- keep a very short response time per request
 
 To contribute you just need to create a pull request when your modifications are done in order to be approuve by another contributor.
 
@@ -22,7 +23,7 @@ To contribute you just need to create a pull request when your modifications are
 
 ```
 Web root
-├─ index.php            <- Front controller (router)
+├─ router.php           <- Front controller
 ├─ homepage             <- Folder for the home page
 │  ├─ controller.php    <- Page's controller
 │  ├─ view.php          <- Page's view
@@ -75,8 +76,8 @@ We try to respect the following naming rules. 😇
 
 **CSS code**
 
-- lowercase-dash: Name of classes
-- --lowercase-dash: Name of custom properties (variables)
+- lowercase-dashed: Name of classes
+- --lowercase-dashed: Name of custom properties (variables)
 
 **JavaScript**
 
@@ -88,7 +89,7 @@ We try to respect the following naming rules. 😇
 
 **Filename**
 
-- lowercase: Folder related to a page
+- lowercase: Folder related to a web page
 - PascalCase: PHP classes, interfaces and namespaces (folder)
 - lowercase: Other PHP files like controller, view, text translation...
-- lowercase: Everything inside the "static" folder
+- lowercase: **Everything** inside the "static" folder

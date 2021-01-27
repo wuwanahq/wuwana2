@@ -98,10 +98,10 @@
 								<?php foreach ($companies as $company): ?>
 									<tr>
 										<td><div class="logo-small">
-											<img src="https://instagram.fymq2-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/118864590_252863045871428_6260297577990075586_n.jpg?_nc_ht=instagram.fymq2-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=6Ks7w0FmbeUAX8BbgTI&tp=1&oh=aaa1286031bb0a19bd300ab28fee0aac&oe=6015C4CC">
+											<img src="/static/image/schemekle.jpg">
 										</div></td>
 										<td title="<?php echo $company->description ?>">
-											<a href="<?php echo WebApp\WebApp::getHostname(), '/', $company->permalink ?>">
+											<a href="<?php echo '/', $company->permalink ?>">
 												<?php echo $company->name ?>
 											</a>
 										</td>

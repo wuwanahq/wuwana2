@@ -4,12 +4,12 @@
 	<?php include 'Templates/page metadata.php' ?>
 	<title><?php echo TEXT[0] ?> | Wuwana</title>
 	<meta property="og:title" content="<?php echo TEXT[0] ?> | Wuwana">
-	<meta property="og:image" content="/static/image/wuwana-link-2020.png">
+	<meta property="og:image" content="/static/logo/thumbnail.png">
 	<meta property="og:image:type" content="image/png">
 	<meta property="og:image:width" content="1264">
 	<meta property="og:image:height" content="640">
 	<meta name="twitter:title" content="<?php echo TEXT[0] ?> | Wuwana">
-	<meta name="twitter:image" content="https://wuwana.com/static/image/wuwana-link-2020.png">
+	<meta name="twitter:image" content="https://wuwana.com/static/logo/thumbnail.png">
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/homepage.css">
 	<script src="/static/dhtml/homepage.js" defer></script>
 </head>
@@ -91,7 +91,7 @@
 					<?php foreach ($companies as $permalink => $company): ?>
 						<a class="card" href="/<?php echo $permalink ?>">
 							<div class="logo-main margin-r16">
-								<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name ?> logo">
+								<img src="<?php echo $company->logo ?>">
 							</div>
 							<div class="company-card-wrapper">
 								<div class="company-card-info">

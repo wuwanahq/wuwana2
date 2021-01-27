@@ -2,7 +2,7 @@
 namespace WebApp;
 
 /**
- * Language.
+ * Internationalization and localization tools.
  * @property-read string $code Current language code (ISO 639-1)
  * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
  */
@@ -74,7 +74,7 @@ class Language
 	}
 
 	/**
-	 * Format a timestamp to a date and avoid time zone problem.
+	 * Format a timestamp to a short date universally understandable regardless of your time zone.
 	 * @param int $timestamp
 	 * @return string
 	 */
@@ -82,20 +82,17 @@ class Language
 	{
 		$interval = time() - $timestamp;
 
-		if ($interval < 2)  // minimum interval
-		{ $interval = 2; }
-
 		if ($interval <= 90)  // seconds
 		{
 			switch ($this->code)
 			{
-				case 'es': return 'hace ' . $interval . ' segundos';
-				case 'fr': return 'il y a ' . $interval . ' secondes';
+				case 'es': return 'hace ' . $interval . ' seg';
+				case 'fr': return 'il y a ' . $interval . ' sec';
 				case 'zh': return $interval . '秒前';
 				case 'ja': return $interval . '秒前';
 			}
 
-			return $interval . ' seconds ago';
+			return $interval . ' sec ago';
 		}
 
 		if ($interval <= 5400)  // 90 minutes

@@ -140,15 +140,15 @@ class Company extends DataAccess
 
 			$socialMedia = new SocialMediaObject($row);
 
-			switch ($socialMedia->getType())
+			switch ($socialMedia->getWebsite())
 			{
-				case 'instagram':
+				case 'instagram.com':
 					if (empty($company->instagram))
 					{ $company->instagram = $socialMedia; }
 					$company->instagram->pictures[] = $row['ImageURL'];
 					break;
 
-				case 'facebook':
+				case 'facebook.com':
 					if (empty($company->facebook))
 					{ $company->facebook = $socialMedia; }
 					$company->facebook->pictures[] = $row['ImageURL'];
@@ -312,20 +312,17 @@ class Company extends DataAccess
 		$query->execute();
 		$id = $query->fetchAll(PDO::FETCH_COLUMN,0)[0];
 
-		$query = $this->pdo->prepare('insert into Company
-			(PermaLink,ID,Name,Description,LogoURL,Website,PhonePrefix,PhoneNumber,
-				Email,Address,LocationID,FirstTagID,SecondTagID,OtherTags,LastUpdate)
-			values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-
 		$permalink = $company->getDefaultPermalink();
 		$i = 0;
 
 		do
 		{
-			if (++$i > 1)
-			{ $permalink .= $i; }
+			$query = $this->pdo->prepare('insert into Company
+				(PermaLink,ID,Name,Description,LogoURL,Website,PhonePrefix,PhoneNumber,
+					Email,Address,LocationID,FirstTagID,SecondTagID,OtherTags,LastUpdate)
+				values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
 
-			$query->bindValue(1, $permalink, PDO::PARAM_STR);
+			$query->bindValue(1, ++$i > 1 ? $permalink . $i : $permalink, PDO::PARAM_STR);
 			$query->bindValue(2, $id, PDO::PARAM_INT);
 			$query->bindValue(3, $company->name, PDO::PARAM_STR);
 			$query->bindValue(4, $company->description, PDO::PARAM_STR);

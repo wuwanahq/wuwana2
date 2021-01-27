@@ -1,10 +1,10 @@
 <?php
 namespace Scraper;
-use DataAccess\User;
 use DataAccess\Tag;
 use DataAccess\Company;
 use DataAccess\CompanyObject;
 use DataAccess\SocialMediaObject;
+use DOMDocument;
 
 /**
  * Web Scraper.
@@ -23,15 +23,11 @@ class Scraper
 
 	public function storeCompany($website, $email, $picture, $text, SocialMediaObject $instagram)
 	{
-		if (filter_var($instagram->link, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) == false)
+		if (empty($instagram->pageURL))
 		{ return; }
 
-		$specialCharacters = ["\r\n", "\n\r", "\r", "\n", "\t", "\v", "\f", "\e"];
-		$instagram->profileName = str_replace($specialCharacters, '', $instagram->profileName);
-		$instagram->biography = str_replace($specialCharacters, '  ', $instagram->biography);
-
 		$company = new CompanyObject();
-		$company->name = $instagram->profileName;
+		$company->setName($instagram->profileName);
 		$company->region = rand(1, 19);
 		$company->instagram = $instagram;
 
@@ -41,17 +37,15 @@ class Scraper
 		if (!empty($picture) && filter_var($picture, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) === $picture)
 		{ $company->logo = $picture; }
 
-		if (!empty($website) && filter_var($website, FILTER_VALIDATE_URL) === $website)
-		{ $company->website = $website; }
-		elseif (!empty($instagram->link))
-		{ $company->website = $instagram->link; }
+		$company->setWebsite($website);
 
-		$company->description = $this->getWebsiteDescription($this->website);
+		if (empty($company->website) && !empty($instagram->externalLink))
+		{ $company->setWebsite($instagram->externalLink); }
+
+		$company->description = $this->getWebsiteDescription($company->website);
 
 		if (empty($company->description))
-		{
-		$company->description = str_replace('  ', ' ', $instagram->biography);
-		}
+		{ $company->description = str_replace('  ', ' ', $instagram->biography); }
 
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()
@@ -154,17 +148,17 @@ class Scraper
 	{
 	  $html = file_get_contents($url);  // Download the HTML page
 	  $position = stripos($html, '</head>');
-	
+
 	  if ($position == false)  // or 0
 	  { return ''; }  // We can not do anything without the <head> part
-	
+
 	  // Remove the <body> part to only parse the <head> (optimization)
 	  $html = substr($html, 0, $position) . '</head><body></body></html>';
 	  $dom = new DOMDocument();
 	  $dom->loadHTML($html);
-	
+
 	  $metas = [];
-	
+
 	  foreach ($dom->getElementsByTagName('meta') as $meta)
 	  {
 		if ($meta->hasAttribute('property'))
@@ -172,30 +166,30 @@ class Scraper
 		elseif ($meta->hasAttribute('name'))
 		{ $metas[strtolower($meta->getAttribute('name'))] = trim($meta->getAttribute('content')); }
 	  }
-	
+
 	  // Now we can choose which description we prefer if we found many!
-	
+
 	  if (!empty($metas['description']))
 	  { return $metas['description']; }
-	
+
 	  if (!empty($metas['og:description']))
 	  { return $metas['og:description']; }
-	
+
 	  if (!empty($metas['twitter:description']))
 	  { return $metas['twitter:description']; }
-	
+
 	  // If there were no description available maybe we can use the page title...
 	  $title = $dom->getElementsByTagName('title')->item(0);
-	
+
 	  if ($title != null && !empty($title->nodeValue))
 	  { return trim($title->nodeValue); }
-	
+
 	  if (!empty($metas['og:title']))
 	  { return $metas['og:title']; }
-	
+
 	  if (!empty($metas['twitter:title']))
 	  { return $metas['twitter:title']; }
-	
+
 	  return '';
 	}
 

@@ -9,7 +9,7 @@
 	<?php include 'Templates/page header.php' ?>
 	<div class="error-page-wrapper">
 		<div class="error-image">
-			<img src="https://instagram.fymq2-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/118864590_252863045871428_6260297577990075586_n.jpg?_nc_ht=instagram.fymq2-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=6Ks7w0FmbeUAX8BbgTI&tp=1&oh=aaa1286031bb0a19bd300ab28fee0aac&oe=6015C4CC" alt="a picture of Schemekle, wuwana's mascot, looking goofy">
+			<img src="/static/image/schemekle.jpg" alt="a picture of Schemekle, Wuwana's mascot, looking goofy">
 		</div>
 		<h1><?php echo TEXT[0] ?></h1>
 		<p><?php echo TEXT[1] ?></p>
