@@ -312,16 +312,16 @@ class Company extends DataAccess
 		$query->execute();
 		$id = $query->fetchAll(PDO::FETCH_COLUMN,0)[0];
 
-		$query = $this->pdo->prepare('insert into Company
-			(PermaLink,ID,Name,Description,LogoURL,Website,PhonePrefix,PhoneNumber,
-				Email,Address,LocationID,FirstTagID,SecondTagID,OtherTags,LastUpdate)
-			values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-
 		$permalink = $company->getDefaultPermalink();
 		$i = 0;
 
 		do
 		{
+			$query = $this->pdo->prepare('insert into Company
+				(PermaLink,ID,Name,Description,LogoURL,Website,PhonePrefix,PhoneNumber,
+					Email,Address,LocationID,FirstTagID,SecondTagID,OtherTags,LastUpdate)
+				values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+
 			$query->bindValue(1, ++$i > 1 ? $permalink . $i : $permalink, PDO::PARAM_STR);
 			$query->bindValue(2, $id, PDO::PARAM_INT);
 			$query->bindValue(3, $company->name, PDO::PARAM_STR);

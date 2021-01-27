@@ -4,6 +4,7 @@ use DataAccess\Tag;
 use DataAccess\Company;
 use DataAccess\CompanyObject;
 use DataAccess\SocialMediaObject;
+use DOMDocument;
 
 /**
  * Web Scraper.
@@ -41,12 +42,10 @@ class Scraper
 		if (empty($company->website) && !empty($instagram->externalLink))
 		{ $company->setWebsite($instagram->externalLink); }
 
-		$company->description = $this->getWebsiteDescription($this->website);
+		$company->description = $this->getWebsiteDescription($company->website);
 
 		if (empty($company->description))
-		{
-		$company->description = str_replace('  ', ' ', $instagram->biography);
-		}
+		{ $company->description = str_replace('  ', ' ', $instagram->biography); }
 
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()
