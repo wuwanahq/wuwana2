@@ -1,0 +1,8 @@
+pandas==1.2.0
+pymysql==1.0.2
+google-trans-new==1.1.9
+gensim==3.8.3
+spacy==2.3.5
+wordcloud==1.8.1
+click==7.1.2
+#python -m spacy download en_core_web_lg
