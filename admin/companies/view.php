@@ -5,7 +5,8 @@
 	<title>Admin page | Wuwana</title>
 	<meta property="og:title" content="Admin page | Wuwana">
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/admin.css">
-	<script src="/static/dhtml/admin.js" defer></script>
+	<script src="/static/dhtml/admin.js"></script>
+	<script>updateCompany("<?php echo $oldestInstagram ?>")</script>
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>

@@ -4,7 +4,7 @@
  * @link https://wuwana.com/admin/companies
  */
 
-if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
+if (filter_has_var(INPUT_POST, 'instagram'))
 {
 	$instagram = new DataAccess\SocialMediaObject();
 	$instagram->setPageURL(filter_input(INPUT_POST, 'instagram'), FILTER_SANITIZE_URL);
@@ -26,10 +26,3 @@ if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 		filter_input(INPUT_POST, 'ExtraInfo'),
 		$instagram);
 }
-
-$company = WebApp\Data::getCompany();
-
-//TODO: create CompanyIterator
-$companies = $company->selectAll();
-
-$oldestInstagram = $company->selectOldestInstagram();

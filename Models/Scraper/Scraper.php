@@ -12,64 +12,79 @@ use DOMDocument;
  */
 class Scraper
 {
-	private $storedTag;
-	private $storedCompany;
+	private $tagStorage;
+	private $companyStorage;
+	private $company;
 
-	public function __construct(Tag $tag, Company $company)
+	/**
+	 * Constructor.
+	 * @param Tag $tagAccess
+	 * @param Company $companyAccess
+	 */
+	public function __construct(Tag $tagAccess, Company $companyAccess)
 	{
-		$this->storedTag = $tag;
-		$this->storedCompany = $company;
+		$this->tagStorage = $tagAccess;
+		$this->companyStorage = $companyAccess;
 	}
 
+	/**
+	 * Store scraped data.
+	 * @param string $website URL
+	 * @param string $email
+	 * @param string $picture URL
+	 * @param string $text Extra text to help the tag detection
+	 * @param SocialMediaObject $instagram Data from JavaScript scraper
+	 */
 	public function storeCompany($website, $email, $picture, $text, SocialMediaObject $instagram)
 	{
 		if (empty($instagram->pageURL))
 		{ return; }
 
-		$company = new CompanyObject();
-		$company->setName($instagram->profileName);
-		$company->region = rand(1, 19);
-		$company->instagram = $instagram;
+		$this->company = new CompanyObject();
+		$this->company->setName($instagram->profileName);
+		$this->company->region = rand(1, 19);
+		$this->company->instagram = $instagram;
 
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) === $email)
-		{ $company->email = $email; }
+		{ $this->company->email = $email; }
 
 		if (!empty($picture) && filter_var($picture, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) === $picture)
-		{ $company->logo = $picture; }
+		{ $this->company->logo = $picture; }
 
-		$company->setWebsite($website);
+		$this->company->setWebsite($website);
 
-		if (empty($company->website) && !empty($instagram->externalLink))
-		{ $company->setWebsite($instagram->externalLink); }
+		if (empty($this->company->website) && !empty($instagram->externalLink))
+		{ $this->company->setWebsite($instagram->externalLink); }
 
-		$company->description = $this->getWebsiteDescription($company->website);
+		$this->scrapeWebsite($this->company->website);
 
-		if (empty($company->description))
-		{ $company->description = str_replace('  ', ' ', $instagram->biography); }
+		if (empty($this->company->description))
+		{ $this->company->description = str_replace('  ', ' ', $instagram->biography); }
 
 		$content = $instagram->profileName
 			. ';' . $instagram->getUsername()
 			. ';' . $instagram->biography
-			. ';' . $company->website
+			. ';' . $this->company->website
 			. ';' . $text;
 
-		$company->otherTags = $this->getBasicTags($content);
-		$company->visibleTags = $this->getCombinedTags($content, $company->otherTags);
+		$this->company->otherTags = $this->getBasicTags($content);
+		$this->company->visibleTags = $this->getCombinedTags($content, $this->company->otherTags);
 
-		if (empty($company->visibleTags[0]) && isset($company->otherTags[0]))
-		{ $company->visibleTags[0] = array_shift($company->otherTags); }
+		if (empty($this->company->visibleTags[0]) && isset($this->company->otherTags[0]))
+		{ $this->company->visibleTags[0] = array_shift($this->company->otherTags); }
 
-		while (count($company->visibleTags) > 2)
-		{ array_unshift($company->otherTags, array_pop($company->visibleTags)); }
+		while (count($this->company->visibleTags) > 2)
+		{ array_unshift($this->company->otherTags, array_pop($this->company->visibleTags)); }
 
-		$this->storedCompany->insert($company);
+		$this->companyStorage->insert($this->company);
+		$this->company = null;
 	}
 
 	private function getBasicTags($content)
 	{
 		$tags = [];
 
-		foreach ($this->storedTag->selectBaseTags() as $id => $tag)
+		foreach ($this->tagStorage->selectBaseTags() as $id => $tag)
 		{
 			$score = preg_match_all('/' . $tag->keywords . '/i', $content);
 
@@ -85,7 +100,7 @@ class Scraper
 	{
 		$basicTags = array_flip($basicTags);
 
-		foreach ($this->storedTag->selectBaseTags() as $id => $tag)
+		foreach ($this->tagStorage->selectBaseTags() as $id => $tag)
 		{
 			if (isset($basicTags[$id]))
 			{ $basicTags[$id] = $tag->keywords; }
@@ -93,7 +108,7 @@ class Scraper
 
 		$tags = [];
 
-		foreach ($this->storedTag->selectCombinations() as $id => $tag)
+		foreach ($this->tagStorage->selectCombinations() as $id => $tag)
 		{
 			if (isset($basicTags[$id]))
 			{ $basicTags[$id] = $tag->keywords; }
@@ -136,63 +151,70 @@ class Scraper
 
 	/**
 	 * Get the website description.
+	 * Limitations: Shopify sites -> Shopify prevents scraping
 	 * @param string $url Website URL
-	 * @return string Description website
-	 * Resource:
-	 * - https://www.codespeedy.com/get-meta-tags-of-a-web-page-in-php/
-	 * - https://stackoverflow.com/questions/7454644/how-to-get-open-graph-protocol-of-a-webpage-by-php
-	 * Limitations:
-	 * - Shopify sites -> Shopify prevents scraping
 	 */
-	private function getWebsiteDescription($url)
+	private function scrapeWebsite($url)
 	{
-	  $html = file_get_contents($url);  // Download the HTML page
-	  $position = stripos($html, '</head>');
+		$html = file_get_contents($url);  // Download the HTML page
+		$position = stripos($html, '</head>');
 
-	  if ($position == false)  // or 0
-	  { return ''; }  // We can not do anything without the <head> part
+		if ($position == false)  // or 0
+		{ return ''; }  // We can not do anything without the <head> part
 
-	  // Remove the <body> part to only parse the <head> (optimization)
-	  $html = substr($html, 0, $position) . '</head><body></body></html>';
-	  $dom = new DOMDocument();
-	  $dom->loadHTML($html);
+		// Remove the <body> part to only parse the <head> (optimization)
+		$this->company->description =
+			$this->getWebsiteDescription(substr($html, 0, $position) . '</head><body></body></html>');
 
-	  $metas = [];
-
-	  foreach ($dom->getElementsByTagName('meta') as $meta)
-	  {
-		if ($meta->hasAttribute('property'))
-		{ $metas[strtolower($meta->getAttribute('property'))] = trim($meta->getAttribute('content')); }
-		elseif ($meta->hasAttribute('name'))
-		{ $metas[strtolower($meta->getAttribute('name'))] = trim($meta->getAttribute('content')); }
-	  }
-
-	  // Now we can choose which description we prefer if we found many!
-
-	  if (!empty($metas['description']))
-	  { return $metas['description']; }
-
-	  if (!empty($metas['og:description']))
-	  { return $metas['og:description']; }
-
-	  if (!empty($metas['twitter:description']))
-	  { return $metas['twitter:description']; }
-
-	  // If there were no description available maybe we can use the page title...
-	  $title = $dom->getElementsByTagName('title')->item(0);
-
-	  if ($title != null && !empty($title->nodeValue))
-	  { return trim($title->nodeValue); }
-
-	  if (!empty($metas['og:title']))
-	  { return $metas['og:title']; }
-
-	  if (!empty($metas['twitter:title']))
-	  { return $metas['twitter:title']; }
-
-	  return '';
+		//TODO: try to detect a phone number and email in the HTML <body>
 	}
 
+	/**
+	 * Get the website description.
+	 * @param string $html
+	 * @return string
+	 */
+	private function getWebsiteDescription($html)
+	{
+		$dom = new DOMDocument();
+		$dom->loadHTML($html);
+		$metaTags = [];
+
+		foreach ($dom->getElementsByTagName('meta') as $meta)
+		{
+			if ($meta->hasAttribute('property'))
+			{ $metaTags[strtolower($meta->getAttribute('property'))] = trim($meta->getAttribute('content')); }
+			elseif ($meta->hasAttribute('name'))
+			{ $metaTags[strtolower($meta->getAttribute('name'))] = trim($meta->getAttribute('content')); }
+		}
+
+		foreach (['description', 'og:description', 'twitter:description'] as $attribute)
+		{
+			if (!empty($metaTags[$attribute]))
+			{ return $metaTags[$attribute]; }
+		}
+
+		// If there were no description available maybe we can use the page title...
+		$title = $dom->getElementsByTagName('title')->item(0);
+
+		if ($title != null && !empty($title->nodeValue))
+		{ return trim($title->nodeValue); }
+
+		if (!empty($metaTags['og:title']))
+		{ return $metaTags['og:title']; }
+
+		if (!empty($metaTags['twitter:title']))
+		{ return $metaTags['twitter:title']; }
+
+		return '';
+	}
+
+	/**
+	 * Scraper for Instagram.
+	 * @param string $url
+	 * @deprecated This method is usually blocked by Instagram after few uses!
+	 * @see /static/dhtml/admin.js The JavaScript version of this method
+	 */
 	private function scrapeInstagram($url)
 	{
 		$json = file_get_contents($url);
@@ -240,6 +262,10 @@ class Scraper
 		);
 	}
 
+	/**
+	 * Scraper for Facebook.
+	 * @param string $url
+	 */
 	private function scrapeFacebook($url)
 	{
 		// https://www.facebook.com/bermontcoffee/about

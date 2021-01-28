@@ -300,6 +300,21 @@ class Company extends DataAccess
 		return $companies;
 	}
 
+	public function selectOldestInstagram()
+	{
+		$query = $this->pdo->query('select
+			SocialMedia.URL as SocialMediaURL
+			from Company
+			inner join SocialMedia on Company.ID=SocialMedia.CompanyID
+			order by Company.LastUpdate');
+
+		$row = $query->fetch(PDO::FETCH_ASSOC);
+		$query->closeCursor();
+		return $row['SocialMediaURL'];
+	}
+
+	//public function insertOrUpdate(CompanyObject $company)
+
 	public function insert(CompanyObject $company)
 	{
 		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
