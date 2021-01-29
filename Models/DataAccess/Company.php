@@ -109,7 +109,7 @@ class Company extends DataAccess
 		{
 			if ($company == null)
 			{
-				$company = new CompanyObject();
+				$company = new CompanyData();
 				$company->name = $row['CompanyName'];
 				$company->logo = $row['CompanyLogoURL'];
 				$company->description = $row['CompanyDescription'];
@@ -138,7 +138,7 @@ class Company extends DataAccess
 				}
 			}
 
-			$socialMedia = new SocialMediaObject($row);
+			$socialMedia = new SocialMediaData($row);
 
 			switch ($socialMedia->getWebsite())
 			{
@@ -182,7 +182,7 @@ class Company extends DataAccess
 
 		while ($row = $query->fetch(PDO::FETCH_ASSOC))
 		{
-			$company = new CompanyObject();
+			$company = new CompanyData();
 			$company->permalink = $row['CompanyPermaLink'];
 			$company->name = $row['CompanyName'];
 			$company->description = $row['CompanyDescription'];
@@ -269,7 +269,7 @@ class Company extends DataAccess
 
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 		{
-			$company = new CompanyObject();
+			$company = new CompanyData();
 			$company->permalink = $row['CompanyPermaLink'];
 			$company->name = $row['CompanyName'];
 			$company->logo = $row['CompanyLogoURL'];
@@ -302,10 +302,8 @@ class Company extends DataAccess
 
 	public function selectOldestInstagram()
 	{
-		$query = $this->pdo->query('select
-			SocialMedia.URL as SocialMediaURL
-			from Company
-			inner join SocialMedia on Company.ID=SocialMedia.CompanyID
+		$query = $this->pdo->query('select SocialMedia.URL as SocialMediaURL
+			from Company inner join SocialMedia on Company.ID=SocialMedia.CompanyID
 			order by Company.LastUpdate');
 
 		$row = $query->fetch(PDO::FETCH_ASSOC);
@@ -313,9 +311,9 @@ class Company extends DataAccess
 		return $row['SocialMediaURL'];
 	}
 
-	//public function insertOrUpdate(CompanyObject $company)
+	//TODO: public function insertOrUpdate(CompanyData $company) {}
 
-	public function insert(CompanyObject $company)
+	public function insert(CompanyData $company)
 	{
 		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
 		$i = count($company->otherTags);

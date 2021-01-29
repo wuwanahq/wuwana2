@@ -6,7 +6,7 @@
 
 if (filter_has_var(INPUT_POST, 'instagram'))
 {
-	$instagram = new DataAccess\SocialMediaObject();
+	$instagram = new DataAccess\SocialMediaData();
 	$instagram->setPageURL(filter_input(INPUT_POST, 'instagram'), FILTER_SANITIZE_URL);
 	$instagram->externalLink = filter_input(INPUT_POST, 'ExternalURL', FILTER_SANITIZE_URL);
 	$instagram->setProfileName(filter_input(INPUT_POST, 'name'));

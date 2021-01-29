@@ -1,7 +1,7 @@
 <?php
 namespace WebApp;
 use DataAccess\User;
-use DataAccess\UserObject;
+use DataAccess\UserData;
 
 /**
  * User session.
@@ -40,7 +40,7 @@ class UserSession
 	{
 		$user = $this->user->selectEmail($email);
 
-		if ($user instanceof UserObject && $user->accessCode == $code)
+		if ($user instanceof UserData && $user->accessCode == $code)
 		{
 			$debug = session_start([
 				'cookie_lifetime' => Config::SESSION_LIFETIME,

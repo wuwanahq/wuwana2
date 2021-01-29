@@ -37,9 +37,9 @@ Web root
 │  ├─ DataAccess        <- Access to the database (all SQL queries are here)
 │  │  ├─ DataAccess.php
 │  │  ├─ Company.php
-│  │  ├─ CompanyObject.php
+│  │  ├─ CompanyData.php
 │  │  ├─ Tag.php
-│  │  ├─ TagObject.php
+│  │  ├─ TagData.php
 │  │  ├─ TagIterator.php
 │  │  └─ ...
 │  └─ Scraper, etc...   <- Other models

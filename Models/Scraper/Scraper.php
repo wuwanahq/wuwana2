@@ -2,8 +2,8 @@
 namespace Scraper;
 use DataAccess\Tag;
 use DataAccess\Company;
-use DataAccess\CompanyObject;
-use DataAccess\SocialMediaObject;
+use DataAccess\CompanyData;
+use DataAccess\SocialMediaData;
 use DOMDocument;
 
 /**
@@ -33,14 +33,14 @@ class Scraper
 	 * @param string $email
 	 * @param string $picture URL
 	 * @param string $text Extra text to help the tag detection
-	 * @param SocialMediaObject $instagram Data from JavaScript scraper
+	 * @param SocialMediaData $instagram Data from JavaScript scraper
 	 */
-	public function storeCompany($website, $email, $picture, $text, SocialMediaObject $instagram)
+	public function storeCompany($website, $email, $picture, $text, SocialMediaData $instagram)
 	{
 		if (empty($instagram->pageURL))
 		{ return; }
 
-		$this->company = new CompanyObject();
+		$this->company = new CompanyData();
 		$this->company->setName($instagram->profileName);
 		$this->company->region = rand(1, 19);
 		$this->company->instagram = $instagram;
@@ -231,7 +231,7 @@ class Scraper
 		if (isset($json->graphql->user->business_email))
 		{ $this->company->email = $json->graphql->user->business_email; }
 
-		$this->company->instagram = new SocialMediaObject();
+		$this->company->instagram = new SocialMediaData();
 
 		if (isset($json->graphql->user->external_url))
 		{

@@ -59,7 +59,7 @@ class User extends DataAccess
 
 		$row = $row[0];
 
-		$user = new UserObject();
+		$user = new UserData();
 		$user->email = $row['Email'];
 		$user->name = $row['Name'];
 		$user->company = $row['CompanyID'];

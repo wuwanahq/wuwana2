@@ -55,7 +55,7 @@ switch ($url)
 		// Controller for the company page
 		$company = WebApp\Data::getCompanyInfo(str_replace('/', '', $url), $language->code);
 
-		if ($company instanceof DataAccess\CompanyObject)
+		if ($company instanceof DataAccess\CompanyData)
 		{
 			require 'company/text ' . $language->code . '.php';
 			require 'company/view.php';

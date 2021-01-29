@@ -5,7 +5,7 @@ namespace DataAccess;
  * Data Access Object representing a company.
  * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
  */
-class CompanyObject
+class CompanyData
 {
 	public $permalink;
 	public $name;
@@ -96,7 +96,7 @@ class CompanyObject
 
 		$permalink = trim($permalink, '-');
 
-		if (strlen($permalink) < 3 && $this->instagram instanceof SocialMediaObject)
+		if (strlen($permalink) < 3 && $this->instagram instanceof SocialMediaData)
 		{ $permalink = $this->instagram->getUsername(); }
 
 		return $permalink;

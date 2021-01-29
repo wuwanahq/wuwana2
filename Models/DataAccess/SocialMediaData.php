@@ -5,7 +5,7 @@ namespace DataAccess;
  * Data Access Object representing a social media related to a company.
  * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
  */
-class SocialMediaObject
+class SocialMediaData
 {
 	public $pageURL;
 	public $profileName;
