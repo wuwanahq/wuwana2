@@ -53,7 +53,7 @@ switch ($url)
 		{
 			switch (substr($url, 0, 6))
 			{
-				case '/stati':
+				case '/stati':  // static
 				case '/ajax/':
 					return false;
 			}
