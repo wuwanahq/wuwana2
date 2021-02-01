@@ -20,7 +20,7 @@ if (filter_has_var(INPUT_POST, 'instagram'))
 	for ($i=0; filter_has_var(INPUT_POST, 'ThumbnailSrc' . $i); ++$i)
 	{ $instagram->pictures[] = filter_input(INPUT_POST, 'ThumbnailSrc' . $i); }
 
-	$scraper = new Scraper\Scraper(WebApp\Data::getTag(), WebApp\Data::getCompany());
+	$scraper = new Scraper\Scraper(WebApp\Data::getTag(), WebApp\Data::getCompany(), WebApp\Data::getSocialMedia());
 	$scraper->updateExistingCompany(
 		filter_input(INPUT_POST, 'website', FILTER_SANITIZE_URL),
 		filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL),

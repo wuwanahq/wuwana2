@@ -305,7 +305,7 @@ class Company extends DataAccess
 	 * @param int $minInterval seconds since last update
 	 * @return string Page URL or empty everything is up to date
 	 */
-	public function selectOldestInstagram($minInterval)
+	public function selectOldestInstagramURL($minInterval)
 	{
 		$query = $this->pdo->query('select
 			SocialMedia.URL as SocialMediaURL,
@@ -320,7 +320,7 @@ class Company extends DataAccess
 		if (empty($row['CompanyLastUpdate']) || time() - $row['CompanyLastUpdate'] < $minInterval)
 		{ return ''; }
 
-		return $row['SocialMediaURL'];
+		return 'https://' . $row['SocialMediaURL'];
 	}
 
 	public function update(CompanyData $company, $id)

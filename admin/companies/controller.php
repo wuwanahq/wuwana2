@@ -18,7 +18,7 @@ if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 	for ($i=0; filter_has_var(INPUT_POST, 'ThumbnailSrc' . $i); ++$i)
 	{ $instagram->pictures[] = filter_input(INPUT_POST, 'ThumbnailSrc' . $i); }
 
-	$scraper = new Scraper\Scraper(WebApp\Data::getTag(), WebApp\Data::getCompany());
+	$scraper = new Scraper\Scraper(WebApp\Data::getTag(), WebApp\Data::getCompany(), WebApp\Data::getSocialMedia());
 	$scraper->storeNewCompany(
 		filter_input(INPUT_POST, 'website', FILTER_SANITIZE_URL),
 		filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL),
@@ -32,5 +32,5 @@ $company = WebApp\Data::getCompany();
 //TODO: create CompanyIterator
 $companies = $company->selectAll();
 
-//TODO: add a parameter to configure the minimum interval
-$oldestInstagram = $company->selectOldestInstagram(60);
+//TODO: allow the administrator to configure the minimum interval
+$oldestInstagram = $company->selectOldestInstagramURL(600);

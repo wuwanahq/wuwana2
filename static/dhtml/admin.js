@@ -19,6 +19,7 @@ function handleProfilePageAndSubmitForm()
 	if (user != null)
 	{
 		var form = new FormData();
+		form.append("instagram", this.responseURL);
 		form.append("email", user.email);
 		form.append("biography", user.biography);
 		form.append("website", user.externalURL);
@@ -31,7 +32,7 @@ function handleProfilePageAndSubmitForm()
 		form.append("ExtraInfo", user.extraInfo);
 
 		var xhr = new XMLHttpRequest();
-		xhr.open("get", "/ajax/update-company.php");
+		xhr.open("post", "/ajax/update-company.php");
 		xhr.send(form);
 	}
 }
@@ -70,9 +71,20 @@ function scrapeInstagram(html)
 	var index2 = html.indexOf(";</script>", index1);
 
 	if (index1 < 60 || index2 < 70)
-	{ return null; }
+	{
+		console.log("Instagram page not found");
+		return null;
+	}
 
-	var graphql = JSON.parse(html.substring(index1, index2)).entry_data.ProfilePage[0].graphql.user;
+	var graphql = JSON.parse(html.substring(index1, index2));
+
+	if (graphql.entry_data.ProfilePage == undefined)
+	{
+		console.log("Scraper blocked by Instagram login page");
+		return null;
+	}
+
+	graphql = graphql.entry_data.ProfilePage[0].graphql.user;
 	var user = {
 		email: graphql.business_email,
 		biography: graphql.biography,

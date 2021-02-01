@@ -49,8 +49,15 @@ switch ($url)
 		break;  // There is no view with AJAX request
 
 	default:
-		if (php_sapi_name() == 'cli-server' && substr($url, 0, 7) == '/static')
-		{ return false; }
+		if (php_sapi_name() == 'cli-server')
+		{
+			switch (substr($url, 0, 6))
+			{
+				case '/stati':
+				case '/ajax/':
+					return false;
+			}
+		}
 
 		// Controller for the company page
 		$company = WebApp\Data::getCompanyInfo(str_replace('/', '', $url), $language->code);

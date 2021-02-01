@@ -3,6 +3,7 @@ namespace Scraper;
 use DataAccess\Tag;
 use DataAccess\Company;
 use DataAccess\CompanyData;
+use DataAccess\SocialMedia;
 use DataAccess\SocialMediaData;
 use DOMDocument;
 
