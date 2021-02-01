@@ -300,14 +300,26 @@ class Company extends DataAccess
 		return $companies;
 	}
 
-	public function selectOldestInstagram()
+	/**
+	 * Get the oldest Instagram profile available.
+	 * @param int $minInterval seconds since last update
+	 * @return string Page URL or empty everything is up to date
+	 */
+	public function selectOldestInstagram($minInterval)
 	{
-		$query = $this->pdo->query('select SocialMedia.URL as SocialMediaURL
+		$query = $this->pdo->query('select
+			SocialMedia.URL as SocialMediaURL,
+			Company.LastUpdate as CompanyLastUpdate
 			from Company inner join SocialMedia on Company.ID=SocialMedia.CompanyID
+			where SocialMedia.URL like "instagram%"
 			order by Company.LastUpdate');
 
 		$row = $query->fetch(PDO::FETCH_ASSOC);
 		$query->closeCursor();
+
+		if (empty($row['CompanyLastUpdate']) || time() - $row['CompanyLastUpdate'] < $minInterval)
+		{ return ''; }
+
 		return $row['SocialMediaURL'];
 	}
 
@@ -341,7 +353,7 @@ class Company extends DataAccess
 		$query->execute();
 
 		$socialMedia = new SocialMedia($this->pdo);
-		//TODO: $socialMedia->update($company->instagram, $id);
+		$socialMedia->update($company->instagram, $id);
 	}
 
 	public function insert(CompanyData $company)

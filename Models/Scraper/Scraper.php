@@ -7,7 +7,7 @@ use DataAccess\SocialMediaData;
 use DOMDocument;
 
 /**
- * Web Scraper.
+ * Back-end Scraper.
  * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
  */
 class Scraper
@@ -35,17 +35,53 @@ class Scraper
 	 * @param string $email
 	 * @param string $picture URL
 	 * @param string $text Extra text to help the tag detection
-	 * @param SocialMediaData $instagram Data from JavaScript scraper
+	 * @param SocialMediaData $instagram Data from the JavaScript scraper
 	 */
-	public function storeCompany($website, $email, $picture, $text, SocialMediaData $instagram)
+	public function storeNewCompany($website, $email, $picture, $text, SocialMediaData $instagram)
 	{
 		if (empty($instagram->pageURL))
 		{ return; }
 
 		$this->company = new CompanyData();
-		$this->company->setName($instagram->profileName);
-		$this->company->region = rand(1, 19);
 		$this->company->instagram = $instagram;
+		$this->mergeCompanyData($website, $email, $picture, $text);
+
+		$this->companyStorage->insert($this->company);
+	}
+
+	/**
+	 * Update data for an existing company.
+	 * @param string $website URL
+	 * @param string $email
+	 * @param string $picture URL
+	 * @param string $text Extra text to help the tag detection
+	 * @param SocialMediaData $instagram Data from the JavaScript scraper
+	 */
+	public function updateExistingCompany($website, $email, $picture, $text, SocialMediaData $instagram)
+	{
+		$companyID = $this->socialMediaStorage->selectCompanyIDbyPageURL($instagram->pageURL);
+
+		if ($companyID === null)
+		{ return; }
+
+		$this->company = new CompanyData();
+		$this->company->instagram = $instagram;
+		$this->mergeCompanyData($website, $email, $picture, $text);
+
+		$this->companyStorage->update($this->company, $companyID);
+	}
+
+	/**
+	 * Check all data available and merge everything into company object.
+	 * @param string $website URL
+	 * @param string $email
+	 * @param string $picture URL
+	 * @param string $text
+	 */
+	private function mergeCompanyData($website, $email, $picture, $text)
+	{
+		$this->company->setName($this->company->instagram->profileName);
+		$this->company->region = rand(1, 19);
 
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) === $email)
 		{ $this->company->email = $email; }
@@ -55,17 +91,17 @@ class Scraper
 
 		$this->company->setWebsite($website);
 
-		if (empty($this->company->website) && !empty($instagram->externalLink))
-		{ $this->company->setWebsite($instagram->externalLink); }
+		if (empty($this->company->website) && !empty($this->company->instagram->externalLink))
+		{ $this->company->setWebsite($this->company->instagram->externalLink); }
 
 		$this->scrapeWebsite($this->company->website);
 
 		if (empty($this->company->description))
-		{ $this->company->description = str_replace('  ', ' ', $instagram->biography); }
+		{ $this->company->description = str_replace('  ', ' ', $this->company->instagram->biography); }
 
-		$content = $instagram->profileName
-			. ';' . $instagram->getUsername()
-			. ';' . $instagram->biography
+		$content = $this->company->instagram->profileName
+			. ';' . $this->company->instagram->getUsername()
+			. ';' . $this->company->instagram->biography
 			. ';' . $this->company->website
 			. ';' . $text;
 
@@ -77,22 +113,14 @@ class Scraper
 
 		while (count($this->company->visibleTags) > 2)
 		{ array_unshift($this->company->otherTags, array_pop($this->company->visibleTags)); }
-
-		$this->insertOrUpdateCompany();
 	}
 
-	private function insertOrUpdateCompany()
-	{
-		$companyID = $this->socialMediaStorage->selectProfileURL($this->company->instagram->pageURL);
-
-		if ($companyID === null)
-		{ $this->companyStorage->insert($this->company); }
-		else
-		{ $this->companyStorage->update($this->company, $companyID); }
-
-		$this->company = null;
-	}
-
+	/**
+	 * Detect basic tags.
+	 * @todo Move this method into a dedicated class (RegexTagger)
+	 * @param string $content
+	 * @return array
+	 */
 	private function getBasicTags($content)
 	{
 		$tags = [];
@@ -109,6 +137,13 @@ class Scraper
 		return array_keys($tags);
 	}
 
+	/**
+	 * Detect combined tags with keywords pair.
+	 * @todo Move this method into a dedicated class (RegexTagger)
+	 * @param string $content
+	 * @param array $basicTags
+	 * @return array
+	 */
 	private function getCombinedTags($content, array $basicTags)
 	{
 		$basicTags = array_flip($basicTags);
@@ -223,9 +258,9 @@ class Scraper
 	}
 
 	/**
-	 * Scraper for Instagram.
+	 * Backend scraper for Instagram (usually blocked after few uses)
 	 * @param string $url
-	 * @deprecated This method is usually blocked by Instagram after few uses!
+	 * @deprecated The code in this method is probably outdated...
 	 * @see /static/dhtml/admin.js The JavaScript version of this method
 	 */
 	private function scrapeInstagram($url)
@@ -277,6 +312,7 @@ class Scraper
 
 	/**
 	 * Scraper for Facebook.
+	 * @deprecated The code in this method is old and need to be tested
 	 * @param string $url
 	 */
 	private function scrapeFacebook($url)
