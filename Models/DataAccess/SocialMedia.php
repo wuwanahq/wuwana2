@@ -67,4 +67,19 @@ class SocialMedia extends DataAccess
 			$image->insert($socialMedia->pictures, $companyID, $id);
 		}
 	}
+
+	/**
+	 * Get the company ID from the social media profile URL.
+	 * @param string $url
+	 * @return int|null
+	 */
+	public function selectProfileURL($url)
+	{
+		$query = $this->pdo->prepare('select CompanyID from SocialMedia where URL=?');
+		$query->bindValue(1, $url, PDO::PARAM_STR);
+		$query->execute();
+
+		$row = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+		return isset($row[0]) ? $row[0] : null;
+	}
 }

@@ -4,6 +4,8 @@
  * @link https://wuwana.com/admin/companies
  */
 
+ignore_user_abort(true);
+
 if (filter_has_var(INPUT_POST, 'instagram'))
 {
 	$instagram = new DataAccess\SocialMediaData();

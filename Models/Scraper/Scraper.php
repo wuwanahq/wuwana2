@@ -14,6 +14,7 @@ class Scraper
 {
 	private $tagStorage;
 	private $companyStorage;
+	private $socialMediaStorage;
 	private $company;
 
 	/**
@@ -21,10 +22,11 @@ class Scraper
 	 * @param Tag $tagAccess
 	 * @param Company $companyAccess
 	 */
-	public function __construct(Tag $tagAccess, Company $companyAccess)
+	public function __construct(Tag $tagAccess, Company $companyAccess, SocialMedia $socialMediaAccess)
 	{
 		$this->tagStorage = $tagAccess;
 		$this->companyStorage = $companyAccess;
+		$this->socialMediaStorage = $socialMediaAccess;
 	}
 
 	/**
@@ -76,7 +78,18 @@ class Scraper
 		while (count($this->company->visibleTags) > 2)
 		{ array_unshift($this->company->otherTags, array_pop($this->company->visibleTags)); }
 
-		$this->companyStorage->insert($this->company);
+		$this->insertOrUpdateCompany();
+	}
+
+	private function insertOrUpdateCompany()
+	{
+		$companyID = $this->socialMediaStorage->selectProfileURL($this->company->instagram->pageURL);
+
+		if ($companyID === null)
+		{ $this->companyStorage->insert($this->company); }
+		else
+		{ $this->companyStorage->update($this->company, $companyID); }
+
 		$this->company = null;
 	}
 

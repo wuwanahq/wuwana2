@@ -311,7 +311,38 @@ class Company extends DataAccess
 		return $row['SocialMediaURL'];
 	}
 
-	//TODO: public function insertOrUpdate(CompanyData $company) {}
+	public function update(CompanyData $company, $id)
+	{
+		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
+		$i = count($company->otherTags);
+
+		while(strlen($otherTags) > 255)
+		{ $otherTags = implode(self::VALUES_DELIMITER, array_slice($company->otherTags, 0, --$i)); }
+
+		$query = $this->pdo->prepare('update Company
+			set Name=?,Description=?,LogoURL=?,Website=?,PhonePrefix=?,PhoneNumber=?,
+				Email=?,Address=?,LocationID=?,FirstTagID=?,SecondTagID=?,OtherTags=?,LastUpdate=?
+			where ID=?');
+
+		$query->bindValue(1, $company->name, PDO::PARAM_STR);
+		$query->bindValue(2, $company->description, PDO::PARAM_STR);
+		$query->bindValue(3, $company->logo, PDO::PARAM_STR);
+		$query->bindValue(4, $company->website, PDO::PARAM_STR);
+		$query->bindValue(5, (int)substr($company->phone, 0, -9), PDO::PARAM_INT);
+		$query->bindValue(6, (int)substr($company->phone, -9), PDO::PARAM_INT);
+		$query->bindValue(7, $company->email, PDO::PARAM_STR);
+		$query->bindValue(8, $company->address, PDO::PARAM_STR);
+		$query->bindValue(9, $company->region, PDO::PARAM_INT);
+		$query->bindValue(10, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
+		$query->bindValue(11, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
+		$query->bindValue(12, $otherTags, PDO::PARAM_STR);
+		$query->bindValue(13, time(), PDO::PARAM_INT);
+		$query->bindValue(14, $id, PDO::PARAM_INT);
+		$query->execute();
+
+		$socialMedia = new SocialMedia($this->pdo);
+		//TODO: $socialMedia->update($company->instagram, $id);
+	}
 
 	public function insert(CompanyData $company)
 	{
