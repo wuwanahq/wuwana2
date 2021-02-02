@@ -5,7 +5,7 @@ $url = 'https://camdencoffeeroasters.com';
 // Shared variables
 $dom = new DOMDocument();
 $noScrape = ['facebook.com', 'linktr.ee']; // Websites to avoid
-$pages = ['contacto', 'contact', 'privacy']; // Pages to scrape
+$pages = ['contacto', 'contact']; // Pages to scrape
 $bodyTexts = ''; // Text of the company
 
 // Get base website
