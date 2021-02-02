@@ -13,10 +13,11 @@ use DOMDocument;
  */
 class Scraper
 {
+	const NB_INSTAGRAM_PICTURE = 6;
+
 	private $tagStorage;
 	private $companyStorage;
 	private $socialMediaStorage;
-	private $company;
 
 	/**
 	 * Constructor.
@@ -31,23 +32,19 @@ class Scraper
 	}
 
 	/**
-	 * Store scraped data.
+	 * Store a new company or update an existing company if the Instagram profile already exists.
 	 * @param string $website URL
 	 * @param string $email
 	 * @param string $picture URL
 	 * @param string $text Extra text to help the tag detection
 	 * @param SocialMediaData $instagram Data from the JavaScript scraper
 	 */
-	public function storeNewCompany($website, $email, $picture, $text, SocialMediaData $instagram)
+	public function createOrUpdateCompany($website, $email, $picture, $text, SocialMediaData $instagram)
 	{
-		if (empty($instagram->pageURL))
+		if (empty($instagram->pageURL) || $this->updateCompany($website, $email, $picture, $text, $instagram))
 		{ return; }
 
-		$this->company = new CompanyData();
-		$this->company->instagram = $instagram;
-		$this->mergeCompanyData($website, $email, $picture, $text);
-
-		$this->companyStorage->insert($this->company);
+		$this->companyStorage->insert($this->mergeCompanyData($website, $email, $picture, $text, $instagram));
 	}
 
 	/**
@@ -57,63 +54,72 @@ class Scraper
 	 * @param string $picture URL
 	 * @param string $text Extra text to help the tag detection
 	 * @param SocialMediaData $instagram Data from the JavaScript scraper
+	 * @return bool Success or not
 	 */
-	public function updateExistingCompany($website, $email, $picture, $text, SocialMediaData $instagram)
+	public function updateCompany($website, $email, $picture, $text, SocialMediaData $instagram)
 	{
 		$companyID = $this->socialMediaStorage->selectCompanyIDbyPageURL($instagram->pageURL);
 
 		if ($companyID === null)
-		{ return; }
+		{ return false; }
 
-		$this->company = new CompanyData();
-		$this->company->instagram = $instagram;
-		$this->mergeCompanyData($website, $email, $picture, $text);
+		$this->companyStorage->update(
+			$this->mergeCompanyData($website, $email, $picture, $text, $instagram),
+			$companyID);
 
-		$this->companyStorage->update($this->company, $companyID);
+		return true;
 	}
 
 	/**
-	 * Check all data available and merge everything into company object.
+	 * Check all data sources available and merge everything into a CompanyData object.
 	 * @param string $website URL
 	 * @param string $email
 	 * @param string $picture URL
 	 * @param string $text
+	 * @param SocialMediaData $instagram
+	 * @return CompanyData
 	 */
-	private function mergeCompanyData($website, $email, $picture, $text)
+	private function mergeCompanyData($website, $email, $picture, $text, SocialMediaData $instagram)
 	{
-		$this->company->setName($this->company->instagram->profileName);
-		$this->company->region = rand(1, 19);
+		$company = new CompanyData();
+		$company->instagram = $instagram;
+
+		$company->setName($company->instagram->profileName);
+		$company->region = rand(1, 19);
 
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) === $email)
-		{ $this->company->email = $email; }
+		{ $company->email = $email; }
 
 		if (!empty($picture) && filter_var($picture, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) === $picture)
-		{ $this->company->logo = $picture; }
+		{ $company->logo = $picture; }
 
-		$this->company->setWebsite($website);
+		$company->setWebsite($website);
 
-		if (empty($this->company->website) && !empty($this->company->instagram->externalLink))
-		{ $this->company->setWebsite($this->company->instagram->externalLink); }
+		if (empty($company->website) && !empty($company->instagram->externalLink))
+		{ $company->setWebsite($company->instagram->externalLink); }
 
-		$this->scrapeWebsite($this->company->website);
+		$data = $this->scrapeWebsite($company->website);
+		$company->description = $data['Description'];
 
-		if (empty($this->company->description))
-		{ $this->company->description = str_replace('  ', ' ', $this->company->instagram->biography); }
+		if (empty($company->description))
+		{ $company->description = str_replace('  ', ' ', $company->instagram->biography); }
 
-		$content = $this->company->instagram->profileName
-			. ';' . $this->company->instagram->getUsername()
-			. ';' . $this->company->instagram->biography
-			. ';' . $this->company->website
+		$content = $company->instagram->profileName
+			. ';' . $company->instagram->getUsername()
+			. ';' . $company->instagram->biography
+			. ';' . $company->website
 			. ';' . $text;
 
-		$this->company->otherTags = $this->getBasicTags($content);
-		$this->company->visibleTags = $this->getCombinedTags($content, $this->company->otherTags);
+		$company->otherTags = $this->getBasicTags($content);
+		$company->visibleTags = $this->getCombinedTags($content, $company->otherTags);
 
-		if (empty($this->company->visibleTags[0]) && isset($this->company->otherTags[0]))
-		{ $this->company->visibleTags[0] = array_shift($this->company->otherTags); }
+		if (empty($company->visibleTags[0]) && isset($company->otherTags[0]))
+		{ $company->visibleTags[0] = array_shift($company->otherTags); }
 
-		while (count($this->company->visibleTags) > 2)
-		{ array_unshift($this->company->otherTags, array_pop($this->company->visibleTags)); }
+		while (count($company->visibleTags) > 2)
+		{ array_unshift($company->otherTags, array_pop($company->visibleTags)); }
+
+		return $company;
 	}
 
 	/**
@@ -212,10 +218,14 @@ class Scraper
 		{ return ''; }  // We can not do anything without the <head> part
 
 		// Remove the <body> part to only parse the <head> (optimization)
-		$this->company->description =
+		$data['Description'] =
 			$this->getWebsiteDescription(substr($html, 0, $position) . '</head><body></body></html>');
 
 		//TODO: try to detect a phone number and email in the HTML <body>
+		//$data['Phone'] = ...
+		//$data['Email'] = ...
+
+		return $data;
 	}
 
 	/**
@@ -259,61 +269,70 @@ class Scraper
 	}
 
 	/**
-	 * Backend scraper for Instagram (usually blocked after few uses)
-	 * @param string $url
-	 * @deprecated The code in this method is probably outdated...
-	 * @see /static/dhtml/admin.js The JavaScript version of this method
+	 * NEW back-end scraper for Instagram profile.
+	 * This version is not going to be blocked by Instagram but need a user token and a session ID.
+	 * @todo Test it!
+	 * @param string $url https://www.instagram.com/profilename
+	 * @param string $token Instagram user token
+	 * @param string $sessionID Instagram session ID
+	 * @return array ("ProfilePicURL", "Instagram", "ExtraInfo", "Email")
 	 */
-	private function scrapeInstagram($url)
+	private function scrapeInstagram($url, $token, $sessionID)
 	{
-		$json = file_get_contents($url);
-		$positionStart = strpos($json, '<script type="text/javascript">window._sharedData =') + 51;
-		$positionEnd = strpos($json, ';</script>', $positionStart);
-		$json = substr($json, $positionStart, $positionEnd - $positionStart);
-		$json = json_decode($json, false)->entry_data->ProfilePage[0];
+		$cURL = curl_init();
+		curl_setopt($cURL, CURLOPT_URL, 'https://www.' . $url . '/?__a=1');
+		curl_setopt($cURL, CURLOPT_COOKIE, "csrftoken=$token; sessionid=$sessionID");
+		curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
+		$user = json_decode(curl_exec($cURL), false);
+		curl_close($cURL);
 
-		$this->company->name = $json->graphql->user->full_name;
-		$this->company->description = $json->graphql->user->biography;
-		$this->company->logo = $json->graphql->user->profile_pic_url;
-		$this->company->region = rand(1, 19);
+		if (!isset($user->graphql->user))
+		{ return []; }
 
-		if (isset($json->graphql->user->business_email))
-		{ $this->company->email = $json->graphql->user->business_email; }
+		$user = $user->graphql->user;
+		$data = [
+			'ProfilePicURL' => $user->profile_pic_url,
+			'Instagram' => new SocialMediaData(),
+			'ExtraInfo' => $user->biography
+		];
 
-		$this->company->instagram = new SocialMediaData();
+		if (isset($user->business_email) && filter_var($user->business_email, FILTER_VALIDATE_EMAIL))
+		{ $data['Email'] = $user->business_email; }
 
-		if (isset($json->graphql->user->external_url))
+		if (isset($user->external_url) && filter_var($user->external_url, FILTER_VALIDATE_URL))
+		{ $data['Instagram']->link = $user->external_url; }
+
+		$data['Instagram']->setPageURL($url);
+		$data['Instagram']->setProfileName($user->full_name);
+		$data['Instagram']->setBiography($user->biography);
+		$data['Instagram']->nbPost = (int)$user->edge_owner_to_timeline_media->count;
+		$data['Instagram']->nbFollower = (int)$user->edge_followed_by->count;
+		$data['Instagram']->nbFollowing = (int)$user->edge_follow->count;
+
+		for ($i=0; $i < self::NB_INSTAGRAM_PICTURE; ++$i)
 		{
-			$this->company->website = $json->graphql->user->external_url;
-			$this->company->instagram->link = $json->graphql->user->external_url;
-		}
-
-		$this->company->instagram->url = 'instagram.com/' . $json->graphql->user->username;
-		$this->company->instagram->profileName = $json->graphql->user->full_name;
-		$this->company->instagram->biography = $json->graphql->user->biography;
-		$this->company->instagram->nbPost = $json->graphql->user->edge_owner_to_timeline_media->count;
-		$this->company->instagram->nbFollower = $json->graphql->user->edge_followed_by->count;
-		$this->company->instagram->nbFollowing = $json->graphql->user->edge_follow->count;
-
-		for ($i=0; $i < \WebApp\Data::NB_INSTAGRAM_PICTURE; ++$i)
-		{
-			if (empty($json->graphql->user->edge_owner_to_timeline_media->edges[$i]->node->thumbnail_src))
+			if (empty($user->edge_owner_to_timeline_media->edges[$i]->node->thumbnail_src))
 			{ break; }
 
-			$this->company->instagram->pictures[] =
-				$json->graphql->user->edge_owner_to_timeline_media->edges[$i]->node->thumbnail_src;
+			$data['Instagram']->pictures[] = $user->edge_owner_to_timeline_media->edges[$i]->node->thumbnail_src;
+
+			for ($j=0; $j < 9; ++$j)
+			{
+				if (empty($user->edge_owner_to_timeline_media->edges[$i]->node->edge_media_to_caption->edges[$j]))
+				{ break; }
+
+				$data['ExtraInfo'] += ';' .
+					$user->edge_owner_to_timeline_media->edges[$i]->node->edge_media_to_caption->edges[$j]->node->text;
+			}
 		}
 
-		$this->scanTags(
-			$json->graphql->user->username . ';'
-			. $json->graphql->user->full_name . ';'
-			. $json->graphql->user->biography
-		);
+		return $data;
 	}
 
 	/**
 	 * Scraper for Facebook.
-	 * @deprecated The code in this method is old and need to be tested
+	 * @deprecated The code in this method is outdated so it probably doesn't work!
+	 * @todo Update Facebook scraper
 	 * @param string $url
 	 */
 	private function scrapeFacebook($url)
@@ -329,6 +348,6 @@ class Scraper
 		$positionEnd = strpos($html, '"', $positionStart);
 		$email = trim(htmlspecialchars_decode(substr($html, $positionStart, $positionEnd)));
 
-		$this->scanTags($email . ';' . $this->data->instagram->biography);
+		//$this->scanTags($email . ';' . $this->data->instagram->biography);
 	}
 }

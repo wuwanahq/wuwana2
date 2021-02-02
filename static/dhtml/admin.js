@@ -76,44 +76,44 @@ function scrapeInstagram(html)
 		return null;
 	}
 
-	var graphql = JSON.parse(html.substring(index1, index2));
+	var user = JSON.parse(html.substring(index1, index2));
 
-	if (graphql.entry_data.ProfilePage == undefined)
+	if (user.entry_data.ProfilePage === undefined)
 	{
 		console.log("Scraper blocked by Instagram login page");
 		return null;
 	}
 
-	graphql = graphql.entry_data.ProfilePage[0].graphql.user;
-	var user = {
-		email: graphql.business_email,
-		biography: graphql.biography,
-		externalURL: graphql.external_url,
-		name: graphql.full_name,
-		nbFollowing: graphql.edge_follow.count,
-		nbFollower: graphql.edge_followed_by.count,
-		nbPost: graphql.edge_owner_to_timeline_media.count,
-		profilePicURL: graphql.profile_pic_url,
-		extraInfo: graphql.category_name + ";" + graphql.business_category_name,
+	user = user.entry_data.ProfilePage[0].graphql.user;
+	var data = {
+		email: user.business_email,
+		biography: user.biography,
+		externalURL: user.external_url,
+		name: user.full_name,
+		nbFollowing: user.edge_follow.count,
+		nbFollower: user.edge_followed_by.count,
+		nbPost: user.edge_owner_to_timeline_media.count,
+		profilePicURL: user.profile_pic_url,
+		extraInfo: user.category_name + ";" + user.business_category_name,
 		pictures: []
 	};
 
 	for (var i=0; i < 6; i++)
 	{
-		if (typeof graphql.edge_owner_to_timeline_media.edges[i] === "undefined")
+		if (user.edge_owner_to_timeline_media.edges[i] === undefined)
 		{ break; }
 
-		user.pictures.push(graphql.edge_owner_to_timeline_media.edges[i].node.thumbnail_src);
+		data.pictures.push(user.edge_owner_to_timeline_media.edges[i].node.thumbnail_src);
 
 		for (var j=0; j < 9; j++)
 		{
-			if (typeof graphql.edge_owner_to_timeline_media.edges[i].node.edge_media_to_caption.edges[j] == "undefined")
+			if (user.edge_owner_to_timeline_media.edges[i].node.edge_media_to_caption.edges[j] === undefined)
 			{ break; }
 
-			user.extraInfo += ";"
-				+ graphql.edge_owner_to_timeline_media.edges[i].node.edge_media_to_caption.edges[j].node.text;
+			data.extraInfo += ";"
+				+ user.edge_owner_to_timeline_media.edges[i].node.edge_media_to_caption.edges[j].node.text;
 		}
 	}
 
-	return user;
+	return data;
 }
