@@ -48,6 +48,15 @@ $phonesES = getPhonesES($numbersES);
 $mobilesES = getMobilesES($numbersES);
 $postalCodeES = getPostalCodeES($bodyTexts);
 
+echo $emails;
+echo '<br/>';
+echo $phonesES;
+echo '<br/>';
+echo $mobilesES;
+echo '<br/>';
+echo $postalCodeES;
+
+
 /**
  * Get website base url
  * @param string $url
@@ -203,7 +212,8 @@ function getMobilesES($texts)
 	$patternMobileES = '/[+]34(6|7)[0-9]{8}/';
 
 	preg_match_all($patternMobileES, $texts, $mobilesES); // Find Spanish mobile number
-	return $mobilesES[0];
+	$mobilesES = $mobilesES[0]; 
+	return $mobilesES[0]; // select the first number
 }
 
 /**
@@ -216,6 +226,7 @@ function getPhonesES($texts)
 	$patternPhoneES = '/[+]349[0-9]{8}/';
 
 	preg_match_all($patternPhoneES, $texts, $phonesES); // Find Spanish landline number
+	$phonesES = $phonesES[0];
 	return $phonesES[0];
 }
 
@@ -230,9 +241,9 @@ function getPhonesES($texts)
 function getPostalCodeES($texts) {
 	$patternPostalCodeES = '/\b[0-5][0-9]{4}\b/';
 
-	preg_match_all($patternPostalCodeES, $texts, $onlyDigits);
-	$postalCodeES = array_values(array_unique($onlyDigits[0]));
+	preg_match_all($patternPostalCodeES, $texts, $postalCodeES);
+	$postalCodeES = array_values(array_unique($postalCodeES[0]));
 
-	return $postalCodeES;
+	return $postalCodeES[0];
 
 }
