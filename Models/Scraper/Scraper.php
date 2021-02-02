@@ -232,8 +232,7 @@ class Scraper
 			@$dom->loadHTML($html);
 
 			// Get website description
-			$data['Description'] =
-				$this->getWebsiteDescription($dom); 
+			$data['Description'] = $this->getWebsiteDescription($dom); 
 
 			// Get texts from homepage body
 			$bodyTexts = $this->getBodyTexts($dom); 
@@ -449,7 +448,8 @@ class Scraper
 
 		preg_match_all($patternPhoneES, $texts, $phonesES); // Find Spanish landline number
 		$phonesES = $phonesES[0];
-		return $phonesES[0];
+
+		return $phonesES[0]; // select the first number
 	}
 
 	/**
@@ -471,9 +471,10 @@ class Scraper
 
 	}
 
+	// @levogirar -> I kept this in case my version doesn't work well
+
 	// /**
 	//  * Get the website description.
-	//  * @levogirar -> I kept this in case my version doesn't work well
 	//  * @param string $html
 	//  * @return string
 	//  */
