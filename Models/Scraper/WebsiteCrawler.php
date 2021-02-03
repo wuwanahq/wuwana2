@@ -9,7 +9,7 @@ use DOMNodeList;
  */
 class WebsiteCrawler
 {
-	const BLOCKED_WEBSITES = ['facebook.com', 'linktr.ee'];
+	const BLOCKED_WEBSITES = ['facebook.com', 'linktr.ee', 'pinterest.com', 'nokuesapp.com', 'abc.es', 'google.com', 'google.es', 'traveler.es', 'sprudge.com', 'girlygirlmagazine.com', 'alicanteplaza.es', 'comerciosyempresasnavarras.com', 'wa.me', 'madridsecreto.co', 'yelp.com'];
 	const PAGES = ['contacto', 'contact'];  // Pages to scrape
 
 	private $description;
