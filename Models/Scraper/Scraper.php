@@ -9,13 +9,13 @@ use DOMDocument;
 
 /**
  * Back-end Scraper.
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class Scraper
 {
 	const NB_INSTAGRAM_PICTURE = 6;
 
-	private $tagStorage;
+	private $tagger;
 	private $companyStorage;
 	private $socialMediaStorage;
 
@@ -26,7 +26,7 @@ class Scraper
 	 */
 	public function __construct(Tag $tagAccess, Company $companyAccess, SocialMedia $socialMediaAccess)
 	{
-		$this->tagStorage = $tagAccess;
+		$this->tagger = new RegexTagger($tagAccess);
 		$this->companyStorage = $companyAccess;
 		$this->socialMediaStorage = $socialMediaAccess;
 	}
@@ -110,8 +110,8 @@ class Scraper
 			. ';' . $company->website
 			. ';' . $text;
 
-		$company->otherTags = $this->getBasicTags($content);
-		$company->visibleTags = $this->getCombinedTags($content, $company->otherTags);
+		$company->otherTags = $this->tagger->getBasicTags($content);
+		$company->visibleTags = $this->tagger->getCombinedTags($content, $company->otherTags);
 
 		if (empty($company->visibleTags[0]) && isset($company->otherTags[0]))
 		{ $company->visibleTags[0] = array_shift($company->otherTags); }
@@ -120,88 +120,6 @@ class Scraper
 		{ array_unshift($company->otherTags, array_pop($company->visibleTags)); }
 
 		return $company;
-	}
-
-	/**
-	 * Detect basic tags.
-	 * @todo Move this method into a dedicated class (RegexTagger)
-	 * @param string $content
-	 * @return array
-	 */
-	private function getBasicTags($content)
-	{
-		$tags = [];
-
-		foreach ($this->tagStorage->selectBaseTags() as $id => $tag)
-		{
-			$score = preg_match_all('/' . $tag->keywords . '/i', $content);
-
-			if ($score > 0)
-			{ $tags[$id] = $score; }
-		}
-
-		arsort($tags, SORT_NUMERIC);
-		return array_keys($tags);
-	}
-
-	/**
-	 * Detect combined tags with keywords pair.
-	 * @todo Move this method into a dedicated class (RegexTagger)
-	 * @param string $content
-	 * @param array $basicTags
-	 * @return array
-	 */
-	private function getCombinedTags($content, array $basicTags)
-	{
-		$basicTags = array_flip($basicTags);
-
-		foreach ($this->tagStorage->selectBaseTags() as $id => $tag)
-		{
-			if (isset($basicTags[$id]))
-			{ $basicTags[$id] = $tag->keywords; }
-		}
-
-		$tags = [];
-
-		foreach ($this->tagStorage->selectCombinations() as $id => $tag)
-		{
-			if (isset($basicTags[$id]))
-			{ $basicTags[$id] = $tag->keywords; }
-
-			foreach ($basicTags as $id1 => $regex1)
-			{
-				foreach ($basicTags as $id2 => $regex2)
-				{
-					if ($id == $id1 . $id2)
-					{
-						$tags[$id1 . $id2] = 0;
-						break 2;
-					}
-				}
-			}
-		}
-
-		foreach ($basicTags as $id1 => $regex1)
-		{
-			foreach ($basicTags as $id2 => $regex2)
-			{
-				if ($id1 == $id2)
-				{ continue; }
-
-				$score = preg_match_all('/(' . $regex1 . ')[a-z ]{0,9}(' . $regex2 . ')/i', $content);
-
-				if ($score == 0)  // or false
-				{ continue; }
-
-				if (isset($tags[$id1 . $id2]))
-				{ $tags[$id1 . $id2] += $score; }
-				elseif (isset($tags[$id2 . $id1]))
-				{ $tags[$id2 . $id1] += $score; }
-			}
-		}
-
-		arsort($tags, SORT_NUMERIC);
-		return array_keys($tags);
 	}
 
 	/**
@@ -221,7 +139,7 @@ class Scraper
 		// Get base website
 		$urlHost = $this->getWebsiteBase($url);
 
-		// Decide to scrape or not 
+		// Decide to scrape or not
 		if (in_array($urlHost, $noScrape)) {
 			return '';
 		} else {
@@ -232,22 +150,22 @@ class Scraper
 			@$dom->loadHTML($html);
 
 			// Get website description
-			$data['Description'] = $this->getWebsiteDescription($dom); 
+			$data['Description'] = $this->getWebsiteDescription($dom);
 
 			// Get texts from homepage body
-			$bodyTexts = $this->getBodyTexts($dom); 
-			
+			$bodyTexts = $this->getBodyTexts($dom);
+
 			// Scrape other pages
 			foreach ($pages as &$page) {
 				$newURL = $url . '/' . $page; // Create url to scrape
-				
+
 				// Verify if it is a valid website
 				$file_headers = @get_headers($newURL);
 				if (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found')
 				{
 					// do nothing
-				} 
-				else 
+				}
+				else
 				{
 					$html = file_get_contents($newURL);
 					@$dom->loadHTML($html);
@@ -257,11 +175,11 @@ class Scraper
 		}
 		$data['Postal'] = getPostalCodeES($bodyTexts);
 		$data['Email'] = $this->getEmail($bodyTexts);
-		
+
 		$numbersES = $this->getNumbersES($bodyTexts);
 		$data['Phone'] = $this->getPhoneES($numbersES);
 		$data['Mobile'] = $this->getMobileES($numbersES);
-	
+
 
 		// $html = file_get_contents($url);  // Download the HTML page
 		// $position = stripos($html, '</head>');
@@ -289,7 +207,7 @@ class Scraper
 		if (strpos($url, '://') > 0){
 			$urlHost = parse_url($url, PHP_URL_HOST);
 		} else {
-			$urlHost = parse_url('http://' . $url, PHP_URL_HOST); //PHP_URL_HOST does not work without 'http://' 
+			$urlHost = parse_url('http://' . $url, PHP_URL_HOST); //PHP_URL_HOST does not work without 'http://'
 		}
 
 		return $urlHost;
@@ -297,10 +215,10 @@ class Scraper
 
 	/**
 	 * Get the website description.
-	 * @param $dom 
+	 * @param $dom
 	 * @return string
 	 */
-	function getWebsiteDescription($dom)
+	private function getWebsiteDescription($dom)
 	{
 		$metaTags = [];
 
@@ -335,7 +253,7 @@ class Scraper
 
 	/**
 	 * Get the text between <body></body>
-	 * @param $dom 
+	 * @param $dom
 	 * @return string $bodyTexts
 	 */
 	private function getBodyTexts($dom)
@@ -351,7 +269,7 @@ class Scraper
 		}
 
 		foreach ($remove as $item) {
-			$item->parentNode->removeChild($item); 
+			$item->parentNode->removeChild($item);
 		}
 
 		foreach ($dom->getElementsByTagName('body') as $body) {
@@ -366,7 +284,7 @@ class Scraper
 	 * Find emails
 	 * @param string $texts
 	 * @return string $email
-	 * 
+	 *
 	 * Limitation:
 	 * - Does not find email inside <a>
 	 */
@@ -384,9 +302,9 @@ class Scraper
 
 	/**
 	 * Find Spanish phone numbers
-	 * @param string 
+	 * @param string
 	 * @return string $numbersES
-	 * 
+	 *
 	 * Resource:
 	 * https://en.wikipedia.org/wiki/Telephone_numbers_in_Spain
 	 * Country calling code: +34 or 0034
@@ -407,10 +325,10 @@ class Scraper
 
 		// Standardize numbers
 		foreach ($numbersES as &$number) {
-			if (substr($number, 0, 3) === $callingCodeES) { // Check for "+34" in string 
+			if (substr($number, 0, 3) === $callingCodeES) { // Check for "+34" in string
 				$number = $number;
 			} elseif (substr($number, 0, 4) === $callingCodeES2) { // Replace "0034" with "+34"
-				$number = str_replace($callingCodeES2, $callingCodeES, substr($number, 0, 4)) . substr($number, 4, 9); 
+				$number = str_replace($callingCodeES2, $callingCodeES, substr($number, 0, 4)) . substr($number, 4, 9);
 			} else {
 				$number = $callingCodeES . $number; // Add "+34" to mobile number
 			}
@@ -432,7 +350,7 @@ class Scraper
 		$patternMobileES = '/[+]34(6|7)[0-9]{8}/';
 
 		preg_match_all($patternMobileES, $texts, $mobilesES); // Find Spanish mobile number
-		$mobilesES = $mobilesES[0]; 
+		$mobilesES = $mobilesES[0];
 
 		return $mobilesES[0]; // select the first number
 	}
@@ -456,7 +374,7 @@ class Scraper
 	 * Find Spanish postal code
 	 * @param string $texts
 	 * @return string
-	 * 
+	 *
 	 * https://en.wikipedia.org/wiki/List_of_postal_codes_in_Spain
 	 * 5 digits
 	 * Range [03000 - 52081]
@@ -515,7 +433,7 @@ class Scraper
 
 	/**
 	 * NEW back-end scraper for Instagram profile.
-	 * This version is not going to be blocked by Instagram but need a user token and a session ID.
+	 * This version is not going to be blocked by Instagram but needs a user token and a session ID.
 	 * @todo Test it!
 	 * @param string $url https://www.instagram.com/profilename
 	 * @param string $token Instagram user token
