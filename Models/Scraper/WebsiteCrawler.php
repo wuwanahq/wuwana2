@@ -130,7 +130,7 @@ class WebsiteCrawler
 	}
 
 	/**
-	 * Find emails (Limitation: Does not find email inside <a>)
+	 * Find emails (Limitation: Does not find email inside <a mailto:>)
 	 * @param string $texts
 	 * @return string $email
 	 */
