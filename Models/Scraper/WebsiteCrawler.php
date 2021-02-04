@@ -9,8 +9,23 @@ use DOMNodeList;
  */
 class WebsiteCrawler
 {
-	const BLOCKED_WEBSITES = ['facebook.com', 'linktr.ee', 'pinterest.com', 'nokuesapp.com', 'abc.es', 'google.com', 'google.es', 'traveler.es', 'sprudge.com', 'girlygirlmagazine.com', 'alicanteplaza.es', 'comerciosyempresasnavarras.com', 'wa.me', 'madridsecreto.co', 'yelp.com'];
 	const PAGES = ['contacto', 'contact'];  // Pages to scrape
+	const BLOCKED_WEBSITES = [
+		'facebook.com',
+		'linktr.ee',
+		'pinterest.com',
+		'nokuesapp.com',
+		'abc.es',
+		'google',  // google.com, google.es, etc...
+		'traveler.es',
+		'sprudge.com',
+		'girlygirlmagazine.com',
+		'alicanteplaza.es',
+		'comerciosyempresasnavarras.com',
+		'wa.me',
+		'madridsecreto.co',
+		'yelp.com'
+	];
 
 	private $description;
 	private $address;
@@ -43,9 +58,14 @@ class WebsiteCrawler
 		if (filter_var($url, FILTER_VALIDATE_URL) == false)
 		{ return; }
 
+		$domain = parse_url($url, PHP_URL_HOST);
+
 		// Decide to scrape or not
-		if (in_array(strtolower(parse_url($url, PHP_URL_HOST)), self::BLOCKED_WEBSITES))
-		{ return; }
+		foreach (self::BLOCKED_WEBSITES as $website)
+		{
+			if (stripos($domain, $website) !== false)
+			{ return; }
+		}
 
 		$dom = new DOMDocument();
 		libxml_use_internal_errors(true);  // Mute possible warnings
@@ -66,7 +86,7 @@ class WebsiteCrawler
 
 		$text = $dom->getElementsByTagName('body')->item(0)->textContent;
 
-		$this->postalCode = getPostalCodeES($text);
+		$this->postalCode = $this->getPostalCodeES($text);
 		$this->emailAddresses = $this->getEmail($text);
 
 		$numbersES = $this->getNumbersES($text);
@@ -121,9 +141,7 @@ class WebsiteCrawler
 	 */
 	private function getPostalCodeES($texts)
 	{
-		$patternPostalCodeES = '/\b[0-5][0-9]{4}\b/';
-
-		preg_match_all($patternPostalCodeES, $texts, $postalCodeES);
+		preg_match_all('/\b[0-5][0-9]{4}\b/', $texts, $postalCodeES);
 		$postalCodeES = array_values(array_unique($postalCodeES[0]));
 
 		return $postalCodeES[0];
