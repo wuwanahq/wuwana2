@@ -41,6 +41,16 @@ class WebsiteCrawler
 	 */
 	public function crawlWebsite($url)
 	{
+		// Decide to scrape or not
+		foreach (self::BLOCKED_WEBSITES as $website)
+		{
+			if (stripos($url, $website) !== false)
+			{ return; }
+		}
+
+		// Find the base url or url host
+		$url = $this->getBaseURL($url);
+
 		// Scrape homepage
 		$this->scrapePage($url);
 
@@ -49,23 +59,39 @@ class WebsiteCrawler
 	}
 
 	/**
+	 * Get base url
+	 * @param string $url
+	 * @return string
+	 */
+	public function getBaseURL($url)
+	{
+		if (strpos($url, '://') > 0){
+			$urlHost = parse_url($url, PHP_URL_HOST);
+		} else {
+			$urlHost = parse_url('http://' . $url, PHP_URL_HOST);
+		}
+
+		return 'http://' . $urlHost;
+	}
+
+	/**
 	 * Scrape one page.
 	 * @param string $url
 	 */
 	public function scrapePage($url)
 	{
-		// Check if the URL is valid (and start by http...)
+		// Check if the URL is valid
 		if (filter_var($url, FILTER_VALIDATE_URL) == false)
 		{ return; }
 
-		$domain = parse_url($url, PHP_URL_HOST);
+		// $domain = parse_url($url, PHP_URL_HOST);
 
-		// Decide to scrape or not
-		foreach (self::BLOCKED_WEBSITES as $website)
-		{
-			if (stripos($domain, $website) !== false)
-			{ return; }
-		}
+		// // Decide to scrape or not
+		// foreach (self::BLOCKED_WEBSITES as $website)
+		// {
+		// 	if (stripos($domain, $website) !== false)
+		// 	{ return; }
+		// }
 
 		$dom = new DOMDocument();
 		libxml_use_internal_errors(true);  // Mute possible warnings
