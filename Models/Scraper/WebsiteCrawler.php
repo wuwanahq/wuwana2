@@ -9,7 +9,7 @@ use DOMNodeList;
  */
 class WebsiteCrawler
 {
-	const PAGES = ['contacto', 'contact'];  // Pages to scrape
+	const PAGES = ['contacto', 'contact', 'contactanos'];  // Pages to scrape
 	const BLOCKED_WEBSITES = [
 		'facebook.com',
 		'linktr.ee',
@@ -177,7 +177,7 @@ class WebsiteCrawler
 		// Spain calling Code
 		$callingCodeES = '+34';
 		$callingCodeES2 = "0034";
-		$patternNumberES = '/(?:([+]|00)34(.)?)?(6|9)[0-9]{1,}.[0-9]{1,}.[0-9]{1,}.[0-9]{1,}(.[0-9]{1,})?/'; // Look for a Spanish phone number
+		$patternNumberES = '/\b(?:([+]|00)34(.)?)?(6|9)[0-9]{1,}.[0-9]{1,}.[0-9]{1,}.[0-9]{1,}(.[0-9]{1,})?\b/'; // Look for a Spanish phone number
 
 		// Find phone number & sanitize results
 		preg_match_all($patternNumberES, $texts, $numbersES);

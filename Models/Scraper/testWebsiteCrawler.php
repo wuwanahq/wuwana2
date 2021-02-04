@@ -10,7 +10,7 @@ $timer = microtime(true);
 $webCrawler = new Scraper\WebsiteCrawler();
 
 // URL to test
-$webCrawler->crawlWebsite('https://camdencoffeeroasters.com');
+$webCrawler->crawlWebsite('https://cervezacastrena.com');
 //$webCrawler->crawlWebsite('https://camdencoffeeroasters.com/tienda/');
 
 // Display result from the object properties
