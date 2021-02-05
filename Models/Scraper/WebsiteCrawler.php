@@ -16,7 +16,7 @@ class WebsiteCrawler
 		'pinterest.com',
 		'nokuesapp.com',
 		'abc.es',
-		'google',  // google.com, google.es, etc...
+		'google',  // google.* (google.com, google.es...)
 		'traveler.es',
 		'sprudge.com',
 		'girlygirlmagazine.com',
@@ -33,73 +33,64 @@ class WebsiteCrawler
 	private $phoneNumber;
 	private $mobileNumber;
 	private $extraText;
-	private $emailAddresses;
+	private $emailAddresses = [];
 
 	/**
-	 * Scrape many pages.
+	 * Read-only property accessor.
+	 */
+	public function __get($property)
+	{
+		switch ($property)
+		{
+			case 'description': return $this->description;
+			case 'address': return $this->address;
+			case 'postalCode': return $this->postalCode;
+			case 'phoneNumber': return $this->phoneNumber;
+			case 'mobileNumber': return $this->mobileNumber;
+			case 'extraText': return $this->extraText;
+			case 'emailAddresses': return $this->emailAddresses;
+		}
+
+		trigger_error('Undefined property ' . $property, E_USER_ERROR);
+	}
+
+	/**
+	 * Automatically scrape website pages.
 	 * @param string $url
 	 */
 	public function crawlWebsite($url)
 	{
-		// Decide to scrape or not
-		foreach (self::BLOCKED_WEBSITES as $website)
-		{
-			if (stripos($url, $website) !== false)
-			{ return; }
-		}
-
-		// Find the base url or url host
-		$url = $this->getBaseURL($url);
-
 		// Scrape homepage
-		$this->scrapePage($url);
+		$result = $this->scrapePage($url);
 
-		foreach (self::PAGES as $page)
-		{ $this->scrapePage($url . '/' . $page); }
-	}
+		if ($result == true)
+		{
+			foreach (self::PAGES as $page)
+			{
+				$this->scrapePage($url . '/' . $page);
 
-	/**
-	 * Get base url
-	 * @param string $url
-	 * @return string
-	 */
-	public function getBaseURL($url)
-	{
-		if (strpos($url, '://') > 0){
-			$urlHost = parse_url($url, PHP_URL_HOST);
-		} else {
-			$urlHost = parse_url('http://' . $url, PHP_URL_HOST);
+				// Minimum info required to stop scraping
+				if (!empty($this->description) && !empty($this->postalCode) && isset($this->emailAddresses[0]))
+				{ break; }
+			}
 		}
-
-		return 'http://' . $urlHost;
 	}
 
 	/**
-	 * Scrape one page.
+	 * Manually scrape a website page by page.
 	 * @param string $url
+	 * @return bool True on success else false
 	 */
 	public function scrapePage($url)
 	{
-		// Check if the URL is valid
-		if (filter_var($url, FILTER_VALIDATE_URL) == false)
-		{ return; }
+		if ($this->isInvalidURL($url))
+		{ return false; }
 
-		// $domain = parse_url($url, PHP_URL_HOST);
-
-		// // Decide to scrape or not
-		// foreach (self::BLOCKED_WEBSITES as $website)
-		// {
-		// 	if (stripos($domain, $website) !== false)
-		// 	{ return; }
-		// }
-
-		$dom = new DOMDocument();
-		libxml_use_internal_errors(true);  // Mute possible warnings
-		$dom->loadHTML(file_get_contents($url));  // Load the HTML page directly
+		$dom = $this->downloadDOM($url);
 
 		// Verify if it's a valid website
-		if ($dom->getElementsByTagName('body')->length == 0)
-		{ return; }
+		if ($dom == null || $dom->getElementsByTagName('body')->length == 0)
+		{ return false; }
 
 		if (empty($this->description))
 		{
@@ -107,17 +98,75 @@ class WebsiteCrawler
 				$this->getDescription($dom->getElementsByTagName('meta'), $dom->getElementsByTagName('title'));
 		}
 
-		foreach($dom->getElementsByTagName('script') as $item)
-		{ $item->parentNode->removeChild($item); }
-
 		$text = $dom->getElementsByTagName('body')->item(0)->textContent;
 
-		$this->postalCode = $this->getPostalCodeES($text);
-		$this->emailAddresses = $this->getEmail($text);
+		if (empty($this->postalCode))
+		{ $this->postalCode = $this->getPostalCodeES($text); }
+
+		foreach ($this->getEmail($text) as $email)
+		{ $this->emailAddresses[] = $email; }
+
+		$this->emailAddresses = array_unique($this->emailAddresses);  // Remove duplicate emails
 
 		$numbersES = $this->getNumbersES($text);
-		$this->phoneNumber = $this->getPhoneES($numbersES);
-		$this->mobileNumber = $this->getMobileES($numbersES);
+
+		if (empty($this->phoneNumber))
+		{ $this->phoneNumber = $this->getPhoneES($numbersES); }
+
+		if (empty($this->mobileNumber))
+		{ $this->mobileNumber = $this->getMobileES($numbersES); }
+
+		return true;
+	}
+
+	/**
+	 * Check if the URL is invalid or blocked.
+	 * @param string $url
+	 * @return bool
+	 */
+	private function isInvalidURL($url)
+	{
+		// Check if the URL is valid
+		if (filter_var($url, FILTER_VALIDATE_URL) == false)
+		{ return true; }
+
+		$domain = parse_url($url, PHP_URL_HOST);
+
+		// Decide to scrape or not
+		foreach (self::BLOCKED_WEBSITES as $website)
+		{
+			if (stripos($domain, $website) !== false)
+			{ return true; }
+		}
+
+		return false;
+	}
+
+	/**
+	 * Open the web page, parse the HTML to a DOM document and remove useless tags.
+	 * @param string $url
+	 * @return DOMDocument
+	 */
+	private function downloadDOM($url)
+	{
+		$html = file_get_contents($url);
+
+		if ($html == false)  // if HTTP request failed (HTTP/1.1 404 Not Found)
+		{ return null; }
+
+		$dom = new DOMDocument();
+		libxml_use_internal_errors(true);  // Mute warning with incorrect HTML syntax
+		$dom->loadHTML($html);
+
+		$scriptElements = [];
+
+		foreach($dom->getElementsByTagName('script') as $item)
+		{ $scriptElements[] = $item; }
+
+		foreach ($scriptElements as $item)
+		{ $item->parentNode->removeChild($item); }
+
+		return $dom;
 	}
 
 	/**
@@ -161,71 +210,58 @@ class WebsiteCrawler
 
 	/**
 	 * Find Spanish postal code with 5 digits (range 03000 - 52081)
-	 * @param string $texts
+	 * @param string $text
 	 * @see https://en.wikipedia.org/wiki/List_of_postal_codes_in_Spain
-	 * @return array $postalCodeES
+	 * @return string One Spanish postal code or empty
 	 */
-	private function getPostalCodeES($texts)
+	private function getPostalCodeES($text)
 	{
-		preg_match_all('/\b[0-5][0-9]{4}\b/', $texts, $postalCodeES);
-		$postalCodeES = array_values(array_unique($postalCodeES[0]));
-
-		return $postalCodeES[0];
+		preg_match('/\b[0-5][0-9]{4}\b/', $text, $postalCodeES);
+		return isset($postalCodeES[0]) ? $postalCodeES[0] : '';
 	}
 
 	/**
 	 * Find emails (Limitation: Does not find email inside <a mailto:>)
-	 * @param string $texts
-	 * @return string $email
+	 * @param string $text
+	 * @return string[] Email addresses or empty array
 	 */
-	private function getEmail($texts)
+	private function getEmail($text)
 	{
-		// Pattern By Eugene Kudashev
-		// https://anchor.fm/slashcircumflex/episodes/a-zA-Z0-9-_-a-zA-Z0-9---a-zA-Z2-6-enq826
-
-		$patternEmail = '/[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}/';
-		preg_match_all($patternEmail, $texts, $emails);
-		$emails = array_values(array_unique($emails[0])); // Remove duplicate emails
-
-		return $emails[0];
+		preg_match_all('/[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}/', $text, $emails);
+		return empty($emails[0]) ? [] : $emails[0];
 	}
 
 	/**
-	 * Find Spanish phone numbers
-	 * @param string
-	 * @return string $numbersES
+	 * Find Spanish phone numbers (country calling code: +34 or 0034 with 9 digits)
 	 * @see https://en.wikipedia.org/wiki/Telephone_numbers_in_Spain
-	 * Country calling code: +34 or 0034
-	 * Number of digits: 9 digits
+	 * @param string $text
+	 * @return string
 	 */
-	private function getNumbersES($texts)
+	private function getNumbersES($text)
 	{
 		// Spain calling Code
 		$callingCodeES = '+34';
-		$callingCodeES2 = "0034";
-		$patternNumberES = '/\b(?:([+]|00)34(.)?)?(6|9)[0-9]{1,}.[0-9]{1,}.[0-9]{1,}.[0-9]{1,}(.[0-9]{1,})?\b/'; // Look for a Spanish phone number
+		$callingCodeES2 = '0034';
+
+		// Look for a Spanish phone number
+		$pattern = '/\b(?:([+]|00)34(.)?)?(6|9)[0-9]{1,}.[0-9]{1,}.[0-9]{1,}.[0-9]{1,}(.[0-9]{1,})?\b/';
 
 		// Find phone number & sanitize results
-		preg_match_all($patternNumberES, $texts, $numbersES);
-		$numbersES = array_values(array_unique($numbersES[0])); // Remove duplicates
-		$eliminate = ['.', ' ', '-']; // Characters to be replaced
-		$numbersES = str_replace($eliminate, '', $numbersES); // Remove special characters
+		preg_match_all($pattern, $text, $numbersES);
+		$numbersES = array_unique($numbersES[0]); // Remove duplicates
+		$numbersES = str_replace(['.', ' ', '-'], '', $numbersES); // Remove special characters
 
 		// Standardize numbers
-		foreach ($numbersES as &$number) {
-			if (substr($number, 0, 3) === $callingCodeES) { // Check for "+34" in string
-				$number = $number;
-			} elseif (substr($number, 0, 4) === $callingCodeES2) { // Replace "0034" with "+34"
-				$number = str_replace($callingCodeES2, $callingCodeES, substr($number, 0, 4)) . substr($number, 4, 9);
-			} else {
-				$number = $callingCodeES . $number; // Add "+34" to mobile number
-			}
+		foreach ($numbersES as &$number)
+		{
+			if (substr($number, 0, 4) === $callingCodeES2)  // Replace "0034" with "+34"
+			{ $number = $callingCodeES . substr($number, 4); }
+			elseif (substr($number, 0, 3) !== $callingCodeES)
+			{ $number = $callingCodeES . $number; }  // Add "+34" to mobile number
 		}
 
 		//Turn array into string
-		$numbersES = implode('; ', $numbersES);
-
-		return $numbersES;
+		return implode('; ', $numbersES);
 	}
 
 	/**
@@ -233,14 +269,10 @@ class WebsiteCrawler
 	 * @param string $numbersES
 	 * @return string
 	 */
-	private function getMobileES($texts)
+	private function getMobileES($numbersES)
 	{
-		$patternMobileES = '/[+]34(6|7)[0-9]{8}/';
-
-		preg_match_all($patternMobileES, $texts, $mobilesES); // Find Spanish mobile number
-		$mobilesES = $mobilesES[0];
-
-		return $mobilesES[0]; // select the first number
+		preg_match('/[+]34(6|7)[0-9]{8}/', $numbersES, $mobilesES);  // Find Spanish mobile number
+		return isset($mobilesES[0]) ? $mobilesES[0] : '';  // select the first number
 	}
 
 	/**
@@ -248,13 +280,9 @@ class WebsiteCrawler
 	 * @param string $numbersES
 	 * @return string
 	 */
-	private function getPhoneES($texts)
+	private function getPhoneES($numbersES)
 	{
-		$patternPhoneES = '/[+]349[0-9]{8}/';
-
-		preg_match_all($patternPhoneES, $texts, $phonesES); // Find Spanish landline number
-		$phonesES = $phonesES[0];
-
-		return $phonesES[0]; // select the first number
+		preg_match('/[+]349[0-9]{8}/', $numbersES, $phoneNumbers);  // Find Spanish landline number
+		return isset($phoneNumbers[0]) ? $phoneNumbers[0] : '';  // select the first number
 	}
 }

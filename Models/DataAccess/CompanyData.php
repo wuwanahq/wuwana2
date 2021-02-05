@@ -74,6 +74,9 @@ class CompanyData
 
 	public function setWebsite($url)
 	{
+		if (substr($url, 0, 4) != 'http')
+		{ $url = 'http://' . $url; }
+
 		if (filter_var($url, FILTER_VALIDATE_URL) != false)
 		{ $this->website = rtrim($url, '/'); }
 	}

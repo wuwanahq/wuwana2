@@ -11,29 +11,29 @@ $bodyTexts = ''; // Text of the company
 // Get base website
 $urlHost = getWebsiteBase($url);
 
-// Decide to scrape or not 
+// Decide to scrape or not
 if (in_array($urlHost, $noScrape)) {
 	return '';
 } else {
 	$url = 'http://' . $urlHost; // Create homepage url
 	$html = file_get_contents($url);  // Download the HTML page
-	
+
 	// Scrape homepage
 	@$dom->loadHTML($html);
 	getWebsiteDescription($dom); // Get website description
 	$bodyTexts = $bodyTexts . getBodyTexts($dom); // Get texts from body
-	
+
 	// Scrape other pages
 	foreach ($pages as &$page) {
 		$newURL = $url . '/' . $page; // Create url to scrape
-		
+
 		// Verify if it is a valid website
 		$file_headers = @get_headers($newURL);
 		if (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found')
 		{
 			// do nothing
-		} 
-		else 
+		}
+		else
 		{
 			$html = file_get_contents($newURL);
 			@$dom->loadHTML($html);
@@ -66,7 +66,7 @@ function getWebsiteBase($url) {
 	if (strpos($url, '://') > 0){
 		$urlHost = parse_url($url, PHP_URL_HOST);
 	} else {
-		$urlHost = parse_url('http://' . $url, PHP_URL_HOST); //PHP_URL_HOST does not work without 'http://' 
+		$urlHost = parse_url('http://' . $url, PHP_URL_HOST); //PHP_URL_HOST does not work without 'http://'
 	}
 
 	return $urlHost;
@@ -74,7 +74,7 @@ function getWebsiteBase($url) {
 
 /**
  * Get the website description.
- * @param $dom 
+ * @param $dom
  * @return string
  */
 function getWebsiteDescription($dom)
@@ -112,7 +112,7 @@ function getWebsiteDescription($dom)
 
 /**
  * Get the text between <body></body>
- * @param $dom 
+ * @param $dom
  * @return string $bodyTexts
  */
 function getBodyTexts($dom)
@@ -128,7 +128,7 @@ function getBodyTexts($dom)
 	}
 
 	foreach ($remove as $item) {
-		$item->parentNode->removeChild($item); 
+		$item->parentNode->removeChild($item);
 	}
 
 	foreach ($dom->getElementsByTagName('body') as $body) {
@@ -143,10 +143,10 @@ function getBodyTexts($dom)
  * Find emails
  * @param string $texts
  * @return array $emails
- * 
+ *
  * Limitation:
  * - Does not find email inside <a>
- * 
+ *
  * TO DO:
  * - Bug: Array ( [0] => info@rightsidecoffee.comTel )
  */
@@ -164,9 +164,9 @@ function getEmails($texts)
 
 /**
  * Find Spanish phone numbers
- * @param string 
+ * @param string
  * @return string $numbersES
- * 
+ *
  * Resource:
  * https://en.wikipedia.org/wiki/Telephone_numbers_in_Spain
  * Country calling code: +34 or 0034
@@ -187,10 +187,10 @@ function getNumbersES($texts)
 
 	// Standardize numbers
 	foreach ($numbersES as &$number) {
-		if (substr($number, 0, 3) === $callingCodeES) { // Check for "+34" in string 
+		if (substr($number, 0, 3) === $callingCodeES) { // Check for "+34" in string
 			$number = $number;
 		} elseif (substr($number, 0, 4) === $callingCodeES2) { // Replace "0034" with "+34"
-			$number = str_replace($callingCodeES2, $callingCodeES, substr($number, 0, 4)) . substr($number, 4, 9); 
+			$number = str_replace($callingCodeES2, $callingCodeES, substr($number, 0, 4)) . substr($number, 4, 9);
 		} else {
 			$number = $callingCodeES . $number; // Add "+34" to mobile number
 		}
@@ -212,7 +212,7 @@ function getMobilesES($texts)
 	$patternMobileES = '/[+]34(6|7)[0-9]{8}/';
 
 	preg_match_all($patternMobileES, $texts, $mobilesES); // Find Spanish mobile number
-	$mobilesES = $mobilesES[0]; 
+	$mobilesES = $mobilesES[0];
 	return $mobilesES[0]; // select the first number
 }
 
