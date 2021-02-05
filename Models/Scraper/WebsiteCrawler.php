@@ -65,6 +65,9 @@ class WebsiteCrawler
 	 */
 	public function crawlWebsite($url)
 	{
+		$parseURL = parse_url($url);
+		$url = $parseURL['scheme'] . '://' . $parseURL['host'];
+
 		// Scrape homepage
 		$result = $this->scrapePage($url);
 
