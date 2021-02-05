@@ -42,4 +42,10 @@ class Image extends DataAccess
 			$query->execute();
 		}
 	}
+
+	public function deleteAll($companyID, $socialMediaID)
+	{
+		$this->pdo->exec(
+			'delete from Image where CompanyID=' . (int)$companyID . ' and SocialMediaID=' . (int)$socialMediaID);
+	}
 }

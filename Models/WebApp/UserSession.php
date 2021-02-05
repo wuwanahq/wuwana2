@@ -1,7 +1,7 @@
 <?php
 namespace WebApp;
 use DataAccess\User;
-use DataAccess\UserObject;
+use DataAccess\UserData;
 
 /**
  * User session.
@@ -19,7 +19,7 @@ class UserSession
 		if (filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'code'))
 		{
 			$this->login(
-				self::hash(strtolower(trim(filter_input(INPUT_POST, 'email')))),
+				Crypt::hashUniqueID(strtolower(trim(filter_input(INPUT_POST, 'email')))),
 				trim(filter_input(INPUT_POST, 'code'))
 			);
 		}
@@ -40,7 +40,7 @@ class UserSession
 	{
 		$user = $this->user->selectEmail($email);
 
-		if ($user instanceof UserObject && $user->accessCode == $code)
+		if ($user instanceof UserData && $user->accessCode == $code)
 		{
 			$debug = session_start([
 				'cookie_lifetime' => Config::SESSION_LIFETIME,
@@ -120,7 +120,7 @@ class UserSession
 	private function generateCode($email)
 	{
 		$name = $email[0] . '…' . substr($email, strpos($email, '@'));
-		$email = self::hash($email);
+		$email = Crypt::hashUniqueID($email);
 
 		trigger_error('DEBUG - Email hash=' . $email);
 
@@ -136,16 +136,6 @@ class UserSession
 
 		$this->user->updateCode($email, $code);
 		return $code;
-	}
-
-	/**
-	 * Hash twice an email address.
-	 * @param string $email
-	 * @return string Hexadecimal hash
-	 */
-	static function hash($email)
-	{
-		return hash(User::HASH_ALGO, hash(self::HASH_ALGO, $email, true), false);
 	}
 
 	public function isAdmin()

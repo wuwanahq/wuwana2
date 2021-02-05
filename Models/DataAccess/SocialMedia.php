@@ -42,7 +42,7 @@ class SocialMedia extends DataAccess
 		parent::exportTable('SocialMedia');
 	}
 
-	public function insert(SocialMediaObject $socialMedia, $companyID)
+	public function insert(SocialMediaData $socialMedia, $companyID)
 	{
 		$query = $this->pdo->query('select coalesce(max(ID)+1,0) from SocialMedia where CompanyID=' . $companyID);
 		$id = $query->fetchAll(PDO::FETCH_COLUMN, 0)[0];
@@ -66,5 +66,50 @@ class SocialMedia extends DataAccess
 			$image = new Image($this->pdo);
 			$image->insert($socialMedia->pictures, $companyID, $id);
 		}
+	}
+
+	public function update(SocialMediaData $socialMedia, $companyID)
+	{
+		$query = $this->pdo->prepare('select ID from SocialMedia where CompanyID=? and URL=?');
+		$query->bindValue(1, $companyID, PDO::PARAM_INT);
+		$query->bindValue(2, $socialMedia->pageURL, PDO::PARAM_STR);
+		$query->execute();
+
+		$id = $query->fetchAll(PDO::FETCH_COLUMN, 0)[0];
+
+		$query = $this->pdo->prepare('update SocialMedia
+			set ProfileName=?, Biography=?, ExternalLink=?, Counter1=?, Counter2=?, Counter3=?
+			where CompanyID=? and ID=?');
+
+		$query->bindValue(1, $socialMedia->profileName, PDO::PARAM_STR);
+		$query->bindValue(2, $socialMedia->biography, PDO::PARAM_STR);
+		$query->bindValue(3, $socialMedia->externalLink, PDO::PARAM_STR);
+		$query->bindValue(4, $socialMedia->counter1, PDO::PARAM_INT);
+		$query->bindValue(5, $socialMedia->counter2, PDO::PARAM_INT);
+		$query->bindValue(6, $socialMedia->counter3, PDO::PARAM_INT);
+		$query->bindValue(7, $companyID, PDO::PARAM_INT);
+		$query->bindValue(8, $id, PDO::PARAM_INT);
+
+		if ($query->execute())
+		{
+			$image = new Image($this->pdo);
+			$image->deleteAll($companyID, $id);
+			$image->insert($socialMedia->pictures, $companyID, $id);
+		}
+	}
+
+	/**
+	 * Get the company ID from the social media profile URL.
+	 * @param string $url
+	 * @return int|null
+	 */
+	public function selectCompanyIDbyPageURL($url)
+	{
+		$query = $this->pdo->prepare('select CompanyID from SocialMedia where URL=?');
+		$query->bindValue(1, $url, PDO::PARAM_STR);
+		$query->execute();
+
+		$row = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+		return isset($row[0]) ? $row[0] : null;
 	}
 }

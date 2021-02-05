@@ -6,7 +6,7 @@
 
 if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'TagNames'))
 {
-	$tag = new DataAccess\TagObject();
+	$tag = new DataAccess\TagData();
 	$tag->names = trim(filter_input(INPUT_POST, 'TagNames'));
 	$tag->keywords = strtolower(trim(filter_input(INPUT_POST, 'Keywords')));
 

@@ -1,10 +1,12 @@
 <?php
 /**
- * Controller for the admin page to manage companies.
- * @link https://wuwana.com/admin/companies
+ * Handle the XmlHttpRequest to update a company.
+ * @link https://wuwana.com/ajax/update-company.php
  */
 
-if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
+ignore_user_abort(true);
+
+if (filter_has_var(INPUT_POST, 'instagram'))
 {
 	$instagram = new DataAccess\SocialMediaData();
 	$instagram->setPageURL(filter_input(INPUT_POST, 'instagram'), FILTER_SANITIZE_URL);
@@ -19,18 +21,10 @@ if (/* $user->isAdmin() && */ filter_has_var(INPUT_POST, 'instagram'))
 	{ $instagram->pictures[] = filter_input(INPUT_POST, 'ThumbnailSrc' . $i); }
 
 	$scraper = new Scraper\Scraper(WebApp\Data::getTag(), WebApp\Data::getCompany(), WebApp\Data::getSocialMedia());
-	$scraper->createOrUpdateCompany(
+	$scraper->updateCompany(
 		filter_input(INPUT_POST, 'website', FILTER_SANITIZE_URL),
 		filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL),
 		filter_input(INPUT_POST, 'ProfilePicURL'),
 		filter_input(INPUT_POST, 'ExtraInfo'),
 		$instagram);
 }
-
-$company = WebApp\Data::getCompany();
-
-//TODO: create CompanyIterator
-$companies = $company->selectAll();
-
-//TODO: allow the administrator to configure the minimum interval
-$oldestInstagram = $company->selectOldestInstagramURL(600);

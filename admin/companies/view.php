@@ -5,7 +5,8 @@
 	<title>Admin page | Wuwana</title>
 	<meta property="og:title" content="Admin page | Wuwana">
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/admin.css">
-	<script src="/static/dhtml/admin.js" defer></script>
+	<script src="/static/dhtml/admin.js"></script>
+	<script>updateCompany("<?php echo $oldestInstagram ?>")</script>
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
@@ -51,30 +52,30 @@
 								<div class="form-label-wrapper">
 									<label class="form-label">Posts</label>
 								</div>
-								<input type="text" id="posts" name="posts" size="6" readonly class="form-input">
+								<input type="text" id="posts" name="posts" size="6" class="form-input">
 							</div>
 							<div class="form-layout-column" style="margin-right:24px">
 								<div class="form-label-wrapper">
 									<label class="form-label">Followers</label>
 								</div>
-								<input type="text" id="followers" name="followers" size="6" readonly class="form-input">
+								<input type="text" id="followers" name="followers" size="6" class="form-input">
 							</div>
 							<div class="form-layout-column" style="margin-right:24px">
 								<div class="form-label-wrapper">
 									<label class="form-label">Following</label>
 								</div>
-								<input type="text" id="following" name="following" size="6" readonly class="form-input">
+								<input type="text" id="following" name="following" size="6" class="form-input">
 							</div>
 						</div>
-						<input type="hidden" id="ProfilePicURL" name="ProfilePicURL">
-						<input type="hidden" id="ThumbnailSrc0" name="ThumbnailSrc0">
-						<input type="hidden" id="ThumbnailSrc1" name="ThumbnailSrc1">
-						<input type="hidden" id="ThumbnailSrc2" name="ThumbnailSrc2">
-						<input type="hidden" id="ThumbnailSrc3" name="ThumbnailSrc3">
-						<input type="hidden" id="ThumbnailSrc4" name="ThumbnailSrc4">
-						<input type="hidden" id="ThumbnailSrc5" name="ThumbnailSrc5">
-						<input type="hidden" id="ExternalURL" name="ExternalURL">
-						<input type="hidden" id="ExtraInfo" name="ExtraInfo">
+						<input type="text" id="ProfilePicURL" name="ProfilePicURL">
+						<input type="text" id="ThumbnailSrc0" name="ThumbnailSrc0">
+						<input type="text" id="ThumbnailSrc1" name="ThumbnailSrc1">
+						<input type="text" id="ThumbnailSrc2" name="ThumbnailSrc2">
+						<input type="text" id="ThumbnailSrc3" name="ThumbnailSrc3">
+						<input type="text" id="ThumbnailSrc4" name="ThumbnailSrc4">
+						<input type="text" id="ThumbnailSrc5" name="ThumbnailSrc5">
+						<input type="text" id="ExternalURL" name="ExternalURL">
+						<input type="text" id="ExtraInfo" name="ExtraInfo">
 						<input type="submit" id="button" value="Add company" class="button-main" disabled>
 					</form>
 				</div>

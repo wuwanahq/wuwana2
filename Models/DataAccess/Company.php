@@ -109,7 +109,7 @@ class Company extends DataAccess
 		{
 			if ($company == null)
 			{
-				$company = new CompanyObject();
+				$company = new CompanyData();
 				$company->name = $row['CompanyName'];
 				$company->logo = $row['CompanyLogoURL'];
 				$company->description = $row['CompanyDescription'];
@@ -138,7 +138,7 @@ class Company extends DataAccess
 				}
 			}
 
-			$socialMedia = new SocialMediaObject($row);
+			$socialMedia = new SocialMediaData($row);
 
 			switch ($socialMedia->getWebsite())
 			{
@@ -182,7 +182,7 @@ class Company extends DataAccess
 
 		while ($row = $query->fetch(PDO::FETCH_ASSOC))
 		{
-			$company = new CompanyObject();
+			$company = new CompanyData();
 			$company->permalink = $row['CompanyPermaLink'];
 			$company->name = $row['CompanyName'];
 			$company->description = $row['CompanyDescription'];
@@ -269,7 +269,7 @@ class Company extends DataAccess
 
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 		{
-			$company = new CompanyObject();
+			$company = new CompanyData();
 			$company->permalink = $row['CompanyPermaLink'];
 			$company->name = $row['CompanyName'];
 			$company->logo = $row['CompanyLogoURL'];
@@ -300,7 +300,63 @@ class Company extends DataAccess
 		return $companies;
 	}
 
-	public function insert(CompanyObject $company)
+	/**
+	 * Get the oldest Instagram profile available.
+	 * @param int $minInterval seconds since last update
+	 * @return string Page URL or empty everything is up to date
+	 */
+	public function selectOldestInstagramURL($minInterval)
+	{
+		$query = $this->pdo->query('select
+			SocialMedia.URL as SocialMediaURL,
+			Company.LastUpdate as CompanyLastUpdate
+			from Company inner join SocialMedia on Company.ID=SocialMedia.CompanyID
+			where SocialMedia.URL like "instagram%"
+			order by Company.LastUpdate');
+
+		$row = $query->fetch(PDO::FETCH_ASSOC);
+		$query->closeCursor();
+
+		if (empty($row['CompanyLastUpdate']) || time() - $row['CompanyLastUpdate'] < $minInterval)
+		{ return ''; }
+
+		return 'https://' . $row['SocialMediaURL'];
+	}
+
+	public function update(CompanyData $company, $id)
+	{
+		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
+		$i = count($company->otherTags);
+
+		while(strlen($otherTags) > 255)
+		{ $otherTags = implode(self::VALUES_DELIMITER, array_slice($company->otherTags, 0, --$i)); }
+
+		$query = $this->pdo->prepare('update Company
+			set Name=?,Description=?,LogoURL=?,Website=?,PhonePrefix=?,PhoneNumber=?,
+				Email=?,Address=?,LocationID=?,FirstTagID=?,SecondTagID=?,OtherTags=?,LastUpdate=?
+			where ID=?');
+
+		$query->bindValue(1, $company->name, PDO::PARAM_STR);
+		$query->bindValue(2, $company->description, PDO::PARAM_STR);
+		$query->bindValue(3, $company->logo, PDO::PARAM_STR);
+		$query->bindValue(4, $company->website, PDO::PARAM_STR);
+		$query->bindValue(5, (int)substr($company->phone, 0, -9), PDO::PARAM_INT);
+		$query->bindValue(6, (int)substr($company->phone, -9), PDO::PARAM_INT);
+		$query->bindValue(7, $company->email, PDO::PARAM_STR);
+		$query->bindValue(8, $company->address, PDO::PARAM_STR);
+		$query->bindValue(9, $company->region, PDO::PARAM_INT);
+		$query->bindValue(10, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
+		$query->bindValue(11, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
+		$query->bindValue(12, $otherTags, PDO::PARAM_STR);
+		$query->bindValue(13, time(), PDO::PARAM_INT);
+		$query->bindValue(14, $id, PDO::PARAM_INT);
+		$query->execute();
+
+		$socialMedia = new SocialMedia($this->pdo);
+		$socialMedia->update($company->instagram, $id);
+	}
+
+	public function insert(CompanyData $company)
 	{
 		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
 		$i = count($company->otherTags);

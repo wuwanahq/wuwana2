@@ -1,17 +1,17 @@
 # Contributing to the Wuwana project
 
 Looking to contribute? Welcome here friend developer! 🤓  
-Wuwana is written in PHP and follows the [MVC design pattern](https://en.wikipedia.org/wiki/Model–view–controller) without any framework.
+Wuwana is written in PHP and follows the [MVC design pattern](https://en.wikipedia.org/wiki/Model–view–controller) without any framework (so far).
 
-The choice to use only vanilla PHP was made to...
+The choice to use vanilla PHP was made to...
 
 - keep the source code as simple as possible even for junior developers
 - keep the memory footprint per request extremely low (PHP memory_limit can be set to **2MB**)
 - keep a very short response time per request
 
-To contribute you just need to create a pull request when your modifications are done in order to be approuve by another contributor.
+To contribute you just need to create a pull request when your modifications are done in order to be approuve by one maintainer.
 
-## Targeted browsers
+## Targeted web browsers
 
 - Mozilla Firefox 48+ (desktop)
 - Google Chrome 49+ (desktop + mobile)
@@ -37,9 +37,9 @@ Web root
 │  ├─ DataAccess        <- Access to the database (all SQL queries are here)
 │  │  ├─ DataAccess.php
 │  │  ├─ Company.php
-│  │  ├─ CompanyObject.php
+│  │  ├─ CompanyData.php
 │  │  ├─ Tag.php
-│  │  ├─ TagObject.php
+│  │  ├─ TagData.php
 │  │  ├─ TagIterator.php
 │  │  └─ ...
 │  └─ Scraper, etc...   <- Other models
@@ -49,7 +49,7 @@ Web root
 │  ├─ page header.php
 │  ├─ page metadata.php
 │  └─ text...           <- Text translations
-├─ ajax                 <- Handle JavaScript XmlHttpRequest (AJAX)
+├─ ajax                 <- Handle all JavaScript XmlHttpRequest (AJAX)
 │  └─ ...
 ├─ static               <- All static ressources
 │  ├─ favicon
@@ -64,32 +64,33 @@ Web root
 └─ ...                 <- All other folders related to a page have the same files as the homepage
 ```
 
-## Naming convention
+## Guideline and naming convention
 
-We try to respect the following naming rules. 😇
+We try to respect the following rules. 😇
 
 **PHP code**
 
-- PascalCase: Name of classes, interfaces and namespaces
-- camelCase: Name of functions, methods, properties and variables
-- UPPERCASE_UNDERSCORE: Name of constants
+- Use PascalCase for namespace, class and interface names
+- Use camelCase for function, method, property and variable names
+- Use UPPERCASE_UNDERSCORE for constant names
 
 **CSS code**
 
-- lowercase-dashed: Name of classes
-- --lowercase-dashed: Name of custom properties (variables)
+- Use lowercase-dashed for class names
+- Use --lowercase-dashed for custom property (variable) names
+- Only use property or function available with **Targeted web browsers**
 
 **JavaScript**
 
-...
+- Only use strict **ECMAScript 5** (because IE11, Chrome 50 and Firefox 53 don't fully support ES6)
 
 **SQL database**
 
-- PascalCase: Name of tables and columns
+- Use PascalCase for table and column names
 
 **Filename**
 
-- lowercase: Folder related to a web page
-- PascalCase: PHP classes, interfaces and namespaces (folder)
-- lowercase: Other PHP files like controller, view, text translation...
-- lowercase: **Everything** inside the "static" folder
+- Use lowercase for folder names related to a web page
+- Use PascalCase for PHP files related to a class, interface or namespaces (folder)
+- Use lowercase for other PHP files like controller, view, text translation...
+- Use lowercase for **Everything** inside the "static" folder
