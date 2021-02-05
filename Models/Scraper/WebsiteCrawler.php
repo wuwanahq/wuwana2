@@ -5,6 +5,11 @@ use DOMNodeList;
 
 /**
  * Web crawler that browses a website in order to find information.
+ * @property-read string $description
+ * @property-read string $address
+ * @property-read string $postalCode
+ * @property-read string $phoneNumber
+ * @property-read string $mobileNumber
  * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class WebsiteCrawler

@@ -31,6 +31,9 @@ function handleProfilePageAndSubmitForm()
 		form.append("ProfilePicURL", user.profilePicURL);
 		form.append("ExtraInfo", user.extraInfo);
 
+		for (var i=0; i < 6; i++)
+		{ form.append("ThumbnailSrc" + i, user.pictures[i]); }
+
 		var xhr = new XMLHttpRequest();
 		xhr.open("post", "/ajax/update-company.php");
 		xhr.send(form);
@@ -62,6 +65,9 @@ function handleProfilePageAndFillForm()
 		document.getElementById("ProfilePicURL").value = user.profilePicURL;
 		document.getElementById("ExtraInfo").value = user.extraInfo;
 		document.getElementById("button").disabled = false;
+
+		for (var i=0; i < 6; i++)
+		{ document.getElementById("ThumbnailSrc" + i).value = user.pictures[i]; }
 	}
 }
 
