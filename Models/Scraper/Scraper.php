@@ -98,12 +98,17 @@ class Scraper
 		if (empty($company->website) && !empty($company->instagram->externalLink))
 		{ $company->setWebsite($company->instagram->externalLink); }
 
-		$webCrawler = new WebsiteCrawler();
-		$webCrawler->crawlWebsite($company->website);
+		if (!empty($company->website))
+		{
+			$webCrawler = new WebsiteCrawler();
+			$webCrawler->crawlWebsite($company->website);
 
-		$company->description = $webCrawler->description;
-		$company->phone = $webCrawler->mobileNumber;
-		$company->email = $webCrawler->emailAddresses[0];
+			$company->description = $webCrawler->description;
+			$company->phone = empty($webCrawler->mobileNumber) ? $webCrawler->phoneNumber : $webCrawler->mobileNumber;
+
+			if (!empty($webCrawler->emailAddresses[0]))
+			{ $company->email = $webCrawler->emailAddresses[0]; }
+		}
 
 		if (empty($company->description))
 		{ $company->description = str_replace('  ', ' ', $company->instagram->biography); }
