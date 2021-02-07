@@ -11,6 +11,8 @@ spl_autoload_register(function($className) {
 	require 'Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
+WebApp\WebApp::requireHTTPS();//force redirect to https
+
 // Global variables available in all views and controllers
 $language = WebApp\WebApp::getLanguage();
 $user = new WebApp\UserSession(WebApp\Data::getUser());

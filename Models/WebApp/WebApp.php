@@ -112,4 +112,21 @@ class WebApp
 
 		return 'http://' . $host;
 	}
+
+    static function isSecure() {
+        return (
+            (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443
+            || (
+                (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+                || (!empty($_SERVER['HTTP_X_FORWARDED_SSL'])   && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on')
+            )
+        );
+    }
+
+    static function requireHTTPS() {
+        if (!WebApp::isSecure()) {
+            header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], TRUE, 301);
+            exit;
+        }
+    }
 }
