@@ -87,7 +87,7 @@
 			</div>
 			<section>
 				<h2><?php echo TEXT[5] ?></h2>
-				<div class="box">
+				<div id="companies-list" class="box">
 					<?php foreach ($companies as $permalink => $company): ?>
 						<a class="card" href="/<?php echo $permalink ?>">
 							<div class="logo-main margin-r16">
@@ -111,7 +111,8 @@
 					<?php endforeach ?>
 				</div>
 			</section>
-			<a class="button-icon center" href="?show=all">
+            <input type="hidden" id="page-count" value="<?=$pageCount?>"/>
+			<a id="view-more-button" class="button-icon center" onclick="isPossibleToViewMore(<?=$allCompaniesCount?>)">
 				<img src="/static/icon/plus.svg" alt="">
 				<?php echo TEXT[6] ?>
 			</a>

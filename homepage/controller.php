@@ -8,7 +8,8 @@
 $categories = WebApp\Data::getCategory()->selectAll();
 $locations = WebApp\Data::getLocation()->selectUsefulItemsOnly('es');
 
-$limit = filter_has_var(INPUT_GET, 'show') ? 0 : 8;
+//commented out this since its not needed
+//$limit = filter_has_var(INPUT_GET, 'show') ? 0 : 8;
 
 $selectedRegions = [];
 
@@ -25,5 +26,10 @@ if(filter_has_var(INPUT_GET, 'logout'))
 { $user->logout(); }
 
 //TODO: create CompanyIterator
-$companies = WebApp\Data::getCompany()->selectCategoriesRegions($language, [], $selectedRegions, $limit);
+//fetch all companies
+$allCompanies = WebApp\Data::getCompany()->selectCategoriesRegions($language, [], $selectedRegions, 0);
+$allCompaniesCount = count($allCompanies);      //count all companies
+$companies = array_splice($allCompanies,0,8);       //obtain an array of values from position 0 - 7
 $counter = count($companies);
+
+$pageCount = 1;     //keeps count of how many times a 8-company-result has been returned
