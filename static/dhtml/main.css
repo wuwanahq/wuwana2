@@ -668,6 +668,40 @@ footer li a:hover {
 	text-decoration: underline;
 }
 
+footer details {
+	color: var(--grey700);
+}
+
+footer details:hover {
+	cursor: pointer;
+}
+
+/* Style summary */
+footer details summary span {
+	font-weight: 700;
+}
+
+footer details summary:hover {
+	text-decoration: underline;
+}
+
+footer details summary:active,
+footer details summary:focus {
+	outline-style: none;
+}
+
+/* Remove details marker */
+footer details summary{
+	list-style: none;
+}
+footer details summary::before {
+	display: none;
+}
+footer details summary::-webkit-details-marker {
+	display:none;
+}
+
+
 
 /* POP-UP */
 
