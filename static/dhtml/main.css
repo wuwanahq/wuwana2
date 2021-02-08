@@ -688,6 +688,7 @@ footer details summary:hover {
 footer details summary:active,
 footer details summary:focus {
 	outline-style: none;
+	text-decoration: underline;
 }
 
 /* Remove details marker */
