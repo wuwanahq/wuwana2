@@ -578,33 +578,11 @@ dl dd label {
 
 .header-container {
 	display: flex;
-	justify-content: space-between;
-	align-content: space-between;
+	justify-content: center;
 	align-items: center;
 	width: 100%;
 	padding: 0 16px;
 	max-width: 1200px} /* Same as body max width */
-
-.header-lang-wrapper { /* Language selection container */
-	display: flex;
-	flex-direction: row;
-}
-
-.header-lang { /* The language selection */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 40px;
-	height: 44px;
-	margin-left: -8px;
-	font-weight: 700;
-	border-radius: 8px;
-	cursor: pointer;
-}
-
-.header-lang:hover {
-	background-color: var(--grey200);
-}
 
 .header-logo {
 	height: 24px}
@@ -1042,6 +1020,10 @@ footer details summary::-webkit-details-marker {
 	}
 
 	/* MENU MOBILE */
+	.header-container {
+		justify-content: space-between;
+	}
+
 	.sticky {
 		z-index: 10;
 		display: none; /* Display flex with JS */
