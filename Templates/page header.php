@@ -1,26 +1,6 @@
 <h1 class="visually-hidden">Wuwana</h1>
 <header class="header-bar">
 	<div class="header-container">
-		<div class="header-lang-wrapper" onclick="showLang()">
-			<div class="header-lang">
-				<?php
-					if ($language->code == 'zh')
-					{ echo WebApp\Language::CODES[$language->code]; }
-					else
-					{ echo strtoupper($language->code); }
-				?>
-			</div>
-			<div class="popup-lang" id="popup-lang">
-				<div class="popup-title">
-					<h2><?php echo TEMP_TEXT[3] ?></h2>
-					<img src="/static/icon/close.svg" id="popup-lang-close" alt="">
-				</div>
-				<?php
-					foreach (WebApp\Language::CODES as $code => $lang)
-					{ echo '<a href="', WebApp\WebApp::changeSubdomain($code), '">', $lang, '</a>'; }
-				?>
-			</div>
-		</div>
 		<div class="header-logo"><a href="/"><img src="/static/logo/website.svg" alt="wuwana logo"></a></div>
 		<div class="header-invisible"></div>
 		<?php if (isset($user) && $user->isLogin()): ?>

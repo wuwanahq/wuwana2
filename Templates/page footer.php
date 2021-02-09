@@ -25,5 +25,24 @@
 		<li>
 			<a href="https://github.com/wuwanahq/wuwana2" target=”_blank” rel="noopener"><?php echo TEMP_TEXT[6] ?></a>
 		</li>
+		<li>
+			<details>
+				<summary>
+					<?php echo TEMP_TEXT[3] . ': '?>
+					<span>
+						<?php
+							if ($language->code == 'zh')
+							{ echo WebApp\Language::CODES[$language->code]; }
+							else
+							{ echo strtoupper($language->code); }
+						?>
+					</span>				
+				</summary>
+				<?php
+					foreach (WebApp\Language::CODES as $code => $lang)
+					{ echo '<li><a href="', WebApp\WebApp::changeSubdomain($code), '">', $lang, '</a></li>'; }
+				?>
+			</details>
+		</li>
 	</ul>
 </footer>

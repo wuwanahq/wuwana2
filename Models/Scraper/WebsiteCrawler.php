@@ -29,7 +29,8 @@ class WebsiteCrawler
 		'comerciosyempresasnavarras.com',
 		'wa.me',
 		'madridsecreto.co',
-		'yelp.com'
+		'yelp.com',
+		'gofundme.com'
 	];
 
 	private $description;

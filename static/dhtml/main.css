@@ -59,6 +59,7 @@ html {
 body {
 	font-family: "Roboto", sans-serif;
 	font-size: 16px;
+	word-break: break-word;
 	display: flex;
 	flex-direction: column;
 	color: var(--black);
@@ -109,6 +110,10 @@ p {
 	font-size: var(--font-m);
 	line-height: 1.5;
 	margin-top: 8px;
+}
+
+span {
+	word-break: keep-all;
 }
 
 a,
@@ -221,7 +226,8 @@ dl dd label {
 	font-size: var(--font-xxs);
 	color: var(--black);
 	max-width: 48px;
-	text-align: center
+	text-align: center;
+	word-break: keep-all;
 }
 
 .item-label:first-child {
@@ -572,33 +578,11 @@ dl dd label {
 
 .header-container {
 	display: flex;
-	justify-content: space-between;
-	align-content: space-between;
+	justify-content: center;
 	align-items: center;
 	width: 100%;
 	padding: 0 16px;
 	max-width: 1200px} /* Same as body max width */
-
-.header-lang-wrapper { /* Language selection container */
-	display: flex;
-	flex-direction: row;
-}
-
-.header-lang { /* The language selection */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 40px;
-	height: 44px;
-	margin-left: -8px;
-	font-weight: 700;
-	border-radius: 8px;
-	cursor: pointer;
-}
-
-.header-lang:hover {
-	background-color: var(--grey200);
-}
 
 .header-logo {
 	height: 24px}
@@ -667,6 +651,41 @@ footer li a {
 footer li a:hover {
 	text-decoration: underline;
 }
+
+footer details {
+	color: var(--grey700);
+}
+
+footer details:hover {
+	cursor: pointer;
+}
+
+/* Style summary */
+footer details summary span {
+	font-weight: 700;
+}
+
+footer details summary:hover {
+	text-decoration: underline;
+}
+
+footer details summary:active,
+footer details summary:focus {
+	outline-style: none;
+	text-decoration: underline;
+}
+
+/* Remove details marker */
+footer details summary{
+	list-style: none;
+}
+footer details summary::before {
+	display: none;
+}
+footer details summary::-webkit-details-marker {
+	display:none;
+}
+
 
 
 /* POP-UP */
@@ -1001,6 +1020,10 @@ footer li a:hover {
 	}
 
 	/* MENU MOBILE */
+	.header-container {
+		justify-content: space-between;
+	}
+
 	.sticky {
 		z-index: 10;
 		display: none; /* Display flex with JS */

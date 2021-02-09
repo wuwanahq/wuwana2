@@ -13,45 +13,18 @@ function askEmail()
 	xhr.send(form);
 }
 
-// Show language popup on mobile
-function showLang()
-{
-	var divLang = document.getElementById("popup-lang");
-	var body = document.body;
-
-	if (getComputedStyle(divLang).getPropertyValue("display") == "none")
-	{
-		divLang.style.display = "flex";
-	}
-	else
-	{
-		divLang.style.display = "none";
-	}
-}
-
 // Show menu on mobile
 function showMenu()
 {
 	var div = document.getElementById("menu");
-	var divLang = document.getElementById("popup-lang");
 	var img = document.getElementById("menu-icon");
 	var body = document.body;
 
 	if (getComputedStyle(div).getPropertyValue("display") == "none")
 	{
-		if (divLang.style.display == "flex")
-		{
-			divLang.style.display = "none";
-			div.style.display = "flex";
-			img.src = "static/icon/close.svg";
-			body.style.overflow = "hidden";
-		}
-		else
-		{
-			div.style.display = "flex";
-			img.src = "static/icon/close.svg";
-			body.style.overflow = "hidden";
-		}
+		div.style.display = "flex";
+		img.src = "static/icon/close.svg";
+		body.style.overflow = "hidden";
 	}
 	else
 	{
@@ -145,3 +118,51 @@ window.addEventListener("scroll", function(){
 // 	}
 
 // });
+
+// // Show language popup on mobile
+// function showLang()
+// {
+// 	var divLang = document.getElementById("popup-lang");
+// 	var body = document.body;
+
+// 	if (getComputedStyle(divLang).getPropertyValue("display") == "none")
+// 	{
+// 		divLang.style.display = "flex";
+// 	}
+// 	else
+// 	{
+// 		divLang.style.display = "none";
+// 	}
+// }
+
+// // Show menu on mobile
+// function showMenu()
+// {
+// 	var div = document.getElementById("menu");
+// 	var divLang = document.getElementById("popup-lang");
+// 	var img = document.getElementById("menu-icon");
+// 	var body = document.body;
+
+// 	if (getComputedStyle(div).getPropertyValue("display") == "none")
+// 	{
+// 		if (divLang.style.display == "flex")
+// 		{
+// 			divLang.style.display = "none";
+// 			div.style.display = "flex";
+// 			img.src = "static/icon/close.svg";
+// 			body.style.overflow = "hidden";
+// 		}
+// 		else
+// 		{
+// 			div.style.display = "flex";
+// 			img.src = "static/icon/close.svg";
+// 			body.style.overflow = "hidden";
+// 		}
+// 	}
+// 	else
+// 	{
+// 		div.style.display = "none";
+// 		img.src = "static/icon/menu.svg";
+// 		body.style.overflow = "auto";
+// 	}
+// }
