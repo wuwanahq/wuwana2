@@ -59,6 +59,7 @@ html {
 body {
 	font-family: "Roboto", sans-serif;
 	font-size: 16px;
+	word-break: break-word;
 	display: flex;
 	flex-direction: column;
 	color: var(--black);
@@ -109,6 +110,10 @@ p {
 	font-size: var(--font-m);
 	line-height: 1.5;
 	margin-top: 8px;
+}
+
+span {
+	word-break: keep-all;
 }
 
 a,
@@ -221,7 +226,8 @@ dl dd label {
 	font-size: var(--font-xxs);
 	color: var(--black);
 	max-width: 48px;
-	text-align: center
+	text-align: center;
+	word-break: keep-all;
 }
 
 .item-label:first-child {
