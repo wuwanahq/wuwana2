@@ -51,6 +51,14 @@
 	max-width: 40ch
 }
 
+#ig-external-url {
+	display: inline-block;
+	max-width: 60ch;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .instagram-info ul {
 	padding-inline-start: 0;
 	display: flex;

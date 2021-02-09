@@ -160,7 +160,7 @@
 							<h3><?php echo $company->instagram->profileName ?></h3>
 							<p>
 								<?php echo $company->instagram->getHtmlBiography() ?><br>
-								<a href="<?php echo $company->instagram->externalLink ?>" target="_blank" rel="noopener">
+								<a id="ig-external-url" href="<?php echo $company->instagram->externalLink ?>" target="_blank" rel="noopener">
 									<?php echo str_replace(['http://','https://'], '', $company->instagram->externalLink) ?>
 								</a>
 							</p>
