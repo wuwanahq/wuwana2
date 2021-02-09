@@ -217,7 +217,7 @@
 								</div>
 							</div>
 						</div></div>
-						<a class="button-icon" href="<?php echo $company->instagram->pageURL ?>" target="_blank" rel="noopener">
+						<a class="button-icon" href="<?php echo $company->instagram->getPageURL() ?>" target="_blank" rel="noopener">
 							<img src="/static/icon/instagram.svg" alt="">
 							<?php echo TEXT[5] ?>
 						</a>
