@@ -11,6 +11,12 @@ spl_autoload_register(function($className) {
 	require 'Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
+//force redirect to https
+if (!WebApp\WebApp::isSecure() && php_sapi_name() != 'cli-server') {
+    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], TRUE, 301);
+    exit;
+}
+
 // Global variables available in all views and controllers
 $language = WebApp\WebApp::getLanguage();
 $user = new WebApp\UserSession(WebApp\Data::getUser());
