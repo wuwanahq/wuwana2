@@ -70,7 +70,7 @@ class WebsiteCrawler
 
 		if ($this->scrapePage($urlParts['scheme'] . '://' . $urlParts['host']))  // Try to scrape the website root
 		{
-			if (!empty($urlParts['path']) && !empty($urlParts['query']))
+			if (!empty($urlParts['path']) || !empty($urlParts['query']))
 			{ $this->scrapePage($url); }
 
 			foreach (self::PAGES as $page)
