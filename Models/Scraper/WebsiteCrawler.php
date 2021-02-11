@@ -66,14 +66,13 @@ class WebsiteCrawler
 	 */
 	public function crawlWebsite($url)
 	{
-		$parseURL = parse_url($url);
-		$url = $parseURL['scheme'] . '://' . $parseURL['host'];
+		$urlParts = parse_url($url);
 
-		// Scrape homepage
-		$result = $this->scrapePage($url);
-
-		if ($result == true)
+		if ($this->scrapePage($urlParts['scheme'] . '://' . $urlParts['host']))  // Try to scrape the website root
 		{
+			if (!empty($urlParts['path']) && !empty($urlParts['query']))
+			{ $this->scrapePage($url); }
+
 			foreach (self::PAGES as $page)
 			{
 				$this->scrapePage($url . '/' . $page);
