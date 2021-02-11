@@ -1,10 +1,10 @@
 <?php
 /**
- * Front controller (WebApp entry point).
+ * Front controller (WebApp entry point) for all URL except static resources and AJAX requests.
  * @see http://httpd.apache.org/docs/current/mod/mod_dir.html#fallbackresource Apache FallbackResource (mod_dir)
  * @see http://nginx.org/en/docs/http/ngx_http_core_module.html#try_files Nginx "try_files" directive (core module)
  * @see https://www.php.net/manual/en/features.commandline.webserver.php PHP built-in web server using a router script
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 
 spl_autoload_register(function($className) {
@@ -12,9 +12,10 @@ spl_autoload_register(function($className) {
 });
 
 //force redirect to https
-if (!WebApp\WebApp::isSecure() && php_sapi_name() != 'cli-server') {
-    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], TRUE, 301);
-    exit;
+if (!WebApp\WebApp::isSecure() && php_sapi_name() != 'cli-server')
+{
+	header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], TRUE, 301);
+	exit;
 }
 
 // Global variables available in all views and controllers
@@ -49,18 +50,13 @@ switch ($url)
 		require $page . '/view.php';
 		break;
 
-	case '/ajax/email':
-		require 'ajax/email/text ' . $language->code . '.php';
-		require 'ajax/email/controller.php';
-		break;  // There is no view with AJAX request
-
 	default:
 		if (php_sapi_name() == 'cli-server')
 		{
 			switch (substr($url, 0, 6))
 			{
-				case '/stati':  // static
-				case '/ajax/':
+				case '/stati':  // static resources
+				case '/ajax/':  // There is no view with AJAX request
 					return false;
 			}
 		}

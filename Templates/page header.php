@@ -14,7 +14,7 @@
 			<form method="post">
 				<label for="email">Email: </label>
 				<input id="email" type="text" name="email">
-				<input type="button" value="Send email" onclick="askEmail()">
+				<input type="button" value="Send email" onclick="sendEmail()">
 				<label for="code">Code: </label>
 				<input id="code" type="password" name="code"> <input type="submit" value="Login">
 			</form>

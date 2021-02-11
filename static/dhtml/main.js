@@ -1,7 +1,7 @@
 // ECMAScript 5
 "use strict";
 
-function askEmail()
+function sendEmail()
 {
 	var email = document.getElementById("email").value;
 	var form = new FormData();
@@ -9,7 +9,7 @@ function askEmail()
 
 	form.append("email", email);
 
-	xhr.open("post", "/ajax/email/index.php");
+	xhr.open("post", "/ajax/email/send.php");
 	xhr.send(form);
 }
 
@@ -23,13 +23,13 @@ function showMenu()
 	if (getComputedStyle(div).getPropertyValue("display") == "none")
 	{
 		div.style.display = "flex";
-		img.src = "static/icon/close.svg";
+		img.src = "/static/icon/close.svg";
 		body.style.overflow = "hidden";
 	}
 	else
 	{
 		div.style.display = "none";
-		img.src = "static/icon/menu.svg";
+		img.src = "/static/icon/menu.svg";
 		body.style.overflow = "auto";
 	}
 }
@@ -40,21 +40,16 @@ var menu = document.getElementById("menu");
 
 window.addEventListener("resize", () => {
 	if (window.innerWidth > 800)
-	{
-		menu.style.display = "block";
-	}
+	{ menu.style.display = "block"; }
 	else
-	{
-		menu.style.display = "none";
-	}
-
+	{ menu.style.display = "none"; }
 });
 
 // Back to top button
 var lastScrollTop = 0;
 
 window.addEventListener("scroll", function(){
-	var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+	var st = window.pageYOffset || document.documentElement.scrollTop;
 	var toTop = document.getElementById("toTop");
 
 	if (st > lastScrollTop){
@@ -64,7 +59,7 @@ window.addEventListener("scroll", function(){
 	else if (st < lastScrollTop && window.pageYOffset > 500)
 	{
 		toTop.style.opacity = 1;
-		toTop.style.visibility = "visible"
+		toTop.style.visibility = "visible";
 	}
 	else
 	{
