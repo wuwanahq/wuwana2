@@ -57,7 +57,7 @@
 
 #ig-external-url {
 	display: inline-block;
-	max-width: 60ch;
+	max-width: min(50ch, 98%);
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -133,8 +133,14 @@
 		position: static;
 	}
 
+	Instagram
+	#ig-external-url {
+		max-width: 98%; /* for devices where min() doesn't work*/
+	}
+
+	/* Company Summary */
 	.mobile-summary {
-		position: sticky;
+		position: fixed;
 		top: 0; left: 0;
 		z-index: 2;
 		display: flex;
@@ -143,6 +149,9 @@
 		width: 100%;
 		background-color: var(--white);	
 		box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+		opacity: 0;
+		will-change: opacity;
+		transition: opacity 100ms 50ms ease-in-out;
 	}
 	
 	.mobile-summary-logo {
@@ -163,5 +172,13 @@
 		font-size: var(--font-l);
 		font-weight: 500;
 		margin-bottom: 8px;
+	}
+}
+
+/* LAYOUT CHANGES FOR MOBILE DEVICES */
+@media screen and (max-width: 500px)
+{
+	.mobile-summary { 
+		padding: 8px;
 	}
 }

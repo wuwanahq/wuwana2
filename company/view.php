@@ -11,10 +11,11 @@
 	<meta name="twitter:title" content="<?php echo $company->name ?> | Wuwana">
 	<meta name="twitter:image" content="<?php echo $company->logo ?>">
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/company.css">
+	<script src="/static/dhtml/company.js" defer></script>
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
-	<div class="mobile-summary" aria-hidden="true">
+	<div class="mobile-summary" aria-hidden="true" id="mobile-summary">
 		<img class="mobile-summary-logo" src="<?php echo $company->logo ?>" alt="<?php echo $company->name ?> logo" >
 		<div class="mobile-summary-title">
 			<h3><?php echo $company->name ?></h3>
@@ -28,7 +29,7 @@
 	<div class="container">
 		<section class="column-left">
 			<div class="company-sticky">
-				<div class="box-panel">
+				<div class="box-panel" id="company-panel">
 					<section class="company-about">
 						<div class="logo-main">
 							<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name ?> logo" >
