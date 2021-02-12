@@ -9,7 +9,7 @@ function sendEmail()
 
 	form.append("email", email);
 
-	xhr.open("post", "/ajax/email/send.php");
+	xhr.open("post", "/ajax/email/send-code.php");
 	xhr.send(form);
 }
 

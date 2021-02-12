@@ -3,7 +3,7 @@
  * Front controller (WebApp entry point) for all URL except static resources and AJAX requests.
  * @see http://httpd.apache.org/docs/current/mod/mod_dir.html#fallbackresource Apache FallbackResource (mod_dir)
  * @see http://nginx.org/en/docs/http/ngx_http_core_module.html#try_files Nginx "try_files" directive (core module)
- * @see https://www.php.net/manual/en/features.commandline.webserver.php PHP built-in web server using a router script
+ * @see https://www.php.net/manual/en/features.commandline.webserver.php PHP built-in web server using router script
  * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 
