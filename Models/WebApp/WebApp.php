@@ -11,7 +11,7 @@ class WebApp
 	 * Minimum memory usage noticeable in PHP logs.
 	 * @var int Bytes
 	 */
-	const MEMORY_LIMIT = 1048576;  // 1 MB
+	const MEMORY_LIMIT = 1572864;  // 1.5 MB
 
 	/**
 	 * Return the selected language according to the sub-domain, user device language or the default language.

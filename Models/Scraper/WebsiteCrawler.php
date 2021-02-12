@@ -21,7 +21,7 @@ class WebsiteCrawler
 		'pinterest.com',
 		'nokuesapp.com',
 		'abc.es',
-		'google',  // google.* (google.com, google.es...)
+		'google.',  // google.* (google.com, google.es...)
 		'traveler.es',
 		'sprudge.com',
 		'girlygirlmagazine.com',
@@ -66,21 +66,21 @@ class WebsiteCrawler
 	 */
 	public function crawlWebsite($url)
 	{
-		$parseURL = parse_url($url);
-		$url = $parseURL['scheme'] . '://' . $parseURL['host'];
+		$urlParts = parse_url($url);
+		$websiteRoot = $urlParts['scheme'] . '://' . $urlParts['host'];
 
-		// Scrape homepage
-		$result = $this->scrapePage($url);
-
-		if ($result == true)
+		if ($this->scrapePage($websiteRoot))
 		{
+			if (!empty($urlParts['path']) || !empty($urlParts['query']))
+			{ $this->scrapePage($url); }
+
 			foreach (self::PAGES as $page)
 			{
-				$this->scrapePage($url . '/' . $page);
-
-				// Minimum info required to stop scraping
+				// Minimum info required to stop crawling
 				if (!empty($this->description) && !empty($this->postalCode) && isset($this->emailAddresses[0]))
 				{ break; }
+
+				$this->scrapePage($websiteRoot . '/' . $page);
 			}
 		}
 	}
@@ -97,7 +97,7 @@ class WebsiteCrawler
 
 		$dom = $this->downloadDOM($url);
 
-		// Verify if it's a valid website
+		// Verify if it's a valid HTML page
 		if ($dom == null || $dom->getElementsByTagName('body')->length == 0)
 		{ return false; }
 
@@ -135,16 +135,13 @@ class WebsiteCrawler
 	 */
 	private function isInvalidURL($url)
 	{
-		// Check if the URL is valid
 		if (filter_var($url, FILTER_VALIDATE_URL) == false)
 		{ return true; }
-
-		$domain = parse_url($url, PHP_URL_HOST);
 
 		// Decide to scrape or not
 		foreach (self::BLOCKED_WEBSITES as $website)
 		{
-			if (stripos($domain, $website) !== false)
+			if (stripos($url, $website) !== false)
 			{ return true; }
 		}
 
@@ -179,7 +176,7 @@ class WebsiteCrawler
 	}
 
 	/**
-	 * Get the website description.
+	 * Try to get the website description.
 	 * @param DOMNodeList $metaElements
 	 * @param DOMNodeList $titleElements
 	 * @return string
@@ -202,7 +199,7 @@ class WebsiteCrawler
 			{ return $metaTags[$attribute]; }
 		}
 
-		// If there were no description available maybe we can use the page title...
+		// If there is no description available maybe we can use the page title...
 		$title = $titleElements->item(0);
 
 		if ($title != null && !empty($title->nodeValue))

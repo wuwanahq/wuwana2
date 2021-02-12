@@ -34,12 +34,11 @@ function handleEventChangeFilterAll()
 }
 
 /**
- * Function to check whether there are more companies available for viewing
- * If true, the companies are displayed
- * If false, the 'view more' element is hidden
- * @param companyCount
+ * Function to check whether there are more companies available for viewing.
+ * If true, the companies are displayed otherwise the 'view more' element is hidden
  */
-function isPossibleToViewMore(companyCount) {
+function isPossibleToViewMore(companyCount)
+{
 	var pageCountElement = document.getElementById("page-count");
 	var pageCount = pageCountElement.value;
 
@@ -60,20 +59,19 @@ function isPossibleToViewMore(companyCount) {
  * Sends AJAX request, which returns a response containing the companies(html)
  * @param pageCount
  */
-function viewMoreCompanies(pageCount) {
+function viewMoreCompanies(pageCount)
+{
 	var companyListDiv = document.getElementById("companies-list");	//div element where companies list is contained
-
 	var form = new FormData();
 	var xhr = new XMLHttpRequest();
 
 	form.append("pageCount",pageCount);
 
-	xhr.open("post", "/ajax/pagination.php",true);
+	xhr.open("post", "/ajax/pagination.php", true);
 
 	xhr.onload = function () {
-		companyListDiv.insertAdjacentHTML('beforeend',xhr.responseText);
+		companyListDiv.insertAdjacentHTML("beforeend", xhr.responseText);
 	};
 
 	xhr.send(form);
-
 }

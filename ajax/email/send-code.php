@@ -2,9 +2,18 @@
 /**
  * Controller for the async login by email.
  * HTTP param POST "email"
- * @link https://wuwana.com/ajax/email XMLHttpRequest (JavaScript)
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @link https://wuwana.com/ajax/email/send.php XMLHttpRequest (JavaScript)
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
+
+spl_autoload_register(function($className) {
+	require '../../Models/' . str_replace('\\', '/', $className) . '.php';
+});
+
+$language = WebApp\WebApp::getLanguage();
+$user = new WebApp\UserSession(WebApp\Data::getUser());
+
+require 'text ' . $language->code . '.php';
 
 if (!filter_has_var(INPUT_POST, 'email'))
 { exit; }
