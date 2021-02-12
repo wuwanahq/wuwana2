@@ -33,8 +33,8 @@ class CompanyData
 		// - between 1F300 and 1FBFF there is no alphabetic or language writing symbol, enclosed...
 		// - between E0000 and E007D there is the mysterious Tags code block
 		// - between 1F1E6 and 1F1FF there are flags
-		$this->name = mb_ereg_replace(
-			'[\r|\n|\t|\v|\f|\e|\x{1F000}-\x{1F0FF}|\x{1F300}-\x{1FBFF}|\x{E0000}-\x{E007D}|\x{1F1E6}-\x{1F1FF}]',
+		$this->name = preg_replace(
+			'/[\r|\n|\t|\v|\f|\e|\x{1F000}-\x{1F0FF}|\x{1F300}-\x{1FBFF}|\x{E0000}-\x{E007D}|\x{1F1E6}-\x{1F1FF}]/u',
 			' ', $name);
 
 		// Transform Unicode Dingbats (circled and squared capital letters)
