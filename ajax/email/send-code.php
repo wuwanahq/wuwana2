@@ -10,10 +10,7 @@ spl_autoload_register(function($className) {
 	require '../../Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-$language = WebApp\WebApp::getLanguage();
-$user = new WebApp\UserSession(WebApp\Data::getUser());
-
-require 'text ' . $language->code . '.php';
+require 'text ' . WebApp\WebApp::getLanguage()->code . '.php';
 
 if (!filter_has_var(INPUT_POST, 'email'))
 { exit; }
@@ -25,6 +22,7 @@ mail(
 	'From: noreply@wuwana.com'
 );
 
+$user = new WebApp\UserSession(WebApp\Data::getUser());
 $user->sendEmail(
 	filter_input(INPUT_POST, 'email'),
 	'Login Wuwana <noreply@wuwana.com>',

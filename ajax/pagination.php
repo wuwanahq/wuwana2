@@ -9,6 +9,8 @@ spl_autoload_register(function($className) {
 	require '../Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
+$language = WebApp\WebApp::getLanguage();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$pageCount = $_POST['pageCount'];
