@@ -37,14 +37,14 @@ function handleEventChangeFilterAll()
  * Function to check whether there are more companies available for viewing.
  * If true, the companies are displayed otherwise the 'view more' element is hidden
  */
-function isPossibleToViewMore(companyCount)
+function isPossibleToViewMore(companyCount,selectedRegions)
 {
 	var pageCountElement = document.getElementById("page-count");
 	var pageCount = pageCountElement.value;
 
 	if (companyCount > (pageCount * 8)) {
 		//view more companies
-		viewMoreCompanies(pageCount);
+		viewMoreCompanies(pageCount,selectedRegions);
 		pageCount++;	//increase value of page count
 		pageCountElement.value = pageCount;		//set increased value to pageCountElement
 	}else{
@@ -58,14 +58,16 @@ function isPossibleToViewMore(companyCount)
  * Function to display more companies
  * Sends AJAX request, which returns a response containing the companies(html)
  * @param pageCount
+ * @param selectedRegions
  */
-function viewMoreCompanies(pageCount)
+function viewMoreCompanies(pageCount,selectedRegions)
 {
 	var companyListDiv = document.getElementById("companies-list");	//div element where companies list is contained
 	var form = new FormData();
 	var xhr = new XMLHttpRequest();
 
 	form.append("pageCount",pageCount);
+	form.append("selectedRegions",JSON.stringify(selectedRegions));
 
 	xhr.open("post", "/ajax/pagination.php", true);
 
