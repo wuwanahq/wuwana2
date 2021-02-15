@@ -30,7 +30,8 @@ class WebsiteCrawler
 		'wa.me',
 		'madridsecreto.co',
 		'yelp.com',
-		'gofundme.com'
+		'gofundme.com',
+		'bit.ly'
 	];
 
 	private $description;
