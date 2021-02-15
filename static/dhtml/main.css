@@ -210,6 +210,15 @@ dl dd label {
 	align-self: stretch;
 }
 
+.column-navbar {
+	position: static;
+	min-width: 280px;
+	max-width: 280px;
+	height: auto;
+	margin-right: 24px;
+	align-self: stretch;
+}
+
 .column-main {
 	display: flex;
 	flex-direction: column;
@@ -485,6 +494,24 @@ dl dd label {
 	cursor: not-allowed;
 }
 
+/* Horizontal Icon Label */
+.icon-label-h {
+	padding: 4px 8px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color:  var(--grey700);
+	font-weight: 400;
+}
+
+.icon-label-h:hover {
+	background-color: var(--grey200);
+}
+
+.icon-label-h img {
+	margin-right: 8px;
+}
+
 /* ----- COMPONENTS ----- */
 
 /* Panel */
@@ -562,6 +589,71 @@ dl dd label {
 	margin-right: 8px
 }
 
+/* NAVBAR */
+.navbar {
+	position: static;
+	min-width: 280px;
+	max-width: 280px;
+	height: auto;
+	margin-right: 24px;
+	align-self: stretch;
+}
+
+.navbar .box {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	background-color: var(--white);
+}
+
+.panel-ribbon {
+	top: 0;
+	max-width: 290px;
+}
+
+.navbar .box section {
+	margin: 16px 0;
+	padding: 0;
+}
+
+.navbar .box h2,
+.navbar .box h3,
+.navbar .box p {
+	margin: 0 8px 8px;
+}
+
+.navbar .box h2 {
+	font-size: var(--font-xl);
+	font-weight: 700;
+}
+
+.navbar .box h3 {
+	font-size: var(--font-m);
+	font-weight: 700;
+}
+
+.navbar .box p {
+	font-size: var(--font-m);
+	color:  var(--grey700);
+	line-height: 1.3;
+
+}
+
+.navbar ul {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar li {
+	display: block;
+	margin: 0;
+}
+
 /* HEADER */
 
 .header-bar{
@@ -589,20 +681,14 @@ dl dd label {
 
 .header-icon {
 	border-radius: 8px;
-	padding: 8px;
-	margin-right: -8px;
+	padding: 10px 8px 6px; /* To visually center icon */
+	margin-inline-start: -8px;
+	margin-inline-end: 8px;
 	cursor: pointer;
 	display: none;}
 
 .header-icon:hover {
 	background-color:var(--grey200)}
-
-.header-invisible { /* used to make the header layout */
-	visibility: hidden;
-	width: 40px;
-	height: 44px;
-	margin-right: -8px;
-}
 
 /* FOOTER */
 
@@ -1021,7 +1107,7 @@ footer details summary::-webkit-details-marker {
 
 	/* MENU MOBILE */
 	.header-container {
-		justify-content: space-between;
+		justify-content: flex-start
 	}
 
 	.sticky {
