@@ -42,6 +42,7 @@
 					</ul>
 				</section>
 			</section>
+			<div id="navbar-background" onclick="showNavbar()"></div>
 		</section>	
 			<!-- <section id="filter">
 				<h2><?php echo TEXT[8] ?></h2>
@@ -68,7 +69,7 @@
 					</form>
 				</div>
 			</section> -->
-		</section>
+		<!-- </section> -->
 		<section class="column-main">
 			<div class="banner">
 				<div class="banner-text">

@@ -1046,12 +1046,30 @@ footer details summary::-webkit-details-marker {
 	}
 
 	/* NAVBAR */
+	.column-left {
+		display: flex;
+	}
+
 	.navbar-box {
+		visibility: hidden;
 		position: fixed;
 		top: 48px; left: 0;
 		z-index: 2;
 		height: calc(100vh - 48px); /* vh - header height */
 		border-radius: 0;
+		transform: translateX(-110vw);
+		will-change: transform;
+		transition: transform 200ms;
+	}
+
+	#navbar-background {
+		display: none;
+		position: fixed;
+		top: 48px; left: 0;
+		z-index: 1;
+		min-width: 100vw;
+		height: calc(100vh - 48px); /* vh - header height */
+		background: rgba(22, 19, 19, 0.5);
 	}
 
 	/* FOOTER */

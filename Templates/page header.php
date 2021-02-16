@@ -2,7 +2,7 @@
 <header class="header-bar">
 	<div class="header-container">
 		<?php if ($url == '/'): ?>
-			<div class="header-icon" onclick="showMenu()">
+			<div class="header-icon" onclick="showNavbar()">
 				<img id="menu-icon" src="/static/icon/menu.svg" alt="menu icon">
 			</div>
 		<?php else: ?>

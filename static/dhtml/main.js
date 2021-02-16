@@ -16,21 +16,26 @@ function askEmail()
 
 
 // Show menu on mobile
-function showMenu()
+function showNavbar()
 {
 	var div = document.getElementById("navbar");
 	var img = document.getElementById("menu-icon");
+	var background = document.getElementById("navbar-background");
 	var body = document.body;
 
-	if (getComputedStyle(div).getPropertyValue("display") == "none")
+	if (getComputedStyle(div).getPropertyValue("visibility") == "hidden")
 	{
-		div.style.display = "flex";
+		div.style.visibility = "visible";
+		div.style.transform = "translatex(0)";
+		background.style.display = "block";
 		img.src = "static/icon/close.svg";
 		body.style.overflow = "hidden";
 	}
 	else
 	{
-		div.style.display = "none";
+		div.style.visibility = "hidden";
+		div.style.transform = "translateX(-110vw)";
+		background.style.display = "none";
 		img.src = "static/icon/menu.svg";
 		body.style.overflow = "auto";
 	}
