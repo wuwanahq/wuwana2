@@ -16,8 +16,8 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<section class="navbar">
-			<div class="box">
+		<section class="column-left">
+			<section class="navbar-box" id="navbar">
 				<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
 				<section>
 					<h2><?php echo TEXT[13] ?></h2>
@@ -41,9 +41,9 @@
 						</li>
 					</ul>
 				</section>
-				<hr>
-			</div>
-			<section class="sticky" id="menu">
+			</section>
+		</section>	
+			<!-- <section id="filter">
 				<h2><?php echo TEXT[8] ?></h2>
 				<div class="box filter">
 					<form method="get" action="/">
@@ -67,7 +67,7 @@
 						</div>
 					</form>
 				</div>
-			</section>
+			</section> -->
 		</section>
 		<section class="column-main">
 			<div class="banner">

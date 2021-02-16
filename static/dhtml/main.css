@@ -210,15 +210,6 @@ dl dd label {
 	align-self: stretch;
 }
 
-.column-navbar {
-	position: static;
-	min-width: 280px;
-	max-width: 280px;
-	height: auto;
-	margin-right: 24px;
-	align-self: stretch;
-}
-
 .column-main {
 	display: flex;
 	flex-direction: column;
@@ -590,20 +581,13 @@ dl dd label {
 }
 
 /* NAVBAR */
-.navbar {
-	position: static;
-	min-width: 280px;
-	max-width: 280px;
-	height: auto;
-	margin-right: 24px;
-	align-self: stretch;
-}
-
-.navbar .box {
+.navbar-box {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	position: relative;
 	overflow: hidden;
+	min-width: 280px;
+	max-width: 280px;
 	margin-bottom: 24px;
 	border-radius: 8px;
 	background-color: var(--white);
@@ -614,42 +598,33 @@ dl dd label {
 	max-width: 290px;
 }
 
-.navbar .box section {
+.navbar-box section {
 	margin: 16px 0;
 	padding: 0;
 }
 
-.navbar .box h2,
-.navbar .box h3,
-.navbar .box p {
+.navbar-box h2,
+.navbar-box h3,
+.navbar-box p {
 	margin: 0 8px 8px;
 }
 
-.navbar .box h2 {
-	font-size: var(--font-xl);
+.navbar-box h2 {
 	font-weight: 700;
 }
 
-.navbar .box h3 {
-	font-size: var(--font-m);
-	font-weight: 700;
+.navbar-box p {
+	color: var(--grey700);
 }
 
-.navbar .box p {
-	font-size: var(--font-m);
-	color:  var(--grey700);
-	line-height: 1.3;
-
-}
-
-.navbar ul {
+.navbar-box ul {
 	display: flex;
 	flex-direction: column;
 	margin: 0;
 	padding: 0;
 }
 
-.navbar li {
+.navbar-box li {
 	display: block;
 	margin: 0;
 }
@@ -772,56 +747,6 @@ footer details summary::-webkit-details-marker {
 	display:none;
 }
 
-
-
-/* POP-UP */
-
-.popup-lang {
-	top: 40px;
-	position: absolute;
-	display: none;
-	flex-direction: column;
-	white-space: nowrap;
-	padding: 16px;
-	background-color: var(--white);
-	border: 1px solid var(--black);
-	border-radius: 8px;
-	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
-}
-
-.popup-title {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-}
-
-.popup-title img:hover {
-	cursor: pointer;
-}
-
-.header-lang:hover .popup-lang {
-	display: flex;
-}
-
-.popup-lang h2 {
-	font-weight: 700;
-	margin: 0 16px 16px 0;
-	line-height: 1.3;
-}
-
-.popup-lang a {
-	padding: 8px;
-	margin: 0 -8px;
-	font-weight: 400;
-	color: var(--black);
-	border-radius: 8px;
-}
-
-.popup-lang a:hover {
-	text-decoration: underline;
-	background-color: var(--grey50);
-}
-
 /* Error Messages & Alerts */
 
 .information-error-box {
@@ -844,7 +769,6 @@ footer details summary::-webkit-details-marker {
 }
 
 /* Company Card */
-
 .logo-main {
 	width: 88px;
 	min-width: 88px;
@@ -891,8 +815,7 @@ footer details summary::-webkit-details-marker {
 .company-card-info ul {
 	padding-inline-start: 0;
 	display: flex;
-	/*align-self: left;*/ /* align-self doesn't take left or right value */
-	margin: 0 0 8px
+	margin: 0 0 8px;
 }
 
 .company-card-info li {
@@ -908,42 +831,6 @@ footer details summary::-webkit-details-marker {
 	justify-items: right;
 	margin-top: 8px
 }
-
- /* Badges */
-
-/* .BadgeArea {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-end;
-	justify-items: right;
-	margin-top: 8px}
-
-	.BadgeArea .ItemLabel:last-child {
-		margin-right: 16px;}
- */
-
- /* .badge-google-review {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
-	background-color: #609BEE;
-	color: var(--black);
-	font-size: 20px;
-	font-weight: 500;
-	line-height: 1;
-	margin-bottom: 4px;
-}
-
-.badge-google-review-scale {
-	font-size: 10px;
-	font-weight: 400;
-	position: relative;
-	top: 4px
-} */
 
 /* BANNER */
 
@@ -1109,35 +996,7 @@ footer details summary::-webkit-details-marker {
 	.header-container {
 		justify-content: flex-start
 	}
-
-	.sticky {
-		z-index: 10;
-		display: none; /* Display flex with JS */
-		flex-direction: column;
-		align-content: flex-start;
-		position: fixed;
-		width: auto;
-		padding: 16px;
-		background-color: var(--white);
-		top: 48px;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		overflow-y: scroll;
-	}
-
-	.sticky .box{
-		box-shadow: none;
-	}
-
-	.sticky .filter{
-		padding: 0;
-	}
-
-	.sticky .button-icon {
-		display: flex
-	}
-
+	
 	dl {
 		margin: 0 0 24px
 	}
@@ -1184,6 +1043,15 @@ footer details summary::-webkit-details-marker {
 	dl dd label {
 		font-weight: 500;
 		color: var(--black)
+	}
+
+	/* NAVBAR */
+	.navbar-box {
+		position: fixed;
+		top: 48px; left: 0;
+		z-index: 2;
+		height: calc(100vh - 48px); /* vh - header height */
+		border-radius: 0;
 	}
 
 	/* FOOTER */

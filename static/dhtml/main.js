@@ -13,10 +13,12 @@ function askEmail()
 	xhr.send(form);
 }
 
+
+
 // Show menu on mobile
 function showMenu()
 {
-	var div = document.getElementById("menu");
+	var div = document.getElementById("navbar");
 	var img = document.getElementById("menu-icon");
 	var body = document.body;
 
