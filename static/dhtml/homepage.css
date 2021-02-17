@@ -13,3 +13,25 @@
 	border-width: 1px;
 	border-radius: 8px;
 }
+
+/* Search */
+.search-result-box {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 200px;
+	background-color: black;
+	background-image: url(/static/logo/background-v2.1-dark.svg);
+	color: white;
+	border-radius: 8px;
+	margin-bottom: 16px;
+	padding: 16px;
+}
+
+.search-result-box h2 {
+	margin: 0;
+}
+
+.search-result-box p {
+	margin: auto 0 8px;
+}
