@@ -22,6 +22,7 @@
 	height: 200px;
 	background-color: black;
 	background-image: url(/static/logo/background-v2.1-dark.svg);
+	background-position: -16px -16px; /* This compensate for the padding */
 	color: white;
 	border-radius: 8px;
 	margin-bottom: 16px;
@@ -29,6 +30,7 @@
 }
 
 .search-result-box h2 {
+	font-size: var(--font-xxl);
 	margin: 0;
 }
 
