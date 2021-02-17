@@ -43,8 +43,7 @@
 				</section>
 			</section>
 			<div id="navbar-background" onclick="showNavbar()"></div>
-		</section>	
-			<!-- <section id="filter">
+			<section class="sticky" id="filter">
 				<h2><?php echo TEXT[8] ?></h2>
 				<div class="box filter">
 					<form method="get" action="/">
@@ -68,8 +67,8 @@
 						</div>
 					</form>
 				</div>
-			</section> -->
-		<!-- </section> -->
+			</section>
+		</section>
 		<section class="column-main">
 			<div class="banner">
 				<div class="banner-text">
@@ -82,7 +81,13 @@
 				<h2><?php echo TEXT[12] ?></h2>
 			</div>
 			<section>
-				<h2><?php echo TEXT[5] ?></h2>
+				<div style="display: flex; justify-content:space-between; align-items:center; margin-bottom: 8px">
+					<h2 style="margin:0"><?php echo TEXT[5] ?></h2>
+					<div class="dropdown-caret mobile" onclick="showFilter()">
+						Filter
+						<img src="/static/icon/gray/chevron-down.svg" alt="">
+					</div>
+				</div>
 				<div id="companies-list" class="box">
 					<?php foreach ($companies as $permalink => $company): ?>
 						<a class="card" href="/<?php echo $permalink ?>">

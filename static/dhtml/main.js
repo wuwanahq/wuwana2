@@ -13,49 +13,47 @@ function askEmail()
 	xhr.send(form);
 }
 
+// Navbar and Filter on mobile
+const body = document.body;
+const img = document.getElementById("menu-icon");
+const navbar = document.getElementById("navbar");
+const bkg = document.getElementById("navbar-background");
+const filter = document.getElementById("filter");
 
+// Show filter on mobile
+function showFilter()
+{
+	img.src = "static/icon/close.svg";
+	filter.style.visibility = "visible";
+	body.style.overflow = "hidden";
+}
 
 // Show menu on mobile
 function showNavbar()
 {
-	var div = document.getElementById("navbar");
-	var img = document.getElementById("menu-icon");
-	var background = document.getElementById("navbar-background");
-	var body = document.body;
-
-	if (getComputedStyle(div).getPropertyValue("visibility") == "hidden")
+	if (getComputedStyle(filter).getPropertyValue("visibility") == "visible")
 	{
-		div.style.visibility = "visible";
-		div.style.transform = "translatex(0)";
-		background.style.display = "block";
-		img.src = "static/icon/close.svg";
-		body.style.overflow = "hidden";
+		img.src = "static/icon/menu.svg";
+		filter.style.visibility = "hidden";
+		body.style.overflow = "auto";
 	}
-	else
+	else if (getComputedStyle(navbar).getPropertyValue("visibility") == "visible")
 	{
-		div.style.visibility = "hidden";
-		div.style.transform = "translateX(-110vw)";
-		background.style.display = "none";
+		navbar.style.visibility == "hidden";
+		navbar.style.transform = "translateX(-110vw)";
+		bkg.style.display = "none";
 		img.src = "static/icon/menu.svg";
 		body.style.overflow = "auto";
 	}
-}
-
-// To fix bug of filter menu not appearing after table view
-
-var menu = document.getElementById("menu");
-
-window.addEventListener("resize", () => {
-	if (window.innerWidth > 800)
-	{
-		menu.style.display = "block";
-	}
 	else
 	{
-		menu.style.display = "none";
+		navbar.style.visibility = "visible";
+		navbar.style.transform = "translatex(0)";
+		bkg.style.display = "block";
+		img.src = "static/icon/close.svg";
+		body.style.overflow = "hidden";
 	}
-
-});
+}
 
 // Back to top button
 var lastScrollTop = 0;
