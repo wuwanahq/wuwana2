@@ -16,6 +16,7 @@ function askEmail()
 // Navbar and Filter on mobile
 const url = window.location.href;
 const body = document.body;
+const logo = document.getElementById("logo");
 const icon = document.getElementById("menu-icon");
 const navbar = document.querySelector(".navbar-box");
 const bkg = document.querySelector(".navbar-background");
@@ -121,33 +122,30 @@ window.addEventListener("scroll", function(){
 // To reset elements to default
 window.addEventListener("resize", () => 
 {
-	const logo = document.getElementById("logo");
 	bkg.style.display = "none";
 	body.style.overflow = "auto";
 
 	if (window.innerWidth > 800) 
 	{
-		console.log("desktop");
 		navbar.style.visibility = "visible";
 		navbar.style.transform = "translateX(0px)";
 		logo.src = "/static/logo/website.svg";
 	}
 	else if (window.innerWidth < 800 && window.innerWidth > 500) 
 	{
-		console.log("tablet");
 		navbar.style.visibility = "hidden";
 		icon.src = "/static/icon/menu.svg";
 		logo.src = "/static/logo/website.svg";
 	}
 	else if (window.innerWidth < 500) 
 	{
-		console.log("mobile");
 		navbar.style.visibility = "hidden";
 		icon.src = "/static/icon/menu.svg";
 		logo.src = "/static/logo/w-logo.svg";
 	}
 
-	if (url.includes('/admin/') == false) {
+	//In the homepage, change filter window to default
+	if (window.location.pathname == '/') { 
 		if (window.innerWidth > 800) {
 			filter.style.visibility = "visible";
 		} else {
