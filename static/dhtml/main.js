@@ -127,23 +127,32 @@ window.addEventListener("resize", () =>
 
 	if (window.innerWidth > 800) 
 	{
+		console.log("desktop");
 		navbar.style.visibility = "visible";
-		filter.style.visibility = "visible";
+		navbar.style.transform = "translateX(0px)";
 		logo.src = "/static/logo/website.svg";
 	}
 	else if (window.innerWidth < 800 && window.innerWidth > 500) 
 	{
+		console.log("tablet");
 		navbar.style.visibility = "hidden";
-		filter.style.visibility = "hidden";
 		icon.src = "/static/icon/menu.svg";
 		logo.src = "/static/logo/website.svg";
 	}
 	else if (window.innerWidth < 500) 
 	{
+		console.log("mobile");
 		navbar.style.visibility = "hidden";
-		filter.style.visibility = "hidden";
 		icon.src = "/static/icon/menu.svg";
 		logo.src = "/static/logo/w-logo.svg";
+	}
+
+	if (url.includes('/admin/') == false) {
+		if (window.innerWidth > 800) {
+			filter.style.visibility = "visible";
+		} else {
+			filter.style.visibility = "hidden";
+		}
 	}
 })
 
