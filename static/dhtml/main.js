@@ -86,6 +86,7 @@ window.addEventListener("resize", () =>
 {
 	const logo = document.getElementById("logo");
 	bkg.style.display = "none";
+	body.style.overflow = "auto";
 
 	if (window.innerWidth > 800) 
 	{
@@ -102,6 +103,9 @@ window.addEventListener("resize", () =>
 	}
 	else if (window.innerWidth < 500) 
 	{
+		navbar.style.visibility = "hidden";
+		filter.style.visibility = "hidden";
+		img.src = "static/icon/menu.svg";
 		logo.src = "static/logo/w-logo.svg";
 	}
 })
@@ -117,75 +121,3 @@ window.addEventListener("load", () =>
 		logo.src = "static/logo/w-logo.svg";
 	}
 })
-
-// window.addEventListener("resize", () => {
-// 	if (window.innerWidth > 800)
-// 	{
-// 		aboutUS.style.display = "flex";
-// 	}
-// 	else
-// 	{
-// 		aboutUS.style.display = "none";
-// 		img.src = "static/icon/chevron-down.svg";
-// 		label.innerText = "Ver mas";
-// 	}
-
-// --------------- Not in use -------------
-
-// // Hide & unhide
-
-// function hide()
-// {
-// 	var div = document.getElementById("AboutUs");
-// 	var img = document.getElementById ("ToggleAboutUsImg");
-// 	var label = document.getElementById ("ToggleAboutUsLabel");
-
-// 	if (getComputedStyle(div).getPropertyValue("display") == "none")
-// 	{
-// 		div.style.display = "flex";
-// 		img.src = "static/icon/chevron-up.svg";
-// 		label.innerText = "Ver menos";
-// 	}
-// 	else
-// 	{
-// 		div.style.display = "none";
-// 		img.src = "static/icon/chevron-down.svg";
-// 		label.innerText = "Ver mas";
-// 	}
-// }
-
-// // To fix bug of about us not appearing after table view
-
-// let aboutUS = document.getElementById("AboutUs");
-// let img = document.getElementById ("ToggleAboutUsImg");
-// let label = document.getElementById ("ToggleAboutUsLabel");
-
-// window.addEventListener("resize", () => {
-// 	if (window.innerWidth > 800)
-// 	{
-// 		aboutUS.style.display = "flex";
-// 	}
-// 	else
-// 	{
-// 		aboutUS.style.display = "none";
-// 		img.src = "static/icon/chevron-down.svg";
-// 		label.innerText = "Ver mas";
-// 	}
-
-// });
-
-// // Show language popup on mobile
-// function showLang()
-// {
-// 	var divLang = document.getElementById("popup-lang");
-// 	var body = document.body;
-
-// 	if (getComputedStyle(divLang).getPropertyValue("display") == "none")
-// 	{
-// 		divLang.style.display = "flex";
-// 	}
-// 	else
-// 	{
-// 		divLang.style.display = "none";
-// 	}
-// }
