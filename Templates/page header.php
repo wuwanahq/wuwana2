@@ -10,7 +10,7 @@
 				<a href="/"><img id="menu-icon" src="/static/icon/home.svg" alt="home icon"></a>
 			</div>
 		<?php endif ?>
-		<div class="header-logo"><a href="/"><img src="/static/logo/website.svg" alt="wuwana logo"></a></div>
+		<div class="header-logo"><a href="/"><img id="logo" src="/static/logo/website.svg" alt="wuwana logo"></a></div>
 		<?php if (isset($user) && $user->isLogin()): ?>
 			<span>
 				<?php

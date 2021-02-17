@@ -39,7 +39,7 @@ function showNavbar()
 	}
 	else if (getComputedStyle(navbar).getPropertyValue("visibility") == "visible")
 	{
-		navbar.style.visibility == "hidden";
+		navbar.style.visibility = "hidden";
 		navbar.style.transform = "translateX(-110vw)";
 		bkg.style.display = "none";
 		img.src = "static/icon/menu.svg";
@@ -79,6 +79,56 @@ window.addEventListener("scroll", function(){
 
    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 }, false);
+
+// To reset elements to default
+
+window.addEventListener("resize", () => 
+{
+	const logo = document.getElementById("logo");
+	bkg.style.display = "none";
+
+	if (window.innerWidth > 800) 
+	{
+		navbar.style.visibility = "visible";
+		filter.style.visibility = "visible";
+		logo.src = "static/logo/website.svg";
+	}
+	else if (window.innerWidth < 800 && window.innerWidth > 500) 
+	{
+		navbar.style.visibility = "hidden";
+		filter.style.visibility = "hidden";
+		img.src = "static/icon/menu.svg";
+		logo.src = "static/logo/website.svg";
+	}
+	else if (window.innerWidth < 500) 
+	{
+		logo.src = "static/logo/w-logo.svg";
+	}
+})
+
+window.addEventListener("load", () =>
+{
+	if (window.innerWidth > 500) 
+	{
+		logo.src = "static/logo/website.svg";
+	}
+	else if (window.innerWidth < 500) 
+	{
+		logo.src = "static/logo/w-logo.svg";
+	}
+})
+
+// window.addEventListener("resize", () => {
+// 	if (window.innerWidth > 800)
+// 	{
+// 		aboutUS.style.display = "flex";
+// 	}
+// 	else
+// 	{
+// 		aboutUS.style.display = "none";
+// 		img.src = "static/icon/chevron-down.svg";
+// 		label.innerText = "Ver mas";
+// 	}
 
 // --------------- Not in use -------------
 
@@ -137,37 +187,5 @@ window.addEventListener("scroll", function(){
 // 	else
 // 	{
 // 		divLang.style.display = "none";
-// 	}
-// }
-
-// // Show menu on mobile
-// function showMenu()
-// {
-// 	var div = document.getElementById("menu");
-// 	var divLang = document.getElementById("popup-lang");
-// 	var img = document.getElementById("menu-icon");
-// 	var body = document.body;
-
-// 	if (getComputedStyle(div).getPropertyValue("display") == "none")
-// 	{
-// 		if (divLang.style.display == "flex")
-// 		{
-// 			divLang.style.display = "none";
-// 			div.style.display = "flex";
-// 			img.src = "static/icon/close.svg";
-// 			body.style.overflow = "hidden";
-// 		}
-// 		else
-// 		{
-// 			div.style.display = "flex";
-// 			img.src = "static/icon/close.svg";
-// 			body.style.overflow = "hidden";
-// 		}
-// 	}
-// 	else
-// 	{
-// 		div.style.display = "none";
-// 		img.src = "static/icon/menu.svg";
-// 		body.style.overflow = "auto";
 // 	}
 // }
