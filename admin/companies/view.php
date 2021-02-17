@@ -11,7 +11,9 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<?php include 'Templates/admin menu.php' ?>
+		<section class="column-left">
+			<?php include 'Templates/navbar.php' ?>
+		</section>
 		<div class="column-main">
 			<section>
 				<h2>Add new company</h2>

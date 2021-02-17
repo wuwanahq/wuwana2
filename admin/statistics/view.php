@@ -10,7 +10,9 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<?php include 'Templates/admin menu.php' ?>
+		<section class="column-left">
+			<?php include 'Templates/navbar.php' ?>
+		</section>
 		<div class="column-main">
 			<section id="section-table">
 				<h2>Statistics</h2>

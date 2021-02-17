@@ -10,7 +10,9 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<?php include 'Templates/admin menu.php' ?>
+		<section class="column-left">
+			<?php include 'Templates/navbar.php' ?>
+		</section>
 		<div class="column-main tag-tab">
 			<section id="section-table">
 				<h2>Base tags</h2>

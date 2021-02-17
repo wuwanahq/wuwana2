@@ -17,26 +17,7 @@
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
 		<section class="column-left">
-			<section class="navbar-box" id="navbar">
-				<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
-				<section>
-					<h2><?php echo TEXT[13] ?></h2>
-					<p><?php echo TEXT[9] ?></p>
-				</section>
-				<hr>
-				<section>
-					<h3><?php echo TEXT[11] ?></h3>
-					<ul>
-						<li>
-							<a class="icon-label-h" href="mailto:jonathan@wuwana.com">
-								<img src="/static/icon/gray/email.svg" alt="">
-								Email
-							</a>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<div id="navbar-background" onclick="showNavbar()"></div>
+			<?php include 'Templates/navbar.php' ?>
 			<section class="sticky" id="filter">
 				<h2><?php echo TEXT[8] ?></h2>
 				<div class="box filter">
