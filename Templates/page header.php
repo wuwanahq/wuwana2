@@ -1,7 +1,7 @@
 <h1 class="visually-hidden">Wuwana</h1>
 <header class="header-bar">
 	<div class="header-container">
-		<?php if ($url == '/'): ?>
+		<?php if ($url == '/' || strpos($url, '/admin') !== false): ?>
 			<div class="header-icon" onclick="showNavbar()">
 				<img id="menu-icon" src="/static/icon/menu.svg" alt="menu icon">
 			</div>

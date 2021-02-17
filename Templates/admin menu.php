@@ -8,11 +8,11 @@
 		'/admin/database'   => ['Database', 'dns.svg']
 	];
 ?>
-<div class="column-left">
-	<div class="box-panel">
-		<div class="panel-cover"><img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon logo"></div>
+<section class="column-left">
+	<div class="navbar-box" id="navbar-admin">
+		<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
 		<section>
-			<h1>Administrator's name</h1>
+			<h2>Administrator's name</h2>
 			<a href="#">
 				<div class="icon-label-h">
 					<img src="/static/icon/gray/close.svg" alt="">
@@ -34,4 +34,5 @@
 		</section>
 	</div>
 	<div id="version">Wuwana v2.1.12</div>
-</div>
+	<div id="navbar-background" onclick="showNavbar()"></div>
+</section>

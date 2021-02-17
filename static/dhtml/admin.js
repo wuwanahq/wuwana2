@@ -123,3 +123,26 @@ function scrapeInstagram(html)
 
 	return data;
 }
+
+// Show menu on mobile
+function showNavbar()
+{
+	const navbar = getElementById("navbar-admin");
+
+	if (getComputedStyle(navbar).getPropertyValue("visibility") == "visible")
+	{
+		navbar.style.visibility = "hidden";
+		navbar.style.transform = "translateX(-110vw)";
+		bkg.style.display = "none";
+		img.src = "/static/icon/menu.svg";
+		body.style.overflow = "auto";
+	}
+	else
+	{
+		navbar.style.visibility = "visible";
+		navbar.style.transform = "translatex(0)";
+		bkg.style.display = "block";
+		img.src = "/static/icon/close.svg";
+		body.style.overflow = "hidden";
+	}
+}

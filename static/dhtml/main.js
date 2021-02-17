@@ -23,7 +23,7 @@ const filter = document.getElementById("filter");
 // Show filter on mobile
 function showFilter()
 {
-	img.src = "static/icon/close.svg";
+	img.src = "/static/icon/close.svg";
 	filter.style.visibility = "visible";
 	body.style.overflow = "hidden";
 }
@@ -33,7 +33,7 @@ function showNavbar()
 {
 	if (getComputedStyle(filter).getPropertyValue("visibility") == "visible")
 	{
-		img.src = "static/icon/menu.svg";
+		img.src = "/static/icon/menu.svg";
 		filter.style.visibility = "hidden";
 		body.style.overflow = "auto";
 	}
@@ -42,7 +42,7 @@ function showNavbar()
 		navbar.style.visibility = "hidden";
 		navbar.style.transform = "translateX(-110vw)";
 		bkg.style.display = "none";
-		img.src = "static/icon/menu.svg";
+		img.src = "/static/icon/menu.svg";
 		body.style.overflow = "auto";
 	}
 	else
@@ -50,7 +50,7 @@ function showNavbar()
 		navbar.style.visibility = "visible";
 		navbar.style.transform = "translatex(0)";
 		bkg.style.display = "block";
-		img.src = "static/icon/close.svg";
+		img.src = "/static/icon/close.svg";
 		body.style.overflow = "hidden";
 	}
 }
@@ -106,21 +106,21 @@ window.addEventListener("resize", () =>
 	{
 		navbar.style.visibility = "visible";
 		filter.style.visibility = "visible";
-		logo.src = "static/logo/website.svg";
+		logo.src = "/static/logo/website.svg";
 	}
 	else if (window.innerWidth < 800 && window.innerWidth > 500) 
 	{
 		navbar.style.visibility = "hidden";
 		filter.style.visibility = "hidden";
-		img.src = "static/icon/menu.svg";
-		logo.src = "static/logo/website.svg";
+		img.src = "/static/icon/menu.svg";
+		logo.src = "/static/logo/website.svg";
 	}
 	else if (window.innerWidth < 500) 
 	{
 		navbar.style.visibility = "hidden";
 		filter.style.visibility = "hidden";
-		img.src = "static/icon/menu.svg";
-		logo.src = "static/logo/w-logo.svg";
+		img.src = "/static/icon/menu.svg";
+		logo.src = "/static/logo/w-logo.svg";
 	}
 })
 
@@ -128,10 +128,10 @@ window.addEventListener("load", () =>
 {
 	if (window.innerWidth > 500) 
 	{
-		logo.src = "static/logo/website.svg";
+		logo.src = "/static/logo/website.svg";
 	}
 	else if (window.innerWidth < 500) 
 	{
-		logo.src = "static/logo/w-logo.svg";
+		logo.src = "/static/logo/w-logo.svg";
 	}
 })

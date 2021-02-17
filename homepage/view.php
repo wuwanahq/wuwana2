@@ -33,12 +33,6 @@
 								Email
 							</a>
 						</li>
-						<li>
-							<a class="icon-label-h" href="https://www.instagram.com/wuwana.hq/" target="_blank" rel="noopener">
-								<img src="/static/icon/gray/instagram.svg" alt="">
-								Instagram
-							</a>
-						</li>
 					</ul>
 				</section>
 			</section>

@@ -69,9 +69,10 @@ body {
 	color: var(--black);
 	background-color: var(--background);
 	margin: 0;
+	padding: 0 16px;
 	justify-content: center;
 	align-items: center;
-	padding: 0 16px;
+	min-height: 100vh;
 }
 
 section {
