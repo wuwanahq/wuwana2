@@ -53,4 +53,4 @@
 <?php if (strpos($url, '/admin') !== false)
 	{ echo '<div id="version">Wuwana v2.1.12</div>'; }
 ?>
-<div id="navbar-background" onclick="showNavbar()"></div>
+<div class="navbar-background" id="navbar-background" onclick="showNavbar()"></div>

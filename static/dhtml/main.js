@@ -14,16 +14,17 @@ function askEmail()
 }
 
 // Navbar and Filter on mobile
+const url = window.location.href;
 const body = document.body;
-const img = document.getElementById("menu-icon");
-const navbar = document.getElementById("navbar");
-const bkg = document.getElementById("navbar-background");
+const icon = document.getElementById("menu-icon");
+const navbar = document.querySelector(".navbar-box");
+const bkg = document.querySelector(".navbar-background");
 const filter = document.getElementById("filter");
 
 // Show filter on mobile
 function showFilter()
 {
-	img.src = "/static/icon/close.svg";
+	icon.src = "/static/icon/close.svg";
 	filter.style.visibility = "visible";
 	body.style.overflow = "hidden";
 }
@@ -31,27 +32,49 @@ function showFilter()
 // Show menu on mobile
 function showNavbar()
 {
-	if (getComputedStyle(filter).getPropertyValue("visibility") == "visible")
+	if (url.includes('/admin'))
 	{
-		img.src = "/static/icon/menu.svg";
-		filter.style.visibility = "hidden";
-		body.style.overflow = "auto";
+		if (navbar.style.visibility == "visible")
+		{
+			navbar.style.visibility = "hidden";
+			navbar.style.transform = "translateX(-110vw)";
+			bkg.style.display = "none";
+			icon.src = "/static/icon/menu.svg";
+			body.style.overflow = "auto";
+		}
+		else
+		{
+			navbar.style.visibility = "visible";
+			navbar.style.transform = "translatex(0)";
+			bkg.style.display = "block";
+			icon.src = "/static/icon/close.svg";
+			body.style.overflow = "hidden";
+		}
 	}
-	else if (getComputedStyle(navbar).getPropertyValue("visibility") == "visible")
+	else 
 	{
-		navbar.style.visibility = "hidden";
-		navbar.style.transform = "translateX(-110vw)";
-		bkg.style.display = "none";
-		img.src = "/static/icon/menu.svg";
-		body.style.overflow = "auto";
-	}
-	else
-	{
-		navbar.style.visibility = "visible";
-		navbar.style.transform = "translatex(0)";
-		bkg.style.display = "block";
-		img.src = "/static/icon/close.svg";
-		body.style.overflow = "hidden";
+		if (filter.style.visibility == "visible")
+		{
+			icon.src = "/static/icon/menu.svg";
+			filter.style.visibility = "hidden";
+			body.style.overflow = "auto";
+		}
+		else if (navbar.style.visibility == "visible")
+		{
+			navbar.style.visibility = "hidden";
+			navbar.style.transform = "translateX(-110vw)";
+			bkg.style.display = "none";
+			icon.src = "/static/icon/menu.svg";
+			body.style.overflow = "auto";
+		}
+		else
+		{
+			navbar.style.visibility = "visible";
+			navbar.style.transform = "translatex(0)";
+			bkg.style.display = "block";
+			icon.src = "/static/icon/close.svg";
+			body.style.overflow = "hidden";
+		}
 	}
 }
 
@@ -112,14 +135,14 @@ window.addEventListener("resize", () =>
 	{
 		navbar.style.visibility = "hidden";
 		filter.style.visibility = "hidden";
-		img.src = "/static/icon/menu.svg";
+		icon.src = "/static/icon/menu.svg";
 		logo.src = "/static/logo/website.svg";
 	}
 	else if (window.innerWidth < 500) 
 	{
 		navbar.style.visibility = "hidden";
 		filter.style.visibility = "hidden";
-		img.src = "/static/icon/menu.svg";
+		icon.src = "/static/icon/menu.svg";
 		logo.src = "/static/logo/w-logo.svg";
 	}
 })
