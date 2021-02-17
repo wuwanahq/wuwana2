@@ -238,10 +238,10 @@
 					</div>
 				</section></section>
 			<?php endif ?>
-			<a class="button-icon center" href="/">
-				<img src="/static/icon/home.svg" alt="">
+			<div class="button-icon center" onclick="goBack()">
+				<img src="/static/icon/arrow-circle-left.svg" alt="">
 				<?php echo TEXT[4] ?>
-			</a>
+			</div>
 		</section>
 	</div>
 	<?php include 'Templates/page footer.php' ?>

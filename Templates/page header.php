@@ -6,8 +6,8 @@
 				<img id="menu-icon" src="/static/icon/menu.svg" alt="menu icon">
 			</div>
 		<?php else: ?>
-			<div class="header-icon" onclick="showMenu()">
-				<a href="/"><img id="menu-icon" src="/static/icon/home.svg" alt="home icon"></a>
+			<div class="header-icon" onclick="goBack()">
+				<img src="/static/icon/arrow-circle-left.svg" alt="back arrow icon">
 			</div>
 		<?php endif ?>
 		<div class="header-logo"><a href="/"><img id="logo" src="/static/logo/website.svg" alt="wuwana logo"></a></div>

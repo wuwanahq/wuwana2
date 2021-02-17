@@ -55,6 +55,21 @@ function showNavbar()
 	}
 }
 
+// Go back to previous page
+
+function goBack() {
+	const referrer = document.referrer;
+
+	if (referrer.includes("wuwana") || referrer.includes("localhost") == true)
+	{
+		window.history.back();
+	} 
+	else
+	{
+		window.location = '/';
+	}
+}
+
 // Back to top button
 var lastScrollTop = 0;
 
@@ -81,7 +96,6 @@ window.addEventListener("scroll", function(){
 }, false);
 
 // To reset elements to default
-
 window.addEventListener("resize", () => 
 {
 	const logo = document.getElementById("logo");
