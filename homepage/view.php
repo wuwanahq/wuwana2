@@ -10,7 +10,7 @@
 	<meta property="og:image:height" content="640">
 	<meta name="twitter:title" content="Wuwana">
 	<meta name="twitter:image" content="https://wuwana.com/static/logo/thumbnail.png">
-	<link rel="stylesheet" type="text/css" href="/static/dhtml/homepage.css">
+	<link rel="stylesheet" type="text/css" href="/static/dhtml/searchpage.css">
 	<script src="/static/dhtml/homepage.js" defer></script>
 </head>
 <body>
@@ -69,16 +69,19 @@
 							</div>
 							<div class="company-card-wrapper">
 								<div class="company-card-info">
-									<h3><?php echo $company->name ?></h3>
-									<ul class="tag-area">
-										<li><?php echo implode('</li><li>', $company->tags) ?></li>
+									<h3>
+										<?php echo $company->name ?>
+									</h3>
+									<ul>
+										<li>
+											<?php echo implode('</li><li>', $company->tags) ?>
+										</li>
 									</ul>
 									<div class="button-icon-small margin-t-auto">
 										<img src="/static/icon/tiny/map.svg" alt="">
 										<?php echo $locations[$company->region] ?>
 									</div>
 								</div>
-								<div class="company-card-badge-wrapper"></div>
 							</div>
 						</a>
 						<?php if (--$counter > 0) { echo '<hr>'; } ?>

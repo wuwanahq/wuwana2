@@ -52,8 +52,11 @@
 
 /* GENERAL BODY */
 
-* {
-	box-sizing: border-box;
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 html {
@@ -788,70 +791,6 @@ footer details summary::-webkit-details-marker {
 	margin: 16px;
 }
 
-/* Company Card */
-.logo-main {
-	width: 88px;
-	min-width: 88px;
-	height: 88px;
-	border-radius: 8px;
-	border: solid 1px rgba(0, 0, 0, 0.05);
-	overflow: hidden;
-}
-
-.logo-main img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover
-}
-
-.logo-small {
-	width: 24px;
-	min-width: 24px;
-	height: 24px;
-	border-radius: 4px;
-	overflow: hidden;
-}
-
-.logo-small img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover
-}
-
-.company-card-wrapper {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 100%;
-}
-
-.company-card-info {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	margin-right: 24px;
-	height: 100%;
-}
-
-.company-card-info ul {
-	padding-inline-start: 0;
-	display: flex;
-	margin: 0 0 8px;
-}
-
-.company-card-info li {
-	display: inline;
-	margin: 4px 12px 0 0
-}
-
-.company-card-badge-wrapper {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-end;
-	justify-items: right;
-	margin-top: 8px
-}
 /* Filter Area */
 
 .filter {
@@ -1085,21 +1024,5 @@ footer details summary::-webkit-details-marker {
 {
 	body {
 		padding: 0 8px 24px;
-	}
-
-	/* COMPANY CARD */
-	.company-card-wrapper {
-		width: 100%;
-		display: flex;
-		flex-direction: column}
-
-	.company-card-badge-wrapper {
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-		min-width: 100px;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-		align-items: flex-start
 	}
 }

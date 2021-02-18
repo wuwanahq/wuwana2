@@ -16,7 +16,7 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="mobile-summary" aria-hidden="true" id="mobile-summary">
-		<img class="mobile-summary-logo" src="<?php echo $company->logo ?>" alt="<?php echo $company->name ?> logo" >
+		<img class="logo-main" src="<?php echo $company->logo ?>">
 		<div class="mobile-summary-title">
 			<h3><?php echo $company->name ?></h3>
 			<div class="button-icon-small">

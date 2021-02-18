@@ -173,3 +173,19 @@ tr:nth-child(even) {
 		display: none;
 	}
 }
+
+/* TO DO */
+
+.logo-small {
+	width: 24px;
+	min-width: 24px;
+	height: 24px;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.logo-small img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover
+}
