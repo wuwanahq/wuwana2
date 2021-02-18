@@ -35,11 +35,6 @@ function showNavbar()
 {
 	if (url.includes('/admin'))
 	{
-<<<<<<< HEAD
-		div.style.display = "flex";
-		img.src = "/static/icon/close.svg";
-		body.style.overflow = "hidden";
-=======
 		if (navbar.style.visibility == "visible")
 		{
 			navbar.style.visibility = "hidden";
@@ -56,15 +51,9 @@ function showNavbar()
 			icon.src = "/static/icon/close.svg";
 			body.style.overflow = "hidden";
 		}
->>>>>>> v22-design
 	}
 	else 
 	{
-<<<<<<< HEAD
-		div.style.display = "none";
-		img.src = "/static/icon/menu.svg";
-		body.style.overflow = "auto";
-=======
 		if (filter.style.visibility == "visible")
 		{
 			icon.src = "/static/icon/menu.svg";
@@ -87,7 +76,6 @@ function showNavbar()
 			icon.src = "/static/icon/close.svg";
 			body.style.overflow = "hidden";
 		}
->>>>>>> v22-design
 	}
 }
 
@@ -96,14 +84,6 @@ function showNavbar()
 function goBack() {
 	const referrer = document.referrer;
 
-<<<<<<< HEAD
-window.addEventListener("resize", () => {
-	if (window.innerWidth > 800)
-	{ menu.style.display = "block"; }
-	else
-	{ menu.style.display = "none"; }
-});
-=======
 	if (referrer.includes("wuwana") || referrer.includes("localhost") == true)
 	{
 		window.history.back();
@@ -113,7 +93,6 @@ window.addEventListener("resize", () => {
 		window.location = '/';
 	}
 }
->>>>>>> v22-design
 
 // Back to top button
 var lastScrollTop = 0;
