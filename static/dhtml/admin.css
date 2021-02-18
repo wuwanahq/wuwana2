@@ -1,36 +1,13 @@
 /* CSS for the admin pages */
 
 /* Admin Control Panel */
-.box-panel section {
-	padding: 16px 0;
-}
-
-.box-panel h1,
-.box-panel h3 {
-	margin: 0 16px 8px;
-}
-
 .icon-label-h {
-	padding: 4px 16px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	color:  #545151;
-	font-weight: 500;
-	background-color: #E3E1E1
+	background-color: var(--grey200);
 }
 
 a .icon-label-h {
 	background-color: transparent;
 	font-weight: 400;
-}
-
-.icon-label-h:hover {
-	background-color: #E3E1E1;
-}
-
-.icon-label-h img {
-	margin-right: 8px;
 }
 
 #version {
@@ -167,5 +144,9 @@ tr:nth-child(even) {
 @media screen and (max-width: 800px) {
 	.box-table {
 		max-width: 100vh;
+	}
+
+	#version {
+		display: none;
 	}
 }

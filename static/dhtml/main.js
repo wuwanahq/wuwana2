@@ -13,37 +13,107 @@ function sendEmail()
 	xhr.send(form);
 }
 
-// Show menu on mobile
-function showMenu()
-{
-	var div = document.getElementById("menu");
-	var img = document.getElementById("menu-icon");
-	var body = document.body;
+// Navbar and Filter on mobile
+const url = window.location.href;
+const body = document.body;
+const logo = document.getElementById("logo");
+const icon = document.getElementById("menu-icon");
+const navbar = document.querySelector(".navbar-box");
+const bkg = document.querySelector(".navbar-background");
+const filter = document.getElementById("filter");
 
-	if (getComputedStyle(div).getPropertyValue("display") == "none")
+// Show filter on mobile
+function showFilter()
+{
+	icon.src = "/static/icon/close.svg";
+	filter.style.visibility = "visible";
+	body.style.overflow = "hidden";
+}
+
+// Show menu on mobile
+function showNavbar()
+{
+	if (url.includes('/admin'))
 	{
+<<<<<<< HEAD
 		div.style.display = "flex";
 		img.src = "/static/icon/close.svg";
 		body.style.overflow = "hidden";
+=======
+		if (navbar.style.visibility == "visible")
+		{
+			navbar.style.visibility = "hidden";
+			navbar.style.transform = "translateX(-110vw)";
+			bkg.style.display = "none";
+			icon.src = "/static/icon/menu.svg";
+			body.style.overflow = "auto";
+		}
+		else
+		{
+			navbar.style.visibility = "visible";
+			navbar.style.transform = "translatex(0)";
+			bkg.style.display = "block";
+			icon.src = "/static/icon/close.svg";
+			body.style.overflow = "hidden";
+		}
+>>>>>>> v22-design
 	}
-	else
+	else 
 	{
+<<<<<<< HEAD
 		div.style.display = "none";
 		img.src = "/static/icon/menu.svg";
 		body.style.overflow = "auto";
+=======
+		if (filter.style.visibility == "visible")
+		{
+			icon.src = "/static/icon/menu.svg";
+			filter.style.visibility = "hidden";
+			body.style.overflow = "auto";
+		}
+		else if (navbar.style.visibility == "visible")
+		{
+			navbar.style.visibility = "hidden";
+			navbar.style.transform = "translateX(-110vw)";
+			bkg.style.display = "none";
+			icon.src = "/static/icon/menu.svg";
+			body.style.overflow = "auto";
+		}
+		else
+		{
+			navbar.style.visibility = "visible";
+			navbar.style.transform = "translatex(0)";
+			bkg.style.display = "block";
+			icon.src = "/static/icon/close.svg";
+			body.style.overflow = "hidden";
+		}
+>>>>>>> v22-design
 	}
 }
 
-// To fix bug of filter menu not appearing after table view
+// Go back to previous page
 
-var menu = document.getElementById("menu");
+function goBack() {
+	const referrer = document.referrer;
 
+<<<<<<< HEAD
 window.addEventListener("resize", () => {
 	if (window.innerWidth > 800)
 	{ menu.style.display = "block"; }
 	else
 	{ menu.style.display = "none"; }
 });
+=======
+	if (referrer.includes("wuwana") || referrer.includes("localhost") == true)
+	{
+		window.history.back();
+	} 
+	else
+	{
+		window.location = '/';
+	}
+}
+>>>>>>> v22-design
 
 // Back to top button
 var lastScrollTop = 0;
@@ -70,94 +140,49 @@ window.addEventListener("scroll", function(){
    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 }, false);
 
-// --------------- Not in use -------------
+// To reset elements to default
+window.addEventListener("resize", () => 
+{
+	bkg.style.display = "none";
+	body.style.overflow = "auto";
 
-// // Hide & unhide
+	if (window.innerWidth > 800) 
+	{
+		navbar.style.visibility = "visible";
+		navbar.style.transform = "translateX(0px)";
+		logo.src = "/static/logo/website.svg";
+	}
+	else if (window.innerWidth < 800 && window.innerWidth > 500) 
+	{
+		navbar.style.visibility = "hidden";
+		icon.src = "/static/icon/menu.svg";
+		logo.src = "/static/logo/website.svg";
+	}
+	else if (window.innerWidth < 500) 
+	{
+		navbar.style.visibility = "hidden";
+		icon.src = "/static/icon/menu.svg";
+		logo.src = "/static/logo/w-logo.svg";
+	}
 
-// function hide()
-// {
-// 	var div = document.getElementById("AboutUs");
-// 	var img = document.getElementById ("ToggleAboutUsImg");
-// 	var label = document.getElementById ("ToggleAboutUsLabel");
+	//In the homepage, change filter window to default
+	if (window.location.pathname == '/') { 
+		if (window.innerWidth > 800) {
+			filter.style.visibility = "visible";
+		} else {
+			filter.style.visibility = "hidden";
+		}
+	}
+})
 
-// 	if (getComputedStyle(div).getPropertyValue("display") == "none")
-// 	{
-// 		div.style.display = "flex";
-// 		img.src = "static/icon/chevron-up.svg";
-// 		label.innerText = "Ver menos";
-// 	}
-// 	else
-// 	{
-// 		div.style.display = "none";
-// 		img.src = "static/icon/chevron-down.svg";
-// 		label.innerText = "Ver mas";
-// 	}
-// }
-
-// // To fix bug of about us not appearing after table view
-
-// let aboutUS = document.getElementById("AboutUs");
-// let img = document.getElementById ("ToggleAboutUsImg");
-// let label = document.getElementById ("ToggleAboutUsLabel");
-
-// window.addEventListener("resize", () => {
-// 	if (window.innerWidth > 800)
-// 	{
-// 		aboutUS.style.display = "flex";
-// 	}
-// 	else
-// 	{
-// 		aboutUS.style.display = "none";
-// 		img.src = "static/icon/chevron-down.svg";
-// 		label.innerText = "Ver mas";
-// 	}
-
-// });
-
-// // Show language popup on mobile
-// function showLang()
-// {
-// 	var divLang = document.getElementById("popup-lang");
-// 	var body = document.body;
-
-// 	if (getComputedStyle(divLang).getPropertyValue("display") == "none")
-// 	{
-// 		divLang.style.display = "flex";
-// 	}
-// 	else
-// 	{
-// 		divLang.style.display = "none";
-// 	}
-// }
-
-// // Show menu on mobile
-// function showMenu()
-// {
-// 	var div = document.getElementById("menu");
-// 	var divLang = document.getElementById("popup-lang");
-// 	var img = document.getElementById("menu-icon");
-// 	var body = document.body;
-
-// 	if (getComputedStyle(div).getPropertyValue("display") == "none")
-// 	{
-// 		if (divLang.style.display == "flex")
-// 		{
-// 			divLang.style.display = "none";
-// 			div.style.display = "flex";
-// 			img.src = "static/icon/close.svg";
-// 			body.style.overflow = "hidden";
-// 		}
-// 		else
-// 		{
-// 			div.style.display = "flex";
-// 			img.src = "static/icon/close.svg";
-// 			body.style.overflow = "hidden";
-// 		}
-// 	}
-// 	else
-// 	{
-// 		div.style.display = "none";
-// 		img.src = "static/icon/menu.svg";
-// 		body.style.overflow = "auto";
-// 	}
-// }
+window.addEventListener("load", () =>
+{
+	if (window.innerWidth > 500) 
+	{
+		logo.src = "/static/logo/website.svg";
+	}
+	else if (window.innerWidth < 500) 
+	{
+		logo.src = "/static/logo/w-logo.svg";
+	}
+})

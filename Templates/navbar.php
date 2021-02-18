@@ -8,20 +8,36 @@
 		'/admin/database'   => ['Database', 'dns.svg']
 	];
 ?>
-<div class="column-left">
-	<div class="box-panel">
-		<div class="panel-cover"><img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon logo"></div>
-		<section>
-			<h1>Administrator's name</h1>
+
+<section class="navbar-box" id="navbar">
+	<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
+	<section>
+		<?php if ($url =='/'): ?>
+			<h2><?php echo TEXT[13] ?></h2>
+			<p><?php echo TEXT[9] ?></p>
+		<?php else: ?>
+			<h2>Administrator's name</h2>
 			<a href="#">
 				<div class="icon-label-h">
 					<img src="/static/icon/gray/close.svg" alt="">
 					Logout
 				</div>
 			</a>
-		</section>
-		<hr>
-		<section class="admin-control">
+		<?php endif ?>
+	</section>
+	<hr>
+	<section>
+		<?php if ($url =='/'): ?> 
+			<h3><?php echo TEXT[11] ?></h3>
+			<ul>
+				<li>
+					<a class="icon-label-h" href="mailto:jonathan@wuwana.com">
+						<img src="/static/icon/gray/email.svg" alt="">
+						Email
+					</a>
+				</li>
+			</ul>
+		<?php else: ?>
 			<h3>Admin controls</h3>
 			<?php foreach ($sections as $sectionURL => $section): ?>
 				<?php if ($url != $sectionURL) { echo '<a href="', $sectionURL, '">'; } ?>
@@ -31,7 +47,17 @@
 				</div>
 				<?php if ($url != $sectionURL) { echo '</a>'; } ?>
 			<?php endforeach ?>
+<<<<<<< HEAD:Templates/admin menu.php
 		</section>
 	</div>
 	<div id="version">Wuwana v2.1.14</div>
 </div>
+=======
+		<?php endif ?>
+	</section>
+</section>
+<?php if (strpos($url, '/admin') !== false)
+	{ echo '<div id="version">Wuwana v2.1.12</div>'; }
+?>
+<div class="navbar-background" id="navbar-background" onclick="showNavbar()"></div>
+>>>>>>> v22-design:Templates/navbar.php

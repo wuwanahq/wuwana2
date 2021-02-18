@@ -52,6 +52,10 @@
 
 /* GENERAL BODY */
 
+* {
+	box-sizing: border-box;
+}
+
 html {
 	scroll-behavior: smooth
 }
@@ -65,9 +69,9 @@ body {
 	color: var(--black);
 	background-color: var(--background);
 	margin: 0;
-	justify-content: center;
-	align-items: center;
 	padding: 0 16px;
+	align-items: center;
+	min-height: 100vh;
 }
 
 section {
@@ -413,13 +417,13 @@ dl dd label {
 .button-icon-small {
 	display: flex;
 	padding: 2px 6px 2px 4px;
+	background-color: var(--white);
 	color: var(--grey500);
 	font-size: var(--font-xs);
 	line-height: 1.5;
-	font-weight: 700;
-	background-color: var(--white);
+	font-weight: 500;
 	border: solid 1px var(--grey500);
-	border-radius: 8px;
+	border-radius: 0.5rem;
 	white-space: nowrap;
 }
 
@@ -483,6 +487,37 @@ dl dd label {
 	border-style: none;
 	box-shadow: none;
 	cursor: not-allowed;
+}
+
+/* Horizontal Icon Label */
+.icon-label-h {
+	padding: 4px 8px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color:  var(--grey700);
+	font-weight: 400;
+}
+
+.icon-label-h:hover {
+	background-color: var(--grey200);
+}
+
+.icon-label-h img {
+	margin-right: 8px;
+}
+
+/* Dropdown-caret */
+.dropdown-caret {
+	display: flex;
+	align-items: center;
+	padding: 4px;
+	color: var(--grey700);
+	cursor: pointer;
+}
+
+.dropdown-caret img {
+	margin-inline-start: 4px;
 }
 
 /* ----- COMPONENTS ----- */
@@ -562,6 +597,57 @@ dl dd label {
 	margin-right: 8px
 }
 
+/* NAVBAR */
+.navbar-box {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	min-width: 280px;
+	max-width: 280px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	background-color: var(--white);
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+}
+
+.panel-ribbon {
+	top: 0;
+	max-width: 290px;
+}
+
+.navbar-box section {
+	margin: 16px 0;
+	padding: 0;
+}
+
+.navbar-box h2,
+.navbar-box h3,
+.navbar-box p {
+	margin: 0 8px 8px;
+}
+
+.navbar-box h2 {
+	font-weight: 700;
+}
+
+.navbar-box p {
+	color: var(--grey700);
+}
+
+.navbar-box ul {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-box li {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
 /* HEADER */
 
 .header-bar{
@@ -589,20 +675,14 @@ dl dd label {
 
 .header-icon {
 	border-radius: 8px;
-	padding: 8px;
-	margin-right: -8px;
+	padding: 10px 8px 6px; /* To visually center icon */
+	margin-inline-start: -8px;
+	margin-inline-end: 8px;
 	cursor: pointer;
 	display: none;}
 
 .header-icon:hover {
 	background-color:var(--grey200)}
-
-.header-invisible { /* used to make the header layout */
-	visibility: hidden;
-	width: 40px;
-	height: 44px;
-	margin-right: -8px;
-}
 
 /* FOOTER */
 
@@ -686,56 +766,6 @@ footer details summary::-webkit-details-marker {
 	display:none;
 }
 
-
-
-/* POP-UP */
-
-.popup-lang {
-	top: 40px;
-	position: absolute;
-	display: none;
-	flex-direction: column;
-	white-space: nowrap;
-	padding: 16px;
-	background-color: var(--white);
-	border: 1px solid var(--black);
-	border-radius: 8px;
-	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
-}
-
-.popup-title {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-}
-
-.popup-title img:hover {
-	cursor: pointer;
-}
-
-.header-lang:hover .popup-lang {
-	display: flex;
-}
-
-.popup-lang h2 {
-	font-weight: 700;
-	margin: 0 16px 16px 0;
-	line-height: 1.3;
-}
-
-.popup-lang a {
-	padding: 8px;
-	margin: 0 -8px;
-	font-weight: 400;
-	color: var(--black);
-	border-radius: 8px;
-}
-
-.popup-lang a:hover {
-	text-decoration: underline;
-	background-color: var(--grey50);
-}
-
 /* Error Messages & Alerts */
 
 .information-error-box {
@@ -745,6 +775,7 @@ footer details summary::-webkit-details-marker {
 	background-color: var(--white);
 	border-radius: 8px;
 	margin-bottom: 24px;
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
 }
 
 .information-error-vertical {
@@ -758,12 +789,12 @@ footer details summary::-webkit-details-marker {
 }
 
 /* Company Card */
-
 .logo-main {
 	width: 88px;
 	min-width: 88px;
 	height: 88px;
 	border-radius: 8px;
+	border: solid 1px rgba(0, 0, 0, 0.05);
 	overflow: hidden;
 }
 
@@ -805,8 +836,7 @@ footer details summary::-webkit-details-marker {
 .company-card-info ul {
 	padding-inline-start: 0;
 	display: flex;
-	/*align-self: left;*/ /* align-self doesn't take left or right value */
-	margin: 0 0 8px
+	margin: 0 0 8px;
 }
 
 .company-card-info li {
@@ -822,81 +852,6 @@ footer details summary::-webkit-details-marker {
 	justify-items: right;
 	margin-top: 8px
 }
-
- /* Badges */
-
-/* .BadgeArea {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-end;
-	justify-items: right;
-	margin-top: 8px}
-
-	.BadgeArea .ItemLabel:last-child {
-		margin-right: 16px;}
- */
-
- /* .badge-google-review {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
-	background-color: #609BEE;
-	color: var(--black);
-	font-size: 20px;
-	font-weight: 500;
-	line-height: 1;
-	margin-bottom: 4px;
-}
-
-.badge-google-review-scale {
-	font-size: 10px;
-	font-weight: 400;
-	position: relative;
-	top: 4px
-} */
-
-/* BANNER */
-
-.banner {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	overflow: hidden;
-	min-height: 230px;
-	width: 100%;
-	margin-bottom: 24px;
-	border-radius: 8px;
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
-	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), transparent 60%),
-		url(/static/image/ali-yahya-7_AZi5Fe-rU.jpg);
-	background-size: auto, cover;
-	justify-content: center;
-	background-position: 0 0, 50% 50%
-}
-
-.banner-text {
-	color: var(--white);
-	margin-left: 24px;
-	max-width: 60ch
-}
-
-.banner-text h2 {
-	font-size: 2rem;
-	line-height: 2.4rem;
-	font-weight: 700;
-	margin: 0 0 8px 0
-}
-
-.banner-text p {
-	font-size: var(--font-xl);
-	font-weight: 400;
-	margin: 0
-}
-
 /* Filter Area */
 
 .filter {
@@ -1008,50 +963,15 @@ footer details summary::-webkit-details-marker {
 	}
 
 	/* ----- COMPONENTS ----- */
-	.header-invisible { /* used to make the header layout */
-		display: none;
-	}
-
 	.header-icon {
-		display: inline}
-
-	.banner {
-		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url(/static/image/ali-yahya-7_AZi5Fe-rU.jpg);
+		display: inline
 	}
 
 	/* MENU MOBILE */
 	.header-container {
-		justify-content: space-between;
+		justify-content: flex-start
 	}
-
-	.sticky {
-		z-index: 10;
-		display: none; /* Display flex with JS */
-		flex-direction: column;
-		align-content: flex-start;
-		position: fixed;
-		width: auto;
-		padding: 16px;
-		background-color: var(--white);
-		top: 48px;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		overflow-y: scroll;
-	}
-
-	.sticky .box{
-		box-shadow: none;
-	}
-
-	.sticky .filter{
-		padding: 0;
-	}
-
-	.sticky .button-icon {
-		display: flex
-	}
-
+	
 	dl {
 		margin: 0 0 24px
 	}
@@ -1100,6 +1020,50 @@ footer details summary::-webkit-details-marker {
 		color: var(--black)
 	}
 
+	/* NAVBAR */
+	.column-left {
+		display: flex;
+	}
+
+	.navbar-box {
+		visibility: hidden;
+		position: fixed;
+		top: 48px; left: 0;
+		z-index: 2;
+		height: calc(100vh - 48px); /* vh - header height */
+		border-radius: 0;
+		transform: translateX(-110vw);
+		will-change: transform;
+		transition: transform 200ms;
+	}
+
+	#navbar-background {
+		display: none;
+		position: fixed;
+		top: 48px; left: 0;
+		z-index: 1;
+		min-width: 100vw;
+		height: calc(100vh - 48px); /* vh - header height */
+		background: rgba(22, 19, 19, 0.5);
+	}
+
+	#filter {
+		visibility: hidden;
+		position: fixed;
+		top: 48px; left: 0;
+		z-index: 3;
+		background-color: var(--white);
+		height: calc(100vh - 48px); /* vh - header height */
+		padding: 16px;
+		will-change: visibility;
+	
+	}
+
+	#filter .box {
+		box-shadow: none;
+		padding: 0;
+	}
+
 	/* FOOTER */
 	footer ul {
 		flex-direction: column;
@@ -1121,36 +1085,6 @@ footer details summary::-webkit-details-marker {
 {
 	body {
 		padding: 0 8px 24px;
-	}
-
-	/* ----- COMPONENTS ----- */
-
-	/* BANNER */
-	.banner {
-		display: block;
-		min-height: 180px;
-		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%),
-			url(/static/image/ali-yahya-7_AZi5Fe-rU.jpg);
-		background-size: auto, cover;
-		background-position: 0 0, 50% 50%
-	}
-
-	.banner-text {
-		align-self: flex-start;
-		color: var(--white);
-		margin: 16px 0 0 16px;
-		max-width: 60ch
-	}
-
-	.banner-text h2 {
-		font-size: var(--font-xl);
-		line-height: 1.3;
-		font-weight: 500
-	}
-
-	.banner-text p {
-		font-size: var(--font-m);
-		line-height: 1.3;
 	}
 
 	/* COMPANY CARD */
