@@ -16,7 +16,7 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="mobile-summary" aria-hidden="true" id="mobile-summary">
-		<img class="logo-main" src="<?php echo $company->logo ?>">
+		<img class="mobile-summary-logo" src="<?php echo $company->logo ?>">
 		<div class="mobile-summary-title">
 			<h3><?php echo $company->name ?></h3>
 			<div class="button-icon-small">
@@ -30,16 +30,16 @@
 			<div class="company-sticky">
 				<div class="box-panel" id="company-panel">
 					<section class="company-about">
-						<div class="logo-main">
-							<img src="<?php echo $company->logo ?>" alt="<?php echo $company->name ?> logo" >
-						</div>
+						<img class="logo-main"
+							src="<?php echo $company->logo ?>"
+							alt="<?php echo $company->name ?> logo">
 						<?php
 							if (isset($user) && $user->isAdmin())
 							{ echo '<input type="text" value="', $company->name, '">'; }
 							else
 							{ echo '<h1>', $company->name, '</h1>'; }
 						?>
-						<ul class="tag-area">
+						<ul>
 							<li>
 								<?php echo implode('</li><li>', $company->tags) ?>
 							</li>
@@ -51,7 +51,9 @@
 					</section>
 					<hr>
 					<section class="company-description">
-						<h3><?php printf(TEXT[6], $company->name) ?></h3>
+						<h3>
+							<?php printf(TEXT[6], $company->name) ?>
+						</h3>
 						<?php
 							if (isset($user) && $user->isAdmin())
 							{ echo '<textarea>', $company->description, '</textarea><br>'; }
@@ -60,42 +62,10 @@
 						?>
 					</section>
 					<hr>
-	<!--
-					<section class="companyAddress">
-
-						<h3><?php echo TEXT[7] ?></h3>
-						<p><?php echo $company->address ?></p>
-					</section>
-					<section class="companyWhy">
-						<hr>
-						<h3><?php printf(TEXT[0], $company->name) ?></h3>
-						<ul>
-							<li>
-								<div class="ItemLabel">
-									<div class="GoogleReview">
-											4,8
-											<span class="ReviewScale">/5</span>
-									</div>
-									Google review
-								</div>
-							</li>
-							<li>
-								<div class="ItemLabel">
-									<img src="/static/badge/sustainability.svg">
-									Sostenible
-								</div>
-							</li>
-							<li>
-								<div class="ItemLabel">
-									<img src="/static/badge/social-impact.svg">
-									Compromiso social
-								</div>
-							</li>
-						</ul>
-					</section>
-	-->
 					<section class="company-contact">
-						<h3><?php printf(TEXT[1], $company->name) ?></h3>
+						<h3>
+							<?php printf(TEXT[1], $company->name) ?>
+						</h3>
 						<ul>
 							<?php if ($company->instagram->pageURL != ''): ?>
 								<li>
@@ -168,11 +138,13 @@
 		</section>
 		<main class="column-main">
 			<?php if (isset($company->instagram)): ?>
-				<section class="instagram"><section>
+				<section class="instagram">
 					<h2><?php printf(TEXT[2], $company->name) ?></h2>
 					<div class="box">
 						<div class="instagram-info">
-							<h3><?php echo $company->instagram->profileName ?></h3>
+							<h3>
+								<?php echo $company->instagram->profileName ?>
+							</h3>
 							<p>
 								<?php echo $company->instagram->getHtmlBiography() ?><br>
 								<a id="ig-external-url" href="<?php echo $company->instagram->externalLink ?>" target="_blank" rel="noopener">
@@ -237,7 +209,7 @@
 							<?php echo TEXT[5] ?>
 						</a>
 					</div>
-				</section></section>
+				</section>
 			<?php endif ?>
 			<div class="button-icon center" onclick="goBack()">
 				<img src="/static/icon/arrow-circle-left.svg" alt="">

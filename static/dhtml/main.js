@@ -79,11 +79,10 @@ function showNavbar()
 }
 
 // Go back to previous page
-
 function goBack() {
 	const referrer = document.referrer;
 
-	if (referrer.includes("wuwana") || referrer.includes("localhost") == true)
+	if (referrer.includes("wuwana") || referrer.includes(":8000") == true)
 	{
 		window.history.back();
 	} 
