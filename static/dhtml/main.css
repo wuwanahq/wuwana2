@@ -963,10 +963,6 @@ footer details summary::-webkit-details-marker {
 	}
 
 	/* ----- COMPONENTS ----- */
-	.header-invisible { /* used to make the header layout */
-		display: none;
-	}
-
 	.header-icon {
 		display: inline
 	}
