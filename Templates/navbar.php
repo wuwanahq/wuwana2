@@ -47,12 +47,6 @@
 				</div>
 				<?php if ($url != $sectionURL) { echo '</a>'; } ?>
 			<?php endforeach ?>
-<<<<<<< HEAD:Templates/admin menu.php
-		</section>
-	</div>
-	<div id="version">Wuwana v2.1.14</div>
-</div>
-=======
 		<?php endif ?>
 	</section>
 </section>
@@ -60,4 +54,3 @@
 	{ echo '<div id="version">Wuwana v2.1.12</div>'; }
 ?>
 <div class="navbar-background" id="navbar-background" onclick="showNavbar()"></div>
->>>>>>> v22-design:Templates/navbar.php
