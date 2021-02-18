@@ -24,7 +24,6 @@
 			<?php echo $company->region ?>
 			</div>
 		</div>
-		
 	</div>
 	<div class="container">
 		<section class="column-left">
@@ -41,7 +40,9 @@
 							{ echo '<h1>', $company->name, '</h1>'; }
 						?>
 						<ul class="tag-area">
-							<li><?php echo implode('</li><li>', $company->visibleTags) ?></li>
+							<li>
+								<?php echo implode('</li><li>', $company->tags) ?>
+							</li>
 						</ul>
 						<div class="button-icon-small margin-t16">
 							<img src="/static/icon/tiny/map.svg" alt="">
@@ -165,7 +166,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="column-main">
+		<main class="column-main">
 			<?php if (isset($company->instagram)): ?>
 				<section class="instagram"><section>
 					<h2><?php printf(TEXT[2], $company->name) ?></h2>
@@ -242,7 +243,7 @@
 				<img src="/static/icon/arrow-circle-left.svg" alt="">
 				<?php echo TEXT[4] ?>
 			</div>
-		</section>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>

@@ -13,5 +13,6 @@ const TEXT = [
 10 => 'What is Wuwana?',
 11 => 'Contact us',
 12 => '⚠️ Warning ⚠️: this site is under construction. Some information might not be correct.',
-13 => 'Hello, visitor!'
+13 => 'Hello, visitor!',
+14 => 'Filter',
 ];

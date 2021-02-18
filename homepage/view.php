@@ -44,7 +44,7 @@
 				</div>
 			</section>
 		</section>
-		<section class="column-main">
+		<main class="column-main">
 			<div class="information-error-box">
 				<div class="information-error-vertical"></div>
 				<h2><?php echo TEXT[12] ?></h2>
@@ -54,10 +54,10 @@
 				<h2>Coffee</h2>
 			</div>
 			<section>
-				<div style="display: flex; justify-content:space-between; align-items:center; margin-bottom: 8px">
+				<div class="search-title">
 					<h2 style="margin:0"><?php echo TEXT[5] ?></h2>
 					<div class="dropdown-caret mobile" onclick="showFilter()">
-						Filter
+						<?php echo TEXT[14] ?>
 						<img src="/static/icon/gray/chevron-down.svg" alt="">
 					</div>
 				</div>
@@ -90,7 +90,7 @@
 				<img src="/static/icon/plus.svg" alt="">
 				<?php echo TEXT[6] ?>
 			</a>
-		</section>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>
