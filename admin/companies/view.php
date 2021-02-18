@@ -14,7 +14,7 @@
 		<section class="column-left">
 			<?php include 'Templates/navbar.php' ?>
 		</section>
-		<div class="column-main">
+		<main class="column-main">
 			<section>
 				<h2>Add new company</h2>
 				<div class="box pad-16" id="new-company">
@@ -85,7 +85,6 @@
 									</div>
 									<input type="text" id="following" name="following" size="6" readonly class="form-input">
 								</div>
-								<input type="text" id="posts" name="posts" size="6" class="form-input">
 							</div>
 						</section>
 						<hr>
@@ -102,7 +101,7 @@
 								</div>
 								<input type="text" id="following" name="following" size="6" class="form-input">
 							</div>
-						</div>
+						</section>
 						<input type="text" id="ProfilePicURL" name="ProfilePicURL">
 						<input type="text" id="ThumbnailSrc0" name="ThumbnailSrc0">
 						<input type="text" id="ThumbnailSrc1" name="ThumbnailSrc1">
@@ -134,9 +133,9 @@
 							<tbody>
 								<?php foreach ($companies as $company): ?>
 									<tr>
-										<td><div class="logo-small">
-											<img src="/static/image/schemekle.jpg">
-										</div></td>
+										<td>
+											<img class="logo-small" src="<?php echo $company->logo ?>">
+										</td>
 										<td title="<?php echo $company->description ?>">
 											<a href="<?php echo '/', $company->permalink ?>">
 												<?php echo $company->name ?>
@@ -156,7 +155,7 @@
 					</div>
 				</div>
 			</section>
-		</div>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>
