@@ -37,6 +37,7 @@
 							else
 							{ echo strtoupper($language->code); }
 						?>
+						▾
 					</span>				
 				</summary>
 				<?php

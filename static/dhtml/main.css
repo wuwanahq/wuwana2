@@ -130,6 +130,16 @@ a:visited {
 }
 
 /* ----- INPUT CSS ----- */
+input[type=text],
+input[type=url],
+textarea {
+	width: 100%;
+	margin: 0 0 8px;
+	padding: 4px 8px;
+	border-radius: 8px;
+	border: 1px solid var(--grey200);
+	font-size: 1rem;
+}
 
 input[type="checkbox"] {
 	width: 16px;
@@ -172,30 +182,24 @@ dl dd label {
 .form-layout-column {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 16px;
+	margin-bottom: 8px;
+}
+
+.form-layout-column label {
+	font-size: var(--font-s);
+	font-weight: 400;
+	color: var(--grey700);
+	margin-bottom: 4px;
 }
 
 .form-layout-row {
 	display: flex;
 	flex-direction: row;
-	margin-bottom: 16px;
-}
-
-.form-label-wrapper {
-	margin: 0 0 4px;
-}
-
-.form-label {
-	font-size: var(--font-s);
-	font-weight: 500;
-}
-
-.form-input {
 	margin: 0;
-	padding: 4px 8px;
-	border-radius: 8px;
-	border: 1px solid var(--grey500);
-	font-size: var(--font-m);
+}
+
+.form-layout-row .form-layout-column {
+	margin-right: 16px;
 }
 
 /* ----- CSS TO MAKE THE LAYOUT ----- */
