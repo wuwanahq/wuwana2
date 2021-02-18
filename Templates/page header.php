@@ -10,7 +10,15 @@
 				<img src="/static/icon/arrow-circle-left.svg" alt="back arrow icon">
 			</div>
 		<?php endif ?>
-		<div class="header-logo"><a href="/"><img id="logo" src="/static/logo/website.svg" alt="wuwana logo"></a></div>
+		<div class="header-logo">
+			<a href="/">
+				<picture>
+					<source media="(max-width: 500px)" srcset="/static/logo/w-logo.svg" alt="wuwana logo">
+					<source media="(min-width: 500px)" srcset="/static/logo/website.svg" alt="wuwana logo">
+					<img src="/static/logo/website.svg" alt="wuwana logo">
+				</picture>
+			</a>
+		</div>
 		<?php if (isset($user) && $user->isLogin()): ?>
 			<span>
 				<?php
