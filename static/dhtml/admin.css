@@ -92,7 +92,7 @@ tr:nth-child(even) {
 }
 
 .box-table .disabled-text {
-	color: #8b8989;
+	color: var(--grey700);
 	font-style: italic;
 }
 
@@ -109,13 +109,17 @@ tr:nth-child(even) {
 .form-layout-column {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 16px;
+	margin-bottom: 8px;
 }
 
 .form-layout-row {
 	display: flex;
 	flex-direction: row;
-	margin-bottom: 16px;
+	margin: 0;
+}
+
+.form-layout-row .form-layout-column {
+	margin-right: 16px;
 }
 
 .form-label-wrapper {
@@ -123,8 +127,9 @@ tr:nth-child(even) {
 }
 
 .form-label {
-	font-size: 0.875rem;
-	font-weight: 500;
+	font-size: var(--font-s);
+	font-weight: 400;
+	color: var(--grey700);
 }
 
 .form-input {
@@ -135,10 +140,28 @@ tr:nth-child(even) {
 	font-size: 1rem;
 }
 
+
+
 /* ----- ADMIN TABS -----*/
 /* Company Tab */
 #section-table #box-table .scroll-h table .logo-small {
 	margin: auto;
+}
+
+.box hr {
+	margin-bottom: 16px;
+	background-color: var(--grey200);
+}
+
+#new-company section {
+	margin-bottom: 8px;
+}
+
+#new-company img {
+	border-radius: 8px;
+	min-height: 40px;
+	max-width: 40px;
+	margin-bottom: 8px;
 }
 
 @media screen and (max-width: 800px) {
