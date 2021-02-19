@@ -19,6 +19,7 @@
 				</picture>
 			</a>
 		</div>
+		<?php include 'Templates/search.php' ?>
 		<?php if (isset($user) && $user->isLogin()): ?>
 			<span>
 				<?php
