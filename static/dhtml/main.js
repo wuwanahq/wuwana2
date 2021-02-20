@@ -148,3 +148,16 @@ window.addEventListener("resize", () =>
 		}
 	}
 })
+
+// For the search
+
+
+
+function test() {
+	const search = document.getElementById("search-suggestion");
+	if (search.style.display == "block"){
+		search.style.display = "none";
+	} else {
+		search.style.display = "block";
+	}
+}

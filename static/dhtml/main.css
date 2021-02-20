@@ -675,7 +675,7 @@ dl dd label {
 	align-items: center;
 	width: 100%;
 	padding: 0 16px;
-	max-width: 1200px} /* Same as body max width */
+	max-width: 1232px} /* Body max width + padding left and right 16px  */
 
 .header-logo {
 	height: 24px;
@@ -697,23 +697,20 @@ dl dd label {
 /* SEARCH */
 
 .search {
-	position: relative;
-	display: flex;
-	width: 100%;
-	max-width: 400px;
-	height: 32px;
-	background-color: var(--white);
-	align-items: center;
-	margin-inline-start: auto;
-	padding: 0;
-	padding-inline-start: 4px;
-	border: 1px solid var(--grey200);
-	border-radius: 8px;
+	margin-left: auto;
+	width: 400px;
 }
 
 .search form {
-	width: 100%;
-	margin-inline-end: 8px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 32px;
+	padding: 0;
+	padding-inline-start: 8px;
+	background-color: var(--white);
+	border: 1px solid var(--grey200);
+	border-radius: 8px;
 }
 
 .search input[type=search] {
@@ -722,16 +719,25 @@ dl dd label {
 	font-size: 1rem;
 	color: var(--grey700);
 	padding: 0;
+	margin-inline-end: 4px;
 }
 
 .search input[type=search]:focus {
 	outline: none;
 }
 
-#search-btn {
-	padding: 3px 8px 1px; /* to visually center the icon */ 
-	border-radius: 0 8px 8px 0;
+.search-btn {
+	margin: 0;
+	border: none;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	background-image: url(/static/icon/gray/search.svg);
+	background-repeat: no-repeat;
+	background-position: center;
 	background-color: var(--grey200);
+	height: 100%;
+	width: 48px;
+	cursor: pointer;
 }
 
 .search-suggestion {
@@ -752,6 +758,10 @@ dl dd label {
 	list-style: none;
 	width: 100%;
 	padding: 8px;
+
+	background-image: url(/static/icon/gray/chevron-right.svg);
+	background-repeat: no-repeat;
+	background-position: 98% center;
 }
 
 .search-suggestion li:hover {
@@ -974,6 +984,7 @@ footer details summary::-webkit-details-marker {
 	}
 
 	/* ----- COMPONENTS ----- */
+
 	.header-icon {
 		display: inline
 	}
@@ -1101,4 +1112,34 @@ footer details summary::-webkit-details-marker {
 	.header-container {
 		padding-right: 8px;
 	}
+
+	/* SEARCH */
+
+	.search {
+		position: fixed;
+		top: 0; left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: var(--white);
+	}
+
+	.search form {
+		height: 48px;
+		padding: 0;
+		padding-inline-start: 8px;
+		background-color: var(--white);
+		border: none;
+		border-radius: 0;
+	}
+
+	.search-btn {
+		min-width: 48px;
+		border-radius: 0;
+	}
+
+	.search-suggestion {
+		top: 48px;
+		border-radius: 0;
+	}
+
 }
