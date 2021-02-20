@@ -662,7 +662,7 @@ dl dd label {
 	position: sticky;
 	top: 0;
 	left: 0;
-	height: 56px;
+	height: 48px;
 	width: 100vw;
 	background-color: var(--white);
 	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
@@ -679,7 +679,7 @@ dl dd label {
 
 .header-logo {
 	height: 24px;
-	margin-right: 16px;
+	margin-inline-end: 32px;
 }
 
 .header-icon {
@@ -697,20 +697,23 @@ dl dd label {
 /* SEARCH */
 
 .search {
+	position: relative;
 	display: flex;
 	width: 100%;
 	max-width: 400px;
-	height: 40px;
+	height: 32px;
 	background-color: var(--white);
 	align-items: center;
 	margin-inline-start: auto;
-	padding: 0 8px;
+	padding: 0;
+	padding-inline-start: 4px;
 	border: 1px solid var(--grey200);
 	border-radius: 8px;
 }
 
 .search form {
 	width: 100%;
+	margin-inline-end: 8px;
 }
 
 .search input[type=search] {
@@ -725,9 +728,34 @@ dl dd label {
 	outline: none;
 }
 
-#search-icon {
-	padding-top: 2px; /* to visually center the icon */
-	margin-inline-end: 4px;
+#search-btn {
+	padding: 3px 8px 1px; /* to visually center the icon */ 
+	border-radius: 0 8px 8px 0;
+	background-color: var(--grey200);
+}
+
+.search-suggestion {
+	position: absolute;
+	top: 44px;left: 0;
+	width: 100%;
+	background-color: var(--white);
+	border: 1px solid var(--grey200);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.search-suggestion a {
+	color: var(--black);
+}
+
+.search-suggestion li {
+	list-style: none;
+	width: 100%;
+	padding: 8px;
+}
+
+.search-suggestion li:hover {
+	background-color: var(--grey200);
 }
 
 /* FOOTER */
@@ -1068,5 +1096,9 @@ footer details summary::-webkit-details-marker {
 {
 	body {
 		padding: 0 8px 24px;
+	}
+
+	.header-container {
+		padding-right: 8px;
 	}
 }
