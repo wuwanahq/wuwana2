@@ -3,7 +3,7 @@
 		<div class="search-icon" onclick="searchMobileClear()">
 			<img src="/static/icon/arrow-left.svg">
 		</div>
-		<input type="search" id="user-search" placeholder="Search" onclick="searchMobile()">
+		<input type="search" id="user-search" placeholder="Search" onfocus="searchMobile()">
 		<button class="search-btn"></button>
 		<div class="search-suggestion" id="search-suggestion">
 				<!-- Auto suggestion created by JS -->

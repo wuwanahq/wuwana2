@@ -122,7 +122,7 @@ window.addEventListener("resize", () =>
 {
 	bkg.style.display = "none";
 	body.style.overflow = "auto";
-	search.classList.remove("search-fixed"); //remove mobile search window
+	searchMobileClear(); //clear all search
 
 	if (window.innerWidth > 800) 
 	{
@@ -195,6 +195,8 @@ function searchMobile() {
 }
 
 function searchMobileClear() {
+	searchInput.value = ""; // clear input value
+	searchSuggestion.style.display = "none";
 	search.classList.remove("search-fixed");
 	body.style.overflow = "auto";
 }
