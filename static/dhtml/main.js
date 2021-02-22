@@ -150,14 +150,15 @@ window.addEventListener("resize", () =>
 })
 
 // For the search
+const search = document.getElementById("search");
+const searchIcon = document.querySelectorAll("search-icon");
 
-
-
-function test() {
-	const search = document.getElementById("search-suggestion");
-	if (search.style.display == "block"){
-		search.style.display = "none";
-	} else {
-		search.style.display = "block";
+function searchMobile() {
+	if (window.innerWidth < 500) {
+		search.classList.add("search-fixed");
 	}
+}
+
+function searchMobileClear() {
+	search.classList.remove("search-fixed");
 }

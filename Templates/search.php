@@ -1,9 +1,10 @@
-<div class="search">
+<div class="search" id="search">
 	<form>
-		<div class="header-icon" onclick="goBack()">
+		<div class="search-icon" onclick="searchMobileClear()">
 			<img src="/static/icon/arrow-left.svg">
 		</div>
-		<input type="search" id="user-search" placeholder="Search" onclick="test()">
+		<input type="search" id="user-search" placeholder="Search" onclick="searchMobile()">
+		<button class="search-btn"></button>
 		<div class="search-suggestion" id="search-suggestion">
 				<a href="/wuwana">
 					<li>Wuwana</li>
@@ -21,7 +22,6 @@
 					<li>Coffee</li>
 				</a>
 		</div>
-		<button onclick="test()" class="search-btn"></button>
 	</form>
 </div>
 
