@@ -122,6 +122,7 @@ window.addEventListener("resize", () =>
 {
 	bkg.style.display = "none";
 	body.style.overflow = "auto";
+	search.classList.remove("search-fixed"); //remove mobile search window
 
 	if (window.innerWidth > 800) 
 	{
@@ -151,14 +152,49 @@ window.addEventListener("resize", () =>
 
 // For the search
 const search = document.getElementById("search");
+const searchInput = document.getElementById("user-search");
+const searchSuggestion = document.getElementById("search-suggestion");
 const searchIcon = document.querySelectorAll("search-icon");
 
+searchInput.onkeyup = (e) => {
+	let userData = e.target.value; //user entered data
+	let emptyArray = [];
+	
+	if (userData) {
+		searchSuggestion.style.display = "block"; // Show suggestion box
+		showSuggestions(emptyArray);
+	}
+	else 
+	{
+		searchSuggestion.style.display = "none";
+	}
+}
+
+function showSuggestions(list){
+    let listData;
+	let userValue;
+
+    if(!list.length)
+	{
+        userValue = searchInput.value;
+        listData = '<a href="/"><li>'+ userValue +'</li></a><hr>';
+    }
+	else
+	{
+        listData = list.join('');
+    }
+    searchSuggestion.innerHTML = listData;
+}
+
+// Search Mobile
 function searchMobile() {
 	if (window.innerWidth < 500) {
 		search.classList.add("search-fixed");
+		body.style.overflow = "hidden";
 	}
 }
 
 function searchMobileClear() {
 	search.classList.remove("search-fixed");
+	body.style.overflow = "auto";
 }

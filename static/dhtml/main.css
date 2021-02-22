@@ -1128,14 +1128,6 @@ footer details summary::-webkit-details-marker {
 
 	/* SEARCH */
 
-	/* .search {
-		position: fixed;
-		top: 0; left: 0;
-		width: 100vw;
-		height: 100vh;
-		background-color: var(--white);
-	} */
-
 	.search-fixed {
 		position: fixed;
 		top: 0; left: 0;
