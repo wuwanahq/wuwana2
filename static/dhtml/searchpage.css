@@ -81,7 +81,7 @@
 .company-card-info ul {
 	padding-inline-start: 0;
 	display: flex;
-	margin: 0;
+	margin: 0 0 8px;
 }
 
 .company-card-info li {

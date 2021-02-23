@@ -27,6 +27,10 @@ require 'Templates/text ' . $language->code . '.php';
 
 switch ($url)
 {
+	case '/test':
+		require 'test/view.php';
+		break;
+
 	case '/':
 		require 'homepage/text ' . $language->code . '.php';
 		require 'homepage/controller.php';
