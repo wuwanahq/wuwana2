@@ -48,5 +48,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		{ $output .= '<hr>'; }
 	}
 
-	echo $output;
+	echo '<hr>' . $output;
 }
