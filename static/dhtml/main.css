@@ -147,6 +147,12 @@ input[type="checkbox"] {
 	margin: 0 8px 0 0;
 }
 
+input::placeholder {
+	font-size: var(--font-s);
+	font-style: italic;
+	color: var(--grey500);
+}
+
 /* The Description List Element */
 
 dl {
@@ -792,7 +798,6 @@ footer {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	z-index: -1;
 }
 
 footer ul {

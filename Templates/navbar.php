@@ -17,7 +17,7 @@
 			<p><?php echo TEXT[9] ?></p>
 		<?php else: ?>
 			<h2>Administrator's name</h2>
-			<a href="#">
+			<a href="/">
 				<div class="icon-label-h">
 					<img src="/static/icon/gray/close.svg" alt="">
 					Logout
