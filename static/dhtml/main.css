@@ -301,8 +301,10 @@ dl dd label {
 	border-bottom-right-radius: 8px;
 }
 
-.card:hover {
-	background-color: var(--grey50)
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	.card:hover {
+		background-color: var(--grey50)
+	}
 }
 
 /* ----- BUTTONS ----- */
@@ -343,17 +345,6 @@ dl dd label {
 	cursor: not-allowed;
 }
 
-@media (hover: hover) { /* To eliminate hover effect on mobile */
-	.button-main a:hover {
-		color: var(--white);
-	}
-	
-	.button-main:hover {
-		color: var(--white);
-		background-color: var(--black)
-	}
-}
-
 /* Secondary Button */
 
 .button-second {
@@ -368,12 +359,6 @@ dl dd label {
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
 	white-space: nowrap;
-}
-
-@media (hover: hover) { /* To eliminate hover effect on mobile */
-	.button-second:hover {
-		background-color:  var(--grey700);
-	}
 }
 
 .button-second:disabled {
@@ -472,16 +457,6 @@ dl dd label {
 	cursor: not-allowed;
 }
 
-@media (hover: hover) { /* To eliminate hover effect on mobile */
-	.button-social:hover {
-		background-color: var(--black);
-	}
-	
-	.button-social:hover img {
-		filter: invert(100%);
-	}
-}
-
 /* Pill */
 
 .pill {
@@ -496,10 +471,6 @@ dl dd label {
 	border-radius: 100px; /* large number to make the shape */
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer
-}
-
-.pill:hover {
-	background-color: var(--grey200);
 }
 
 .pill:disabled {
@@ -520,10 +491,6 @@ dl dd label {
 	font-weight: 400;
 }
 
-.icon-label-h:hover {
-	background-color: var(--grey200);
-}
-
 .icon-label-h img {
 	margin-right: 8px;
 }
@@ -539,6 +506,44 @@ dl dd label {
 
 .dropdown-caret img {
 	margin-inline-start: 4px;
+}
+
+/* Buttons Hover */
+
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	/* Button Main */
+	.button-main a:hover {
+		color: var(--white);
+	}
+	
+	.button-main:hover {
+		color: var(--white);
+		background-color: var(--black)
+	}
+
+	/* Button Secondary */
+	.button-second:hover {
+		background-color:  var(--grey700);
+	}
+
+	/* Button Social */
+	.button-social:hover {
+		background-color: var(--black);
+	}
+	
+	.button-social:hover img {
+		filter: invert(100%);
+	}
+
+	/* Pill */
+	.pill:hover {
+		background-color: var(--grey200);
+	}
+
+	/* Icon Label Horizontal */
+	.icon-label-h:hover {
+		background-color: var(--grey200);
+	}
 }
 
 /* ----- COMPONENTS ----- */
