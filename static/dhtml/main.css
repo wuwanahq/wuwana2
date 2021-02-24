@@ -335,21 +335,23 @@ dl dd label {
 	color: var(--black);
 }
 
-.button-main a:hover {
-	color: var(--white);
-}
-
-.button-main:hover {
-	color: var(--white);
-	background-color: var(--black)
-}
-
 .button-main:disabled {
 	background-color: var(--grey200);
 	color:  var(--grey700);
 	border-style: none;
 	box-shadow: none;
 	cursor: not-allowed;
+}
+
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	.button-main a:hover {
+		color: var(--white);
+	}
+	
+	.button-main:hover {
+		color: var(--white);
+		background-color: var(--black)
+	}
 }
 
 /* Secondary Button */
@@ -368,8 +370,10 @@ dl dd label {
 	white-space: nowrap;
 }
 
-.button-second:hover {
-	background-color:  var(--grey700);
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	.button-second:hover {
+		background-color:  var(--grey700);
+	}
 }
 
 .button-second:disabled {
@@ -408,21 +412,23 @@ dl dd label {
 	color: var(--black);
 }
 
-.button-icon a:hover {
-	color: var(--white);
-}
-
 .button-icon img {
 	margin-right: 4px;
 }
 
-.button-icon:hover {
-	color: var(--white);
-	background-color: var(--black)
-}
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	.button-icon a:hover {
+		color: var(--white);
+	}
 
-.button-icon:hover img {
-	filter: invert(100%)
+	.button-icon:hover {
+		color: var(--white);
+		background-color: var(--black)
+	}
+	
+	.button-icon:hover img {
+		filter: invert(100%)
+	}
 }
 
 /* Small Button with Left Icon(14px) */
@@ -461,17 +467,19 @@ dl dd label {
 	margin: 8px;
 }
 
-.button-social:hover {
-	background-color: var(--black);
-}
-
-.button-social:hover img {
-	filter: invert(100%);
-}
-
 .button-social:disabled {
 	background-color: var(--grey200);
 	cursor: not-allowed;
+}
+
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	.button-social:hover {
+		background-color: var(--black);
+	}
+	
+	.button-social:hover img {
+		filter: invert(100%);
+	}
 }
 
 /* Pill */
@@ -694,10 +702,13 @@ dl dd label {
 	margin-inline-start: -8px;
 	margin-inline-end: 8px;
 	cursor: pointer;
-	display: none;}
+	display: none;
+}
 
-.header-icon:hover {
-	background-color:var(--grey200)
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	.header-icon:hover {
+		background-color:var(--grey200)
+	}
 }
 
 /* SEARCH */
