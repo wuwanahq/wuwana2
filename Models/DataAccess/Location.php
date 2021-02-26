@@ -11,34 +11,36 @@ class Location extends DataAccess
 	static function getTableSchema()
 	{
 		return 'create table Location (
-			ID smallint primary key,
 			CountryCode char(2) not null,
-			RegionName varchar(255) not null)';
+			ProvinceID varchar(6),
+			foreign key(ProvinceID) references Province(ProvinceID))';
 	}
 
 	public function insertData($filePath)
 	{
 		parent::importData($filePath, 'Location', [
-			'ID'          => PDO::PARAM_INT,
 			'CountryCode' => PDO::PARAM_STR,
-			'RegionName'  => PDO::PARAM_STR,
+			'ProvinceID'  => PDO::PARAM_STR
 		]);
 	}
 
 	//TODO: public function exportData()
 
-	public function selectUsefulItemsOnly($countryCode)
+	public function selectUsefulItemsOnly($countryCode,$language)
 	{
-		return $this->fetchQuery("select * from Location where CountryCode='" . $countryCode[0] . $countryCode[1]
-			. "' and ID in (select LocationID from Company)");
+		return $this->fetchQuery("select distinct Province.ProvinceID,Region.RegionID, Region.EN, Region.ES, 
+            Region.FR,Region.ZH,Location.CountryCode FROM Region inner join Province on Region.RegionID=Province.RegionID 
+            inner JOIN Location on Location.ProvinceID=Province.ProvinceID where 
+            Location.CountryCode='" .$countryCode[0] . $countryCode[1]. "' and Province.ProvinceID
+            in (select ProvinceID from Company);",$language);
 	}
 
 	public function selectCountry($code)
 	{
-		return $this->fetchQuery("select ID,RegionName from Location where CountryCode='" . $code[0] . $code[1] . "'");
+		return $this->fetchQuery("select CountryCode,ProvinceID from Location where CountryCode='" . $code[0] . $code[1] . "'");
 	}
 
-	private function fetchQuery($sql)
+	private function fetchQuery($sql,$language)
 	{
 		$stmt = $this->pdo->query($sql);
 
@@ -50,9 +52,12 @@ class Location extends DataAccess
 
 		$locations = [];
 
-		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-		{ $locations[(int)$row['ID']] = $row['RegionName']; }
+        $provinceNameLanguage = strtoupper($language);
 
-		return $locations;
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+		{ $locations[$row['RegionID']] = $row["$provinceNameLanguage"];  }
+
+        return $locations;
 	}
+
 }

@@ -24,11 +24,13 @@ class Company extends DataAccess
 			PhonePrefix tinyint not null,
 			PhoneNumber int not null,
 			Address varchar(255) not null,
-			LocationID smallint not null,
+			ProvinceID varchar(6) not null,
 			FirstTagID varchar(250) not null,
 			SecondTagID varchar(250) not null,
 			OtherTags varchar(255) not null,
-			LastUpdate int not null)';
+			LastUpdate int not null,
+			PostalCode varchar(255),
+			foreign key(ProvinceID) references Province(ProvinceID))';
 	}
 
 	public function insertData($filePath)
@@ -44,11 +46,12 @@ class Company extends DataAccess
 			'PhonePrefix' => PDO::PARAM_INT,
 			'PhoneNumber' => PDO::PARAM_INT,
 			'Address'     => PDO::PARAM_STR,
-			'LocationID'  => PDO::PARAM_INT,
+			'ProvinceID'  => PDO::PARAM_STR,
 			'FirstTagID'  => PDO::PARAM_STR,
 			'SecondTagID' => PDO::PARAM_STR,
 			'OtherTags'   => PDO::PARAM_STR,
 			'LastUpdate'  => PDO::PARAM_INT,
+            'PostalCode'  => PDO::PARAM_STR
 		]);
 	}
 
@@ -64,16 +67,18 @@ class Company extends DataAccess
 	 */
 	public function selectPermalink($permalink, $tagsLanguage)
 	{
-		$sql = 'select
+		$sql = "select
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
 			Company.Description as CompanyDescription,
 			Company.Website as CompanyWebsite,
 			Company.Email as CompanyEmail,
 			Company.Address as CompanyAddress,
-			Location.RegionName as LocationRegionName,
+			Province.$tagsLanguage as LocationProvince,
 			Company.PhonePrefix as CompanyPhonePrefix,
 			Company.PhoneNumber as CompanyPhoneNumber,
+			Company.PostalCode as CompanyPostalCode,
+			
 			T1.Names as TagName1,
 			T2.Names as TagName2,
 			SocialMedia.URL as SocialMediaURL,
@@ -86,12 +91,12 @@ class Company extends DataAccess
 			Image.URL as ImageURL,
 			Company.LastUpdate as CompanyLastUpdate
 			from Company
-			inner join Location on Company.LocationID=Location.ID
+			left join Province on Company.ProvinceID=Province.ProvinceID
 			inner join SocialMedia on Company.ID=SocialMedia.CompanyID
 			left join Image on SocialMedia.CompanyID=Image.CompanyID and SocialMedia.ID=Image.SocialMediaID
 			left join Tag as T1 on Company.FirstTagID=T1.ID
 			left join Tag as T2 on Company.SecondTagID=T2.ID
-			where Company.PermaLink=?';
+			where Company.PermaLink=?";
 
 		$query = $this->pdo->prepare($sql);
 
@@ -116,8 +121,9 @@ class Company extends DataAccess
 				$company->website = $row['CompanyWebsite'];
 				$company->email = $row['CompanyEmail'];
 				$company->address = $row['CompanyAddress'];
-				$company->region = $row['LocationRegionName'];
+				$company->region = $row['LocationProvince'];
 				$company->lastUpdate = $row['CompanyLastUpdate'];
+				$company->postalCode = $row['CompanyPostalCode'];
 
 				if ($row['TagName1'] != '')
 				{
@@ -166,16 +172,17 @@ class Company extends DataAccess
 			Company.Name as CompanyName,
 			Company.Description as CompanyDescription,
 			Company.LastUpdate as CompanyLastUpdate,
-			Location.RegionName as LocationRegionName,
+			Province.EN as LocationProvince,
 			Company.FirstTagID as CompanyFirstTagID,
 			Company.SecondTagID as CompanySecondTagID,
 			Company.OtherTags as CompanyOtherTags,
+			Company.PostalCode as CompanyPostalCode,
 			T1.Names as TagName1,
 			T2.Names as TagName2
 			from Company
 			left join Tag as T1 on Company.FirstTagID=T1.ID
 			left join Tag as T2 on Company.SecondTagID=T2.ID
-			left join Location on Company.LocationID=Location.ID
+			inner join Province on Company.ProvinceID=Province.ProvinceID
 			order by Company.LastUpdate desc');
 
 		$companies = [];
@@ -186,9 +193,11 @@ class Company extends DataAccess
 			$company->permalink = $row['CompanyPermaLink'];
 			$company->name = $row['CompanyName'];
 			$company->description = $row['CompanyDescription'];
-			$company->region = $row['LocationRegionName'];
+			$company->region = $row['LocationProvince'];
 			$company->lastUpdate = $row['CompanyLastUpdate'];
 			$company->otherTags = $row['CompanyOtherTags'];
+
+			$company->postalCode = $row['CompanyPostalCode'];
 
 			if ($row['TagName1'] != '')
 			{
@@ -235,20 +244,25 @@ class Company extends DataAccess
 		if (!empty($regions[0]))
 		{
 			if ($sql == '')
-			{ $sql = ' where Company.LocationID in (' . implode(',', $regions) . ')'; }
+			{ $sql = ' where Province.RegionID in ('.'"' . implode('","', $regions) . '")'; }
 			else
-			{ $sql .= ' and Company.LocationID in (' . implode(',', $regions) . ')'; }
+			{ $sql .= ' and Province.RegionID in ('.'"' . implode('","', $regions) . '")'; }
 		}
+
+		$provinceNameLanguage = strtoupper($tagsLanguage->code);
 
 		$sql = "select
 			Company.PermaLink as CompanyPermaLink,
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
-			Company.LocationID as CompanyLocationID,
+			Province.$provinceNameLanguage as ProvinceName,
+			Company.PostalCode as CompanyPostalCode,
+			
 			T1.Names as TagName1,
 			T2.Names as TagName2
 			from Company
-			inner join Tag as T1 on Company.FirstTagID=T1.ID
+			left join Province on Company.ProvinceID=Province.ProvinceID
+			left join Tag as T1 on Company.FirstTagID=T1.ID
 			left join Tag as T2 on Company.SecondTagID=T2.ID
 			$sql order by Company.LastUpdate desc";
 
@@ -277,7 +291,10 @@ class Company extends DataAccess
 			//$company->website = $row['Website'];
 			//$company->phone = $row['PhonePrefix'] . str_pad($row['PhoneNumber'], 9, '0', STR_PAD_LEFT);
 			//$company->email = $row['Email'];
-			$company->region = (int)$row['CompanyLocationID'];
+
+            $company->postalCode = $row['CompanyPostalCode'];
+
+			$company->region = $row['ProvinceName'];
 
 			if ($row['TagName1'] != '')
 			{
@@ -333,7 +350,7 @@ class Company extends DataAccess
 
 		$query = $this->pdo->prepare('update Company
 			set Name=?,Description=?,LogoURL=?,Website=?,PhonePrefix=?,PhoneNumber=?,
-				Email=?,Address=?,LocationID=?,FirstTagID=?,SecondTagID=?,OtherTags=?,LastUpdate=?
+				Email=?,Address=?,ProvinceID=?,FirstTagID=?,SecondTagID=?,OtherTags=?,LastUpdate=?,PostalCode=?
 			where ID=?');
 
 		$query->bindValue(1, $company->name, PDO::PARAM_STR);
@@ -349,17 +366,26 @@ class Company extends DataAccess
 		$query->bindValue(11, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
 		$query->bindValue(12, $otherTags, PDO::PARAM_STR);
 		$query->bindValue(13, time(), PDO::PARAM_INT);
-		$query->bindValue(14, $id, PDO::PARAM_INT);
+
+		$query->bindValue(14,$company->postalCode, PDO::PARAM_STR);
+
+		$query->bindValue(15, $id, PDO::PARAM_INT);
 		$query->execute();
 
 		$socialMedia = new SocialMedia($this->pdo);
 		$socialMedia->update($company->instagram, $id);
 	}
 
+    public function fetchProvinceID($postalCode){
+        return $this->fetchQuery("select Province.ProvinceID from Province inner join PostalCode on PostalCode.ProvinceID = Province.ProvinceID where PostalCode.Code ='".$postalCode."'");
+    }
+
 	public function insert(CompanyData $company)
 	{
 		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
 		$i = count($company->otherTags);
+
+		$company->region = empty($company->postalCode) ? $this->fetchProvinceID(null) : $this->fetchProvinceID(substr($company->postalCode,0,2));
 
 		while(strlen($otherTags) > 255)
 		{ $otherTags = implode(self::VALUES_DELIMITER, array_slice($company->otherTags, 0, --$i)); }
@@ -375,8 +401,8 @@ class Company extends DataAccess
 		{
 			$query = $this->pdo->prepare('insert into Company
 				(PermaLink,ID,Name,Description,LogoURL,Website,PhonePrefix,PhoneNumber,
-					Email,Address,LocationID,FirstTagID,SecondTagID,OtherTags,LastUpdate)
-				values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+					Email,Address,ProvinceID,FirstTagID,SecondTagID,OtherTags,LastUpdate,PostalCode)
+				values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
 
 			$query->bindValue(1, ++$i > 1 ? $permalink . $i : $permalink, PDO::PARAM_STR);
 			$query->bindValue(2, $id, PDO::PARAM_INT);
@@ -388,15 +414,35 @@ class Company extends DataAccess
 			$query->bindValue(8, (int)substr($company->phone, -9), PDO::PARAM_INT);
 			$query->bindValue(9, $company->email, PDO::PARAM_STR);
 			$query->bindValue(10, $company->address, PDO::PARAM_STR);
-			$query->bindValue(11, $company->region, PDO::PARAM_INT);
+			$query->bindValue(11, $company->region, PDO::PARAM_STR);
 			$query->bindValue(12, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
 			$query->bindValue(13, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
 			$query->bindValue(14, $otherTags, PDO::PARAM_STR);
 			$query->bindValue(15, time(), PDO::PARAM_INT);
+
+			$query->bindValue(16,$company->postalCode,PDO::PARAM_STR);
 		}
 		while ($query->execute() == false);
 
 		$socialMedia = new SocialMedia($this->pdo);
 		$socialMedia->insert($company->instagram, $id);
 	}
+
+    private function fetchQuery($sql)
+    {
+        $stmt = $this->pdo->query($sql);
+
+        if ($stmt == false)
+        {
+            $this->createDatabase();
+            $stmt = $this->pdo->query($sql);
+        }
+
+        $province = 'ES';
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+        { $province = $row['ProvinceID']; }
+
+        return $province;
+    }
 }

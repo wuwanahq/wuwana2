@@ -93,4 +93,20 @@ class Data
 	{
 		return new DataAccess\Image(self::getPdoInstance());
 	}
+
+
+	public static function getPostalCode()
+    {
+        return new DataAccess\PostalCode(self::$pdoInstance);
+    }
+
+    public static function getRegion()
+    {
+        return new DataAccess\Region(self::$pdoInstance);
+    }
+
+    public static function getProvince()
+    {
+        return new DataAccess\Province(self::$pdoInstance);
+    }
 }
