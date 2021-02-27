@@ -13,7 +13,7 @@ class PostalCode extends DataAccess
     {
         // TODO: Implement getTableSchema() method.
         return 'create table PostalCode(
-            Code int not null primary key,
+            Code varchar(2) not null primary key,
             ProvinceID varchar(6),
             foreign key(ProvinceID) references Province(ProvinceID))';
     }
@@ -25,7 +25,7 @@ class PostalCode extends DataAccess
     {
         // TODO: Implement insertData() method.
         parent::importData($filePath, 'PostalCode', [
-            'Code'          => PDO::PARAM_INT,
+            'Code'          => PDO::PARAM_STR,
             'ProvinceID' => PDO::PARAM_STR
         ]);
     }

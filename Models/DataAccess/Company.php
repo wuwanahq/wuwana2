@@ -29,7 +29,7 @@ class Company extends DataAccess
 			SecondTagID varchar(250) not null,
 			OtherTags varchar(255) not null,
 			LastUpdate int not null,
-			PostalCode varchar(255),
+			PostalCode varchar(2),
 			foreign key(ProvinceID) references Province(ProvinceID))';
 	}
 
@@ -438,7 +438,7 @@ class Company extends DataAccess
             $stmt = $this->pdo->query($sql);
         }
 
-        $province = 'ES';
+        $province = '';
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
         { $province = $row['ProvinceID']; }
