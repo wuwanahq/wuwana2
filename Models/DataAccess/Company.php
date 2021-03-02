@@ -67,6 +67,7 @@ class Company extends DataAccess
 	 */
 	public function selectPermalink($permalink, $tagsLanguage)
 	{
+	    $tagsLanguage = strtoupper($tagsLanguage);
 		$sql = "select
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
