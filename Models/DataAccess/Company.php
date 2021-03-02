@@ -74,6 +74,7 @@ class Company extends DataAccess
 			Company.Website as CompanyWebsite,
 			Company.Email as CompanyEmail,
 			Company.Address as CompanyAddress,
+			Location.RegionName as LocationRegionName,
 			Province.$tagsLanguage as LocationProvince,
 			Company.PhonePrefix as CompanyPhonePrefix,
 			Company.PhoneNumber as CompanyPhoneNumber,
@@ -345,6 +346,12 @@ class Company extends DataAccess
 		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
 		$i = count($company->otherTags);
 
+        if (empty($company->postalCode)){
+            $company->region = $this->fetchProvinceID(null);
+        }else{
+            $company->region = $this->fetchProvinceID(substr($company->postalCode,0,2));
+        }
+
 		while(strlen($otherTags) > 255)
 		{ $otherTags = implode(self::VALUES_DELIMITER, array_slice($company->otherTags, 0, --$i)); }
 
@@ -361,7 +368,7 @@ class Company extends DataAccess
 		$query->bindValue(6, (int)substr($company->phone, -9), PDO::PARAM_INT);
 		$query->bindValue(7, $company->email, PDO::PARAM_STR);
 		$query->bindValue(8, $company->address, PDO::PARAM_STR);
-		$query->bindValue(9, $company->region, PDO::PARAM_INT);
+		$query->bindValue(9, $company->region, PDO::PARAM_STR);
 		$query->bindValue(10, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
 		$query->bindValue(11, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
 		$query->bindValue(12, $otherTags, PDO::PARAM_STR);
@@ -377,7 +384,8 @@ class Company extends DataAccess
 	}
 
     public function fetchProvinceID($postalCode){
-        return $this->fetchQuery("select Province.ProvinceID from Province inner join PostalCode on PostalCode.ProvinceID = Province.ProvinceID where PostalCode.Code ='".$postalCode."'");
+        return $this->fetchQuery("select Province.ProvinceID from Province inner join PostalCode 
+            on PostalCode.ProvinceID = Province.ProvinceID where PostalCode.Code = ?",$postalCode);
     }
 
 	public function insert(CompanyData $company)
@@ -385,7 +393,11 @@ class Company extends DataAccess
 		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
 		$i = count($company->otherTags);
 
-		$company->region = empty($company->postalCode) ? $this->fetchProvinceID(null) : $this->fetchProvinceID(substr($company->postalCode,0,2));
+		if (empty($company->postalCode)){
+		    $company->region = $this->fetchProvinceID(null);
+        }else{
+		    $company->region = $this->fetchProvinceID(substr($company->postalCode,0,2));
+        }
 
 		while(strlen($otherTags) > 255)
 		{ $otherTags = implode(self::VALUES_DELIMITER, array_slice($company->otherTags, 0, --$i)); }
@@ -428,20 +440,22 @@ class Company extends DataAccess
 		$socialMedia->insert($company->instagram, $id);
 	}
 
-    private function fetchQuery($sql)
+    private function fetchQuery($sql,$postalCode)
     {
-        $stmt = $this->pdo->query($sql);
+        $query = $this->pdo->prepare($sql);
+        $query->bindValue(1,$postalCode,PDO::PARAM_STR);
 
-        if ($stmt == false)
+        if ($query == false)
         {
             $this->createDatabase();
-            $stmt = $this->pdo->query($sql);
+            $query = $this->pdo->prepare($sql);
+            $query->bindValue(1,$postalCode,PDO::PARAM_STR);
         }
 
         $province = '';
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-        { $province = $row['ProvinceID']; }
+        while ($row = $query->fetch(PDO::FETCH_ASSOC))
+        {$province = $row['ProvinceID'];}
 
         return $province;
     }

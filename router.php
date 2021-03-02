@@ -62,7 +62,7 @@ switch ($url)
 		}
 
 		// Controller for the company page
-		$company = WebApp\Data::getCompanyInfo(str_replace('/', '', $url), $language->code);
+		$company = WebApp\Data::getCompanyInfo(str_replace('/', '', $url), strtoupper($language->code));
 
 		if ($company instanceof DataAccess\CompanyData)
 		{

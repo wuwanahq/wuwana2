@@ -44,13 +44,13 @@ abstract class DataAccess
 
 		(new Location($this->pdo))->insertData(__DIR__ . '/default data/location.tsv');
 		(new Tag($this->pdo))->insertData(__DIR__ . '/default data/tag.tsv');
-		(new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
 		(new SocialMedia($this->pdo))->insertData( __DIR__ . '/default data/socialmedia.tsv');
 		(new User($this->pdo))->insertData(__DIR__ . '/default data/user.tsv');
 
 		(new Region($this->pdo))->insertData(__DIR__ . '/default data/region.tsv');
-		(new PostalCode($this->pdo))->insertData(__DIR__ . '/default data/postalcode.tsv');
-		(new Province($this->pdo))->insertData(__DIR__ . '/default data/province.tsv');
+        (new Province($this->pdo))->insertData(__DIR__ . '/default data/province.tsv');
+        (new PostalCode($this->pdo))->insertData(__DIR__ . '/default data/postalcode.tsv');
+        (new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
 	}
 
 	private function createTable($sql)
