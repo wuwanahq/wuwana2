@@ -11,7 +11,6 @@ class Region extends DataAccess
 
     static function getTableSchema()
     {
-        // TODO: Implement getTableSchema() method.
         return 'create table Region (
             RegionID varchar(6),
             EN varchar(100),
@@ -23,7 +22,6 @@ class Region extends DataAccess
 
     public function insertData($filePath)
     {
-        // TODO: Implement insertData() method.
         parent::importData($filePath, 'Region', [
             'RegionID' => PDO::PARAM_STR,
             'EN' => PDO::PARAM_STR,
