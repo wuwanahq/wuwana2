@@ -1,9 +1,5 @@
 <?php
-
-
 namespace DataAccess;
-
-
 use PDO;
 
 class PostalCode extends DataAccess

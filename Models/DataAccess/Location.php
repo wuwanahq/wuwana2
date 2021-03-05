@@ -4,7 +4,7 @@ use PDO;
 
 /**
  * Data access layer for stored locations.
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class Location extends DataAccess
 {
@@ -29,7 +29,8 @@ class Location extends DataAccess
 	public function selectUsefulItemsOnly($countryCode,$language)
 	{
 		return $this->fetchQuery("select distinct Province.ProvinceID,Region.RegionID, Region.EN, Region.ES, 
-            Region.FR,Region.ZH,Location.CountryCode FROM Region inner join Province on Region.RegionID=Province.RegionID 
+            Region.FR,Region.ZH,Location.CountryCode
+            FROM Region inner join Province on Region.RegionID=Province.RegionID 
             inner JOIN Location on Location.ProvinceID=Province.ProvinceID where 
             Location.CountryCode='" .$countryCode[0] . $countryCode[1]. "' and Province.ProvinceID
             in (select ProvinceID from Company);",$language);
@@ -37,7 +38,8 @@ class Location extends DataAccess
 
 	public function selectCountry($code)
 	{
-		return $this->fetchQuery("select CountryCode,ProvinceID from Location where CountryCode='" . $code[0] . $code[1] . "'");
+		return $this->fetchQuery(
+			"select CountryCode,ProvinceID from Location where CountryCode='" . $code[0] . $code[1] . "'");
 	}
 
 	private function fetchQuery($sql,$language)
