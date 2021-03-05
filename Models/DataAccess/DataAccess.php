@@ -31,16 +31,26 @@ abstract class DataAccess
 		$this->createTable(User::getTableSchema());
 		$this->createTable(Tag::getTableSchema());
 
-		$this->createTable(Location::getTableSchema());
-		$this->createTable(Company::getTableSchema());
+
 		$this->createTable(SocialMedia::getTableSchema());
 		$this->createTable(Image::getTableSchema());
 
+        $this->createTable(Region::getTableSchema());
+        $this->createTable(Province::getTableSchema());
+        $this->createTable(PostalCode::getTableSchema());
+
+        $this->createTable(Location::getTableSchema());
+        $this->createTable(Company::getTableSchema());
+
 		(new Location($this->pdo))->insertData(__DIR__ . '/default data/location.tsv');
 		(new Tag($this->pdo))->insertData(__DIR__ . '/default data/tag.tsv');
-		(new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
 		(new SocialMedia($this->pdo))->insertData( __DIR__ . '/default data/socialmedia.tsv');
 		(new User($this->pdo))->insertData(__DIR__ . '/default data/user.tsv');
+
+		(new Region($this->pdo))->insertData(__DIR__ . '/default data/region.tsv');
+        (new Province($this->pdo))->insertData(__DIR__ . '/default data/province.tsv');
+        (new PostalCode($this->pdo))->insertData(__DIR__ . '/default data/postalcode.tsv');
+        (new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
 	}
 
 	private function createTable($sql)

@@ -1,0 +1,53 @@
+ProvinceID	EN	ES	FR	ZH	RegionID
+ES-A	Alicante	Alicante	Alicante	阿利坎特	ES-VC
+ES-AB	Albacete	Albacete	Albacete	Albacete	ES-CM
+ES-AL	Almeria	Almería	Almeria	阿尔梅里亚	ES-AN
+ES-AV	Avila	Ávila	Avila	阿维拉	ES-CL
+ES-B	Barcelona	Barcelona	Barcelone	巴塞罗那	ES-CT
+ES-BA	Badajoz	Badajoz	Badajoz	巴达霍斯	ES-EX
+ES-BI	Vizcaya	Vizcaya	Biscaye	Vizcaya	ES-PV
+ES-BU	Burgos	Burgos	Burgos	布尔戈斯	ES-CL
+ES-C	La Coruña	La Coruña	La Corogne	La Coruña	ES-GA
+ES-CA	Cadiz	Cádiz	Cadix	加的斯	ES-AN
+ES-CC	Cáceres	Cáceres	Cáceres	Cáceres	ES-EX
+ES-CE	Ceuta	Ceuta	Ceuta	休达	ES-CE
+ES-CO	Córdoba	Córdoba	Córdoba	科尔多瓦	ES-AN
+ES-CR	Ciudad Real	Ciudad Real	Ciudad Real	Ciudad Real	ES-CM
+ES-CS	Castellón	Castellón	Castellón	卡斯特利翁	ES-VC
+ES-CU	Cuenca	Cuenca	Cuenca	昆卡	ES-CM
+ES-GC	Las Palmas	Las Palmas	Las Palmas	拉斯帕尔马斯	ES-CN
+ES-GI	Gerona	Gerona	Gérone	Gerona	ES-CT
+ES-GR	Granada	Granada	Grenade	格拉纳达	ES-AN
+ES-GU	Guadalajara	Guadalajara	Guadalajara	瓜达拉哈拉	ES-CM
+ES-H	Huelva	Huelva	Huelva	韦尔瓦	ES-AN
+ES-HU	Huesca	Huesca	Huesca	韦斯卡	ES-AR
+ES-J	Jaén	Jaén	Jaén	Jaén	ES-AN
+ES-L	Lérida	Lérida	Lérida	Lérida	ES-CT
+ES-LE	León	León	León	莱昂	ES-CL
+ES-LO	La Rioja	La Rioja	La Rioja	拉里奥哈	ES-RI
+ES-LU	Lugo	Lugo	Lugo	卢戈	ES-GA
+ES-M	Madrid	Madrid	Madrid	马德里	ES-MD
+ES-MA	Málaga	Málaga	Málaga	马拉加	ES-AN
+ES-ML	Melilla	Melilla	Melilla	梅利利亚	ES-ML
+ES-MU	Murcia	Murcia	Murcia	穆尔西亚	ES-MC
+ES-NA	Navarra	Navarra	Navarre	纳瓦拉	ES-NC
+ES-O	Asturias	Asturias	Asturies	阿斯图里亚斯	ES-AS
+ES-OR	Orense	Orense	Orense	Orense	ES-GA
+ES-P	Palencia	Palencia	Palencia	帕伦西亚	ES-CL
+ES-PM	Balearic Islands	Baleares	Îles Baléares	巴利阿里群岛	ES-IB
+ES-PO	Pontevedra	Pontevedra	Pontevedra	庞特韦德拉	ES-GA
+ES-S	Cantabria	Cantabria	Cantabrie	坎塔布里亚	ES-CB
+ES-SA	Salamanca	Salamanca	Salamanque	萨拉曼卡	ES-CL
+ES-SE	Sevilla	Sevilla	Séville	塞维利亚	ES-AN
+ES-SG	Segovia	Segovia	Ségovie	塞戈维亚	ES-CL
+ES-SO	Soria	Soria	Soria	索里亚	ES-CL
+ES-SS	Guipúzcoa	Guipúzcoa	Guipúzcoa	Guipúzcoa	ES-PV
+ES-T	Tarragona	Tarragona	Tarragone	塔拉戈纳	ES-CT
+ES-TE	Teruel	Teruel	Teruel	Teruel	ES-AR
+ES-TF	Santa Cruz de Tenerife	Santa Cruz de Tenerife	Santa Cruz de Tenerife	圣克鲁斯-德特内里费	ES-CN
+ES-TO	Toledo	Toledo	Toledo	托莱多	ES-CM
+ES-V	Valencia	Valencia	Valence	巴伦西亚	ES-VC
+ES-VA	Valladolid	Valladolid	Valladolid	巴利亚多利德	ES-CL
+ES-VI	Álava	Álava	Álava	Álava	ES-PV
+ES-ZA	Zamora	Zamora	Zamora	萨莫拉	ES-CL
+ES-Z	Zaragoza	Zaragoza	Zaragoza	萨拉戈萨	ES-AR

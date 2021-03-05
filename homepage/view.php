@@ -101,7 +101,7 @@
 									</ul>
 									<div class="button-icon-small margin-t-auto">
 										<img src="/static/icon/tiny/map.svg" alt="">
-										<?php echo $locations[$company->region] ?>
+										<?php echo empty($company->region) ? "ES":$company->region ?>
 									</div>
 								</div>
 								<div class="company-card-badge-wrapper"></div>
