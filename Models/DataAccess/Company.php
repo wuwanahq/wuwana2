@@ -67,7 +67,7 @@ class Company extends DataAccess
 	 */
 	public function selectPermalink($permalink, $tagsLanguage)
 	{
-	    $tagsLanguage = strtoupper($tagsLanguage);
+		$tagsLanguage = strtoupper($tagsLanguage);
 		$sql = "select
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
@@ -75,12 +75,10 @@ class Company extends DataAccess
 			Company.Website as CompanyWebsite,
 			Company.Email as CompanyEmail,
 			Company.Address as CompanyAddress,
-			Location.RegionName as LocationRegionName,
 			Province.$tagsLanguage as LocationProvince,
 			Company.PhonePrefix as CompanyPhonePrefix,
 			Company.PhoneNumber as CompanyPhoneNumber,
 			Company.PostalCode as CompanyPostalCode,
-			
 			T1.Names as TagName1,
 			T2.Names as TagName2,
 			SocialMedia.URL as SocialMediaURL,
