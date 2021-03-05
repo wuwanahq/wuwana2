@@ -1,9 +1,5 @@
 <?php
-
-
 namespace DataAccess;
-
-
 use PDO;
 
 class Region extends DataAccess
