@@ -33,4 +33,4 @@ $company = WebApp\Data::getCompany();
 $companies = $company->selectAll();
 
 //TODO: allow the administrator to configure the minimum interval
-$oldestInstagram = $company->selectOldestInstagramURL(600);
+$oldestInstagram = $company->selectOldestInstagramURL(604800);  // 7 days

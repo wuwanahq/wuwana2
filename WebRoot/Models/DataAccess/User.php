@@ -1,20 +1,20 @@
 <?php
 namespace DataAccess;
 use PDO;
+use WebApp\Crypt;
 
 /**
  * Data access layer for stored users.
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class User extends DataAccess
 {
-	const HASH_ALGO = 'fnv164';
 	const CODE_MAX_VALUE = 9999;
 
 	static function getTableSchema()
 	{
 		return 'create table UserAccount (
-			Hash char(' . strlen(hash(self::HASH_ALGO, '', false)) . ') primary key,
+			Hash char(' . strlen(Crypt::hashUniqueID('')) . ') primary key,
 			Email varchar(250) not null,
 			Name varchar(250) not null,
 			CompanyID int null,

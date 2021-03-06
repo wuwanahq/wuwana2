@@ -33,5 +33,5 @@
 			<?php endforeach ?>
 		</section>
 	</div>
-	<div id="version">Wuwana v2.1.15</div>
+	<div id="version">Wuwana v2.1.16</div>
 </div>

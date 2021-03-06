@@ -4,7 +4,7 @@ namespace WebApp;
 /**
  * Tools to simplify the usage of the function crypt.
  * @see https://www.php.net/manual/en/function.crypt.php
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class Crypt
 {
@@ -16,9 +16,9 @@ class Crypt
 	 * cost=13 take ~0.5 sec
 	 * cost=14 take ~0.9 sec
 	 * salt: 21 characters (./0-9A-Za-z)
-	 * @var string 28 characters: "$2y$" + cost + "$" + salt
+	 * @var string 29 characters: "$2y$" + cost + "$" + salt + "."
 	 */
-	const SALT_BLOWFISH = '$2y$13$////////Wuwana///////';
+	const SALT_BLOWFISH = '$2y$12$////////Wuwana///////.';
 
 	/**
 	 * Extended DES salt used by the crypt function.
@@ -30,7 +30,7 @@ class Crypt
 	 * salt: 4 characters (./0-9A-Za-z)
 	 * @var string 9 characters: "_" + cost + salt
 	 */
-	const SALT_EXT_DES = '_Wu.7wana';
+	const SALT_EXT_DES = '_Wu.3wana';
 
 	/**
 	 * One-way hash function used to identify a string with a low probability of collision.
@@ -39,7 +39,7 @@ class Crypt
 	 */
 	static function hashUniqueID($userString)
 	{
-		return substr(crypt($userString, self::SALT_BLOWFISH . '/'), 29);
+		return substr(crypt($userString, self::SALT_BLOWFISH), 29);
 	}
 
 	/**
@@ -51,8 +51,8 @@ class Crypt
 	static function verifyUniqueID($userString, $expectedHash)
 	{
 		return hash_equals(
-			self::SALT_BLOWFISH . '.' . $expectedHash,
-			crypt($userString, self::SALT_BLOWFISH . '/')
+			self::SALT_BLOWFISH . $expectedHash,
+			crypt($userString, self::SALT_BLOWFISH)
 		);
 	}
 

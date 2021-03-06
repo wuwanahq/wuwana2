@@ -5,11 +5,10 @@ use DataAccess\UserData;
 
 /**
  * User session.
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class UserSession
 {
-	const HASH_ALGO = 'sha256';
 	private $user;
 
 	public function __construct(User $dataAccess)
