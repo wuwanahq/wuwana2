@@ -6,7 +6,7 @@
  */
 
 $categories = WebApp\Data::getCategory()->selectAll();
-$locations = WebApp\Data::getLocation()->selectUsefulItemsOnly('es');
+$locations = WebApp\Data::getLocation()->selectUsefulItemsOnly('ES',$language->code);
 
 //commented out this since its not needed
 //$limit = filter_has_var(INPUT_GET, 'show') ? 0 : 8;

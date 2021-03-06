@@ -1,10 +1,13 @@
 <?php
 namespace Scraper;
+use DataAccess\Location;
+use DataAccess\PostalCode;
 use DataAccess\Tag;
 use DataAccess\Company;
 use DataAccess\CompanyData;
 use DataAccess\SocialMedia;
 use DataAccess\SocialMediaData;
+use WebApp\WebApp;
 
 /**
  * Back-end Scraper.
@@ -84,7 +87,6 @@ class Scraper
 		$company->instagram = $instagram;
 
 		$company->setName($company->instagram->profileName);
-		$company->region = rand(1, 19);
 
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) === $email)
 		{ $company->email = $email; }
@@ -104,6 +106,8 @@ class Scraper
 
 			$company->description = $webCrawler->description;
 			$company->phone = empty($webCrawler->mobileNumber) ? $webCrawler->phoneNumber : $webCrawler->mobileNumber;
+
+			$company->postalCode = $webCrawler->postalCode;
 
 			if (!empty($webCrawler->emailAddresses[0]))
 			{ $company->email = $webCrawler->emailAddresses[0]; }

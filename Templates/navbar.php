@@ -51,6 +51,6 @@
 	</section>
 </section>
 <?php if (strpos($url, '/admin') !== false)
-	{ echo '<div id="version">Wuwana v2.1.12</div>'; }
+	{ echo '<div id="version">Wuwana v2.1.15</div>'; }
 ?>
 <div class="navbar-background" id="navbar-background" onclick="showNavbar()"></div>

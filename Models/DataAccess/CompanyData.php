@@ -15,12 +15,13 @@ class CompanyData
 	public $email = '';
 	public $phone = '0000000000';
 	public $address = '';
-	public $region = 0;
+	public $region = '';
 	public $visibleTags = [];
 	public $otherTags;
 	public $instagram;
 	public $facebook;
 	public $lastUpdate;
+	public $postalCode;
 
 	/**
 	 * Clean the name by removing emoji and special characters then store it.
@@ -104,4 +105,5 @@ class CompanyData
 
 		return $permalink;
 	}
+
 }
