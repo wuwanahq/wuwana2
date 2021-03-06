@@ -4,7 +4,7 @@
  * php testWebsiteCrawler.php
  */
 
-require 'WebsiteCrawler.php';
+require '../WebRoot/Models/Scraper/WebsiteCrawler.php';
 
 $timer = microtime(true);
 $webCrawler = new Scraper\WebsiteCrawler();  // instanciate the object
