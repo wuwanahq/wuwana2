@@ -9,20 +9,50 @@ The choice to use vanilla PHP was made to...
 - keep the memory footprint per request extremely low (PHP memory_limit can be set to **2MB**)
 - keep a very short response time per request
 
-To contribute you just need to create a pull request when your modifications are done in order to be approuve by one maintainer.
+To contribute you just need to create a pull request when your modifications are done in order to be approved by one maintainer.
+
+## How to test locally?
+
+After cloning the project, move in the "WebRoot" directory then run the PHP built-in web server:
+
+```
+git clone https://github.com/wuwanahq/wuwana2.git
+cd wuwana2/WebRoot
+php -S 0:8000 router.php
+```
+
+> This WebApp needs **PHP 5.6 or newer** and the DOM extension (php-xml) to work.
+
+Now you can open the website with your browser:
+
+- Go to http://localhost:8000/admin/companies to add new companies in the database
+- Go to http://localhost:8000 to watch your data on the homepage
+
+### Test on a mobile device
+
+First, find the local IP address of your computer that run PHP.
+
+- On **Mac** open Network preferences:  
+![System preferences > Network](https://cdn.osxdaily.com/wp-content/uploads/2010/11/ip-address-mac.jpg)
+
+- On **Linux** open a new Terminal and type: `ifconfig | grep 'inet \(192\|10\)\.'`
+- On **Windows** open a new Command Prompt and type: `ipconfig`
+
+Then, open the browser on your mobile device and go to `http://` your IP `:8000`  
+Example: http://192.168.0.100:8000
 
 ## Targeted web browsers
 
 - Mozilla Firefox 48+ (desktop)
-- Google Chrome 49+ (desktop + mobile)
+- Google Chrome 49+ (desktop & mobile)
 - Samsung Internet 5+ (mobile)
-- Apple Safari 10+ (desktop + mobile)
+- Apple Safari 10+ (desktop & mobile)
 - Microsoft Edge & Internet Explorer 11 (desktop)
 
 ## Project architecture
 
 ```
-Web root
+WebRoot
 ├─ router.php           <- Front controller
 ├─ homepage             <- Folder for the home page
 │  ├─ controller.php    <- Page's controller
@@ -73,6 +103,7 @@ We try to respect the following rules. 😇
 - Use PascalCase for namespace, class and interface names
 - Use camelCase for function, method, property and variable names
 - Use UPPERCASE_UNDERSCORE for constant names
+- Max 120 characters per line please
 
 **CSS code**
 
