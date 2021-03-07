@@ -76,7 +76,7 @@
 						<input type="text" id="ThumbnailSrc5" name="ThumbnailSrc5">
 						<input type="text" id="ExternalURL" name="ExternalURL">
 						<input type="text" id="ExtraInfo" name="ExtraInfo">
-						<input type="submit" id="button" value="Add company" class="button-main" disabled>
+						<input type="submit" value="Add company" class="button-main">
 					</form>
 				</div>
 			</section>

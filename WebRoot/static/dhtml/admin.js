@@ -64,7 +64,6 @@ function handleProfilePageAndFillForm()
 		document.getElementById("posts").value = user.nbPost;
 		document.getElementById("ProfilePicURL").value = user.profilePicURL;
 		document.getElementById("ExtraInfo").value = user.extraInfo;
-		document.getElementById("button").disabled = false;
 
 		for (var i=0; i < 6; i++)
 		{ document.getElementById("ThumbnailSrc" + i).value = user.pictures[i]; }
