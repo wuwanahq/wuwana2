@@ -21,7 +21,7 @@ cd wuwana2/WebRoot
 php -S 0:8000 router.php
 ```
 
-> This WebApp needs **PHP 5.6 or newer** and the DOM extension (php-xml) to work.
+> This WebApp needs **PHP 7** and the DOM extension (php-xml) to work.
 
 Now you can open the website with your browser:
 

@@ -24,14 +24,11 @@ class UserSession
 		}
 		elseif (filter_has_var(INPUT_COOKIE, session_name()))
 		{
-			$debug = session_start([
+			session_start([
 				'cookie_lifetime' => Config::SESSION_LIFETIME,
 				'gc_maxlifetime' => Config::SESSION_LIFETIME,
 				'read_and_close' => true
 			]);
-
-			trigger_error('DEBUG - Session already started? ' . var_export($debug, true));
-			trigger_error('DEBUG - Session=' . var_export($_SESSION, true));
 		}
 	}
 
@@ -41,26 +38,16 @@ class UserSession
 
 		if ($user instanceof UserData && $user->accessCode == $code)
 		{
-			$debug = session_start([
+			session_start([
 				'cookie_lifetime' => Config::SESSION_LIFETIME,
 				'gc_maxlifetime' => Config::SESSION_LIFETIME
 			]);
 
-			trigger_error('DEBUG - Session started? ' . var_export($debug, true));
-
 			$_SESSION['Name'] = $user->name;
 			$_SESSION['CompanyID'] = $user->company;
 			$_SESSION['AdminLevel'] = $user->adminLevel;
-
-			trigger_error('DEBUG - Session=' . var_export($_SESSION, true));
-
-			$debug2 = session_write_close();
-			trigger_error('DEBUG - Session written? ' . var_export($debug2, true));
-			trigger_error('DEBUG - Session=' . var_export($_SESSION, true));
+			session_write_close();
 		}
-
-		trigger_error('DEBUG - Login with email=' . var_export($email, true) . ' and code=' . var_export($code, true));
-		trigger_error('DEBUG - User=' . var_export($user, true));
 	}
 
 	public function logout()
