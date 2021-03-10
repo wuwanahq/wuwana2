@@ -149,7 +149,6 @@ input[type="checkbox"] {
 
 input::placeholder {
 	font-size: var(--font-s);
-	font-style: italic;
 	color: var(--grey500);
 }
 

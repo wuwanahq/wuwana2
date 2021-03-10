@@ -27,8 +27,8 @@
 									<input id="name" name="name" type="text" >
 								</div>
 								<div class="form-layout-column">
-									<label for="address">Address</label>
-									<textarea id="address" name="address" type="text" ></textarea>
+									<label for="postal-code">Postal Code</label>
+									<input id="postal-code" name="postal-code" type="text" >
 								</div>
 								<div class="form-layout-column">
 									<label for="email">Email</label>
@@ -86,7 +86,7 @@
 							</details>
 						</section>
 						<hr>
-						<section>
+						<section title="Website">
 							<details>
 								<summary>Website ▾</summary>
 								<div class="form-layout-column">
@@ -96,6 +96,16 @@
 								<div class="form-layout-column">
 									<label for="WebDescription">Description</label>
 									<textarea id="WebDescription" name="WebDescription" ></textarea>
+								</div>
+							</details>
+						</section>
+						<hr>
+						<section title="Google Place API">
+							<details>
+								<summary>Google Place ▾</summary>
+								<div class="form-layout-column">
+									<label for="GoogleID">Google Place ID</label>
+									<input type="url" id="GoogleID" name="GoogleID">
 								</div>
 							</details>
 						</section>
