@@ -47,13 +47,14 @@ class UserSession
 			$_SESSION['CompanyID'] = $user->company;
 			$_SESSION['AdminLevel'] = $user->adminLevel;
 			session_write_close();
+
+			$this->user->updateLastLoginDate($email);
 		}
 	}
 
 	public function logout()
 	{
-		$debug = session_start();
-		trigger_error('DEBUG - Session destroyed? ' . var_export($debug, true));
+		session_start();
 		$_SESSION = [];
 
 		if (ini_get('session.use_cookies'))
