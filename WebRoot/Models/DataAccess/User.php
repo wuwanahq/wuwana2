@@ -112,6 +112,14 @@ class User extends DataAccess
 		trigger_error('DEBUG - PDO error info=' . var_export($this->pdo->errorInfo(), true));
 	}
 
+	public function updateLastLoginDate($hash)
+	{
+		$query = $this->pdo->prepare('update UserAccount set LastLogin=? where Hash=?');
+		$query->bindValue(1, time(), PDO::PARAM_INT);
+		$query->bindValue(2, $hash, PDO::PARAM_STR);
+		$query->execute();
+	}
+
 	public function updateAdminLevel($level, $hash)
 	{
 		$query = $this->pdo->prepare(

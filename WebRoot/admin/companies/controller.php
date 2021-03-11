@@ -5,6 +5,7 @@
  */
 
 $companies = [];
+$oldestInstagram = '';
 
 if ($user->isAdmin())
 {
