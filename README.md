@@ -6,7 +6,7 @@ This project maintains a list of local businesses and keep track of it by scrapi
 
 ## How to deploy on your web server
 
-This WebApp needs **PHP 5.6 or newer** and the DOM extension (php-xml package) to work.  
+This WebApp needs **PHP 7** and the DOM extension (php-xml package) to work.  
 Also the HTTP server must be able to rewrite URL with Apache mod_rewrite, FallbackResource directive or Nginx "try_files" directive.
 
 ### Dedicated Server or Virtual Private Server (with SSH access)

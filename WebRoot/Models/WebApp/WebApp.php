@@ -3,7 +3,7 @@ namespace WebApp;
 
 /**
  * WebApp's common functions.
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class WebApp
 {
