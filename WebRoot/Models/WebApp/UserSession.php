@@ -9,11 +9,11 @@ use DataAccess\UserData;
  */
 class UserSession
 {
-	private $user;
+	private $dao;
 
-	public function __construct(User $dataAccess)
+	public function __construct(User $dataAccessObject)
 	{
-		$this->user = $dataAccess;
+		$this->dao = $dataAccessObject;
 
 		if (filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'code'))
 		{
@@ -34,7 +34,7 @@ class UserSession
 
 	private function login($email, $code)
 	{
-		$user = $this->user->selectEmail($email);
+		$user = $this->dao->selectEmail($email);
 
 		if ($user instanceof UserData && $user->accessCode == $code)
 		{
@@ -48,7 +48,7 @@ class UserSession
 			$_SESSION['AdminLevel'] = $user->adminLevel;
 			session_write_close();
 
-			$this->user->updateLastLoginDate($email);
+			$this->dao->updateLastLoginDate($email);
 		}
 	}
 
@@ -112,16 +112,16 @@ class UserSession
 		trigger_error('DEBUG - Email hash=' . $email);
 
 		$code = rand(1, User::CODE_MAX_VALUE);
-		$adminLevel = $this->user->countAdmin() === 0 ? 1 : 0;
+		$adminLevel = $this->dao->countAdmin() === 0 ? 1 : 0;
 
 		trigger_error('DEBUG - AdminLevel=' . var_export($adminLevel, true));
 
-		if ($this->user->insertUser($email, $name, 0, $code, $adminLevel))
+		if ($this->dao->insertUser($email, $name, 0, $code, $adminLevel))
 		{ return $code; }
 		elseif ($adminLevel == 1)
-		{ $this->user->updateAdminLevel($adminLevel, $email); }
+		{ $this->dao->updateAdminLevel($adminLevel, $email); }
 
-		$this->user->updateCode($email, $code);
+		$this->dao->updateCode($email, $code);
 		return $code;
 	}
 

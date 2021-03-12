@@ -4,52 +4,56 @@
  * @link https://wuwana.com/admin/database
  */
 
-if (filter_has_var(INPUT_GET, 'export'))
+if (!$user->isAdmin())
 {
-	$table = filter_input(INPUT_GET, 'export');
-	header('Content-Description: File Transfer');
-
-	switch ($table)
+	if (filter_has_var(INPUT_GET, 'export'))
 	{
-		case 'UserAccount':
-			header('Content-Disposition: attachment; filename="UserAccount' . date('Y-m-d') . '.tsv"');
-			header('Content-Type: text/tab-separated-values');
-			WebApp\Data::getUser()->exportData();
-			exit;
+		$table = filter_input(INPUT_GET, 'export');
+		header('Content-Description: File Transfer');
 
-		case 'Company':
-			header('Content-Disposition: attachment; filename="Company' . date('Y-m-d') . '.tsv"');
-			header('Content-Type: text/tab-separated-values');
-			WebApp\Data::getCompany()->exportData();
-			exit;
+		switch ($table)
+		{
+			case 'UserAccount':
+			case 'Company':
+			case 'SocialMedia':
+			case 'Image':
+			case 'Tag':
+				header('Content-Disposition: attachment; filename="' . $table . date('Y-m-d') . '.tsv"');
+				header('Content-Type: text/tab-separated-values');
+				break;
 
-		case 'SocialMedia':
-			header('Content-Disposition: attachment; filename="SocialMedia' . date('Y-m-d') . '.tsv"');
-			header('Content-Type: text/tab-separated-values');
-			WebApp\Data::getSocialMedia()->exportData();
-			exit;
+			case 'schema':
+				header('Content-Disposition: attachment; filename="Schema' . date('Y-m-d') . '.sql"');
+				header('Content-Type: application/sql');
+				break;
+		}
 
-		case 'Image':
-			header('Content-Disposition: attachment; filename="Image' . date('Y-m-d') . '.tsv"');
-			header('Content-Type: text/tab-separated-values');
-			WebApp\Data::getImage()->exportData();
-			exit;
+		switch ($table)
+		{
+			case 'UserAccount': (new DataAccess\User())->exportData(); exit;
+			case 'Company':     (new DataAccess\Company())->exportData(); exit;
+			case 'SocialMedia': (new DataAccess\SocialMedia())->exportData(); exit;
+			case 'Image':       (new DataAccess\Image())->exportData(); exit;
+			case 'Tag':         (new DataAccess\Tag())->exportData(); exit;
+			case 'schema':
+				echo "-- Wuwana database",
+					"\n\n", DataAccess\User::getTableSchema(), ";",
+					"\n\n", DataAccess\Tag::getTableSchema(), ";",
+					"\n\n", DataAccess\Company::getTableSchema(), ";",
+					"\n\n", DataAccess\SocialMedia::getTableSchema(), ";",
+					"\n\n", DataAccess\Image::getTableSchema(), ";";
+				exit;
+		}
+	}
 
-		case 'Tag':
-			header('Content-Disposition: attachment; filename="Tag' . date('Y-m-d') . '.tsv"');
-			header('Content-Type: text/tab-separated-values');
-			WebApp\Data::getTag()->exportData();
-			exit;
+	if (!empty($_FILES['UserAccount'])
+		&& !empty($_FILES['Company'])
+		&& !empty($_FILES['SocialMedia'])
+		&& !empty($_FILES['Image'])
+		&& !empty($_FILES['Tag']))
+	{
+		$debug = $_FILES;
 
-		case 'schema':
-			header('Content-Disposition: attachment; filename="Schema' . date('Y-m-d') . '.sql"');
-			header('Content-Type: application/sql');
-			echo "-- Wuwana database",
-				"\n\n", DataAccess\User::getTableSchema(), ";",
-				"\n\n", DataAccess\Tag::getTableSchema(), ";",
-				"\n\n", DataAccess\Company::getTableSchema(), ";",
-				"\n\n", DataAccess\SocialMedia::getTableSchema(), ";",
-				"\n\n", DataAccess\Image::getTableSchema(), ";";
-			exit;
+		//TODO: $x = new DataAccess\User();
 	}
 }

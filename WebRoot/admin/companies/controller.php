@@ -9,6 +9,8 @@ $oldestInstagram = '';
 
 if ($user->isAdmin())
 {
+	$company = new DataAccess\Company();
+
 	if (filter_has_var(INPUT_POST, 'instagram'))
 	{
 		$instagram = new DataAccess\SocialMediaData();
@@ -23,7 +25,7 @@ if ($user->isAdmin())
 		for ($i=0; filter_has_var(INPUT_POST, 'ThumbnailSrc' . $i); ++$i)
 		{ $instagram->pictures[] = filter_input(INPUT_POST, 'ThumbnailSrc' . $i); }
 
-		$scraper = new Scraper\Scraper(WebApp\Data::getTag(), WebApp\Data::getCompany(), WebApp\Data::getSocialMedia());
+		$scraper = new Scraper\Scraper(new DataAccess\Tag(), $company, new DataAccess\SocialMedia());
 		$scraper->createOrUpdateCompany(
 			filter_input(INPUT_POST, 'website', FILTER_SANITIZE_URL),
 			filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL),
@@ -31,8 +33,6 @@ if ($user->isAdmin())
 			filter_input(INPUT_POST, 'ExtraInfo'),
 			$instagram);
 	}
-
-	$company = WebApp\Data::getCompany();
 
 	//TODO: create CompanyIterator
 	$companies = $company->selectAll();

@@ -1,10 +1,11 @@
 <?php
 namespace DataAccess;
 use PDO;
+use WebApp\WebApp;
 
 /**
  * Abstract interface to the database.
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 abstract class DataAccess
 {
@@ -13,9 +14,9 @@ abstract class DataAccess
 
 	protected $pdo;
 
-	public function __construct(PDO $pdo)
+	public function __construct()
 	{
-		$this->pdo = $pdo;
+		$this->pdo = WebApp::getPdoInstance();
 		date_default_timezone_set('UTC');
 	}
 

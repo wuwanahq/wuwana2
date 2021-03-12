@@ -19,7 +19,7 @@ if (WebApp\Config::FORCE_HTTPS && !WebApp\WebApp::isSecure() && php_sapi_name() 
 
 // Global variables available in all views and controllers
 $language = WebApp\WebApp::getLanguage();
-$user = new WebApp\UserSession(WebApp\Data::getUser());
+$user = new WebApp\UserSession(new DataAccess\User());
 $url = WebApp\WebApp::getURL();
 
 require 'Templates/text ' . $language->code . '.php';
@@ -61,7 +61,7 @@ switch ($url)
 		}
 
 		// Controller for the company page
-		$company = WebApp\Data::getCompanyInfo(str_replace('/', '', $url), $language->code);
+		$company = WebApp\WebApp::getCompanyInfo(str_replace('/', '', $url), $language->code);
 
 		if ($company instanceof DataAccess\CompanyData)
 		{
