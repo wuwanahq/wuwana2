@@ -2,6 +2,7 @@
 /**
  * Controller for the admin page to import/export data.
  * @link https://wuwana.com/admin/database
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 
 if (!$user->isAdmin())
@@ -46,14 +47,16 @@ if (!$user->isAdmin())
 		}
 	}
 
-	if (!empty($_FILES['UserAccount'])
-		&& !empty($_FILES['Company'])
-		&& !empty($_FILES['SocialMedia'])
-		&& !empty($_FILES['Image'])
-		&& !empty($_FILES['Tag']))
+	if (!empty($_FILES['UserAccount']) && is_uploaded_file($_FILES['UserAccount']['tmp_name'])
+		&& !empty($_FILES['Company']) && is_uploaded_file($_FILES['Company']['tmp_name'])
+		&& !empty($_FILES['SocialMedia']) && is_uploaded_file($_FILES['SocialMedia']['tmp_name'])
+		&& !empty($_FILES['Image']) && is_uploaded_file($_FILES['Image']['tmp_name'])
+		&& !empty($_FILES['Tag']) && is_uploaded_file($_FILES['Tag']['tmp_name']))
 	{
-		$debug = $_FILES;
-
-		//TODO: $x = new DataAccess\User();
+		(new DataAccess\User())->insertData($_FILES['UserAccount']['tmp_name']);
+		(new DataAccess\Company())->insertData($_FILES['Company']['tmp_name']);
+		(new DataAccess\SocialMedia())->insertData($_FILES['SocialMedia']['tmp_name']);
+		(new DataAccess\Image())->insertData($_FILES['Image']['tmp_name']);
+		(new DataAccess\Tag())->insertData($_FILES['Tag']['tmp_name']);
 	}
 }

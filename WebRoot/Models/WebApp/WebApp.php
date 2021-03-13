@@ -155,7 +155,7 @@ class WebApp
 		if ($permalink == '' || $permalink[0] == '?' || strpos($permalink, '.') !== false)
 		{ return null; }
 
-		$company = (new DataAccess\Company())->selectPermalink($permalink, $tagsLanguage);
+		$company = (new \DataAccess\Company())->selectPermalink($permalink, $tagsLanguage);
 
 		if ($company == null)
 		{ return null; }
