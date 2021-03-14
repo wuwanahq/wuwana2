@@ -68,7 +68,7 @@ class Company extends DataAccess
 	public function selectPermalink($permalink, $tagsLanguage)
 	{
 		$tagsLanguage = strtoupper($tagsLanguage);
-		$sql = "select
+		$query = $this->tryQuery("select
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
 			Company.Description as CompanyDescription,
@@ -96,15 +96,7 @@ class Company extends DataAccess
 			left join Image on SocialMedia.CompanyID=Image.CompanyID and SocialMedia.ID=Image.SocialMediaID
 			left join Tag as T1 on Company.FirstTagID=T1.ID
 			left join Tag as T2 on Company.SecondTagID=T2.ID
-			where Company.PermaLink=?";
-
-		$query = $this->pdo->prepare($sql);
-
-		if ($query == false)
-		{
-			$this->createDatabase();
-			$query = $this->pdo->prepare($sql);
-		}
+			where Company.PermaLink=?", true);
 
 		$query->bindValue(1, $permalink, PDO::PARAM_STR);
 		$query->execute();
@@ -249,32 +241,21 @@ class Company extends DataAccess
 			{ $sql .= ' and Province.RegionID in ('.'"' . implode('","', $regions) . '")'; }
 		}
 
-		$provinceNameLanguage = strtoupper($tagsLanguage->code);
-
-		$sql = "select
+		$query = $this->tryQuery('select
 			Company.PermaLink as CompanyPermaLink,
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
-			Province.$provinceNameLanguage as ProvinceName,
+			Province.' . strtoupper($tagsLanguage->code) . ' as ProvinceName,
 			Company.PostalCode as CompanyPostalCode,
-			
 			T1.Names as TagName1,
 			T2.Names as TagName2
 			from Company
 			left join Province on Company.ProvinceID=Province.ProvinceID
 			left join Tag as T1 on Company.FirstTagID=T1.ID
-			left join Tag as T2 on Company.SecondTagID=T2.ID
-			$sql order by Company.LastUpdate desc";
+			left join Tag as T2 on Company.SecondTagID=T2.ID'
+			. $sql . ' order by Company.LastUpdate desc');
 
-		$stmt = $this->pdo->query($sql);
-
-		if ($stmt == false)
-		{
-			$this->createDatabase();
-			$stmt = $this->pdo->query($sql);
-		}
-
-		return Company::fetchObjects($stmt, $tagsLanguage, $limit);
+		return Company::fetchObjects($query, $tagsLanguage, $limit);
 	}
 
 	static function fetchObjects(PDOStatement $stmt, $tagsLanguage, $limit = 0)
@@ -382,9 +363,19 @@ class Company extends DataAccess
 		$socialMedia->update($company->instagram, $id);
 	}
 
-    public function fetchProvinceID($postalCode){
-        return $this->fetchQuery("select Province.ProvinceID from Province inner join PostalCode 
-            on PostalCode.ProvinceID = Province.ProvinceID where PostalCode.Code = ?",$postalCode);
+    public function fetchProvinceID($postalCode)
+	{
+		$query = $this->tryQuery('select Province.ProvinceID from Province
+			inner join PostalCode on PostalCode.ProvinceID = Province.ProvinceID
+			where PostalCode.Code = ?', true);
+
+		$query->bindValue(1, $postalCode, PDO::PARAM_STR);
+		$values = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+
+		if (isset($values[0]))
+		{ return $values[0]; }
+
+		return '';
     }
 
 	public function insert(CompanyData $company)
@@ -438,24 +429,4 @@ class Company extends DataAccess
 		$socialMedia = new SocialMedia($this->pdo);
 		$socialMedia->insert($company->instagram, $id);
 	}
-
-    private function fetchQuery($sql,$postalCode)
-    {
-        $query = $this->pdo->prepare($sql);
-        $query->bindValue(1,$postalCode,PDO::PARAM_STR);
-
-        if ($query == false)
-        {
-            $this->createDatabase();
-            $query = $this->pdo->prepare($sql);
-            $query->bindValue(1,$postalCode,PDO::PARAM_STR);
-        }
-
-        $province = '';
-
-        while ($row = $query->fetch(PDO::FETCH_ASSOC))
-        {$province = $row['ProvinceID'];}
-
-        return $province;
-    }
 }

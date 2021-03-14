@@ -47,6 +47,8 @@ if (!$user->isAdmin())
 		}
 	}
 
+	$debug = $_FILES;
+
 	if (!empty($_FILES['UserAccount']) && is_uploaded_file($_FILES['UserAccount']['tmp_name'])
 		&& !empty($_FILES['Company']) && is_uploaded_file($_FILES['Company']['tmp_name'])
 		&& !empty($_FILES['SocialMedia']) && is_uploaded_file($_FILES['SocialMedia']['tmp_name'])

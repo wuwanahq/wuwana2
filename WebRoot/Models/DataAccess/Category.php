@@ -4,7 +4,7 @@ use PDO;
 
 /**
  * Data access layer for stored categories.
- * @deprecated To update!
+ * @deprecated To update or delete!
  * @author Vince <vincent.boursier@gmail.com>
  */
 class Category extends DataAccess
@@ -33,18 +33,11 @@ class Category extends DataAccess
 
 	public function selectAll()
 	{
-		$sql = 'select * from Category';
-		$stmt = $this->pdo->query($sql);
-
-		if ($stmt == false)
-		{
-			$this->createDatabase();
-			$stmt = $this->pdo->query($sql);
-		}
+		$query = $this->tryQuery('select * from Category');
 
 		$categories = [];
 
-		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+		while ($row = $query->fetch(PDO::FETCH_ASSOC))
 		{
 			$categories[(int)$row['ID']] = [
 				'en' => $row['English'],

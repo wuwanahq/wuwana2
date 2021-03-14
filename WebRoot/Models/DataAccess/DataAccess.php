@@ -1,6 +1,8 @@
 <?php
 namespace DataAccess;
 use PDO;
+use PDOStatement;
+use Exception;
 use WebApp\WebApp;
 
 /**
@@ -23,10 +25,8 @@ abstract class DataAccess
 	abstract static function getTableSchema();
 	abstract public function insertData($filePath);
 
-	protected function createDatabase()
+	private function createDatabase()
 	{
-		//TODO: check if tables schema are up to date else upgrade it
-
 		$this->createTable(Category::getTableSchema());
 
 		$this->createTable(User::getTableSchema());
@@ -73,6 +73,30 @@ abstract class DataAccess
 				$this->pdo->exec(str_replace('tinyint', 'smallint', $sql));
 				break;
 		}
+	}
+
+	/**
+	 * Prepare or directly execute an SQL statement and initialize database's tables if necessary.
+	 * @param string $sql
+	 * @param bool $isPreparedStatement
+	 * @return PDOStatement
+	 * @throws Exception
+	 */
+	protected function tryQuery($sql, $isPreparedStatement = false)
+	{
+		$query = $isPreparedStatement ? $this->pdo->prepare($sql) : $this->pdo->query($sql);
+
+		if ($query instanceof PDOStatement)
+		{ return $query; }
+
+		$this->createDatabase();
+		$query = $isPreparedStatement ? $this->pdo->prepare($sql) : $this->pdo->query($sql);
+
+		if ($query instanceof PDOStatement)
+		{ return $query; }
+
+		$info = $this->pdo->errorInfo();
+		throw new Exception($info[0] . ' ' . $info[2], $info[1]);
 	}
 
 	protected function importData($filePath, $tableName, $columns)

@@ -33,7 +33,7 @@
 				<div class="box pad-16">
 					<form method="post" enctype="multipart/form-data">
 						<label for="f1">UserAccount table:</label>
-						<input id="f1" type="file" name="UserAcount"><br>
+						<input id="f1" type="file" name="UserAccount"><br>
 						<label for="f2">Company table:</label>
 						<input id="f2" type="file" name="Company"><br>
 						<label for="f3">SocialMedia table:</label>
