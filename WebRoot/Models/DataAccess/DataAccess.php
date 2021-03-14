@@ -27,11 +27,8 @@ abstract class DataAccess
 
 	private function createDatabase()
 	{
-		$this->createTable(Category::getTableSchema());
-
 		$this->createTable(User::getTableSchema());
 		$this->createTable(Tag::getTableSchema());
-
 
 		$this->createTable(SocialMedia::getTableSchema());
 		$this->createTable(Image::getTableSchema());

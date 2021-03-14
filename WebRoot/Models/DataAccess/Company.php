@@ -214,34 +214,14 @@ class Company extends DataAccess
 	/**
 	 * Return companies in the selected region.
 	 * @param string $tagsLanguage
-	 * @param array $categories DEPRECATED
 	 * @param array $regions
 	 * @param int $limit
 	 * @return array
 	 */
-	public function selectCategoriesRegions($tagsLanguage, $categories = [], $regions = [], $limit = 0)
+	public function selectRegions($tagsLanguage, $regions = [], $limit = 0)
 	{
-		$sql = '';
-
-		if (!empty($categories[0]))
-		{
-			$filter = [];
-
-			foreach ($categories as $category)
-			{ $filter[] = "Tags like '%;$category;%'"; }
-
-			$sql = ' where (' . implode(' or ', $filter) . ')';
-		}
-
-		if (!empty($regions[0]))
-		{
-			if ($sql == '')
-			{ $sql = ' where Province.RegionID in ('.'"' . implode('","', $regions) . '")'; }
-			else
-			{ $sql .= ' and Province.RegionID in ('.'"' . implode('","', $regions) . '")'; }
-		}
-
-		$query = $this->tryQuery('select
+		$companies = [];
+		$sql = 'select
 			Company.PermaLink as CompanyPermaLink,
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
@@ -252,17 +232,14 @@ class Company extends DataAccess
 			from Company
 			left join Province on Company.ProvinceID=Province.ProvinceID
 			left join Tag as T1 on Company.FirstTagID=T1.ID
-			left join Tag as T2 on Company.SecondTagID=T2.ID'
-			. $sql . ' order by Company.LastUpdate desc');
+			left join Tag as T2 on Company.SecondTagID=T2.ID';
 
-		return Company::fetchObjects($query, $tagsLanguage, $limit);
-	}
+		if (!empty($regions))
+		{ $sql .= ' where Province.RegionID in ("' . implode('","', $regions) . '")'; }
 
-	static function fetchObjects(PDOStatement $stmt, $tagsLanguage, $limit = 0)
-	{
-		$companies = [];
+		$query = $this->tryQuery($sql . ' order by Company.LastUpdate desc');
 
-		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+		while ($row = $query->fetch(PDO::FETCH_ASSOC))
 		{
 			$company = new CompanyData();
 			$company->permalink = $row['CompanyPermaLink'];
