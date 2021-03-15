@@ -12,6 +12,12 @@
 	<div class="container">
 		<?php include 'Templates/admin menu.php' ?>
 		<div class="column-main tag-tab">
+			<?php if(!$user->isAdmin()): ?>
+				<div class="information-error-box">
+					<div class="information-error-vertical"></div>
+					<h2>You are not logged in!</h2>
+				</div>
+			<?php endif ?>
 			<section id="section-table">
 				<h2>Base tags</h2>
 				<div class="box-table">

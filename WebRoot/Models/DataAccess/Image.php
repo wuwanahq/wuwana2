@@ -4,7 +4,7 @@ use PDO;
 
 /**
  * Data access layer for stored image links.
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class Image extends DataAccess
 {
@@ -12,7 +12,7 @@ class Image extends DataAccess
 	{
 		return 'create table Image (
 			CompanyID int not null,
-			SocialMediaID tinyint not null,
+			SocialMediaID smallint not null,
 			URL varchar(500) not null)';
 	}
 
@@ -43,7 +43,12 @@ class Image extends DataAccess
 		}
 	}
 
-	public function deleteAll($companyID, $socialMediaID)
+	public function deleteAll()
+	{
+		$this->pdo->exec('delete from Image');
+	}
+
+	public function delete($companyID, $socialMediaID)
 	{
 		$this->pdo->exec(
 			'delete from Image where CompanyID=' . (int)$companyID . ' and SocialMediaID=' . (int)$socialMediaID);

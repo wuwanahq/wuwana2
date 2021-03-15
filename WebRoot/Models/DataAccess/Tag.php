@@ -4,7 +4,7 @@ use PDO;
 
 /**
  * Data Access for Tags and keywords (regex).
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class Tag extends DataAccess
 {
@@ -19,7 +19,7 @@ class Tag extends DataAccess
 	static function getTableSchema()
 	{
 		return 'create table Tag (
-			ID varchar(250) primary key,
+			ID varchar(126) primary key,
 			Names varchar(255) not null,
 			Keywords varchar(255) not null)';
 	}
@@ -72,5 +72,10 @@ class Tag extends DataAccess
 	public function selectCombinations()
 	{
 		return new TagsIterator($this->pdo->query("select * from Tag where Keywords = ''"));
+	}
+
+	public function deleteAll()
+	{
+		$this->pdo->exec('delete from Tag');
 	}
 }

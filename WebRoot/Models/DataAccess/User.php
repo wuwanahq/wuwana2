@@ -15,10 +15,10 @@ class User extends DataAccess
 	{
 		return 'create table UserAccount (
 			Hash char(' . strlen(Crypt::hashUniqueID('')) . ') primary key,
-			Email varchar(250) not null,
-			Name varchar(250) not null,
+			Email varchar(126) not null,
+			Name varchar(126) not null,
 			CompanyID int null,
-			AdminLevel tinyint not null,
+			AdminLevel smallint not null,
 			AccessCode smallint not null,
 			LastLogin int not null)';
 	}
@@ -142,5 +142,10 @@ class User extends DataAccess
 	{
 		return $this->pdo->query('select count(*) from UserAccount where AdminLevel > 0')
 			->fetchAll(PDO::FETCH_COLUMN, 0)[0];
+	}
+
+	public function deleteAll()
+	{
+		$this->pdo->exec('delete from UserAccount');
 	}
 }

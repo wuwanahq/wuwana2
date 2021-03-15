@@ -5,7 +5,7 @@
  * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 
-if (!$user->isAdmin())
+if ($user->isAdmin())
 {
 	if (filter_has_var(INPUT_GET, 'export'))
 	{
@@ -47,18 +47,30 @@ if (!$user->isAdmin())
 		}
 	}
 
-	$debug = $_FILES;
-
 	if (!empty($_FILES['UserAccount']) && is_uploaded_file($_FILES['UserAccount']['tmp_name'])
 		&& !empty($_FILES['Company']) && is_uploaded_file($_FILES['Company']['tmp_name'])
 		&& !empty($_FILES['SocialMedia']) && is_uploaded_file($_FILES['SocialMedia']['tmp_name'])
 		&& !empty($_FILES['Image']) && is_uploaded_file($_FILES['Image']['tmp_name'])
 		&& !empty($_FILES['Tag']) && is_uploaded_file($_FILES['Tag']['tmp_name']))
 	{
-		(new DataAccess\User())->insertData($_FILES['UserAccount']['tmp_name']);
-		(new DataAccess\Company())->insertData($_FILES['Company']['tmp_name']);
-		(new DataAccess\SocialMedia())->insertData($_FILES['SocialMedia']['tmp_name']);
-		(new DataAccess\Image())->insertData($_FILES['Image']['tmp_name']);
-		(new DataAccess\Tag())->insertData($_FILES['Tag']['tmp_name']);
+		$dao = new DataAccess\User();
+		$dao->deleteAll();
+		$dao->insertData($_FILES['UserAccount']['tmp_name']);
+
+		$dao = new DataAccess\Company();
+		$dao->deleteAll();
+		$dao->insertData($_FILES['Company']['tmp_name']);
+
+		$dao = new DataAccess\SocialMedia();
+		$dao->deleteAll();
+		$dao->insertData($_FILES['SocialMedia']['tmp_name']);
+
+		$dao = new DataAccess\Image();
+		$dao->deleteAll();
+		$dao->insertData($_FILES['Image']['tmp_name']);
+
+		$dao = new DataAccess\Tag();
+		$dao->deleteAll();
+		$dao->insertData($_FILES['Tag']['tmp_name']);
 	}
 }

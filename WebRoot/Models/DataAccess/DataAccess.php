@@ -27,49 +27,26 @@ abstract class DataAccess
 
 	private function createDatabase()
 	{
-		$this->createTable(User::getTableSchema());
-		$this->createTable(Tag::getTableSchema());
+		// Create tables
+		$this->pdo->exec(User::getTableSchema());
+		$this->pdo->exec(Tag::getTableSchema());
+		$this->pdo->exec(SocialMedia::getTableSchema());
+		$this->pdo->exec(Image::getTableSchema());
+		$this->pdo->exec(Region::getTableSchema());
+		$this->pdo->exec(Province::getTableSchema());
+		$this->pdo->exec(PostalCode::getTableSchema());
+		$this->pdo->exec(Location::getTableSchema());
+		$this->pdo->exec(Company::getTableSchema());
 
-		$this->createTable(SocialMedia::getTableSchema());
-		$this->createTable(Image::getTableSchema());
-
-        $this->createTable(Region::getTableSchema());
-        $this->createTable(Province::getTableSchema());
-        $this->createTable(PostalCode::getTableSchema());
-
-        $this->createTable(Location::getTableSchema());
-        $this->createTable(Company::getTableSchema());
-
+		// Default tables data
 		(new Location($this->pdo))->insertData(__DIR__ . '/default data/location.tsv');
 		(new Tag($this->pdo))->insertData(__DIR__ . '/default data/tag.tsv');
 		(new SocialMedia($this->pdo))->insertData( __DIR__ . '/default data/socialmedia.tsv');
 		(new User($this->pdo))->insertData(__DIR__ . '/default data/user.tsv');
-
 		(new Region($this->pdo))->insertData(__DIR__ . '/default data/region.tsv');
         (new Province($this->pdo))->insertData(__DIR__ . '/default data/province.tsv');
         (new PostalCode($this->pdo))->insertData(__DIR__ . '/default data/postalcode.tsv');
         (new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
-	}
-
-	private function createTable($sql)
-	{
-		switch ($this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME))
-		{
-			case 'oci':
-				$this->pdo->exec(str_replace(
-					['tinyint', 'bigint'],
-					['number(3)', 'number(19)'],
-					$sql));
-				break;
-
-			case 'mysql':
-				$this->pdo->exec($sql);
-				break;
-
-			default:
-				$this->pdo->exec(str_replace('tinyint', 'smallint', $sql));
-				break;
-		}
 	}
 
 	/**

@@ -14,19 +14,19 @@ class Company extends DataAccess
 	static function getTableSchema()
 	{
 		return 'create table Company (
-			PermaLink varchar(250) primary key,
+			PermaLink varchar(126) primary key,
 			ID int not null,
-			Name varchar(250) not null,
+			Name varchar(126) not null,
 			LogoURL varchar(255) not null,
 			Description varchar(255) not null,
-			Website varchar(255) not null,
-			Email varchar(255) not null,
-			PhonePrefix tinyint not null,
+			Website varchar(126) not null,
+			Email varchar(126) not null,
+			PhonePrefix smallint not null,
 			PhoneNumber int not null,
-			Address varchar(255) not null,
+			Address varchar(126) not null,
 			ProvinceID varchar(6) not null,
-			FirstTagID varchar(250) not null,
-			SecondTagID varchar(250) not null,
+			FirstTagID varchar(126) not null,
+			SecondTagID varchar(126) not null,
 			OtherTags varchar(255) not null,
 			LastUpdate int not null,
 			PostalCode varchar(2),
@@ -235,7 +235,7 @@ class Company extends DataAccess
 			left join Tag as T2 on Company.SecondTagID=T2.ID';
 
 		if (!empty($regions))
-		{ $sql .= ' where Province.RegionID in ("' . implode('","', $regions) . '")'; }
+		{ $sql .= " where Province.RegionID in ('" . implode("','", $regions) . "')"; }
 
 		$query = $this->tryQuery($sql . ' order by Company.LastUpdate desc');
 
@@ -405,5 +405,10 @@ class Company extends DataAccess
 
 		$socialMedia = new SocialMedia($this->pdo);
 		$socialMedia->insert($company->instagram, $id);
+	}
+
+	public function deleteAll()
+	{
+		$this->pdo->exec('delete from Company');
 	}
 }

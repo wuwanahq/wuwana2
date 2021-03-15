@@ -2,6 +2,7 @@
 /**
  * Controller for the admin page to manage companies.
  * @link https://wuwana.com/admin/companies
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 
 $companies = [];
