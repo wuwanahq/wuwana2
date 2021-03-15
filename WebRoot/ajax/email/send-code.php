@@ -22,7 +22,7 @@ mail(
 	'From: noreply@wuwana.com'
 );
 
-$user = new WebApp\UserSession(WebApp\Data::getUser());
+$user = new WebApp\UserSession(new DataAccess\User());
 $user->sendEmail(
 	filter_input(INPUT_POST, 'email'),
 	'Login Wuwana <noreply@wuwana.com>',

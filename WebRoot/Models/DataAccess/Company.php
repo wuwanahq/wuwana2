@@ -14,19 +14,19 @@ class Company extends DataAccess
 	static function getTableSchema()
 	{
 		return 'create table Company (
-			PermaLink varchar(250) primary key,
+			PermaLink varchar(126) primary key,
 			ID int not null,
-			Name varchar(250) not null,
+			Name varchar(126) not null,
 			LogoURL varchar(255) not null,
 			Description varchar(255) not null,
-			Website varchar(255) not null,
-			Email varchar(255) not null,
-			PhonePrefix tinyint not null,
+			Website varchar(126) not null,
+			Email varchar(126) not null,
+			PhonePrefix smallint not null,
 			PhoneNumber int not null,
-			Address varchar(255) not null,
+			Address varchar(126) not null,
 			ProvinceID varchar(6) not null,
-			FirstTagID varchar(250) not null,
-			SecondTagID varchar(250) not null,
+			FirstTagID varchar(126) not null,
+			SecondTagID varchar(126) not null,
 			OtherTags varchar(255) not null,
 			LastUpdate int not null,
 			PostalCode varchar(2),
@@ -68,7 +68,7 @@ class Company extends DataAccess
 	public function selectPermalink($permalink, $tagsLanguage)
 	{
 		$tagsLanguage = strtoupper($tagsLanguage);
-		$sql = "select
+		$query = $this->tryQuery("select
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
 			Company.Description as CompanyDescription,
@@ -96,15 +96,7 @@ class Company extends DataAccess
 			left join Image on SocialMedia.CompanyID=Image.CompanyID and SocialMedia.ID=Image.SocialMediaID
 			left join Tag as T1 on Company.FirstTagID=T1.ID
 			left join Tag as T2 on Company.SecondTagID=T2.ID
-			where Company.PermaLink=?";
-
-		$query = $this->pdo->prepare($sql);
-
-		if ($query == false)
-		{
-			$this->createDatabase();
-			$query = $this->pdo->prepare($sql);
-		}
+			where Company.PermaLink=?", true);
 
 		$query->bindValue(1, $permalink, PDO::PARAM_STR);
 		$query->execute();
@@ -222,66 +214,32 @@ class Company extends DataAccess
 	/**
 	 * Return companies in the selected region.
 	 * @param string $tagsLanguage
-	 * @param array $categories DEPRECATED
 	 * @param array $regions
 	 * @param int $limit
 	 * @return array
 	 */
-	public function selectCategoriesRegions($tagsLanguage, $categories = [], $regions = [], $limit = 0)
+	public function selectRegions($tagsLanguage, $regions = [], $limit = 0)
 	{
-		$sql = '';
-
-		if (!empty($categories[0]))
-		{
-			$filter = [];
-
-			foreach ($categories as $category)
-			{ $filter[] = "Tags like '%;$category;%'"; }
-
-			$sql = ' where (' . implode(' or ', $filter) . ')';
-		}
-
-		if (!empty($regions[0]))
-		{
-			if ($sql == '')
-			{ $sql = ' where Province.RegionID in ('.'"' . implode('","', $regions) . '")'; }
-			else
-			{ $sql .= ' and Province.RegionID in ('.'"' . implode('","', $regions) . '")'; }
-		}
-
-		$provinceNameLanguage = strtoupper($tagsLanguage->code);
-
-		$sql = "select
+		$companies = [];
+		$sql = 'select
 			Company.PermaLink as CompanyPermaLink,
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
-			Province.$provinceNameLanguage as ProvinceName,
+			Province.' . strtoupper($tagsLanguage->code) . ' as ProvinceName,
 			Company.PostalCode as CompanyPostalCode,
-			
 			T1.Names as TagName1,
 			T2.Names as TagName2
 			from Company
 			left join Province on Company.ProvinceID=Province.ProvinceID
 			left join Tag as T1 on Company.FirstTagID=T1.ID
-			left join Tag as T2 on Company.SecondTagID=T2.ID
-			$sql order by Company.LastUpdate desc";
+			left join Tag as T2 on Company.SecondTagID=T2.ID';
 
-		$stmt = $this->pdo->query($sql);
+		if (!empty($regions))
+		{ $sql .= " where Province.RegionID in ('" . implode("','", $regions) . "')"; }
 
-		if ($stmt == false)
-		{
-			$this->createDatabase();
-			$stmt = $this->pdo->query($sql);
-		}
+		$query = $this->tryQuery($sql . ' order by Company.LastUpdate desc');
 
-		return Company::fetchObjects($stmt, $tagsLanguage, $limit);
-	}
-
-	static function fetchObjects(PDOStatement $stmt, $tagsLanguage, $limit = 0)
-	{
-		$companies = [];
-
-		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+		while ($row = $query->fetch(PDO::FETCH_ASSOC))
 		{
 			$company = new CompanyData();
 			$company->permalink = $row['CompanyPermaLink'];
@@ -382,9 +340,19 @@ class Company extends DataAccess
 		$socialMedia->update($company->instagram, $id);
 	}
 
-    public function fetchProvinceID($postalCode){
-        return $this->fetchQuery("select Province.ProvinceID from Province inner join PostalCode 
-            on PostalCode.ProvinceID = Province.ProvinceID where PostalCode.Code = ?",$postalCode);
+    public function fetchProvinceID($postalCode)
+	{
+		$query = $this->tryQuery('select Province.ProvinceID from Province
+			inner join PostalCode on PostalCode.ProvinceID = Province.ProvinceID
+			where PostalCode.Code = ?', true);
+
+		$query->bindValue(1, $postalCode, PDO::PARAM_STR);
+		$values = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+
+		if (isset($values[0]))
+		{ return $values[0]; }
+
+		return '';
     }
 
 	public function insert(CompanyData $company)
@@ -439,23 +407,8 @@ class Company extends DataAccess
 		$socialMedia->insert($company->instagram, $id);
 	}
 
-    private function fetchQuery($sql,$postalCode)
-    {
-        $query = $this->pdo->prepare($sql);
-        $query->bindValue(1,$postalCode,PDO::PARAM_STR);
-
-        if ($query == false)
-        {
-            $this->createDatabase();
-            $query = $this->pdo->prepare($sql);
-            $query->bindValue(1,$postalCode,PDO::PARAM_STR);
-        }
-
-        $province = '';
-
-        while ($row = $query->fetch(PDO::FETCH_ASSOC))
-        {$province = $row['ProvinceID'];}
-
-        return $province;
-    }
+	public function deleteAll()
+	{
+		$this->pdo->exec('delete from Company');
+	}
 }

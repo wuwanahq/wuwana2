@@ -1,26 +1,28 @@
 <?php
 	$sections = [
-		'/admin/statistics' => ['Statistics', 'chart-bar.svg'],
+		//'/admin/statistics' => ['Statistics', 'chart-bar.svg'],
 		'/admin/companies'  => ['Companies', 'company.svg'],
-		'/admin/users'      => ['Users', 'users.svg'],
+		//'/admin/users'      => ['Users', 'users.svg'],
 		'/admin/tags'       => ['Tags', 'tag.svg'],
-		'/admin/categories' => ['Categories', 'label.svg'],
+		//'/admin/categories' => ['Categories', 'label.svg'],
 		'/admin/database'   => ['Database', 'dns.svg']
 	];
 ?>
 <div class="column-left">
 	<div class="box-panel">
 		<div class="panel-cover"><img src="/static/logo/ribbon-long.svg" alt="wuwana ribbon logo"></div>
-		<section>
-			<h1>Administrator's name</h1>
-			<a href="/?logout">
-				<div class="icon-label-h">
-					<img src="/static/icon/gray/close.svg" alt="">
-					Logout
-				</div>
-			</a>
-		</section>
-		<hr>
+		<?php if($user->isLogin()): ?>
+			<section>
+				<h1><?php echo $_SESSION['Name'] ?></h1>
+				<a href="/?logout">
+					<div class="icon-label-h">
+						<img src="/static/icon/gray/close.svg" alt="">
+						Logout
+					</div>
+				</a>
+			</section>
+			<hr>
+		<?php endif ?>
 		<section class="admin-control">
 			<h3>Admin controls</h3>
 			<?php foreach ($sections as $sectionURL => $section): ?>
@@ -33,5 +35,5 @@
 			<?php endforeach ?>
 		</section>
 	</div>
-	<div id="version">Wuwana version 2.1.17</div>
+	<div id="version">Wuwana version 2.1.18</div>
 </div>

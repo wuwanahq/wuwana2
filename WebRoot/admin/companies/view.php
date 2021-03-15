@@ -13,6 +13,12 @@
 	<div class="container">
 		<?php include 'Templates/admin menu.php' ?>
 		<div class="column-main">
+			<?php if(!$user->isAdmin()): ?>
+				<div class="information-error-box">
+					<div class="information-error-vertical"></div>
+					<h2>You are not logged in!</h2>
+				</div>
+			<?php endif ?>
 			<section>
 				<h2>Add new company</h2>
 				<div class="box pad-16">

@@ -12,33 +12,46 @@
 	<div class="container">
 		<?php include 'Templates/admin menu.php' ?>
 		<div class="column-main">
+			<?php if(!$user->isAdmin()): ?>
+				<div class="information-error-box">
+					<div class="information-error-vertical"></div>
+					<h2>You are not logged in!</h2>
+				</div>
+			<?php endif ?>
 			<section>
-				<h2>Export database</h2>
+				<h2>Export tables data</h2>
 				<div class="box pad-16">
-					<a href="?export=UserAccount">Download table User (TSV file)</a><br>
-					<a href="?export=Company">Download table Company (TSV file)</a><br>
-					<a href="?export=SocialMedia">Download table SocialMedia (TSV file)</a><br>
-					<a href="?export=Image">Download table Image (TSV file)</a><br>
-					<a href="?export=Tag">Download table Tag (TSV file)</a><br>
-					<a href="?export=schema">Download database schema (SQL script)</a>
+					<a href="?export=UserAccount">Download UserAccount.tsv</a><br>
+					<a href="?export=Company">Download Company.tsv</a><br>
+					<a href="?export=SocialMedia">Download SocialMedia.tsv</a><br>
+					<a href="?export=Image">Download Image.tsv</a><br>
+					<a href="?export=Tag">Download Tag.tsv</a>
 				</div>
 			</section>
-<!--
 			<section>
-				<h2>Import database</h2>
+				<h2>Import tables data</h2>
 				<div class="box pad-16">
-					<form>
-						<label for="f1">User table:</label><input id="f1" name="f1" type="file"><br>
-						<label for="f2">Company table:</label><input id="f2" name="f2" type="file"><br>
-						<label for="f3">SocialMedia table:</label><input id="f3" name="f3" type="file"><br>
-						<label for="f4">Image table:</label><input id="f4" name="f4" type="file"><br>
-						<label for="f5">Tag table:</label><input id="f5" name="f5" type="file"><br>
-						<label for="f6">Category table:</label><input id="f6" name="f6" type="file"><br>
-						<input type="submit">
+					<form method="post" enctype="multipart/form-data">
+						<label for="f1">UserAccount table:</label>
+						<input id="f1" type="file" name="UserAccount"><br>
+						<label for="f2">Company table:</label>
+						<input id="f2" type="file" name="Company"><br>
+						<label for="f3">SocialMedia table:</label>
+						<input id="f3" type="file" name="SocialMedia"><br>
+						<label for="f4">Image table:</label>
+						<input id="f4" type="file" name="Image"><br>
+						<label for="f5">Tag table:</label>
+						<input id="f5" type="file" name="Tag"><br><br>
+						<input type="submit" value="Upload files and OVERWRITE TABLES DATA">
 					</form>
 				</div>
 			</section>
--->
+			<section>
+				<h2>Get database schema</h2>
+				<div class="box pad-16">
+					<a href="?export=schema">Download SQL script</a>
+				</div>
+			</section>
 		</div>
 	</div>
 	<?php include 'Templates/page footer.php' ?>

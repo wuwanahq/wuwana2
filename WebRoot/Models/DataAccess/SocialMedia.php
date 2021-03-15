@@ -4,7 +4,7 @@ use PDO;
 
 /**
  * Data access layer for stored social media.
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class SocialMedia extends DataAccess
 {
@@ -12,9 +12,9 @@ class SocialMedia extends DataAccess
 	{
 		return 'create table SocialMedia (
 			CompanyID int not null,
-			ID tinyint not null,
+			ID smallint not null,
 			URL varchar(255) not null,
-			ProfileName varchar(255) not null,
+			ProfileName varchar(126) not null,
 			Biography varchar(255) not null,
 			ExternalLink varchar(255) not null,
 			Counter1 int not null,
@@ -93,7 +93,7 @@ class SocialMedia extends DataAccess
 		if ($query->execute())
 		{
 			$image = new Image($this->pdo);
-			$image->deleteAll($companyID, $id);
+			$image->delete($companyID, $id);
 			$image->insert($socialMedia->pictures, $companyID, $id);
 		}
 	}
@@ -111,5 +111,10 @@ class SocialMedia extends DataAccess
 
 		$row = $query->fetchAll(PDO::FETCH_COLUMN, 0);
 		return isset($row[0]) ? $row[0] : null;
+	}
+
+	public function deleteAll()
+	{
+		$this->pdo->exec('delete from SocialMedia');
 	}
 }

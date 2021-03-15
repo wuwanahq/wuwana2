@@ -1,10 +1,13 @@
 <?php
 namespace DataAccess;
 use PDO;
+use PDOStatement;
+use Exception;
+use WebApp\WebApp;
 
 /**
  * Abstract interface to the database.
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 abstract class DataAccess
 {
@@ -13,65 +16,61 @@ abstract class DataAccess
 
 	protected $pdo;
 
-	public function __construct(PDO $pdo)
+	public function __construct()
 	{
-		$this->pdo = $pdo;
+		$this->pdo = WebApp::getPdoInstance();
 		date_default_timezone_set('UTC');
 	}
 
 	abstract static function getTableSchema();
 	abstract public function insertData($filePath);
 
-	protected function createDatabase()
+	private function createDatabase()
 	{
-		//TODO: check if tables schema are up to date else upgrade it
+		// Create tables
+		$this->pdo->exec(User::getTableSchema());
+		$this->pdo->exec(Tag::getTableSchema());
+		$this->pdo->exec(SocialMedia::getTableSchema());
+		$this->pdo->exec(Image::getTableSchema());
+		$this->pdo->exec(Region::getTableSchema());
+		$this->pdo->exec(Province::getTableSchema());
+		$this->pdo->exec(PostalCode::getTableSchema());
+		$this->pdo->exec(Location::getTableSchema());
+		$this->pdo->exec(Company::getTableSchema());
 
-		$this->createTable(Category::getTableSchema());
-
-		$this->createTable(User::getTableSchema());
-		$this->createTable(Tag::getTableSchema());
-
-
-		$this->createTable(SocialMedia::getTableSchema());
-		$this->createTable(Image::getTableSchema());
-
-        $this->createTable(Region::getTableSchema());
-        $this->createTable(Province::getTableSchema());
-        $this->createTable(PostalCode::getTableSchema());
-
-        $this->createTable(Location::getTableSchema());
-        $this->createTable(Company::getTableSchema());
-
+		// Default tables data
 		(new Location($this->pdo))->insertData(__DIR__ . '/default data/location.tsv');
 		(new Tag($this->pdo))->insertData(__DIR__ . '/default data/tag.tsv');
 		(new SocialMedia($this->pdo))->insertData( __DIR__ . '/default data/socialmedia.tsv');
 		(new User($this->pdo))->insertData(__DIR__ . '/default data/user.tsv');
-
 		(new Region($this->pdo))->insertData(__DIR__ . '/default data/region.tsv');
         (new Province($this->pdo))->insertData(__DIR__ . '/default data/province.tsv');
         (new PostalCode($this->pdo))->insertData(__DIR__ . '/default data/postalcode.tsv');
         (new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
 	}
 
-	private function createTable($sql)
+	/**
+	 * Prepare or directly execute an SQL statement and initialize database's tables if necessary.
+	 * @param string $sql
+	 * @param bool $isPreparedStatement
+	 * @return PDOStatement
+	 * @throws Exception
+	 */
+	protected function tryQuery($sql, $isPreparedStatement = false)
 	{
-		switch ($this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME))
-		{
-			case 'oci':
-				$this->pdo->exec(str_replace(
-					['tinyint', 'bigint'],
-					['number(3)', 'number(19)'],
-					$sql));
-				break;
+		$query = $isPreparedStatement ? $this->pdo->prepare($sql) : $this->pdo->query($sql);
 
-			case 'mysql':
-				$this->pdo->exec($sql);
-				break;
+		if ($query instanceof PDOStatement)
+		{ return $query; }
 
-			default:
-				$this->pdo->exec(str_replace('tinyint', 'smallint', $sql));
-				break;
-		}
+		$this->createDatabase();
+		$query = $isPreparedStatement ? $this->pdo->prepare($sql) : $this->pdo->query($sql);
+
+		if ($query instanceof PDOStatement)
+		{ return $query; }
+
+		$info = $this->pdo->errorInfo();
+		throw new Exception($info[0] . ' ' . $info[2], $info[1]);
 	}
 
 	protected function importData($filePath, $tableName, $columns)

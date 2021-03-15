@@ -28,10 +28,10 @@ class Location extends DataAccess
 
 	public function selectUsefulItemsOnly($countryCode,$language)
 	{
-		return $this->fetchQuery("select distinct Province.ProvinceID,Region.RegionID, Region.EN, Region.ES, 
+		return $this->fetchQuery("select distinct Province.ProvinceID,Region.RegionID, Region.EN, Region.ES,
             Region.FR,Region.ZH,Location.CountryCode
-            FROM Region inner join Province on Region.RegionID=Province.RegionID 
-            inner JOIN Location on Location.ProvinceID=Province.ProvinceID where 
+            FROM Region inner join Province on Region.RegionID=Province.RegionID
+            inner JOIN Location on Location.ProvinceID=Province.ProvinceID where
             Location.CountryCode='" .$countryCode[0] . $countryCode[1]. "' and Province.ProvinceID
             in (select ProvinceID from Company);",$language);
 	}
@@ -42,24 +42,15 @@ class Location extends DataAccess
 			"select CountryCode,ProvinceID from Location where CountryCode='" . $code[0] . $code[1] . "'");
 	}
 
-	private function fetchQuery($sql,$language)
+	private function fetchQuery($sql, $language)
 	{
-		$stmt = $this->pdo->query($sql);
-
-		if ($stmt == false)
-		{
-			$this->createDatabase();
-			$stmt = $this->pdo->query($sql);
-		}
-
+		$query = $this->tryQuery($sql);
 		$locations = [];
-
         $provinceNameLanguage = strtoupper($language);
 
-		while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-		{ $locations[$row['RegionID']] = $row["$provinceNameLanguage"];  }
+		while ($row = $query->fetch(PDO::FETCH_ASSOC))
+		{ $locations[$row['RegionID']] = $row[$provinceNameLanguage]; }
 
         return $locations;
 	}
-
 }
