@@ -22,7 +22,7 @@ function handleProfilePageAndSubmitForm()
 		form.append("instagram", this.responseURL);
 		form.append("email", user.email);
 		form.append("biography", user.biography);
-		form.append("website", user.externalURL);
+		// form.append("website", user.externalURL);
 		form.append("ExternalURL", user.externalURL);
 		form.append("name", user.name);
 		form.append("following", user.nbFollowing);
@@ -56,7 +56,7 @@ function handleProfilePageAndFillForm()
 	{
 		document.getElementById("email").value = user.email;
 		document.getElementById("biography").value = user.biography;
-		document.getElementById("website").value = user.externalURL;
+		// document.getElementById("website").value = user.externalURL;
 		document.getElementById("ExternalURL").value = user.externalURL;
 		document.getElementById("name").value = user.name;
 		document.getElementById("following").value = user.nbFollowing;

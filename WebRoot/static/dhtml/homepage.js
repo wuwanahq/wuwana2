@@ -45,14 +45,13 @@ function isPossibleToViewMore(companyCount,selectedRegions)
 	if (companyCount > (pageCount * 8)) {
 		//view more companies
 		viewMoreCompanies(pageCount,selectedRegions);
-		pageCount++;	//increase value of page count
-		pageCountElement.value = pageCount;		//set increased value to pageCountElement
-	}else{
+		pageCount++; //increase value of page count
+		pageCountElement.value = pageCount;	//set increased value to pageCountElement
+	} else {
 		//hide view more button
 		document.getElementById("view-more-button").style.display = 'none';
 	}
 }
-
 
 /**
  * Function to display more companies

@@ -52,6 +52,13 @@
 
 /* GENERAL BODY */
 
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html {
 	scroll-behavior: smooth
 }
@@ -65,9 +72,9 @@ body {
 	color: var(--black);
 	background-color: var(--background);
 	margin: 0;
-	justify-content: center;
-	align-items: center;
 	padding: 0 16px;
+	align-items: center;
+	min-height: 100vh;
 }
 
 section {
@@ -123,11 +130,26 @@ a:visited {
 }
 
 /* ----- INPUT CSS ----- */
+input[type=text],
+input[type=url],
+textarea {
+	width: 100%;
+	margin: 0 0 8px;
+	padding: 4px 8px;
+	border-radius: 8px;
+	border: 1px solid var(--grey200);
+	font-size: 1rem;
+}
 
 input[type="checkbox"] {
 	width: 16px;
 	height: 16px;
 	margin: 0 8px 0 0;
+}
+
+input::placeholder {
+	font-size: var(--font-s);
+	color: var(--grey500);
 }
 
 /* The Description List Element */
@@ -165,30 +187,24 @@ dl dd label {
 .form-layout-column {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 16px;
+	margin-bottom: 8px;
+}
+
+.form-layout-column label {
+	font-size: var(--font-s);
+	font-weight: 400;
+	color: var(--grey700);
+	margin-bottom: 4px;
 }
 
 .form-layout-row {
 	display: flex;
 	flex-direction: row;
-	margin-bottom: 16px;
-}
-
-.form-label-wrapper {
-	margin: 0 0 4px;
-}
-
-.form-label {
-	font-size: var(--font-s);
-	font-weight: 500;
-}
-
-.form-input {
 	margin: 0;
-	padding: 4px 8px;
-	border-radius: 8px;
-	border: 1px solid var(--grey500);
-	font-size: var(--font-m);
+}
+
+.form-layout-row .form-layout-column {
+	margin-right: 16px;
 }
 
 /* ----- CSS TO MAKE THE LAYOUT ----- */
@@ -198,7 +214,7 @@ dl dd label {
 	width: 100%;
 	max-width: 1200px;
 	margin-top: 16px;
-	margin-bottom: 40px;
+	margin-bottom: 24px;
 }
 
 .column-left {
@@ -284,8 +300,10 @@ dl dd label {
 	border-bottom-right-radius: 8px;
 }
 
-.card:hover {
-	background-color: var(--grey50)
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	.card:hover {
+		background-color: var(--grey50)
+	}
 }
 
 /* ----- BUTTONS ----- */
@@ -318,15 +336,6 @@ dl dd label {
 	color: var(--black);
 }
 
-.button-main a:hover {
-	color: var(--white);
-}
-
-.button-main:hover {
-	color: var(--white);
-	background-color: var(--black)
-}
-
 .button-main:disabled {
 	background-color: var(--grey200);
 	color:  var(--grey700);
@@ -349,10 +358,6 @@ dl dd label {
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
 	white-space: nowrap;
-}
-
-.button-second:hover {
-	background-color:  var(--grey700);
 }
 
 .button-second:disabled {
@@ -391,21 +396,23 @@ dl dd label {
 	color: var(--black);
 }
 
-.button-icon a:hover {
-	color: var(--white);
-}
-
 .button-icon img {
 	margin-right: 4px;
 }
 
-.button-icon:hover {
-	color: var(--white);
-	background-color: var(--black)
-}
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	.button-icon a:hover {
+		color: var(--white);
+	}
 
-.button-icon:hover img {
-	filter: invert(100%)
+	.button-icon:hover {
+		color: var(--white);
+		background-color: var(--black)
+	}
+	
+	.button-icon:hover img {
+		filter: invert(100%)
+	}
 }
 
 /* Small Button with Left Icon(14px) */
@@ -413,13 +420,13 @@ dl dd label {
 .button-icon-small {
 	display: flex;
 	padding: 2px 6px 2px 4px;
+	background-color: var(--white);
 	color: var(--grey500);
 	font-size: var(--font-xs);
 	line-height: 1.5;
-	font-weight: 700;
-	background-color: var(--white);
+	font-weight: 500;
 	border: solid 1px var(--grey500);
-	border-radius: 8px;
+	border-radius: 0.5rem;
 	white-space: nowrap;
 }
 
@@ -444,14 +451,6 @@ dl dd label {
 	margin: 8px;
 }
 
-.button-social:hover {
-	background-color: var(--black);
-}
-
-.button-social:hover img {
-	filter: invert(100%);
-}
-
 .button-social:disabled {
 	background-color: var(--grey200);
 	cursor: not-allowed;
@@ -473,16 +472,77 @@ dl dd label {
 	cursor: pointer
 }
 
-.pill:hover {
-	background-color: var(--grey200);
-}
-
 .pill:disabled {
 	background-color: var(--grey200);
 	color:  var(--grey700);
 	border-style: none;
 	box-shadow: none;
 	cursor: not-allowed;
+}
+
+/* Horizontal Icon Label */
+.icon-label-h {
+	padding: 4px 8px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color:  var(--grey700);
+	font-weight: 400;
+}
+
+.icon-label-h img {
+	margin-right: 8px;
+}
+
+/* Dropdown-caret */
+.dropdown-caret {
+	display: flex;
+	align-items: center;
+	padding: 4px;
+	color: var(--grey700);
+	cursor: pointer;
+}
+
+.dropdown-caret img {
+	margin-inline-start: 4px;
+}
+
+/* Buttons Hover */
+
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	/* Button Main */
+	.button-main a:hover {
+		color: var(--white);
+	}
+	
+	.button-main:hover {
+		color: var(--white);
+		background-color: var(--black)
+	}
+
+	/* Button Secondary */
+	.button-second:hover {
+		background-color:  var(--grey700);
+	}
+
+	/* Button Social */
+	.button-social:hover {
+		background-color: var(--black);
+	}
+	
+	.button-social:hover img {
+		filter: invert(100%);
+	}
+
+	/* Pill */
+	.pill:hover {
+		background-color: var(--grey200);
+	}
+
+	/* Icon Label Horizontal */
+	.icon-label-h:hover {
+		background-color: var(--grey200);
+	}
 }
 
 /* ----- COMPONENTS ----- */
@@ -562,6 +622,57 @@ dl dd label {
 	margin-right: 8px
 }
 
+/* NAVBAR */
+.navbar-box {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	min-width: 280px;
+	max-width: 280px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	background-color: var(--white);
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+}
+
+.panel-ribbon {
+	top: 0;
+	max-width: 290px;
+}
+
+.navbar-box section {
+	margin: 16px 0;
+	padding: 0;
+}
+
+.navbar-box h2,
+.navbar-box h3,
+.navbar-box p {
+	margin: 0 8px 8px;
+}
+
+.navbar-box h2 {
+	font-weight: 700;
+}
+
+.navbar-box p {
+	color: var(--grey700);
+}
+
+.navbar-box ul {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-box li {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
 /* HEADER */
 
 .header-bar{
@@ -582,26 +693,114 @@ dl dd label {
 	align-items: center;
 	width: 100%;
 	padding: 0 16px;
-	max-width: 1200px} /* Same as body max width */
+	max-width: 1232px} /* Body max width + padding left and right 16px  */
 
 .header-logo {
-	height: 24px}
+	height: 24px;
+	margin-inline-end: 32px;
+}
 
 .header-icon {
 	border-radius: 8px;
-	padding: 8px;
-	margin-right: -8px;
+	padding: 10px 8px 6px; /* To visually center icon */
+	margin-inline-start: -8px;
+	margin-inline-end: 8px;
 	cursor: pointer;
-	display: none;}
+	display: none;
+}
 
-.header-icon:hover {
-	background-color:var(--grey200)}
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	.header-icon:hover {
+		background-color:var(--grey200)
+	}
+}
 
-.header-invisible { /* used to make the header layout */
-	visibility: hidden;
-	width: 40px;
-	height: 44px;
-	margin-right: -8px;
+/* SEARCH */
+
+.search {
+	margin-left: auto;
+	width: 400px;
+}
+
+.search-icon {
+	display: none;
+	border-radius: 8px;
+	padding: 10px 8px 6px; /* To visually center icon */
+	margin-inline-start: -8px;
+	margin-inline-end: 8px;
+}
+
+.search form {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 32px;
+	padding: 0;
+	padding-inline-start: 8px;
+	background-color: var(--white);
+	border: 1px solid var(--grey200);
+	border-radius: 8px;
+}
+
+.search form:active {
+	border-color: var(--grey700);
+}
+
+.search input[type=search] {
+	width: 100%;
+	border: none;
+	font-size: 1rem;
+	color: var(--grey700);
+	padding: 0;
+	margin-inline-end: 4px;
+}
+
+.search input[type=search]:focus {
+	outline: none;
+}
+
+.search-btn {
+	margin: 0;
+	border: none;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	background-image: url(/static/icon/gray/search.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: var(--grey200);
+	height: 100%;
+	width: 48px;
+	cursor: pointer;
+}
+
+.search-suggestion {
+	display: none;
+	position: absolute;
+	top: 44px;left: 0;
+	width: 100%;
+	min-height: 200px;
+	background-color: var(--white);
+	border: 1px solid var(--grey200);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.search-suggestion a {
+	color: var(--black);
+}
+
+.search-suggestion li {
+	list-style: none;
+	width: 100%;
+	padding: 8px;
+
+	background-image: url(/static/icon/gray/chevron-right.svg);
+	background-repeat: no-repeat;
+	background-position: 98% center;
+}
+
+.search-suggestion li:hover {
+	background-color: var(--grey200);
 }
 
 /* FOOTER */
@@ -686,56 +885,6 @@ footer details summary::-webkit-details-marker {
 	display:none;
 }
 
-
-
-/* POP-UP */
-
-.popup-lang {
-	top: 40px;
-	position: absolute;
-	display: none;
-	flex-direction: column;
-	white-space: nowrap;
-	padding: 16px;
-	background-color: var(--white);
-	border: 1px solid var(--black);
-	border-radius: 8px;
-	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
-}
-
-.popup-title {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-}
-
-.popup-title img:hover {
-	cursor: pointer;
-}
-
-.header-lang:hover .popup-lang {
-	display: flex;
-}
-
-.popup-lang h2 {
-	font-weight: 700;
-	margin: 0 16px 16px 0;
-	line-height: 1.3;
-}
-
-.popup-lang a {
-	padding: 8px;
-	margin: 0 -8px;
-	font-weight: 400;
-	color: var(--black);
-	border-radius: 8px;
-}
-
-.popup-lang a:hover {
-	text-decoration: underline;
-	background-color: var(--grey50);
-}
-
 /* Error Messages & Alerts */
 
 .information-error-box {
@@ -745,6 +894,7 @@ footer details summary::-webkit-details-marker {
 	background-color: var(--white);
 	border-radius: 8px;
 	margin-bottom: 24px;
+	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
 }
 
 .information-error-vertical {
@@ -755,146 +905,6 @@ footer details summary::-webkit-details-marker {
 
 .information-error-box h2 {
 	margin: 16px;
-}
-
-/* Company Card */
-
-.logo-main {
-	width: 88px;
-	min-width: 88px;
-	height: 88px;
-	border-radius: 8px;
-	overflow: hidden;
-}
-
-.logo-main img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover
-}
-
-.logo-small {
-	width: 24px;
-	min-width: 24px;
-	height: 24px;
-	border-radius: 4px;
-	overflow: hidden;
-}
-
-.logo-small img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover
-}
-
-.company-card-wrapper {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 100%;
-}
-
-.company-card-info {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	margin-right: 24px;
-	height: 100%;
-}
-
-.company-card-info ul {
-	padding-inline-start: 0;
-	display: flex;
-	/*align-self: left;*/ /* align-self doesn't take left or right value */
-	margin: 0 0 8px
-}
-
-.company-card-info li {
-	display: inline;
-	margin: 4px 12px 0 0
-}
-
-.company-card-badge-wrapper {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-end;
-	justify-items: right;
-	margin-top: 8px
-}
-
- /* Badges */
-
-/* .BadgeArea {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-end;
-	justify-items: right;
-	margin-top: 8px}
-
-	.BadgeArea .ItemLabel:last-child {
-		margin-right: 16px;}
- */
-
- /* .badge-google-review {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
-	background-color: #609BEE;
-	color: var(--black);
-	font-size: 20px;
-	font-weight: 500;
-	line-height: 1;
-	margin-bottom: 4px;
-}
-
-.badge-google-review-scale {
-	font-size: 10px;
-	font-weight: 400;
-	position: relative;
-	top: 4px
-} */
-
-/* BANNER */
-
-.banner {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	overflow: hidden;
-	min-height: 230px;
-	width: 100%;
-	margin-bottom: 24px;
-	border-radius: 8px;
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
-	background-image: linear-gradient(to right, rgba(0,0,0, 0.5), transparent 60%),
-		url(/static/image/ali-yahya-7_AZi5Fe-rU.jpg);
-	background-size: auto, cover;
-	justify-content: center;
-	background-position: 0 0, 50% 50%
-}
-
-.banner-text {
-	color: var(--white);
-	margin-left: 24px;
-	max-width: 60ch
-}
-
-.banner-text h2 {
-	font-size: 2rem;
-	line-height: 2.4rem;
-	font-weight: 700;
-	margin: 0 0 8px 0
-}
-
-.banner-text p {
-	font-size: var(--font-xl);
-	font-weight: 400;
-	margin: 0
 }
 
 /* Filter Area */
@@ -955,7 +965,8 @@ footer details summary::-webkit-details-marker {
 	position: fixed;
 	right: 24px;
 	bottom: 24px;
-	transition: visibility 0.3s linear,opacity 0.3s linear;
+	transition: visibility 300ms 200ms ease-in-out,
+				opacity 300ms 200ms ease-in-out;
 }
 
 /* ----- OTHER ----- */
@@ -1008,50 +1019,16 @@ footer details summary::-webkit-details-marker {
 	}
 
 	/* ----- COMPONENTS ----- */
-	.header-invisible { /* used to make the header layout */
-		display: none;
-	}
 
 	.header-icon {
-		display: inline}
-
-	.banner {
-		background-image: linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%), url(/static/image/ali-yahya-7_AZi5Fe-rU.jpg);
+		display: inline
 	}
 
 	/* MENU MOBILE */
 	.header-container {
-		justify-content: space-between;
+		justify-content: flex-start
 	}
-
-	.sticky {
-		z-index: 10;
-		display: none; /* Display flex with JS */
-		flex-direction: column;
-		align-content: flex-start;
-		position: fixed;
-		width: auto;
-		padding: 16px;
-		background-color: var(--white);
-		top: 48px;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		overflow-y: scroll;
-	}
-
-	.sticky .box{
-		box-shadow: none;
-	}
-
-	.sticky .filter{
-		padding: 0;
-	}
-
-	.sticky .button-icon {
-		display: flex
-	}
-
+	
 	dl {
 		margin: 0 0 24px
 	}
@@ -1100,6 +1077,50 @@ footer details summary::-webkit-details-marker {
 		color: var(--black)
 	}
 
+	/* NAVBAR */
+	.column-left {
+		display: flex;
+	}
+
+	.navbar-box {
+		visibility: hidden;
+		position: fixed;
+		top: 48px; left: 0;
+		z-index: 2;
+		height: calc(100vh - 48px); /* vh - header height */
+		border-radius: 0;
+		transform: translateX(-110vw);
+		will-change: transform;
+		transition: transform 200ms;
+	}
+
+	#navbar-background {
+		display: none;
+		position: fixed;
+		top: 48px; left: 0;
+		z-index: 1;
+		min-width: 100vw;
+		height: calc(100vh - 48px); /* vh - header height */
+		background: rgba(22, 19, 19, 0.5);
+	}
+
+	#filter {
+		visibility: hidden;
+		position: fixed;
+		top: 48px; left: 0;
+		z-index: 3;
+		background-color: var(--white);
+		height: calc(100vh - 48px); /* vh - header height */
+		padding: 16px;
+		will-change: visibility;
+	
+	}
+
+	#filter .box {
+		box-shadow: none;
+		padding: 0;
+	}
+
 	/* FOOTER */
 	footer ul {
 		flex-direction: column;
@@ -1120,52 +1141,46 @@ footer details summary::-webkit-details-marker {
 @media screen and (max-width: 500px)
 {
 	body {
-		padding: 0 8px 24px;
+		padding: 0 8px;
 	}
 
-	/* ----- COMPONENTS ----- */
+	.header-container {
+		padding-right: 8px;
+	}
 
-	/* BANNER */
-	.banner {
+	/* SEARCH */
+
+	.search-fixed {
+		position: fixed;
+		top: 0; left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: var(--white);
+	}
+
+	.search-fixed .search-icon {
 		display: block;
-		min-height: 180px;
-		background-image: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0,0) 100%),
-			url(/static/image/ali-yahya-7_AZi5Fe-rU.jpg);
-		background-size: auto, cover;
-		background-position: 0 0, 50% 50%
+		margin-inline-start: 2px;
 	}
 
-	.banner-text {
-		align-self: flex-start;
-		color: var(--white);
-		margin: 16px 0 0 16px;
-		max-width: 60ch
+	.search-fixed form {
+		height: 48px;
+		padding: 0;
+		padding-inline-start: 8px;
+		background-color: var(--white);
+		/* border: none; */
+		border-radius: 0;
 	}
 
-	.banner-text h2 {
-		font-size: var(--font-xl);
-		line-height: 1.3;
-		font-weight: 500
+	.search-fixed .search-btn {
+		min-width: 48px;
+		border-radius: 0;
 	}
 
-	.banner-text p {
-		font-size: var(--font-m);
-		line-height: 1.3;
-	}
-
-	/* COMPANY CARD */
-	.company-card-wrapper {
-		width: 100%;
-		display: flex;
-		flex-direction: column}
-
-	.company-card-badge-wrapper {
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-		min-width: 100px;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-		align-items: flex-start
+	.search-fixed .search-suggestion {
+		top: 48px; /* Same as .search form height */
+		border-radius: 0;
+		border: none;
+		display: none;
 	}
 }

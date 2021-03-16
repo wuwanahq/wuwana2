@@ -7,4 +7,5 @@ const TEMP_TEXT = [
 4 => "À propos de Wuwana™",
 5 => "Politiques de confidentialité",
 6 => "We ❤️ Open Source",
+7 => "Trouvez le fournisseur dont vous avez besoin",
 ];
