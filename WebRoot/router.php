@@ -53,6 +53,10 @@ switch ($url)
 		require $page . '/view.php';
 		break;
 
+	case '/sitemap.xml':
+		require 'sitemap.php';
+		break;
+
 	default:
 		if (php_sapi_name() == 'cli-server')
 		{

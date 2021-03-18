@@ -3,6 +3,3 @@ FallbackResource /router.php
 
 # Nginx
 #location / { try_files $uri /router.php =404; }
-
-RewriteEngine On
-RewriteRule ^sitemap\.xml/?$ sitemap.php

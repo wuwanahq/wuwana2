@@ -1,24 +1,28 @@
+<?php 
+header("Content-type: application/xml; charset=utf-8");
+echo '<?xml version="1.0" encoding="UTF-8" ?>';
+?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://wuwana.com/</loc>
+	<changefreq>daily</changefreq>
+	<priority>1.0</priority>
+</url>
+
 <?php
+// Dynamically generated sitemap for each company
 
-$connect = mysqli_connect("localhost", "root", "", "testing");
-$query = "SELECT page_url FROM page";
-$result = mysqli_query($connect, $query);
-$base_url = "https://wuwana.com/";
-$allCompanies = (new DataAccess\Company());
+$root = 'https://wuwana.com/';
+$urls = array("permalink1", "permalink2", "permalink3");
 
-// Dynamic sitemap code
-
-header("Conten-Type: application/xml; charset=uft-8");
-
-echo '<? xml version="1.0" enconding="UFT-8" ?>' . PHP_EOL;
-echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
-
-foreach ($companies as $permalink => $companies)
-{
-	echo '<url>' . PHP_EOL;
-		echo '<loc>' . $base_url . $row["page_url"] . '/</loc>' . PHP_EOL;
-		echo '<lastmod>' . 'date' . '</lastmod>' . PHP_EOL;
-	echo '</url>' . PHP_EOL;
+foreach ($urls as $permalink) {
+	echo '<url>';
+	echo 	'<loc>' . $root . $permalink . '</loc>';
+	echo	'<changefreq>weekly</changefreq>';
+	echo '</url>';
 }
 
 ?>
+	
+</urlset>

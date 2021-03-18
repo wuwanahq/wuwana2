@@ -200,3 +200,18 @@ function searchMobileClear() {
 	search.classList.remove("search-fixed");
 	body.style.overflow = "auto";
 }
+
+// Javascript to detect broken img url link
+
+window.addEventListener("load", setDefaultImg());
+
+function setDefaultImg() {
+	const images = document.getElementsByTagName("img");
+	const numbers = [1,2,3,4,5,6,7,8];
+
+	for (var i = 0; i < images.length; i++){
+		const errorLogo = '/static/logo/square' + numbers[Math.floor(Math.random() * numbers.length)] + '.svg';
+		const errorValue = '"this.onerror=null; this.src =' + errorLogo + '"';
+		images[i].setAttribute("onerror", "this.src='/static/logo/square1.svg");
+	}
+}

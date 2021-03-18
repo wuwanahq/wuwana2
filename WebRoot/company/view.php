@@ -181,10 +181,10 @@
 						<div class="Aspect2-3"><div class="instagram-gallery">
 							<div class="instagram-row">
 								<div class="instagram-picture">
-									<img src="<?php echo $company->instagram->pictures[0] ?>">
+									<img src="<?php echo $company->instagram->pictures[0] ?>" onerror="this.onerror=null;this.src='/static/logo/square1.svg'">
 								</div>
 								<div class="instagram-picture">
-									<img src="<?php echo $company->instagram->pictures[1] ?>">
+									<img src="<?php echo $company->instagram->pictures[1] ?>" >
 								</div>
 							</div>
 							<div class="instagram-row">
