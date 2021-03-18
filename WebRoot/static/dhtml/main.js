@@ -211,7 +211,9 @@ function setDefaultImg() {
 
 	for (var i = 0; i < images.length; i++){
 		const errorLogo = '/static/logo/square' + numbers[Math.floor(Math.random() * numbers.length)] + '.svg';
-		const errorValue = '"this.onerror=null; this.src =' + errorLogo + '"';
-		images[i].setAttribute("onerror", "this.src='/static/logo/square1.svg");
+
+		images[i].addEventListener("error", function() {
+			this.src = errorLogo;
+		})
 	}
 }

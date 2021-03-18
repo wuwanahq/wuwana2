@@ -65,7 +65,7 @@
 					<?php foreach ($companies as $permalink => $company): ?>
 						<a class="card" href="/<?php echo $permalink ?>">
 							<div class="logo-main margin-r16">
-								<img src="<?php echo $company->logo ?>">
+								<img src="<?php echo $company->logo ?>" alt="logo" onerror="setDefaultImg()">
 							</div>
 							<div class="company-card-wrapper">
 								<div class="company-card-info">

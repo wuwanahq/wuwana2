@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 		$output .= '<a class="card" href="/'. $permalink.'">
 			<div class="logo-main margin-r16">
-				<img src="'. $company->logo.'" alt="">
+				<img src="'. $company->logo.'" alt="logo" onerror="setDefaultImg()">
 			</div>
 			<div class="company-card-wrapper">
 				<div class="company-card-info">
