@@ -10,7 +10,9 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<?php include 'Templates/navbar.php' ?>
+		<section class="column-left">
+			<?php include 'Templates/navbar.php' ?>
+		</section>
 		<div class="column-main">
 			<?php if(!$user->isAdmin()): ?>
 				<div class="information-error-box">
