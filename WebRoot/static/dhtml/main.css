@@ -132,6 +132,7 @@ a:visited {
 /* ----- INPUT CSS ----- */
 input[type=text],
 input[type=url],
+input[type=email],
 input[type=password],
 textarea {
 	width: 100%;

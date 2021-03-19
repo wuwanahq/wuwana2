@@ -21,6 +21,7 @@
 							Admin page
 						</div>
 					</a>
+					<br>
 					<a href="/?logout">
 						<div class="icon-label-h">
 							<img src="/static/icon/gray/close.svg" alt="">
@@ -32,11 +33,11 @@
 				<form method="post">
 					<div class="form-layout-column">
 						<label for="email">Email</label>
-						<input id="email" type="text" name="email">
+						<input id="email" type="email" name="email">
 					</div>
 					<div class="form-layout-column">
 						<label for="code">Code</label>
-						<input id="code" type="password" name="code">
+						<input id="code" type="password" name="code" inputmode="tel">
 					</div>
 					<input class="button-second" type="submit" value="Access admin view">
 				</form>
