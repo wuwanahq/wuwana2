@@ -226,7 +226,7 @@ class Company extends DataAccess
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
 			Company.LastUpdate as CompanyLastUpdate,
-			Province.' . strtoupper($tagsLanguage->code) . ' as ProvinceName,
+			Province.' . strtoupper($tagsLanguage) . ' as ProvinceName,
 			Company.PostalCode as CompanyPostalCode,
 			T1.Names as TagName1,
 			T2.Names as TagName2

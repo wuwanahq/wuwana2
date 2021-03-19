@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$selectedRegions = json_decode(stripslashes($_POST['selectedRegions']));
 
 	$locations = (new DataAccess\Location())->selectUsefulItemsOnly('es',$language->code);
-	$companies = (new DataAccess\Company())->selectRegions($language, $selectedRegions, 0);
+	$companies = (new DataAccess\Company())->selectRegions($language->code, $selectedRegions, 0);
 	$companies = array_splice($companies,($pageCount*8),8);
 	$counter = count($companies);
 

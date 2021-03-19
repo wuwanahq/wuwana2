@@ -26,7 +26,7 @@ if(filter_has_var(INPUT_GET, 'logout'))
 
 //TODO: create CompanyIterator
 //fetch all companies
-$allCompanies = (new DataAccess\Company())->selectRegions($language, $selectedRegions, 0);
+$allCompanies = (new DataAccess\Company())->selectRegions($language->code, $selectedRegions, 0);
 $allCompaniesCount = count($allCompanies);     // count all companies
 $companies = array_splice($allCompanies,0,8);  // obtain an array of values from position 0 - 7
 $counter = count($companies);
