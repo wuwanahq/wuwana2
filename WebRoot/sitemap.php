@@ -1,28 +1,23 @@
-<?php 
-header("Content-type: application/xml; charset=utf-8");
-echo '<?xml version="1.0" encoding="UTF-8" ?>';
-?>
-
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-	<loc>https://wuwana.com/</loc>
-	<changefreq>daily</changefreq>
-	<priority>1.0</priority>
-</url>
-
 <?php
-// Dynamically generated sitemap for each company
+/**
+ * Dynamically generated sitemap for each company.
+ * Note: Google doesn't consume the <priority> attribute in sitemaps.
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
+ */
 
-$root = 'https://wuwana.com/';
-$urls = array("permalink1", "permalink2", "permalink3");
+$root = WebApp\WebApp::getHostname();
 
-foreach ($urls as $permalink) {
-	echo '<url>';
-	echo 	'<loc>' . $root . $permalink . '</loc>';
-	echo	'<changefreq>weekly</changefreq>';
-	echo '</url>';
+header('Content-type: application/xml');
+echo '<?xml version="1.0" encoding="UTF-8"?>',
+	'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+foreach ((new DataAccess\Company())->selectRegions() as $permalink => $company)
+{
+	echo '<url>',
+		'<loc>', $root, '/', $permalink, '</loc>',
+		'<lastmod>', date('Y-m-d', $company->lastUpdate), '</lastmod>',
+		'<changefreq>weekly</changefreq>',
+		'</url>';
 }
 
-?>
-	
-</urlset>
+echo '</urlset>';

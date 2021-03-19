@@ -218,13 +218,14 @@ class Company extends DataAccess
 	 * @param int $limit
 	 * @return array
 	 */
-	public function selectRegions($tagsLanguage, $regions = [], $limit = 0)
+	public function selectRegions($tagsLanguage = 'en', $regions = [], $limit = 0)
 	{
 		$companies = [];
 		$sql = 'select
 			Company.PermaLink as CompanyPermaLink,
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
+			Company.LastUpdate as CompanyLastUpdate,
 			Province.' . strtoupper($tagsLanguage->code) . ' as ProvinceName,
 			Company.PostalCode as CompanyPostalCode,
 			T1.Names as TagName1,
@@ -245,6 +246,7 @@ class Company extends DataAccess
 			$company->permalink = $row['CompanyPermaLink'];
 			$company->name = $row['CompanyName'];
 			$company->logo = $row['CompanyLogoURL'];
+			$company->lastUpdate = $row['CompanyLastUpdate'];
 			//$company->description = $row['Description'];
 			//$company->website = $row['Website'];
 			//$company->phone = $row['PhonePrefix'] . str_pad($row['PhoneNumber'], 9, '0', STR_PAD_LEFT);
