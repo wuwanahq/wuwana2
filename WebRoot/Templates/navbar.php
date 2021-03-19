@@ -26,7 +26,7 @@
 	</section>
 	<hr>
 	<section>
-		<?php if ($url =='/'): ?> 
+		<?php if ($url =='/'): ?>
 			<h3><?php echo TEXT[11] ?></h3>
 			<ul>
 				<li>
@@ -49,7 +49,7 @@
 		<?php endif ?>
 	</section>
 </section>
-<?php if (strpos($url, '/admin') !== false)
-	{ echo '<div id="version">Wuwana version 2.2.0</div>'; }
-?>
+<?php if (strpos($url, '/admin') !== false): ?>
+	<div id="version">Wuwana version 2.2.1</div>
+<?php endif ?>
 <div class="navbar-background" id="navbar-background" onclick="showNavbar()"></div>

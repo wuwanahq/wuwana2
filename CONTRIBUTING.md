@@ -9,7 +9,8 @@ The choice to use vanilla PHP was made to...
 - keep the memory footprint per request extremely low (`memory_limit` can be set to **2MB**)
 - keep a very short response time per request (`max_execution_time` can be set to **1 sec**)
 
-To contribute you just need to create a pull request when your modifications are done in order to be approved by one maintainer.
+To contribute you just need to create a pull request to merge in the **develop** branch.  
+Then your modifications will be approved by one maintainer of the project.
 
 
 ## Project architecture
@@ -72,8 +73,9 @@ php -S 0:8000 router.php
 
 Now you can open the website with your browser:
 
-- Go to http://localhost:8000/admin/companies to add new companies in the database
-- Go to http://localhost:8000 to watch your data on the homepage
+- Go to http://localhost:8000 to see the homepage with the current companies
+- Go to http://localhost:8000/?login to access the Admin pages with **dev@wuwana.com** and the code **1234**
+
 
 ### Test on a mobile device
 
@@ -114,7 +116,7 @@ We try to respect the following rules. 😇
 
 - Use PascalCase for table and column names
 - Try to write [agnostic queries](https://nils85.github.io/sql-compat-table) (compatible across database systems)
-- All queries **must** be tested for MySQL and MariaDB
+- All queries **must** be tested at least with MySQL or MariaDB
 
 ### Filename
 
