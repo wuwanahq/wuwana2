@@ -14,14 +14,30 @@
 		<?php if ($url =='/'): ?>
 			<h2><?php echo TEXT[13] ?></h2>
 			<p><?php echo TEXT[9] ?></p>
-		<?php elseif($user->isLogin()): ?>
-			<h2><?php echo $_SESSION['Name'] ?></h2>
-			<a href="/?logout">
-				<div class="icon-label-h">
-					<img src="/static/icon/gray/close.svg" alt="">
-					Logout
-				</div>
-			</a>
+		<?php elseif (strpos($url, '/admin') !== false): ?>
+			<?php if($user->isLogin()): ?>
+				<h2><?php echo $_SESSION['Name'] ?></h2>
+				<a href="/?logout">
+					<div class="icon-label-h">
+						<img src="/static/icon/gray/close.svg" alt="">
+						Logout
+					</div>
+				</a>
+			<?php else: ?>
+				<h2>🚨 Please login 🚨</h2>
+				<p>You need to login to access this section.</p>
+				<form method="post">
+					<div class="form-layout-column">
+						<label for="email">Email</label>
+						<input id="email" type="text" name="email">
+					</div>
+					<div class="form-layout-column">
+						<label for="code">Code</label>
+						<input id="code" type="password" name="code">
+					</div>
+					<input class="button-second" type="submit" value="Access admin view">
+				</form>
+			<?php endif ?>
 		<?php endif ?>
 	</section>
 	<hr>
