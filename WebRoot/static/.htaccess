@@ -2,8 +2,8 @@
 FallbackResource disabled
 <IfModule mod_expires.c>
 	ExpiresActive On
-	ExpiresDefault "now plus 30 minutes"
+	ExpiresDefault "now plus 1 hour"
 </IfModule>
 
 # Nginx
-#location /static/ { expires 30m; }
+#location /static/ { expires 1h; }
