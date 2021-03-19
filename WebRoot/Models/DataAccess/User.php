@@ -43,7 +43,7 @@ class User extends DataAccess
 
 	/**
 	 * Find a user by its hashed email address.
-	 * @param string $hash Binary hash
+	 * @param string $hash
 	 * @return \DataAccess\User
 	 */
 	public function selectEmail($hash)
@@ -71,7 +71,7 @@ class User extends DataAccess
 
 	/**
 	 * Create a new user.
-	 * @param string $hash Binary hash
+	 * @param string $hash
 	 * @param string $email Shortened email address
 	 * @param int $companyID
 	 * @param int $code
@@ -82,34 +82,28 @@ class User extends DataAccess
 		$query = $this->pdo->prepare(
 			'insert into UserAccount (Hash,Email,Name,CompanyID,AdminLevel,AccessCode,LastLogin) values (?,?,?,?,?,?,0)');
 
-		$debug = $this->pdo->errorInfo();
-
 		$query->bindValue(1, $hash, PDO::PARAM_STR);
 		$query->bindValue(2, $email, PDO::PARAM_STR);
 		$query->bindValue(3, $email, PDO::PARAM_STR);
 		$query->bindValue(4, $companyID, PDO::PARAM_INT);
 		$query->bindValue(5, $adminLevel, PDO::PARAM_INT);
 		$query->bindValue(6, $code, PDO::PARAM_INT);
-		$debug = $query->execute();
-
-		trigger_error('DEBUG - New user inserted? ' . var_export($debug, true));
-		return $debug;
+		return $query->execute();
 	}
 
-	// updateUserCode
+	/**
+	 * Update user access code.
+	 * @param string $hash
+	 * @param int $code
+	 * @todo Test on the server with MariaDB v10.1
+	 */
 	public function updateCode($hash, $code)
 	{
-		// For whatever reason the code below refuse to work with MariaDB v10.1
-		// even when the execute method return true!
 		$query = $this->pdo->prepare('update UserAccount set AccessCode=?,LastLogin=? where Hash=?');
 		$query->bindValue(1, $code, PDO::PARAM_INT);
 		$query->bindValue(2, time(), PDO::PARAM_INT);
 		$query->bindValue(3, $hash, PDO::PARAM_STR);
-		$debug = $query->execute();
-
-		trigger_error('DEBUG - Code updated? ' . var_export($debug, true));
-		trigger_error('DEBUG - Query error info=' . var_export($query->errorInfo(), true));
-		trigger_error('DEBUG - PDO error info=' . var_export($this->pdo->errorInfo(), true));
+		$query->execute();
 	}
 
 	public function updateLastLoginDate($hash)
@@ -120,19 +114,23 @@ class User extends DataAccess
 		$query->execute();
 	}
 
+	/**
+	 * Change user administration level.
+	 * @param int $level
+	 * @param string $hash
+	 */
 	public function updateAdminLevel($level, $hash)
 	{
-		$query = $this->pdo->prepare(
-			'update UserAccount set AdminLevel=? where Hash=?');
-
+		$query = $this->pdo->prepare('update UserAccount set AdminLevel=? where Hash=?');
 		$query->bindValue(1, $level, PDO::PARAM_INT);
 		$query->bindValue(2, $hash, PDO::PARAM_STR);
-		$debug = $query->execute();
-
-		trigger_error('DEBUG - User updated? ' . var_export($debug, true));
+		$query->execute();
 	}
 
-	// countUser
+	/**
+	 * Count the total number of registered users.
+	 * @return int
+	 */
 	public function countAll()
 	{
 		return $this->pdo->query('select count(*) from UserAccount')->fetchAll(PDO::FETCH_COLUMN, 0)[0];

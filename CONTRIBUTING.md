@@ -73,8 +73,9 @@ php -S 0:8000 router.php
 
 Now you can open the website with your browser:
 
-- Go to http://localhost:8000/admin/companies to add new companies in the database
-- Go to http://localhost:8000 to watch your data on the homepage
+- Go to http://localhost:8000 to see the homepage with the current companies
+- Go to http://localhost:8000/?login to access the Admin pages with dev@wuwana.com and the code 1234
+
 
 ### Test on a mobile device
 

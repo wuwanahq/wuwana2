@@ -47,6 +47,10 @@ abstract class DataAccess
         (new Province($this->pdo))->insertData(__DIR__ . '/default data/province.tsv');
         (new PostalCode($this->pdo))->insertData(__DIR__ . '/default data/postalcode.tsv');
         (new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
+
+		// For developer environments create user dev@wuwana.com with the access code "1234" to easily test as Admin
+		if (php_sapi_name() == 'cli-server')
+		{ (new User())->insertUser(\WebApp\Crypt::hashUniqueID('dev@wuwana.com'), 'd…@wuwana.com', 0, 1234, 1); }
 	}
 
 	/**
