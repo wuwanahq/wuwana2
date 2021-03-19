@@ -74,7 +74,7 @@ php -S 0:8000 router.php
 Now you can open the website with your browser:
 
 - Go to http://localhost:8000 to see the homepage with the current companies
-- Go to http://localhost:8000/?login to access the Admin pages with dev@wuwana.com and the code 1234
+- Go to http://localhost:8000/?login to access the Admin pages with **dev@wuwana.com** and the code **1234**
 
 
 ### Test on a mobile device
@@ -116,7 +116,7 @@ We try to respect the following rules. 😇
 
 - Use PascalCase for table and column names
 - Try to write [agnostic queries](https://nils85.github.io/sql-compat-table) (compatible across database systems)
-- All queries **must** be tested with MySQL or MariaDB
+- All queries **must** be tested at least with MySQL or MariaDB
 
 ### Filename
 

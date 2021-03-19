@@ -2,7 +2,7 @@
 namespace DataAccess;
 
 /**
- * Object representing company data.
+ * Data object representing company info.
  * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class CompanyData
