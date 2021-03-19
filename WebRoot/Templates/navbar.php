@@ -12,8 +12,38 @@
 	<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
 	<section>
 		<?php if ($url =='/'): ?>
-			<h2><?php echo TEXT[13] ?></h2>
-			<p><?php echo TEXT[9] ?></p>
+			<?php if (isset($user) && $user->isLogin()): ?>
+				<span>
+					<h2><?php echo $_SESSION['Name'] ?></h2>
+					<a href="/admin/companies">
+						<div class="icon-label-h">
+							<img src="/static/icon/gray/slider.svg" alt="">
+							Admin page
+						</div>
+					</a>
+					<a href="/?logout">
+						<div class="icon-label-h">
+							<img src="/static/icon/gray/close.svg" alt="">
+							Logout
+						</div>
+					</a>
+				</span>
+			<?php elseif (filter_has_var(INPUT_GET, 'login')): ?>
+				<form method="post">
+					<div class="form-layout-column">
+						<label for="email">Email</label>
+						<input id="email" type="text" name="email">
+					</div>
+					<div class="form-layout-column">
+						<label for="code">Code</label>
+						<input id="code" type="password" name="code">
+					</div>
+					<input class="button-second" type="submit" value="Access admin view">
+				</form>
+			<?php else: ?>
+				<h2><?php echo TEXT[13] ?></h2>
+				<p><?php echo TEXT[9] ?></p>
+			<?php endif ?>
 		<?php elseif (strpos($url, '/admin') !== false): ?>
 			<?php if($user->isLogin()): ?>
 				<h2><?php echo $_SESSION['Name'] ?></h2>
