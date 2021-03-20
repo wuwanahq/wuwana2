@@ -60,8 +60,8 @@
 
 	<?php elseif (strpos($url, '/admin') !== false): ?>
 	<!-- Navbar for admin -->
-		<section>
 		<?php if($user->isLogin()): ?>
+		<section>
 			<h2><?php echo $_SESSION['Name'] ?></h2>
 			<a href="/">
 				<div class="icon-label-h">
@@ -75,21 +75,6 @@
 					Logout
 				</div>
 			</a>
-		<?php else: ?>
-			<h2>🚨 Please login 🚨</h2>
-			<p>You need to login to access this section.</p>
-			<form method="post">
-				<div class="form-layout-column">
-					<label for="email">Email</label>
-					<input id="email" type="text" name="email">
-				</div>
-				<div class="form-layout-column">
-					<label for="code">Code</label>
-					<input id="code" type="password" name="code">
-				</div>
-				<input class="button-second" type="submit" value="Access admin view">
-			</form>
-		<?php endif ?>
 		</section>
 		<hr>
 		<section>
@@ -103,6 +88,23 @@
 				<?php if ($url != $sectionURL) { echo '</a>'; } ?>
 			<?php endforeach ?>
 		</section>
+		<?php else: ?>
+		<section>
+			<h2>🚨 Please login 🚨</h2>
+			<p>You need to login to access this section.</p>
+			<form method="post">
+				<div class="form-layout-column">
+					<label for="email">Email</label>
+					<input id="email" type="text" name="email">
+				</div>
+				<div class="form-layout-column">
+					<label for="code">Code</label>
+					<input id="code" type="password" name="code">
+				</div>
+				<input class="button-second" type="submit" value="Access admin view">
+			</form>
+		</section>
+		<?php endif ?>
 	</div>
 	<div id="version">Wuwana version 2.2.1</div>	
 <?php endif ?>

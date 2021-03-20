@@ -14,13 +14,13 @@
 		<section class="column-left">
 			<?php include 'Templates/navbar.php' ?>
 		</section>
-		<main class="column-main">
+		<main>
 			<?php if(!$user->isAdmin()): ?>
 				<div class="information-error-box">
 					<div class="information-error-vertical"></div>
 					<h2>You are not logged in!</h2>
 				</div>
-			<?php endif ?>
+			<?php else: ?>
 			<section>
 				<h2>Add new company</h2>
 				<div class="box pad-16" id="new-company">
@@ -160,6 +160,7 @@
 					</div>
 				</div>
 			</section>
+		<?php endif ?>
 		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>

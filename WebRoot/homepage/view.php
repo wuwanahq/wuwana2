@@ -44,7 +44,7 @@
 				</div>
 			</section>
 		</section>
-		<main class="column-main">
+		<main>
 			<div class="information-error-box">
 				<div class="information-error-vertical"></div>
 				<h2><?php echo TEXT[12] ?></h2>

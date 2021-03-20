@@ -136,7 +136,7 @@
 				</div>
 			</div>
 		</section>
-		<main class="column-main">
+		<main>
 			<?php if (isset($company->instagram)): ?>
 				<section class="instagram">
 					<h2><?php printf(TEXT[2], $company->name) ?></h2>

@@ -13,13 +13,13 @@
 		<section class="column-left">
 			<?php include 'Templates/navbar.php' ?>
 		</section>
-		<div class="column-main">
+		<main>
 			<?php if(!$user->isAdmin()): ?>
 				<div class="information-error-box">
 					<div class="information-error-vertical"></div>
 					<h2>You are not logged in!</h2>
 				</div>
-			<?php endif ?>
+			<?php else: ?>
 			<section>
 				<h2>Export tables data</h2>
 				<div class="box pad-16">
@@ -54,7 +54,8 @@
 					<a href="?export=schema">Download SQL script</a>
 				</div>
 			</section>
-		</div>
+			<?php endif ?>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>
