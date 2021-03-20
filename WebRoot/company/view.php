@@ -102,7 +102,8 @@
 					</section>
 					<hr>
 					<?php if (isset($user) && $user->isAdmin()): ?>
-					<a href="/admin/companies">
+					<!-- Not sure if this make sense -->
+					<a href="<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];?>/?edit">
 						<div class="icon-label-h">
 							<img src="/static/icon/gray/edit.svg" alt="">
 							<?php echo TEXT[10] ?>

@@ -7,7 +7,7 @@
 
 /* Box Panel */
 .edit {
-	padding: 16px;
+	padding: 8px;
 }
 
 .edit hr {
@@ -46,19 +46,16 @@
 
 .edit details:hover {
 	cursor: pointer;
-	text-decoration: underline;
 }
 
 .edit details summary:hover,
 .edit details summary:active,
 .edit details summary:focus {
 	outline-style: none;
-	text-decoration: underline;
 }
 
-.edit details summary span {
-	font-size: var(--font-m);
-	font-weight: 400;
+.edit details summary:hover {
+	text-decoration: underline;
 }
 
 /* companyPanel Sections */ 
