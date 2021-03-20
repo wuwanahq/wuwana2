@@ -138,7 +138,7 @@
 							<tbody>
 								<?php foreach ($companies as $company): ?>
 									<tr>
-										<td>
+										<td style="text-align: center;">
 											<img class="logo-small" src="<?php echo $company->logo ?>">
 										</td>
 										<td title="<?php echo $company->description ?>">

@@ -107,6 +107,11 @@ tr:nth-child(even) {
 /* ----- ADMIN TABS -----*/
 
 /* Company Tab */
+.logo-small {
+	max-width: 24px;
+	border-radius: 4px;
+}
+
 #section-table #box-table .scroll-h table .logo-small {
 	margin: auto;
 }
