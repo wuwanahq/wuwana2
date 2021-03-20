@@ -18,7 +18,7 @@
 			<a href="/admin/companies">
 				<div class="icon-label-h">
 					<img src="/static/icon/gray/slider.svg" alt="">
-					Admin page
+					Admin
 				</div>
 			</a>
 			<a href="/?logout">
@@ -66,7 +66,7 @@
 			<a href="/">
 				<div class="icon-label-h">
 					<img src="/static/icon/gray/home.svg" alt="">
-					Go back home
+					Homepage
 				</div>
 			</a>
 			<a href="/?logout">
