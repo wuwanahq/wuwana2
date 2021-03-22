@@ -35,16 +35,16 @@
 				<div class="box pad-16">
 					<form method="post" enctype="multipart/form-data">
 						<label for="f1">UserAccount table:</label>
-						<input id="f1" type="file" name="UserAccount"><br>
+						<input id="f1" type="file" name="UserAccount"><br><br>
 						<label for="f2">Company table:</label>
-						<input id="f2" type="file" name="Company"><br>
+						<input id="f2" type="file" name="Company"><br><br>
 						<label for="f3">SocialMedia table:</label>
-						<input id="f3" type="file" name="SocialMedia"><br>
+						<input id="f3" type="file" name="SocialMedia"><br><br>
 						<label for="f4">Image table:</label>
-						<input id="f4" type="file" name="Image"><br>
+						<input id="f4" type="file" name="Image"><br><br>
 						<label for="f5">Tag table:</label>
 						<input id="f5" type="file" name="Tag"><br><br>
-						<input type="submit" value="Upload files and OVERWRITE TABLES DATA">
+						<input type="submit" class="button-main" value="Upload files and OVERWRITE TABLES DATA">
 					</form>
 				</div>
 			</section>
