@@ -16,6 +16,7 @@
 
 .edit h2 {
 	text-align: left;
+	margin-block-end: 16px;
 }
 
 .edit .button-main {

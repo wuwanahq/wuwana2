@@ -142,6 +142,7 @@ textarea {
 	border: 1px solid var(--grey200);
 	font-size: 1rem;
 	font-family: "Roboto", sans-serif;
+	-webkit-appearance: none;
 }
 
 input[type="checkbox"] {
@@ -153,6 +154,7 @@ input[type="checkbox"] {
 input::placeholder {
 	font-size: var(--font-s);
 	color: var(--grey500);
+	white-space: nowrap;
 }
 
 /* The Description List Element */
@@ -328,6 +330,7 @@ main {
 	cursor: pointer;
 	overflow: hidden;
 	white-space: nowrap;
+	-webkit-appearance: none;
 }
 
 .button-main a {
@@ -358,6 +361,7 @@ main {
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
 	white-space: nowrap;
+	-webkit-appearance: none;
 }
 
 .button-second:disabled {
@@ -1002,19 +1006,6 @@ footer details summary::-webkit-details-marker {
 /* LAYOUT CHANGES FOR TABLET DEVICES */
 @media screen and (max-width: 800px)
 {
-	/* TABLET GENERAL CHANGES */
-	h1 {
-		font-size: var(--font-xxl);
-	}
-
-	h2 {
-		font-size: var(--font-xl);
-	}
-
-	h3 {
-		font-size: var(--font-l);
-	}
-
 	/* ----- CSS TO MAKE THE LAYOUT ----- */
 	.container {
 		flex-direction: column;
@@ -1027,12 +1018,6 @@ footer details summary::-webkit-details-marker {
 
 	.item-label {
 		font-size: var(--font-xs);
-	}
-
-	/* ----- BUTTONS ----- */
-	.button-main,
-	.button-icon {
-		font-size: var(--font-m);
 	}
 
 	/* ----- COMPONENTS ----- */
