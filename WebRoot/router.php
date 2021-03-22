@@ -38,12 +38,12 @@ switch ($url)
 
 	default:
 
-		if (php_sapi_name() == 'cli-server')
+		if (php_sapi_name() == 'cli-server')  // PHP built-in web server only
 		{
 			switch (substr($url, 0, 6))
 			{
-				case '/stati':  // static resources
-				case '/ajax/':  // There is no view with AJAX request
+				case '/stati':  // Static resource
+				case '/ajax/':  // AJAX request
 					return false;
 			}
 		}

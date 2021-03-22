@@ -34,4 +34,8 @@ $counter = count($companies);
 $pageCount = 1;  // keeps count of how many times a 8-company-result has been returned
 
 require 'homepage/text ' . $language->code . '.php';
-require 'homepage/view.php';
+
+if (filter_has_var(INPUT_GET, 'search'))
+{ require 'homepage/view result.php'; }
+else
+{ require 'homepage/view search.php'; }
