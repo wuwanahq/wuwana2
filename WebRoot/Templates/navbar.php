@@ -8,10 +8,10 @@
 		'/admin/database'   => ['Database', 'dns.svg']
 	];
 ?>
-<div class="navbar-box" id="navbar">
-	<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
-	<?php if ($url =='/'): ?>
+<?php if ($url =='/'): ?>
 	<!-- Navbar for the homepage -->
+	<div class="navbar-box" id="navbar">
+		<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
 		<section>
 		<?php if (isset($user) && $user->isLogin()): ?>
 			<h2><?php echo $_SESSION['Name'] ?></h2>
@@ -58,8 +58,11 @@
 		</section>
 	</div>
 
-	<?php elseif (strpos($url, '/admin') !== false): ?>
-	<!-- Navbar for admin -->
+<?php elseif (strpos($url, '/admin') !== false): ?>
+<!-- Navbar for admin -->
+<div class="sticky">
+	<div class="navbar-box" id="navbar">
+		<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
 		<?php if($user->isLogin()): ?>
 		<section>
 			<h2><?php echo $_SESSION['Name'] ?></h2>
@@ -106,6 +109,7 @@
 		</section>
 		<?php endif ?>
 	</div>
-	<div id="version">Wuwana version 2.2.1</div>	
+	<div id="version">Wuwana version 2.2.1</div>
+</div>	
 <?php endif ?>
 <div class="navbar-background" id="navbar-background" onclick="showNavbar()"></div>

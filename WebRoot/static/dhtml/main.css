@@ -976,7 +976,14 @@ footer details summary::-webkit-details-marker {
 
 .sticky {
 	position: sticky;
-	top: 60px;
+	top: 64px;
+}
+
+@media screen and (max-width: 800px)
+{
+	.sticky {
+		position: relative;
+	}
 }
 
 .back-top {
