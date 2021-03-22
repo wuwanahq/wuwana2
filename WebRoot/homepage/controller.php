@@ -32,3 +32,6 @@ $companies = array_splice($allCompanies,0,8);  // obtain an array of values from
 $counter = count($companies);
 
 $pageCount = 1;  // keeps count of how many times a 8-company-result has been returned
+
+require 'homepage/text ' . $language->code . '.php';
+require 'homepage/view.php';

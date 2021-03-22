@@ -26,38 +26,18 @@ require 'Templates/text ' . $language->code . '.php';
 
 switch ($url)
 {
-	case '/test':
-		require 'test/view.php';
-		break;
-
-	case '/':
-		require 'homepage/text ' . $language->code . '.php';
-		require 'homepage/controller.php';
-		require 'homepage/view.php';
-		break;
-
-	case '/privacy':
-		$page = substr($url, 1);
-		require $page . '/text ' . $language->code . '.php';
-		require $page . '/view.php';
-		break;
-
-	case '/admin/statistics':
-	case '/admin/categories':
-	case '/admin/companies':
-	case '/admin/database':
-	case '/admin/tags':
-	case '/admin/users':
-		$page = substr($url, 1);
-		require $page . '/controller.php';
-		require $page . '/view.php';
-		break;
-
-	case '/sitemap.xml':
-		require 'sitemap.php';
-		break;
+	case '/':                 require 'homepage/controller.php'; break;
+	case '/privacy':          require 'privacy/controller.php'; break;
+	case '/admin/statistics': require 'admin/statistics/controller.php'; break;
+	case '/admin/categories': require 'admin/categories/controller.php'; break;
+	case '/admin/companies':  require 'admin/companies/controller.php'; break;
+	case '/admin/database':   require 'admin/database/controller.php'; break;
+	case '/admin/tags':       require 'admin/tags/controller.php'; break;
+	case '/admin/users':      require 'admin/users/controller.php'; break;
+	case '/sitemap.xml':      require 'sitemap.php'; break;
 
 	default:
+
 		if (php_sapi_name() == 'cli-server')
 		{
 			switch (substr($url, 0, 6))
@@ -78,9 +58,7 @@ switch ($url)
 		}
 		else  // No permalink found so display the error page
 		{
-			require '404/text ' . $language->code . '.php';
 			require '404/controller.php';
-			require '404/view.php';
 		}
 }
 

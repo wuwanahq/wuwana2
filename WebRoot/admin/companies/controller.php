@@ -41,3 +41,5 @@ if ($user->isAdmin())
 	//TODO: allow the administrator to configure the minimum interval
 	$oldestInstagram = $company->selectOldestInstagramURL(604800);  // 7 days
 }
+
+require 'admin/companies/view.php';
