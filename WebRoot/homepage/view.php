@@ -38,7 +38,9 @@
 							<?php endforeach ?>
 						</dl>
 						<div class="mobile" style="text-align:center">
-							<input type="submit" value="<?php echo TEXT[7] ?>" class="button-filter">
+							<input type="submit"
+								class="button-filter" 
+								value="<?php echo TEXT[7] ?>" >
 						</div>
 					</form>
 				</div>
