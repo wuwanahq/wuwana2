@@ -88,11 +88,8 @@
 					<?php endforeach ?>
 				</div>
 			</section>
-            <input type="hidden" id="page-count" value="<?=$pageCount?>"/>
-			<a	id="view-more-button"
-				class="button-icon center"
-				onclick="isPossibleToViewMore(<?=$allCompaniesCount?>,<?=json_encode($selectedRegions,JSON_NUMERIC_CHECK)?>)"
-			>
+			<input type="hidden" id="page-count" value="<?php echo $pageCount ?>"/>
+			<a id="view-more-button" class="button-icon center" onclick="isPossibleToViewMore(<?php echo $jsParam ?>)">
 				<img src="/static/icon/plus.svg" alt="">
 				<?php echo TEXT[6] ?>
 			</a>

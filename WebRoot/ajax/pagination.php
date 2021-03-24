@@ -11,12 +11,12 @@ spl_autoload_register(function($className) {
 
 $language = WebApp\WebApp::getLanguage();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
+if (filter_has_var(INPUT_POST, 'pageCount') && filter_has_var(INPUT_POST, 'selectedRegions'))
 {
-	$pageCount = $_POST['pageCount'];
+	$pageCount = filter_input(INPUT_POST, 'pageCount', FILTER_SANITIZE_NUMBER_INT);
 	$selectedRegions = json_decode(stripslashes($_POST['selectedRegions']));
 
-	$locations = (new DataAccess\Location())->selectUsefulItemsOnly('es',$language->code);
+	//$locations = (new DataAccess\Location())->selectUsefulItemsOnly('es',$language->code);
 	$companies = (new DataAccess\Company())->selectRegions($language->code, $selectedRegions, 0);
 	$companies = array_splice($companies,($pageCount*8),8);
 	$counter = count($companies);

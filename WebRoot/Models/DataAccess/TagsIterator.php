@@ -6,12 +6,12 @@ use PDOStatement;
 
 /**
  * Tags iterator.
- * @license https://mozilla.org/MPL/2.0 This Source Code Form is subject to the terms of the Mozilla Public License v2.0
+ * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class TagsIterator implements Iterator
 {
 	private $query;
-	private $currentRow;
+	private $row;
 
 	public function __construct(PDOStatement $query)
 	{
@@ -20,29 +20,35 @@ class TagsIterator implements Iterator
 
 	public function rewind()
 	{
-		$this->currentRow = $this->query->fetch(PDO::FETCH_ASSOC);
-	}
+		if (isset($this->row))
+		{
+			$this->query->closeCursor();
+			$this->query->execute();
+		}
 
-	public function valid()
-	{
-		return $this->currentRow != false;
+		$this->row = $this->query->fetch(PDO::FETCH_ASSOC);
 	}
 
 	public function next()
 	{
-		$this->currentRow = $this->query->fetch(PDO::FETCH_ASSOC);
+		$this->row = $this->query->fetch(PDO::FETCH_ASSOC);
+	}
+
+	public function valid()
+	{
+		return $this->row != false;
 	}
 
 	public function current()
 	{
 		$tag = new TagData();
-		$tag->names = $this->currentRow['Names'];
-		$tag->keywords = $this->currentRow['Keywords'];
+		$tag->names = $this->row['Names'];
+		$tag->keywords = $this->row['Keywords'];
 		return $tag;
 	}
 
 	public function key()
 	{
-		return $this->currentRow['ID'];
+		return $this->row['ID'];
 	}
 }
