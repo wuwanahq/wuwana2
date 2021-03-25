@@ -74,3 +74,5 @@ if ($user->isAdmin())
 		$dao->insertData($_FILES['Tag']['tmp_name']);
 	}
 }
+
+require 'admin/database/view.php';

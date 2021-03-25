@@ -15,7 +15,7 @@ class CompanyData
 	public $email = '';
 	public $phone = '0000000000';
 	public $address = '';
-	public $region = '';
+	public $region = 'ES';
 	public $visibleTags = [];
 	public $otherTags;
 	public $instagram;

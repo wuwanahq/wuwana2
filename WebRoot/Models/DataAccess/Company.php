@@ -212,6 +212,39 @@ class Company extends DataAccess
 	}
 
 	/**
+	 * Find companies according to keywords and regions.
+	 * @param string $search
+	 * @param string[] $regions
+	 * @return CompanyIterator
+	 */
+	public function search($search, $regions = [])
+	{
+		$sql = 'select
+			Company.PermaLink as CompanyPermaLink,
+			Company.Name as CompanyName,
+			Company.LogoURL as CompanyLogoURL,
+			Company.LastUpdate as CompanyLastUpdate,
+			Province.*,
+			Company.PostalCode as CompanyPostalCode,
+			T1.Names as TagName1,
+			T2.Names as TagName2
+			from Company
+			left join Province on Company.ProvinceID=Province.ProvinceID
+			left join Tag as T1 on Company.FirstTagID=T1.ID
+			left join Tag as T2 on Company.SecondTagID=T2.ID
+			where (T1.Names like :search or T2.Names like :search or Company.Name like :search)';
+
+		if (!empty($regions))
+		{ $sql .= " and Province.RegionID in ('" . implode("','", $regions) . "')"; }
+
+		$query = $this->tryQuery($sql . ' order by Company.LastUpdate desc', true);
+		$query->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+		$query->execute();
+
+		return new CompanyIterator($query);
+	}
+
+	/**
 	 * Return companies in the selected region.
 	 * @param string $tagsLanguage
 	 * @param array $regions
