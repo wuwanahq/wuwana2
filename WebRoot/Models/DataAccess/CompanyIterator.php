@@ -38,13 +38,13 @@ class CompanyIterator implements Iterator
 
 	public function rewind()
 	{
-		if (isset($this->row))
+		if (isset($this->row) && $this->row === false)
 		{
 			$this->query->closeCursor();
 			$this->query->execute();
+			$this->counter = 0;
 		}
 
-		$this->counter = 0;
 		$this->row = $this->query->fetch(PDO::FETCH_ASSOC);
 	}
 
@@ -79,13 +79,13 @@ class CompanyIterator implements Iterator
 		if ($this->row['TagName1'] != '')
 		{
 			$company->tags[] =
-				explode(parent::VALUES_DELIMITER, $this->row['TagName1'])[$this->languageIndex];
+				explode(DataAccess::VALUES_DELIMITER, $this->row['TagName1'])[$this->languageIndex];
 		}
 
 		if ($this->row['TagName2'] != '')
 		{
 			$company->tags[] =
-				explode(parent::VALUES_DELIMITER, $this->row['TagName2'])[$this->languageIndex];
+				explode(DataAccess::VALUES_DELIMITER, $this->row['TagName2'])[$this->languageIndex];
 		}
 
 		return $company;

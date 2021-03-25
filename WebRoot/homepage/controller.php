@@ -32,8 +32,9 @@ foreach ($locations as $id => $unused)
 	}
 }
 
-$allCompanies = (new DataAccess\Company())->search(
-	filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING), $selectedRegions);
+$search = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING);
+$allCompanies = (new DataAccess\Company())->search($search, $selectedRegions);
+$allCompanies->setTagsLanguage($language->code);
 
 $companies = [];
 $counter = 0;
@@ -46,6 +47,8 @@ foreach ($allCompanies as $permalink => $company)
 	if (++$counter >= 8)
 	{ break; }
 }
+
+//TODO: search more if $allCompanies->counter = 0
 
 $allCompanies->forward();  // Then just count the rest
 $jsParam = $allCompanies->counter . ',' . json_encode($selectedRegions, JSON_NUMERIC_CHECK);

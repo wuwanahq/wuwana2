@@ -232,13 +232,13 @@ class Company extends DataAccess
 			left join Province on Company.ProvinceID=Province.ProvinceID
 			left join Tag as T1 on Company.FirstTagID=T1.ID
 			left join Tag as T2 on Company.SecondTagID=T2.ID
-			where T1.Names like ?';
+			where (T1.Names like :search or T2.Names like :search or Company.Name like :search)';
 
 		if (!empty($regions))
 		{ $sql .= " and Province.RegionID in ('" . implode("','", $regions) . "')"; }
 
 		$query = $this->tryQuery($sql . ' order by Company.LastUpdate desc', true);
-		$query->bindValue(1, '%' . $search . '%', PDO::PARAM_STR);
+		$query->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
 		$query->execute();
 
 		return new CompanyIterator($query);

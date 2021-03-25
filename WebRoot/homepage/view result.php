@@ -50,8 +50,8 @@
 				<h2><?php echo TEXT[12] ?></h2>
 			</div>
 			<div class="search-result-box">
-				<p>Showing 58 results for</p>
-				<h2>Coffee</h2>
+				<p>Showing <?php echo $allCompanies->counter ?> results for</p>
+				<h2><?php echo $search ?></h2>
 			</div>
 			<section>
 				<div class="search-title">
@@ -62,30 +62,7 @@
 					</div>
 				</div>
 				<div id="companies-list" class="box">
-					<?php foreach ($companies as $permalink => $company): ?>
-						<a class="card" href="/<?php echo $permalink ?>">
-							<div class="logo-main margin-r16">
-								<img src="<?php echo $company->logo ?>" alt="logo" onerror="setDefaultImg()">
-							</div>
-							<div class="company-card-wrapper">
-								<div class="company-card-info">
-									<h3>
-										<?php echo $company->name ?>
-									</h3>
-									<ul>
-										<li>
-											<?php echo implode('</li><li>', $company->tags) ?>
-										</li>
-									</ul>
-									<div class="button-icon-small margin-t-auto">
-										<img src="/static/icon/tiny/map.svg" alt="">
-										<?php echo empty($company->region) ? "ES":$company->region ?>
-									</div>
-								</div>
-							</div>
-						</a>
-						<?php if (--$counter > 0) { echo '<hr>'; } ?>
-					<?php endforeach ?>
+					<?php WebApp\ViewComponent::printCompanyCards($companies) ?>
 				</div>
 			</section>
 			<input type="hidden" id="page-count" value="<?php echo $pageCount ?>"/>

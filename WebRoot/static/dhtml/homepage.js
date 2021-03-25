@@ -65,8 +65,15 @@ function viewMoreCompanies(pageCount,selectedRegions)
 	var form = new FormData();
 	var xhr = new XMLHttpRequest();
 
-	form.append("pageCount",pageCount);
-	form.append("selectedRegions",JSON.stringify(selectedRegions));
+	form.append("pageCount", pageCount);
+	form.append("selectedRegions", JSON.stringify(selectedRegions));
+
+	var index = location.search.indexOf("&");
+
+	if(index > 8)
+	{ form.append("search", location.search.substring(8, index)) }
+	else
+	{ form.append("search", location.search.substring(8)); }
 
 	xhr.open("post", "/ajax/pagination.php", true);
 

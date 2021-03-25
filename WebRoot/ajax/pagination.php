@@ -9,44 +9,32 @@ spl_autoload_register(function($className) {
 	require '../Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-$language = WebApp\WebApp::getLanguage();
+$inputs = filter_input_array(INPUT_POST,
+[
+	'pageCount' => FILTER_VALIDATE_INT,
+	'selectedRegions' => FILTER_SANITIZE_STRING,
+	'search' => FILTER_SANITIZE_STRING
+]);
 
-if (filter_has_var(INPUT_POST, 'pageCount') && filter_has_var(INPUT_POST, 'selectedRegions'))
+if ($inputs['pageCount'] > 0 && $inputs['selectedRegions'] != null && $inputs['search'] != null)
 {
-	$pageCount = filter_input(INPUT_POST, 'pageCount', FILTER_SANITIZE_NUMBER_INT);
-	$selectedRegions = json_decode(stripslashes($_POST['selectedRegions']));
+	$selectedRegions = json_decode(stripslashes($inputs['selectedRegions']));
 
-	//$locations = (new DataAccess\Location())->selectUsefulItemsOnly('es',$language->code);
-	$companies = (new DataAccess\Company())->selectRegions($language->code, $selectedRegions, 0);
-	$companies = array_splice($companies,($pageCount*8),8);
-	$counter = count($companies);
+	$allCompanies = (new DataAccess\Company())->search($inputs['search'], $selectedRegions);
+	$allCompanies->setTagsLanguage(WebApp\WebApp::getLanguage()->code);
+	$allCompanies->forward($inputs['pageCount'] * 8);
 
-	$output = '';
+	$companies = [];
+	$counter = 0;
 
-	foreach ($companies as $permalink => $company)
+	// Fetch only the 8 first companies
+	foreach ($allCompanies as $permalink => $company)
 	{
-		$output .= '<a class="card" href="/'. $permalink.'">
-			<div class="logo-main margin-r16">
-				<img src="'. $company->logo.'" alt="logo" onerror="setDefaultImg()">
-			</div>
-			<div class="company-card-wrapper">
-				<div class="company-card-info">
-					<h3>'.$company->name.'</h3>
-					<ul class="tag-area">
-						<li>'.implode('</li><li>', $company->tags).'</li>
-					</ul>
-					<div class="button-icon-small margin-t-auto">
-						<img src="/static/icon/tiny/map.svg" alt="">
-						'. $company->region.'
-					</div>
-				</div>
-				<div class="company-card-badge-wrapper"></div>
-			</div>
-		</a>';
+		$companies[$permalink] = $company;
 
-		if (--$counter > 0)
-		{ $output .= '<hr>'; }
+		if (++$counter >= 8)
+		{ break; }
 	}
 
-	echo '<hr>' . $output;
+	WebApp\ViewComponent::printCompanyCards($companies, true);
 }
