@@ -9,6 +9,8 @@ spl_autoload_register(function($className) {
 	require '../Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
+const PAGING_SIZE = 8;
+
 $inputs = filter_input_array(INPUT_POST,
 [
 	'pageCount' => FILTER_VALIDATE_INT,
@@ -18,23 +20,12 @@ $inputs = filter_input_array(INPUT_POST,
 
 if ($inputs['pageCount'] > 0 && $inputs['selectedRegions'] != null && $inputs['search'] != null)
 {
-	$selectedRegions = json_decode(stripslashes($inputs['selectedRegions']));
-
-	$allCompanies = (new DataAccess\Company())->search($inputs['search'], $selectedRegions);
-	$allCompanies->setTagsLanguage(WebApp\WebApp::getLanguage()->code);
-	$allCompanies->forward($inputs['pageCount'] * 8);
-
-	$companies = [];
-	$counter = 0;
-
-	// Fetch only the 8 first companies
-	foreach ($allCompanies as $permalink => $company)
-	{
-		$companies[$permalink] = $company;
-
-		if (++$counter >= 8)
-		{ break; }
-	}
+	$companies = (new DataAccess\Company())->search(
+		$inputs['search'],
+		json_decode(stripslashes($inputs['selectedRegions'])),
+		WebApp\WebApp::getLanguage()->code,
+		PAGING_SIZE,
+		$inputs['pageCount'] * PAGING_SIZE);
 
 	WebApp\ViewComponent::printCompanyCards($companies, true);
 }

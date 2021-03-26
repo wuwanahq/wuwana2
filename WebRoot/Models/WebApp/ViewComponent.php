@@ -16,6 +16,9 @@ class ViewComponent
 	{
 		foreach ($companies as $permalink => $company)
 		{
+			if (!($company instanceof \DataAccess\CompanyData))
+			{ continue; }
+			
 			if ($addHorizontalLine)
 			{ echo '<hr>'; }
 
@@ -37,23 +40,12 @@ class ViewComponent
 				$permalink, $company->logo, $company->name, implode('</li><li>',$company->tags), $company->region);
 
 			/*
-			<a class="card" href="/$permalink">
-				<div class="logo-main margin-r16">
-					<img src="$logoURL" alt="logo" onerror="setDefaultImg()">
-				</div>
-				<div class="company-card-wrapper">
-					<div class="company-card-info">
-						<h3>$name</h3>
-						<ul class="tag-area">
-							<li>implode('</li><li>', $tags)</li>
-						</ul>
-						<div class="button-icon-small margin-t-auto">
-							<img src="/static/icon/tiny/map.svg" alt="">$company->region
-						</div>
-					</div>
-					<div class="company-card-badge-wrapper"></div>
-				</div>
-			</a>
+			<div class="company-card-info">
+				<h3>...</h3>
+				<ul class="tag-area">...</ul>
+				...
+			</div>
+			<div class="company-card-badge-wrapper"></div>
 			*/
 
 			$addHorizontalLine = true;

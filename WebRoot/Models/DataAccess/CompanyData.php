@@ -7,7 +7,6 @@ namespace DataAccess;
  */
 class CompanyData
 {
-	public $permalink;
 	public $name;
 	public $logo = '';
 	public $description = '';

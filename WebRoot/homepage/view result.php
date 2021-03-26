@@ -50,7 +50,7 @@
 				<h2><?php echo TEXT[12] ?></h2>
 			</div>
 			<div class="search-result-box">
-				<p>Showing <?php echo $allCompanies->counter ?> results for</p>
+				<p>Showing <?php echo $companies['Counter'] ?> results for</p>
 				<h2><?php echo $search ?></h2>
 			</div>
 			<section>

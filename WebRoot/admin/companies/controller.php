@@ -35,7 +35,6 @@ if ($user->isAdmin())
 			$instagram);
 	}
 
-	//TODO: create CompanyIterator
 	$companies = $company->selectAll();
 
 	//TODO: allow the administrator to configure the minimum interval

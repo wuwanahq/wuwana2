@@ -5,6 +5,7 @@
  * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 
+$limit = 50000;  // Max number of URL
 $root = WebApp\WebApp::getHostname();
 
 header('Content-type: application/xml');
@@ -15,8 +16,11 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',
 	'<changefreq>daily</changefreq>',
 	'</url>';
 
-foreach ((new DataAccess\Company())->selectRegions() as $permalink => $company)
+foreach ((new DataAccess\Company())->selectAll() as $permalink => $company)
 {
+	if (--$limit == 0)
+	{ break; }
+
 	echo '<url>',
 		'<loc>', $root, '/', $permalink, '</loc>',
 		'<lastmod>', date('Y-m-d', $company->lastUpdate), '</lastmod>',

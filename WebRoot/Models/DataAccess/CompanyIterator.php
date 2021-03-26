@@ -6,7 +6,6 @@ use PDOStatement;
 
 /**
  * Companies iterator.
- * @property-read int $counter
  * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class CompanyIterator implements Iterator
@@ -15,15 +14,6 @@ class CompanyIterator implements Iterator
 	private $row;
 	private $languageCode = 'EN';
 	private $languageIndex = 0;
-	private $counter = 0;
-
-	public function __get($property)
-	{
-		if ($property == 'counter')
-		{ return $this->counter; }
-
-		trigger_error('Undefined property ' . $property, E_USER_ERROR);
-	}
 
 	public function __construct(PDOStatement $query)
 	{
@@ -38,11 +28,10 @@ class CompanyIterator implements Iterator
 
 	public function rewind()
 	{
-		if (isset($this->row) && $this->row === false)
+		if (isset($this->row))
 		{
 			$this->query->closeCursor();
 			$this->query->execute();
-			$this->counter = 0;
 		}
 
 		$this->row = $this->query->fetch(PDO::FETCH_ASSOC);
@@ -55,37 +44,39 @@ class CompanyIterator implements Iterator
 
 	public function valid()
 	{
-		if ($this->row == false)
-		{ return false; }
-
-		++$this->counter;
-		return true;
+		return $this->row != false;
 	}
 
 	public function current()
 	{
 		$company = new CompanyData();
-		$company->permalink = $this->row['CompanyPermaLink'];
 		$company->name = $this->row['CompanyName'];
-		$company->logo = $this->row['CompanyLogoURL'];
-		$company->lastUpdate = $this->row['CompanyLastUpdate'];
-		//$company->description = $this->row['Description'];
-		//$company->website = $this->row['Website'];
-		//$company->phone = $this->row['PhonePrefix'] . str_pad($this->row['PhoneNumber'], 9, '0', STR_PAD_LEFT);
-		//$company->email = $this->row['Email'];
-		$company->postalCode = $this->row['CompanyPostalCode'];
-		$company->region = isset($this->row[$this->languageCode]) ? $this->row[$this->languageCode] : $this->row['EN'];
 
-		if ($this->row['TagName1'] != '')
-		{
-			$company->tags[] =
-				explode(DataAccess::VALUES_DELIMITER, $this->row['TagName1'])[$this->languageIndex];
-		}
+		if (isset($this->row['CompanyLogoURL']))
+		{ $company->logo = $this->row['CompanyLogoURL']; }
 
-		if ($this->row['TagName2'] != '')
+		if (isset($this->row['CompanyLastUpdate']))
+		{ $company->lastUpdate = $this->row['CompanyLastUpdate']; }
+
+		if (isset($this->row['CompanyPostalCode']))
+		{ $company->postalCode = $this->row['CompanyPostalCode']; }
+
+		if (isset($this->row['CompanyDescription']))
+		{ $company->description = $this->row['CompanyDescription']; }
+
+		if (isset($this->row[$this->languageCode]))
+		{ $company->region = $this->row[$this->languageCode]; }
+
+		if (!empty($this->row['TagName1']))
+		{ $company->tags[] = explode(DataAccess::VALUES_DELIMITER, $this->row['TagName1'])[$this->languageIndex]; }
+
+		if (!empty($this->row['TagName2']))
+		{ $company->tags[] = explode(DataAccess::VALUES_DELIMITER, $this->row['TagName2'])[$this->languageIndex]; }
+
+		if (!empty($this->row['CompanyOtherTags']))
 		{
-			$company->tags[] =
-				explode(DataAccess::VALUES_DELIMITER, $this->row['TagName2'])[$this->languageIndex];
+			$company->tags += array_push(
+				$company->tags, explode(DataAccess::VALUES_DELIMITER, $this->row['CompanyOtherTags']));
 		}
 
 		return $company;
@@ -94,18 +85,5 @@ class CompanyIterator implements Iterator
 	public function key()
 	{
 		return $this->row['CompanyPermaLink'];
-	}
-
-	public function forward($offset = -1)
-	{
-		while ($offset-- != 0)
-		{
-			$this->row = $this->query->fetch(PDO::FETCH_ASSOC);
-
-			if ($this->row == false)
-			{ break; }
-
-			++$this->counter;
-		}
 	}
 }

@@ -127,7 +127,6 @@
 						<table>
 							<thead>
 								<tr>
-									<th>Logo</th>
 									<th style="min-width:240px">Company Name</th>
 									<th style="min-width:150px">Location</th>
 									<th>Visible tags</th>
@@ -136,13 +135,10 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach ($companies as $company): ?>
+								<?php foreach ($companies as $permalink => $company): ?>
 									<tr>
-										<td>
-											<img class="logo-small" src="<?php echo $company->logo ?>">
-										</td>
 										<td title="<?php echo $company->description ?>">
-											<a href="<?php echo '/', $company->permalink ?>">
+											<a href="<?php echo '/', $permalink ?>">
 												<?php echo $company->name ?>
 											</a>
 										</td>

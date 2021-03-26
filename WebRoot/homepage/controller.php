@@ -33,26 +33,11 @@ foreach ($locations as $id => $unused)
 }
 
 $search = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING);
-$allCompanies = (new DataAccess\Company())->search($search, $selectedRegions);
-$allCompanies->setTagsLanguage($language->code);
-
-$companies = [];
-$counter = 0;
 
 // Fetch only the 8 first companies
-foreach ($allCompanies as $permalink => $company)
-{
-	$companies[$permalink] = $company;
+$companies = (new DataAccess\Company())->search($search, $selectedRegions, $language->code, 8);
 
-	if (++$counter >= 8)
-	{ break; }
-}
-
-//TODO: search more if $allCompanies->counter = 0
-
-$allCompanies->forward();  // Then just count the rest
-$jsParam = $allCompanies->counter . ',' . json_encode($selectedRegions, JSON_NUMERIC_CHECK);
-
+$jsParam = $companies['Counter'] . ',' . json_encode($selectedRegions, JSON_NUMERIC_CHECK);
 $pageCount = 1;  // keeps count of how many times a 8-company-result has been returned
 
 require 'homepage/view result.php';
