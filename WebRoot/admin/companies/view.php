@@ -127,7 +127,6 @@
 						<table>
 							<thead>
 								<tr>
-									<th>Logo</th>
 									<th style="min-width:240px">Company Name</th>
 									<th style="min-width:150px">Location</th>
 									<th>Visible tags</th>
@@ -136,19 +135,16 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach ($companies as $company): ?>
+								<?php foreach ($companies as $permalink => $company): ?>
 									<tr>
-										<td>
-											<img class="logo-small" src="<?php echo $company->logo ?>">
-										</td>
 										<td title="<?php echo $company->description ?>">
-											<a href="<?php echo '/', $company->permalink ?>">
+											<a href="<?php echo '/', $permalink ?>">
 												<?php echo $company->name ?>
 											</a>
 										</td>
 										<td><?php echo $company->region ?></td>
-										<td title="Other tags: <?php echo $company->otherTags ?>">
-											<?php echo implode(' ', $company->visibleTags) ?>
+										<td title="Other tags: <?php echo implode(' ', array_slice($company->tags,2)) ?>">
+											<?php echo implode(' ', array_slice($company->tags, 0, 2)) ?>
 										</td>
 										<td><?php echo $language->formatDate($company->lastUpdate) ?></td>
 										<td><input type="button" value="Delete" disabled></td>

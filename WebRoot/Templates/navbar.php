@@ -12,8 +12,8 @@
 	<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
 	<section>
 		<?php if ($url =='/'): ?>
-			<h2><?php echo TEXT[13] ?></h2>
-			<p><?php echo TEXT[9] ?></p>
+			<h2><?php echo TEMP_TEXT[10] ?></h2>
+			<p><?php echo TEMP_TEXT[8] ?></p>
 		<?php elseif($user->isLogin()): ?>
 			<h2><?php echo $_SESSION['Name'] ?></h2>
 			<a href="/?logout">
@@ -27,7 +27,7 @@
 	<hr>
 	<section>
 		<?php if ($url =='/'): ?>
-			<h3><?php echo TEXT[11] ?></h3>
+			<h3><?php echo TEMP_TEXT[9] ?></h3>
 			<ul>
 				<li>
 					<a class="icon-label-h" href="mailto:jonathan@wuwana.com">

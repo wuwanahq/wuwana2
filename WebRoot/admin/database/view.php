@@ -32,17 +32,17 @@
 				<h2>Import tables data</h2>
 				<div class="box pad-16">
 					<form method="post" enctype="multipart/form-data">
-						<label for="f1">UserAccount table:</label>
-						<input id="f1" type="file" name="UserAccount"><br>
-						<label for="f2">Company table:</label>
+						<label for="f2">Required Company table:</label>
 						<input id="f2" type="file" name="Company"><br>
-						<label for="f3">SocialMedia table:</label>
+						<label for="f3">Required SocialMedia table:</label>
 						<input id="f3" type="file" name="SocialMedia"><br>
-						<label for="f4">Image table:</label>
+						<label for="f4">Required Image table:</label>
 						<input id="f4" type="file" name="Image"><br>
-						<label for="f5">Tag table:</label>
+						<label for="f5">Required Tag table:</label>
 						<input id="f5" type="file" name="Tag"><br><br>
-						<input type="submit" value="Upload files and OVERWRITE TABLES DATA">
+						<label for="f1">Optional UserAccount table:</label>
+						<input id="f1" type="file" name="UserAccount"><br><br>
+						<input type="submit" value="Upload TSV files and OVERWRITE TABLES DATA">
 					</form>
 				</div>
 			</section>

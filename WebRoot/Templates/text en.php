@@ -8,4 +8,7 @@ const TEMP_TEXT = [
 5 => 'Our privacy policy',
 6 => 'We ❤️ Open Source',
 7 => 'Find the supplier you need',
+8 => 'Finding the information you need should be easier.',
+9 => 'Contact us',
+10 => 'Hello, visitor!',
 ];

@@ -5,3 +5,5 @@
  */
 
 //TODO: Admin categories controller
+
+require 'admin/categories/view.php';

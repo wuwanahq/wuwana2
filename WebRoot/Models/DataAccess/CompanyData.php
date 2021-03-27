@@ -7,7 +7,6 @@ namespace DataAccess;
  */
 class CompanyData
 {
-	public $permalink;
 	public $name;
 	public $logo = '';
 	public $description = '';
@@ -15,9 +14,8 @@ class CompanyData
 	public $email = '';
 	public $phone = '0000000000';
 	public $address = '';
-	public $region = '';
-	public $visibleTags = [];
-	public $otherTags;
+	public $region = 'ES';
+	public $tags = [];
 	public $instagram;
 	public $facebook;
 	public $lastUpdate;

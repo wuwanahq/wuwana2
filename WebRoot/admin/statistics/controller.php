@@ -5,3 +5,5 @@
  */
 
 //TODO: Statistic controller
+
+require 'admin/statistics/view.php';

@@ -43,7 +43,6 @@ class RegexTagger
 
 	/**
 	 * Detect combined tags with keywords pair.
-	 * @todo Move this method into a dedicated class (RegexTagger)
 	 * @param string $content
 	 * @param array $basicTags
 	 * @return array

@@ -24,3 +24,5 @@ if ($user->isAdmin())
 	$baseTags = $tagStorage->selectBaseTags();
 	$combinedTags = $tagStorage->selectCombinations();
 }
+
+require 'admin/tags/view.php';

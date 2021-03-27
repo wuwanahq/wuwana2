@@ -5,3 +5,5 @@
  */
 
 //TODO: Admin users controller
+
+require 'admin/users/view.php';
