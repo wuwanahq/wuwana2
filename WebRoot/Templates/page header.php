@@ -20,21 +20,5 @@
 			</a>
 		</div>
 		<?php include 'Templates/search.php' ?>
-		<?php if (isset($user) && $user->isLogin()): ?>
-			<span>
-				<?php
-					echo $user->isAdmin() ? '<a href="/admin/companies">Admin page</a>' : $_SESSION['CompanyID'];
-					echo ' | ', $_SESSION['Name'];
-				?>
-			</span>
-		<?php elseif (filter_has_var(INPUT_GET, 'login')): ?>
-			<form method="post">
-				<label for="email">Email: </label>
-				<input id="email" type="text" name="email">
-				<input type="button" value="Send email" onclick="sendEmail()">
-				<label for="code">Code: </label>
-				<input id="code" type="password" name="code"> <input type="submit" value="Login">
-			</form>
-		<?php endif ?>
 	</div>
 </header>

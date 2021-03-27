@@ -13,7 +13,13 @@
 		<section class="column-left">
 			<?php include 'Templates/navbar.php' ?>
 		</section>
-		<div class="column-main">
+		<main>
+			<?php if(!$user->isAdmin()): ?>
+				<div class="information-error-box">
+					<div class="information-error-vertical"></div>
+					<h2>You are not logged in!</h2>
+				</div>
+			<?php else: ?>
 			<section id="section-table">
 				<h2>Categories</h2>
 				<div class="box-table">
@@ -53,7 +59,8 @@
 					</div>
 				</div>
 			</section>
-		</div>
+			<?php endif ?>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>

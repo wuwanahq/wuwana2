@@ -33,12 +33,7 @@
 						<img class="logo-main"
 							src="<?php echo $company->logo ?>"
 							alt="<?php echo $company->name ?> logo">
-						<?php
-							if (isset($user) && $user->isAdmin())
-							{ echo '<input type="text" value="', $company->name, '">'; }
-							else
-							{ echo '<h1>', $company->name, '</h1>'; }
-						?>
+						<h1> <?php echo $company->name ?> </h1>
 						<ul>
 							<li>
 								<?php echo implode('</li><li>', $company->tags) ?>
@@ -54,12 +49,7 @@
 						<h3>
 							<?php printf(TEXT[6], $company->name) ?>
 						</h3>
-						<?php
-							if (isset($user) && $user->isAdmin())
-							{ echo '<textarea>', $company->description, '</textarea><br>'; }
-							else
-							{ echo '<p>', $company->description, '</p>'; }
-						?>
+						<p> <?php echo $company->description ?>  </p>
 					</section>
 					<hr>
 					<section class="company-contact">
@@ -110,33 +100,28 @@
 							<?php endif ?>
 						</ul>
 					</section>
+					<hr>
 					<?php if (isset($user) && $user->isAdmin()): ?>
-						<form method="post">
-							<label for="permalink">Permanent link:</label>
-							<input id="permalink" type="text" size="26" value="<?php echo WebApp\WebApp::getPermalink() ?>">
-							<br>
-							<label for="insta">Instagram profile:</label>
-							<input id="insta" type="text" size="25" value="<?php echo $company->instagram->pageURL ?>">
-							<br>
-							<label for="whatsapp">WhatsApp number:</label>
-							<input id="whatsapp" type="text" size="24" value="<?php echo $company->phone ?>">
-							<br><br>
-							<label for="email">Email address:</label>
-							<input id="email" type="text" size="26" value="<?php echo $company->email ?>">
-							<br><br>
-							<label for="website">Website URL:</label>
-							<input id="website" type="text" size="27" value="<?php echo $company->website ?>">
-							<br>
-							<input type="submit" value="Update info sources">
-						</form>
+					<!-- Not sure if this make sense -->
+					<a href="<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];?>/?edit">
+						<div class="icon-label-h">
+							<img src="/static/icon/gray/edit.svg" alt="">
+							<?php echo TEXT[10] ?>
+						</div>
+					</a>
 					<?php endif ?>
 				</div>
 				<div id="last-updated">
 					<?php echo TEXT[9], ' ', $language->formatDate($company->lastUpdate) ?>
 				</div>
+				<?php if (isset($user) && $user->isAdmin())
+				{
+					include 'company/edit.php';
+				}
+				?>
 			</div>
 		</section>
-		<main class="column-main">
+		<main>
 			<?php if (isset($company->instagram)): ?>
 				<section class="instagram">
 					<h2><?php printf(TEXT[2], $company->name) ?></h2>

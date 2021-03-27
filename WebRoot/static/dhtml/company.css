@@ -5,6 +5,60 @@
 	top: 64px;
 }
 
+/* Box Panel */
+.edit {
+	padding: 8px;
+}
+
+.edit hr {
+	margin-bottom: 8px;
+}
+
+.edit h2 {
+	text-align: left;
+	margin-block-end: 16px;
+}
+
+.edit .button-main {
+	align-self: flex-start;
+}
+
+.edit input[type=text],
+.edit input[type=url],
+.edit input[type=email],
+.edit textarea {
+	font-size: var(--font-s);
+}
+
+.edit textarea {
+	height: 80px; /* Magic number */
+}
+
+.edit details summary {
+	font-size: var(--font-l);
+	font-weight: 500;
+	margin-bottom: 8px;
+	list-style: none; /* Remove details marker */
+}
+.edit details summary::before,
+.edit details summary::-webkit-details-marker {
+	display:none;
+}
+
+.edit details:hover {
+	cursor: pointer;
+}
+
+.edit details summary:hover,
+.edit details summary:active,
+.edit details summary:focus {
+	outline-style: none;
+}
+
+.edit details summary:hover {
+	text-decoration: underline;
+}
+
 /* companyPanel Sections */ 
 .company-about {
 	align-items: center

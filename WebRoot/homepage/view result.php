@@ -38,13 +38,15 @@
 							<?php endforeach ?>
 						</dl>
 						<div class="mobile" style="text-align:center">
-							<input type="submit" value="<?php echo TEXT[7] ?>" class="button-filter">
+							<input type="submit"
+								class="button-filter" 
+								value="<?php echo TEXT[7] ?>" >
 						</div>
 					</form>
 				</div>
 			</section>
 		</section>
-		<main class="column-main">
+		<main>
 			<div class="information-error-box">
 				<div class="information-error-vertical"></div>
 				<h2><?php echo TEXT[12] ?></h2>

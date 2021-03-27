@@ -60,11 +60,11 @@
 }
 
 html {
-	scroll-behavior: smooth
+	scroll-behavior: smooth;
+	font-family: "Roboto", sans-serif;
 }
 
 body {
-	font-family: "Roboto", sans-serif;
 	font-size: 16px;
 	word-break: break-word;
 	display: flex;
@@ -132,6 +132,8 @@ a:visited {
 /* ----- INPUT CSS ----- */
 input[type=text],
 input[type=url],
+input[type=email],
+input[type=password],
 textarea {
 	width: 100%;
 	margin: 0 0 8px;
@@ -139,6 +141,8 @@ textarea {
 	border-radius: 8px;
 	border: 1px solid var(--grey200);
 	font-size: 1rem;
+	font-family: "Roboto", sans-serif;
+	-webkit-appearance: none;
 }
 
 input[type="checkbox"] {
@@ -150,6 +154,7 @@ input[type="checkbox"] {
 input::placeholder {
 	font-size: var(--font-s);
 	color: var(--grey500);
+	white-space: nowrap;
 }
 
 /* The Description List Element */
@@ -226,7 +231,7 @@ dl dd label {
 	align-self: stretch;
 }
 
-.column-main {
+main {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -266,7 +271,6 @@ dl dd label {
 	position: relative;
 	overflow: hidden;
 	width: auto;
-	min-height: 20px;
 	margin-bottom: 24px;
 	border-radius: 8px;
 	background-color: var(--white);
@@ -312,14 +316,12 @@ dl dd label {
 
 .button-main {
 	display: flex;
-	padding: 8px;
+	padding: 6px 8px;
 	margin: 0;
 	align-items: center;
 	align-self: center;
 	color: var(--black);
-	font-size: 14px;
 	line-height: 1.3;
-	font-weight: 500;
 	background-color: var(--white);
 	border: solid 1px var(--black);
 	border-radius: 8px;
@@ -327,6 +329,7 @@ dl dd label {
 	cursor: pointer;
 	overflow: hidden;
 	white-space: nowrap;
+	-webkit-appearance: none;
 }
 
 .button-main a {
@@ -347,17 +350,17 @@ dl dd label {
 /* Secondary Button */
 
 .button-second {
-	padding: 8px;
+	padding: 6px 8px;
 	align-items: center;
 	background-color: var(--black);
 	color: var(--white);
-	font-size: 14px;
 	line-height: 1.3;
-	font-weight: 500;
 	border-radius: 8px;
+	border-width: 0;
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
 	white-space: nowrap;
+	-webkit-appearance: none;
 }
 
 .button-second:disabled {
@@ -378,7 +381,6 @@ dl dd label {
 	color: var(--black);
 	font-size: 14px;
 	align-items: center;
-	font-weight: 500;
 	border-style: solid;
 	border-color: var(--black);
 	border-width: 1px;
@@ -398,6 +400,20 @@ dl dd label {
 
 .button-icon img {
 	margin-right: 4px;
+}
+
+.button-close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	display: block;
+	height: 24px;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.button-close:hover {
+	background-color: var(--grey200);
 }
 
 @media (hover: hover) { /* To eliminate hover effect on mobile */
@@ -671,6 +687,10 @@ dl dd label {
 	display: block;
 	margin: 0;
 	padding: 0;
+}
+
+.navbar-box form {
+	padding: 0 8px;
 }
 
 /* HEADER */
@@ -955,7 +975,14 @@ footer details summary::-webkit-details-marker {
 
 .sticky {
 	position: sticky;
-	top: 60px;
+	top: 64px;
+}
+
+@media screen and (max-width: 800px)
+{
+	.sticky {
+		position: relative;
+	}
 }
 
 .back-top {
@@ -985,19 +1012,6 @@ footer details summary::-webkit-details-marker {
 /* LAYOUT CHANGES FOR TABLET DEVICES */
 @media screen and (max-width: 800px)
 {
-	/* TABLET GENERAL CHANGES */
-	h1 {
-		font-size: var(--font-xxl);
-	}
-
-	h2 {
-		font-size: var(--font-xl);
-	}
-
-	h3 {
-		font-size: var(--font-l);
-	}
-
 	/* ----- CSS TO MAKE THE LAYOUT ----- */
 	.container {
 		flex-direction: column;
@@ -1010,12 +1024,6 @@ footer details summary::-webkit-details-marker {
 
 	.item-label {
 		font-size: var(--font-xs);
-	}
-
-	/* ----- BUTTONS ----- */
-	.button-main,
-	.button-icon {
-		font-size: var(--font-m);
 	}
 
 	/* ----- COMPONENTS ----- */
