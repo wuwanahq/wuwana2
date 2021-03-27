@@ -15,8 +15,7 @@ class CompanyData
 	public $phone = '0000000000';
 	public $address = '';
 	public $region = 'ES';
-	public $visibleTags = [];
-	public $otherTags;
+	public $tags = [];
 	public $instagram;
 	public $facebook;
 	public $lastUpdate;

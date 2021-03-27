@@ -280,17 +280,16 @@ class Company extends DataAccess
 
 	public function update(CompanyData $company, $id)
 	{
-		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
-		$i = count($company->otherTags);
+		$otherTags = '';
 
-        if (empty($company->postalCode)){
-            $company->region = $this->fetchProvinceID(null);
-        }else{
-            $company->region = $this->fetchProvinceID(substr($company->postalCode,0,2));
-        }
+		for ($i = count($company->tags) -2; $i > 0 && strlen($otherTags) > 255; --$i)
+		{ $otherTags = implode(parent::VALUES_DELIMITER, array_slice($company->tags, 2, $i)); }
 
-		while(strlen($otherTags) > 255)
-		{ $otherTags = implode(self::VALUES_DELIMITER, array_slice($company->otherTags, 0, --$i)); }
+        //TODO: Bad design code!
+		if (empty($company->postalCode))
+		{ $company->region = $this->fetchProvinceID(null); }
+		else
+		{ $company->region = $this->fetchProvinceID(substr($company->postalCode,0,2)); }
 
 		$query = $this->pdo->prepare('update Company
 			set Name=?,Description=?,LogoURL=?,Website=?,PhonePrefix=?,PhoneNumber=?,
@@ -306,8 +305,8 @@ class Company extends DataAccess
 		$query->bindValue(7, $company->email, PDO::PARAM_STR);
 		$query->bindValue(8, $company->address, PDO::PARAM_STR);
 		$query->bindValue(9, $company->region, PDO::PARAM_STR);
-		$query->bindValue(10, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
-		$query->bindValue(11, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
+		$query->bindValue(10, isset($company->tags[0]) ? $company->tags[0] : '', PDO::PARAM_STR);
+		$query->bindValue(11, isset($company->tags[1]) ? $company->tags[1] : '', PDO::PARAM_STR);
 		$query->bindValue(12, $otherTags, PDO::PARAM_STR);
 		$query->bindValue(13, time(), PDO::PARAM_INT);
 
@@ -337,17 +336,16 @@ class Company extends DataAccess
 
 	public function insert(CompanyData $company)
 	{
-		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
-		$i = count($company->otherTags);
+		$otherTags = '';
 
-		if (empty($company->postalCode)){
-		    $company->region = $this->fetchProvinceID(null);
-        }else{
-		    $company->region = $this->fetchProvinceID(substr($company->postalCode,0,2));
-        }
+		for ($i = count($company->tags) -2; $i > 0 && strlen($otherTags) > 255; --$i)
+		{ $otherTags = implode(parent::VALUES_DELIMITER, array_slice($company->tags, 2, $i)); }
 
-		while(strlen($otherTags) > 255)
-		{ $otherTags = implode(self::VALUES_DELIMITER, array_slice($company->otherTags, 0, --$i)); }
+		//TODO: Bad design code!
+		if (empty($company->postalCode))
+		{ $company->region = $this->fetchProvinceID(null); }
+		else
+		{ $company->region = $this->fetchProvinceID(substr($company->postalCode,0,2)); }
 
 		$query = $this->pdo->query('select coalesce(max(ID)+1,' . self::INT_MIN . ') from Company');
 		$query->execute();
@@ -374,8 +372,8 @@ class Company extends DataAccess
 			$query->bindValue(9, $company->email, PDO::PARAM_STR);
 			$query->bindValue(10, $company->address, PDO::PARAM_STR);
 			$query->bindValue(11, $company->region, PDO::PARAM_STR);
-			$query->bindValue(12, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
-			$query->bindValue(13, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
+			$query->bindValue(12, isset($company->tags[0]) ? $company->tags[0] : '', PDO::PARAM_STR);
+			$query->bindValue(13, isset($company->tags[1]) ? $company->tags[1] : '', PDO::PARAM_STR);
 			$query->bindValue(14, $otherTags, PDO::PARAM_STR);
 			$query->bindValue(15, time(), PDO::PARAM_INT);
 

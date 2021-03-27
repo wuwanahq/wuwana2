@@ -143,8 +143,8 @@
 											</a>
 										</td>
 										<td><?php echo $company->region ?></td>
-										<td title="Other tags: <?php echo $company->otherTags ?>">
-											<?php echo implode(' ', $company->visibleTags) ?>
+										<td title="Other tags: <?php echo implode(' ', array_slice($company->tags,2)) ?>">
+											<?php echo implode(' ', array_slice($company->tags, 0, 2)) ?>
 										</td>
 										<td><?php echo $language->formatDate($company->lastUpdate) ?></td>
 										<td><input type="button" value="Delete" disabled></td>

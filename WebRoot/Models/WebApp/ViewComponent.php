@@ -40,7 +40,7 @@ class ViewComponent
 				$permalink,
 				$company->logo,
 				$company->name,
-				implode('</li><li>', $company->visibleTags),
+				implode('</li><li>', array_slice($company->tags, 0, 2)),
 				$company->region);
 
 			/*
