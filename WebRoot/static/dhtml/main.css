@@ -271,7 +271,6 @@ main {
 	position: relative;
 	overflow: hidden;
 	width: auto;
-	min-height: 20px;
 	margin-bottom: 24px;
 	border-radius: 8px;
 	background-color: var(--white);
