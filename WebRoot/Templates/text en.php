@@ -11,4 +11,13 @@ const TEMP_TEXT = [
 8 => 'Finding the information you need should be easier.',
 9 => 'Contact us',
 10 => 'Hello, visitor!',
+11 => 'Homepage',
+12 => 'Logout',
+13 => 'Admin controls',
+14 => 'Please login',
+15 => 'You need to login to access this section.',
+16 => 'Email',
+17 => 'Code',
+18 => 'Admin',
+19 => 'Access admin view'
 ];

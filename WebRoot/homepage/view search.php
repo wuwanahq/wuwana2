@@ -21,7 +21,7 @@
 		</picture>
 		<?php include 'Templates/search.php' ?>
 		<p>
-		Try searching for the product you need, the industry you want or the name of a company.
+		<?php echo TEXT[9] ?>
 		</p>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
