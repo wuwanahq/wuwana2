@@ -75,8 +75,8 @@ class CompanyIterator implements Iterator
 
 		if (!empty($this->row['CompanyOtherTags']))
 		{
-			$company->tags += array_push(
-				$company->tags, explode(DataAccess::VALUES_DELIMITER, $this->row['CompanyOtherTags']));
+			foreach (explode(DataAccess::VALUES_DELIMITER, $this->row['CompanyOtherTags']) as $tag)
+			{ $company->tags[] = $tag; }
 		}
 
 		return $company;

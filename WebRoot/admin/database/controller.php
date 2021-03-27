@@ -47,16 +47,11 @@ if ($user->isAdmin())
 		}
 	}
 
-	if (!empty($_FILES['UserAccount']) && is_uploaded_file($_FILES['UserAccount']['tmp_name'])
+	if (!empty($_FILES['SocialMedia']) && is_uploaded_file($_FILES['SocialMedia']['tmp_name'])
 		&& !empty($_FILES['Company']) && is_uploaded_file($_FILES['Company']['tmp_name'])
-		&& !empty($_FILES['SocialMedia']) && is_uploaded_file($_FILES['SocialMedia']['tmp_name'])
 		&& !empty($_FILES['Image']) && is_uploaded_file($_FILES['Image']['tmp_name'])
 		&& !empty($_FILES['Tag']) && is_uploaded_file($_FILES['Tag']['tmp_name']))
 	{
-		$dao = new DataAccess\User();
-		$dao->deleteAll();
-		$dao->insertData($_FILES['UserAccount']['tmp_name']);
-
 		$dao = new DataAccess\Company();
 		$dao->deleteAll();
 		$dao->insertData($_FILES['Company']['tmp_name']);
@@ -72,6 +67,13 @@ if ($user->isAdmin())
 		$dao = new DataAccess\Tag();
 		$dao->deleteAll();
 		$dao->insertData($_FILES['Tag']['tmp_name']);
+	}
+
+	if (!empty($_FILES['UserAccount']) && is_uploaded_file($_FILES['UserAccount']['tmp_name']))
+	{
+		$dao = new DataAccess\User();
+		$dao->deleteAll();
+		$dao->insertData($_FILES['UserAccount']['tmp_name']);
 	}
 }
 

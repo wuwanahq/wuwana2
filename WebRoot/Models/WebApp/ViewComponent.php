@@ -18,7 +18,7 @@ class ViewComponent
 		{
 			if (!($company instanceof \DataAccess\CompanyData))
 			{ continue; }
-			
+
 			if ($addHorizontalLine)
 			{ echo '<hr>'; }
 
@@ -37,7 +37,11 @@ class ViewComponent
 						</div>
 					</div>
 				</a>',
-				$permalink, $company->logo, $company->name, implode('</li><li>',$company->tags), $company->region);
+				$permalink,
+				$company->logo,
+				$company->name,
+				implode('</li><li>', $company->visibleTags),
+				$company->region);
 
 			/*
 			<div class="company-card-info">
