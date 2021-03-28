@@ -177,7 +177,7 @@ function showSuggestions(list){
     if(!list.length)
 	{
         userValue = searchInput.value;
-        listData = '<a href="/"><li>'+ userValue +'</li></a><hr>';
+        listData = '<a href="/?search=' + userValue + '"><li>'+ userValue +'</li></a><hr>';
     }
 	else
 	{

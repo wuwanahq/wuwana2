@@ -762,12 +762,6 @@ main {
 	border-radius: 8px;
 }
 
-.search form:focus,
-.search form:active,
-.search form:hover {
-	outline: var(--grey700) auto 1px;
-}
-
 .search input[type=search] {
 	width: 100%;
 	border: none;

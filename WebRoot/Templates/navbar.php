@@ -49,7 +49,7 @@
 				<form method="post">
 					<div class="form-layout-column">
 						<label for="email"><?php echo TEMP_TEXT[16] ?></label>
-						<input id="email" type="text" name="email">
+						<input id="email" type="email" name="email">
 					</div>
 					<div class="form-layout-column">
 						<label for="code"><?php echo TEMP_TEXT[17] ?></label>
