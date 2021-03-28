@@ -142,16 +142,12 @@ tr:nth-child(even) {
 	display:none;
 }
 
-#new-company details:hover {
-	cursor: pointer;
-	text-decoration: underline;
-}
-
 #new-company details summary:hover,
 #new-company details summary:active,
 #new-company details summary:focus {
 	outline-style: none;
 	text-decoration: underline;
+	cursor: pointer;
 }
 
 #new-company details summary span {
