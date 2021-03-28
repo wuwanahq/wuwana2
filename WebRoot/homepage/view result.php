@@ -55,23 +55,27 @@
 				<p>Showing <?php echo $companies['Counter'] ?> results for</p>
 				<h2><?php echo $search ?></h2>
 			</div>
-			<section>
-				<div class="search-title">
-					<h2 style="margin:0"><?php echo TEXT[5] ?></h2>
-					<div class="dropdown-caret mobile" onclick="showFilter()">
-						<?php echo TEXT[14] ?>
-						<img src="/static/icon/gray/chevron-down.svg" alt="">
+			<?php if ($companies['Counter'] > 0): ?>
+				<section>
+					<div class="search-title">
+						<h2 style="margin:0"><?php echo TEXT[5] ?></h2>
+						<div class="dropdown-caret mobile" onclick="showFilter()">
+							<?php echo TEXT[14] ?>
+							<img src="/static/icon/gray/chevron-down.svg" alt="">
+						</div>
 					</div>
-				</div>
-				<div id="companies-list" class="box">
-					<?php WebApp\ViewComponent::printCompanyCards($companies) ?>
-				</div>
-			</section>
-			<input type="hidden" id="page-count" value="<?php echo $pageCount ?>"/>
-			<a id="view-more-button" class="button-icon center" onclick="isPossibleToViewMore(<?php echo $jsParam ?>)">
-				<img src="/static/icon/plus.svg" alt="">
-				<?php echo TEXT[6] ?>
-			</a>
+					<div id="companies-list" class="box">
+						<?php WebApp\ViewComponent::printCompanyCards($companies) ?>
+					</div>
+				</section>
+				<input type="hidden" id="page-count" value="<?php echo $pageCount ?>"/>
+				<a id="view-more-button" class="button-icon center" onclick="isPossibleToViewMore(<?php echo $jsParam ?>)">
+					<img src="/static/icon/plus.svg" alt="">
+					<?php echo TEXT[6] ?>
+				</a>
+			<?php else: ?>
+			<!-- TO DO: if 0 results, show suggestions similar to the 404 page -->
+			<?php endif ?>
 		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
