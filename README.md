@@ -50,7 +50,7 @@ Later, if you want to update the WebApp, just run `git pull` on your computer in
 ## How to use this WebApp
 
 Just after you installed this WebApp, the first thing to do is probably adding new company.  
-Go to https://your.website/admin/companies to add new companies in the database.  
+Go to https://your.website/admin to add new companies in the database.  
 After that you can see all companies on the homepage.
 
 ## Maintainers

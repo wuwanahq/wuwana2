@@ -28,6 +28,7 @@ switch ($url)
 {
 	case '/':                 require 'homepage/controller.php'; break;
 	case '/privacy':          require 'privacy/controller.php'; break;
+	case '/admin':            require 'admin/controller.php'; break;
 	case '/admin/statistics': require 'admin/statistics/controller.php'; break;
 	case '/admin/categories': require 'admin/categories/controller.php'; break;
 	case '/admin/companies':  require 'admin/companies/controller.php'; break;
