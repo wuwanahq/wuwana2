@@ -24,7 +24,14 @@
 			?>
 		</li>
 		<li>
-			<a href="https://github.com/wuwanahq/wuwana2" target=”_blank” rel="noopener"><?php echo TEMP_TEXT[6] ?></a>
+			<a href="https://github.com/wuwanahq/wuwana2" target=”_blank” rel="noopener">
+				<?php echo TEMP_TEXT[6] ?>
+			</a>
+		</li>
+		<li>
+			<a href="/admin/companies">
+				<?php echo TEMP_TEXT[19] ?>
+			</a>
 		</li>
 		<li>
 			<details>

@@ -35,16 +35,16 @@
 				<div class="box pad-16">
 					<form method="post" enctype="multipart/form-data">
 						<label for="f2">Required Company table:</label>
-						<input id="f2" type="file" name="Company"><br>
+						<input id="f2" type="file" name="Company"><br><br>
 						<label for="f3">Required SocialMedia table:</label>
-						<input id="f3" type="file" name="SocialMedia"><br>
+						<input id="f3" type="file" name="SocialMedia"><br><br>
 						<label for="f4">Required Image table:</label>
-						<input id="f4" type="file" name="Image"><br>
+						<input id="f4" type="file" name="Image"><br><br>
 						<label for="f5">Required Tag table:</label>
-						<input id="f5" type="file" name="Tag"><br><br>
+						<input id="f5" type="file" name="Tag"><br><br><br>
 						<label for="f1">Optional UserAccount table:</label>
 						<input id="f1" type="file" name="UserAccount"><br><br>
-						<input type="submit" value="Upload TSV files and OVERWRITE TABLES DATA">
+						<input class="button-main" type="submit" value="Upload TSV files and OVERWRITE TABLES DATA">
 					</form>
 				</div>
 			</section>
