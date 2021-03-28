@@ -15,4 +15,6 @@ const TEXT = [
 12 => '⚠️ Attention ⚠️: ce site est en construction. Certaines informations peuvent ne pas être correctes',
 //13 => 'Bonjour, visiteur !',
 14 => 'Filtre',
+15 => '',
+16 => ' résultats pour',
 ];

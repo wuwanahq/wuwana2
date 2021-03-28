@@ -15,4 +15,6 @@ const TEXT = [
 12 => '⚠️ Advertencia ⚠️: este sitio está en construcción. Alguna información podría no ser correcta.',
 //13 => '¡Hola, visitante!',
 14 => 'Filtro',
+15 => 'Mostrando ',
+16 => ' resultados para'
 ];

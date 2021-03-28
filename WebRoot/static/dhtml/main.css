@@ -157,6 +157,10 @@ input::placeholder {
 	white-space: nowrap;
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+
 /* The Description List Element */
 
 dl {
