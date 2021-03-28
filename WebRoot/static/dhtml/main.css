@@ -762,8 +762,10 @@ main {
 	border-radius: 8px;
 }
 
-.search form:active {
-	border-color: var(--grey700);
+.search form:focus,
+.search form:active,
+.search form:hover {
+	outline: var(--grey700) auto 1px;
 }
 
 .search input[type=search] {
