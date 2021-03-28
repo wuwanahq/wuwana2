@@ -18,6 +18,5 @@ const TEMP_TEXT = [
 15 => 'Vous devez vous connecter pour accéder à cette section',
 16 => 'Email',
 17 => 'Code',
-18 => 'Admin',
-19 => 'Accès à la vue admin',
+18 => 'Login',
 ];

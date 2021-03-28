@@ -29,11 +29,6 @@
 			</a>
 		</li>
 		<li>
-			<a href="/admin/companies">
-				<?php echo TEMP_TEXT[19] ?>
-			</a>
-		</li>
-		<li>
 			<details>
 				<summary>
 					<?php echo TEMP_TEXT[3] . ': '?>
@@ -45,7 +40,7 @@
 							{ echo strtoupper($language->code); }
 						?>
 						▾
-					</span>				
+					</span>
 				</summary>
 				<?php
 					foreach (WebApp\Language::CODES as $code => $lang)
