@@ -27,7 +27,7 @@ a .icon-label-h {
 	margin-bottom: 24px;
 	border-radius: 4px;
 	background-color: #ffffff;
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	border: 1px solid var(--grey200);
 }
 
 .scroll-h {

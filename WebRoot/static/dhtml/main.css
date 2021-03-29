@@ -278,7 +278,7 @@ main {
 	margin-bottom: 24px;
 	border-radius: 8px;
 	background-color: var(--white);
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	border: 1px solid var(--grey200);
 }
 
 .Aspect2-3 {
@@ -347,7 +347,6 @@ main {
 	background-color: var(--grey200);
 	color:  var(--grey700);
 	border-style: none;
-	box-shadow: none;
 	cursor: not-allowed;
 }
 
@@ -371,7 +370,6 @@ main {
 	background-color: var(--grey200);
 	color:  var(--grey700);
 	border-style: none;
-	box-shadow: none;
 	cursor: not-allowed;
 }
 
@@ -579,7 +577,7 @@ main {
 	margin-bottom: 24px;
 	border-radius: 8px;
 	background-color: var(--white);
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	border: 1px solid var(--grey200);
 }
 
 .box-panel section {
@@ -653,7 +651,7 @@ main {
 	margin-bottom: 24px;
 	border-radius: 8px;
 	background-color: var(--white);
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	border: 1px solid var(--grey200);
 }
 
 .panel-ribbon {
@@ -707,7 +705,7 @@ main {
 	height: 48px;
 	width: 100vw;
 	background-color: var(--white);
-	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--grey200);
 	display: flex;
 	justify-content: center}
 
@@ -915,7 +913,7 @@ footer details summary::-webkit-details-marker {
 	background-color: var(--white);
 	border-radius: 8px;
 	margin-bottom: 24px;
-	box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	border: 1px solid var(--grey200);
 }
 
 .information-error-vertical {
@@ -1126,7 +1124,6 @@ footer details summary::-webkit-details-marker {
 	}
 
 	#filter .box {
-		box-shadow: none;
 		padding: 0;
 	}
 

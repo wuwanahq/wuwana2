@@ -222,7 +222,7 @@
 		padding: 8px 16px;
 		width: 100%;
 		background-color: var(--white);	
-		box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+		border: 1px solid var(--grey200);
 		opacity: 0;
 		will-change: opacity;
 		transition: opacity 100ms 50ms ease-in-out;
