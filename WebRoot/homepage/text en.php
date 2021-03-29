@@ -11,10 +11,14 @@ const TEXT = [
 8 => 'Filter options',
 9 => 'Try searching for the product you need, the industry you want or the name of a company',
 10 => 'What is Wuwana?',
-//11 => 'Contact us',
+11 => 'Suggested search',
 12 => '⚠️ Warning ⚠️: this site is under construction. Some information might not be correct.',
 //13 => 'Hello, visitor!',
 14 => 'Filter',
 15 => 'Showing ',
-16 => ' results for'
+16 => ' results for',
+17 => 'Specialty coffee',
+18 => 'Beer',
+19 => 'Coffee roaster',
+20 => 'Coffee shop',
 ];

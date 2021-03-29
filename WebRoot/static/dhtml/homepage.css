@@ -3,7 +3,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 160px;
+	margin-top: 80px;
 }
 
 .container-homepage picture {
@@ -26,9 +26,10 @@
 }
 
 .container-homepage p {
+	max-width: 50ch;
 	text-align: center;
 	color: var(--grey700);
-	font-size: var(--font-s);
+	font-size: medium;
 }
 
  /* Section Industry Suggestion */
@@ -36,6 +37,7 @@
 .ind {
 	 max-width: 800px;
 	 margin: 40px 0;
+	 align-items: center;
 }
 
 .ind .box {
@@ -77,7 +79,7 @@
 	z-index: 2;
 	color: var(--white);
 	font-size: large;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 .ind-suggestion .text-background {
@@ -102,6 +104,10 @@
 	}
 
 	/* Section Industry Suggestion */
+	.ind {
+		align-items: flex-start;
+	}
+
 	.row {
 		flex-direction: column;
 	}

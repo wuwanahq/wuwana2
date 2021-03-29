@@ -11,10 +11,14 @@ const TEXT = [
 8 => 'Personaliza la búqueda',
 9 => 'Busca el producto que necesita, el sector que desea o el nombre de una empresa',
 10 => 'Descubre qué es Wuwana',
-//11 => 'Contáctanos',
+11 => 'Sugerencias',
 12 => '⚠️ Advertencia ⚠️: este sitio está en construcción. Alguna información podría no ser correcta.',
 //13 => '¡Hola, visitante!',
 14 => 'Filtro',
 15 => 'Mostrando ',
-16 => ' resultados para'
+16 => ' resultados para',
+17 => 'Café de especialidad',
+18 => 'Cerveza',
+19 => 'Tostador',
+20 => 'Cafetería',
 ];
