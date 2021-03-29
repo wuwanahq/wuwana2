@@ -13,37 +13,36 @@ body {
 }
 
 section {
-	margin: 24px 0 12px;
 	white-space: pre-line;
+	margin-block-start: 16px;
 }
 
 h1 {
 	font-size: 3rem;
-	line-height: 1;
 	font-weight: 700;
-	margin: 8px 0 8px
+	line-height: 1;
+	margin: 0 0 16px
 }
 
 h2 {
-	font-size: xx-large;
 	margin-bottom: 16px;
+	font-weight: 500;
 }
 
 h3 {
-	font-size: large;
-	margin-top: 8px;
 	margin-bottom: 8px;
 }
 
 p {
-	margin: 0 0 12px;
+	margin: 0 0 24px;
+	color: var(--grey700);
 }
 
 #privacy-intro span {
 	font-weight: 400;
-	font-size: small;
-	color: var(--grey700);
-	margin-bottom: 32px;
+	font-size: smaller;
+	color: var(--grey500);
+	margin-bottom: 24px;
 }
 
 ol {
@@ -54,6 +53,6 @@ ol {
 
 li {
 	font-size: medium;
-	color: var(--grey700);
+	color: var(--grey500);
 	margin: 8px;
 }

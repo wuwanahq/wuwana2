@@ -84,23 +84,23 @@ hr {
 
 h1 { /* Title */
 	font-size: xx-large;
-	line-height: 1.3;
 	font-weight: 500;
+	line-height: 1.3;
 	margin: 0 0 16px;
 }
 
 h2 { /* Subtitle */
 	font-size: x-large;
-	line-height: 1.3;
 	font-weight: 500;
+	line-height: 1.3;
 	margin: 0 0 8px;
 }
 
 h3 { /* Company Title */
 	color: var(--black);
 	font-size: large;
+	font-weight: 500;
 	line-height: 1.3;
-	font-weight: 700;
 	margin: 0;
 }
 

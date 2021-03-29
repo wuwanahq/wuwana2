@@ -17,7 +17,7 @@
 	<div class="privacy-wrapper">
 		<section id="privacy-intro">
 			<h1><?php echo TEXT[0] ?></h1>
-			<span><?php echo TEXT[1] ?><?php echo TEXT[23] ?></span>
+			<span><?php echo TEXT[1] . TEXT[23] ?></span>
 			<p><?php echo TEXT[2] ?></p>
 			<p><?php echo TEXT[3] ?></p>
 			<p><?php echo TEXT[4] ?></p>
@@ -48,9 +48,8 @@
 			<p><?php echo TEXT[20] ?></p>
 			<h3><?php echo TEXT[21] ?></h3>
 			<p><?php echo TEXT[22] ?></p>
-			<ol>
-				<li><?php echo TEXT[23] ?></li>
-			</ol>
+			<ol><li><?php echo TEXT[23] ?></li></ol>
+			<br>
 		</section>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
