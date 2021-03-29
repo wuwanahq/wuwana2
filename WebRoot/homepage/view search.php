@@ -20,9 +20,44 @@
 			<img src="/static/logo/website.svg" alt="wuwana logo">
 		</picture>
 		<?php include 'Templates/search.php' ?>
-		<p>
-		<?php echo TEXT[9] ?>
-		</p>
+		<p><?php echo TEXT[9] ?></p>
+		<section class="ind">
+			<h2>Browse by industry</h2>
+			<div class="box">
+				<div class="row">
+					<a href="/">
+						<div class="ind-suggestion">
+							<h3>Coffee</h3>
+							<div class="text-background"></div>
+							<img src="/static/image/ali-yahya-7_AZi5Fe-rU.jpg">
+						</div>
+					</a>
+					<a href="/">
+					<div class="ind-suggestion">
+							<h3>Coffee</h3>
+							<div class="text-background"></div>
+							<img src="/static/image/ali-yahya-7_AZi5Fe-rU.jpg">
+						</div>
+					</a>	
+				</div>
+				<div class="row">
+					<a href="/">
+					<div class="ind-suggestion">
+							<h3>Coffee</h3>
+							<div class="text-background"></div>
+							<img src="/static/image/ali-yahya-7_AZi5Fe-rU.jpg">
+						</div>
+					</a>
+					<a href="/">
+					<div class="ind-suggestion">
+							<h3>Coffee</h3>
+							<div class="text-background"></div>
+							<img src="/static/image/ali-yahya-7_AZi5Fe-rU.jpg">
+						</div>
+					</a>	
+				</div>
+			</div>
+		</section>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>

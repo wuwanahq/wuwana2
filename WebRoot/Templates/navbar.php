@@ -53,7 +53,7 @@
 					</div>
 					<div class="form-layout-column">
 						<label for="code"><?php echo TEMP_TEXT[17] ?></label>
-						<input id="code" type="text" name="code" inputmode="tel">
+						<input id="code" type="text" name="code" inputmode="tel" autocomplete="off">
 					</div>
 					<input class="button-second" type="submit" value="<?php echo TEMP_TEXT[18] ?>">
 				</form>
@@ -90,7 +90,7 @@
 				</div>
 				<div class="form-layout-column">
 					<label for="code"><?php echo TEMP_TEXT[17] ?></label>
-					<input id="code" type="text" name="code" inputmode="tel">
+					<input id="code" type="text" name="code" inputmode="tel" autocomplete="off">
 				</div>
 				<input class="button-second" type="submit"
 				value="<?php echo TEMP_TEXT[19] ?>">

@@ -795,6 +795,7 @@ main {
 
 .search-suggestion {
 	display: none;
+	z-index: 1;
 	position: absolute;
 	top: 44px;left: 0;
 	width: 100%;
