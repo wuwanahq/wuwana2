@@ -36,7 +36,12 @@
 .ind {
 	 max-width: 800px;
 	 margin: 40px 0;
- }
+}
+
+.ind .box {
+	border: none;
+	background-color: transparent;
+}
 
 .row {
 	display: flex;
@@ -72,6 +77,7 @@
 	z-index: 2;
 	color: var(--white);
 	font-size: large;
+	font-weight: 400;
 }
 
 .ind-suggestion .text-background {

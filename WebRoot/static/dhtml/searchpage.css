@@ -30,7 +30,7 @@
 }
 
 .search-result-box h2 {
-	font-size: var(--font-xxl);
+	font-size: xx-large;
 	margin: 0;
 }
 
@@ -86,7 +86,7 @@
 .company-card-info li {
 	display: inline-flex;
 	color: var(--grey500);
-	font-size: var(--font-s);
+	font-size: small;
 	line-height: 1.3;
 	font-weight: 400;
 	margin-inline-end: 8px;

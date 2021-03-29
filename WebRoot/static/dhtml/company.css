@@ -27,7 +27,7 @@
 .edit input[type=url],
 .edit input[type=email],
 .edit textarea {
-	font-size: var(--font-s);
+	font-size: small;
 }
 
 .edit textarea {
@@ -35,7 +35,7 @@
 }
 
 .edit details summary {
-	font-size: var(--font-l);
+	font-size: large;
 	font-weight: 500;
 	margin-bottom: 8px;
 	list-style: none; /* Remove details marker */
@@ -87,7 +87,7 @@
 .company-about li {
 	display: inline;
 	color: var(--grey500);
-	font-size: var(--font-s);
+	font-size: small;
 	line-height: 1.3;
 	font-weight: 400;
 	margin: -4px 16px 0 0
@@ -111,7 +111,7 @@
 
 #last-updated {
 	margin: -16px 0 24px;
-	font-size: var(--font-s);
+	font-size: small;
 	color: var(--grey500);
 }
 
@@ -150,11 +150,11 @@
 
 .instagram-info .number {
 	margin-bottom: 4px;
-	font-size: var(--font-l);
+	font-size: large;
 	font-weight: 500;}
 
 .instagram-info .text {
-	font-size: var(--font-s)}
+	font-size: small}
 
 .instagram-info a:hover {
 	text-decoration: underline;
@@ -243,7 +243,7 @@
 	}
 	
 	.mobile-summary h3 {
-		font-size: var(--font-l);
+		font-size: large;
 		font-weight: 500;
 		margin-bottom: 8px;
 	}

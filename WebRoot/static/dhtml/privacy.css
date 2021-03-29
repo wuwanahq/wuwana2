@@ -25,12 +25,12 @@ h1 {
 }
 
 h2 {
-	font-size: var(--font-xxl);
+	font-size: xx-large;
 	margin-bottom: 16px;
 }
 
 h3 {
-	font-size: var(--font-l);
+	font-size: large;
 	margin-top: 8px;
 	margin-bottom: 8px;
 }
@@ -41,7 +41,7 @@ p {
 
 #privacy-intro span {
 	font-weight: 400;
-	font-size: var(--font-s);
+	font-size: small;
 	color: var(--grey700);
 	margin-bottom: 32px;
 }
@@ -53,7 +53,7 @@ ol {
 }
 
 li {
-	font-size: var(--font-m);
+	font-size: medium;
 	color: var(--grey700);
 	margin: 8px;
 }
