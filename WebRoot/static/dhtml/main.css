@@ -819,10 +819,6 @@ footer {
 	width: 100%;
 	max-width: 1200px; /* Same as body max width */
 	margin-top: auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 }
 
 footer ul {
@@ -842,7 +838,7 @@ footer li {
 	margin: 0 16px 8px 0;
 	white-space: nowrap;
 	line-height: 2;
-	font-size: small;
+	font-size: smaller;
 }
 
 footer li:first-child {
@@ -900,10 +896,10 @@ footer details summary::-webkit-details-marker {
 .information-error-box {
 	width: 100%;
 	display: flex;
-	overflow: hidden;
+	margin-bottom: 24px;
 	background-color: var(--white);
 	border-radius: 8px;
-	margin-bottom: 24px;
+	overflow: hidden;
 	border: 1px solid var(--grey200);
 }
 
@@ -915,6 +911,7 @@ footer details summary::-webkit-details-marker {
 
 .information-error-box h2 {
 	margin: 16px;
+	font-size: large;
 }
 
 /* Filter Area */
@@ -1012,10 +1009,6 @@ footer details summary::-webkit-details-marker {
 		max-width: 100%;
 	}
 
-	.item-label {
-		font-size: x-small;
-	}
-
 	/* ----- COMPONENTS ----- */
 
 	.header-icon {
@@ -1111,7 +1104,6 @@ footer details summary::-webkit-details-marker {
 		height: calc(100vh - 48px); /* vh - header height */
 		padding: 16px;
 		will-change: visibility;
-	
 	}
 
 	#filter .box {

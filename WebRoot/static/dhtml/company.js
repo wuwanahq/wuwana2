@@ -22,3 +22,20 @@ var observer = new IntersectionObserver(function(entries) {
 }, { threshold: [0, 0.01, 1] });
 
 observer.observe(panel);
+
+// Function for the edit panel
+
+function companyEdit() {
+	const edit = document.getElementById("edit");
+	const panel = document.getElementById("company-panel");
+
+	console.log('hello');
+
+	if (panel.style.display == "flex") {
+		panel.style.display = "none";
+		edit.style.display = "flex"
+	} else {
+		panel.style.display = "flex";
+		edit.style.display = "none"
+	}
+}

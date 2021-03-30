@@ -6,8 +6,12 @@
 }
 
 /* Box Panel */
+#edit {
+	display: none;
+}
+
 .edit {
-	padding: 8px;
+	padding: 16px;
 }
 
 .edit hr {
