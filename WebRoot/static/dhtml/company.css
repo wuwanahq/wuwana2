@@ -79,6 +79,7 @@
 
 .company-about h1 {
 	margin-top: 8px;
+	font-size: x-large;
 	text-align: center;
 }
 
@@ -229,7 +230,7 @@
 		border: 1px solid var(--grey200);
 		opacity: 0;
 		will-change: opacity;
-		transition: opacity 100ms 50ms ease-in-out;
+		transition: opacity 100ms 50ms ease-in-out,
 	}
 	
 	.mobile-summary-logo {
