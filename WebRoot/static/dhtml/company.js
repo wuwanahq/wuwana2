@@ -25,8 +25,10 @@ function companyEdit() {
 	if (panel.style.display == "flex") {
 		panel.style.display = "none";
 		edit.style.display = "flex";
+		summary.style.display = "none"; //This is me giving up on how to fix this, lol
 	} else {
 		panel.style.display = "flex";
 		edit.style.display = "none";
+		summary.style.display = "flex";
 	}
 }
