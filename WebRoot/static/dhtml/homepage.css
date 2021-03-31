@@ -14,6 +14,7 @@
 	margin: 0;
 	width: 100%;
 	max-width: 500px;
+	z-index: 10;
 }
 
 .container-homepage .search form {
@@ -61,7 +62,7 @@
 .ind-suggestion {
 	position: relative;
 	width: 100%;
-	max-height: 200px;
+	height: 200px;
 	border-radius: 8px;
 	overflow: hidden;
 }

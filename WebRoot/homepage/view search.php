@@ -25,18 +25,18 @@
 			<h2><?php echo TEXT[11] ?></h2>
 			<div class="box">
 				<div class="row">
-					<a href="<?php echo '/?search=' . TEXT[17] ?>">
-						<div class="ind-suggestion">
-							<h3><?php echo TEXT[17] ?></h3>
-							<div class="text-background"></div>
-							<img src="/static/image/specialty-coffee.jpg">
-						</div>
-					</a>
 					<a href="<?php echo '/?search=' . TEXT[18] ?>">
 						<div class="ind-suggestion">
 							<h3><?php echo TEXT[18] ?></h3>
 							<div class="text-background"></div>
 							<img src="/static/image/beer.jpg">
+						</div>
+					</a>
+					<a href="<?php echo '/?search=' . TEXT[17] ?>">
+						<div class="ind-suggestion">
+							<h3><?php echo TEXT[17] ?></h3>
+							<div class="text-background"></div>
+							<img src="/static/image/specialty-coffee.jpg">
 						</div>
 					</a>	
 				</div>

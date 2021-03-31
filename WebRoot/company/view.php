@@ -100,8 +100,8 @@
 							<?php endif ?>
 						</ul>
 					</section>
-					<hr>
 					<?php if (isset($user) && $user->isAdmin()): ?>
+					<hr>
 					<a onclick="companyEdit();">
 						<div class="icon-label-h">
 							<img src="/static/icon/gray/edit.svg" alt="">
