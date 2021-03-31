@@ -1,6 +1,6 @@
 <div class="box-panel edit" id="edit">
 	<h2>Edit information</h2>
-	<a class="button-close" onclick="companyEdit();">
+	<a class="button-close" onclick="companyEdit()">
 		<img src="/static/icon/close.svg">
 	</a>
 	<details open>

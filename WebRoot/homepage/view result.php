@@ -52,7 +52,7 @@
 				<h2><?php echo TEXT[12] ?></h2>
 			</div>
 			<div class="search-result-box">
-				<p><?php echo TEXT[15] . $companies['Counter'] . TEXT[16] ?></p>
+				<p><?php printf(TEXT[13], $companies['Counter']) ?></p>
 				<h2><?php echo $search ?></h2>
 			</div>
 			<?php if ($companies['Counter'] > 0): ?>

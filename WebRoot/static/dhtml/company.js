@@ -3,9 +3,9 @@
  * https://usefulangle.com/post/118/javascript-intersection-observer
  */
 
-const panel = document.getElementById("company-panel");
-const edit = document.getElementById("edit");
-const summary = document.getElementById("mobile-summary");
+var panel = document.getElementById("company-panel");
+var edit = document.getElementById("edit");
+var summary = document.getElementById("mobile-summary");
 
 // root is the browser viewport / screen
 var observer = new IntersectionObserver(function(entries) {
