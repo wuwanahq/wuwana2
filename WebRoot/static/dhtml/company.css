@@ -230,7 +230,7 @@
 		border: 1px solid var(--grey200);
 		opacity: 0;
 		will-change: opacity;
-		transition: opacity 100ms 50ms ease-in-out,
+		transition: opacity 200ms 0ms ease-in-out;
 	}
 	
 	.mobile-summary-logo {
