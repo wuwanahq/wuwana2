@@ -1,0 +1,6 @@
+DatabaseRevision	0
+ForceHTTPS	no
+SessionLifetime	1800
+MaxResultSearch	8
+MaxResultPage404	3
+DefaultLanguage	es

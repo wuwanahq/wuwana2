@@ -11,31 +11,32 @@ spl_autoload_register(function($className) {
 	require 'Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-if (WebApp\Config::FORCE_HTTPS && !WebApp\WebApp::isSecure() && php_sapi_name() != 'cli-server')
+// Global variables available in all views and controllers
+$settings = (new DataAccess\AppSettings())->selectAll();
+$language = WebApp\WebApp::getLanguage();
+$user = new WebApp\UserSession(new DataAccess\User(), $settings['SessionLifetime']);
+$url = WebApp\WebApp::getURL();
+
+if ($settings['ForceHTTPS'] == 'yes' && !WebApp\WebApp::isSecure() && php_sapi_name() != 'cli-server')
 {
 	header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], TRUE, 301);
 	exit;
 }
 
-// Global variables available in all views and controllers
-$language = WebApp\WebApp::getLanguage();
-$user = new WebApp\UserSession(new DataAccess\User());
-$url = WebApp\WebApp::getURL();
-
 require 'Templates/text ' . $language->code . '.php';
 
 switch ($url)
 {
-	case '/':                 require 'homepage/controller.php'; break;
-	case '/privacy':          require 'privacy/controller.php'; break;
-	case '/admin':            require 'admin/controller.php'; break;
-	case '/admin/statistics': require 'admin/statistics/controller.php'; break;
-	case '/admin/categories': require 'admin/categories/controller.php'; break;
-	case '/admin/companies':  require 'admin/companies/controller.php'; break;
-	case '/admin/database':   require 'admin/database/controller.php'; break;
-	case '/admin/tags':       require 'admin/tags/controller.php'; break;
-	case '/admin/users':      require 'admin/users/controller.php'; break;
-	case '/sitemap.xml':      require 'sitemap.php'; break;
+	case '/':                require 'homepage/controller.php'; break;
+	case '/privacy':         require 'privacy/controller.php'; break;
+	case '/admin':           require 'admin/controller.php'; break;
+	case '/admin/stat':      require 'admin/statistics/controller.php'; break;
+	case '/admin/settings':  require 'admin/settings/controller.php'; break;
+	case '/admin/companies': require 'admin/companies/controller.php'; break;
+	case '/admin/database':  require 'admin/database/controller.php'; break;
+	case '/admin/tags':      require 'admin/tags/controller.php'; break;
+	case '/admin/users':     require 'admin/users/controller.php'; break;
+	case '/sitemap.xml':     require 'sitemap.php'; break;
 
 	default:
 

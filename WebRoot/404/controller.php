@@ -8,11 +8,17 @@ http_response_code(404);
 
 $companies = [];
 $search = str_replace('/', '', $url);
+$limit = (int)$settings['MaxResultPage404'];
 
-while (strlen($search) > 2 && count($companies) == 0)
+while (strlen($search) > 1 && $limit > 0)
 {
 	foreach ((new DataAccess\Company())->searchColumn('Company.Name', $search) as $permalink => $company)
-	{ $companies[$permalink] = $company; }
+	{
+		$companies[$permalink] = $company;
+
+		if (--$limit == 0)
+		{ break; }
+	}
 
 	$search = substr($search, 0, -1);
 }

@@ -83,7 +83,7 @@ class WebApp
 		if ($excludeProtocol)
 		{ return $host; }
 
-		if (Config::FORCE_HTTPS || filter_input(INPUT_SERVER,'HTTPS') == 'on')
+		if (filter_input(INPUT_SERVER,'HTTPS') == 'on')
 		{ return 'https://' . $host; }
 
 		return 'http://' . $host;
@@ -112,7 +112,7 @@ class WebApp
 
 		$host .= filter_input(INPUT_SERVER, 'REQUEST_URI');
 
-		if (Config::FORCE_HTTPS || filter_input(INPUT_SERVER,'HTTPS') == 'on')
+		if (filter_input(INPUT_SERVER,'HTTPS') == 'on')
 		{ return 'https://' . $host; }
 
 		return 'http://' . $host;
