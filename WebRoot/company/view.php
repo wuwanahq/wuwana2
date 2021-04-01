@@ -28,7 +28,7 @@
 	<div class="container">
 		<section class="column-left">
 			<div class="company-sticky">
-				<div class="box-panel" id="company-panel">
+				<div class="box-panel" id="company-panel" style="display: flex">
 					<section class="company-about">
 						<img class="logo-main"
 							src="<?php echo $company->logo ?>"
@@ -100,10 +100,9 @@
 							<?php endif ?>
 						</ul>
 					</section>
-					<hr>
 					<?php if (isset($user) && $user->isAdmin()): ?>
-					<!-- Not sure if this make sense -->
-					<a href="<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];?>/?edit">
+					<hr>
+					<a onclick="companyEdit()">
 						<div class="icon-label-h">
 							<img src="/static/icon/gray/edit.svg" alt="">
 							<?php echo TEXT[10] ?>
@@ -111,14 +110,14 @@
 					</a>
 					<?php endif ?>
 				</div>
-				<div id="last-updated">
-					<?php echo TEXT[9], ' ', $language->formatDate($company->lastUpdate) ?>
-				</div>
 				<?php if (isset($user) && $user->isAdmin())
 				{
 					include 'company/edit.php';
 				}
 				?>
+				<div id="last-updated">
+					<?php echo TEXT[9], ' ', $language->formatDate($company->lastUpdate) ?>
+				</div>
 			</div>
 		</section>
 		<main>

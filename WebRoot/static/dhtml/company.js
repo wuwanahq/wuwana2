@@ -4,17 +4,13 @@
  */
 
 var panel = document.getElementById("company-panel");
+var edit = document.getElementById("edit");
 var summary = document.getElementById("mobile-summary");
 
 // root is the browser viewport / screen
 var observer = new IntersectionObserver(function(entries) {
-	// since there is a single target to be observed, there will be only one entry
 	if(entries[0]['isIntersecting'] === true) {
-		if(entries[0]['intersectionRatio'] > 0.01){
-			summary.style.opacity = "0";
-		}
-		else if(entries[0]['intersectionRatio'] < 0.3)
-			summary.style.opacity = "1";
+		summary.style.opacity = "0";
 	}
 	else {
 		summary.style.opacity = "1";
@@ -22,3 +18,17 @@ var observer = new IntersectionObserver(function(entries) {
 }, { threshold: [0, 0.01, 1] });
 
 observer.observe(panel);
+// observer.observe(edit);
+
+// Function for the edit panel
+function companyEdit() {
+	if (panel.style.display == "flex") {
+		panel.style.display = "none";
+		edit.style.display = "flex";
+		summary.style.display = "none"; //This is me giving up on how to fix this, lol
+	} else {
+		panel.style.display = "flex";
+		edit.style.display = "none";
+		summary.style.display = "flex";
+	}
+}

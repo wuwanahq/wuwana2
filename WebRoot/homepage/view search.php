@@ -20,9 +20,44 @@
 			<img src="/static/logo/website.svg" alt="wuwana logo">
 		</picture>
 		<?php include 'Templates/search.php' ?>
-		<p>
-		<?php echo TEXT[9] ?>
-		</p>
+		<p><?php echo TEXT[9] ?></p>
+		<section class="ind">
+			<h2><?php echo TEXT[11] ?></h2>
+			<div class="box">
+				<div class="row">
+					<a href="<?php echo '/?search=' . TEXT[18] ?>">
+						<div class="ind-suggestion">
+							<h3><?php echo TEXT[18] ?></h3>
+							<div class="text-background"></div>
+							<img src="/static/image/beer.jpg">
+						</div>
+					</a>
+					<a href="<?php echo '/?search=' . TEXT[17] ?>">
+						<div class="ind-suggestion">
+							<h3><?php echo TEXT[17] ?></h3>
+							<div class="text-background"></div>
+							<img src="/static/image/specialty-coffee.jpg">
+						</div>
+					</a>	
+				</div>
+				<div class="row">
+				<a href="<?php echo '/?search=' . TEXT[19] ?>">
+						<div class="ind-suggestion">
+							<h3><?php echo TEXT[19] ?></h3>
+							<div class="text-background"></div>
+							<img src="/static/image/roaster.jpg">
+						</div>
+					</a>
+					<a href="<?php echo '/?search=' . TEXT[20] ?>">
+						<div class="ind-suggestion">
+							<h3><?php echo TEXT[20] ?></h3>
+							<div class="text-background"></div>
+							<img src="/static/image/coffee-shop.jpg">
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>
