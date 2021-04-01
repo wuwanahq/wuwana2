@@ -81,11 +81,18 @@ h6,
 p,
 ul,
 ol,
-li {
+li,
+dl,
+dt,
+dd {
 	margin-block-start: 0;
 	margin-block-end: 0;
 	margin-inline-start: 0;
 	margin-inline-end: 0;
+	padding-inline-end: 0;
+	padding-inline-start: 0;
+	padding-block-start: 0;
+	padding-block-end: 0;
 	line-height: 1.3;
 	word-break: break-word;
 	list-style: none;
@@ -149,42 +156,14 @@ input[type="checkbox"] {
 	width: 16px;
 	height: 16px;
 	margin: 0 8px 0 0;
+	vertical-align: middle;
+	cursor: pointer;
 }
 
 input::placeholder {
 	font-size: var(--s);
 	color: var(--grey500);
 	white-space: nowrap;
-}
-
-/* The Description List Element */
-
-dl {
-	margin: 0;
-}
-
-dt {
-	font-size: medium;
-	line-height: 1.5;
-	font-weight: 500;
-	margin: 0 0 8px 0;
-	margin-block-start: 0;
-}
-
-dd {
-	margin: 0 0 8px;
-}
-
-dl dd input {
-	vertical-align: middle;
-	cursor: pointer;
-}
-
-dl dd label {
-	font-weight: 400;
-	color:  var(--grey700);
-	vertical-align: middle;
-	cursor: pointer;
 }
 
 /* Form and Labels */
@@ -1037,54 +1016,6 @@ footer details summary::-webkit-details-marker {
 	.header-container {
 		justify-content: flex-start
 	}
-	
-	dl {
-		margin: 0 0 24px
-	}
-
-	dl label {
-		display: inline-block;
-		border-style: solid;
-		border-width: 1px;
-		border-color: var(--black);
-		color: var(--black);
-		background-color: var(--white);
-		padding: 8px 16px;
-		font-size: small;
-		line-height: 1;
-		border-radius: 16px;
-		font-weight: 400;
-		align-self: center
-	}
-
-	dl input {
-		display: none;
-	}
-
-	dl input:checked + label {
-		color: var(--white);
-		background-color: var(--black);
-	}
-
-	dt {
-		font-size: large;
-	}
-
-	dd {
-		display: inline-block;
-		border-radius: 16px;
-		transition: color 200ms, background-color 200ms;
-		margin: 4px;
-	}
-
-	dd:first-child {
-		margin-left: 0;
-	}
-
-	dl dd label {
-		font-weight: 500;
-		color: var(--black)
-	}
 
 	/* NAVBAR */
 	.column-left {
@@ -1111,22 +1042,6 @@ footer details summary::-webkit-details-marker {
 		min-width: 100vw;
 		height: calc(100vh - 48px); /* vh - header height */
 		background: rgba(22, 19, 19, 0.5);
-	}
-
-	#filter {
-		visibility: hidden;
-		position: fixed;
-		top: 48px; left: 0;
-		z-index: 3;
-		background-color: var(--white);
-		height: calc(100vh - 48px); /* vh - header height */
-		padding: 16px;
-		will-change: visibility;
-	}
-
-	#filter .box {
-		padding: 0;
-		border: none;
 	}
 
 	/* FOOTER */
