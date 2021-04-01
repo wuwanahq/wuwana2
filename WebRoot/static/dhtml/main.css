@@ -295,15 +295,14 @@ main {
 
 .button-main {
 	display: flex;
-	padding: 6px 8px;
-	margin: 0;
+	padding: 7px 8px 8px;
 	align-items: center;
-	align-self: center;
 	color: var(--black);
+	font-size: var(--s);
 	line-height: 1.3;
-	background-color: var(--white);
 	border: solid 1px var(--black);
 	border-radius: 8px;
+	background-color: var(--white);
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
 	overflow: hidden;
@@ -328,13 +327,14 @@ main {
 /* Secondary Button */
 
 .button-second {
-	padding: 6px 8px;
+	padding: 7px 8px 8px;
 	align-items: center;
-	background-color: var(--black);
 	color: var(--white);
+	font-size: var(--s);
 	line-height: 1.3;
 	border-radius: 8px;
-	border-width: 0;
+	border:none;
+	background-color: var(--black);
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
 	white-space: nowrap;
@@ -344,7 +344,6 @@ main {
 .button-second:disabled {
 	background-color: var(--grey200);
 	color:  var(--grey700);
-	border-style: none;
 	cursor: not-allowed;
 }
 
@@ -354,13 +353,11 @@ main {
 	display: flex;
 	padding: 4px 8px 4px 4px;
 	align-items: center;
-	background-color: var(--white);
 	color: var(--black);
-	font-size: 14px;
-	align-items: center;
-	border-style: solid;
-	border-color: var(--black);
-	border-width: 1px;
+	font-size: var(--s);
+	line-height: 1;
+	border: solid 1px var(--black);
+	background-color: var(--white);
 	border-radius: 8px;
 	transition: color 200ms, background-color 200ms;
 	cursor: pointer;
@@ -376,14 +373,14 @@ main {
 }
 
 .button-icon img {
-	margin-right: 4px;
+	margin-inline-end: 4px;
 }
 
 .button-close {
+	display: block;
 	position: absolute;
 	top: 8px;
 	right: 8px;
-	display: block;
 	height: 24px;
 	border-radius: 4px;
 	overflow: hidden;
@@ -620,54 +617,60 @@ main {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
-	min-width: 280px;
-	max-width: 280px;
-	margin-bottom: 24px;
+	margin-block-end: 24px;
+	width: 280px;
+	border: solid 1px var(--grey200);
 	border-radius: 8px;
+	overflow: hidden;
 	background-color: var(--white);
-	border: 1px solid var(--grey200);
 }
 
 .panel-ribbon {
 	top: 0;
-	max-width: 290px;
+	width: 100%;
+	height: 34px;
+}
+
+.panel-ribbon img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .navbar-box section {
-	margin: 16px 0;
-	padding: 0;
+	padding: 8px 0;
 }
 
 .navbar-box h2,
 .navbar-box h3,
 .navbar-box p {
-	margin: 0 8px 8px;
+	margin-inline-start: 16px;
+	margin-inline-end: 16px;
+	margin-block-end: 8px;
 }
 
 .navbar-box h2 {
+	margin-block-start: 4px;
+	font-size: var(--xl);
 	font-weight: 700;
+}
+
+.navbar-box h3 {
+	font-size: var(--l);
+	font-weight: 500;
 }
 
 .navbar-box p {
 	color: var(--grey700);
+	line-height: 1.5;
 }
 
-.navbar-box ul {
-	display: flex;
-	flex-direction: column;
-	margin: 0;
-	padding: 0;
-}
-
-.navbar-box li {
-	display: block;
-	margin: 0;
-	padding: 0;
+.navbar-box .icon-label-h {
+	padding-inline-start: 16px;
 }
 
 .navbar-box form {
-	padding: 0 8px;
+	padding: 0 16px;
 }
 
 /* HEADER */
@@ -1027,8 +1030,11 @@ footer details summary::-webkit-details-marker {
 		position: fixed;
 		top: 48px; left: 0;
 		z-index: 2;
+		width: 300px;
+		max-width: 300px;
 		height: calc(100vh - 48px); /* vh - header height */
 		border-radius: 0;
+		border: none;
 		transform: translateX(-110vw);
 		will-change: transform;
 		transition: transform 200ms;
