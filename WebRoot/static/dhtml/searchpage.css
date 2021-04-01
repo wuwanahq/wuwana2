@@ -20,29 +20,31 @@
 	flex-direction: column;
 	width: 100%;
 	height: 200px;
-	background-color: var(--grey700);
-	background-image: url(/static/logo/background-v2.1-dark.svg);
-	background-position: -16px -16px; /* This compensate for the padding */
-	color: white;
-	border-radius: 8px;
-	margin-bottom: 16px;
+	margin-block-end: 24px;
 	padding: 16px;
+	background-image: url(/static/logo/background-v2.1-dark.svg);
+	background-color: var(--grey700); /* in case the svg doesnt load */
+	background-position: -16px -16px; /* This compensate for the padding */
+	color: var(--white);
+	border-radius: 8px;
 }
 
 .search-result-box h2 {
-	font-size: xx-large;
-	margin: 0;
+	font-size: var(--xxl);
 }
 
 .search-result-box p {
-	margin: auto 0 8px;
+	margin-block-start: auto;
 }
 
 .search-title {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 	margin-bottom: 8px
+}
+
+.search-title h2 {
+	font-weight: 500;
 }
 
 /* Company Card */
@@ -91,4 +93,11 @@
 	font-weight: 400;
 	margin-inline-end: 8px;
 	white-space: nowrap;
+}
+
+/* Filter Area */
+
+.filter {
+	padding: 16px;
+	overflow-y: scroll;
 }
