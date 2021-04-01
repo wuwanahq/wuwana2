@@ -49,11 +49,11 @@
 				<form method="post">
 					<div class="form-layout-column">
 						<label for="email"><?php echo TEMP_TEXT[16] ?></label>
-						<input id="email" type="text" name="email">
+						<input id="email" type="email" name="email">
 					</div>
 					<div class="form-layout-column">
 						<label for="code"><?php echo TEMP_TEXT[17] ?></label>
-						<input id="code" type="text" name="code" inputmode="tel">
+						<input id="code" type="text" name="code" inputmode="tel" autocomplete="off">
 					</div>
 					<input class="button-second" type="submit" value="<?php echo TEMP_TEXT[18] ?>">
 				</form>
@@ -90,7 +90,7 @@
 				</div>
 				<div class="form-layout-column">
 					<label for="code"><?php echo TEMP_TEXT[17] ?></label>
-					<input id="code" type="text" name="code" inputmode="tel">
+					<input id="code" type="text" name="code" inputmode="tel" autocomplete="off">
 				</div>
 				<input class="button-second" type="submit"
 				value="<?php echo TEMP_TEXT[19] ?>">

@@ -177,7 +177,7 @@ function showSuggestions(list){
     if(!list.length)
 	{
         userValue = searchInput.value;
-        listData = '<a href="/"><li>'+ userValue +'</li></a><hr>';
+        listData = '<a href="/?search=' + userValue + '"><li>'+ userValue +'</li></a><hr>';
     }
 	else
 	{
@@ -191,6 +191,7 @@ function searchMobile() {
 	if (window.innerWidth < 500) {
 		search.classList.add("search-fixed");
 		body.style.overflow = "hidden";
+		body.style.position = "fixed";
 	}
 }
 
@@ -199,6 +200,7 @@ function searchMobileClear() {
 	searchSuggestion.style.display = "none";
 	search.classList.remove("search-fixed");
 	body.style.overflow = "auto";
+	body.style.position = "relative";
 }
 
 // Javascript to detect broken img url link
