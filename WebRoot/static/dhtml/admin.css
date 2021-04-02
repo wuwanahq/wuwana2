@@ -116,6 +116,10 @@ tr:nth-child(even) {
 	margin-block-end: 8px;
 }
 
+.box input[type=submit] {
+	margin-block-start: 24px;
+}
+
 @media screen and (max-width: 800px) {
 	.box-table {
 		max-width: 100vh;
