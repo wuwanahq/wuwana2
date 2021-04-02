@@ -101,7 +101,6 @@
 }
 
 .edit details summary {
-	margin-bottom: 8px;
 	font-size: var(--l);
 	font-weight: 500;
 }

@@ -168,8 +168,10 @@ input::placeholder {
 
 /* Details and Summary */
 details summary {
+	margin-block-end: 16px;
 	list-style: none; /* Remove details marker */
 }
+
 /* Remove details marker */
 details summary::before,
 details summary::-webkit-details-marker {
