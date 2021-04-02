@@ -1,11 +1,11 @@
 <?php
 	$sections = [
-		//'/admin/statistics' => ['Statistics', 'chart-bar.svg'],
-		'/admin/companies'  => ['Companies', 'company.svg'],
-		//'/admin/users'      => ['Users', 'users.svg'],
-		'/admin/tags'       => ['Tags', 'tag.svg'],
-		//'/admin/categories' => ['Categories', 'label.svg'],
-		'/admin/database'   => ['Database', 'dns.svg']
+		//'/admin/stat' => ['Statistics', 'chart-bar.svg'],
+		'/admin/companies' => ['Companies', 'company.svg'],
+		//'/admin/users' => ['Users', 'users.svg'],
+		'/admin/tags' => ['Tags', 'tag.svg'],
+		'/admin/database' => ['Database', 'dns.svg'],
+		'/admin/settings' => ['Settings', 'label.svg']
 	];
 ?>
 

@@ -13,48 +13,19 @@
 		</div>
 		<h1><?php echo TEXT[0] ?></h1>
 		<p><?php echo TEXT[1] ?></p>
-<!--
-		<section class="error-companies">
-			<h2><?php echo TEXT[2] ?></h2>
-			<div class="box center">
-			<?php
-				/*
-					$counter = count($companies);
-
-					foreach ($companies as $permalink => $company)
-					{
-						echo '<a class="Card" href="/', $permalink, '">';
-						echo   '<div class="Logo">';
-						echo     '<img src="', $company->logo, '" alt="', $company->name, ' logo">';
-						echo   '</div>';
-						echo   '<div class="CompanyMain">';
-						echo     '<div class="CompanyContent">';
-						echo       '<h3>', $company->name, '</h3>';
-						echo       '<ul class="Label">';
-
-						foreach ($company->tags as $tag)
-						{
-							echo     '<li>', $tag, '</li>';
-						}
-
-						echo       '</ul>';
-						echo       '<div class="tagRegion">', $locations[$company->region]->region, '</div>';
-						echo     '</div>';
-						echo     '<div class="BadgeArea"></div>';
-						echo   '</div>';
-						echo '</a>';
-
-						if (--$counter > 0)
-						{ echo '<hr>'; }
-					}
-				*/
-				?>
-			</div>
-		</section>
--->
+		<?php if (count($companies) > 0): ?>
+			<section class="error-companies">
+				<h2><?php echo TEXT[2] ?></h2>
+				<div class="box center">
+					<?php WebApp\ViewComponent::printCompanyCards($companies) ?>
+				</div>
+			</section>
+		<?php endif ?>
 	</div>
 	<a class="button-icon Center" href="/">
 		<img src="/static/icon/home.svg" alt=""><?php echo TEXT[3] ?>
 	</a>
+	<br>
+	<?php include 'Templates/page footer.php' ?>
 </body>
 </html>

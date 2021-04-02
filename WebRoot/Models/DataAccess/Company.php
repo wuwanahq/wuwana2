@@ -224,6 +224,7 @@ class Company extends DataAccess
 	{
 		switch ($column)
 		{
+			case 'Company.PermaLink': break;
 			case 'Company.Name': break;
 			case 'T1.Names': break;
 			case 'T2.Names': break;

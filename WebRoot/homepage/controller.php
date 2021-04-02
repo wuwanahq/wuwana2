@@ -17,10 +17,6 @@ if (!filter_has_var(INPUT_GET, 'search'))
 }
 
 $locations = (new DataAccess\Location())->selectUsefulItemsOnly('ES',$language->code);
-
-//commented out this since its not needed
-//$limit = filter_has_var(INPUT_GET, 'show') ? 0 : 8;
-
 $selectedRegions = [];
 
 foreach ($locations as $id => $unused)
@@ -33,9 +29,8 @@ foreach ($locations as $id => $unused)
 }
 
 $search = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING);
-
-// Fetch only the 8 first companies
-$companies = (new DataAccess\Company())->search($search, $selectedRegions, $language->code, 8);
+$companies = (new DataAccess\Company())->search(
+	$search, $selectedRegions, $language->code, $settings['MaxResultSearch']);
 
 $jsParam = $companies['Counter'] . ',' . json_encode($selectedRegions, JSON_NUMERIC_CHECK);
 $pageCount = 1;  // keeps count of how many times a 8-company-result has been returned

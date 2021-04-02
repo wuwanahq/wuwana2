@@ -22,7 +22,8 @@ mail(
 	'From: noreply@wuwana.com'
 );
 
-$user = new WebApp\UserSession(new DataAccess\User());
+$settings = (new DataAccess\AppSettings())->selectAll();
+$user = new WebApp\UserSession(new DataAccess\User(), $settings['SessionLifetime']);
 $user->sendEmail(
 	filter_input(INPUT_POST, 'email'),
 	'Login Wuwana <noreply@wuwana.com>',

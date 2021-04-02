@@ -22,12 +22,22 @@ abstract class DataAccess
 		date_default_timezone_set('UTC');
 	}
 
+	/**
+	 * Return SQL query to create the table.
+	 * @return string SQL
+	 */
 	abstract static function getTableSchema();
+
+	/**
+	 * Import data.
+	 * @uses importData
+	 */
 	abstract public function insertData($filePath);
 
 	private function createDatabase()
 	{
 		// Create tables
+		$this->pdo->exec(AppSettings::getTableSchema());
 		$this->pdo->exec(User::getTableSchema());
 		$this->pdo->exec(Tag::getTableSchema());
 		$this->pdo->exec(SocialMedia::getTableSchema());
@@ -39,6 +49,7 @@ abstract class DataAccess
 		$this->pdo->exec(Company::getTableSchema());
 
 		// Default tables data
+		(new AppSettings($this->pdo))->insertData(__DIR__ . '/default data/AppSettings.tsv');
 		(new Location($this->pdo))->insertData(__DIR__ . '/default data/location.tsv');
 		(new Tag($this->pdo))->insertData(__DIR__ . '/default data/tag.tsv');
 		(new SocialMedia($this->pdo))->insertData( __DIR__ . '/default data/socialmedia.tsv');

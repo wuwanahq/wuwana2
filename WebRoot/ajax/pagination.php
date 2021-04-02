@@ -9,8 +9,6 @@ spl_autoload_register(function($className) {
 	require '../Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-const PAGING_SIZE = 8;
-
 $inputs = filter_input_array(INPUT_POST,
 [
 	'pageCount' => FILTER_VALIDATE_INT,
@@ -24,8 +22,8 @@ if ($inputs['pageCount'] > 0 && $inputs['selectedRegions'] != null && $inputs['s
 		$inputs['search'],
 		json_decode(stripslashes($inputs['selectedRegions'])),
 		WebApp\WebApp::getLanguage()->code,
-		PAGING_SIZE,
-		$inputs['pageCount'] * PAGING_SIZE);
+		$settings['MaxResultSearch'],
+		$inputs['pageCount'] * $settings['MaxResultSearch']);
 
 	WebApp\ViewComponent::printCompanyCards($companies, true);
 }
