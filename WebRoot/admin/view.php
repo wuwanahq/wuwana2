@@ -13,6 +13,14 @@
 		<section class="column-left">
 			<?php include 'Templates/navbar.php' ?>
 		</section>
+		<main>
+			<?php if(!$user->isAdmin()): ?>
+				<div class="information-error-box">
+					<div class="information-error-vertical"></div>
+					<h2>You are not logged in!</h2>
+				</div>
+			<?php endif ?>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>
