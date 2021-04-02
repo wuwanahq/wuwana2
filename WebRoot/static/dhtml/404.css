@@ -16,16 +16,26 @@
 }
 
 .error-image img {
+	height: 100%;
 	width: 100%;
 	object-fit: cover;
 }
 
 .error-page-wrapper h1 {
-	font-size: 2rem;
+	margin-block-end: 8px;
+	font-size: var(--xxl);
 }
 
 .error-page-wrapper p {
-	align-self: center;
-	max-width: 48ch;
-	margin: -8px 0 24px;
+	max-width: 60ch;
+	margin-block-end: 40px;
+	color: var(--grey700);
+	line-height: 1.5;
+}
+
+a,
+a:active,
+a:visited {
+	margin-block-end: 24px;
+	color: var(--black);
 }
