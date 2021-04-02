@@ -25,5 +25,7 @@
 	<a class="button-icon Center" href="/">
 		<img src="/static/icon/home.svg" alt=""><?php echo TEXT[3] ?>
 	</a>
+	<br>
+	<?php include 'Templates/page footer.php' ?>
 </body>
 </html>

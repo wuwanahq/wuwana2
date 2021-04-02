@@ -12,12 +12,20 @@ $limit = (int)$settings['MaxResultPage404'];
 
 while (strlen($search) > 1 && $limit > 0)
 {
+	foreach ((new DataAccess\Company())->searchColumn('Company.PermaLink', $search) as $permalink => $company)
+	{
+		$companies[$permalink] = $company;
+
+		if (--$limit == 0)
+		{ break 2; }
+	}
+
 	foreach ((new DataAccess\Company())->searchColumn('Company.Name', $search) as $permalink => $company)
 	{
 		$companies[$permalink] = $company;
 
 		if (--$limit == 0)
-		{ break; }
+		{ break 2; }
 	}
 
 	$search = substr($search, 0, -1);

@@ -24,8 +24,8 @@
 				<h2>WebApp Settings</h2>
 				<div class="box pad-16">
 					<form method="post">
-						<label for="cb1">Always redirect URL to HTTPS if necessary:</label>
-						<input id="cb1" type="checkbox" name="ForceHTTPS" <?php echo $settings['ForceHTTPS'] == 'no' ? '' : 'checked' ?>>
+						<input id="cb" type="checkbox" name="ForceHTTPS" <?php echo $settings['ForceHTTPS'] == 'no' ? '' : 'checked' ?>>
+						<label for="cb">Always redirect URL to HTTPS if necessary</label>
 						<br><br>
 						<label for="txt1">Admin session lifetime:</label>
 						<input id="txt1" type="text" name="SessionLifetime" value="<?php echo $settings['SessionLifetime'] / 60 ?>">
@@ -33,7 +33,7 @@
 						<label for="txt2">Max companies displayed per page on search results:</label>
 						<input id="txt2" type="text" name="MaxResultSearch" value="<?php echo $settings['MaxResultSearch'] ?>">
 						<br><br>
-						<label for="txt3">Max companies suggested on page 404:</label>
+						<label for="txt3">Max companies suggested on page 404 (or "0" to disable suggestions):</label>
 						<input id="txt3" type="text" name="MaxResultPage404" value="<?php echo $settings['MaxResultPage404'] ?>">
 						<br><br>
 						<label for="opt1">Default language for users who don't speak any of the available languages:</label>

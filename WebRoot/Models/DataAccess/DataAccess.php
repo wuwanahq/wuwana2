@@ -22,7 +22,16 @@ abstract class DataAccess
 		date_default_timezone_set('UTC');
 	}
 
+	/**
+	 * Return SQL query to create the table.
+	 * @return string SQL
+	 */
 	abstract static function getTableSchema();
+
+	/**
+	 * Import data.
+	 * @uses importData
+	 */
 	abstract public function insertData($filePath);
 
 	private function createDatabase()
