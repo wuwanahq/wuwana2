@@ -25,7 +25,7 @@ class ViewComponent
 			printf(
 				'<a class="card" href="/%s">
 					<div class="logo-main">
-						<img src="%s" alt="logo" onerror="setDefaultImg()">
+						<img src="%s">
 					</div>
 					<div class="company-card-info">
 						<h3>%s</h3>

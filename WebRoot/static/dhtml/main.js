@@ -1,6 +1,25 @@
 // ECMAScript 5
 "use strict";
 
+/**
+ * Functions that run automatically
+ */
+
+window.addEventListener("load", onLoad());
+function onLoad()
+{
+	replaceMultipleBrokenImgs(); //replace broken image url links
+}
+
+window.addEventListener("resize", function() {
+	console.log('rezising');
+});
+
+
+window.addEventListener("scroll", function() {
+	backToTop(); //Back to top button
+});
+
 function sendEmail()
 {
 	var email = document.getElementById("email").value;
@@ -92,31 +111,6 @@ function goBack() {
 	}
 }
 
-// Back to top button
-var lastScrollTop = 0;
-
-window.addEventListener("scroll", function(){
-	var st = window.pageYOffset || document.documentElement.scrollTop;
-	var toTop = document.getElementById("toTop");
-
-	if (st > lastScrollTop){
-		toTop.style.opacity = 0;
-		toTop.style.visibility = "hidden";
-	}
-	else if (st < lastScrollTop && window.pageYOffset > 500)
-	{
-		toTop.style.opacity = 1;
-		toTop.style.visibility = "visible";
-	}
-	else
-	{
-		toTop.style.opacity = 0;
-		toTop.style.visibility = "hidden";
-	}
-
-   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-}, false);
-
 // To reset elements to default
 window.addEventListener("resize", () => 
 {
@@ -203,19 +197,76 @@ function searchMobileClear() {
 	body.style.position = "relative";
 }
 
-// Javascript to detect broken img url link
+/**
+ * Function to replace broken img url link
+ * with random wuwana square logo
+ */
 
-window.addEventListener("load", setDefaultImg());
+// Replace only one broken url link
+function replaceBrokenImg()
+{
+	let range = [1,2,3,4,5,6,7,8];
+	let variant = range[Math.floor(Math.random() * range.length)];
+	let logo = '/static/logo/square' + variant + '.svg';
+	let img = this;
 
-function setDefaultImg() {
-	const images = document.getElementsByTagName("img");
-	const numbers = [1,2,3,4,5,6,7,8];
+	img.src = logo;
+}
 
-	for (var i = 0; i < images.length; i++){
-		const errorLogo = '/static/logo/square' + numbers[Math.floor(Math.random() * numbers.length)] + '.svg';
-
-		images[i].addEventListener("error", function() {
-			this.src = errorLogo;
-		})
+// Replace all visible broken url links
+function replaceMultipleBrokenImgs() 
+{
+	let imgs = document.getElementsByTagName("img");
+	
+	for (let i = 0; i < imgs.length; i++ ) {
+		imgs[i].addEventListener("error", replaceBrokenImg)
 	}
 }
+
+/**
+ * Function to go back to top
+ */
+
+function backToTop()
+{
+	let y = window.pageYOffset;
+	let toTop = document.getElementById("toTop").style;
+
+	if (y > 1000)
+	{
+		toTop.opacity = 1;
+ 		toTop.visibility = "visible";
+	} 
+	else 
+	{
+		toTop.opacity = 0;
+	 	toTop.visibility = "hidden";
+	}
+}
+
+
+
+
+// var lastScrollTop = 0;
+// window.addEventListener("scroll", function(){
+	
+// 	var st = window.pageYOffset || document.documentElement.scrollTop;
+// 	var toTop = document.getElementById("toTop").style;
+
+// 	if (st > lastScrollTop){
+// 		toTop.opacity = 0;
+// 		toTop.visibility = "hidden";
+// 	}
+// 	else if (st < lastScrollTop && window.pageYOffset > 500)
+// 	{
+// 		toTop.opacity = 1;
+// 		toTop.visibility = "visible";
+// 	}
+// 	else
+// 	{
+// 		toTop.opacity = 0;
+// 		toTop.visibility = "hidden";
+// 	}
+// console.log('working');
+//    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+// }, false);
