@@ -41,7 +41,7 @@
 	min-width: 88px;
 	height: 88px;
 	margin-inline-end: 16px;
-	border: 1px solid var(--grey200);
+	border: 1px solid var(--grey50);
 	border-radius: 8px;
 	overflow: hidden;
 }

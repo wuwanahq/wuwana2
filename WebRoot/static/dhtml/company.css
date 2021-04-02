@@ -6,6 +6,68 @@
 }
 
 /* Box Panel */
+/* companyPanel Sections */
+#company-panel section {
+	padding-block-start: 16px;
+	padding-block-end: 16px;
+	width: auto;
+}
+
+#company-panel h1,
+#company-panel h3,
+#company-panel p {
+	margin-inline-start: 16px;
+	margin-inline-end: 16px;
+	margin-block-end: 8px;
+}
+
+#company-panel h1 {
+	font-size: var(--xl);
+}
+
+#company-panel h3 {
+	font-size: var(--l);
+	font-weight: 500;
+}
+
+#company-panel p {
+	color: var(--grey700);
+	line-height: 1.5;
+	text-align: left;
+}
+
+.company-about {
+	align-items: center
+}
+
+.logo-main {
+	margin-block-end: 8px;
+	width: 88px;
+	min-width: 88px;
+	height: 88px;
+	border-radius: 8px;
+	border: 1px solid var(--grey50);
+	overflow: hidden;
+}
+
+.company-about li {
+	display: inline-flex;
+	margin-inline-end: 16px;
+	padding: 4px 0;
+	color: var(--grey700);
+	font-size: var(--s);
+}
+
+.company-about li:last-child {
+	margin-inline-end: 0;
+}
+
+.company-contact .icon-label-h {
+	padding-inline-start: 16px;
+	color: var(--grey700);
+}
+
+/* Edit */
 #edit {
 	display: none;
 }
@@ -19,7 +81,6 @@
 }
 
 .edit h2 {
-	text-align: left;
 	margin-block-end: 16px;
 }
 
@@ -29,104 +90,47 @@
 
 .edit input[type=text],
 .edit input[type=url],
-.edit input[type=email],
-.edit textarea {
-	font-size: small;
+.edit input[type=email] {
+	font-size: var(--s);
 }
 
 .edit textarea {
 	height: 80px; /* Magic number */
-}
-
-.edit details summary {
-	font-size: large;
-	font-weight: 500;
-	margin-bottom: 8px;
-	list-style: none; /* Remove details marker */
-}
-.edit details summary::before,
-.edit details summary::-webkit-details-marker {
-	display:none;
-}
-
-.edit details:hover {
-	cursor: pointer;
-}
-
-.edit details summary:hover,
-.edit details summary:active,
-.edit details summary:focus {
-	outline-style: none;
-}
-
-.edit details summary:hover {
-	text-decoration: underline;
-}
-
-/* companyPanel Sections */ 
-.company-about {
-	align-items: center
-}
-
-.logo-main {
-	width: 88px;
-	min-width: 88px;
-	height: 88px;
-	border-radius: 8px;
-	border: solid 1px rgba(0, 0, 0, 0.05);
-	overflow: hidden;
-}
-
-.company-about h1 {
-	margin-top: 8px;
-	font-size: x-large;
-	text-align: center;
-}
-
-.company-about ul {
-	padding-inline-start: 0;
-	display: flex;
-	margin: 0;
-}
-
-.company-about li {
-	display: inline;
-	color: var(--grey500);
-	font-size: small;
-	line-height: 1.3;
-	font-weight: 400;
-	margin: -4px 16px 0 0
-}
-
-.company-about li:last-child {
-	margin-right: 0;
-}
-
-.company-description p {
-	text-align: left;
-	margin: 0;
+	font-size: var(--s);
 	line-height: 1.5;
 }
 
-.company-contact ul {
-	display: flex;
-	justify-content: center;
-	margin-top: 8px;
+.edit details summary {
+	margin-bottom: 8px;
+	font-size: var(--l);
+	font-weight: 500;
 }
 
+/* Last updated */
 #last-updated {
-	margin: -16px 0 24px;
-	font-size: small;
+	margin-block-start: -16px;
+	margin-block-end: 24px;
 	color: var(--grey500);
+	font-size: var(--s);
 }
 
 /* Instagram Card */
+.instagram h2 {
+	margin-block-end: 8px;
+	font-size: var(--xl);
+	font-weight: 500;
+}
 
 .instagram .button-icon {
 	z-index: 1;
 	position: absolute;
 	right: 24px;
-	bottom: 24px
+	bottom: 24px;
+	color: var(--black);
+}
+
+.instagram .button-icon:hover {
+	color: var(--white);
 }
 
 .instagram-info {
@@ -134,32 +138,39 @@
 	max-width: 40ch
 }
 
+.instagram-info h3 {
+	margin-block-end: 8px;
+	font-size: var(--l);
+}
+
+.instagram-info p {
+	margin-block-end: 16px;
+	line-height: 1.5;
+}
+
 #ig-external-url {
 	display: inline-block;
-	max-width: min(50ch, 98%);
+	max-width: min(40ch, 98%);
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 .instagram-info ul {
-	padding-inline-start: 0;
 	display: flex;
-	margin-bottom: 0
 }
 
 .instagram-info li {
-	display: flex;
-	margin-right: 24px;
+	margin-inline-end: 24px;
 }
 
 .instagram-info .number {
-	margin-bottom: 4px;
-	font-size: large;
-	font-weight: 500;}
+	margin-block-end: 4px;
+	font-size: var(--l);
+	font-weight: 700;}
 
 .instagram-info .text {
-	font-size: small}
+	font-size: var(--s)}
 
 .instagram-info a:hover {
 	text-decoration: underline;
@@ -184,7 +195,6 @@
 }
 
 .instagram-picture {
-	margin: 0px;
 	height: 100%;
 	width: 49.7%
 }
@@ -234,11 +244,11 @@
 	}
 	
 	.mobile-summary-logo {
-		border: solid 1px rgba(0, 0, 0, 0.05);
-		border-radius: 8px;
 		max-width: 64px;
 		max-height: 64px;
-		margin-right: 16px;
+		margin-inline-end: 16px;
+		border: 1px solid var(--grey50);
+		border-radius: 8px;
 	}
 
 	.mobile-summary-title {
@@ -248,9 +258,9 @@
 	}
 	
 	.mobile-summary h3 {
-		font-size: large;
+		font-size: var(--l);
 		font-weight: 500;
-		margin-bottom: 8px;
+		margin-block-end: 8px;
 	}
 }
 

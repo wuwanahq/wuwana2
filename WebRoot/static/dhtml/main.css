@@ -142,9 +142,9 @@ textarea {
 	width: 100%;
 	margin: 0 0 8px;
 	padding: 4px 8px;
+	font-size: var(--m);
 	border-radius: 8px;
 	border: 1px solid var(--grey200);
-	font-size: var(--m);
 	-webkit-appearance: none;
 }
 
@@ -164,6 +164,30 @@ input::placeholder {
 	font-size: var(--s);
 	color: var(--grey500);
 	white-space: nowrap;
+}
+
+/* Details and Summary */
+details summary {
+	list-style: none; /* Remove details marker */
+}
+/* Remove details marker */
+details summary::before,
+details summary::-webkit-details-marker {
+	display:none;
+}
+
+details:hover {
+	cursor: pointer;
+}
+
+details summary:active,
+details summary:focus {
+	outline-style: none;
+}
+
+.edit details summary:hover {
+	text-decoration: underline;
+	outline-style: none;
 }
 
 /* Form and Labels */
@@ -223,9 +247,8 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	font-size: xx-small;
+	font-size: var(--s);
 	color: var(--black);
-	max-width: 48px;
 	text-align: center;
 	word-break: keep-all;
 }
@@ -379,8 +402,8 @@ main {
 .button-close {
 	display: block;
 	position: absolute;
-	top: 8px;
-	right: 8px;
+	top: 16px;
+	right: 16px;
 	height: 24px;
 	border-radius: 4px;
 	overflow: hidden;
@@ -552,7 +575,7 @@ main {
 	border: 1px solid var(--grey200);
 }
 
-.box-panel section {
+/* .box-panel section {
 	width: auto;
 	padding: 16px;
 }
@@ -588,7 +611,7 @@ main {
 .box-panel li {
 	display: inline;
 	margin: 0 4px
-}
+} */
 
 .panel-cover {
 	height: 28px; /* same as img height */

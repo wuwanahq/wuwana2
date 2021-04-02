@@ -21,7 +21,7 @@
 			<h3><?php echo $company->name ?></h3>
 			<div class="button-icon-small">
 				<img src="/static/icon/tiny/map.svg" alt="">
-			<?php echo $company->region ?>
+				<?php echo $company->region ?>
 			</div>
 		</div>
 	</div>
@@ -57,43 +57,45 @@
 							<?php printf(TEXT[1], $company->name) ?>
 						</h3>
 						<ul>
-							<?php if ($company->instagram->pageURL != ''): ?>
+							<?php if (!empty($company->website)): ?>
 								<li>
-									<a class="item-label" href="<?php echo $company->instagram->getPageURL() ?>" target="_blank" rel="noopener">
-										<div class="button-social">
-											<img src="/static/icon/instagram.svg" alt="">
-										</div>
-										Instagram
+									<a class="icon-label-h" 
+										href="<?php echo $company->website ?>"
+										target="_blank"
+										rel="noopener">
+										<img src="/static/icon/gray/globe.svg" alt="">
+										Website
 									</a>
 								</li>
 							<?php endif ?>
-							<?php if (!empty($company->website)): ?>
+							<?php if ($company->instagram->pageURL != ''): ?>
 								<li>
-									<a class="item-label" href="<?php echo $company->website ?>" target="_blank" rel="noopener">
-										<div class="button-social">
-											<img src="/static/icon/globe.svg" alt="">
-										</div>
-										Web
+									<a class="icon-label-h"
+										href="<?php echo $company->instagram->getPageURL() ?>" 
+										target="_blank"
+										rel="noopener">
+										<img src="/static/icon/gray/instagram.svg" alt="">
+										Instagram
 									</a>
 								</li>
 							<?php endif ?>
 							<?php if (isset($company->phone) && (int)$company->phone = 0): ?>
 								<li>
-									<a class="item-label" target="_blank" href="https://wa.me/<?php
-									echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>" rel="noopener">
-										<div class="button-social">
-											<img src="/static/icon/whatsapp.svg" alt="">
-										</div>
+									<a class="icon-label-h"
+										target="_blank"
+										href="https://wa.me/<?php
+									echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>"
+										rel="noopener">
+										<img src="/static/icon/gray/whatsapp.svg" alt="">
 										WhatsApp
 									</a>
 								</li>
 							<?php endif ?>
 							<?php if (!empty($company->email)): ?>
 								<li>
-									<a class="item-label" href="mailto:<?php echo $company->email ?>">
-										<div class="button-social">
-											<img src="/static/icon/email.svg" alt="">
-										</div>
+									<a class="icon-label-h"
+										href="mailto:<?php echo $company->email ?>">
+										<img src="/static/icon/gray/email.svg" alt="">
 										Email
 									</a>
 								</li>
