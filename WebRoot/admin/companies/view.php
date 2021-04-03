@@ -12,7 +12,7 @@
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
 		<section class="column-left">
-			<?php include 'Templates/navbar.php' ?>
+			<?php include 'Templates/navbar admin.php' ?>
 		</section>
 		<main>
 			<?php if(!$user->isAdmin()): ?>

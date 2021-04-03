@@ -17,11 +17,12 @@
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
 		<section class="column-left">
-			<?php include 'Templates/navbar.php' ?>
+			<?php include 'Templates/navbar homepage.php' ?>
 			<section class="sticky" id="filter">
 				<h2><?php echo TEXT[8] ?></h2>
 				<div class="box filter">
 					<form method="get" action="/">
+						<input type="hidden" name="search" value="<?php echo $search ?>">
 						<dl>
 							<dt><?php echo TEXT[3] ?></dt>
 							<dd>
@@ -39,7 +40,7 @@
 						</dl>
 						<div class="mobile" style="text-align:center">
 							<input type="submit"
-								class="button-filter" 
+								class="button-filter"
 								value="<?php echo TEXT[7] ?>" >
 						</div>
 					</form>

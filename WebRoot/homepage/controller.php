@@ -10,7 +10,9 @@ if(filter_has_var(INPUT_GET, 'logout'))
 
 require 'homepage/text ' . $language->code . '.php';
 
-if (!filter_has_var(INPUT_GET, 'search'))
+$search = trim(filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING));
+
+if ($search == '')  // or null or false
 {
 	require 'homepage/view search.php';
 	exit;
@@ -28,7 +30,6 @@ foreach ($locations as $id => $unused)
 	}
 }
 
-$search = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING);
 $companies = (new DataAccess\Company())->search(
 	$search, $selectedRegions, $language->code, $settings['MaxResultSearch']);
 
