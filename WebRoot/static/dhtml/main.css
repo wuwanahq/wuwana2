@@ -591,54 +591,6 @@ main {
 	border: 1px solid var(--grey200);
 }
 
-/* .box-panel section {
-	width: auto;
-	padding: 16px;
-}
-
-.box-panel h1 {
-	margin: 0 0 8px;
-	font-weight: 700;
-}
-
-.box-panel h2 {
-	text-align: center;
-	font-size: x-large;
-	font-weight: 700;
-}
-
-.box-panel h3 {
-	margin: 0 0 8px;
-}
-
-.box-panel p {
-	color:  var(--grey700);
-	font-size: medium;
-	line-height: 1.3;
-	text-align: center;
-	margin: 0 0 16px;
-}
-
-.box-panel ul {
-	margin: 0 16px;
-	padding: 0;
-	display: flex;}
-
-.box-panel li {
-	display: inline;
-	margin: 0 4px
-} */
-
-.panel-cover {
-	height: 28px; /* same as img height */
-}
-
-.panel-cover img {
-	text-align: center;
-	height: 28px;
-	object-fit: cover
-}
-
 .contact-section {
 	align-items: center;
 }
@@ -667,7 +619,6 @@ main {
 .panel-ribbon {
 	top: 0;
 	width: 100%;
-	height: 34px;
 }
 
 .panel-ribbon img {

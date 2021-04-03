@@ -1,7 +1,7 @@
 <div class="navbar-box" id="navbar">
 	<div class="panel-ribbon">
-			<img src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
-		</div>
+		<img src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
+	</div>
 	<section>
 	<?php if (isset($user) && $user->isLogin()): ?>
 		<h2><?php echo $_SESSION['Name'] ?></h2>

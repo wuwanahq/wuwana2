@@ -32,6 +32,7 @@
 }
 
 #company-panel p {
+	max-width: 40ch;
 	color: var(--grey700);
 	line-height: 1.5;
 	text-align: left;
