@@ -14,7 +14,7 @@
 	margin: 0;
 	width: 100%;
 	max-width: 500px;
-	z-index: 10;
+	z-index: 10; /* magic number to prevent mobile bug */
 }
 
 .container-homepage .search form {
@@ -27,10 +27,11 @@
 }
 
 .container-homepage p {
+	margin-block-start: 8px;
+	color: var(--grey700);
+	font-size: var(--s);
 	max-width: 50ch;
 	text-align: center;
-	color: var(--grey700);
-	font-size: medium;
 }
 
  /* Section Industry Suggestion */
@@ -39,6 +40,11 @@
 	 max-width: 800px;
 	 margin: 40px 0;
 	 align-items: center;
+}
+
+.ind h2 {
+	margin-block-end: 8px;
+	font-weight: 500;
 }
 
 .ind .box {
@@ -71,7 +77,6 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	margin: 0;
 }
 
 .ind-suggestion h3 {
@@ -79,17 +84,16 @@
 	left: 16px; bottom: 16px;
 	z-index: 2;
 	color: var(--white);
-	font-size: large;
-	font-weight: 500;
+	font-size: var(--l);
 }
 
 .ind-suggestion .text-background {
 	position: absolute;
 	left: 0; bottom: 0;
 	width: 100%;
-	height: 80px;
+	height: 50%;
 	z-index: 1;
-	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 

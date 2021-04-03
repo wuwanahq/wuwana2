@@ -24,16 +24,15 @@ class ViewComponent
 
 			printf(
 				'<a class="card" href="/%s">
-					<div class="logo-main margin-r16">
-						<img src="%s" alt="logo" onerror="setDefaultImg()">
+					<div class="logo-main">
+						<img src="%s"
+						onerror="replaceMultipleBrokenImgs()">
 					</div>
-					<div class="company-card-wrapper">
-						<div class="company-card-info">
-							<h3>%s</h3>
-							<ul><li>%s</li></ul>
-							<div class="button-icon-small margin-t-auto">
-								<img src="/static/icon/tiny/map.svg" alt="">%s
-							</div>
+					<div class="company-card-info">
+						<h3>%s</h3>
+						<ul><li>%s</li></ul>
+						<div class="button-icon-small margin-t-auto">
+							<img src="/static/icon/tiny/map.svg" alt="">%s
 						</div>
 					</div>
 				</a>',
