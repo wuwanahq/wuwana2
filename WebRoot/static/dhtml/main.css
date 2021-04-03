@@ -429,21 +429,6 @@ main {
 	background-color: var(--grey200);
 }
 
-@media (hover: hover) { /* To eliminate hover effect on mobile */
-	.button-icon a:hover {
-		color: var(--white);
-	}
-
-	.button-icon:hover {
-		color: var(--white);
-		background-color: var(--black)
-	}
-	
-	.button-icon:hover img {
-		filter: invert(100%)
-	}
-}
-
 /* Small Button with Left Icon(14px) */
 
 .button-icon-small {
@@ -561,6 +546,20 @@ main {
 	
 	.button-social:hover img {
 		filter: invert(100%);
+	}
+
+	/* Button Icon */
+	.button-icon a:hover {
+		color: var(--white);
+	}
+
+	.button-icon:hover {
+		color: var(--white);
+		background-color: var(--black)
+	}
+	
+	.button-icon:hover img {
+		filter: invert(100%)
 	}
 
 	/* Pill */

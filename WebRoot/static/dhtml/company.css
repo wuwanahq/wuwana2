@@ -130,8 +130,10 @@
 	color: var(--black);
 }
 
-.instagram .button-icon:hover {
-	color: var(--white);
+@media (hover: hover) { /* To eliminate hover effect on mobile */
+	.instagram .button-icon:hover {
+		color: var(--white);
+	}
 }
 
 .instagram-info {
