@@ -69,7 +69,6 @@ function toggleNavbar()
 {
 	let navbar = document.querySelector(".navbar-box").style;
 	let bkg = document.querySelector(".navbar-background").style;
-	let filter = document.getElementById("filter").style;
 
 	if (url.includes('/admin'))
 	{
@@ -92,6 +91,8 @@ function toggleNavbar()
 	}
 	else 
 	{
+		let filter = document.getElementById("filter").style;
+		
 		if (filter.visibility == "visible")
 		{
 			icon.src = "/static/icon/menu.svg";

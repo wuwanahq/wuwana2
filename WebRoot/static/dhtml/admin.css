@@ -129,3 +129,15 @@ tr:nth-child(even) {
 		display: none;
 	}
 }
+
+/* Setting Tab */
+.form-layout-row {
+	display: flex;
+	margin-block-end: 16px;
+}
+
+.form-layout-row label {
+	font-size: var(--s);
+	font-weight: 400;
+	color: var(--grey700);
+}

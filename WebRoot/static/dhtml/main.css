@@ -135,14 +135,29 @@ input[type=text],
 input[type=url],
 input[type=email],
 input[type=password],
+input[type=number],
 textarea {
 	width: 100%;
-	margin: 0 0 8px;
+	margin: 0;
+	margin-block-end: 8px;
 	padding: 4px 8px;
 	font-size: var(--m);
 	border-radius: 8px;
 	border: 1px solid var(--grey200);
 	-webkit-appearance: none;
+}
+
+select {
+	display: grid;
+	margin: 0;
+	margin-block-end: 8px;
+	padding: 4px 8px;
+	font-size: var(--m);
+	border: 1px solid var(--grey200);
+	border-radius: 8px;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
 }
 
 textarea {
@@ -194,14 +209,16 @@ details summary:focus {
 .form-layout-column {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 8px;
+	margin-block-end: 8px;
 }
 
 .form-layout-column label {
+	max-width: 40ch;
+	margin-bottom: 4px;
 	font-size: var(--s);
 	font-weight: 400;
 	color: var(--grey700);
-	margin-bottom: 4px;
+	
 }
 
 .form-layout-row {
