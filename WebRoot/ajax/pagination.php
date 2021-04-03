@@ -19,7 +19,7 @@ $inputs = filter_input_array(INPUT_POST,
 if ($inputs['pageCount'] > 0 && $inputs['selectedRegions'] != null && $inputs['search'] != null)
 {
 	$companies = (new DataAccess\Company())->search(
-		$inputs['search'],
+		urldecode($inputs['search']),
 		json_decode(stripslashes($inputs['selectedRegions'])),
 		WebApp\WebApp::getLanguage()->code,
 		$settings['MaxResultSearch'],

@@ -22,6 +22,7 @@
 				<h2><?php echo TEXT[8] ?></h2>
 				<div class="box filter">
 					<form method="get" action="/">
+						<input type="hidden" name="search" value="<?php echo $search ?>">
 						<dl>
 							<dt><?php echo TEXT[3] ?></dt>
 							<dd>
