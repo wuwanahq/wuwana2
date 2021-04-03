@@ -5,7 +5,7 @@
 		//'/admin/users' => ['Users', 'users.svg'],
 		'/admin/tags' => ['Tags', 'tag.svg'],
 		'/admin/database' => ['Database', 'dns.svg'],
-		'/admin/settings' => ['Settings', 'label.svg']
+		'/admin/settings' => ['Settings', 'slider.svg']
 	];
 ?>
 <div class="sticky">

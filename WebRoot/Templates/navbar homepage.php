@@ -8,7 +8,7 @@
 		<a href="/admin/companies">
 			<div class="icon-label-h">
 				<img src="/static/icon/gray/slider.svg" alt="">
-				<?php echo TEMP_TEXT[18] ?>
+				<?php echo TEMP_TEXT[13] ?>
 			</div>
 		</a>
 		<a href="/?logout">

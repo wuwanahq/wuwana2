@@ -239,7 +239,8 @@
 		background-color: var(--white);	
 		border: 1px solid var(--grey200);
 		opacity: 0;
-		will-change: opacity;
+		transform: translateY(-100px); /* Magic number */
+		will-change: opacity, transform;
 		transition: opacity 200ms 0ms ease-in-out;
 	}
 	
