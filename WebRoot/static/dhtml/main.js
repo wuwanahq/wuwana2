@@ -1,8 +1,8 @@
 // Global Variables
-let url = window.location.href;
-let body = document.body.style;
-let icon = document.getElementById("menu-icon");
-let winWidth = window.innerWidth;
+var url = window.location.href;
+var body = document.body.style;
+var icon = document.getElementById("menu-icon");
+var winWidth = window.innerWidth;
 
 /**
  * Functions that run automatically
@@ -17,9 +17,9 @@ function onLoad()
 
 window.addEventListener("resize", () => 
 {
-	let navbar = document.querySelector(".navbar-box").style;
-	let bkg = document.querySelector(".navbar-background").style;
-	let filter = document.getElementById("filter").style;
+	var navbar = document.querySelector(".navbar-box").style;
+	var bkg = document.querySelector(".navbar-background").style;
+	var filter = document.getElementById("filter").style;
 
 	console.log('rezising');
 	bkg.display = "none";
@@ -67,8 +67,8 @@ function changeHeaderIcon()
 
 function toggleNavbar() 
 {
-	let navbar = document.querySelector(".navbar-box").style;
-	let bkg = document.querySelector(".navbar-background").style;
+	var navbar = document.querySelector(".navbar-box").style;
+	var bkg = document.querySelector(".navbar-background").style;
 
 	if (url.includes('/admin'))
 	{
@@ -91,7 +91,7 @@ function toggleNavbar()
 	}
 	else 
 	{
-		let filter = document.getElementById("filter").style;
+		var filter = document.getElementById("filter").style;
 		
 		if (filter.visibility == "visible")
 		{
@@ -122,14 +122,14 @@ function toggleNavbar()
  * Functions for Search
  */
 
-let search = document.getElementById("search");
-let searchInput = document.getElementById("user-search");
-let searchSuggestion = document.getElementById("search-suggestion");
-let searchIcon = document.querySelectorAll("search-icon");
+var search = document.getElementById("search");
+var searchInput = document.getElementById("user-search");
+var searchSuggestion = document.getElementById("search-suggestion");
+var searchIcon = document.querySelectorAll("search-icon");
 
 searchInput.onkeyup = (e) => {
-	let userData = e.target.value; //user entered data
-	let emptyArray = [];
+	var userData = e.target.value; //user entered data
+	var emptyArray = [];
 	
 	if (userData) {
 		searchSuggestion.style.display = "block"; // Show suggestion box
@@ -142,8 +142,8 @@ searchInput.onkeyup = (e) => {
 }
 
 function showSuggestions(list){
-    let listData;
-	let userValue;
+    var listData;
+	var userValue;
 
     if(!list.length)
 	{
@@ -182,10 +182,10 @@ function searchMobileClear() {
 // Replace only one broken url link
 function replaceBrokenImg()
 {
-	let range = [1,2,3,4,5,6,7,8];
-	let variant = range[Math.floor(Math.random() * range.length)];
-	let logo = '/static/logo/square' + variant + '.svg';
-	let img = this;
+	var range = [1,2,3,4,5,6,7,8];
+	var variant = range[Math.floor(Math.random() * range.length)];
+	var logo = '/static/logo/square' + variant + '.svg';
+	var img = this;
 
 	img.src = logo;
 }
@@ -193,9 +193,9 @@ function replaceBrokenImg()
 // Replace all visible broken url links
 function replaceMultipleBrokenImgs() 
 {
-	let imgs = document.getElementsByTagName("img");
+	var imgs = document.getElementsByTagName("img");
 	
-	for (let i = 0; i < imgs.length; i++ ) {
+	for (var i = 0; i < imgs.length; i++ ) {
 		imgs[i].addEventListener("error", replaceBrokenImg)
 	}
 }
@@ -207,8 +207,8 @@ function replaceMultipleBrokenImgs()
 // Back to top button
 function backToTop()
 {
-	let y = window.pageYOffset;
-	let toTop = document.getElementById("toTop").style;
+	var y = window.pageYOffset;
+	var toTop = document.getElementById("toTop").style;
 
 	if (y > 1000)
 	{
@@ -225,7 +225,7 @@ function backToTop()
 // Go back to previous page
 function goBack()
 {
-	let referrer = 	document.referrer.includes("wuwana") || document.referrer.includes(":8000");
+	var referrer = 	document.referrer.includes("wuwana") || document.referrer.includes(":8000");
 
 	if (!referrer) {
 		window.location = '/';
@@ -251,9 +251,9 @@ function sendEmail()
 }
 
 function setDefault() {
-	let navbar = document.querySelector(".navbar-box").style;
-	let bkg = document.querySelector(".navbar-background").style;
-	let filter = document.getElementById("filter").style;
+	var navbar = document.querySelector(".navbar-box").style;
+	var bkg = document.querySelector(".navbar-background").style;
+	var filter = document.getElementById("filter").style;
 
 	if (winWidth > 800) // Desktop
 	{

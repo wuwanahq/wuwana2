@@ -87,9 +87,9 @@ function viewMoreCompanies(pageCount,selectedRegions)
 // Show filter on mobile
 function showFilter()
 {
-	let icon = document.getElementById("menu-icon");
-	let filter = document.getElementById("filter").style;
-	let body = document.body.style;
+	var icon = document.getElementById("menu-icon");
+	var filter = document.getElementById("filter").style;
+	var body = document.body.style;
 
 	icon.src = "/static/icon/close.svg";
 	filter.visibility = "visible";

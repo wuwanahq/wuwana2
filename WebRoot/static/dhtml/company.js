@@ -5,8 +5,8 @@
 window.addEventListener("scroll", () => {
 	//https://usefulangle.com/post/113/javascript-detecting-element-visible-during-scroll
 	
-	let summary = document.querySelector("#mobile-summary").style;
-	let position = document.querySelector('.column-left').getBoundingClientRect(); 
+	var summary = document.querySelector("#mobile-summary").style;
+	var position = document.querySelector('.column-left').getBoundingClientRect(); 
 
 	if (position.bottom >= 0)
 	{
@@ -22,8 +22,8 @@ window.addEventListener("scroll", () => {
 
 // Function for the edit panel
 function companyEdit() {
-	let panel = document.querySelector("#company-panel").style;
-	let edit = document.querySelector("#edit").style;
+	var panel = document.querySelector("#company-panel").style;
+	var edit = document.querySelector("#edit").style;
 
 	if (panel.display == "flex") {
 		panel.display = "none";

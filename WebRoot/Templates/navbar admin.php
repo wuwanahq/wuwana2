@@ -11,7 +11,7 @@
 <div class="sticky">
 	<div class="navbar-box" id="navbar">
 		<div class="panel-ribbon">
-			<img src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
+			<img src="/static/logo/ribbon.svg" alt="">
 		</div>
 		<?php if($user->isLogin()): ?>
 			<section>
