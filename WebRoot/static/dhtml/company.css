@@ -23,6 +23,7 @@
 
 #company-panel h1 {
 	font-size: var(--xl);
+	text-align: center;
 }
 
 #company-panel h3 {

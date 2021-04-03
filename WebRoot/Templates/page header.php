@@ -2,7 +2,7 @@
 <header class="header-bar">
 	<div class="header-container">
 		<?php if ($url == '/' || strpos($url, '/admin') !== false): ?>
-			<div class="header-icon" onclick="showNavbar()">
+			<div class="header-icon" onclick="toggleNavbar()">
 				<img id="menu-icon" src="/static/icon/menu.svg" alt="menu icon">
 			</div>
 		<?php else: ?>

@@ -116,4 +116,4 @@
 		</section>
 	</div>
 <?php endif ?>
-<div class="navbar-background" id="navbar-background" onclick="showNavbar()"></div>
+<div class="navbar-background" id="navbar-background" onclick="toggleNavbar()"></div>

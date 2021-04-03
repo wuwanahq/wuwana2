@@ -83,3 +83,16 @@ function viewMoreCompanies(pageCount,selectedRegions)
 
 	xhr.send(form);
 }
+
+// Show filter on mobile
+function showFilter()
+{
+	let icon = document.getElementById("menu-icon");
+	let filter = document.getElementById("filter").style;
+	let body = document.body.style;
+
+	icon.src = "/static/icon/close.svg";
+	filter.visibility = "visible";
+	body.overflow = "hidden";
+}
+
