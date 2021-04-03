@@ -36,6 +36,65 @@
 a,
 a:active,
 a:visited {
-	margin-block-end: 24px;
 	color: var(--black);
+}
+
+.button-icon {
+	margin-block-end: 40px;
+}
+
+/* Suggestion Company Card */
+h2 {
+	margin-block-end: 16px;
+	font-weight: 500;
+}
+
+.box {
+	width: 100%;
+	margin-block-end: 40px;
+}
+
+.logo-main {
+	width: 88px;
+	min-width: 88px;
+	height: 88px;
+	margin-inline-end: 16px;
+	border: 1px solid var(--grey50);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.logo-main img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover
+}
+
+.company-card-info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	min-height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.company-card-info h3 {
+	color: var(--black);
+	font-size: var(--l);
+	font-weight: 500;
+	text-transform: capitalize;
+}
+
+.company-card-info ul {
+	margin-block-start: 4px;
+	margin-block-end: 16px;
+}
+
+.company-card-info li {
+	display: inline-flex;
+	color: var(--grey700);
+	font-size: var(--s);
+	margin-inline-end: 16px;
+	white-space: nowrap;
 }
