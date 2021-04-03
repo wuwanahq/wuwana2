@@ -1,5 +1,7 @@
 <div class="navbar-box" id="navbar">
-	<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
+	<div class="panel-ribbon">
+			<img src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
+		</div>
 	<section>
 	<?php if (isset($user) && $user->isLogin()): ?>
 		<h2><?php echo $_SESSION['Name'] ?></h2>
@@ -46,4 +48,4 @@
 		</ul>
 	</section>
 </div>
-<div class="navbar-background" id="navbar-background" onclick="showNavbar()"></div>
+<div class="navbar-background" id="navbar-background" onclick="toggleNavbar()"></div>
