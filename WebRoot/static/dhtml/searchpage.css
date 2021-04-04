@@ -28,7 +28,7 @@
 .search-title {
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 8px
+	margin-block-end: 8px
 }
 
 .search-title h2 {
@@ -69,7 +69,6 @@
 }
 
 .company-card-info ul {
-	margin-block-start: 4px;
 	margin-block-end: 16px;
 }
 

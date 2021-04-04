@@ -33,15 +33,17 @@
 						<img class="logo-main"
 							src="<?php echo $company->logo ?>"
 							alt="<?php echo $company->name ?> logo">
-						<h1> <?php echo $company->name ?> </h1>
-						<ul>
-							<li>
-								<?php echo implode('</li><li>', $company->tags) ?>
-							</li>
-						</ul>
-						<div class="button-icon-small margin-t16">
-							<img src="/static/icon/tiny/map.svg" alt="">
-							<?php echo $company->region ?>
+						<div class="company-about-text">
+							<h1> <?php echo $company->name ?> </h1>
+							<ul>
+								<li>
+									<?php echo implode('</li><li>', $company->tags) ?>
+								</li>
+							</ul>
+							<div class="button-icon-small margin-t16">
+								<img src="/static/icon/tiny/map.svg" alt="">
+								<?php echo $company->region ?>
+							</div>
 						</div>
 					</section>
 					<hr>
@@ -117,7 +119,7 @@
 					include 'company/edit.php';
 				}
 				?>
-				<div id="last-updated">
+				<div class="last-updated">
 					<?php echo TEXT[9], ' ', $language->formatDate($company->lastUpdate) ?>
 				</div>
 			</div>

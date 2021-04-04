@@ -13,7 +13,15 @@
 	width: auto;
 }
 
-#company-panel h1,
+#company-panel h1 {
+	margin-block-end: 8px;
+	font-size: var(--xl);
+	font-weight: 500;
+	line-height: 1;
+	text-align: center;
+	text-transform: capitalize;
+}
+
 #company-panel h3,
 #company-panel p {
 	margin-inline-start: 16px;
@@ -21,14 +29,10 @@
 	margin-block-end: 8px;
 }
 
-#company-panel h1 {
-	font-size: var(--xl);
-	text-align: center;
-}
-
 #company-panel h3 {
 	font-size: var(--l);
 	font-weight: 500;
+	text-transform: capitalize;
 }
 
 #company-panel p {
@@ -39,10 +43,20 @@
 }
 
 .company-about {
+	padding: 16px;
 	align-items: center
 }
 
-.logo-main {
+.company-about .company-about-text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+.company-about .logo-main {
 	margin-block-end: 8px;
 	width: 88px;
 	min-width: 88px;
@@ -55,7 +69,7 @@
 .company-about li {
 	display: inline-flex;
 	margin-inline-end: 16px;
-	padding: 4px 0;
+	/* padding: 4px 0; */
 	color: var(--grey700);
 	font-size: var(--s);
 }
@@ -108,20 +122,20 @@
 }
 
 /* Last updated */
-#last-updated {
+.last-updated {
 	margin-block-start: -16px;
 	margin-block-end: 24px;
 	color: var(--grey500);
 	font-size: var(--s);
 }
 
-/* Instagram Card */
-.instagram h2 {
+main h2 {
 	margin-block-end: 8px;
-	font-size: var(--xl);
 	font-weight: 500;
+	text-transform: capitalize;
 }
 
+/* Instagram Card */
 .instagram .button-icon {
 	z-index: 1;
 	position: absolute;
@@ -144,6 +158,7 @@
 .instagram-info h3 {
 	margin-block-end: 8px;
 	font-size: var(--l);
+	font-weight: 500;
 }
 
 .instagram-info p {
@@ -225,6 +240,27 @@
 		position: static;
 	}
 
+	/* Company Panel */
+	.company-about {
+		flex-direction: row;
+		padding: 16px;
+		align-items: flex-start;
+	}
+
+	.company-about .logo-main {
+		margin-block-end: 0;
+		margin-inline-end: 16px;
+	}
+
+	.company-about .company-about-text {
+		align-items: flex-start;
+	}
+
+	#company-panel .company-about h1 {
+		margin-block-end: 4px;
+		text-align: start;
+	}
+
 	Instagram
 	#ig-external-url {
 		max-width: 98%; /* for devices where min() doesn't work*/
@@ -265,6 +301,7 @@
 		font-size: var(--l);
 		font-weight: 500;
 		margin-block-end: 8px;
+		text-transform: capitalize;
 	}
 }
 

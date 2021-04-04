@@ -2,7 +2,7 @@
 const TEXT = [
 0 => 'Why %s?',
 1 => 'Contact %s',
-2 => '%s on Instagram ',
+2 => 'Instagram',
 3 => 'Map',
 4 => 'Go back',
 5 => 'View on Instagram',
