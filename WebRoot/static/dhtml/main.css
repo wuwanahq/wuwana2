@@ -1123,7 +1123,7 @@ footer details summary::-webkit-details-marker {
 		display: none;
 	}
 
-	.search-suggestion li {
+	.search-fixed .search-suggestion li {
 		margin-inline-start: 48px;
 	}
 }
