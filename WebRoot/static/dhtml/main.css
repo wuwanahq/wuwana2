@@ -574,22 +574,6 @@ main {
 }
 
 /* ----- COMPONENTS ----- */
-
-/* Panel */
-
-.box-panel {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	overflow: hidden;
-	width: auto;
-	min-height: 20px;
-	margin-bottom: 24px;
-	border-radius: 8px;
-	background-color: var(--white);
-	border: 1px solid var(--grey200);
-}
-
 .contact-section {
 	align-items: center;
 }
@@ -707,6 +691,7 @@ main {
 /* SEARCH */
 
 .search {
+	position: relative;
 	margin-left: auto;
 	width: 400px;
 }
@@ -719,7 +704,6 @@ main {
 }
 
 .search form {
-	position: relative;
 	display: flex;
 	align-items: center;
 	height: 32px;
@@ -728,6 +712,7 @@ main {
 	background-color: var(--white);
 	border: 1px solid var(--grey200);
 	border-radius: 8px;
+	overflow: hidden;
 }
 
 .search-main {

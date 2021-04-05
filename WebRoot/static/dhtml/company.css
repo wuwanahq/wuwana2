@@ -7,6 +7,19 @@
 
 /* Box Panel */
 /* companyPanel Sections */
+#company-panel {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	width: auto;
+	min-height: 20px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	background-color: var(--white);
+	border: 1px solid var(--grey200);
+}
+
 #company-panel section {
 	padding-block-start: 16px;
 	padding-block-end: 16px;
@@ -79,8 +92,14 @@
 }
 
 .company-contact .icon-label-h {
-	padding-inline-start: 16px;
+	padding: 4px 16px;
 	color: var(--grey700);
+}
+
+.icon-label-h {
+	padding: 8px 16px;
+	color: var(--grey700);
+	cursor: pointer;
 }
 
 /* Edit */
@@ -107,12 +126,12 @@
 .edit input[type=text],
 .edit input[type=url],
 .edit input[type=email] {
-	font-size: var(--s);
+	font-size: var(--m);
 }
 
 .edit textarea {
 	height: 80px; /* Magic number */
-	font-size: var(--s);
+	font-size: var(--m);
 	line-height: 1.5;
 }
 

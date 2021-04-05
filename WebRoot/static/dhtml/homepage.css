@@ -15,13 +15,17 @@ main picture {
 	z-index: 10; /* magic number to prevent mobile bug */
 }
 
-main .search form {
+.search form {
 	width: 100%;
 	height: 48px;
 }
 
-main .search-btn {
+.search-btn {
 	min-width: 48px; /* Same as form height */
+}
+
+.search .search-suggestion {
+	top: 48px /* Same as form height */
 }
 
 main p {

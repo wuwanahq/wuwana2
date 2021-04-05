@@ -28,7 +28,7 @@
 	<div class="container">
 		<section class="column-left">
 			<div class="company-sticky">
-				<div class="box-panel" id="company-panel" style="display: flex">
+				<div id="company-panel" style="display: flex;">
 					<section class="company-about">
 						<img class="logo-main"
 							src="<?php echo $company->logo ?>"
