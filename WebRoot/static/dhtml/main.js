@@ -1,3 +1,6 @@
+// ECMAScript 5
+"use strict";
+
 // Global Variables
 var url = window.location.href;
 var body = document.body.style;

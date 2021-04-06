@@ -1,3 +1,6 @@
+// ECMAScript 5
+"use strict";
+
 /**
  * JS for the company page
  */
