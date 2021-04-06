@@ -1,35 +1,36 @@
 /* Style for the Homepage */
-main {
+.homepage-search {
 	margin-top: 80px; /* Magic number */
 	align-items: center;
 }
 
-main picture {
+.homepage-search picture {
 	margin-block-end: 48px;
 }
 
-.search {
+.homepage-search .search {
 	margin: 0;
 	width: 100%;
 	max-width: 500px;
 	z-index: 10; /* magic number to prevent mobile bug */
 }
 
-.search form {
+.homepage-search .search form {
 	width: 100%;
 	height: 48px;
 }
 
-.search-btn {
+.homepage-search .search-btn {
 	min-width: 48px; /* Same as form height */
 }
 
-.search .search-suggestion {
+.homepage-search .search .search-suggestion {
 	top: 48px /* Same as form height */
 }
 
-main p {
+.homepage-search p {
 	margin-block-start: 8px;
+	margin-block-end: 40px;
 	color: var(--grey700);
 	font-size: var(--s);
 	max-width: 50ch;
@@ -38,10 +39,12 @@ main p {
 
  /* Section Industry Suggestion */
 
+.homepage-search .ind {
+	max-width: 600px;
+}
+
 .ind {
 	width: 100%;
-	max-width: 600px;
-	margin-block-start: 64px;
 }
 
 .ind h2 {
@@ -75,7 +78,7 @@ main p {
 .row .suggestion h3 {
 	position: absolute;
 	left: 16px; bottom: 16px;
-	z-index: 2;
+	z-index: 1;
 	color: var(--white);
 	font-size: var(--l);
 }
@@ -91,18 +94,198 @@ main p {
 	left: 0; bottom: 0;
 	width: 100%;
 	height: 50%;
-	z-index: 1;
+	z-index: 0;
 	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+/*
+ * CSS for the search result page
+ */
+
+/* Search */
+.search-result-box {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 200px;
+	margin-block-end: 24px;
+	padding: 16px;
+	background-image: url(/static/logo/background-v2.1-dark.svg);
+	background-color: var(--grey700); /* in case the svg doesnt load */
+	background-position: -16px -16px; /* This compensate for the padding */
+	color: var(--white);
+	border-radius: 8px;
+}
+
+.search-result-box h2 {
+	font-size: var(--xxl);
+}
+
+.search-result-box p {
+	margin-block-start: auto;
+}
+
+.search-title {
+	display: flex;
+	justify-content: space-between;
+	margin-block-end: 8px
+}
+
+.search-title h2 {
+	font-weight: 500;
+}
+
+/* Company Card */
+.logo-main {
+	width: 88px;
+	min-width: 88px;
+	height: 88px;
+	margin-inline-end: 16px;
+	border: 1px solid var(--grey50);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.logo-main img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover
+}
+
+.company-card-info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	min-height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.company-card-info h3 {
+	color: var(--black);
+	font-size: var(--l);
+	font-weight: 500;
+	text-transform: capitalize;
+}
+
+.company-card-info ul {
+	margin-block-end: 16px;
+}
+
+.company-card-info li {
+	display: inline-flex;
+	color: var(--grey700);
+	font-size: var(--s);
+	margin-inline-end: 16px;
+	white-space: nowrap;
+}
+
+/* Filter Area */
+#filter {
+	position: sticky;
+	top: 64px;
+	will-change: visibility;
+}
+
+#filter h2 {
+	font-weight: 500;
+	margin-block-end: 8px;
+}
+
+#filter .box {
+	padding: 16px;
+}
+
+/* The Description List Element */
+
+dt {
+	margin-block-end: 16px;
+	font-size: var(--l);
+	font-weight: 500;
+}
+
+dd {
+	margin-block-end: 8px;
+}
+
+dd label {
+	font-weight: 400;
+	color:  var(--grey700);
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 800px)
+{
+	#filter {
+		visibility: hidden;
+		position: fixed;
+		top: 48px; left: 0;
+		z-index: 3;
+		height: calc(100vh - 48px);
+		padding: 16px;
+		background-color: var(--white);
+	}
+
+	#filter .box {
+		padding: 0;
+		border: none;
+	}
+
+	dl {
+		margin-block-end: 24px;
+	}
+
+	dd {
+		display: inline-block;
+		transition: color 200ms, background-color 200ms;
+	}
+
+	dd input {
+		display: none;
+	}
+
+	dd label {
+		display: inline-block;
+		padding: 7px 8px 8px; /* To visually center the label */
+		color: var(--black);
+		line-height: 1;
+		font-weight: 400;
+		align-self: center;
+		border: solid 1px var(--black);
+		border-radius: 8px;
+		background-color: var(--white);
+	}
+
+	dl input:checked + label {
+		color: var(--white);
+		background-color: var(--black);
+	}
+
+	/* Filter submit button Mobile */
+	.button-filter {
+		padding: 7px 8px 8px 32px;
+		font-size: var(--m);
+		line-height: 1;
+		font-weight: 400;
+		border: solid 1px var(--black);
+		border-radius: 8px;
+		background-image: url(/static/icon/filter.svg);
+		background-size: 24px 24px;
+		background-position: left 4px center;
+		background-color: white;
+		background-repeat: no-repeat;
+	}
 }
 
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
 @media screen and (max-width: 500px)
 {
-	main {
+	.homepage-search {
 		margin-top: 80px;
 	}
 
-	main picture {
+	.homepage-search picture {
 		margin-bottom: 32px;
 	}
 

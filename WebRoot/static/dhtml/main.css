@@ -21,6 +21,9 @@
 	--azure900: #404C99;
 	--azure700: #527BCC;
 
+	--salmon300: #E57B9F;
+	--salmon200: #EC9EB9;
+
 	/* Size */
 	--xxl: 2rem; /* 32px */
 	--xl: 1.5rem; /* 24px */
@@ -895,6 +898,36 @@ footer details summary::-webkit-details-marker {
 	font-weight: 500;
 }
 
+.information {
+	position: relative;
+	display: flex;
+	width: 100%;
+	margin-block-end: 24px;
+	padding: 16px;
+	border: none;
+	border-radius: 8px;
+	overflow: hidden;
+	background-color: var(--grey500);
+}
+
+.information .information-emoji {
+	margin-inline-end: 8px;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.information p {
+	max-width: 60ch;
+	color: var(--white);
+	font-size: var(--l);
+	font-weight: 500;
+}
+
+.information span {
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
 /* ----- MODIFIERS ----- */
 
 .flow-y {
@@ -1003,7 +1036,7 @@ footer details summary::-webkit-details-marker {
 		visibility: hidden;
 		position: fixed;
 		top: 48px; left: 0;
-		z-index: 2;
+		z-index: 3;
 		width: 300px;
 		max-width: 300px;
 		height: calc(100vh - 48px); /* vh - header height */
@@ -1018,7 +1051,7 @@ footer details summary::-webkit-details-marker {
 		display: none;
 		position: fixed;
 		top: 48px; left: 0;
-		z-index: 1;
+		z-index: 2;
 		min-width: 100vw;
 		height: calc(100vh - 48px); /* vh - header height */
 		background: rgba(22, 19, 19, 0.5);
@@ -1090,7 +1123,7 @@ footer details summary::-webkit-details-marker {
 		display: none;
 	}
 
-	.search-suggestion li {
+	.search-fixed .search-suggestion li {
 		margin-inline-start: 48px;
 	}
 }

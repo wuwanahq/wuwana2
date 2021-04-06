@@ -88,11 +88,11 @@ function viewMoreCompanies(pageCount,selectedRegions)
 function showFilter()
 {
 	var icon = document.getElementById("menu-icon");
-	var filter = document.getElementById("filter").style;
+	var filter = document.getElementById("filter");
 	var body = document.body.style;
 
 	icon.src = "/static/icon/close.svg";
-	filter.visibility = "visible";
+	filter.style.visibility = "visible";
 	body.overflow = "hidden";
 }
 

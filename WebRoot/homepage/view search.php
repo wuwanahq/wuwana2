@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/homepage.css">
 </head>
 <body>
-	<main>
+	<main class="homepage-search">
 		<picture>
 			<source media="(max-width: 400px)" srcset="/static/logo/website.svg" alt="wuwana logo">
 			<source media="(min-width: 400px)" srcset="/static/logo/website-large.svg" alt="wuwana logo">

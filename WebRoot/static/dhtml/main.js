@@ -1,3 +1,6 @@
+// ECMAScript 5
+"use strict";
+
 // Global Variables
 var url = window.location.href;
 var body = document.body.style;
@@ -19,7 +22,7 @@ window.addEventListener("resize", () =>
 {
 	var navbar = document.querySelector(".navbar-box").style;
 	var bkg = document.querySelector(".navbar-background").style;
-	var filter = document.getElementById("filter").style;
+	var filter = document.getElementById("filter");
 
 	console.log('rezising');
 	bkg.display = "none";
@@ -42,12 +45,12 @@ window.addEventListener("resize", () =>
 		icon.src = "/static/icon/menu.svg";
 	}
 
-	//In the homepage, change filter window to default
-	if (window.location.pathname == '/') { 
+	// if Filter is present on DOM
+	if (filter) { 
 		if (window.innerWidth > 800) {
-			filter.visibility = "visible";
+			filter.style.visibility = "visible";
 		} else {
-			filter.visibility = "hidden";
+			filter.style.visibility = "hidden";
 		}
 	}
 })
@@ -69,6 +72,7 @@ function toggleNavbar()
 {
 	var navbar = document.querySelector(".navbar-box").style;
 	var bkg = document.querySelector(".navbar-background").style;
+	var filter = document.getElementById("filter");
 
 	if (url.includes('/admin'))
 	{
@@ -79,42 +83,39 @@ function toggleNavbar()
 			bkg.display = "none";
 			icon.src = "/static/icon/menu.svg";
 			body.overflow = "auto";
+			return;
 		}
-		else
-		{
-			navbar.visibility = "visible";
-			navbar.transform = "translatex(0)";
-			bkg.display = "block";
-			icon.src = "/static/icon/close.svg";
-			body.overflow = "hidden";
-		}
+		navbar.visibility = "visible";
+		navbar.transform = "translatex(0)";
+		bkg.display = "block";
+		icon.src = "/static/icon/close.svg";
+		body.overflow = "hidden";
+		return;
 	}
-	else 
+
+	if (filter && filter.style.visibility == "visible") 
 	{
-		var filter = document.getElementById("filter").style;
-		
-		if (filter.visibility == "visible")
-		{
-			icon.src = "/static/icon/menu.svg";
-			filter.visibility = "hidden";
-			body.overflow = "auto";
-		}
-		else if (navbar.visibility == "visible")
-		{
-			navbar.visibility = "hidden";
-			navbar.transform = "translateX(-110vw)";
-			bkg.display = "none";
-			icon.src = "/static/icon/menu.svg";
-			body.overflow = "auto";
-		}
-		else
-		{
-			navbar.visibility = "visible";
-			navbar.transform = "translatex(0)";
-			bkg.display = "block";
-			icon.src = "/static/icon/close.svg";
-			body.overflow = "hidden";
-		}
+		icon.src = "/static/icon/menu.svg";
+		filter.style.visibility = "hidden";
+		body.overflow = "auto";
+		return;
+	}
+
+	if (navbar.visibility == "visible")
+	{
+		navbar.visibility = "hidden";
+		navbar.transform = "translateX(-110vw)";
+		bkg.display = "none";
+		icon.src = "/static/icon/menu.svg";
+		body.overflow = "auto";
+	}
+	else
+	{
+		navbar.visibility = "visible";
+		navbar.transform = "translatex(0)";
+		bkg.display = "block";
+		icon.src = "/static/icon/close.svg";
+		body.overflow = "hidden";
 	}
 }
 

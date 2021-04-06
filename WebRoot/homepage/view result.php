@@ -10,7 +10,8 @@
 	<meta property="og:image:height" content="640">
 	<meta name="twitter:title" content="Wuwana">
 	<meta name="twitter:image" content="https://wuwana.com/static/logo/thumbnail.png">
-	<link rel="stylesheet" type="text/css" href="/static/dhtml/searchpage.css">
+	<!-- <link rel="stylesheet" type="text/css" href="/static/dhtml/searchpage.css"> -->
+	<link rel="stylesheet" type="text/css" href="/static/dhtml/homepage.css">
 	<script src="/static/dhtml/homepage.js" defer></script>
 </head>
 <body>
@@ -18,9 +19,10 @@
 	<div class="container">
 		<section class="column-left">
 			<?php include 'Templates/navbar homepage.php' ?>
-			<section class="sticky" id="filter">
-				<h2><?php echo TEXT[8] ?></h2>
-				<div class="box">
+			<?php if ($companies['Counter'] > 0): ?>
+				<section class="sticky" id="filter">
+					<h2><?php echo TEXT[8] ?></h2>
+					<div class="box">
 					<form method="get" action="/">
 						<input type="hidden" name="search" value="<?php echo $search ?>">
 						<dl>
@@ -42,19 +44,20 @@
 								class="button-filter mobile" 
 								value="<?php echo TEXT[7] ?>" >
 					</form>
-				</div>
-			</section>
+					</div>
+				</section>
+			<?php endif ?>
 		</section>
 		<main>
 			<div class="information-error-box">
 				<div class="information-error-vertical"></div>
 				<h2><?php echo TEXT[12] ?></h2>
 			</div>
-			<div class="search-result-box">
-				<p><?php printf(TEXT[13], $companies['Counter']) ?></p>
-				<h2><?php echo $search ?></h2>
-			</div>
 			<?php if ($companies['Counter'] > 0): ?>
+				<div class="search-result-box">
+					<p><?php printf(TEXT[13], $companies['Counter']) ?></p>
+					<h2><?php echo $search ?></h2>
+				</div>
 				<section>
 					<div class="search-title">
 						<h2><?php echo TEXT[5] ?></h2>
@@ -73,7 +76,51 @@
 					<?php echo TEXT[6] ?>
 				</a>
 			<?php else: ?>
-			<!-- TO DO: if 0 results, show suggestions similar to the 404 page -->
+				<div class="information">
+					<div class="information-emoji">
+						😢
+					</div>
+					<p>
+						<?php printf(TEXT[15], $search) ?>
+					</p>
+				</div>
+				<section class="ind">
+					<h2><?php echo TEXT[11] ?></h2>
+					<div class="box">
+						<div class="row">
+							<div class="suggestion">
+								<a href="<?php echo '/?search=' . TEXT[17] ?>">
+									<h3><?php echo TEXT[17] ?></h3>
+									<div class="text-background"></div>
+									<img src="/static/image/specialty-coffee.jpg">
+								</a>
+							</div>
+							<div class="suggestion">
+								<a href="<?php echo '/?search=' . TEXT[18] ?>">
+									<h3><?php echo TEXT[18] ?></h3>
+									<div class="text-background"></div>
+									<img src="/static/image/beer.jpg">
+								</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="suggestion">
+								<a href="<?php echo '/?search=' . TEXT[19] ?>">
+									<h3><?php echo TEXT[19] ?></h3>
+									<div class="text-background"></div>
+									<img src="/static/image/roaster.jpg">
+								</a>
+							</div>
+							<div class="suggestion">
+								<a href="<?php echo '/?search=' . TEXT[20] ?>">
+									<h3><?php echo TEXT[20] ?></h3>
+									<div class="text-background"></div>
+									<img src="/static/image/coffee-shop.jpg">
+								</a>
+							</div>
+						</div>
+					</div>
+				</section>
 			<?php endif ?>
 		</main>
 	</div>
