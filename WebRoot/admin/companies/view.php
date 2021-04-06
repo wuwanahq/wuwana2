@@ -25,9 +25,9 @@
 				<h2>Add new company</h2>
 				<div class="box pad-16" id="new-company">
 					<form method="post">
-						<section title="Basic Info">
-							<details open>
-								<summary>Basic Information ▾</summary>
+						<section>
+							<details>
+								<summary>Main Information ▾</summary>
 								<div class="form-layout-column">
 									<label for="name">Company name</label>
 									<input id="name" name="name" type="text" >
@@ -37,8 +37,22 @@
 									<input id="postal-code" name="postal-code" type="text" >
 								</div>
 								<div class="form-layout-column">
-									<label for="email">Email</label>
-									<input id="email" name="email" type="text" >
+									<label for="company-about">Company About</label>
+									<textarea id="company-about"></textarea>
+								</div>
+								<div class="form-layout-column">
+									<label for="permalink">Permanent link</label>
+									<input id="permalink" type="text">
+								</div>
+							</details>
+						</section>
+						<hr>
+						<section>
+							<details>
+								<summary>Contact ▾</summary>
+								<div class="form-layout-column">
+									<label for="ExternalURL">Website URL</label>
+									<input type="url" id="ExternalURL" name="ExternalURL">
 								</div>
 								<div class="form-layout-column">
 									<label for="whatsapp">Whatsapp</label>
@@ -48,38 +62,30 @@
 									<label for="phone">Phone</label>
 									<input id="phone" name="phone" type="text" >
 								</div>
+								<div class="form-layout-column">
+									<label for="email">Email</label>
+									<input id="email" name="email" type="text" >
+								</div>
 							</details>
 						</section>
 						<hr>
-						<section title="Instagram">
-							<details>
-								<summary>Instagram ▾</summary>
+						<section>
+							<details open>
+								<summary>Social Media ▾</summary>
 								<div class="form-layout-column">
 									<label for="instagram">Instagram profile URL</label>
 									<input id="instagram" name="instagram" type="url"  onchange="scrape()">
 								</div>
 								<div class="form-layout-column">
-									<label for="biography" >Biography</label>
-									<textarea id="biography" name="biography" ></textarea>
-								</div>
-								<div class="form-layout-row">
-									<div class="form-layout-column">
-										<label >Posts</label>
-										<input type="text" id="posts" name="posts" size="6" readonly >
-									</div>
-									<div class="form-layout-column">
-										<label >Followers</label>
-										<input type="text" id="followers" name="followers" size="6" readonly >
-									</div>
-									<div class="form-layout-column">
-										<label >Following</label>
-										<input type="text" id="following" name="following" size="6" readonly >
-									</div>
+									<label for="GoogleID">Google Place ID</label>
+									<input type="url" id="GoogleID" name="GoogleID">
 								</div>
 								<details>
-									<summary>
-										<span>Other ▾</span>
-									</summary>
+									<summary><span>Other ▾</span></summary>
+									<textarea id="biography" name="biography" ></textarea>
+									<input type="text" id="posts" name="posts" size="6" placeholder="IG posts" >
+									<input type="text" id="followers" name="followers" size="6" placeholder="IG followers" >
+									<input type="text" id="following" name="following" size="6" placeholder="IG following" >
 									<input type="text" id="ExtraInfo" name="ExtraInfo" placeholder="IG extra text">
 									<input type="text" id="ProfilePicURL" name="ProfilePicURL" placeholder="IG profile url">
 									<input type="text" id="ThumbnailSrc0" name="ThumbnailSrc0" placeholder="IG picture 1">
@@ -92,31 +98,7 @@
 							</details>
 						</section>
 						<hr>
-						<section title="Website">
-							<details>
-								<summary>Website ▾</summary>
-								<div class="form-layout-column">
-									<label for="ExternalURL">Website URL</label>
-									<input type="url" id="ExternalURL" name="ExternalURL">
-								</div>
-								<div class="form-layout-column">
-									<label for="WebDescription">Description</label>
-									<textarea id="WebDescription" name="WebDescription" ></textarea>
-								</div>
-							</details>
-						</section>
-						<hr>
-						<section title="Google Place API">
-							<details>
-								<summary>Google Place ▾</summary>
-								<div class="form-layout-column">
-									<label for="GoogleID">Google Place ID</label>
-									<input type="url" id="GoogleID" name="GoogleID">
-								</div>
-							</details>
-						</section>
-						<hr>
-						<input type="submit" id="button" value="Add company" class="button-main" disabled>
+						<input type="submit" id="button" value="Add company" class="button-main">
 					</form>
 				</div>
 			</section>

@@ -1,164 +1,135 @@
-// ECMAScript 5
-"use strict";
+// Global Variables
+var url = window.location.href;
+var body = document.body.style;
+var icon = document.getElementById("menu-icon");
+var winWidth = window.innerWidth;
 
-function sendEmail()
+/**
+ * Functions that run automatically
+ */
+
+window.addEventListener("load", onLoad());
+
+function onLoad()
 {
-	var email = document.getElementById("email").value;
-	var form = new FormData();
-	var xhr = new XMLHttpRequest();
-
-	form.append("email", email);
-
-	xhr.open("post", "/ajax/email/send-code.php");
-	xhr.send(form);
+	replaceMultipleBrokenImgs(); //replace broken image url links
 }
 
-// Navbar and Filter on mobile
-const url = window.location.href;
-const body = document.body;
-const icon = document.getElementById("menu-icon");
-const navbar = document.querySelector(".navbar-box");
-const bkg = document.querySelector(".navbar-background");
-const filter = document.getElementById("filter");
-
-// Show filter on mobile
-function showFilter()
-{
-	icon.src = "/static/icon/close.svg";
-	filter.style.visibility = "visible";
-	body.style.overflow = "hidden";
-}
-
-// Show menu on mobile
-function showNavbar()
-{
-	if (url.includes('/admin'))
-	{
-		if (navbar.style.visibility == "visible")
-		{
-			navbar.style.visibility = "hidden";
-			navbar.style.transform = "translateX(-110vw)";
-			bkg.style.display = "none";
-			icon.src = "/static/icon/menu.svg";
-			body.style.overflow = "auto";
-		}
-		else
-		{
-			navbar.style.visibility = "visible";
-			navbar.style.transform = "translatex(0)";
-			bkg.style.display = "block";
-			icon.src = "/static/icon/close.svg";
-			body.style.overflow = "hidden";
-		}
-	}
-	else 
-	{
-		if (filter.style.visibility == "visible")
-		{
-			icon.src = "/static/icon/menu.svg";
-			filter.style.visibility = "hidden";
-			body.style.overflow = "auto";
-		}
-		else if (navbar.style.visibility == "visible")
-		{
-			navbar.style.visibility = "hidden";
-			navbar.style.transform = "translateX(-110vw)";
-			bkg.style.display = "none";
-			icon.src = "/static/icon/menu.svg";
-			body.style.overflow = "auto";
-		}
-		else
-		{
-			navbar.style.visibility = "visible";
-			navbar.style.transform = "translatex(0)";
-			bkg.style.display = "block";
-			icon.src = "/static/icon/close.svg";
-			body.style.overflow = "hidden";
-		}
-	}
-}
-
-// Go back to previous page
-function goBack() {
-	const referrer = document.referrer;
-
-	if (referrer.includes("wuwana") || referrer.includes(":8000") == true)
-	{
-		window.history.back();
-	} 
-	else
-	{
-		window.location = '/';
-	}
-}
-
-// Back to top button
-var lastScrollTop = 0;
-
-window.addEventListener("scroll", function(){
-	var st = window.pageYOffset || document.documentElement.scrollTop;
-	var toTop = document.getElementById("toTop");
-
-	if (st > lastScrollTop){
-		toTop.style.opacity = 0;
-		toTop.style.visibility = "hidden";
-	}
-	else if (st < lastScrollTop && window.pageYOffset > 500)
-	{
-		toTop.style.opacity = 1;
-		toTop.style.visibility = "visible";
-	}
-	else
-	{
-		toTop.style.opacity = 0;
-		toTop.style.visibility = "hidden";
-	}
-
-   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-}, false);
-
-// To reset elements to default
 window.addEventListener("resize", () => 
 {
-	bkg.style.display = "none";
-	body.style.overflow = "auto";
+	var navbar = document.querySelector(".navbar-box").style;
+	var bkg = document.querySelector(".navbar-background").style;
+	var filter = document.getElementById("filter").style;
+
+	console.log('rezising');
+	bkg.display = "none";
+	body.overflow = "auto";
 	searchMobileClear(); //clear all search
 
 	if (window.innerWidth > 800) 
 	{
-		navbar.style.visibility = "visible";
-		navbar.style.transform = "translateX(0px)";
+		navbar.visibility = "visible";
+		navbar.transform = "translateX(0px)";
 	}
 	else if (window.innerWidth < 800 && window.innerWidth > 500) 
 	{
-		navbar.style.visibility = "hidden";
+		navbar.visibility = "hidden";
 		icon.src = "/static/icon/menu.svg";
 	}
 	else if (window.innerWidth < 500) 
 	{
-		navbar.style.visibility = "hidden";
+		navbar.visibility = "hidden";
 		icon.src = "/static/icon/menu.svg";
 	}
 
 	//In the homepage, change filter window to default
 	if (window.location.pathname == '/') { 
 		if (window.innerWidth > 800) {
-			filter.style.visibility = "visible";
+			filter.visibility = "visible";
 		} else {
-			filter.style.visibility = "hidden";
+			filter.visibility = "hidden";
 		}
 	}
 })
 
-// For the search
-const search = document.getElementById("search");
-const searchInput = document.getElementById("user-search");
-const searchSuggestion = document.getElementById("search-suggestion");
-const searchIcon = document.querySelectorAll("search-icon");
+window.addEventListener("scroll", function() {
+	backToTop(); //Back to top button
+});
+
+function changeHeaderIcon()
+{
+	if (icon.src == "/static/icon/close.svg") {
+		icon.src = "/static/icon/menu.svg";
+	} else {
+		icon.src = "/static/icon/close.svg"
+	}
+}
+
+function toggleNavbar() 
+{
+	var navbar = document.querySelector(".navbar-box").style;
+	var bkg = document.querySelector(".navbar-background").style;
+
+	if (url.includes('/admin'))
+	{
+		if (navbar.visibility == "visible")
+		{
+			navbar.visibility = "hidden";
+			navbar.transform = "translateX(-110vw)";
+			bkg.display = "none";
+			icon.src = "/static/icon/menu.svg";
+			body.overflow = "auto";
+		}
+		else
+		{
+			navbar.visibility = "visible";
+			navbar.transform = "translatex(0)";
+			bkg.display = "block";
+			icon.src = "/static/icon/close.svg";
+			body.overflow = "hidden";
+		}
+	}
+	else 
+	{
+		var filter = document.getElementById("filter").style;
+		
+		if (filter.visibility == "visible")
+		{
+			icon.src = "/static/icon/menu.svg";
+			filter.visibility = "hidden";
+			body.overflow = "auto";
+		}
+		else if (navbar.visibility == "visible")
+		{
+			navbar.visibility = "hidden";
+			navbar.transform = "translateX(-110vw)";
+			bkg.display = "none";
+			icon.src = "/static/icon/menu.svg";
+			body.overflow = "auto";
+		}
+		else
+		{
+			navbar.visibility = "visible";
+			navbar.transform = "translatex(0)";
+			bkg.display = "block";
+			icon.src = "/static/icon/close.svg";
+			body.overflow = "hidden";
+		}
+	}
+}
+
+/**
+ * Functions for Search
+ */
+
+var search = document.getElementById("search");
+var searchInput = document.getElementById("user-search");
+var searchSuggestion = document.getElementById("search-suggestion");
+var searchIcon = document.querySelectorAll("search-icon");
 
 searchInput.onkeyup = (e) => {
-	let userData = e.target.value; //user entered data
-	let emptyArray = [];
+	var userData = e.target.value; //user entered data
+	var emptyArray = [];
 	
 	if (userData) {
 		searchSuggestion.style.display = "block"; // Show suggestion box
@@ -171,8 +142,8 @@ searchInput.onkeyup = (e) => {
 }
 
 function showSuggestions(list){
-    let listData;
-	let userValue;
+    var listData;
+	var userValue;
 
     if(!list.length)
 	{
@@ -190,8 +161,8 @@ function showSuggestions(list){
 function searchMobile() {
 	if (window.innerWidth < 500) {
 		search.classList.add("search-fixed");
-		body.style.overflow = "hidden";
-		body.style.position = "fixed";
+		body.overflow = "hidden";
+		body.position = "fixed";
 	}
 }
 
@@ -199,23 +170,104 @@ function searchMobileClear() {
 	searchInput.value = ""; // clear input value
 	searchSuggestion.style.display = "none";
 	search.classList.remove("search-fixed");
-	body.style.overflow = "auto";
-	body.style.position = "relative";
+	body.overflow = "auto";
+	body.position = "relative";
 }
 
-// Javascript to detect broken img url link
+/**
+ * Function to replace broken img url link
+ * with random wuwana square logo
+ */
 
-window.addEventListener("load", setDefaultImg());
+// Replace only one broken url link
+function replaceBrokenImg()
+{
+	var range = [1,2,3,4,5,6,7,8];
+	var variant = range[Math.floor(Math.random() * range.length)];
+	var logo = '/static/logo/square' + variant + '.svg';
+	var img = this;
 
-function setDefaultImg() {
-	const images = document.getElementsByTagName("img");
-	const numbers = [1,2,3,4,5,6,7,8];
+	img.src = logo;
+}
 
-	for (var i = 0; i < images.length; i++){
-		const errorLogo = '/static/logo/square' + numbers[Math.floor(Math.random() * numbers.length)] + '.svg';
+// Replace all visible broken url links
+function replaceMultipleBrokenImgs() 
+{
+	var imgs = document.getElementsByTagName("img");
+	
+	for (var i = 0; i < imgs.length; i++ ) {
+		imgs[i].addEventListener("error", replaceBrokenImg)
+	}
+}
 
-		images[i].addEventListener("error", function() {
-			this.src = errorLogo;
-		})
+/**
+ * Functions for buttons
+ */
+
+// Back to top button
+function backToTop()
+{
+	var y = window.pageYOffset;
+	var toTop = document.getElementById("toTop").style;
+
+	if (y > 1000)
+	{
+		toTop.opacity = 1;
+ 		toTop.visibility = "visible";
+	} 
+	else 
+	{
+		toTop.opacity = 0;
+	 	toTop.visibility = "hidden";
+	}
+}
+
+// Go back to previous page
+function goBack()
+{
+	var referrer = 	document.referrer.includes("wuwana") || document.referrer.includes(":8000");
+
+	if (!referrer) {
+		window.location = '/';
+		return 
+	}
+	window.history.back();
+}
+
+/**
+ * NO IN USE
+ */
+
+function sendEmail()
+{
+	var email = document.getElementById("email").value;
+	var form = new FormData();
+	var xhr = new XMLHttpRequest();
+
+	form.append("email", email);
+
+	xhr.open("post", "/ajax/email/send-code.php");
+	xhr.send(form);
+}
+
+function setDefault() {
+	var navbar = document.querySelector(".navbar-box").style;
+	var bkg = document.querySelector(".navbar-background").style;
+	var filter = document.getElementById("filter").style;
+
+	if (winWidth > 800) // Desktop
+	{
+		navbar.visibility = "visible";
+		navbar.transform = "translateX(0px)"
+		filter.visibility = "visible";
+	} 
+	else // Table and mobile
+	{
+		bkg.display = "none";
+		navbar.visibility = "hidden";
+		navbar.transform = "translateX(-110vw)";
+		filter.visibility = "hidden";
+		icon.src = "/static/icon/menu.svg";
+		body.overflow = "auto";
 	}
 }

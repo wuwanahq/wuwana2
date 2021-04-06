@@ -5,12 +5,14 @@
 		//'/admin/users' => ['Users', 'users.svg'],
 		'/admin/tags' => ['Tags', 'tag.svg'],
 		'/admin/database' => ['Database', 'dns.svg'],
-		'/admin/settings' => ['Settings', 'label.svg']
+		'/admin/settings' => ['Settings', 'slider.svg']
 	];
 ?>
 <div class="sticky">
 	<div class="navbar-box" id="navbar">
-		<img class="panel-ribbon" src="/static/logo/ribbon.svg" alt="wuwana logo ribbon">
+		<div class="panel-ribbon">
+			<img src="/static/logo/ribbon.svg" alt="">
+		</div>
 		<?php if($user->isLogin()): ?>
 			<section>
 				<h2><?php echo $_SESSION['Name'] ?></h2>
@@ -59,4 +61,4 @@
 	</div>
 	<div id="version">Wuwana version 2.2.1</div>
 </div>
-<div class="navbar-background" id="navbar-background" onclick="showNavbar()"></div>
+<div class="navbar-background" id="navbar-background" onclick="toggleNavbar()"></div>

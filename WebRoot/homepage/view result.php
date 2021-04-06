@@ -20,7 +20,7 @@
 			<?php include 'Templates/navbar homepage.php' ?>
 			<section class="sticky" id="filter">
 				<h2><?php echo TEXT[8] ?></h2>
-				<div class="box filter">
+				<div class="box">
 					<form method="get" action="/">
 						<input type="hidden" name="search" value="<?php echo $search ?>">
 						<dl>
@@ -38,11 +38,9 @@
 								</dd>
 							<?php endforeach ?>
 						</dl>
-						<div class="mobile" style="text-align:center">
-							<input type="submit"
-								class="button-filter"
+						<input type="submit"
+								class="button-filter mobile" 
 								value="<?php echo TEXT[7] ?>" >
-						</div>
 					</form>
 				</div>
 			</section>
@@ -59,7 +57,7 @@
 			<?php if ($companies['Counter'] > 0): ?>
 				<section>
 					<div class="search-title">
-						<h2 style="margin:0"><?php echo TEXT[5] ?></h2>
+						<h2><?php echo TEXT[5] ?></h2>
 						<div class="dropdown-caret mobile" onclick="showFilter()">
 							<?php echo TEXT[14] ?>
 							<img src="/static/icon/gray/chevron-down.svg" alt="">

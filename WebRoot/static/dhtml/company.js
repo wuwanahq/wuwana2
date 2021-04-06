@@ -1,34 +1,35 @@
 /**
- * Function to show/hide the company mobile summary
- * https://usefulangle.com/post/118/javascript-intersection-observer
+ * JS for the company page
  */
 
-var panel = document.getElementById("company-panel");
-var edit = document.getElementById("edit");
-var summary = document.getElementById("mobile-summary");
+window.addEventListener("scroll", () => {
+	//https://usefulangle.com/post/113/javascript-detecting-element-visible-during-scroll
+	
+	var summary = document.querySelector("#mobile-summary").style;
+	var position = document.querySelector('.column-left').getBoundingClientRect(); 
 
-// root is the browser viewport / screen
-var observer = new IntersectionObserver(function(entries) {
-	if(entries[0]['isIntersecting'] === true) {
-		summary.style.opacity = "0";
+	if (position.bottom >= 0)
+	{
+		summary.transform = "translateY(-100px)"
+		summary.opacity = "0";
 	}
-	else {
-		summary.style.opacity = "1";
+	else 
+	{
+		summary.opacity = "1";
+		summary.transform = "translateY(0px)"
 	}
-}, { threshold: [0, 0.01, 1] });
-
-observer.observe(panel);
-// observer.observe(edit);
+})
 
 // Function for the edit panel
 function companyEdit() {
-	if (panel.style.display == "flex") {
-		panel.style.display = "none";
-		edit.style.display = "flex";
-		summary.style.display = "none"; //This is me giving up on how to fix this, lol
-	} else {
-		panel.style.display = "flex";
-		edit.style.display = "none";
-		summary.style.display = "flex";
+	var panel = document.querySelector("#company-panel").style;
+	var edit = document.querySelector("#edit").style;
+
+	if (panel.display == "flex") {
+		panel.display = "none";
+		edit.display = "flex";
+		return
 	}
+	panel.display = "flex";
+	edit.display = "none";
 }

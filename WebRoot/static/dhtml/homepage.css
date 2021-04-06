@@ -1,44 +1,52 @@
 /* Style for the Homepage */
-.container-homepage {
-	display: flex;
-	flex-direction: column;
+main {
+	margin-top: 80px; /* Magic number */
 	align-items: center;
-	margin-top: 80px;
 }
 
-.container-homepage picture {
-	margin-bottom: 48px;
+main picture {
+	margin-block-end: 48px;
 }
 
 .search {
 	margin: 0;
 	width: 100%;
 	max-width: 500px;
-	z-index: 10;
+	z-index: 10; /* magic number to prevent mobile bug */
 }
 
-.container-homepage .search form {
+.search form {
 	width: 100%;
 	height: 48px;
 }
 
-.container-homepage .search-btn {
-	min-width: 48px;
+.search-btn {
+	min-width: 48px; /* Same as form height */
 }
 
-.container-homepage p {
+.search .search-suggestion {
+	top: 48px /* Same as form height */
+}
+
+main p {
+	margin-block-start: 8px;
+	color: var(--grey700);
+	font-size: var(--s);
 	max-width: 50ch;
 	text-align: center;
-	color: var(--grey700);
-	font-size: medium;
 }
 
  /* Section Industry Suggestion */
 
 .ind {
-	 max-width: 800px;
-	 margin: 40px 0;
-	 align-items: center;
+	width: 100%;
+	max-width: 600px;
+	margin-block-start: 64px;
+}
+
+.ind h2 {
+	margin-block-end: 8px;
+	font-weight: 500;
 }
 
 .ind .box {
@@ -49,81 +57,63 @@
 .row {
 	display: flex;
 	justify-content: space-between;
+	margin-block-end: 8px;
 }
 
-.row:first-child {
-	margin-bottom: 8px;
-}
-
-.row a:first-child {
-	margin-inline-end: 8px;
-}
-
-.ind-suggestion {
+.row .suggestion {
 	position: relative;
-	width: 100%;
 	height: 200px;
+	width: 49.4%; /* Magic number */
 	border-radius: 8px;
 	overflow: hidden;
 }
 
-.ind-suggestion img {
+.row .suggestion a {
 	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	margin: 0;
 }
 
-.ind-suggestion h3 {
+.row .suggestion h3 {
 	position: absolute;
 	left: 16px; bottom: 16px;
 	z-index: 2;
 	color: var(--white);
-	font-size: large;
-	font-weight: 500;
+	font-size: var(--l);
 }
 
-.ind-suggestion .text-background {
+.row .suggestion img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.row .suggestion .text-background {
 	position: absolute;
 	left: 0; bottom: 0;
 	width: 100%;
-	height: 80px;
+	height: 50%;
 	z-index: 1;
-	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
-
 
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
 @media screen and (max-width: 500px)
 {
-	.container-homepage {
+	main {
 		margin-top: 80px;
 	}
 
-	.container-homepage picture {
+	main picture {
 		margin-bottom: 32px;
 	}
 
 	/* Section Industry Suggestion */
-	.ind {
-		align-items: flex-start;
-	}
-
 	.row {
 		flex-direction: column;
-	}
-	
-	.row a:first-child {
-		margin-inline-end: 0;
+		margin-block-end: 0;
 	}
 
-	.row a {
-		margin-bottom: 8px;
+	.row .suggestion {
+		width: 100%;
+		margin-block-end: 8px;
 	}
-
-	.row a:last-child {
-		margin: 0;
-	}
-
-
 }

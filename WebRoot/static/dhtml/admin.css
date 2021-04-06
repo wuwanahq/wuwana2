@@ -1,5 +1,10 @@
 /* CSS for the admin pages */
 
+main h2 {
+	margin-block-end: 8px;
+	font-weight: 500;
+}
+
 /* Admin Control Panel */
 .icon-label-h {
 	background-color: var(--grey200);
@@ -12,7 +17,7 @@ a .icon-label-h {
 
 #version {
 	margin: -16px 0 24px;
-	font-size: small;
+	font-size: var(--s);
 	color: var(--grey700);
 }
 
@@ -21,13 +26,13 @@ a .icon-label-h {
 .box-table {
 	display: flex;
 	position: relative;
-	overflow:hidden;
 	max-width: calc(100vw - 337px);
 	min-height: 20px;
-	margin-bottom: 24px;
-	border-radius: 4px;
-	background-color: #ffffff;
+	margin-block-end: 24px;
 	border: 1px solid var(--grey200);
+	border-radius: 8px;
+	overflow:hidden;
+	background-color: var(--white);
 }
 
 .scroll-h {
@@ -107,55 +112,13 @@ tr:nth-child(even) {
 /* ----- ADMIN TABS -----*/
 
 /* Company Tab */
-.logo-small {
-	max-width: 24px;
-	border-radius: 4px;
-}
-
-#section-table #box-table .scroll-h table .logo-small {
-	margin: auto;
-}
-
 .box hr {
-	margin-bottom: 16px;
+	margin-block-end: 8px;
 }
 
-#new-company section {
-	margin-bottom: 8px;
+.box input[type=submit] {
+	margin-block-start: 24px;
 }
-
-#new-company img {
-	border-radius: 8px;
-	min-height: 40px;
-	max-width: 40px;
-	margin-bottom: 8px;
-}
-
-#new-company details summary {
-	font-size: large;
-	font-weight: 500;
-	margin-bottom: 8px;
-	list-style: none; /* Remove details marker */
-}
-#new-company details summary::before,
-#new-company details summary::-webkit-details-marker {
-	display:none;
-}
-
-#new-company details summary:hover,
-#new-company details summary:active,
-#new-company details summary:focus {
-	outline-style: none;
-	text-decoration: underline;
-	cursor: pointer;
-}
-
-#new-company details summary span {
-	font-size: medium;
-	font-weight: 400;
-}
-
-
 
 @media screen and (max-width: 800px) {
 	.box-table {
@@ -165,4 +128,16 @@ tr:nth-child(even) {
 	#version {
 		display: none;
 	}
+}
+
+/* Setting Tab */
+.form-layout-row {
+	display: flex;
+	margin-block-end: 16px;
+}
+
+.form-layout-row label {
+	font-size: var(--s);
+	font-weight: 400;
+	color: var(--grey700);
 }

@@ -21,27 +21,29 @@
 			<h3><?php echo $company->name ?></h3>
 			<div class="button-icon-small">
 				<img src="/static/icon/tiny/map.svg" alt="">
-			<?php echo $company->region ?>
+				<?php echo $company->region ?>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<section class="column-left">
 			<div class="company-sticky">
-				<div class="box-panel" id="company-panel" style="display: flex">
+				<div id="company-panel" style="display: flex;">
 					<section class="company-about">
 						<img class="logo-main"
 							src="<?php echo $company->logo ?>"
 							alt="<?php echo $company->name ?> logo">
-						<h1> <?php echo $company->name ?> </h1>
-						<ul>
-							<li>
-								<?php echo implode('</li><li>', $company->tags) ?>
-							</li>
-						</ul>
-						<div class="button-icon-small margin-t16">
-							<img src="/static/icon/tiny/map.svg" alt="">
-							<?php echo $company->region ?>
+						<div class="company-about-text">
+							<h1> <?php echo $company->name ?> </h1>
+							<ul>
+								<li>
+									<?php echo implode('</li><li>', $company->tags) ?>
+								</li>
+							</ul>
+							<div class="button-icon-small margin-t16">
+								<img src="/static/icon/tiny/map.svg" alt="">
+								<?php echo $company->region ?>
+							</div>
 						</div>
 					</section>
 					<hr>
@@ -57,43 +59,45 @@
 							<?php printf(TEXT[1], $company->name) ?>
 						</h3>
 						<ul>
-							<?php if ($company->instagram->pageURL != ''): ?>
+							<?php if (!empty($company->website)): ?>
 								<li>
-									<a class="item-label" href="<?php echo $company->instagram->getPageURL() ?>" target="_blank" rel="noopener">
-										<div class="button-social">
-											<img src="/static/icon/instagram.svg" alt="">
-										</div>
-										Instagram
+									<a class="icon-label-h" 
+										href="<?php echo $company->website ?>"
+										target="_blank"
+										rel="noopener">
+										<img src="/static/icon/gray/globe.svg" alt="">
+										Website
 									</a>
 								</li>
 							<?php endif ?>
-							<?php if (!empty($company->website)): ?>
+							<?php if ($company->instagram->pageURL != ''): ?>
 								<li>
-									<a class="item-label" href="<?php echo $company->website ?>" target="_blank" rel="noopener">
-										<div class="button-social">
-											<img src="/static/icon/globe.svg" alt="">
-										</div>
-										Web
+									<a class="icon-label-h"
+										href="<?php echo $company->instagram->getPageURL() ?>" 
+										target="_blank"
+										rel="noopener">
+										<img src="/static/icon/gray/instagram.svg" alt="">
+										Instagram
 									</a>
 								</li>
 							<?php endif ?>
 							<?php if (isset($company->phone) && (int)$company->phone = 0): ?>
 								<li>
-									<a class="item-label" target="_blank" href="https://wa.me/<?php
-									echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>" rel="noopener">
-										<div class="button-social">
-											<img src="/static/icon/whatsapp.svg" alt="">
-										</div>
+									<a class="icon-label-h"
+										target="_blank"
+										href="https://wa.me/<?php
+									echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>"
+										rel="noopener">
+										<img src="/static/icon/gray/whatsapp.svg" alt="">
 										WhatsApp
 									</a>
 								</li>
 							<?php endif ?>
 							<?php if (!empty($company->email)): ?>
 								<li>
-									<a class="item-label" href="mailto:<?php echo $company->email ?>">
-										<div class="button-social">
-											<img src="/static/icon/email.svg" alt="">
-										</div>
+									<a class="icon-label-h"
+										href="mailto:<?php echo $company->email ?>">
+										<img src="/static/icon/gray/email.svg" alt="">
 										Email
 									</a>
 								</li>
@@ -115,7 +119,7 @@
 					include 'company/edit.php';
 				}
 				?>
-				<div id="last-updated">
+				<div class="last-updated">
 					<?php echo TEXT[9], ' ', $language->formatDate($company->lastUpdate) ?>
 				</div>
 			</div>
@@ -165,7 +169,7 @@
 						<div class="Aspect2-3"><div class="instagram-gallery">
 							<div class="instagram-row">
 								<div class="instagram-picture">
-									<img src="<?php echo $company->instagram->pictures[0] ?>" onerror="this.onerror=null;this.src='/static/logo/square1.svg'">
+									<img src="<?php echo $company->instagram->pictures[0] ?>" >
 								</div>
 								<div class="instagram-picture">
 									<img src="<?php echo $company->instagram->pictures[1] ?>" >

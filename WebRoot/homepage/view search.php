@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/homepage.css">
 </head>
 <body>
-	<div class="container-homepage">
+	<main>
 		<picture>
 			<source media="(max-width: 400px)" srcset="/static/logo/website.svg" alt="wuwana logo">
 			<source media="(min-width: 400px)" srcset="/static/logo/website-large.svg" alt="wuwana logo">
@@ -25,40 +25,40 @@
 			<h2><?php echo TEXT[11] ?></h2>
 			<div class="box">
 				<div class="row">
-					<a href="<?php echo '/?search=' . TEXT[18] ?>">
-						<div class="ind-suggestion">
-							<h3><?php echo TEXT[18] ?></h3>
-							<div class="text-background"></div>
-							<img src="/static/image/beer.jpg">
-						</div>
-					</a>
-					<a href="<?php echo '/?search=' . TEXT[17] ?>">
-						<div class="ind-suggestion">
+					<div class="suggestion">
+						<a href="<?php echo '/?search=' . TEXT[17] ?>">
 							<h3><?php echo TEXT[17] ?></h3>
 							<div class="text-background"></div>
 							<img src="/static/image/specialty-coffee.jpg">
-						</div>
-					</a>	
+						</a>
+					</div>
+					<div class="suggestion">
+						<a href="<?php echo '/?search=' . TEXT[18] ?>">
+							<h3><?php echo TEXT[18] ?></h3>
+							<div class="text-background"></div>
+							<img src="/static/image/beer.jpg">
+						</a>
+					</div>
 				</div>
 				<div class="row">
-				<a href="<?php echo '/?search=' . TEXT[19] ?>">
-						<div class="ind-suggestion">
+					<div class="suggestion">
+						<a href="<?php echo '/?search=' . TEXT[19] ?>">
 							<h3><?php echo TEXT[19] ?></h3>
 							<div class="text-background"></div>
 							<img src="/static/image/roaster.jpg">
-						</div>
-					</a>
-					<a href="<?php echo '/?search=' . TEXT[20] ?>">
-						<div class="ind-suggestion">
+						</a>
+					</div>
+					<div class="suggestion">
+						<a href="<?php echo '/?search=' . TEXT[20] ?>">
 							<h3><?php echo TEXT[20] ?></h3>
 							<div class="text-background"></div>
 							<img src="/static/image/coffee-shop.jpg">
-						</div>
-					</a>
+						</a>
+					</div>
 				</div>
 			</div>
 		</section>
-	</div>
+	</main>
 	<?php include 'Templates/page footer.php' ?>
 </body>
 </html>
