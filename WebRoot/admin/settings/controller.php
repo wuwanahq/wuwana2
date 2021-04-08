@@ -22,7 +22,7 @@ if ($user->isAdmin()
 {
 	$inputs['ForceHTTPS'] = isset($inputs['ForceHTTPS']) ? 'yes' : 'no';
 
-	if ($inputs['SessionLifetime'] < 1)
+	if ($inputs['SessionLifetime'] < 2)
 	{ unset($inputs['SessionLifetime']); }
 	else
 	{ $inputs['SessionLifetime'] *= 60; }

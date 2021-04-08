@@ -32,10 +32,10 @@
 						</div>
 						<div class="form-layout-column">
 							<label for="txt1">
-								Admin session lifetime (in min)
+								Admin session lifetime (in minutes)
 							</label>
 							<input id="txt1"
-								type="text"
+								type="number"
 								inputmode="tel"
 								name="SessionLifetime"
 								value="<?php echo $settings['SessionLifetime'] / 60 ?>">
