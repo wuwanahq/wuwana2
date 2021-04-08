@@ -59,6 +59,5 @@
 			</section>
 		<?php endif ?>
 	</div>
-	<div id="version">Wuwana version 2.2.1</div>
 </div>
 <div class="navbar-background" id="navbar-background" onclick="toggleNavbar()"></div>

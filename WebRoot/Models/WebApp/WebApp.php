@@ -174,4 +174,22 @@ class WebApp
 
 		return $company;
 	}
+
+	static function gitLastCommit()
+	{
+		if (!is_file('../.git/FETCH_HEAD'))
+		{ return ''; }
+
+		$text = file_get_contents('../.git/FETCH_HEAD');
+
+		if (strlen($text) <= 50 || $text[49] != "'")
+		{ return ''; }
+
+		$length = strpos($text, "'", 50) - 50;
+
+		if ($length < 1)
+		{ return ''; }
+
+		return substr($text, 0, 7) . ' (' . substr($text, 50, $length) . ')';
+	}
 }

@@ -20,6 +20,17 @@
 					<h2>You are not logged in!</h2>
 				</div>
 			<?php endif ?>
+			<section>
+				<h2>Admin section</h2>
+				<div class="box pad-16">
+					Wuwana version 2.2<br>
+					<?php if ($commit != ''): ?>
+						Last commit: <?php echo $commit ?><br>
+					<?php endif ?>
+					<br>
+					Database revision <?php echo $settings['DatabaseRevision'] ?>
+				</div>
+			</section>
 		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
