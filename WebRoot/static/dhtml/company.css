@@ -16,8 +16,8 @@
 	min-height: 20px;
 	margin-bottom: 24px;
 	border-radius: 8px;
-	background-color: var(--white);
-	border: 1px solid var(--grey200);
+	background-color: var(--box-bkg);
+	border: 1px solid var(--border-grey);
 }
 
 #company-panel section {
@@ -50,7 +50,7 @@
 
 #company-panel p {
 	max-width: 40ch;
-	color: var(--grey700);
+	color: var(--text-grey);
 	line-height: 1.5;
 	text-align: left;
 }
@@ -75,15 +75,14 @@
 	min-width: 88px;
 	height: 88px;
 	border-radius: 8px;
-	border: 1px solid var(--grey50);
+	border: 1px solid var(--border-grey);
 	overflow: hidden;
 }
 
 .company-about li {
 	display: inline-flex;
 	margin-inline-end: 16px;
-	/* padding: 4px 0; */
-	color: var(--grey700);
+	color: var(--text-grey);
 	font-size: var(--s);
 }
 
@@ -93,18 +92,27 @@
 
 .company-contact .icon-label-h {
 	padding: 4px 16px;
-	color: var(--grey700);
+	color: var(--text-grey);
 }
 
 .icon-label-h {
 	padding: 8px 16px;
-	color: var(--grey700);
+	color: var(--text-default);
 	cursor: pointer;
 }
 
 /* Edit */
 #edit {
 	display: none;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	width: auto;
+	min-height: 20px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	background-color: var(--box-bkg);
+	border: 1px solid var(--border-grey);
 }
 
 .edit {
@@ -160,7 +168,7 @@ main h2 {
 	position: absolute;
 	right: 24px;
 	bottom: 24px;
-	color: var(--black);
+	color: var(--text-default);
 }
 
 @media (hover: hover) { /* To eliminate hover effect on mobile */
@@ -222,7 +230,7 @@ main h2 {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: var(--white)
+	background-color: var(--box-bkg)
 }
 
 .instagram-row {
@@ -294,8 +302,8 @@ main h2 {
 		align-items: center;
 		padding: 8px 16px;
 		width: 100%;
-		background-color: var(--white);	
-		border: 1px solid var(--grey200);
+		background-color: var(--box-bkg);	
+		border: 1px solid var(--border-grey);
 		opacity: 0;
 		transform: translateY(-100px); /* Magic number */
 		will-change: opacity, transform;
@@ -303,10 +311,12 @@ main h2 {
 	}
 	
 	.mobile-summary-logo {
+		min-height: 64px;
 		max-width: 64px;
+		min-height: 64px;
 		max-height: 64px;
 		margin-inline-end: 16px;
-		border: 1px solid var(--grey50);
+		border: 1px solid var(--border-grey);
 		border-radius: 8px;
 	}
 

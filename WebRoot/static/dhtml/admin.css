@@ -18,7 +18,7 @@ a .icon-label-h {
 #version {
 	margin: -16px 0 24px;
 	font-size: var(--s);
-	color: var(--grey700);
+	color: var(--text-grey);
 }
 
 /* TABLE LAYOUT & STYLE */
@@ -29,10 +29,10 @@ a .icon-label-h {
 	max-width: calc(100vw - 337px);
 	min-height: 20px;
 	margin-block-end: 24px;
-	border: 1px solid var(--grey200);
+	border: 1px solid var(--border-grey);
 	border-radius: 8px;
 	overflow:hidden;
-	background-color: var(--white);
+	background-color: var(--box-bkg);
 }
 
 .scroll-h {
@@ -54,13 +54,13 @@ a .icon-label-h {
 }
 
 .box-table th {
-	border: 1px solid #E3E1E1;
 	padding: 5px 8px 6px;
 	text-align: left;
-	color: #8b8989;
-	font-size: 0.875rem;
-	font-weight: 400;
+	color: var(--text-grey);
+	font-size: var(--s);
+	font-weight: 500;
 	white-space: nowrap;
+	border: 1px solid var(--border-grey);
 }
 
 .box-table tr {
@@ -68,36 +68,37 @@ a .icon-label-h {
 }
 
 .box-table td {
-	border: 1px solid #E3E1E1;
 	padding: 5px 8px 6px;
 	text-align: left;
-	color: #545151;
-	font-size: 0.875rem;
+	color: var(--text-default);
+	font-size: var(--s);
 	font-weight: 400;
 	white-space: nowrap;
+	border: 1px solid var(--border-grey);
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
     background-color: #fafafa;
-}
+} */
 
 .box-table input[type=text] {
 	padding: 4px 0;
 	margin: auto;
 	border: solid 1px transparent;
 	border-radius: 4px;
-	font-size: 0.75rem;
+	color: var(--text-grey);
+	font-size: var(--s);
 	width: 100%;
 	background-color: transparent;
 	align-self: center;
 }
 
 .box-table input[type=text]:hover {
-	border: solid 1px #E3E1E1;
+	border: solid 1px var(--border-grey);
 }
 
 .box-table .disabled-text {
-	color: var(--grey700);
+	color: var(--text-grey);
 	font-style: italic;
 }
 
@@ -139,5 +140,5 @@ tr:nth-child(even) {
 .form-layout-row label {
 	font-size: var(--s);
 	font-weight: 400;
-	color: var(--grey700);
+	color: var(--text-grey);
 }

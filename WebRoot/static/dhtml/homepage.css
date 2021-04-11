@@ -31,7 +31,7 @@
 .homepage-search p {
 	margin-block-start: 8px;
 	margin-block-end: 40px;
-	color: var(--grey700);
+	color: var(--text-grey);
 	font-size: var(--s);
 	max-width: 50ch;
 	text-align: center;
@@ -111,7 +111,7 @@
 	margin-block-end: 24px;
 	padding: 16px;
 	background-image: url(/static/logo/background-v2.1-dark.svg);
-	background-color: var(--grey700); /* in case the svg doesnt load */
+	background-color: var(--box-bkg); /* in case the svg doesnt load */
 	background-position: -16px -16px; /* This compensate for the padding */
 	color: var(--white);
 	border-radius: 8px;
@@ -141,7 +141,7 @@
 	min-width: 88px;
 	height: 88px;
 	margin-inline-end: 16px;
-	border: 1px solid var(--grey50);
+	border: 1px solid var(--border-grey);
 	border-radius: 8px;
 	overflow: hidden;
 }
@@ -162,7 +162,7 @@
 }
 
 .company-card-info h3 {
-	color: var(--black);
+	color: var(--text-default);
 	font-size: var(--l);
 	font-weight: 500;
 	text-transform: capitalize;
@@ -174,7 +174,7 @@
 
 .company-card-info li {
 	display: inline-flex;
-	color: var(--grey700);
+	color: var(--text-grey);
 	font-size: var(--s);
 	margin-inline-end: 16px;
 	white-space: nowrap;
@@ -210,7 +210,7 @@ dd {
 
 dd label {
 	font-weight: 400;
-	color:  var(--grey700);
+	color:  var(--text-grey);
 	vertical-align: middle;
 	cursor: pointer;
 }
@@ -224,7 +224,7 @@ dd label {
 		z-index: 3;
 		height: calc(100vh - 48px);
 		padding: 16px;
-		background-color: var(--white);
+		background-color: var(--box-bkg);
 	}
 
 	#filter .box {
@@ -248,7 +248,7 @@ dd label {
 	dd label {
 		display: inline-block;
 		padding: 7px 8px 8px; /* To visually center the label */
-		color: var(--black);
+		color: var(--text-default);
 		line-height: 1;
 		font-weight: 400;
 		align-self: center;

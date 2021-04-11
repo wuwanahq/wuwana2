@@ -7,7 +7,7 @@
 }
 
 body {
-	background-color: var(--white);
+	background-color: var(--white-bkg);
 	padding-left: 16px;
 	padding-right: 16px;
 }
@@ -35,7 +35,7 @@ h3 {
 
 p {
 	margin: 0 0 24px;
-	color: var(--grey700);
+	color: var(--text-grey);
 }
 
 #privacy-intro span {

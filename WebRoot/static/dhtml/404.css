@@ -29,14 +29,14 @@
 .error-page-wrapper p {
 	max-width: 60ch;
 	margin-block-end: 40px;
-	color: var(--grey700);
+	color: var(--text-grey);
 	line-height: 1.5;
 }
 
 a,
 a:active,
 a:visited {
-	color: var(--black);
+	color: var(--text-default);
 }
 
 .button-icon {
@@ -59,7 +59,7 @@ h2 {
 	min-width: 88px;
 	height: 88px;
 	margin-inline-end: 16px;
-	border: 1px solid var(--grey50);
+	border: 1px solid var(--border-grey);
 	border-radius: 8px;
 	overflow: hidden;
 }
@@ -80,7 +80,7 @@ h2 {
 }
 
 .company-card-info h3 {
-	color: var(--black);
+	color: var(--text-default);
 	font-size: var(--l);
 	font-weight: 500;
 	text-transform: capitalize;
@@ -93,7 +93,7 @@ h2 {
 
 .company-card-info li {
 	display: inline-flex;
-	color: var(--grey700);
+	color: var(--text-grey);
 	font-size: var(--s);
 	margin-inline-end: 16px;
 	white-space: nowrap;
