@@ -7,35 +7,37 @@ namespace WebApp;
 class Config {
 const
 
-/**
- * Database Source Name (PDO DSN). Use SQLite by default if this value is empty.
- * Examples:
- * MySQL socket -> 'mysql:unix_socket=/var/run/mysqld/mysqld.sock;dbname=Wuwana'
- * MySQL TCP/IP -> 'mysql:host=localhost;port=3306;dbname=Wuwana'
- * PostgreSQL ---> 'pgsql:host=localhost;port=5432;dbname=Wuwana'
- * MSSQL Server -> 'sqlsrv:Server=localhost,1521;Database=Wuwana'
- * Oracle DB ----> 'oci:dbname=//localhost:1521/Wuwana'
- * @var string PDO driver-specific connection string
- */
-DB_SOURCE = '',
+	/**
+	 * PDO driver used to connect the database.
+	 * @var string mysql, sqlite, pgsql, sqlsrv, oci (Oracle) or odbc
+	 */
+	DB_DRIVER = 'sqlite',
 
-/**
- * User name and password to connect to the database.
- * @var string
- */
-DB_USERNAME = 'root',
-DB_PASSWORD = '',
+	/**
+	 * Server hosting the database system.
+	 * You can use this parameter to specify a UNIX socket with MySQL.
+	 * Example: unix_socket=/var/run/mysqld/mysqld.sock
+	 * @var string IP address or machine name
+	 */
+	DB_HOST = 'localhost',
 
-/**
- * Redirect HTTP connections to HTTPS or let the user choose its protocol.
- * @var boolean true or false
- */
-FORCE_HTTPS = false,
+	/**
+	 * Port number to connect to the database system.
+	 * @var int Number between 1 and 65535 or 0 to use the default port
+	 */
+	DB_PORT = 0,
 
-/**
- * Session lifetime.
- * @var int Seconds
- */
-SESSION_LIFETIME = 1800;  // 30 minutes
+	/**
+	 * Name of the database where tables are stored.
+	 * @var string Database name (file path with SQLite or source name with ODBC)
+	 */
+	DB_NAME = 'Wuwana.db',
+
+	/**
+	 * User name and password to access the database (ignored by SQLite)
+	 * @var string
+	 */
+	DB_USERNAME = 'root',
+	DB_PASSWORD = '';
 
 }
