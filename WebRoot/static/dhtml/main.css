@@ -40,6 +40,7 @@
 	--background: var(--bkg-light);
 	--white-bkg: var(--white);
 	--box-bkg: var(--box-light);
+	--box-hover: var(--grey-50);
 	--button-main: var(--white);
 
 	--border-default: var(--black);
@@ -59,10 +60,12 @@
 	:root {
 		--bkg-dark: #23272D;
 		--box-dark: #2E333A;
+		--box-hover-dark: #43474E;
 
 		--background: var(--bkg-dark);
 		--white-bkg: var(--bkg-dark);
 		--box-bkg: var(--box-dark);
+		--box-hover: var(--box-hover-dark);
 		--button-main: var(--box-dark);
 
 		--border-default: var(--grey700);
@@ -379,7 +382,7 @@ main {
 
 @media (hover: hover) { /* To eliminate hover effect on mobile */
 	.card:hover {
-		background-color: var(--grey50)
+		background-color: var(--box-hover)
 	}
 }
 
@@ -602,7 +605,7 @@ main {
 
 	/* Icon Label Horizontal */
 	.icon-label-h:hover {
-		background-color: var(--grey200);
+		background-color: var(--box-hover);
 	}
 }
 
@@ -716,9 +719,7 @@ main {
 }
 
 @media (hover: hover) { /* To eliminate hover effect on mobile */
-	.header-icon:hover {
-		background-color:var(--grey200)
-	}
+	.header-icon:hover { background-color:var(--box-hover) }
 }
 
 /* SEARCH */
@@ -823,7 +824,7 @@ input[type=search]:focus {
 }
 
 .search-suggestion li:hover {
-	background-color: var(--grey200);
+	background-color: var(--box-hover);
 }
 
 /* FOOTER */
@@ -1138,7 +1139,7 @@ footer details summary::-webkit-details-marker {
 		height: 48px;
 		padding: 0;
 		padding-inline-start: 8px;
-		background-color: var(--white);
+		background-color: var(--box-bkg);
 		border-radius: 0;
 	}
 
