@@ -7,7 +7,7 @@ main h2 {
 
 /* Admin Control Panel */
 .icon-label-h {
-	background-color: var(--grey200);
+	background-color: var(--box-hover);
 }
 
 a .icon-label-h {
