@@ -33,7 +33,7 @@ main h2 {
 }
 
 #version {
-	margin: -16px 0 24px;
+	margin-block-start: -32px;
 	font-size: var(--s);
 	color: var(--text-grey);
 }
@@ -145,7 +145,7 @@ main h2 {
 	}
 
 	#version {
-		display: none;
+		margin-inline-start: 16px;
 	}
 }
 

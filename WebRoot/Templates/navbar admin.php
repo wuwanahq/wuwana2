@@ -8,13 +8,13 @@
 		'/admin/settings' => ['Settings', 'slider.svg']
 	];
 ?>
-<div class="sticky">
-	<div class="navbar-box" id="navbar">
-		<div class="panel-ribbon">
-			<img src="/static/logo/ribbon.svg" alt="">
-		</div>
-		<?php if($user->isLogin()): ?>
-			<section>
+<div class="sticky" id="navbar">
+	<section>
+		<div class="box greeting-box">
+			<div class="panel-ribbon">
+				<img src="/static/logo/ribbon.svg" alt="">
+			</div>
+			<?php if($user->isLogin()): ?>
 				<h2><?php echo $_SESSION['Name'] ?></h2>
 				<ul class="ul-list">
 					<li>
@@ -31,30 +31,11 @@
 							<img class="icon" src="/static/icon/close.svg" alt="">
 							<div>
 								<?php echo TEMP_TEXT[12] ?>
-								<img src="/static/icon/gray/chevron-right.svg" alt="">
 							</div>
 						</a>
 					</li>
 				</ul>
-			</section>
-			<section>
-				<h3><?php echo TEMP_TEXT[13] ?></h3>
-				<ul class="ul-list">
-				<?php foreach ($sections as $sectionURL => $section): ?>
-					<li>
-						<a href="<?php echo $sectionURL; ?>">
-							<img class="icon" src="/static/icon/<?php echo $section[1] ?>" alt="">
-							<div>
-								<?php echo $section[0] ?>
-								<img src="/static/icon/gray/chevron-right.svg" alt="">
-							</div>
-						</a>
-					</li>
-				<?php endforeach ?>
-				</ul>
-			</section>
-		<?php else: ?>
-			<section>
+			<?php else: ?>
 				<h2>🚨 <?php echo TEMP_TEXT[14] ?> 🚨</h2>
 				<p><?php echo TEMP_TEXT[15] ?></p>
 				<form method="post">
@@ -68,9 +49,29 @@
 					</div>
 					<input class="button-main-new" type="submit" value="<?php echo TEMP_TEXT[18] ?>">
 				</form>
-			</section>
-		<?php endif ?>
-	</div>
+			<?php endif ?>
+		</div>
+	</section>
+	<?php if (isset($user) && $user->isLogin()): ?>
+	<section>
+		<h2><?php echo TEMP_TEXT[13] ?></h2>
+		<div class="box">
+			<ul class="ul-list">
+				<?php foreach ($sections as $sectionURL => $section): ?>
+					<li>
+						<a href="<?php echo $sectionURL; ?>">
+							<img class="icon" src="/static/icon/<?php echo $section[1] ?>" alt="">
+							<div>
+								<?php echo $section[0] ?>
+								<img src="/static/icon/gray/chevron-right.svg" alt="">
+							</div>
+						</a>
+					</li>
+				<?php endforeach ?>
+			</ul>
+		</div>
+	</section>
+	<?php endif ?>
 	<div id="version">Wuwana version 2.2.1</div>
 </div>
 <div class="navbar-background" id="navbar-background" onclick="toggleNavbar()"></div>

@@ -206,22 +206,22 @@ function replaceMultipleBrokenImgs()
  */
 
 // Back to top button
-function backToTop()
-{
-	var y = window.pageYOffset;
-	var toTop = document.getElementById("toTop").style;
+// function backToTop()
+// {
+// 	var y = window.pageYOffset;
+// 	var toTop = document.getElementById("toTop").style;
 
-	if (y > 1000)
-	{
-		toTop.opacity = 1;
- 		toTop.visibility = "visible";
-	} 
-	else 
-	{
-		toTop.opacity = 0;
-	 	toTop.visibility = "hidden";
-	}
-}
+// 	if (y > 1000)
+// 	{
+// 		toTop.opacity = 1;
+//  		toTop.visibility = "visible";
+// 	} 
+// 	else 
+// 	{
+// 		toTop.opacity = 0;
+// 	 	toTop.visibility = "hidden";
+// 	}
+// }
 
 // Go back to previous page
 function goBack()
