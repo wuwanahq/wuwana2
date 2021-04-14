@@ -8,13 +8,13 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<section class="colum-left">
+		<section class="column-left">
 			<?php include 'Templates/navbar homepage.php' ?>
 		</section>
 		<main>
 			<h1>404</h1>
 			<?php include 'Templates/search.php' ?>
-			<section style="margin-top: 24px;" >
+			<section>
 				<h2>What is 404?</h2>
 				<div class="box error">
 					<img src="/static/image/schemekle.jpg" alt="a picture of Schemekle, Wuwana's mascot, looking goofy">

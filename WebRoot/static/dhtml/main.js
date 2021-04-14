@@ -20,14 +20,14 @@ function onLoad()
 
 window.addEventListener("resize", () => 
 {
-	var navbar = document.querySelector(".navbar-box").style;
-	var bkg = document.querySelector(".navbar-background").style;
+	var navbar = document.querySelector("#navbar").style;
+	var bkg = document.querySelector("#navbar-background").style;
 	var filter = document.getElementById("filter");
 
 	console.log('rezising');
 	bkg.display = "none";
 	body.overflow = "auto";
-	searchMobileClear(); //clear all search
+	// searchMobileClear(); //clear all search
 
 	if (window.innerWidth > 800) 
 	{
@@ -70,8 +70,8 @@ function changeHeaderIcon()
 
 function toggleNavbar() 
 {
-	var navbar = document.querySelector(".navbar-box").style;
-	var bkg = document.querySelector(".navbar-background").style;
+	var navbar = document.querySelector("#navbar").style;
+	var bkg = document.querySelector("#navbar-background").style;
 	var filter = document.getElementById("filter");
 
 	if (url.includes('/admin'))

@@ -13,14 +13,29 @@
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/homepage.css">
 </head>
 <body>
-	<main class="homepage-search">
-		<picture>
+	<?php include 'Templates/page header.php' ?>
+	<div class="container">
+		<div class="column-left">
+			<?php include 'Templates/navbar homepage.php' ?>
+		</div>
+		<main>
+			<h1>Homepage</h1>
+			<?php include 'Templates/search.php' ?>
+			<section>
+				<h2>Suggested Industries</h2>
+				<div class="box">
+					<!-- TO DO -->
+				</div>
+			</section>
+		</main>
+	</div>
+	<!-- <main class="homepage-search"> -->
+		<!-- <picture>
 			<source media="(max-width: 400px)" srcset="/static/logo/website.svg" alt="wuwana logo">
 			<source media="(min-width: 400px)" srcset="/static/logo/website-large.svg" alt="wuwana logo">
 			<img src="/static/logo/website.svg" alt="wuwana logo">
-		</picture>
-		<?php include 'Templates/search.php' ?>
-		<p><?php echo TEXT[9] ?></p>
+		</picture> -->
+		<!-- <p><?php echo TEXT[9] ?></p>
 		<section class="ind">
 			<h2><?php echo TEXT[11] ?></h2>
 			<div class="box">
@@ -57,8 +72,8 @@
 					</div>
 				</div>
 			</div>
-		</section>
-	</main>
-	<?php include 'Templates/page footer.php' ?>
+		</section> -->
+	<!-- </main> -->
+	<?php include 'Templates/page footer.php' ?> 
 </body>
 </html>

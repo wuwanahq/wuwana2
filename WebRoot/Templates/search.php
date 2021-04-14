@@ -9,10 +9,11 @@
 			autocomplete="off"
 			autocorrect="off">
 		<button class="search-btn"></button>
-		<div class="search-suggestion" id="search-suggestion">
+		<!-- Not in use now -->
+		<!-- <div class="search-suggestion" id="search-suggestion"> -->
 				<!-- Auto suggestion created by JS -->
 				<!-- <a><li></li></a><hr> -->
-		</div>
+		<!-- </div> -->
 	</form>
 </div>
 
