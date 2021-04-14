@@ -49,14 +49,16 @@
 			<?php endif ?>
 		</section>
 		<main>
+			<h1>Search Results</h1>
+			<?php include 'Templates/search.php' ?>
 			<div class="information-error-box">
 				<div class="information-error-vertical"></div>
 				<h2><?php echo TEXT[12] ?></h2>
 			</div>
 			<?php if ($companies['Counter'] > 0): ?>
-				<div class="search-result-box">
+				<div class="box result-box">
 					<p><?php printf(TEXT[13], $companies['Counter']) ?></p>
-					<h2><?php echo $search ?></h2>
+					<p><span><?php echo $search ?></span></p>
 				</div>
 				<section>
 					<div class="search-title">

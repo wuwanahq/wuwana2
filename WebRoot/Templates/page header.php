@@ -18,6 +18,5 @@
 				</picture>
 			</a>
 		</div>
-		<?php include 'Templates/search.php' ?>
 	</div>
 </header>

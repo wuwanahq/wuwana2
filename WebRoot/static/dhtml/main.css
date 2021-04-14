@@ -920,12 +920,16 @@ main {
 }
 
 /* SEARCH */
-main .search {
+.search {
 	position: relative;
 	margin-left: 0; /* temporal */
 	margin-block-end: 24px;
-	width: 100%;
-	max-width: 400px;
+	width: 400px;
+	
+}
+
+@media screen and (max-width: 800px) {
+	.search { width: 100%; }
 }
 
 .search-icon {

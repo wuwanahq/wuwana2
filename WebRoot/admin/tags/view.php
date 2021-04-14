@@ -20,6 +20,8 @@
 					<h2>You are not logged in!</h2>
 				</div>
 			<?php else: ?>
+			<h1>Admin | Tags</h1>
+			<?php include 'Templates/search.php' ?>
 			<section id="section-table">
 				<h2>Base tags</h2>
 				<div class="box-table">

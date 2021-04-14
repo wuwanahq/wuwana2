@@ -20,6 +20,8 @@
 					<h2>You are not logged in!</h2>
 				</div>
 			<?php else: ?>
+			<h1>Admin | Settings</h1>
+			<?php include 'Templates/search.php' ?>
 			<section>
 				<h2>WebApp Settings</h2>
 				<div class="box pad-16">
