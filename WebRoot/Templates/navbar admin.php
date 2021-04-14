@@ -16,30 +16,42 @@
 		<?php if($user->isLogin()): ?>
 			<section>
 				<h2><?php echo $_SESSION['Name'] ?></h2>
-				<a href="/">
-					<div class="icon-label-h">
-						<img src="/static/icon/gray/home.svg" alt="">
-						<?php echo TEMP_TEXT[11] ?>
-					</div>
-				</a>
-				<a href="/?logout">
-					<div class="icon-label-h">
-						<img src="/static/icon/gray/close.svg" alt="">
-						<?php echo TEMP_TEXT[12] ?>
-					</div>
-				</a>
+				<ul class="ul-list">
+					<li>
+						<a href="/">
+							<img src="/static/icon/gray/home.svg" alt="">
+							<div>
+								<?php echo TEMP_TEXT[11] ?>
+								<img src="/static/icon/gray/chevron-right.svg" alt="">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="/?logout">
+							<img src="/static/icon/gray/close.svg" alt="">
+							<div>
+								<?php echo TEMP_TEXT[12] ?>
+								<img src="/static/icon/gray/chevron-right.svg" alt="">
+							</div>
+						</a>
+					</li>
+				</ul>
 			</section>
-			<hr>
 			<section>
 				<h3><?php echo TEMP_TEXT[13] ?></h3>
+				<ul class="ul-list">
 				<?php foreach ($sections as $sectionURL => $section): ?>
-					<?php if ($url != $sectionURL) { echo '<a href="', $sectionURL, '">'; } ?>
-					<div class="icon-label-h">
-						<img src="/static/icon/gray/<?php echo $section[1] ?>" alt="">
-						<?php echo $section[0] ?>
-					</div>
-					<?php if ($url != $sectionURL) { echo '</a>'; } ?>
+					<li>
+						<a href="<?php echo $sectionURL; ?>">
+							<img src="/static/icon/gray/<?php echo $section[1] ?>" alt="">
+							<div>
+								<?php echo $section[0] ?>
+								<img src="/static/icon/gray/chevron-right.svg" alt="">
+							</div>
+						</a>
+					</li>
 				<?php endforeach ?>
+				</ul>
 			</section>
 		<?php else: ?>
 			<section>
@@ -54,7 +66,7 @@
 						<label for="code"><?php echo TEMP_TEXT[17] ?></label>
 						<input id="code" type="text" name="code" inputmode="tel" autocomplete="off">
 					</div>
-					<input class="button-second" type="submit" value="<?php echo TEMP_TEXT[18] ?>">
+					<input class="button-main-new" type="submit" value="<?php echo TEMP_TEXT[18] ?>">
 				</form>
 			</section>
 		<?php endif ?>

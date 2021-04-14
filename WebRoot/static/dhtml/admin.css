@@ -6,13 +6,40 @@ main h2 {
 }
 
 /* Admin Control Panel */
-.icon-label-h {
-	background-color: var(--box-hover);
+.navbar-box section { padding: 0; } /* Temporal solution */
+
+.navbar-box section h2 {
+	margin-block-start: 12px;
+	margin-block-end: 12px;
 }
 
-a .icon-label-h {
-	background-color: transparent;
-	font-weight: 400;
+.navbar-box form {
+	margin-block-start: 24px;
+	margin-block-end: 24px;
+}
+
+.navbar-box h3 {
+	margin: 40px 16px 8px;
+}
+
+.navbar-box .button-main-new {
+	padding: 8px;
+	width: 100%;
+	color: var(--text-default);
+	font-size: var(--s);
+	border: solid 1px var(--border-default);
+	border-radius: 8px;
+	background-color: var(--button-main);
+	white-space: nowrap;
+	cursor: pointer;
+	-webkit-appearance: none;
+}
+
+@media (hover: hover) {
+	.button-main-new:hover {
+		color: var(--button-main-text-hover);
+		background-color: var(--button-main-hover);
+	}
 }
 
 #version {
@@ -20,6 +47,7 @@ a .icon-label-h {
 	font-size: var(--s);
 	color: var(--text-grey);
 }
+
 
 /* TABLE LAYOUT & STYLE */
 

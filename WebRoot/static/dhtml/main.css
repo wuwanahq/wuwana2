@@ -40,8 +40,11 @@
 	--background: var(--bkg-light);
 	--white-bkg: var(--white);
 	--box-bkg: var(--box-light);
-	--box-hover: var(--grey-50);
+	--box-hover: var(--grey200);
+
 	--button-main: var(--white);
+	--button-main-hover: var(--black);
+	--button-main-text-hover: var(--whiteoff);
 
 	--border-default: var(--black);
 	--border-grey: var(--grey200);
@@ -66,7 +69,10 @@
 		--white-bkg: var(--bkg-dark);
 		--box-bkg: var(--box-dark);
 		--box-hover: var(--box-hover-dark);
+
 		--button-main: var(--box-dark);
+		--button-main-hover: var(--box-hover-dark);
+		--button-main-text-hover: var(--whiteoff);
 
 		--border-default: var(--grey700);
 		--border-grey: var(--grey700);
@@ -190,6 +196,7 @@ input[type=password],
 input[type=number],
 textarea {
 	width: 100%;
+	min-height: 32px;
 	margin: 0;
 	margin-block-end: 8px;
 	padding: 4px 8px;
@@ -317,6 +324,49 @@ main {
 }
 
 /* CSS to make image and label layout */
+.ul-list {
+	/* class for <ul> tag */
+	border-top: solid 1px var(--border-grey);
+	border-bottom: solid 1px var(--border-grey);
+}
+
+@media (hover: hover) {
+	.ul-list li:hover { background-color: var(--box-hover); }
+}
+
+.ul-list a {
+	display: flex;
+	align-items: center;
+	min-height: 40px;
+	padding-inline-start: 16px;
+	color: var(--text-default);
+}
+.ul-list a div {
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin-inline-start: 16px;
+	width: 100%;
+	min-height: 40px; /* Same as .navbar-box ul a */
+	border-bottom: solid 1px var(--border-grey);
+}
+
+.ul-list li:last-child a div {
+	border-bottom: none;
+}
+
+.ul-list a div img {
+	position: absolute;
+	right: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+	.ul-list a img { 
+		filter: brightness(140%); /* Magic number */
+	}
+}
+
+
 .item-label {
 	display: flex;
 	flex-direction: column;
