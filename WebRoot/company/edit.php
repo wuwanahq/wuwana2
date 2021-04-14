@@ -1,7 +1,7 @@
 <div class="box-panel edit" id="edit">
 	<h2>Edit information</h2>
 	<a class="button-close" onclick="companyEdit()">
-		<img src="/static/icon/close.svg">
+		<img class="icon" src="/static/icon/close.svg">
 	</a>
 	<details open>
 		<summary>Main Information ▾</summary>
@@ -51,5 +51,5 @@
 		</div>
 	</details>
 	<hr>
-	<input type="submit" class="button-main" value="Update information">
+	<input type="submit" class="button-main-new" value="Update information">
 </div>

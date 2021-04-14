@@ -157,9 +157,19 @@
 }
 
 main h2 {
-	margin-block-end: 8px;
-	font-weight: 500;
 	text-transform: capitalize;
+}
+
+.section-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@media (hover: hover) {
+	.section-title a:hover {
+		text-decoration: underline;
+	}
 }
 
 /* Instagram Card */
@@ -171,15 +181,8 @@ main h2 {
 	color: var(--text-default);
 }
 
-@media (hover: hover) { /* To eliminate hover effect on mobile */
-	.instagram .button-icon:hover {
-		color: var(--white);
-	}
-}
-
 .instagram-info {
 	margin: 16px;
-	max-width: 40ch
 }
 
 .instagram-info h3 {
@@ -189,6 +192,7 @@ main h2 {
 }
 
 .instagram-info p {
+	max-width: 40ch; /* temporal */
 	margin-block-end: 16px;
 	line-height: 1.5;
 }

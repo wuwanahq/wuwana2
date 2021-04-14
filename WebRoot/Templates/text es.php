@@ -19,4 +19,5 @@ const TEMP_TEXT = [
 16 => 'Correo electrónico',
 17 => 'Código',
 18 => 'Login',
+19 => 'Idioma de la página web',
 ];

@@ -84,8 +84,8 @@
 	}
 
 	img { filter: brightness(.8) }
-
 	.icon { filter: invert(.8) }
+	.icon-button:hover img { filter: none }
  }
 
 /* GENERAL BODY */
@@ -368,10 +368,6 @@ main {
 	right: 8px;
 }
 
-.details-list {
-	/* Class for <details> tag */
-
-}
 
 .details-list summary {
 	margin-block-end: 0; /* temporal solution */
@@ -492,6 +488,40 @@ main {
 /* ----- BUTTONS ----- */
 
 /* Button Main */
+
+.button-main-new {
+	padding: 8px;
+	width: 100%;
+	color: var(--text-default);
+	font-size: var(--s);
+	border: solid 1px var(--border-default);
+	border-radius: 8px;
+	background-color: var(--button-main);
+	white-space: nowrap;
+	cursor: pointer;
+	-webkit-appearance: none;
+}
+
+@media (hover: hover) {
+	.button-main-new:hover {
+		color: var(--button-main-text-hover);
+		background-color: var(--button-main-hover);
+	}
+}
+
+.icon-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4px;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.icon-button img { margin-inline-end: 8px; }
+
+.icon-button:hover img { filter: invert(1); }
+
 
 .button-main {
 	display: flex;

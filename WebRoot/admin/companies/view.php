@@ -98,7 +98,7 @@
 							</details>
 						</section>
 						<hr>
-						<input type="submit" id="button" value="Add company" class="button-main">
+						<input type="submit" id="button" value="Add company" class="button-main-new">
 					</form>
 				</div>
 			</section>

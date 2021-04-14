@@ -128,10 +128,13 @@
 .search-title {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	margin-block-end: 8px;
 }
 
-.search-title h2 {
-	font-weight: 500;
+.search-title div {
+	color: var(--text-link);
+	cursor: pointer;
 }
 
 /* Company Card */

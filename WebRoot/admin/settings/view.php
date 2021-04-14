@@ -77,7 +77,7 @@
 								?>
 							</select>
 						</div>
-						<input class="button-main" type="submit" value="Apply">
+						<input class="button-main-new" type="submit" value="Apply">
 					</form>
 				</div>
 			</section>

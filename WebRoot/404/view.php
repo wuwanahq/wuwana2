@@ -22,8 +22,8 @@
 			</section>
 		<?php endif ?>
 	</div>
-	<a class="button-icon Center" href="/">
-		<img src="/static/icon/home.svg" alt=""><?php echo TEXT[3] ?>
+	<a class="button-main-new icon-button" href="/">
+		<img class="icon" src="/static/icon/home.svg" alt=""><?php echo TEXT[3] ?>
 	</a>
 	<?php include 'Templates/page footer.php' ?>
 </body>

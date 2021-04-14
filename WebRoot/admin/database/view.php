@@ -44,7 +44,7 @@
 						<input id="f5" type="file" name="Tag"><br><br><br>
 						<label for="f1">Optional UserAccount table:</label>
 						<input id="f1" type="file" name="UserAccount"><br><br>
-						<input class="button-main" type="submit" value="Upload TSV files and OVERWRITE TABLES DATA">
+						<input class="button-main-new" type="submit" value="Upload TSV files and OVERWRITE TABLES DATA">
 					</form>
 				</div>
 			</section>

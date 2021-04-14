@@ -53,59 +53,60 @@
 						</h3>
 						<p> <?php echo $company->description ?>  </p>
 					</section>
-					<hr>
-					<section class="company-contact">
-						<h3>
-							<?php printf(TEXT[1], $company->name) ?>
-						</h3>
-						<ul>
-							<?php if (!empty($company->website)): ?>
-								<li>
-									<a class="icon-label-h" 
-										href="<?php echo $company->website ?>"
-										target="_blank"
-										rel="noopener">
-										<img src="/static/icon/gray/globe.svg" alt="">
+					<ul class="ul-list">
+						<?php if (!empty($company->website)): ?>
+							<li>
+								<a href="<?php echo $company->website ?>"
+									target="_blank"
+									rel="noopener">
+									<img class="icon" src="/static/icon/globe.svg" alt="">
+									<div>
 										Website
-									</a>
-								</li>
-							<?php endif ?>
-							<?php if ($company->instagram->pageURL != ''): ?>
-								<li>
-									<a class="icon-label-h"
-										href="<?php echo $company->instagram->getPageURL() ?>" 
-										target="_blank"
-										rel="noopener">
-										<img src="/static/icon/gray/instagram.svg" alt="">
+										<img src="/static/icon/gray/open-in-new.svg" alt="">
+									</div>
+								</a>
+							</li>
+						<?php endif ?>
+						<?php if ($company->instagram->pageURL != ''): ?>
+							<li>
+								<a  href="<?php echo $company->instagram->getPageURL() ?>" 
+									target="_blank"
+									rel="noopener">
+									<img class="icon" src="/static/icon/instagram.svg" alt="">
+									<div>
 										Instagram
-									</a>
-								</li>
-							<?php endif ?>
-							<?php if (isset($company->phone) && (int)$company->phone = 0): ?>
-								<li>
-									<a class="icon-label-h"
-										target="_blank"
-										href="https://wa.me/<?php
-									echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>"
-										rel="noopener">
-										<img src="/static/icon/gray/whatsapp.svg" alt="">
-										WhatsApp
-									</a>
-								</li>
-							<?php endif ?>
-							<?php if (!empty($company->email)): ?>
-								<li>
-									<a class="icon-label-h"
-										href="mailto:<?php echo $company->email ?>">
-										<img src="/static/icon/gray/email.svg" alt="">
+										<img src="/static/icon/gray/open-in-new.svg" alt="">
+									</div>
+								</a>
+							</li>
+						<?php endif ?>
+						<?php if (isset($company->phone) && (int)$company->phone = 0): ?>
+							<li>
+								<a 	target="_blank"
+									href="https://wa.me/<?php
+								echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>"
+									rel="noopener">
+									<img class="icon" src="/static/icon/gray/whatsapp.svg" alt="">
+									<div>
+										Whatsapp
+										<img src="/static/icon/gray/open-in-new.svg" alt="">
+									</div>
+								</a>
+							</li>
+						<?php endif ?>
+						<?php if (!empty($company->email)): ?>
+							<li>
+								<a href="mailto:<?php echo $company->email ?>">
+									<img class="icon" src="/static/icon/gray/email.svg" alt="">
+									<div>
 										Email
-									</a>
-								</li>
-							<?php endif ?>
-						</ul>
-					</section>
+										<img src="/static/icon/gray/open-in-new.svg" alt="">
+									</div>
+								</a>
+							</li>
+						<?php endif ?>
+					</ul>
 					<?php if (isset($user) && $user->isAdmin()): ?>
-					<hr>
 					<a onclick="companyEdit()">
 						<div class="icon-label-h">
 							<img src="/static/icon/gray/edit.svg" alt="">
@@ -127,7 +128,13 @@
 		<main>
 			<?php if (isset($company->instagram)): ?>
 				<section class="instagram">
-					<h2><?php printf(TEXT[2], $company->name) ?></h2>
+					<div class="section-title">
+						<h2><?php printf(TEXT[2], $company->name) ?></h2>
+						<a href="<?php echo $company->instagram->getPageURL() ?>" target="_blank" rel="noopener">
+							<?php echo TEXT[5] ?>
+						</a>
+					</div>
+					
 					<div class="box">
 						<div class="instagram-info">
 							<h3>
@@ -192,15 +199,11 @@
 								</div>
 							</div>
 						</div></div>
-						<a class="button-icon" href="<?php echo $company->instagram->getPageURL() ?>" target="_blank" rel="noopener">
-							<img src="/static/icon/instagram.svg" alt="">
-							<?php echo TEXT[5] ?>
-						</a>
 					</div>
 				</section>
 			<?php endif ?>
-			<div class="button-icon center" onclick="goBack()">
-				<img src="/static/icon/arrow-circle-left.svg" alt="">
+			<div class="button-main-new icon-button" onclick="goBack()">
+				<img class="icon" src="/static/icon/arrow-circle-left.svg" alt="">
 				<?php echo TEXT[4] ?>
 			</div>
 		</main>
