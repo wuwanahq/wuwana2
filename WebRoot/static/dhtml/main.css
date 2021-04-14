@@ -807,14 +807,16 @@ main {
 		position: fixed;
 		top: 48px; left: 0;
 		z-index: 3;
+		padding-block-end: 200px; /* Need to solve scrolling bug*/
 		width: 300px;
+		height: 100vh;
 		max-width: 300px;
-		height: calc(100vh - 48px); /* vh - header height */
 		border-right: solid 1px var(--border-grey);
 		background-color: var(--background);
 		transform: translateX(-110vw);
 		will-change: transform;
 		transition: transform 200ms;
+		overflow-y: scroll;
 	}
 
 	#navbar .box { border-radius: 0 }
