@@ -11,6 +11,7 @@
 	--grey700: #545151;
 	--grey500: #8F8B8B;
 	--grey200: #E6E2E2;
+	--grey100: #F2EEEE;
 	--grey50: #FAFAFA;
 	--white: #FFFFFF;
 	--whiteoff: #F0F0F0;
@@ -40,7 +41,7 @@
 	--background: var(--bkg-light);
 	--white-bkg: var(--white);
 	--box-bkg: var(--box-light);
-	--box-hover: var(--grey200);
+	--box-hover: var(--grey100);
 
 	--button-main: var(--white);
 	--button-main-hover: var(--black);
@@ -155,11 +156,19 @@ dd {
 	color: var(--text-default);
 }
 
+h1 {
+	margin-block-end: 8px;
+	font-size: var(--xxl);
+	font-weight: 700;
+}
+
 h2 {
 	font-size: var(--xl);
 	font-weight: 500;
 	margin-block-end: 8px;
 }
+
+p { max-width: 60ch; }
 
 a,
 a:active,
@@ -1096,6 +1105,52 @@ footer details summary::-webkit-details-marker {
 .information span {
 	text-transform: uppercase;
 	font-weight: 700;
+}
+
+/* ----- COMPANY CARD ----- */
+/* Company Card */
+.logo-main {
+	width: 88px;
+	min-width: 88px;
+	height: 88px;
+	margin-inline-end: 16px;
+	border: 1px solid var(--border-grey);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.logo-main img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover
+}
+
+.company-card-info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	min-height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.company-card-info h3 {
+	color: var(--text-default);
+	font-size: var(--l);
+	font-weight: 500;
+	text-transform: capitalize;
+}
+
+.company-card-info ul {
+	margin-block-end: 16px;
+}
+
+.company-card-info li {
+	display: inline-flex;
+	color: var(--text-grey);
+	font-size: var(--s);
+	margin-inline-end: 16px;
+	white-space: nowrap;
 }
 
 /* ----- MODIFIERS ----- */

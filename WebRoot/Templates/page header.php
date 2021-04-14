@@ -1,4 +1,3 @@
-<h1 class="visually-hidden">Wuwana</h1>
 <header class="header-bar">
 	<div class="header-container">
 		<?php if ($url == '/' || strpos($url, '/admin') !== false): ?>

@@ -60,7 +60,7 @@
 
 <!--  Not Connected with JS -->
 
-<section>
+<!-- <section>
 	<h2><?php echo TEMP_TEXT[3] ?></h2>
 	<div class="box">
 		<details class="details-list">
@@ -81,9 +81,9 @@
 			</ul>
 		</details>
 	</div>
-</section>
+</section> -->
 	
-<section>
+<!-- <section>
 	<h2>About Wuwana</h2>
 	<div class="box" style="min-height: 80px;">
 		<a href="/wuwana" class="card">
@@ -127,6 +127,6 @@
 			</li>
 		</ul>
 	</div>
-</section>
+</section> -->
 
 <div class="navbar-background" id="navbar-background" onclick="toggleNavbar()"></div>

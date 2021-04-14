@@ -7,24 +7,33 @@
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
-	<div class="error-page-wrapper">
-		<div class="error-image">
-			<img src="/static/image/schemekle.jpg" alt="a picture of Schemekle, Wuwana's mascot, looking goofy">
-		</div>
-		<h1><?php echo TEXT[0] ?></h1>
-		<p><?php echo TEXT[1] ?></p>
-		<?php if (count($companies) > 0): ?>
-			<section class="error-companies">
+	<div class="container">
+		<section class="colum-left">
+			<?php include 'Templates/navbar homepage.php' ?>
+		</section>
+		<main>
+			<h1>404</h1>
+			<?php include 'Templates/search.php' ?>
+			<section style="margin-top: 24px;" >
+				<h2>What is 404?</h2>
+				<div class="box error">
+					<img src="/static/image/schemekle.jpg" alt="a picture of Schemekle, Wuwana's mascot, looking goofy">
+					<p><?php echo TEXT[1] ?></p>
+				</div>
+			</section>
+			<?php if (count($companies) > 0): ?>
+			<section>
 				<h2><?php echo TEXT[2] ?></h2>
-				<div class="box center">
+				<div class="box">
 					<?php WebApp\ViewComponent::printCompanyCards($companies) ?>
 				</div>
 			</section>
-		<?php endif ?>
+			<?php endif ?>
+			<a class="button-main-new icon-button" href="/">
+				<img class="icon" src="/static/icon/home.svg" alt=""><?php echo TEXT[3] ?>
+			</a>
+		</main>
 	</div>
-	<a class="button-main-new icon-button" href="/">
-		<img class="icon" src="/static/icon/home.svg" alt=""><?php echo TEXT[3] ?>
-	</a>
 	<?php include 'Templates/page footer.php' ?>
 </body>
 </html>
