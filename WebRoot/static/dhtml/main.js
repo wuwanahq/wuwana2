@@ -114,62 +114,6 @@ function toggleNavbar()
 }
 
 /**
- * Functions for Search
- */
-
-var search = document.getElementById("search");
-var searchInput = document.getElementById("user-search");
-var searchSuggestion = document.getElementById("search-suggestion");
-var searchIcon = document.querySelectorAll("search-icon");
-
-searchInput.onkeyup = (e) => {
-	var userData = e.target.value; //user entered data
-	var emptyArray = [];
-	
-	if (userData) {
-		searchSuggestion.style.display = "block"; // Show suggestion box
-		showSuggestions(emptyArray);
-	}
-	else 
-	{
-		searchSuggestion.style.display = "none";
-	}
-}
-
-function showSuggestions(list){
-    var listData;
-	var userValue;
-
-    if(!list.length)
-	{
-        userValue = searchInput.value;
-        listData = '<a href="/?search=' + userValue + '"><li>'+ userValue +'</li></a><hr>';
-    }
-	else
-	{
-        listData = list.join('');
-    }
-    searchSuggestion.innerHTML = listData;
-}
-
-// Search Mobile
-function searchMobile() {
-	if (window.innerWidth < 500) {
-		search.classList.add("search-fixed");
-		body.overflow = "hidden";
-		body.position = "fixed";
-	}
-}
-
-function searchMobileClear() {
-	searchInput.value = ""; // clear input value
-	searchSuggestion.style.display = "none";
-	search.classList.remove("search-fixed");
-	body.overflow = "auto";
-	body.position = "relative";
-}
-
-/**
  * Function to replace broken img url link
  * with random wuwana square logo
  */
@@ -266,3 +210,59 @@ function setDefault() {
 		body.overflow = "auto";
 	}
 }
+
+/**
+ * Functions for Search
+ */
+
+//  var search = document.getElementById("search");
+//  var searchInput = document.getElementById("user-search");
+//  var searchSuggestion = document.getElementById("search-suggestion");
+//  var searchIcon = document.querySelectorAll("search-icon");
+ 
+//  searchInput.onkeyup = (e) => {
+// 	 var userData = e.target.value; //user entered data
+// 	 var emptyArray = [];
+	 
+// 	 if (userData) {
+// 		 searchSuggestion.style.display = "block"; // Show suggestion box
+// 		 showSuggestions(emptyArray);
+// 	 }
+// 	 else 
+// 	 {
+// 		 searchSuggestion.style.display = "none";
+// 	 }
+//  }
+ 
+//  function showSuggestions(list){
+// 	 var listData;
+// 	 var userValue;
+ 
+// 	 if(!list.length)
+// 	 {
+// 		 userValue = searchInput.value;
+// 		 listData = '<a href="/?search=' + userValue + '"><li>'+ userValue +'</li></a><hr>';
+// 	 }
+// 	 else
+// 	 {
+// 		 listData = list.join('');
+// 	 }
+// 	 searchSuggestion.innerHTML = listData;
+//  }
+ 
+//  Search Mobile
+//  function searchMobile() {
+// 	 if (window.innerWidth < 500) {
+// 		 search.classList.add("search-fixed");
+// 		 body.overflow = "hidden";
+// 		 body.position = "fixed";
+// 	 }
+//  }
+ 
+//  function searchMobileClear() {
+// 	 searchInput.value = ""; // clear input value
+// 	 searchSuggestion.style.display = "none";
+// 	 search.classList.remove("search-fixed");
+// 	 body.overflow = "auto";
+// 	 body.position = "relative";
+//  }
