@@ -20,7 +20,7 @@
 		<section class="column-left">
 			<?php include 'Templates/navbar homepage.php' ?>
 			<?php if ($companies['Counter'] > 0): ?>
-				<section class="sticky" id="filter">
+				<!-- <section class="sticky" id="filter">
 					<h2><?php echo TEXT[8] ?></h2>
 					<div class="box">
 					<form method="get" action="/">
@@ -45,7 +45,7 @@
 								value="<?php echo TEXT[7] ?>" >
 					</form>
 					</div>
-				</section>
+				</section> -->
 			<?php endif ?>
 		</section>
 		<main>
@@ -63,7 +63,7 @@
 				<section>
 					<div class="search-title">
 						<h2><?php echo TEXT[5] ?></h2>
-						<div onclick="showFilter()">
+						<div onclick="toggleFilter()">
 							<?php echo TEXT[14] ?>
 						</div>
 					</div>
@@ -76,6 +76,37 @@
 					<img class="icon" src="/static/icon/plus.svg" alt="">
 					<?php echo TEXT[6] ?>
 				</a>
+				<section id="filter">
+					<div class="h2-title">
+						<h2><span><?php echo TEXT[14] ?></span></h2>
+						<div class="h2-title-icon" onclick="toggleFilter()">
+							<img class="icon" src="/static/icon/close.svg" alt="filter close icon">
+						</div>
+					</div>
+					<section>
+						<h2><?php echo TEXT[3] ?></h2>
+						<div class="box">
+							<form method="get" action="/">
+								<input type="hidden" name="search" value="<?php echo $search ?>">
+								<dl>
+									<dd>
+										<input type="checkbox" name="region" id="R0"
+											<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>
+											><label for="R0"><?php echo TEXT[4] ?></label>
+									</dd>
+									<?php foreach ($locations as $id => $regionName): ?>
+									<dd>
+										<input type="checkbox" name="region<?php echo $id ?>" id="R<?php echo $id ?>"
+										<?php if (in_array($id, $selectedRegions)) { echo 'checked'; } ?>
+										><label for="R<?php echo $id ?>"><?php echo $regionName ?></label>
+									</dd>
+									<?php endforeach ?>
+								</dl>
+								<input type="submit" class="button-main-new" value="<?php echo TEXT[7] ?>" >
+							</form>
+						</div>
+					</section>
+				</section>
 			<?php else: ?>
 				<div class="information">
 					<div class="information-emoji">

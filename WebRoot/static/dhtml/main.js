@@ -47,11 +47,7 @@ window.addEventListener("resize", () =>
 
 	// if Filter is present on DOM
 	if (filter) { 
-		if (window.innerWidth > 800) {
-			filter.style.visibility = "visible";
-		} else {
-			filter.style.visibility = "hidden";
-		}
+		filter.style.visibility = "hidden";
 	}
 })
 
@@ -95,10 +91,8 @@ function toggleNavbar()
 
 	if (filter && filter.style.visibility == "visible") 
 	{
-		icon.src = "/static/icon/menu.svg";
 		filter.style.visibility = "hidden";
 		body.overflow = "auto";
-		return;
 	}
 
 	if (navbar.visibility == "visible")

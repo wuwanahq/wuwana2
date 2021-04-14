@@ -113,100 +113,72 @@
 
 /* Filter Area */
 #filter {
-	position: sticky;
-	top: 64px;
-	will-change: visibility;
-}
-
-#filter h2 {
-	font-weight: 500;
-	margin-block-end: 8px;
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--background);
 }
 
 #filter .box {
 	padding: 16px;
+	margin-block-end: 40px;
 }
 
-/* The Description List Element */
-
-dt {
-	margin-block-end: 16px;
-	font-size: var(--l);
-	font-weight: 500;
+#filter h2 span {
+	display: block;
+	font-size: var(--xxl);
+	font-weight: 700;
+	margin-block-end: 24px;
 }
 
-dd {
-	margin-block-end: 8px;
+.h2-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
 }
 
-dd label {
-	font-weight: 400;
-	color:  var(--text-grey);
-	vertical-align: middle;
+.h2-title-icon {
+	padding: 6px 4px 2px;
+	border-radius: 50%;
 	cursor: pointer;
 }
 
-@media screen and (max-width: 800px)
-{
-	#filter {
-		visibility: hidden;
-		position: fixed;
-		top: 48px; left: 0;
-		z-index: 3;
-		height: calc(100vh - 48px);
-		padding: 16px;
-		background-color: var(--box-bkg);
-	}
+.h2-title-icon:hover {
+	background-color: var(--box-hover)
+}
 
-	#filter .box {
-		padding: 0;
-		border: none;
-	}
+dl {
+	margin-block-end: 40px;
+}
 
-	dl {
-		margin-block-end: 24px;
-	}
+dd {
+	display: inline-block;
+	transition: color 200ms, background-color 200ms;
+}
 
-	dd {
-		display: inline-block;
-		transition: color 200ms, background-color 200ms;
-	}
+dd input {
+	display: none;
+}
 
-	dd input {
-		display: none;
-	}
+dd label {
+	display: inline-block;
+	padding: 7px 8px 8px; /* To visually center the label */
+	color: var(--text-default);
+	font-size: var(--s);
+	line-height: 1;
+	font-weight: 400;
+	align-self: center;
+	border: solid 1px var(--border-default);
+	border-radius: 8px;
+	background-color: var(--box-bkg);
+}
 
-	dd label {
-		display: inline-block;
-		padding: 7px 8px 8px; /* To visually center the label */
-		color: var(--text-default);
-		line-height: 1;
-		font-weight: 400;
-		align-self: center;
-		border: solid 1px var(--black);
-		border-radius: 8px;
-		background-color: var(--white);
-	}
-
-	dl input:checked + label {
-		color: var(--white);
-		background-color: var(--black);
-	}
-
-	/* Filter submit button Mobile */
-	.button-filter {
-		padding: 7px 8px 8px 32px;
-		font-size: var(--m);
-		line-height: 1;
-		font-weight: 400;
-		border: solid 1px var(--black);
-		border-radius: 8px;
-		background-image: url(/static/icon/filter.svg);
-		background-size: 24px 24px;
-		background-position: left 4px center;
-		background-color: white;
-		background-repeat: no-repeat;
-	}
+dl input:checked + label {
+	color: var(--whiteoff);
+	background-color: var(--button-main-hover);
 }
 
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
