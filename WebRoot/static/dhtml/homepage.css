@@ -119,12 +119,13 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
+	z-index: 1;
 	background-color: var(--background);
+	overflow-y: scroll;
 }
 
 #filter .box {
 	padding: 16px;
-	margin-block-end: 40px;
 }
 
 #filter h2 span {
@@ -184,13 +185,20 @@ dl input:checked + label {
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
 @media screen and (max-width: 500px)
 {
-	.homepage-search {
-		margin-top: 80px;
+	#filter {
+		position: fixed;
+		z-index: 99; /* Magic number */
+		top: 0px;
+		padding: 16px;
 	}
+}
 
-	.homepage-search picture {
-		margin-bottom: 32px;
-	}
+
+@media screen and (max-width: 500px)
+{
+	.homepage-search { margin-top: 80px }
+
+	.homepage-search picture { margin-bottom: 32px }
 
 	/* Section Industry Suggestion */
 	.row {
@@ -202,4 +210,6 @@ dl input:checked + label {
 		width: 100%;
 		margin-block-end: 8px;
 	}
+
+	#filter { padding: 16px 8px }
 }

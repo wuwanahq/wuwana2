@@ -19,34 +19,6 @@
 	<div class="container">
 		<section class="column-left">
 			<?php include 'Templates/navbar homepage.php' ?>
-			<?php if ($companies['Counter'] > 0): ?>
-				<!-- <section class="sticky" id="filter">
-					<h2><?php echo TEXT[8] ?></h2>
-					<div class="box">
-					<form method="get" action="/">
-						<input type="hidden" name="search" value="<?php echo $search ?>">
-						<dl>
-							<dt><?php echo TEXT[3] ?></dt>
-							<dd>
-								<input type="checkbox" name="region" id="R0"
-									<?php if ($selectedRegions == []) { echo 'checked disabled'; } ?>
-									><label for="R0"><?php echo TEXT[4] ?></label>
-							</dd>
-							<?php foreach ($locations as $id => $regionName): ?>
-								<dd>
-									<input type="checkbox" name="region<?php echo $id ?>" id="R<?php echo $id ?>"
-									 <?php if (in_array($id, $selectedRegions)) { echo 'checked'; } ?>
-									  ><label for="R<?php echo $id ?>"><?php echo $regionName ?></label>
-								</dd>
-							<?php endforeach ?>
-						</dl>
-						<input type="submit"
-								class="button-filter mobile" 
-								value="<?php echo TEXT[7] ?>" >
-					</form>
-					</div>
-				</section> -->
-			<?php endif ?>
 		</section>
 		<main>
 			<h1>Search Results</h1>

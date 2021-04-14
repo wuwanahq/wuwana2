@@ -1,4 +1,4 @@
-<div id="navbar">
+<div id="navbar" class="sticky">
 	<section>
 		<div class="box greeting-box">
 			<div class="panel-ribbon">

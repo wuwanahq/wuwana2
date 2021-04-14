@@ -96,8 +96,6 @@ function toggleFilter()
 		body.overflow = "auto";
 		return;
 	}
-
 	filter.style.visibility = "visible";
 	body.overflow = "hidden";
 }
-

@@ -9,7 +9,7 @@ window.addEventListener("scroll", () => {
 	//https://usefulangle.com/post/113/javascript-detecting-element-visible-during-scroll
 	
 	var summary = document.querySelector("#mobile-summary").style;
-	var position = document.querySelector('.column-left').getBoundingClientRect(); 
+	var position = document.querySelector('#main-info').getBoundingClientRect(); 
 
 	if (position.bottom >= 0)
 	{
@@ -24,15 +24,16 @@ window.addEventListener("scroll", () => {
 })
 
 // Function for the edit panel
-function companyEdit() {
-	var panel = document.querySelector("#company-panel").style;
-	var edit = document.querySelector("#edit").style;
-
-	if (panel.display == "flex") {
-		panel.display = "none";
-		edit.display = "flex";
-		return
+function toggleEdit() {
+	var edit = document.querySelector("#edit");
+	var body = document.body.style;
+	
+	if (edit.style.visibility == "visible")
+	{
+		edit.style.visibility = "hidden";
+		body.overflow = "auto";
+		return;
 	}
-	panel.display = "flex";
-	edit.display = "none";
+	edit.style.visibility = "visible";
+	body.overflow = "hidden";
 }

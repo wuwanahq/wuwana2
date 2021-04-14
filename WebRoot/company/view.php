@@ -27,30 +27,41 @@
 	</div>
 	<div class="container">
 		<section class="column-left">
-			<div class="company-sticky">
-				<div id="company-panel" style="display: flex;">
-					<section class="company-about">
-						<img class="logo-main"
+			<?php include 'Templates/navbar homepage.php' ?>
+		</section>
+		<main>	
+			<h1><?php echo $company->name ?></h1>
+			<?php include 'Templates/search.php' ?>
+			<section>
+				<div class="section-title">
+					<h2>Basic Information</h2>	
+					<?php if (isset($user) && $user->isAdmin()): ?>
+						<div onclick="toggleEdit()"><?php echo TEXT[10] ?></div>
+					<?php endif ?>
+				</div>
+				<div class="box" id="main-info">
+					<section class="card">
+						<div class="logo-main">
+							<img class="logo-main"
 							src="<?php echo $company->logo ?>"
 							alt="<?php echo $company->name ?> logo">
-						<div class="company-about-text">
-							<h1> <?php echo $company->name ?> </h1>
+						</div>
+						<div class="company-card-info">
+							<h3><?php echo $company->name ?></h3>
 							<ul>
 								<li>
 									<?php echo implode('</li><li>', $company->tags) ?>
 								</li>
 							</ul>
-							<div class="button-icon-small margin-t16">
+							<div class="button-icon-small">
 								<img src="/static/icon/tiny/map.svg" alt="">
 								<?php echo $company->region ?>
 							</div>
 						</div>
 					</section>
 					<hr>
-					<section class="company-description">
-						<h3>
-							<?php printf(TEXT[6], $company->name) ?>
-						</h3>
+					<section class="company-about">
+						<h3><?php printf(TEXT[6], $company->name) ?></h3>
 						<p> <?php echo $company->description ?>  </p>
 					</section>
 					<ul class="ul-list">
@@ -86,7 +97,7 @@
 									href="https://wa.me/<?php
 								echo $company->phone, '?text='; printf(TEXT[8], $company->name) ?>"
 									rel="noopener">
-									<img class="icon" src="/static/icon/gray/whatsapp.svg" alt="">
+									<img class="icon" src="/static/icon/whatsapp.svg" alt="">
 									<div>
 										Whatsapp
 										<img src="/static/icon/gray/open-in-new.svg" alt="">
@@ -97,7 +108,7 @@
 						<?php if (!empty($company->email)): ?>
 							<li>
 								<a href="mailto:<?php echo $company->email ?>">
-									<img class="icon" src="/static/icon/gray/email.svg" alt="">
+									<img class="icon" src="/static/icon/email.svg" alt="">
 									<div>
 										Email
 										<img src="/static/icon/gray/open-in-new.svg" alt="">
@@ -106,26 +117,11 @@
 							</li>
 						<?php endif ?>
 					</ul>
-					<?php if (isset($user) && $user->isAdmin()): ?>
-					<a onclick="companyEdit()">
-						<div class="icon-label-h">
-							<img src="/static/icon/gray/edit.svg" alt="">
-							<?php echo TEXT[10] ?>
-						</div>
-					</a>
-					<?php endif ?>
 				</div>
-				<?php if (isset($user) && $user->isAdmin())
-				{
-					include 'company/edit.php';
-				}
-				?>
 				<div class="last-updated">
 					<?php echo TEXT[9], ' ', $language->formatDate($company->lastUpdate) ?>
 				</div>
-			</div>
-		</section>
-		<main>
+			</section>
 			<?php if (isset($company->instagram)): ?>
 				<section class="instagram">
 					<div class="section-title">
@@ -133,8 +129,7 @@
 						<a href="<?php echo $company->instagram->getPageURL() ?>" target="_blank" rel="noopener">
 							<?php echo TEXT[5] ?>
 						</a>
-					</div>
-					
+					</div>		
 					<div class="box">
 						<div class="instagram-info">
 							<h3>
@@ -201,11 +196,19 @@
 						</div></div>
 					</div>
 				</section>
+				<div class="last-updated">
+					<?php echo TEXT[9], ' ', $language->formatDate($company->lastUpdate) ?>
+				</div>
 			<?php endif ?>
 			<div class="button-main-new icon-button" onclick="goBack()">
 				<img class="icon" src="/static/icon/arrow-circle-left.svg" alt="">
 				<?php echo TEXT[4] ?>
 			</div>
+			<?php if (isset($user) && $user->isAdmin())
+				{
+					include 'company/edit.php';
+				}
+			?>
 		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>

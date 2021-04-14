@@ -1,186 +1,75 @@
 /* CSS for the company profile page */
 
-.company-sticky {
-	position: sticky;
-	top: 64px;
-}
-
-/* Box Panel */
-/* companyPanel Sections */
-#company-panel {
+/* Basic Information */
+main .card {
 	display: flex;
-	flex-direction: column;
-	position: relative;
-	overflow: hidden;
-	width: auto;
-	min-height: 20px;
-	margin-bottom: 24px;
-	border-radius: 8px;
-	background-color: var(--box-bkg);
-	border: 1px solid var(--border-grey);
+	flex-direction: row;
 }
 
-#company-panel section {
-	padding-block-start: 16px;
-	padding-block-end: 16px;
-	width: auto;
-}
+main .card:hover { background-color: transparent }
 
-#company-panel h1 {
+.company-about { padding: 8px 16px }
+
+.company-about h3 {
 	margin-block-end: 8px;
-	font-size: var(--xl);
-	font-weight: 500;
-	line-height: 1;
-	text-align: center;
-	text-transform: capitalize;
-}
-
-#company-panel h3,
-#company-panel p {
-	margin-inline-start: 16px;
-	margin-inline-end: 16px;
-	margin-block-end: 8px;
-}
-
-#company-panel h3 {
 	font-size: var(--l);
 	font-weight: 500;
-	text-transform: capitalize;
 }
 
-#company-panel p {
-	max-width: 40ch;
-	color: var(--text-grey);
-	line-height: 1.5;
-	text-align: left;
-}
-
-.company-about {
-	padding: 16px;
-	align-items: center
-}
-
-.company-about .company-about-text {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-}
-
-.company-about .logo-main {
+.company-about p { 
 	margin-block-end: 8px;
-	width: 88px;
-	min-width: 88px;
-	height: 88px;
-	border-radius: 8px;
-	border: 1px solid var(--border-grey);
-	overflow: hidden;
-}
-
-.company-about li {
-	display: inline-flex;
-	margin-inline-end: 16px;
 	color: var(--text-grey);
-	font-size: var(--s);
-}
-
-.company-about li:last-child {
-	margin-inline-end: 0;
-}
-
-.company-contact .icon-label-h {
-	padding: 4px 16px;
-	color: var(--text-grey);
-}
-
-.icon-label-h {
-	padding: 8px 16px;
-	color: var(--text-default);
-	cursor: pointer;
 }
 
 /* Edit */
 #edit {
-	display: none;
-	flex-direction: column;
-	position: relative;
-	overflow: hidden;
-	width: auto;
-	min-height: 20px;
-	margin-bottom: 24px;
-	border-radius: 8px;
-	background-color: var(--box-bkg);
-	border: 1px solid var(--border-grey);
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	background-color: var(--background);
+	overflow-y: scroll;
 }
 
-.edit {
+#edit .box {
 	padding: 16px;
 }
 
-.edit hr {
-	margin-bottom: 8px;
+#edit h2 span {
+	display: block;
+	font-size: var(--xxl);
+	font-weight: 700;
+	margin-block-end: 24px;
 }
 
-.edit h2 {
-	margin-block-end: 16px;
+.h2-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
 }
 
-.edit .button-main {
-	align-self: flex-start;
+.h2-title-icon {
+	padding: 6px 4px 2px;
+	border-radius: 50%;
+	cursor: pointer;
 }
 
-.edit input[type=text],
-.edit input[type=url],
-.edit input[type=email] {
-	font-size: var(--m);
-}
-
-.edit textarea {
-	height: 80px; /* Magic number */
-	font-size: var(--m);
-	line-height: 1.5;
-}
-
-.edit details summary {
-	font-size: var(--l);
-	font-weight: 500;
+.h2-title-icon:hover {
+	background-color: var(--box-hover)
 }
 
 /* Last updated */
 .last-updated {
-	margin-block-start: -16px;
-	margin-block-end: 24px;
+	margin-block-start: -32px;
+	margin-block-end: 40px;
 	color: var(--grey500);
 	font-size: var(--s);
 }
 
-main h2 {
-	text-transform: capitalize;
-}
-
-.section-title {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-@media (hover: hover) {
-	.section-title a:hover {
-		text-decoration: underline;
-	}
-}
-
 /* Instagram Card */
-.instagram .button-icon {
-	z-index: 1;
-	position: absolute;
-	right: 24px;
-	bottom: 24px;
-	color: var(--text-default);
-}
-
 .instagram-info {
 	margin: 16px;
 }
@@ -263,38 +152,17 @@ main h2 {
 /* LAYOUT CHANGES FOR TABLET DEVICES */
 @media screen and (max-width: 800px)
 {
-	.header-bar {
-		position: relative;
-	}
+	header { position: relative }
 
-	.company-sticky {
-		position: static;
-	}
-
-	/* Company Panel */
-	.company-about {
-		flex-direction: row;
-		padding: 16px;
-		align-items: flex-start;
-	}
-
-	.company-about .logo-main {
-		margin-block-end: 0;
-		margin-inline-end: 16px;
-	}
-
-	.company-about .company-about-text {
-		align-items: flex-start;
-	}
-
-	#company-panel .company-about h1 {
-		margin-block-end: 4px;
-		text-align: start;
-	}
-
-	Instagram
 	#ig-external-url {
 		max-width: 98%; /* for devices where min() doesn't work*/
+	}
+
+	#edit {
+		position: fixed;
+		z-index: 99; /* Magic number */
+		top: 0px;
+		padding: 16px;
 	}
 
 	/* Company Summary */
@@ -341,8 +209,8 @@ main h2 {
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
 @media screen and (max-width: 500px)
 {
-	.mobile-summary { 
-		padding: 8px;
-	}
+	.mobile-summary { padding: 8px }
+
+	#edit { padding: 16px 8px }
 }
 
