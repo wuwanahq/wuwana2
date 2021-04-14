@@ -81,9 +81,11 @@
 		--text-inverse: var(--black);
 		--text-grey: var(--grey200);
 		--text-link: var(--azure500);
-	 }
+	}
 
-	 img { filter: brightness(.8) }
+	img { filter: brightness(.8) }
+
+	.icon { filter: invert(.8) }
  }
 
 /* GENERAL BODY */
@@ -151,6 +153,12 @@ dd {
 	word-break: break-word;
 	list-style: none;
 	color: var(--text-default);
+}
+
+h2 {
+	font-size: var(--xl);
+	font-weight: 500;
+	margin-block-end: 8px;
 }
 
 a,
@@ -360,10 +368,55 @@ main {
 	right: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
-	.ul-list a img { 
-		filter: brightness(140%); /* Magic number */
-	}
+.details-list {
+	/* Class for <details> tag */
+
+}
+
+.details-list summary {
+	margin-block-end: 0; /* temporal solution */
+}
+
+.details-list summary div {
+	/* Meed this div to make the layout */
+	display: flex;
+	align-items: center;
+	min-height: 40px;
+	padding-inline-start: 16px;
+	color: var(--text-default);
+}
+
+.details-list summary div div {
+	position: relative;
+	width: 100%;
+	margin-inline-start: 16px;
+	padding-inline-start: 0;
+}
+
+.details-list summary div div img {
+	position: absolute;
+	right: 8px;
+}
+
+.details-list li {
+	display: flex;
+	align-items: center;
+	min-height: 40px;
+	border-bottom: solid 1px var(--border-grey);
+}
+
+.details-list li:first-child { border-top: solid 1px var(--border-grey); }
+
+.details-list li:last-child { border-bottom: none }
+
+.details-list li a { 
+	margin-inline-start: 56px; /* 16px + 24px + 16px */
+	color: var(--text-grey);
+}
+
+.details-list summary:hover,
+.details-list li:hover {
+	background-color: var(--box-hover);
 }
 
 
@@ -696,12 +749,17 @@ main {
 	object-fit: cover;
 }
 
-.navbar-box section {
-	padding: 8px 0;
+.navbar-box section h2 {
+	margin-inline-start: 16px;
+	margin-inline-end: 16px;
+	margin-block-start: 12px;
+	margin-block-end: 12px;
 }
 
-.navbar-box h2,
-.navbar-box h3,
+.navbar-box h3 {
+	margin: 40px 16px 8px;
+}
+
 .navbar-box p {
 	margin-inline-start: 16px;
 	margin-inline-end: 16px;

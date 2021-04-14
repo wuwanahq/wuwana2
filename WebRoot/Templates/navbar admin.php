@@ -19,7 +19,7 @@
 				<ul class="ul-list">
 					<li>
 						<a href="/">
-							<img src="/static/icon/gray/home.svg" alt="">
+							<img class="icon" src="/static/icon/home.svg" alt="">
 							<div>
 								<?php echo TEMP_TEXT[11] ?>
 								<img src="/static/icon/gray/chevron-right.svg" alt="">
@@ -28,7 +28,7 @@
 					</li>
 					<li>
 						<a href="/?logout">
-							<img src="/static/icon/gray/close.svg" alt="">
+							<img class="icon" src="/static/icon/close.svg" alt="">
 							<div>
 								<?php echo TEMP_TEXT[12] ?>
 								<img src="/static/icon/gray/chevron-right.svg" alt="">
@@ -43,7 +43,7 @@
 				<?php foreach ($sections as $sectionURL => $section): ?>
 					<li>
 						<a href="<?php echo $sectionURL; ?>">
-							<img src="/static/icon/gray/<?php echo $section[1] ?>" alt="">
+							<img class="icon" src="/static/icon/<?php echo $section[1] ?>" alt="">
 							<div>
 								<?php echo $section[0] ?>
 								<img src="/static/icon/gray/chevron-right.svg" alt="">

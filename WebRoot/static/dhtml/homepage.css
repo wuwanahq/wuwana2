@@ -128,7 +128,6 @@
 .search-title {
 	display: flex;
 	justify-content: space-between;
-	margin-block-end: 8px
 }
 
 .search-title h2 {

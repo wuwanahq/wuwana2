@@ -6,20 +6,10 @@ main h2 {
 }
 
 /* Admin Control Panel */
-.navbar-box section { padding: 0; } /* Temporal solution */
-
-.navbar-box section h2 {
-	margin-block-start: 12px;
-	margin-block-end: 12px;
-}
 
 .navbar-box form {
 	margin-block-start: 24px;
 	margin-block-end: 24px;
-}
-
-.navbar-box h3 {
-	margin: 40px 16px 8px;
 }
 
 .navbar-box .button-main-new {
