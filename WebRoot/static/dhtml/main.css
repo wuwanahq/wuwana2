@@ -42,6 +42,7 @@
 	--white-bkg: var(--white);
 	--box-bkg: var(--box-light);
 	--box-hover: var(--grey100);
+	--alert-bkg: var(--red500);
 
 	--button-main: var(--white);
 	--button-main-hover: var(--black);
@@ -70,6 +71,7 @@
 		--white-bkg: var(--bkg-dark);
 		--box-bkg: var(--box-dark);
 		--box-hover: var(--box-hover-dark);
+		--alert-bkg: var(--red800);
 
 		--button-main: var(--box-dark);
 		--button-main-hover: var(--box-hover-dark);
@@ -159,6 +161,7 @@ h1 {
 	margin-block-end: 8px;
 	font-size: var(--xxl);
 	font-weight: 700;
+	text-transform: capitalize;
 }
 
 h2 {
@@ -449,6 +452,7 @@ aside {
 	position: absolute;
 	right: 8px;
 	background-color: var(--box-bkg); /* Prevent text showing behind */
+	filter: brightness(1); /* prevent dark more img filter */
 }
 
 @media (hover: hover) {

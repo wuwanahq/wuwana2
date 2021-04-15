@@ -152,7 +152,8 @@ main h2 {
 	flex-direction: row;
 	align-items: flex-start;
 	margin-block-end: 24px;
-	background-color: var(--red500);
+	background-color: var(--alert-bkg);
+	 /* to overwrite .box default border */
 	border: 1px solid var(--red800);
 }
 

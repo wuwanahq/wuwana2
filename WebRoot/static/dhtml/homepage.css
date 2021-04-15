@@ -1,5 +1,7 @@
 /* Style for the Homepage */
 
+h1 { text-transform: none;}
+
 /* Section Industry Suggestion */
 
 .section-suggestion .box {
