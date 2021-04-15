@@ -25,13 +25,6 @@ main h2 {
 	-webkit-appearance: none;
 }
 
-@media (hover: hover) {
-	.button-main-new:hover {
-		color: var(--button-main-text-hover);
-		background-color: var(--button-main-hover);
-	}
-}
-
 #version {
 	margin-block-start: -32px;
 	font-size: var(--s);
@@ -131,22 +124,14 @@ main h2 {
 /* ----- ADMIN TABS -----*/
 
 /* Company Tab */
-.box hr {
-	margin-block-end: 8px;
-}
+.box hr { margin-block-end: 8px; }
 
-.box input[type=submit] {
-	margin-block-start: 24px;
-}
+.box input[type=submit] { margin-block-start: 24px; }
 
 @media screen and (max-width: 800px) {
-	.box-table {
-		max-width: 100vh;
-	}
+	.box-table { max-width: 100vh; }
 
-	#version {
-		margin-inline-start: 16px;
-	}
+	#version { margin-inline-start: 16px; }
 }
 
 /* Setting Tab */
@@ -159,4 +144,25 @@ main h2 {
 	font-size: var(--s);
 	font-weight: 400;
 	color: var(--text-grey);
+}
+
+/* Database Tab */
+.alert {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	margin-block-end: 24px;
+	background-color: var(--red500);
+	border: 1px solid var(--red800);
+}
+
+.alert img {
+	filter: invert(1);
+	margin-inline-end: 8px;
+	margin-block-start: 2px; /* to visually align with <p> */
+}
+
+.alert p {
+	color: var(--white);
+	font-weight: 500;
 }

@@ -261,6 +261,42 @@ input::placeholder {
 	white-space: nowrap;
 }
 
+/* input type file */
+.input-file label {
+	display: block;
+	width: 100%;
+	margin-block-end: 24px;
+	color: var(--text-link);
+	cursor: pointer;
+}
+
+.input-file label span {
+	color: var(--text-default);
+	font-size: var(--xs);
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+input[type=file] {
+	margin-block-start: 8px;
+	width: 100%;
+	color: var(--text-default);
+	font-size: var(--s);
+	cursor: pointer;
+}
+
+/* To hide the arrow picker in input type=number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	/* Chrome, Safari, Edge, Opera */
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type=number] {
+	/* Firefox */
+	-moz-appearance: textfield;
+}
+
 /* Details and Summary */
 details summary {
 	margin-block-end: 16px;

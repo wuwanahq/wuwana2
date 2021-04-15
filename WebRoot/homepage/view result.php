@@ -88,43 +88,43 @@
 						<?php printf(TEXT[15], $search) ?>
 					</p>
 				</div>
-				<section class="ind">
-					<h2><?php echo TEXT[11] ?></h2>
-					<div class="box">
-						<div class="row">
-							<div class="suggestion">
-								<a href="<?php echo '/?search=' . TEXT[17] ?>">
-									<h3><?php echo TEXT[17] ?></h3>
-									<div class="text-background"></div>
-									<img src="/static/image/specialty-coffee.jpg">
-								</a>
-							</div>
-							<div class="suggestion">
-								<a href="<?php echo '/?search=' . TEXT[18] ?>">
-									<h3><?php echo TEXT[18] ?></h3>
-									<div class="text-background"></div>
-									<img src="/static/image/beer.jpg">
-								</a>
-							</div>
+				<section class="section-suggestion">
+				<h2><?php echo TEXT[11] ?></h2>
+				<div class="box">
+					<div class="row">
+						<div class="suggestion">
+							<a href="<?php echo '/?search=' . TEXT[17] ?>">
+								<h3><?php echo TEXT[17] ?></h3>
+								<div class="text-background"></div>
+								<img src="/static/image/specialty-coffee.jpg">
+							</a>
 						</div>
-						<div class="row">
-							<div class="suggestion">
-								<a href="<?php echo '/?search=' . TEXT[19] ?>">
-									<h3><?php echo TEXT[19] ?></h3>
-									<div class="text-background"></div>
-									<img src="/static/image/roaster.jpg">
-								</a>
-							</div>
-							<div class="suggestion">
-								<a href="<?php echo '/?search=' . TEXT[20] ?>">
-									<h3><?php echo TEXT[20] ?></h3>
-									<div class="text-background"></div>
-									<img src="/static/image/coffee-shop.jpg">
-								</a>
-							</div>
+						<div class="suggestion">
+							<a href="<?php echo '/?search=' . TEXT[18] ?>">
+								<h3><?php echo TEXT[18] ?></h3>
+								<div class="text-background"></div>
+								<img src="/static/image/beer.jpg">
+							</a>
 						</div>
 					</div>
-				</section>
+					<div class="row">
+						<div class="suggestion">
+							<a href="<?php echo '/?search=' . TEXT[19] ?>">
+								<h3><?php echo TEXT[19] ?></h3>
+								<div class="text-background"></div>
+								<img src="/static/image/roaster.jpg">
+							</a>
+						</div>
+						<div class="suggestion">
+							<a href="<?php echo '/?search=' . TEXT[20] ?>">
+								<h3><?php echo TEXT[20] ?></h3>
+								<div class="text-background"></div>
+								<img src="/static/image/coffee-shop.jpg">
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
 			<?php endif ?>
 		</main>
 	</div>
