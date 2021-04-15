@@ -159,7 +159,6 @@ h1 {
 	margin-block-end: 8px;
 	font-size: var(--xxl);
 	font-weight: 700;
-	text-transform: capitalize;
 }
 
 h2 {
@@ -345,6 +344,19 @@ aside {
 }
 
 /* Section Title */
+.h2-title {
+	/* Make h2 looks like h1 page title */
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.h2-title-icon {
+	padding: 6px 4px 2px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
 .section-title {
 	display: flex;
 	justify-content: space-between;
@@ -357,6 +369,8 @@ aside {
 }
 
 @media (hover: hover) {
+	.h2-title-icon:hover { background-color: var(--box-hover) }
+
 	.section-title a:hover,
 	.section-title div:hover {
 		text-decoration: underline;
@@ -371,6 +385,7 @@ aside {
 }
 
 .ul-list a {
+	position: relative;
 	display: flex;
 	align-items: center;
 	min-height: 40px;
@@ -378,13 +393,16 @@ aside {
 	color: var(--text-default);
 }
 .ul-list a div {
-	position: relative;
 	display: flex;
 	align-items: center;
-	margin-inline-start: 16px;
 	width: 100%;
 	min-height: 40px; /* Same as .navbar-box ul a */
+	margin-inline-start: 16px;
+	padding-inline-end: 40px;
 	border-bottom: solid 1px var(--border-grey);
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .ul-list li:last-child a div {
@@ -394,10 +412,14 @@ aside {
 .ul-list a div img {
 	position: absolute;
 	right: 8px;
+	background-color: var(--box-bkg); /* Prevent text showing behind */
 }
 
 @media (hover: hover) {
-	.ul-list li:hover { background-color: var(--box-hover); }
+	.ul-list li:hover,
+	.ul-list li:hover a div img { /* Prevent text showing behind */
+		background-color: var(--box-hover); 
+	}
 }
 
 
@@ -439,6 +461,7 @@ aside {
 
 .details-list li a { 
 	margin-inline-start: 56px; /* 16px + 24px + 16px */
+	width: 100%;
 	color: var(--text-grey);
 }
 
@@ -474,21 +497,24 @@ aside {
 
 /* ----- BOXES & CARDS ----- */
 
-.box { /* General box except for the panel of the left */
+.box {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	position: relative;
-	overflow: hidden;
-	width: auto;
-	margin-bottom: 40px;
-	border-radius: 8px;
-	background-color: var(--box-bkg);
+	width: 100%;
+	margin-block-end: 40px;
 	border: 1px solid var(--border-grey);
+	border-radius: 8px;
+	overflow: hidden;
+	background-color: var(--box-bkg);
 }
 
-.Aspect2-3 {
-	padding-top: 150%; /* aspect ratio 2:3 */
+.box-text { padding: 16px; }
+
+.box-aspect-2-3 {
+	/* aspect ratio 2:3 */
 	position: relative;
+	padding-top: 150%;
 }
 
 /* CARDS */
@@ -524,8 +550,11 @@ aside {
 /* Button Main */
 
 .button-main-new {
-	padding: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
+	padding: 8px;
 	color: var(--text-default);
 	font-size: var(--s);
 	border: solid 1px var(--border-grey);

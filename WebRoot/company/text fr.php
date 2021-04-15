@@ -11,4 +11,8 @@ const TEXT = [
 8 => "Bonjour %s, je vous ai trouvé sur wuwana.com et j'aimerais en savoir plus sur vous",
 9 => 'Dernière mise à jour :',
 10 => 'Modifier',
+11 => 'publications',
+12 => 'abonnés',
+13 => 'abonnements',
+14 => 'Informations de base',
 ];

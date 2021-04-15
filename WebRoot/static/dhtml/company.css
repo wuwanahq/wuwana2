@@ -45,22 +45,6 @@ main .card:hover { background-color: transparent }
 	margin-block-end: 24px;
 }
 
-.h2-title {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-}
-
-.h2-title-icon {
-	padding: 6px 4px 2px;
-	border-radius: 50%;
-	cursor: pointer;
-}
-
-.h2-title-icon:hover {
-	background-color: var(--box-hover)
-}
-
 /* Last updated */
 .last-updated {
 	margin-block-start: -32px;
@@ -69,61 +53,49 @@ main .card:hover { background-color: transparent }
 	font-size: var(--s);
 }
 
-/* Instagram Card */
-.instagram-info {
-	margin: 16px;
-}
-
-.instagram-info h3 {
-	margin-block-end: 8px;
-	font-size: var(--l);
+/* Instagram */
+.instagram .box-text h3 {
 	font-weight: 500;
+	margin-block-end: 8px;
 }
 
-.instagram-info p {
-	max-width: 40ch; /* temporal */
-	margin-block-end: 16px;
-	line-height: 1.5;
-}
-
-#ig-external-url {
-	display: inline-block;
-	max-width: min(40ch, 98%);
+.instagram .box-text a {
+	display: block;
+	max-width: min(60ch, 98%);
+	margin-block-start: 4px;
+	font-weight: 700;
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.instagram-info ul {
+.instagram .box-text ul {
 	display: flex;
+	margin-block-start: 24px;
 }
 
-.instagram-info li {
+.instagram .box-text li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	margin-inline-end: 24px;
+	font-weight: 700;
 }
 
-.instagram-info .number {
-	margin-block-end: 4px;
-	font-size: var(--l);
-	font-weight: 700;}
-
-.instagram-info .text {
-	font-size: var(--s)}
-
-.instagram-info a:hover {
-	text-decoration: underline;
+.instagram .box-text li span {
+	font-size: var(--s);
+	font-weight: 400;
 }
 
 .instagram-gallery {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: var(--box-bkg)
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .instagram-row {
@@ -154,9 +126,8 @@ main .card:hover { background-color: transparent }
 {
 	header { position: relative }
 
-	#ig-external-url {
-		max-width: 98%; /* for devices where min() doesn't work*/
-	}
+	.instagram .box-text a { max-width: 98%; }
+	/* for devices where min() doesn't work*/
 
 	#edit {
 		position: fixed;
@@ -199,7 +170,6 @@ main .card:hover { background-color: transparent }
 	}
 	
 	.mobile-summary h3 {
-		font-size: var(--l);
 		font-weight: 500;
 		margin-block-end: 8px;
 		text-transform: capitalize;

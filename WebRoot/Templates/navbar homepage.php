@@ -4,8 +4,8 @@
 			<div class="panel-ribbon">
 				<img src="/static/logo/ribbon.svg" alt="">
 			</div>
-			<section>
 			<?php if (isset($user) && $user->isLogin()): ?>
+			<section>
 				<h2><?php echo $_SESSION['Name'] ?></h2>
 				<ul class="ul-list">
 					<li>
@@ -26,7 +26,9 @@
 						</a>
 					</li>
 				</ul>
+			</section>
 			<?php elseif (filter_has_var(INPUT_GET, 'login')): ?>
+			<section>
 				<form method="post">
 					<div class="form-layout-column">
 						<label for="email"><?php echo TEMP_TEXT[16] ?></label>
@@ -38,11 +40,18 @@
 					</div>
 					<input class="button-main-new" type="submit" value="<?php echo TEMP_TEXT[18] ?>">
 				</form>
+			</section>
 			<?php else: ?>
+			<section>
 				<h2><?php echo TEMP_TEXT[10] ?></h2>
 				<p><?php echo TEMP_TEXT[8] ?></p>
-			<?php endif ?>
+				<a href="/" style="padding: 16px;">
+					<div class="button-main-new">
+						<?php echo TEMP_TEXT[11] ?>
+					</div>
+				</a> 
 			</section>
+			<?php endif ?>
 		</div>
 	</section>
 
@@ -70,7 +79,7 @@
 	</section>
 	
 	<section>
-		<h2>About Wuwana</h2>
+		<h2><?php echo TEMP_TEXT[4] ?></h2>
 		<div class="box" style="min-height: 80px;">
 			<a href="/wuwana" class="card">
 				<div class="logo-main">
@@ -79,7 +88,7 @@
 				<div class="company-card-info">
 					<h3>Wuwana</h3>
 					<ul>
-						<li>Online Directory</li>
+						<li><?php echo TEMP_TEXT[20] ?></li>
 					</ul>
 				</div>
 			</a>

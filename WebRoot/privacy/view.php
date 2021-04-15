@@ -22,7 +22,7 @@
 			<h1><?php echo TEXT[0] ?></h1>
 			<span><?php echo TEXT[1] . TEXT[23] ?></span>
 			<?php include 'Templates/search.php' ?>
-			<div class="box">
+			<div class="box box-text">
 				<section>
 					<!-- <h2><?php echo TEXT[25] ?></h2> -->
 					<p><?php echo TEXT[2] ?></p>

@@ -34,7 +34,7 @@
 			<?php include 'Templates/search.php' ?>
 			<section>
 				<div class="section-title">
-					<h2>Basic Information</h2>	
+					<h2><?php echo TEXT[14] ?></h2>	
 					<?php if (isset($user) && $user->isAdmin()): ?>
 						<div onclick="toggleEdit()"><?php echo TEXT[10] ?></div>
 					<?php endif ?>
@@ -131,69 +131,57 @@
 						</a>
 					</div>		
 					<div class="box">
-						<div class="instagram-info">
-							<h3>
-								<?php echo $company->instagram->profileName ?>
-							</h3>
-							<p>
-								<?php echo $company->instagram->getHtmlBiography() ?><br>
-								<a id="ig-external-url" href="<?php echo $company->instagram->externalLink ?>" target="_blank" rel="noopener">
+						<div class="box-text">
+							<h3><?php echo $company->instagram->profileName ?></h3>
+							<p><?php echo $company->instagram->getHtmlBiography() ?></p>
+							<?php if ($company->instagram->externalLink): ?>
+								<a href="<?php echo $company->instagram->externalLink ?>" target="_blank" rel="noopener">
 									<?php echo str_replace(['http://','https://'], '', $company->instagram->externalLink) ?>
 								</a>
-							</p>
+							<?php endif ?>
 							<ul>
 								<li>
-									<div class="item-label">
-										<span class="number">
-											<?php echo $language->formatShortNumber($company->instagram->nbPost) ?>
-										</span>
-										<span class="text">Posts</span>
-									</div>
+									<?php echo $language->formatShortNumber($company->instagram->nbPost) ?>
+									<span><?php echo TEXT[11] ?></span>
 								</li>
 								<li>
-									<div class="item-label">
-										<span class="number">
-											<?php echo $language->formatShortNumber($company->instagram->nbFollower) ?>
-										</span>
-										<span class="text">Followers</span>
-									</div>
+									<?php echo $language->formatShortNumber($company->instagram->nbFollower) ?>
+									<span><?php echo TEXT[12] ?></span>	
 								</li>
 								<li>
-									<div class="item-label">
-										<span class="number">
-											<?php echo $language->formatShortNumber($company->instagram->nbFollowing) ?>
-										</span>
-										<span class="text">Following</span>
-									</div>
+									<?php echo $language->formatShortNumber($company->instagram->nbFollowing) ?>
+									<span><?php echo TEXT[13] ?></span>
 								</li>
 							</ul>
 						</div>
-						<div class="Aspect2-3"><div class="instagram-gallery">
-							<div class="instagram-row">
-								<div class="instagram-picture">
-									<img src="<?php echo $company->instagram->pictures[0] ?>" >
+						<div class="box-aspect-2-3">
+							<div class="instagram-gallery">
+								<div class="instagram-row">
+									<div class="instagram-picture">
+										<img src="<?php echo $company->instagram->pictures[0] ?>" >
+									</div>
+									<div class="instagram-picture">
+										<img src="<?php echo $company->instagram->pictures[1] ?>" >
+									</div>
 								</div>
-								<div class="instagram-picture">
-									<img src="<?php echo $company->instagram->pictures[1] ?>" >
+								<div class="instagram-row">
+									<div class="instagram-picture">
+										<img src="<?php echo $company->instagram->pictures[2] ?>">
+									</div>
+									<div class="instagram-picture">
+										<img src="<?php echo $company->instagram->pictures[3] ?>">
+									</div>
+								</div>
+								<div class="instagram-row">
+									<div class="instagram-picture">
+										<img src="<?php echo $company->instagram->pictures[4] ?>">
+									</div>
+									<div class="instagram-picture">
+										<img src="<?php echo $company->instagram->pictures[5] ?>">
+									</div>
 								</div>
 							</div>
-							<div class="instagram-row">
-								<div class="instagram-picture">
-									<img src="<?php echo $company->instagram->pictures[2] ?>">
-								</div>
-								<div class="instagram-picture">
-									<img src="<?php echo $company->instagram->pictures[3] ?>">
-								</div>
-							</div>
-							<div class="instagram-row">
-								<div class="instagram-picture">
-									<img src="<?php echo $company->instagram->pictures[4] ?>">
-								</div>
-								<div class="instagram-picture">
-									<img src="<?php echo $company->instagram->pictures[5] ?>">
-								</div>
-							</div>
-						</div></div>
+						</div>
 					</div>
 				</section>
 				<div class="last-updated">
