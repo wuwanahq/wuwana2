@@ -1,14 +1,19 @@
 /* CSS for the Privacy Policy Page */
-
-main {
-	padding-inline-start: 8px;
-	padding-inline-end: 8px;
+main .box {
+	width: 100%;
+	padding: 16px;
 }
 
-main section {
+main .box section {
 	margin-block-end: 40px;
 	padding-block-end: 24px;
 	border-bottom: 1px solid var(--border-grey);
+}
+
+main .box section:last-child {
+	margin-block-end: 0;
+	padding-block-end: 0;
+	border: none;
 }
 
 main h3 {
