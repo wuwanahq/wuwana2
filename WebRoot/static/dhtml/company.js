@@ -23,6 +23,18 @@ window.addEventListener("scroll", () => {
 	}
 })
 
+window.addEventListener("resize", () => 
+{
+	var edit = document.querySelector("#edit");
+	var body = document.body.style;
+
+	if (edit)
+	{
+		edit.style.visibility = "hidden";
+		body.overflow = "auto";
+	}
+})
+
 // Function for the edit panel
 function toggleEdit() {
 	var edit = document.querySelector("#edit");

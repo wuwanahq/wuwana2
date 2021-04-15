@@ -20,80 +20,41 @@ function onLoad()
 
 window.addEventListener("resize", () => 
 {
+	var body = document.body.style;
+	var icon = document.getElementById("menu-icon");
 	var navbar = document.querySelector("#navbar").style;
 	var bkg = document.querySelector("#navbar-background").style;
-	var filter = document.getElementById("filter");
-
-	console.log('rezising');
+	
 	bkg.display = "none";
 	body.overflow = "auto";
-	// searchMobileClear(); //clear all search
 
 	if (window.innerWidth > 800) 
 	{
 		navbar.visibility = "visible";
 		navbar.transform = "translateX(0px)";
 	}
-	else if (window.innerWidth < 800 && window.innerWidth > 500) 
+	else 
 	{
 		navbar.visibility = "hidden";
+		navbar.transform = "translateX(-110vw)";
 		icon.src = "/static/icon/menu.svg";
-	}
-	else if (window.innerWidth < 500) 
-	{
-		navbar.visibility = "hidden";
-		icon.src = "/static/icon/menu.svg";
-	}
-
-	// if Filter is present on DOM
-	if (filter) { 
-		filter.style.visibility = "hidden";
 	}
 })
 
-window.addEventListener("scroll", function() {
-	backToTop(); //Back to top button
-});
-
 function changeHeaderIcon()
 {
-	if (icon.src == "/static/icon/close.svg") {
+	if (icon.src == "/static/icon/close.svg")
+	{
 		icon.src = "/static/icon/menu.svg";
-	} else {
-		icon.src = "/static/icon/close.svg"
-	}
+		return
+	} 
+	icon.src = "/static/icon/close.svg"
 }
 
 function toggleNavbar() 
 {
 	var navbar = document.querySelector("#navbar").style;
 	var bkg = document.querySelector("#navbar-background").style;
-	var filter = document.getElementById("filter");
-
-	if (url.includes('/admin'))
-	{
-		if (navbar.visibility == "visible")
-		{
-			navbar.visibility = "hidden";
-			navbar.transform = "translateX(-110vw)";
-			bkg.display = "none";
-			icon.src = "/static/icon/menu.svg";
-			body.overflow = "auto";
-			return;
-		}
-		navbar.visibility = "visible";
-		navbar.transform = "translatex(0)";
-		bkg.display = "block";
-		icon.src = "/static/icon/close.svg";
-		body.overflow = "hidden";
-		return;
-	}
-
-	if (filter && filter.style.visibility == "visible") 
-	{
-		filter.style.visibility = "hidden";
-		body.overflow = "auto";
-	}
 
 	if (navbar.visibility == "visible")
 	{

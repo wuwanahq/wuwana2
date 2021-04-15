@@ -84,6 +84,18 @@ function viewMoreCompanies(pageCount,selectedRegions)
 	xhr.send(form);
 }
 
+window.addEventListener("resize", () => 
+{
+	var filter = document.querySelector("#filter");
+	var body = document.body.style;
+
+	if (filter)
+	{
+		filter.style.visibility = "hidden";
+		body.overflow = "auto";
+	}
+})
+
 // Show filter
 function toggleFilter()
 {
