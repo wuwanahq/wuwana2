@@ -1,4 +1,5 @@
 <div id="edit">
+	<div class="edit-window">
 	<div class="h2-title">
 		<h2><span>Edit</span></h2>
 		<div class="h2-title-icon" onclick="toggleEdit()">
@@ -59,4 +60,5 @@
 			<input type="submit" class="button-main-new" value="Update">
 		</div>
 	</section>
+	</div>
 </div>

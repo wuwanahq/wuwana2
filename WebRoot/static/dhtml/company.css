@@ -29,9 +29,26 @@ main .card:hover { background-color: transparent }
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 1;
+	z-index: 10;
 	background-color: var(--background);
-	overflow-y: scroll;
+	overflow: auto;
+}
+
+.edit-window {
+	position: fixed;
+	top: 64px; /* header height + 16px top padding */
+	bottom: 0px;
+	/* Need this to set with same as <main> */
+	/*
+	 * .containter = 1200px 
+	 * <aside> = 280px + 24px margin-right
+	 * body padding = 16px + 16px
+	 */
+	max-width: calc(1200px - 280px - 24px);
+	width: calc(100vw - 280px - 24px - 32px);
+	height: auto;
+	background-color: var(--background);
+	overflow: auto;
 }
 
 #edit .box {
@@ -119,6 +136,7 @@ main .card:hover { background-color: transparent }
 
 .mobile-summary {
 	display: none;
+	transform: translateY(-100px)
 }
 
 /* LAYOUT CHANGES FOR TABLET DEVICES */
@@ -129,11 +147,10 @@ main .card:hover { background-color: transparent }
 	.instagram .box-text a { max-width: 98%; }
 	/* for devices where min() doesn't work*/
 
-	#edit {
-		position: fixed;
-		z-index: 99; /* Magic number */
-		top: 0px;
-		padding: 16px;
+	.edit-window { 
+		top: 0;
+		padding-block-start: 24px;
+		width: calc(100vw - 32px);
 	}
 
 	/* Company Summary */
@@ -181,6 +198,6 @@ main .card:hover { background-color: transparent }
 {
 	.mobile-summary { padding: 8px }
 
-	#edit { padding: 16px 8px }
+	.edit-window { width: calc(100vw - 16px); }
 }
 

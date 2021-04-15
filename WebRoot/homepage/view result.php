@@ -49,6 +49,9 @@
 					<?php echo TEXT[6] ?>
 				</a>
 				<section id="filter">
+					<div class="filter-window">
+
+					
 					<div class="h2-title">
 						<h2><span><?php echo TEXT[14] ?></span></h2>
 						<div class="h2-title-icon" onclick="toggleFilter()">
@@ -78,6 +81,7 @@
 							</form>
 						</div>
 					</section>
+					</div>
 				</section>
 			<?php else: ?>
 				<div class="information">

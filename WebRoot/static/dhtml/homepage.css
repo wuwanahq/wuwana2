@@ -95,6 +95,22 @@ h1 { text-transform: none;}
 	bottom: 0;
 	z-index: 1;
 	background-color: var(--background);
+	overflow: hidden;
+}
+
+.filter-window {
+	position: fixed;
+	top: 64px; /* header height + 16px top padding */
+	bottom: 0px;
+	/* Need this to set with same as <main> */
+	/*
+	 * .containter = 1200px 
+	 * <aside> = 280px + 24px margin-right
+	 * body padding = 16px + 16px
+	 */
+	max-width: calc(1200px - 280px - 24px);
+	width: calc(100vw - 280px - 24px - 32px);
+	background-color: var(--background);
 	overflow-y: scroll;
 }
 
@@ -143,12 +159,7 @@ dl input:checked + label {
 /* LAYOUT CHANGES FOR MOBILE DEVICES */
 @media screen and (max-width: 500px)
 {
-	#filter {
-		position: fixed;
-		z-index: 99; /* Magic number */
-		top: 0px;
-		padding: 16px;
-	}
+	.filter-window { width: calc(100vw - 32px); }
 }
 
 
@@ -169,5 +180,5 @@ dl input:checked + label {
 		margin-block-end: 8px;
 	}
 
-	#filter { padding: 16px 8px }
+	.filter-window { width: calc(100vw - 16px); }
 }
