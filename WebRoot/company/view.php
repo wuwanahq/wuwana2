@@ -26,9 +26,9 @@
 		</div>
 	</div>
 	<div class="container">
-		<section class="column-left">
+		<aside>
 			<?php include 'Templates/navbar homepage.php' ?>
-		</section>
+		</aside>
 		<main>	
 			<h1><?php echo $company->name ?></h1>
 			<?php include 'Templates/search.php' ?>

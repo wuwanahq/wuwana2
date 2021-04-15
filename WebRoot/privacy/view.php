@@ -14,43 +14,51 @@
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
-	<div class="privacy-wrapper">
-		<section id="privacy-intro">
+	<div class="container">
+		<aside>
+			<?php include 'Templates/navbar homepage.php' ?>
+		</aside>
+		<main>
 			<h1><?php echo TEXT[0] ?></h1>
 			<span><?php echo TEXT[1] . TEXT[23] ?></span>
-			<p><?php echo TEXT[2] ?></p>
-			<p><?php echo TEXT[3] ?></p>
-			<p><?php echo TEXT[4] ?></p>
-		</section>
-		<hr>
-		<section id="privacy-unique">
-			<h2><?php echo TEXT[5] ?></h2>
-			<p><?php echo TEXT[6] ?></p>
-			<p><?php echo TEXT[7] ?></p>
-			<p><?php echo TEXT[8] ?></p>
-		</section>
-		<hr>
-		<section id="privacy-exceptions">
-			<h2><?php echo TEXT[9] ?></h2>
-			<h3><?php echo TEXT[10] ?></h3>
-			<p><?php echo TEXT[11] ?></p>
-			<h3><?php echo TEXT[12] ?></h3>
-			<p><?php echo TEXT[13] ?></p>
-			<h3><?php echo TEXT[14] ?></h3>
-			<p><?php echo TEXT[15] ?></p>
-			<p><?php echo TEXT[16] ?></p>
-		</section>
-		<hr>
-		<section id="privacy-general">
-			<h3><?php echo TEXT[17] ?></h3>
-			<p><?php echo TEXT[18] ?></p>
-			<h3><?php echo TEXT[19] ?></h3>
-			<p><?php echo TEXT[20] ?></p>
-			<h3><?php echo TEXT[21] ?></h3>
-			<p><?php echo TEXT[22] ?></p>
-			<ol><li><?php echo TEXT[23] ?></li></ol>
-			<br>
-		</section>
+			<?php include 'Templates/search.php' ?>
+			<section>
+				<h2><?php echo TEXT[25] ?></h2>
+				<p><?php echo TEXT[2] ?></p>
+				<p><?php echo TEXT[3] ?></p>
+				<p><?php echo TEXT[4] ?></p>
+			</section>
+			<section>
+				<h2><?php echo TEXT[5] ?></h2>
+				<p><?php echo TEXT[6] ?></p>
+				<p><?php echo TEXT[7] ?></p>
+				<p><?php echo TEXT[8] ?></p>
+			</section>
+			<section>
+				<h2><?php echo TEXT[9] ?></h2>
+				<h3><?php echo TEXT[10] ?></h3>
+				<p><?php echo TEXT[11] ?></p>
+				<h3><?php echo TEXT[12] ?></h3>
+				<p><?php echo TEXT[13] ?></p>
+				<h3><?php echo TEXT[14] ?></h3>
+				<p><?php echo TEXT[15] ?></p>
+				<p><?php echo TEXT[16] ?></p>
+			</section>
+			<section>
+				<h3><?php echo TEXT[17] ?></h3>
+				<p><?php echo TEXT[18] ?></p>
+				<h3><?php echo TEXT[19] ?></h3>
+				<p><?php echo TEXT[20] ?></p>
+				<h3><?php echo TEXT[21] ?></h3>
+				<p><?php echo TEXT[22] ?></p>
+				<ul><li><?php echo TEXT[23] ?></li></ul>
+				<br>
+			</section>
+			<div class="button-main-new icon-button" onclick="goBack()">
+				<img class="icon" src="/static/icon/arrow-circle-left.svg" alt="">
+				<?php echo TEXT[24] ?>
+			</div>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>

@@ -11,9 +11,9 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<section class="column-left">
+		<aside>
 			<?php include 'Templates/navbar admin.php' ?>
-		</section>
+		</aside>
 		<main>
 			<?php if(!$user->isAdmin()): ?>
 				<div class="information-error-box">

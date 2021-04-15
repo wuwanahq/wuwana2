@@ -326,15 +326,6 @@ details summary:focus {
 	margin-bottom: 24px;
 }
 
-.column-left {
-	position: static;
-	min-width: 280px;
-	max-width: 280px;
-	height: auto;
-	margin-right: 24px;
-	align-self: stretch;
-}
-
 main {
 	position: relative;
 	display: flex;
@@ -342,6 +333,15 @@ main {
 	align-items: flex-start;
 	width: 100%;
 	height: auto;
+}
+
+aside {
+	position: static;
+	min-width: 280px;
+	max-width: 280px;
+	height: auto;
+	margin-right: 24px;
+	align-self: stretch;
 }
 
 /* Section Title */
@@ -370,10 +370,6 @@ main {
 	border-bottom: solid 1px var(--border-grey);
 }
 
-@media (hover: hover) {
-	.ul-list li:hover { background-color: var(--box-hover); }
-}
-
 .ul-list a {
 	display: flex;
 	align-items: center;
@@ -398,6 +394,10 @@ main {
 .ul-list a div img {
 	position: absolute;
 	right: 8px;
+}
+
+@media (hover: hover) {
+	.ul-list li:hover { background-color: var(--box-hover); }
 }
 
 
@@ -442,9 +442,11 @@ main {
 	color: var(--text-grey);
 }
 
-.details-list summary:hover,
-.details-list li:hover {
-	background-color: var(--box-hover);
+@media (hover: hover) {
+	.details-list summary:hover,
+	.details-list li:hover {
+		background-color: var(--box-hover);
+	}
 }
 
 
@@ -1175,7 +1177,7 @@ footer {
 	/* ----- CSS TO MAKE THE LAYOUT ----- */
 	.container { flex-direction: column }
 
-	.column-left { /* This makes the column to expand on the entire screen */
+	aside { /* This makes the column to expand on the entire screen */
 		min-width: 100%;
 		max-width: 100%;
 	}
