@@ -912,6 +912,15 @@ aside {
 	object-fit: cover;
 }
 
+.greeting-section-default div { 
+	margin: 8px 16px 16px;
+}
+
+.greeting-section-default a {
+	color: var(--text-default);
+	text-transform: uppercase;
+}
+
 /* HEADER */
 
 header {

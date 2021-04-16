@@ -42,14 +42,14 @@
 				</form>
 			</section>
 			<?php else: ?>
-			<section>
+			<section class="greeting-section-default">
 				<h2><?php echo TEMP_TEXT[10] ?></h2>
 				<p><?php echo TEMP_TEXT[8] ?></p>
-				<a href="/" style="padding: 16px;">
-					<div class="button-main-new">
+				<div>
+					<a class="button-main-new" href="/">
 						<?php echo TEMP_TEXT[11] ?>
-					</div>
-				</a> 
+					</a> 
+				</div>
 			</section>
 			<?php endif ?>
 		</div>
