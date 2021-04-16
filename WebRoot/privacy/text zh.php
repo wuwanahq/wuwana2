@@ -36,6 +36,6 @@ const TEXT = [
 // Remember to update the HTML number code (below H1)
 
 // Misc
-24 => "回去吧",
+// 24 => "回去吧",
 25 => "一般性",
 ];

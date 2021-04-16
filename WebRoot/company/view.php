@@ -61,8 +61,8 @@
 					</section>
 					<hr>
 					<section class="company-about">
-						<h3><?php printf(TEXT[6], $company->name) ?></h3>
-						<p> <?php echo $company->description ?>  </p>
+						<h3><?php echo TEXT[6] ?></h3>
+						<p><?php echo $company->description ?> </p>
 					</section>
 					<ul class="ul-list">
 						<?php if (!empty($company->website)): ?>
@@ -190,7 +190,7 @@
 			<?php endif ?>
 			<div class="button-main-new icon-button" onclick="goBack()">
 				<img class="icon" src="/static/icon/arrow-circle-left.svg" alt="">
-				<?php echo TEXT[4] ?>
+				<?php echo TEMP_TEXT[21] ?>
 			</div>
 			<?php if (isset($user) && $user->isAdmin())
 				{

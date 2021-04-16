@@ -15,7 +15,7 @@
 			<h1>404</h1>
 			<?php include 'Templates/search.php' ?>
 			<section>
-				<h2>What is 404?</h2>
+				<h2><?php echo TEXT[4] ?></h2>
 				<div class="box error">
 					<img src="/static/image/schemekle.jpg" alt="a picture of Schemekle, Wuwana's mascot, looking goofy">
 					<p><?php echo TEXT[1] ?></p>
@@ -29,9 +29,10 @@
 				</div>
 			</section>
 			<?php endif ?>
-			<a class="button-main-new icon-button" href="/">
-				<img class="icon" src="/static/icon/home.svg" alt=""><?php echo TEXT[3] ?>
-			</a>
+			<div class="button-main-new icon-button" onclick="goBack()">
+				<img class="icon" src="/static/icon/arrow-circle-left.svg" alt="">
+				<?php echo TEMP_TEXT[21] ?>
+			</div>
 		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>

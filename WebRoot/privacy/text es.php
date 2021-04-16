@@ -36,6 +36,6 @@ const TEXT = [
 // Remember to update the HTML number code (below H1)
 
 // Misc
-24 => "Volver",
+// 24 => "Volver",
 25 => "General",
 ];

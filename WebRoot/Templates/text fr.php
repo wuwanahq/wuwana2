@@ -21,4 +21,5 @@ const TEMP_TEXT = [
 18 => 'Login',
 19 => 'Langue du site web',
 20 => 'Annuaire',
+21 => 'Page précédente',
 ];
