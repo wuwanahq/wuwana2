@@ -13,7 +13,7 @@
 		<aside>
 			<?php include 'Templates/navbar admin.php' ?>
 		</aside>
-		<main>
+		<main class="page-admin-database">
 			<?php if(!$user->isAdmin()): ?>
 				<div class="information-error-box">
 					<div class="information-error-vertical"></div>
@@ -25,10 +25,10 @@
 			<section>
 				<h2>Export Tables</h2>
 				<div class="box box-text">
-					<a href="?export=UserAccount">Download UserAccount.tsv</a><br>
-					<a href="?export=Company">Download Company.tsv</a><br>
-					<a href="?export=SocialMedia">Download SocialMedia.tsv</a><br>
-					<a href="?export=Image">Download Image.tsv</a><br>
+					<a href="?export=UserAccount">Download UserAccount.tsv</a>
+					<a href="?export=Company">Download Company.tsv</a>
+					<a href="?export=SocialMedia">Download SocialMedia.tsv</a>
+					<a href="?export=Image">Download Image.tsv</a>
 					<a href="?export=Tag">Download Tag.tsv</a>
 				</div>
 			</section>

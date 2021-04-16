@@ -39,14 +39,14 @@
 				<h2>🚨 <?php echo TEMP_TEXT[14] ?> 🚨</h2>
 				<p><?php echo TEMP_TEXT[15] ?></p>
 				<form method="post">
-					<div class="form-layout-column">
-						<label for="email"><?php echo TEMP_TEXT[16] ?></label>
+					<label for="email">
+						<?php echo TEMP_TEXT[16] ?>
 						<input id="email" type="email" name="email">
-					</div>
-					<div class="form-layout-column">
-						<label for="code"><?php echo TEMP_TEXT[17] ?></label>
+					</label>
+					<label for="code">
+						<?php echo TEMP_TEXT[17] ?>
 						<input id="code" type="text" name="code" inputmode="tel" autocomplete="off">
-					</div>
+					</label>
 					<input class="button-main-new" type="submit" value="<?php echo TEMP_TEXT[18] ?>">
 				</form>
 			<?php endif ?>

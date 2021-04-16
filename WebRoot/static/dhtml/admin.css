@@ -6,23 +6,20 @@ main h2 {
 }
 
 /* Admin Control Panel */
-
-.navbar-box form {
-	margin-block-start: 24px;
-	margin-block-end: 24px;
+#navbar form {
+	margin: 0;
+	padding: 16px;
 }
 
-.navbar-box .button-main-new {
-	padding: 8px;
-	width: 100%;
-	color: var(--text-default);
+#navbar label {
+	max-width: 40ch;
+	color: var(--text-grey);
 	font-size: var(--s);
-	border: solid 1px var(--border-default);
-	border-radius: 8px;
-	background-color: var(--button-main);
-	white-space: nowrap;
-	cursor: pointer;
-	-webkit-appearance: none;
+}
+
+#navbar label input {
+	margin-block-start: 4px;
+	margin-block-end: 16px;
 }
 
 #version {
@@ -126,7 +123,7 @@ main h2 {
 /* Company Tab */
 .box hr { margin-block-end: 8px; }
 
-.box input[type=submit] { margin-block-start: 24px; }
+.page-admin-companies .box input[type=submit] { margin-block-start: 24px; }
 
 @media screen and (max-width: 800px) {
 	.box-table { max-width: 100vh; }
@@ -147,6 +144,13 @@ main h2 {
 }
 
 /* Database Tab */
+.page-admin-database a {
+	display: block;
+	margin-block-end: 16px;
+}
+
+.page-admin-database a:last-child { margin-block-end: 0; }
+
 .alert {
 	display: flex;
 	flex-direction: row;

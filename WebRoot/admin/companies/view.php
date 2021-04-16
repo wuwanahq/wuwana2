@@ -14,7 +14,7 @@
 		<aside>
 			<?php include 'Templates/navbar admin.php' ?>
 		</aside>
-		<main>
+		<main class="page-admin-companies">
 			<?php if(!$user->isAdmin()): ?>
 				<div class="information-error-box">
 					<div class="information-error-vertical"></div>
