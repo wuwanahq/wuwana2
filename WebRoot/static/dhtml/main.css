@@ -50,6 +50,7 @@
 
 	--border-default: var(--black);
 	--border-grey: var(--grey200);
+	--border-img: var(--grey50);
 
 	--text-default: var(--black);
 	--text-inverse: var(--white);
@@ -79,6 +80,7 @@
 
 		--border-default: var(--grey700);
 		--border-grey: var(--grey700);
+		--border-img: var(--grey700);
 
 		--text-default: var(--whiteoff);
 		--text-inverse: var(--black);
@@ -461,7 +463,7 @@ details summary:focus {
 /* Class for <ul> tag */
 .ul-list {
 	border-top: solid 1px var(--border-grey);
-	border-bottom: solid 1px var(--border-grey);
+	/* border-bottom: solid 1px var(--border-grey); */
 }
 
 .ul-list a {
@@ -817,7 +819,7 @@ input[type=search]::-webkit-search-results-decoration {
 	min-width: 88px;
 	height: 88px;
 	margin-inline-end: 16px;
-	border: 1px solid var(--border-grey);
+	border: 1px solid var(--border-img);
 	border-radius: 8px;
 	overflow: hidden;
 }

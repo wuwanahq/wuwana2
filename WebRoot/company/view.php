@@ -59,11 +59,13 @@
 							</div>
 						</div>
 					</section>
-					<hr>
-					<section class="company-about">
-						<h3><?php echo TEXT[6] ?></h3>
-						<p><?php echo $company->description ?></p>
-					</section>
+					<?php if ($company->description): ?>
+						<hr>
+						<section class="company-about">
+							<h3><?php echo TEXT[6] ?></h3>
+							<p><?php echo $company->description ?></p>
+						</section>
+					<?php endif ?>
 					<ul class="ul-list">
 						<?php if (!empty($company->website)): ?>
 							<li>

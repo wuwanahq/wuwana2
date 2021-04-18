@@ -177,7 +177,7 @@ main .card:hover { background-color: transparent }
 		min-height: 64px;
 		max-height: 64px;
 		margin-inline-end: 16px;
-		border: 1px solid var(--border-grey);
+		border: 1px solid var(--border-img);
 		border-radius: 8px;
 	}
 
