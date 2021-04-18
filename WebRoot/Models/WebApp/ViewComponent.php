@@ -31,7 +31,7 @@ class ViewComponent
 					<div class="company-card-info">
 						<h3>%s</h3>
 						<ul><li>%s</li></ul>
-						<div class="button-icon-small margin-t-auto">
+						<div class="button-icon-small">
 							<img src="/static/icon/tiny/map.svg" alt="">%s
 						</div>
 					</div>
@@ -41,15 +41,6 @@ class ViewComponent
 				$company->name,
 				implode('</li><li>', array_slice($company->tags, 0, 2)),
 				$company->region);
-
-			/*
-			<div class="company-card-info">
-				<h3>...</h3>
-				<ul class="tag-area">...</ul>
-				...
-			</div>
-			<div class="company-card-badge-wrapper"></div>
-			*/
 
 			$addHorizontalLine = true;
 		}

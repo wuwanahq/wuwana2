@@ -26,12 +26,11 @@
 				<h2>WebApp Settings</h2>
 				<div class="box pad-16">
 					<form method="post">
-						<div class="form-layout-row">
+						<label class="input-checkbox" for="cb">
 							<input id="cb" type="checkbox" name="ForceHTTPS" <?php echo $settings['ForceHTTPS'] == 'no' ? '' : 'checked' ?>>
-							<label for="cb">
-								Always redirect to HTTPS
-							</label>
-						</div>
+							Always redirect to HTTPS
+						</label>
+					
 						<div class="form-layout-column">
 							<label for="txt1">
 								Admin session lifetime (in min)

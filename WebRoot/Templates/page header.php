@@ -1,14 +1,5 @@
 <header>
 	<div class="header-container">
-		<!-- <?php if ($url == '/' || strpos($url, '/admin') !== false): ?>
-			<div class="header-icon" onclick="toggleNavbar()">
-				<img class="icon" id="menu-icon" src="/static/icon/menu.svg" alt="menu icon">
-			</div>
-		<?php else: ?>
-			<div class="header-icon" onclick="goBack()">
-				<img class="icon" src="/static/icon/arrow-circle-left.svg" alt="back arrow icon">
-			</div>
-		<?php endif ?> -->
 		<div class="header-icon" onclick="toggleNavbar()">
 			<img class="icon" id="menu-icon" src="/static/icon/menu.svg" alt="menu icon">
 		</div>
