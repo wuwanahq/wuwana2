@@ -68,6 +68,7 @@ main .card:hover { background-color: transparent }
 	margin-block-end: 40px;
 	color: var(--grey500);
 	font-size: var(--s);
+	text-transform: uppercase;
 }
 
 /* Instagram */

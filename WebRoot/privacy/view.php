@@ -57,7 +57,7 @@
 			</div>
 			<div class="button-main-new icon-button" onclick="goBack()">
 				<img class="icon" src="/static/icon/arrow-circle-left.svg" alt="">
-				<?php echo TEMP_TEXT[21] ?>
+				<?php echo TEXT[24] ?>
 			</div>
 		</main>
 	</div>

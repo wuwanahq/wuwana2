@@ -230,6 +230,7 @@ textarea {
 	color: var(--text-grey);
 	font-size: var(--s);
 	font-weight: 400;
+	cursor: pointer;
 }
 
 .input-checkbox input {

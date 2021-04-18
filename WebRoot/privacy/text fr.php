@@ -36,6 +36,6 @@ const TEXT = [
 // Remember to update the HTML number code (below H1)
 
 // Misc
-// 24 => "Page précédente",
+24 => "Page précédente",
 25 => "Général",
 ];
