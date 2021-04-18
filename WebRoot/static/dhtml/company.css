@@ -1,4 +1,20 @@
 /* CSS for the company profile page */
+main {
+	/*
+	 * To fix bug that occurs to some companies
+	 * .containter = 1200px 
+	 * <aside> = 280px + 24px margin-right
+	 * body padding = 16px + 16px
+	 */
+	 max-width: calc(1200px - 280px - 24px);
+	 width: calc(100vw - 280px - 24px - 32px);
+}
+
+@media screen and (max-width: 800px)
+{
+	main { width: 100%; }
+}
+
 
 /* Basic Information */
 main .card {

@@ -583,12 +583,13 @@ details summary:focus {
 	display: flex;
 	justify-content: flex-start;
 	align-content: flex-start;
-	padding: 16px;
+	padding: 12px 16px;
 	background-color: var(--box-bkg);
 	transition: background-color 200ms;
 }
 
-@media (hover: hover) { /* To eliminate hover effect on mobile */
+@media (hover: hover) {
+	/* To eliminate hover effect on mobile */
 	.card:hover { background-color: var(--box-hover) }
 }
 
