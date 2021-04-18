@@ -23,10 +23,10 @@
 		<main>
 			<h1>Search Results</h1>
 			<?php include 'Templates/search.php' ?>
-			<div class="box info-error-box">
-				<h2><?php echo TEXT[12] ?></h2>
-			</div>
 			<?php if ($companies['Counter'] > 0): ?>
+				<div class="box info-error-box">
+					<h2><?php echo TEXT[12] ?></h2>
+				</div>
 				<div class="box result-box">
 					<p><?php printf(TEXT[13], $companies['Counter']) ?></p>
 					<p><span><?php echo $search ?></span></p>

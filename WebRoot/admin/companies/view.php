@@ -16,8 +16,7 @@
 		</nav>
 		<main class="page-admin-companies">
 			<?php if(!$user->isAdmin()): ?>
-				<div class="information-error-box">
-					<div class="information-error-vertical"></div>
+				<div class="box info-error-box">
 					<h2>You are not logged in!</h2>
 				</div>
 			<?php else: ?>
