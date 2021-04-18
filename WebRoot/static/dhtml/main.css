@@ -203,11 +203,11 @@ section {
 }
 
 hr {
-	background-color: var(--border-grey);
+	height: 1px;
 	width: 100%;
 	margin: 0;
 	border: 0;
-	height: 1px;
+	background-color: var(--border-grey);
 }
 
 /* ----- INPUT CSS ----- */
@@ -265,6 +265,14 @@ input::placeholder {
 }
 
 /* input type file */
+input[type=file] {
+	margin-block-start: 8px;
+	width: 100%;
+	color: var(--text-default);
+	font-size: var(--s);
+	cursor: pointer;
+}
+
 .input-file label {
 	display: block;
 	width: 100%;
@@ -278,14 +286,6 @@ input::placeholder {
 	font-size: var(--xs);
 	font-weight: 700;
 	text-transform: uppercase;
-}
-
-input[type=file] {
-	margin-block-start: 8px;
-	width: 100%;
-	color: var(--text-default);
-	font-size: var(--s);
-	cursor: pointer;
 }
 
 /* To hide the arrow picker in input type=number */
@@ -303,14 +303,14 @@ input[type=number] {
 /* Details and Summary */
 details summary {
 	margin-block-end: 16px;
-	list-style: none; /* Remove details marker */
 	color: var(--text-default);
+	list-style: none; /* Remove details marker */
 }
 
 /* Remove details marker */
 details summary::before,
 details summary::-webkit-details-marker {
-	display:none;
+	display: none;
 }
 
 details:hover {
@@ -373,7 +373,7 @@ main {
 	height: auto;
 }
 
-aside {
+nav {
 	position: static;
 	min-width: 280px;
 	max-width: 280px;

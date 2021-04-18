@@ -15,9 +15,9 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<aside>
+		<nav>
 			<?php include 'Templates/navbar homepage.php' ?>
-		</aside>
+		</nav>
 		<main>
 			<h1><?php echo TEXT[21] ?></h1>
 			<?php include 'Templates/search.php' ?>

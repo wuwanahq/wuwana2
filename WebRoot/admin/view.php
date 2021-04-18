@@ -10,9 +10,9 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<aside>
+		<nav>
 			<?php include 'Templates/navbar admin.php' ?>
-		</aside>
+		</nav>
 		<main>
 			<?php if(!$user->isAdmin()): ?>
 				<div class="information-error-box">
