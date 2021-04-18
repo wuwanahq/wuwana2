@@ -11,16 +11,17 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<section class="column-left">
+		<nav>
 			<?php include 'Templates/navbar admin.php' ?>
-		</section>
-		<main>
+		</nav>
+		<main class="page-admin-companies">
 			<?php if(!$user->isAdmin()): ?>
-				<div class="information-error-box">
-					<div class="information-error-vertical"></div>
+				<div class="box info-error-box">
 					<h2>You are not logged in!</h2>
 				</div>
 			<?php else: ?>
+			<h1>Admin | Companies</h1>
+			<?php include 'Templates/search.php' ?>
 			<section>
 				<h2>Add new company</h2>
 				<div class="box pad-16" id="new-company">
@@ -98,7 +99,7 @@
 							</details>
 						</section>
 						<hr>
-						<input type="submit" id="button" value="Add company" class="button-main">
+						<input type="submit" id="button" value="Add company" class="button-main-new">
 					</form>
 				</div>
 			</section>

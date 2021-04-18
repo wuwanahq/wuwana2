@@ -13,52 +13,59 @@
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/homepage.css">
 </head>
 <body>
-	<main class="homepage-search">
-		<picture>
-			<source media="(max-width: 400px)" srcset="/static/logo/website.svg" alt="wuwana logo">
-			<source media="(min-width: 400px)" srcset="/static/logo/website-large.svg" alt="wuwana logo">
-			<img src="/static/logo/website.svg" alt="wuwana logo">
-		</picture>
-		<?php include 'Templates/search.php' ?>
-		<p><?php echo TEXT[9] ?></p>
-		<section class="ind">
-			<h2><?php echo TEXT[11] ?></h2>
-			<div class="box">
-				<div class="row">
-					<div class="suggestion">
-						<a href="<?php echo '/?search=' . TEXT[17] ?>">
-							<h3><?php echo TEXT[17] ?></h3>
-							<div class="text-background"></div>
-							<img src="/static/image/specialty-coffee.jpg">
-						</a>
+	<?php include 'Templates/page header.php' ?>
+	<div class="container">
+		<nav>
+			<?php include 'Templates/navbar homepage.php' ?>
+		</nav>
+		<main>
+			<h1><?php echo TEXT[21] ?></h1>
+			<?php include 'Templates/search.php' ?>
+			<section>
+				<h2><?php echo TEXT[22] ?></h2>
+				<div class="box box-text">
+					<p><?php echo TEXT[9] ?></p>
+				</div>
+			</section>
+			<section class="section-suggestion">
+				<h2><?php echo TEXT[11] ?></h2>
+				<div class="box">
+					<div class="row">
+						<div class="suggestion">
+							<a href="<?php echo '/?search=' . TEXT[17] ?>">
+								<h3><?php echo TEXT[17] ?></h3>
+								<div class="text-background"></div>
+								<img src="/static/image/specialty-coffee.jpg">
+							</a>
+						</div>
+						<div class="suggestion">
+							<a href="<?php echo '/?search=' . TEXT[18] ?>">
+								<h3><?php echo TEXT[18] ?></h3>
+								<div class="text-background"></div>
+								<img src="/static/image/beer.jpg">
+							</a>
+						</div>
 					</div>
-					<div class="suggestion">
-						<a href="<?php echo '/?search=' . TEXT[18] ?>">
-							<h3><?php echo TEXT[18] ?></h3>
-							<div class="text-background"></div>
-							<img src="/static/image/beer.jpg">
-						</a>
+					<div class="row">
+						<div class="suggestion">
+							<a href="<?php echo '/?search=' . TEXT[19] ?>">
+								<h3><?php echo TEXT[19] ?></h3>
+								<div class="text-background"></div>
+								<img src="/static/image/roaster.jpg">
+							</a>
+						</div>
+						<div class="suggestion">
+							<a href="<?php echo '/?search=' . TEXT[20] ?>">
+								<h3><?php echo TEXT[20] ?></h3>
+								<div class="text-background"></div>
+								<img src="/static/image/coffee-shop.jpg">
+							</a>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="suggestion">
-						<a href="<?php echo '/?search=' . TEXT[19] ?>">
-							<h3><?php echo TEXT[19] ?></h3>
-							<div class="text-background"></div>
-							<img src="/static/image/roaster.jpg">
-						</a>
-					</div>
-					<div class="suggestion">
-						<a href="<?php echo '/?search=' . TEXT[20] ?>">
-							<h3><?php echo TEXT[20] ?></h3>
-							<div class="text-background"></div>
-							<img src="/static/image/coffee-shop.jpg">
-						</a>
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
-	<?php include 'Templates/page footer.php' ?>
+			</section>
+		</main>
+	</div>
+	<?php include 'Templates/page footer.php' ?> 
 </body>
 </html>

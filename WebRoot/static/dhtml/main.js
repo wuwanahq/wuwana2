@@ -20,86 +20,41 @@ function onLoad()
 
 window.addEventListener("resize", () => 
 {
-	var navbar = document.querySelector(".navbar-box").style;
-	var bkg = document.querySelector(".navbar-background").style;
-	var filter = document.getElementById("filter");
-
-	console.log('rezising');
+	var body = document.body.style;
+	var icon = document.getElementById("menu-icon");
+	var navbar = document.querySelector("#navbar").style;
+	var bkg = document.querySelector("#navbar-background").style;
+	
 	bkg.display = "none";
 	body.overflow = "auto";
-	searchMobileClear(); //clear all search
 
 	if (window.innerWidth > 800) 
 	{
 		navbar.visibility = "visible";
 		navbar.transform = "translateX(0px)";
 	}
-	else if (window.innerWidth < 800 && window.innerWidth > 500) 
+	else 
 	{
 		navbar.visibility = "hidden";
+		navbar.transform = "translateX(-110vw)";
 		icon.src = "/static/icon/menu.svg";
-	}
-	else if (window.innerWidth < 500) 
-	{
-		navbar.visibility = "hidden";
-		icon.src = "/static/icon/menu.svg";
-	}
-
-	// if Filter is present on DOM
-	if (filter) { 
-		if (window.innerWidth > 800) {
-			filter.style.visibility = "visible";
-		} else {
-			filter.style.visibility = "hidden";
-		}
 	}
 })
 
-window.addEventListener("scroll", function() {
-	backToTop(); //Back to top button
-});
-
 function changeHeaderIcon()
 {
-	if (icon.src == "/static/icon/close.svg") {
+	if (icon.src == "/static/icon/close.svg")
+	{
 		icon.src = "/static/icon/menu.svg";
-	} else {
-		icon.src = "/static/icon/close.svg"
-	}
+		return
+	} 
+	icon.src = "/static/icon/close.svg"
 }
 
 function toggleNavbar() 
 {
-	var navbar = document.querySelector(".navbar-box").style;
-	var bkg = document.querySelector(".navbar-background").style;
-	var filter = document.getElementById("filter");
-
-	if (url.includes('/admin'))
-	{
-		if (navbar.visibility == "visible")
-		{
-			navbar.visibility = "hidden";
-			navbar.transform = "translateX(-110vw)";
-			bkg.display = "none";
-			icon.src = "/static/icon/menu.svg";
-			body.overflow = "auto";
-			return;
-		}
-		navbar.visibility = "visible";
-		navbar.transform = "translatex(0)";
-		bkg.display = "block";
-		icon.src = "/static/icon/close.svg";
-		body.overflow = "hidden";
-		return;
-	}
-
-	if (filter && filter.style.visibility == "visible") 
-	{
-		icon.src = "/static/icon/menu.svg";
-		filter.style.visibility = "hidden";
-		body.overflow = "auto";
-		return;
-	}
+	var navbar = document.querySelector("#navbar").style;
+	var bkg = document.querySelector("#navbar-background").style;
 
 	if (navbar.visibility == "visible")
 	{
@@ -117,62 +72,6 @@ function toggleNavbar()
 		icon.src = "/static/icon/close.svg";
 		body.overflow = "hidden";
 	}
-}
-
-/**
- * Functions for Search
- */
-
-var search = document.getElementById("search");
-var searchInput = document.getElementById("user-search");
-var searchSuggestion = document.getElementById("search-suggestion");
-var searchIcon = document.querySelectorAll("search-icon");
-
-searchInput.onkeyup = (e) => {
-	var userData = e.target.value; //user entered data
-	var emptyArray = [];
-	
-	if (userData) {
-		searchSuggestion.style.display = "block"; // Show suggestion box
-		showSuggestions(emptyArray);
-	}
-	else 
-	{
-		searchSuggestion.style.display = "none";
-	}
-}
-
-function showSuggestions(list){
-    var listData;
-	var userValue;
-
-    if(!list.length)
-	{
-        userValue = searchInput.value;
-        listData = '<a href="/?search=' + userValue + '"><li>'+ userValue +'</li></a><hr>';
-    }
-	else
-	{
-        listData = list.join('');
-    }
-    searchSuggestion.innerHTML = listData;
-}
-
-// Search Mobile
-function searchMobile() {
-	if (window.innerWidth < 500) {
-		search.classList.add("search-fixed");
-		body.overflow = "hidden";
-		body.position = "fixed";
-	}
-}
-
-function searchMobileClear() {
-	searchInput.value = ""; // clear input value
-	searchSuggestion.style.display = "none";
-	search.classList.remove("search-fixed");
-	body.overflow = "auto";
-	body.position = "relative";
 }
 
 /**
@@ -206,22 +105,22 @@ function replaceMultipleBrokenImgs()
  */
 
 // Back to top button
-function backToTop()
-{
-	var y = window.pageYOffset;
-	var toTop = document.getElementById("toTop").style;
+// function backToTop()
+// {
+// 	var y = window.pageYOffset;
+// 	var toTop = document.getElementById("toTop").style;
 
-	if (y > 1000)
-	{
-		toTop.opacity = 1;
- 		toTop.visibility = "visible";
-	} 
-	else 
-	{
-		toTop.opacity = 0;
-	 	toTop.visibility = "hidden";
-	}
-}
+// 	if (y > 1000)
+// 	{
+// 		toTop.opacity = 1;
+//  		toTop.visibility = "visible";
+// 	} 
+// 	else 
+// 	{
+// 		toTop.opacity = 0;
+// 	 	toTop.visibility = "hidden";
+// 	}
+// }
 
 // Go back to previous page
 function goBack()
@@ -272,3 +171,59 @@ function setDefault() {
 		body.overflow = "auto";
 	}
 }
+
+/**
+ * Functions for Search
+ */
+
+//  var search = document.getElementById("search");
+//  var searchInput = document.getElementById("user-search");
+//  var searchSuggestion = document.getElementById("search-suggestion");
+//  var searchIcon = document.querySelectorAll("search-icon");
+ 
+//  searchInput.onkeyup = (e) => {
+// 	 var userData = e.target.value; //user entered data
+// 	 var emptyArray = [];
+	 
+// 	 if (userData) {
+// 		 searchSuggestion.style.display = "block"; // Show suggestion box
+// 		 showSuggestions(emptyArray);
+// 	 }
+// 	 else 
+// 	 {
+// 		 searchSuggestion.style.display = "none";
+// 	 }
+//  }
+ 
+//  function showSuggestions(list){
+// 	 var listData;
+// 	 var userValue;
+ 
+// 	 if(!list.length)
+// 	 {
+// 		 userValue = searchInput.value;
+// 		 listData = '<a href="/?search=' + userValue + '"><li>'+ userValue +'</li></a><hr>';
+// 	 }
+// 	 else
+// 	 {
+// 		 listData = list.join('');
+// 	 }
+// 	 searchSuggestion.innerHTML = listData;
+//  }
+ 
+//  Search Mobile
+//  function searchMobile() {
+// 	 if (window.innerWidth < 500) {
+// 		 search.classList.add("search-fixed");
+// 		 body.overflow = "hidden";
+// 		 body.position = "fixed";
+// 	 }
+//  }
+ 
+//  function searchMobileClear() {
+// 	 searchInput.value = ""; // clear input value
+// 	 searchSuggestion.style.display = "none";
+// 	 search.classList.remove("search-fixed");
+// 	 body.overflow = "auto";
+// 	 body.position = "relative";
+//  }

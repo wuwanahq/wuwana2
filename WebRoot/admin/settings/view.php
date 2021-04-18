@@ -10,26 +10,26 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<section class="column-left">
+		<nav>
 			<?php include 'Templates/navbar admin.php' ?>
-		</section>
+		</nav>
 		<main>
 			<?php if(!$user->isAdmin()): ?>
-				<div class="information-error-box">
-					<div class="information-error-vertical"></div>
+				<div class="box info-error-box">
 					<h2>You are not logged in!</h2>
 				</div>
 			<?php else: ?>
+			<h1>Admin | Settings</h1>
+			<?php include 'Templates/search.php' ?>
 			<section>
 				<h2>WebApp Settings</h2>
 				<div class="box pad-16">
 					<form method="post">
-						<div class="form-layout-row">
+						<label class="input-checkbox" for="cb">
 							<input id="cb" type="checkbox" name="ForceHTTPS" <?php echo $settings['ForceHTTPS'] == 'no' ? '' : 'checked' ?>>
-							<label for="cb">
-								Always redirect to HTTPS
-							</label>
-						</div>
+							Always redirect to HTTPS
+						</label>
+					
 						<div class="form-layout-column">
 							<label for="txt1">
 								Admin session lifetime (in min)
@@ -77,7 +77,7 @@
 								?>
 							</select>
 						</div>
-						<input class="button-main" type="submit" value="Apply">
+						<input class="button-main-new" type="submit" value="Apply">
 					</form>
 				</div>
 			</section>

@@ -21,4 +21,6 @@ const TEXT = [
 18 => 'Beer',
 19 => 'Coffee roaster',
 20 => 'Coffee shop',
+21 => 'Home',
+22 => 'How to use this website?',
 ];

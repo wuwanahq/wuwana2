@@ -32,6 +32,10 @@ const TEXT = [
 22 => "Si decidimos cambiar nuestra política de privacidad, publicaremos esos cambios en esta página.",
 
 // Text for change log
-23 => "7 de enero de 2021 - Primera publicación"
+23 => "7 de enero de 2021 - Primera publicación",
 // Remember to update the HTML number code (below H1)
+
+// Misc
+24 => "Volver",
+25 => "General",
 ];

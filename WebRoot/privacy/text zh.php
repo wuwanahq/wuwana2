@@ -32,6 +32,10 @@ const TEXT = [
 22 => "如果我们决定改变我们的隐私政策，我们将在本页面上发布这些变化。",
 
 // Text for change log
-23 => "2021年1月7日 - 首次发布"
+23 => "2021年1月7日 - 首次发布",
 // Remember to update the HTML number code (below H1)
+
+// Misc
+24 => '返回',
+25 => "一般性",
 ];

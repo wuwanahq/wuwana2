@@ -21,4 +21,6 @@ const TEXT = [
 18 => 'Bière',
 19 => 'Torréfacteur de café',
 20 => 'Boutique de café',
+21 => 'Accueil',
+22 => 'Comment utiliser ce siteweb?',
 ];
