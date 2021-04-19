@@ -58,6 +58,26 @@
 	<section>
 		<h2><?php echo TEMP_TEXT[3] ?></h2>
 		<div class="box">
+			<ul class="ul-list">
+				<li>
+					<div onclick="lightMode()">
+						<img class="icon" src="/static/icon/sun.svg" alt="">
+						<div>
+							<?php echo TEMP_TEXT[22] ?>
+							<img src="/static/icon/gray/chevron-right.svg" alt="">
+						</div>
+					</div>
+				</li>
+				<li>
+					<div onclick="darkMode()">
+						<img class="icon" src="/static/icon/moon.svg" alt="">
+						<div>
+							<?php echo TEMP_TEXT[23] ?>
+							<img src="/static/icon/gray/chevron-right.svg" alt="">
+						</div>
+					</div>
+				</li>
+			</ul>
 			<details class="details-list">
 				<summary>
 					<div>
@@ -92,6 +112,7 @@
 					</ul>
 				</div>
 			</a>
+			<hr>
 			<ul class="ul-list">
 				<li>
 					<a href="/privacy">

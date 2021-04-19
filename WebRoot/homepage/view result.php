@@ -21,7 +21,7 @@
 			<?php include 'Templates/navbar homepage.php' ?>
 		</nav>
 		<main>
-			<h1>Search Results</h1>
+			<h1><?php echo TEXT[23] ?></h1>
 			<?php include 'Templates/search.php' ?>
 			<?php if ($companies['Counter'] > 0): ?>
 				<div class="box info-error-box">

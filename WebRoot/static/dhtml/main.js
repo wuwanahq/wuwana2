@@ -8,6 +8,31 @@ var icon = document.getElementById("menu-icon");
 var winWidth = window.innerWidth;
 
 /**
+ * Funtion to toggle dark mode and light mode
+ * https://www.youtube.com/watch?v=wodWDIdV9BY
+ */
+
+var webAppearence = localStorage.getItem("webAppearence");
+
+function darkMode() {
+	// Remove class .light-mode
+	document.body.classList.remove("light-mode");
+	// Add class .dark-mode to the body
+	document.body.classList.add("dark-mode");
+	// Update localStorage
+	localStorage.setItem('webAppearence', 'darkMode');
+}
+
+function lightMode() {
+	// Remove class .dark-mode
+	document.body.classList.remove("dark-mode");
+	// Add class .light-mode to the body
+	document.body.classList.add("light-mode");
+	// Update localStorage
+	localStorage.setItem('webAppearence', 'lightMode');
+}
+ 
+/**
  * Functions that run automatically
  */
 
@@ -16,6 +41,13 @@ window.addEventListener("load", onLoad());
 function onLoad()
 {
 	replaceMultipleBrokenImgs(); //replace broken image url links
+
+	// Check for darkMode or lightMode
+	if (webAppearence == 'lightMode') {
+		document.body.classList.add("light-mode");
+	} else if (webAppearence == 'darkMode') {
+		document.body.classList.add("dark-mode");
+	}
 }
 
 window.addEventListener("resize", () => 

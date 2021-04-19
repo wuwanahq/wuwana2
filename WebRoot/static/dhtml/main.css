@@ -26,9 +26,6 @@
 	--salmon300: #E57B9F;
 	--salmon200: #EC9EB9;
 
-	--bkg-light: #f6f6f6;
-	--box-light: #FFFFFF;
-
 	/* Size */
 	--xxl: 2rem; /* 32px */
 	--xl: 1.5rem; /* 24px */
@@ -38,6 +35,9 @@
 	--xs: 0.75rem; /* 12px */
 
 	/* Default - Light Mode */
+	--bkg-light: #f6f6f6;
+	--box-light: #FFFFFF;
+
 	--background: var(--bkg-light);
 	--white-bkg: var(--white);
 	--box-bkg: var(--box-light);
@@ -59,10 +59,38 @@
 }
 
 /**
- * Dark Mode
- * It only works for new browsers
+ * Light Mode
  */
- @media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: light) {
+	:root {
+		--bkg-light: #f6f6f6;
+		--box-light: #FFFFFF;
+
+		--background: var(--bkg-light);
+		--white-bkg: var(--white);
+		--box-bkg: var(--box-light);
+		--box-hover: var(--grey100);
+		--alert-bkg: var(--red500);
+
+		--button-main: var(--white);
+		--button-main-hover: var(--black);
+		--button-main-text-hover: var(--whiteoff);
+
+		--border-default: var(--black);
+		--border-grey: var(--grey200);
+		--border-img: var(--grey50);
+
+		--text-default: var(--black);
+		--text-inverse: var(--white);
+		--text-grey: var(--grey700);
+		--text-link: var(--azure900);
+	}
+} */
+
+/**
+ * Dark Mode
+ */
+@media (prefers-color-scheme: dark) {
 	:root {
 		--bkg-dark: #23272D;
 		--box-dark: #2E333A;
@@ -90,7 +118,62 @@
 
 	img { filter: brightness(.8) }
 	.icon { filter: invert(.8) }
- }
+}
+
+.light-mode {
+	--bkg-light: #f6f6f6;
+	--box-light: #FFFFFF;
+
+	--background: var(--bkg-light);
+	--white-bkg: var(--white);
+	--box-bkg: var(--box-light);
+	--box-hover: var(--grey100);
+	--alert-bkg: var(--red500);
+
+	--button-main: var(--white);
+	--button-main-hover: var(--black);
+	--button-main-text-hover: var(--whiteoff);
+
+	--border-default: var(--black);
+	--border-grey: var(--grey200);
+	--border-img: var(--grey50);
+
+	--text-default: var(--black);
+	--text-inverse: var(--white);
+	--text-grey: var(--grey700);
+	--text-link: var(--azure900);
+}
+
+.light-mode img { filter: brightness(1) }
+.light-mode .icon { filter: invert(0) }
+
+.dark-mode {
+	--bkg-dark: #23272D;
+	--box-dark: #2E333A;
+	--box-hover-dark: #43474E;
+
+	--background: var(--bkg-dark);
+	--white-bkg: var(--bkg-dark);
+	--box-bkg: var(--box-dark);
+	--box-hover: var(--box-hover-dark);
+	--alert-bkg: var(--red800);
+
+	--button-main: var(--box-dark);
+	--button-main-hover: var(--box-hover-dark);
+	--button-main-text-hover: var(--whiteoff);
+
+	--border-default: var(--grey700);
+	--border-grey: var(--grey700);
+	--border-img: var(--grey700);
+
+	--text-default: var(--whiteoff);
+	--text-inverse: var(--black);
+	--text-grey: var(--grey200);
+	--text-link: var(--azure500);
+}
+
+.dark-mode img { filter: brightness(.8) }
+.dark-mode .icon { filter: invert(.8) }
 
 /* ----- CSS RESET ----- */
 html {
@@ -462,8 +545,33 @@ details summary:focus {
 
 /* Class for <ul> tag */
 .ul-list {
-	border-top: solid 1px var(--border-grey);
+	/* border-top: solid 1px var(--border-grey); */
 	/* border-bottom: solid 1px var(--border-grey); */
+}
+
+.ul-list div {
+	position: relative;
+	display: flex;
+	align-items: center;
+	min-height: 40px;
+	padding-inline-start: 16px;
+	cursor: pointer;
+}
+
+.ul-list div div {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	min-height: 40px; /* Same as .navbar-box ul a */
+	margin-inline-start: 16px;
+	padding-inline-start: 0;
+	padding-inline-end: 40px;
+	color: var(--text-default);
+	border-bottom: solid 1px var(--border-grey);
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .ul-list a {
@@ -474,12 +582,14 @@ details summary:focus {
 	padding-inline-start: 16px;
 	color: var(--text-default);
 }
+
 .ul-list a div {
 	display: flex;
 	align-items: center;
 	width: 100%;
 	min-height: 40px; /* Same as .navbar-box ul a */
 	margin-inline-start: 16px;
+	padding-inline-start: 0;
 	padding-inline-end: 40px;
 	border-bottom: solid 1px var(--border-grey);
 	overflow: hidden;
@@ -487,10 +597,12 @@ details summary:focus {
     text-overflow: ellipsis;
 }
 
+.ul-list li:last-child div div,
 .ul-list li:last-child a div {
 	border-bottom: none;
 }
 
+.ul-list div div img,
 .ul-list a div img {
 	position: absolute;
 	right: 8px;
@@ -500,6 +612,7 @@ details summary:focus {
 
 @media (hover: hover) {
 	.ul-list li:hover,
+	.ul-list li:hover div div img,
 	.ul-list li:hover a div img { /* Prevent text showing behind */
 		background-color: var(--box-hover); 
 	}
@@ -524,6 +637,7 @@ details summary:focus {
 	width: 100%;
 	margin-inline-start: 16px;
 	padding-inline-start: 0;
+	border-top: solid 1px var(--border-grey);
 }
 
 .details-list summary div div img {
