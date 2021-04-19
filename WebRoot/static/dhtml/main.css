@@ -58,38 +58,6 @@
 	--text-link: var(--azure900);
 }
 
-/**
- * Light Mode
- */
-/* @media (prefers-color-scheme: light) {
-	:root {
-		--bkg-light: #f6f6f6;
-		--box-light: #FFFFFF;
-
-		--background: var(--bkg-light);
-		--white-bkg: var(--white);
-		--box-bkg: var(--box-light);
-		--box-hover: var(--grey100);
-		--alert-bkg: var(--red500);
-
-		--button-main: var(--white);
-		--button-main-hover: var(--black);
-		--button-main-text-hover: var(--whiteoff);
-
-		--border-default: var(--black);
-		--border-grey: var(--grey200);
-		--border-img: var(--grey50);
-
-		--text-default: var(--black);
-		--text-inverse: var(--white);
-		--text-grey: var(--grey700);
-		--text-link: var(--azure900);
-	}
-} */
-
-/**
- * Dark Mode
- */
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bkg-dark: #23272D;
@@ -120,6 +88,7 @@
 	.icon { filter: invert(.8) }
 }
 
+/* light-mode class for js */
 .light-mode {
 	--bkg-light: #f6f6f6;
 	--box-light: #FFFFFF;
@@ -147,6 +116,7 @@
 .light-mode img { filter: brightness(1) }
 .light-mode .icon { filter: invert(0) }
 
+/* dark-mode class for js */
 .dark-mode {
 	--bkg-dark: #23272D;
 	--box-dark: #2E333A;
