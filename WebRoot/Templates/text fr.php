@@ -3,7 +3,7 @@ const TEMP_TEXT = [
 0 => "Vous cherchez un torréfacteur de café spécialisé ?",
 1 => "Trouvez rapidement les fournisseurs dont vous avez besoin.",
 2 => "Retour au début",
-3 => "Langue",
+3 => "Préférence",
 4 => "À propos de Wuwana",
 5 => "Politiques de confidentialité",
 6 => "We ❤️ Open Source",
@@ -22,4 +22,6 @@ const TEMP_TEXT = [
 19 => 'Langue du site web',
 20 => 'Annuaire',
 21 => 'Page précédente',
+22 => 'Light Mode',
+23 => 'Dark Mode',
 ];

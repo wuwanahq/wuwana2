@@ -23,4 +23,5 @@ const TEXT = [
 20 => 'Boutique de café',
 21 => 'Accueil',
 22 => 'Comment utiliser ce siteweb?',
+23 => 'Résultats de recherche',
 ];

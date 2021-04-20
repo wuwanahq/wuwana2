@@ -65,6 +65,7 @@
 							<h3><?php echo TEXT[6] ?></h3>
 							<p><?php echo $company->description ?></p>
 						</section>
+						<hr>
 					<?php endif ?>
 					<ul class="ul-list">
 						<?php if (!empty($company->website)): ?>
