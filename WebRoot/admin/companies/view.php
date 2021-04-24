@@ -5,8 +5,7 @@
 	<title>Admin page | Wuwana</title>
 	<meta property="og:title" content="Admin page | Wuwana">
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/admin.css">
-	<script src="/static/dhtml/admin.js"></script>
-	<script>updateCompany("<?php echo $oldestInstagram ?>")</script>
+	<script src="/static/dhtml/admin.js" defer></script>
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
@@ -15,12 +14,10 @@
 			<?php include 'Templates/navbar admin.php' ?>
 		</section>
 		<main>
-			<?php if(!$user->isAdmin()): ?>
-				<div class="information-error-box">
-					<div class="information-error-vertical"></div>
-					<h2>You are not logged in!</h2>
-				</div>
-			<?php else: ?>
+			<div class="information-error-box" style="display:none" id="MsgBox">
+				<div class="information-error-vertical"></div>
+				<h2 id="MsgTxt"></h2>
+			</div>
 			<section>
 				<h2>Add new company</h2>
 				<div class="box pad-16" id="new-company">
@@ -74,7 +71,7 @@
 								<summary>Social Media ▾</summary>
 								<div class="form-layout-column">
 									<label for="instagram">Instagram profile URL</label>
-									<input id="instagram" name="instagram" type="url"  onchange="scrape()">
+									<input id="instagram" name="instagram" type="url" onchange="scrapeInstagramToFillForm()">
 								</div>
 								<div class="form-layout-column">
 									<label for="GoogleID">Google Place ID</label>
@@ -138,7 +135,6 @@
 					</div>
 				</div>
 			</section>
-		<?php endif ?>
 		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>

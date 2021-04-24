@@ -38,6 +38,7 @@ class AppSettings extends DataAccess
 	 * - MaxResultSearch
 	 * - MaxResultPage404
 	 * - DefaultLanguage (language code)
+	 * - InfoUpdateInterval (in seconds)
 	 * @return array
 	 */
 	public function selectAll()

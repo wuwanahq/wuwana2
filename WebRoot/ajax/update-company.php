@@ -11,19 +11,50 @@ spl_autoload_register(function($className) {
 
 ignore_user_abort(true);
 
-if (filter_has_var(INPUT_POST, 'instagram'))
+$inputs = filter_input_array(INPUT_POST,
+[
+	'instagram'     => FILTER_VALIDATE_URL,
+	'ExternalURL'   => FILTER_VALIDATE_URL,
+	'name'          => FILTER_SANITIZE_STRING,
+	'biography'     => FILTER_SANITIZE_STRING,
+	'posts'         => FILTER_VALIDATE_INT,
+	'followers'     => FILTER_VALIDATE_INT,
+	'following'     => FILTER_VALIDATE_INT,
+	'website'       => FILTER_VALIDATE_URL,
+	'email'         => FILTER_VALIDATE_EMAIL,
+	'ProfilePicURL' => FILTER_VALIDATE_URL,
+	'ExtraInfo'     => FILTER_SANITIZE_STRING
+]);
+
+$inputs['name'] = $inputs['name'] == null ? '' : trim($inputs['name']);
+
+if ($inputs['instagram'] != null && strpos($inputs['instagram'], 'https://www.instagram.com/') === 0
+	&& strlen($inputs['name']) > 0
+	&& $inputs['biography'] !== null
+	&& $inputs['posts'] !== null && $inputs['posts'] !== false && $inputs['posts'] >= 0
+	&& $inputs['followers'] !== null && $inputs['followers'] !== false && $inputs['followers'] >= 0
+	&& $inputs['following'] !== null && $inputs['following'] !== false && $inputs['following'] >= 0)
 {
 	$instagram = new DataAccess\SocialMediaData();
-	$instagram->setPageURL(filter_input(INPUT_POST, 'instagram'), FILTER_SANITIZE_URL);
-	$instagram->externalLink = filter_input(INPUT_POST, 'ExternalURL', FILTER_SANITIZE_URL);
-	$instagram->setProfileName(filter_input(INPUT_POST, 'name'));
-	$instagram->setBiography(filter_input(INPUT_POST, 'biography'));
-	$instagram->nbPost = filter_input(INPUT_POST, 'posts', FILTER_SANITIZE_NUMBER_INT);
-	$instagram->nbFollower = filter_input(INPUT_POST, 'followers', FILTER_SANITIZE_NUMBER_INT);
-	$instagram->nbFollowing = filter_input(INPUT_POST, 'following', FILTER_SANITIZE_NUMBER_INT);
+	$instagram->setPageURL($inputs['instagram']);
+	$instagram->setProfileName($inputs['name']);
+	$instagram->setBiography($inputs['biography']);
+	$instagram->nbPost = $inputs['posts'];
+	$instagram->nbFollower = $inputs['followers'];
+	$instagram->nbFollowing = $inputs['following'];
 
-	for ($i=0; filter_has_var(INPUT_POST, 'ThumbnailSrc' . $i); ++$i)
-	{ $instagram->pictures[] = filter_input(INPUT_POST, 'ThumbnailSrc' . $i); }
+	if (!empty($inputs['ExternalURL']))
+	{ $instagram->externalLink = $inputs['ExternalURL']; }
+
+	for ($i=0; $i < 10; ++$i)
+	{
+		$input = filter_input(INPUT_POST, 'ThumbnailSrc' . $i, FILTER_VALIDATE_URL);
+
+		if ($input == null)  // or false
+		{ break; }
+
+		$instagram->pictures[] = $input;
+	}
 
 	$scraper = new Scraper\Scraper(
 		new DataAccess\Tag(),
@@ -31,9 +62,9 @@ if (filter_has_var(INPUT_POST, 'instagram'))
 		new DataAccess\SocialMedia());
 
 	$scraper->updateCompany(
-		filter_input(INPUT_POST, 'website', FILTER_SANITIZE_URL),
-		filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL),
-		filter_input(INPUT_POST, 'ProfilePicURL'),
-		filter_input(INPUT_POST, 'ExtraInfo'),
+		$inputs['website'],
+		$inputs['email'],
+		$inputs['ProfilePicURL'],
+		$inputs['ExtraInfo'],
 		$instagram);
 }

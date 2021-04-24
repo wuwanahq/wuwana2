@@ -77,6 +77,16 @@
 								?>
 							</select>
 						</div>
+						<div class="form-layout-column">
+							<label for="txt4">
+								Minimum interval before updating company info (in days)
+							</label>
+							<input id="txt4"
+								type="number"
+								inputmode="tel"
+								name="InfoUpdateInterval"
+								value="<?php echo $settings['InfoUpdateInterval'] / 86400 ?>">
+						</div>
 						<input class="button-main" type="submit" value="Apply">
 					</form>
 				</div>

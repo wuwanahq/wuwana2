@@ -6,8 +6,12 @@
  */
 
 $commit = '';
+$oldestInstagram = '';
 
 if($user->isAdmin())
-{ $commit = WebApp\WebApp::gitLastCommit(); }
+{
+	$commit = WebApp\WebApp::gitLastCommit();
+	$oldestInstagram = (new DataAccess\Company())->selectOldestInstagramURL($settings['InfoUpdateInterval']);
+}
 
 require 'admin/view.php';

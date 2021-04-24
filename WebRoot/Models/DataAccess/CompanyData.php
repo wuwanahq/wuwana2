@@ -73,6 +73,9 @@ class CompanyData
 
 	public function setWebsite($url)
 	{
+		if (!is_string($url) || strlen($url) < 4)
+		{ return; }
+
 		if (substr($url, 0, 4) != 'http')
 		{ $url = 'http://' . $url; }
 
