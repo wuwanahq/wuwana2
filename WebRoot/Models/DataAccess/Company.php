@@ -276,7 +276,7 @@ class Company extends DataAccess
 		if (empty($row['CompanyLastUpdate']) || time() - $row['CompanyLastUpdate'] < $minInterval)
 		{ return ''; }
 
-		return 'https://' . $row['SocialMediaURL'];
+		return $row['SocialMediaURL'];
 	}
 
 	public function update(CompanyData $company, $id)

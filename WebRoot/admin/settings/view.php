@@ -32,10 +32,10 @@
 					
 						<div class="form-layout-column">
 							<label for="txt1">
-								Admin session lifetime (in min)
+								Admin session lifetime (in minutes)
 							</label>
 							<input id="txt1"
-								type="text"
+								type="number"
 								inputmode="tel"
 								name="SessionLifetime"
 								value="<?php echo $settings['SessionLifetime'] / 60 ?>">
@@ -76,6 +76,16 @@
 									}
 								?>
 							</select>
+						</div>
+						<div class="form-layout-column">
+							<label for="txt4">
+								Minimum interval before updating company info (in days)
+							</label>
+							<input id="txt4"
+								type="number"
+								inputmode="tel"
+								name="InfoUpdateInterval"
+								value="<?php echo $settings['InfoUpdateInterval'] / 86400 ?>">
 						</div>
 						<input class="button-main-new" type="submit" value="Apply">
 					</form>

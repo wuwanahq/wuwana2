@@ -7,7 +7,9 @@ This project maintains a list of local businesses and keep track of it by scrapi
 ## How to deploy on your web server
 
 This WebApp needs **PHP 7** and the DOM extension (php-xml package) to work.  
-Also the HTTP server must be able to rewrite URL with Apache mod_rewrite, FallbackResource directive or Nginx "try_files" directive.
+Also the HTTP server must be able to route URL with Apache FallbackResource directive, mod_rewrite or Nginx "try_files" directive.
+
+For the database you just have to `create database Wuwana` the WebApp will automatically create all tables in your database.
 
 ### Dedicated Server or Virtual Private Server (with SSH access)
 

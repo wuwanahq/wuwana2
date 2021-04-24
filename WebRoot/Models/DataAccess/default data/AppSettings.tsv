@@ -5,3 +5,4 @@ SessionLifetime	1800
 MaxResultSearch	8
 MaxResultPage404	3
 DefaultLanguage	en
+InfoUpdateInterval	604800

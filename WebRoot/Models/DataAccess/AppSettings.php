@@ -31,7 +31,14 @@ class AppSettings extends DataAccess
 	}
 
 	/**
-	 * Get all settings.
+	 * Get all settings:
+	 * - DatabaseRevision
+	 * - ForceHTTPS (yes or no)
+	 * - SessionLifetime (in seconds)
+	 * - MaxResultSearch
+	 * - MaxResultPage404
+	 * - DefaultLanguage (language code)
+	 * - InfoUpdateInterval (in seconds)
 	 * @return array
 	 */
 	public function selectAll()
