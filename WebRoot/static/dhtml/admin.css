@@ -121,7 +121,7 @@ main h2 {
 /* ----- ADMIN TABS -----*/
 
 /* Company Tab */
-.box hr { margin-block-end: 8px; }
+main .box hr { margin-block-end: 8px; }
 
 .page-admin-companies .box input[type=submit] { margin-block-start: 24px; }
 

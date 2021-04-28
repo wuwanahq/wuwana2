@@ -16,6 +16,7 @@
 			</div>
 			<?php if($user->isLogin()): ?>
 				<h2><?php echo $_SESSION['Name'] ?></h2>
+				<br><hr>
 				<ul class="ul-list">
 					<li>
 						<a href="/">

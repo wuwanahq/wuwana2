@@ -7,9 +7,10 @@
 			<?php if (isset($user) && $user->isLogin()): ?>
 			<section>
 				<h2><?php echo $_SESSION['Name'] ?></h2>
+				<br><hr>
 				<ul class="ul-list">
 					<li>
-						<a href="/admin/companies">
+						<a href="/admin">
 							<img class="icon" src="/static/icon/slider.svg" alt="">
 							<div>
 								<?php echo TEMP_TEXT[13] ?>

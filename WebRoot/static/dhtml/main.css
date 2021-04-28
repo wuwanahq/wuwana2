@@ -737,7 +737,7 @@ details summary:focus {
 	display: none;
 	position: fixed;
 	top: 48px; left: 0;
-	z-index: 2;
+	z-index: 3;
 	min-width: 100vw;
 	height: calc(100vh - 48px); /* vh - header height */
 	background: rgba(22, 19, 19, 0.5);
@@ -748,7 +748,7 @@ details summary:focus {
 		visibility: hidden;
 		position: fixed;
 		top: 48px; left: 0;
-		z-index: 3;
+		z-index: 4;
 		padding-block-end: 200px; /* Need to solve scrolling bug*/
 		width: 300px;
 		max-width: 300px;
