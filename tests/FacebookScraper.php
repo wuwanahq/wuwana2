@@ -2,26 +2,30 @@
 
 /**
  * Facebook Rating Scraper
- * 
  */
 
-// $url = 'https://www.facebook.com/CamdenCoffeeRoasters/reviews/';
+
+//---------------------TEST--------------------------------
+
+$url = 'https://www.facebook.com/CamdenCoffeeRoasters/reviews/';
 // $url = 'https://www.facebook.com/RightSideCoffee';
 // $url = 'https://www.facebook.com/CamdenCoffeeRoasters';
 // $url = 'https://www.facebook.com/IAMay-Coffee-1599173000317845';
-$url = 'https://www.facebook.com/hansocafe/reviews';
+// $url = 'https://www.facebook.com/hansocafe/reviews';
 
 $text = loadFacebookReviewPage($url);
 
 $facebookRating = getFacebookRating($text);
 
-$facebookUpdate = array();
-array_push($facebookUpdate, 'lastUpdated', time());
-
-array_push($facebookRating, $facebookUpdate);
-
-print_r($facebookRating);
-echo '<br><hr>' . date("Y/m/d", $facebookRating[2][1]) . '<hr>';
+if ($facebookRating) {
+	echo '<br><hr>';
+	echo $facebookRating[0][1] . ' out of 5 <br>';
+	echo 'From the opinions of ' . $facebookRating[1][1] . ' people <br>';
+	echo 'Last update: ' . date("Y/m/d", $facebookRating[2][1]) . '<hr>';
+} else {
+	echo 'No reviews';
+}
+//-------------------------------------------------------
 
 
 /**
@@ -60,6 +64,7 @@ function loadFacebookReviewPage($url)
 
 /**
  * Function to output facebook rating
+ * and add timestamp
  * @param string $text
  * @param array
  */
@@ -82,5 +87,13 @@ function getFacebookRating($text)
 		$facebookRating[$i] = explode(':', $facebookRating[$i]);
 	}
 
+	// Add timestamp
+	if ($facebookRating)
+	{
+		$facebookUpdate = array();
+		array_push($facebookUpdate, 'lastUpdated', time());
+		array_push($facebookRating, $facebookUpdate);
+	}
+	
 	return $facebookRating;
 }
