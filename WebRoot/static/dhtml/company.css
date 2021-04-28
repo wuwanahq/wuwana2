@@ -1,4 +1,20 @@
 /* CSS for the company profile page */
+main {
+	/*
+	 * To fix bug that occurs to some companies
+	 * .containter = 1200px 
+	 * <aside> = 280px + 24px margin-right
+	 * body padding = 16px + 16px
+	 */
+	 max-width: calc(1200px - 280px - 24px);
+	 width: calc(100vw - 280px - 24px - 32px);
+}
+
+@media screen and (max-width: 800px)
+{
+	main { width: 100%; }
+}
+
 
 /* Basic Information */
 main .card {
@@ -68,6 +84,7 @@ main .card:hover { background-color: transparent }
 	margin-block-end: 40px;
 	color: var(--grey500);
 	font-size: var(--s);
+	text-transform: uppercase;
 }
 
 /* Instagram */
@@ -176,7 +193,7 @@ main .card:hover { background-color: transparent }
 		min-height: 64px;
 		max-height: 64px;
 		margin-inline-end: 16px;
-		border: 1px solid var(--border-grey);
+		border: 1px solid var(--border-img);
 		border-radius: 8px;
 	}
 

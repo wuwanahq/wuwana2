@@ -3,7 +3,7 @@ const TEMP_TEXT = [
 0 => 'Are you looking for specialty coffee?',
 1 => 'Find the providers you need quickly.',
 2 => 'Back to top',
-3 => 'Language',
+3 => 'Preference',
 4 => 'About Wuwana',
 5 => 'Our privacy policy',
 6 => 'We ❤️ Open Source',
@@ -22,4 +22,6 @@ const TEMP_TEXT = [
 19 => 'Website Language',
 20 => 'Online Directory',
 21 => 'Go back',
+22 => 'Light Mode',
+23 => 'Dark Mode',
 ];

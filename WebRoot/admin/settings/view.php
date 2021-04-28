@@ -10,13 +10,12 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<aside>
+		<nav>
 			<?php include 'Templates/navbar admin.php' ?>
-		</aside>
+		</nav>
 		<main>
 			<?php if(!$user->isAdmin()): ?>
-				<div class="information-error-box">
-					<div class="information-error-vertical"></div>
+				<div class="box info-error-box">
 					<h2>You are not logged in!</h2>
 				</div>
 			<?php else: ?>
@@ -26,18 +25,17 @@
 				<h2>WebApp Settings</h2>
 				<div class="box pad-16">
 					<form method="post">
-						<div class="form-layout-row">
+						<label class="input-checkbox" for="cb">
 							<input id="cb" type="checkbox" name="ForceHTTPS" <?php echo $settings['ForceHTTPS'] == 'no' ? '' : 'checked' ?>>
-							<label for="cb">
-								Always redirect to HTTPS
-							</label>
-						</div>
+							Always redirect to HTTPS
+						</label>
+					
 						<div class="form-layout-column">
 							<label for="txt1">
-								Admin session lifetime (in min)
+								Admin session lifetime (in minutes)
 							</label>
 							<input id="txt1"
-								type="text"
+								type="number"
 								inputmode="tel"
 								name="SessionLifetime"
 								value="<?php echo $settings['SessionLifetime'] / 60 ?>">
@@ -78,6 +76,16 @@
 									}
 								?>
 							</select>
+						</div>
+						<div class="form-layout-column">
+							<label for="txt4">
+								Minimum interval before updating company info (in days)
+							</label>
+							<input id="txt4"
+								type="number"
+								inputmode="tel"
+								name="InfoUpdateInterval"
+								value="<?php echo $settings['InfoUpdateInterval'] / 86400 ?>">
 						</div>
 						<input class="button-main-new" type="submit" value="Apply">
 					</form>

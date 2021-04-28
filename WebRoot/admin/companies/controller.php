@@ -6,7 +6,6 @@
  */
 
 $companies = [];
-$oldestInstagram = '';
 
 if ($user->isAdmin())
 {
@@ -36,9 +35,9 @@ if ($user->isAdmin())
 	}
 
 	$companies = $company->selectAll();
-
-	//TODO: allow the administrator to configure the minimum interval
-	$oldestInstagram = $company->selectOldestInstagramURL(604800);  // 7 days
+	require 'admin/companies/view.php';
 }
-
-require 'admin/companies/view.php';
+else
+{
+	require 'admin/view.php';
+}

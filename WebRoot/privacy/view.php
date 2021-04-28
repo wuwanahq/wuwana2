@@ -15,9 +15,9 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<aside>
+		<nav>
 			<?php include 'Templates/navbar homepage.php' ?>
-		</aside>
+		</nav>
 		<main>
 			<h1><?php echo TEXT[0] ?></h1>
 			<span><?php echo TEXT[1] . TEXT[23] ?></span>
@@ -57,7 +57,7 @@
 			</div>
 			<div class="button-main-new icon-button" onclick="goBack()">
 				<img class="icon" src="/static/icon/arrow-circle-left.svg" alt="">
-				<?php echo TEMP_TEXT[21] ?>
+				<?php echo TEXT[24] ?>
 			</div>
 		</main>
 	</div>

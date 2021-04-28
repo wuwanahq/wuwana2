@@ -26,9 +26,9 @@
 		</div>
 	</div>
 	<div class="container">
-		<aside>
+		<nav>
 			<?php include 'Templates/navbar homepage.php' ?>
-		</aside>
+		</nav>
 		<main>	
 			<h1><?php echo $company->name ?></h1>
 			<?php include 'Templates/search.php' ?>
@@ -59,11 +59,14 @@
 							</div>
 						</div>
 					</section>
-					<hr>
-					<section class="company-about">
-						<h3><?php echo TEXT[6] ?></h3>
-						<p><?php echo $company->description ?></p>
-					</section>
+					<?php if ($company->description): ?>
+						<hr>
+						<section class="company-about">
+							<h3><?php echo TEXT[6] ?></h3>
+							<p><?php echo $company->description ?></p>
+						</section>
+						<hr>
+					<?php endif ?>
 					<ul class="ul-list">
 						<?php if (!empty($company->website)): ?>
 							<li>
