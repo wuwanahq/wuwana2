@@ -86,6 +86,7 @@
 
 	img { filter: brightness(.8) }
 	.icon { filter: invert(.8) }
+	.details-list summary div div img { filter: brightness(1) }
 }
 
 /* light-mode class for js */
@@ -144,6 +145,7 @@
 
 .dark-mode img { filter: brightness(.8) }
 .dark-mode .icon { filter: invert(.8) }
+.dark-mode .details-list summary div div img { filter: brightness(1) }
 
 /* ----- CSS RESET ----- */
 html {

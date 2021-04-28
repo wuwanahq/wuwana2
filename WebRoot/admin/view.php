@@ -14,7 +14,7 @@
 		<nav>
 			<?php include 'Templates/navbar admin.php' ?>
 		</nav>
-		<main>
+		<main class="dashboard">
 			<?php if(!$user->isAdmin()): ?>
 				<div class="box info-error-box">
 					<h2>You are not logged in!</h2>
@@ -25,9 +25,9 @@
 				<section>
 					<h2>Webapp General</h2>
 					<div class="box box-text">
-						<p>Version 2.2</p>
+						<p>Version: 2.2</p>
 						<?php if ($user->isAdmin() && $commit != ''): ?>
-							Last commit: <?php echo $commit ?>
+							<p>Last commit: <?php echo $commit ?></p>
 						<?php endif ?>
 						<p>Database revision: <?php echo $settings['DatabaseRevision'] ?></p>
 					</div>

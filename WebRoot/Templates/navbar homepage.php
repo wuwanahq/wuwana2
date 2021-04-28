@@ -6,12 +6,12 @@
 			</div>
 			<?php if (isset($user) && $user->isLogin()): ?>
 			<section>
-				<h2><?php echo $_SESSION['Name'] ?></h2>
+				<a href="/"><h2><?php echo $_SESSION['Name'] ?></h2></a>
 				<br><hr>
 				<ul class="ul-list">
 					<li>
 						<a href="/admin">
-							<img class="icon" src="/static/icon/slider.svg" alt="">
+							<img class="icon" src="/static/icon/dashboard.svg" alt="">
 							<div>
 								<?php echo TEMP_TEXT[13] ?>
 								<img src="/static/icon/gray/chevron-right.svg" alt="">

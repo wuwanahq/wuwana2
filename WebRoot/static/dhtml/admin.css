@@ -120,6 +120,11 @@ main h2 {
 
 /* ----- ADMIN TABS -----*/
 
+/* Admin Tab */
+.dashboard .box-text p { margin-block-end: 8px; }
+
+.dashboard .box-text p:last-child { margin-block-end: 0 }
+
 /* Company Tab */
 main .box hr { margin-block-end: 8px; }
 

@@ -15,7 +15,7 @@
 				<img src="/static/logo/ribbon.svg" alt="">
 			</div>
 			<?php if($user->isLogin()): ?>
-				<h2><?php echo $_SESSION['Name'] ?></h2>
+				<a href="/"><h2><?php echo $_SESSION['Name'] ?></h2></a>
 				<br><hr>
 				<ul class="ul-list">
 					<li>
@@ -58,6 +58,15 @@
 		<h2><?php echo TEMP_TEXT[13] ?></h2>
 		<div class="box">
 			<ul class="ul-list">
+				<li>
+					<a href="/admin">
+						<img class="icon" src="/static/icon/dashboard.svg" alt="">
+						<div>
+							Dashboard
+							<img src="/static/icon/gray/chevron-right.svg" alt="">
+						</div>
+					</a>
+				</li>
 				<?php foreach ($sections as $sectionURL => $section): ?>
 					<li>
 						<a href="<?php echo $sectionURL; ?>">
@@ -73,6 +82,6 @@
 		</div>
 	</section>
 	<?php endif ?>
-	<div id="version">Wuwana version 2.2.1</div>
+	<!-- <div id="version">Wuwana version 2.2.1</div> -->
 </div>
 <div class="navbar-background" id="navbar-background" onclick="toggleNavbar()"></div>
