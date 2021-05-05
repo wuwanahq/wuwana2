@@ -37,10 +37,6 @@
 					<div class="box box-text">
 						<a href=""><p id="MsgTxt"></p></a>
 					</div>
-					<!-- <div class="information-error-box" style="display:none" id="MsgBox">
-					<div class="information-error-vertical"></div>
-					<a href=""><h2 id="MsgTxt"></h2></a>
-					</div> -->
 				</section>
 			<?php endif ?>
 		</main>

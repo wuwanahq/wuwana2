@@ -17,6 +17,12 @@
 			<h1>Admin | Companies</h1>
 			<?php include 'Templates/search.php' ?>
 			<section>
+				<h2>Notifications</h2>
+				<div class="box box-text">
+					<a href=""><p id="MsgTxt">Nothing to show</p></a>
+				</div>
+			</section>
+			<section>
 				<h2>Add new company</h2>
 				<div class="box pad-16" id="new-company">
 					<form method="post">
