@@ -4,7 +4,7 @@
 function displayMessage(text)
 {
 	document.getElementById("MsgTxt").innerText = text;
-	document.getElementById("MsgBox").style.display = "flex";
+	// document.getElementById("MsgBox").style.display = "flex";
 }
 
 function scrapeInstagramForAutoUpdate(url)

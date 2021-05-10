@@ -14,27 +14,31 @@
 		<nav>
 			<?php include 'Templates/navbar admin.php' ?>
 		</nav>
-		<main>
+		<main class="dashboard">
 			<?php if(!$user->isAdmin()): ?>
 				<div class="box info-error-box">
 					<h2>You are not logged in!</h2>
 				</div>
+			<?php else: ?>
+				<h1>Admin | Dashboard</h1>
+				<?php include 'Templates/search.php' ?>
+				<section>
+					<h2>Webapp General</h2>
+					<div class="box box-text">
+						<p>Version: 2.2</p>
+						<?php if ($user->isAdmin() && $commit != ''): ?>
+							<p>Last commit: <?php echo $commit ?></p>
+						<?php endif ?>
+						<p>Database revision: <?php echo $settings['DatabaseRevision'] ?></p>
+					</div>
+				</section>
+				<section>
+					<h2>Companies</h2>
+					<div class="box box-text">
+						<a href=""><p id="MsgTxt"></p></a>
+					</div>
+				</section>
 			<?php endif ?>
-			<div class="information-error-box" style="display:none" id="MsgBox">
-				<div class="information-error-vertical"></div>
-				<a href=""><h2 id="MsgTxt"></h2></a>
-			</div>
-			<section>
-				<h2>Admin section</h2>
-				<div class="box pad-16">
-					Wuwana version 2.2<br>
-					<?php if ($user->isAdmin() && $commit != ''): ?>
-						Last commit: <?php echo $commit ?><br>
-					<?php endif ?>
-					<br>
-					Database revision <?php echo $settings['DatabaseRevision'] ?>
-				</div>
-			</section>
 		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>

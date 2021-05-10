@@ -14,10 +14,14 @@
 			<?php include 'Templates/navbar admin.php' ?>
 		</nav>
 		<main>
-			<div class="information-error-box" style="display:none" id="MsgBox">
-				<div class="information-error-vertical"></div>
-				<h2 id="MsgTxt"></h2>
-			</div>
+			<h1>Admin | Companies</h1>
+			<?php include 'Templates/search.php' ?>
+			<section>
+				<h2>Notifications</h2>
+				<div class="box box-text">
+					<a href=""><p id="MsgTxt">Nothing to show</p></a>
+				</div>
+			</section>
 			<section>
 				<h2>Add new company</h2>
 				<div class="box pad-16" id="new-company">
