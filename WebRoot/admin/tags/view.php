@@ -10,14 +10,17 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<?php include 'Templates/admin menu.php' ?>
-		<div class="column-main tag-tab">
+		<nav>
+			<?php include 'Templates/navbar admin.php' ?>
+		</nav>
+		<main>
 			<?php if(!$user->isAdmin()): ?>
-				<div class="information-error-box">
-					<div class="information-error-vertical"></div>
+				<div class="box info-error-box">
 					<h2>You are not logged in!</h2>
 				</div>
-			<?php endif ?>
+			<?php else: ?>
+			<h1>Admin | Tags</h1>
+			<?php include 'Templates/search.php' ?>
 			<section id="section-table">
 				<h2>Base tags</h2>
 				<div class="box-table">
@@ -85,7 +88,8 @@
 						<div></div>
 				</div>
 			</section>
-		</div>
+			<?php endif ?>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>

@@ -45,14 +45,13 @@ function isPossibleToViewMore(companyCount,selectedRegions)
 	if (companyCount > (pageCount * 8)) {
 		//view more companies
 		viewMoreCompanies(pageCount,selectedRegions);
-		pageCount++;	//increase value of page count
-		pageCountElement.value = pageCount;		//set increased value to pageCountElement
-	}else{
+		pageCount++; //increase value of page count
+		pageCountElement.value = pageCount;	//set increased value to pageCountElement
+	} else {
 		//hide view more button
 		document.getElementById("view-more-button").style.display = 'none';
 	}
 }
-
 
 /**
  * Function to display more companies
@@ -66,8 +65,15 @@ function viewMoreCompanies(pageCount,selectedRegions)
 	var form = new FormData();
 	var xhr = new XMLHttpRequest();
 
-	form.append("pageCount",pageCount);
-	form.append("selectedRegions",JSON.stringify(selectedRegions));
+	form.append("pageCount", pageCount);
+	form.append("selectedRegions", JSON.stringify(selectedRegions));
+
+	var index = location.search.indexOf("&");
+
+	if(index > 8)
+	{ form.append("search", location.search.substring(8, index)) }
+	else
+	{ form.append("search", location.search.substring(8)); }
 
 	xhr.open("post", "/ajax/pagination.php", true);
 
@@ -76,4 +82,32 @@ function viewMoreCompanies(pageCount,selectedRegions)
 	};
 
 	xhr.send(form);
+}
+
+window.addEventListener("resize", () => 
+{
+	var filter = document.querySelector("#filter");
+	var body = document.body.style;
+
+	if (filter)
+	{
+		filter.style.visibility = "hidden";
+		body.overflow = "auto";
+	}
+})
+
+// Show filter
+function toggleFilter()
+{
+	var filter = document.querySelector("#filter");
+	var body = document.body.style;
+
+	if (filter.style.visibility == "visible") 
+	{
+		filter.style.visibility = "hidden";
+		body.overflow = "auto";
+		return;
+	}
+	filter.style.visibility = "visible";
+	body.overflow = "hidden";
 }

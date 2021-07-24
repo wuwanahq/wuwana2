@@ -10,8 +10,16 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<?php include 'Templates/admin menu.php' ?>
-		<div class="column-main">
+		<section class="column-left">
+			<?php include 'Templates/navbar admin.php' ?>
+		</section>
+		<main>
+			<?php if(!$user->isAdmin()): ?>
+				<div class="information-error-box">
+					<div class="information-error-vertical"></div>
+					<h2>You are not logged in!</h2>
+				</div>
+			<?php else: ?>
 			<section id="section-table">
 				<h2>Total Users: <span>4</span></h2>
 				<div class="box-table">
@@ -66,7 +74,8 @@
 					</div>
 				</div>
 			</section>
-		</div>
+			<?php endif ?>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>

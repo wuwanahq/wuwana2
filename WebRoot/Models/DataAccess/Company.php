@@ -157,14 +157,14 @@ class Company extends DataAccess
 		return $company;
 	}
 
-	public function selectAll($tagsLanguage = null)
+	public function selectAll()
 	{
 		$query = $this->pdo->query('select
 			Company.PermaLink as CompanyPermaLink,
 			Company.Name as CompanyName,
 			Company.Description as CompanyDescription,
 			Company.LastUpdate as CompanyLastUpdate,
-			Province.EN as LocationProvince,
+			Province.*,
 			Company.FirstTagID as CompanyFirstTagID,
 			Company.SecondTagID as CompanySecondTagID,
 			Company.OtherTags as CompanyOtherTags,
@@ -177,102 +177,83 @@ class Company extends DataAccess
 			inner join Province on Company.ProvinceID=Province.ProvinceID
 			order by Company.LastUpdate desc');
 
+		return new CompanyIterator($query);
+	}
+
+	/**
+	 * Find companies according to there names and tags in specific regions.
+	 * @param string $search
+	 * @param array $regions
+	 * @param string $language Optional (default English)
+	 * @param int $limit
+	 * @param int $offset
+	 * @return CompanyData[]
+	 */
+	public function search($search, $regions = [], $language = 'en', $limit = 10, $offset = 0)
+	{
 		$companies = [];
+		$permalinks = [];
 
-		while ($row = $query->fetch(PDO::FETCH_ASSOC))
+		// Search by priority
+		foreach (['Company.Name', 'T1.Names', 'T2.Names'] as $column)
 		{
-			$company = new CompanyData();
-			$company->permalink = $row['CompanyPermaLink'];
-			$company->name = $row['CompanyName'];
-			$company->description = $row['CompanyDescription'];
-			$company->region = $row['LocationProvince'];
-			$company->lastUpdate = $row['CompanyLastUpdate'];
-			$company->otherTags = $row['CompanyOtherTags'];
+			$iterator = $this->searchColumn($column, $search, $regions);
+			$iterator->setTagsLanguage($language);
 
-			$company->postalCode = $row['CompanyPostalCode'];
-
-			if ($row['TagName1'] != '')
+			foreach ($iterator as $permalink => $company)
 			{
-				$company->visibleTags[] = $tagsLanguage == null
-					? $row['CompanyFirstTagID']
-					: explode(parent::VALUES_DELIMITER, $row['TagName1'])[Tag::getLanguageIndex($tagsLanguage)];
-			}
+				if (!isset($permalinks[$permalink]) && --$offset < 0 && --$limit >= 0)
+				{ $companies[$permalink] = $company; }
 
-			if ($row['TagName2'] != '')
-			{
-				$company->visibleTags[] = $tagsLanguage == null
-					? $row['CompanySecondTagID']
-					: explode(parent::VALUES_DELIMITER, $row['TagName2'])[Tag::getLanguageIndex($tagsLanguage)];
+				$permalinks[$permalink] = true;
 			}
-
-			$companies[] = $company;
 		}
 
+		$companies['Counter'] = count($permalinks);
 		return $companies;
 	}
 
 	/**
-	 * Return companies in the selected region.
-	 * @param string $tagsLanguage
+	 * Search specifically in one column.
+	 * @param string $column Column full name
+	 * @param string $search
 	 * @param array $regions
-	 * @param int $limit
-	 * @return array
+	 * @return CompanyIterator
 	 */
-	public function selectRegions($tagsLanguage, $regions = [], $limit = 0)
+	public function searchColumn($column, $search, $regions = [])
 	{
-		$companies = [];
-		$sql = 'select
+		switch ($column)
+		{
+			case 'Company.PermaLink': break;
+			case 'Company.Name': break;
+			case 'T1.Names': break;
+			case 'T2.Names': break;
+			default: return null;
+		}
+
+		$sql = "select
 			Company.PermaLink as CompanyPermaLink,
 			Company.Name as CompanyName,
 			Company.LogoURL as CompanyLogoURL,
-			Province.' . strtoupper($tagsLanguage->code) . ' as ProvinceName,
+			Company.LastUpdate as CompanyLastUpdate,
+			Province.*,
 			Company.PostalCode as CompanyPostalCode,
 			T1.Names as TagName1,
 			T2.Names as TagName2
 			from Company
 			left join Province on Company.ProvinceID=Province.ProvinceID
 			left join Tag as T1 on Company.FirstTagID=T1.ID
-			left join Tag as T2 on Company.SecondTagID=T2.ID';
+			left join Tag as T2 on Company.SecondTagID=T2.ID
+			where ($column like ?)";
 
 		if (!empty($regions))
-		{ $sql .= " where Province.RegionID in ('" . implode("','", $regions) . "')"; }
+		{ $sql .= " and Province.RegionID in ('" . implode("','", $regions) . "')"; }
 
-		$query = $this->tryQuery($sql . ' order by Company.LastUpdate desc');
+		$query = $this->tryQuery($sql . ' order by Company.LastUpdate desc', true);
+		$query->bindValue(1, '%' . $search . '%', PDO::PARAM_STR);
+		$query->execute();
 
-		while ($row = $query->fetch(PDO::FETCH_ASSOC))
-		{
-			$company = new CompanyData();
-			$company->permalink = $row['CompanyPermaLink'];
-			$company->name = $row['CompanyName'];
-			$company->logo = $row['CompanyLogoURL'];
-			//$company->description = $row['Description'];
-			//$company->website = $row['Website'];
-			//$company->phone = $row['PhonePrefix'] . str_pad($row['PhoneNumber'], 9, '0', STR_PAD_LEFT);
-			//$company->email = $row['Email'];
-
-            $company->postalCode = $row['CompanyPostalCode'];
-
-			$company->region = $row['ProvinceName'];
-
-			if ($row['TagName1'] != '')
-			{
-				$company->tags[] =
-					explode(parent::VALUES_DELIMITER, $row['TagName1'])[Tag::getLanguageIndex($tagsLanguage)];
-			}
-
-			if ($row['TagName2'] != '')
-			{
-				$company->tags[] =
-					explode(parent::VALUES_DELIMITER, $row['TagName2'])[Tag::getLanguageIndex($tagsLanguage)];
-			}
-
-			$companies[$row['CompanyPermaLink']] = $company;
-
-			if (--$limit == 0)
-			{ break; }
-		}
-
-		return $companies;
+		return new CompanyIterator($query);
 	}
 
 	/**
@@ -295,22 +276,21 @@ class Company extends DataAccess
 		if (empty($row['CompanyLastUpdate']) || time() - $row['CompanyLastUpdate'] < $minInterval)
 		{ return ''; }
 
-		return 'https://' . $row['SocialMediaURL'];
+		return $row['SocialMediaURL'];
 	}
 
 	public function update(CompanyData $company, $id)
 	{
-		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
-		$i = count($company->otherTags);
+		$otherTags = '';
 
-        if (empty($company->postalCode)){
-            $company->region = $this->fetchProvinceID(null);
-        }else{
-            $company->region = $this->fetchProvinceID(substr($company->postalCode,0,2));
-        }
+		for ($i = count($company->tags) -2; $i > 0 && strlen($otherTags) > 255; --$i)
+		{ $otherTags = implode(parent::VALUES_DELIMITER, array_slice($company->tags, 2, $i)); }
 
-		while(strlen($otherTags) > 255)
-		{ $otherTags = implode(self::VALUES_DELIMITER, array_slice($company->otherTags, 0, --$i)); }
+        //TODO: Bad design code!
+		if (empty($company->postalCode))
+		{ $company->region = $this->fetchProvinceID(null); }
+		else
+		{ $company->region = $this->fetchProvinceID(substr($company->postalCode,0,2)); }
 
 		$query = $this->pdo->prepare('update Company
 			set Name=?,Description=?,LogoURL=?,Website=?,PhonePrefix=?,PhoneNumber=?,
@@ -326,8 +306,8 @@ class Company extends DataAccess
 		$query->bindValue(7, $company->email, PDO::PARAM_STR);
 		$query->bindValue(8, $company->address, PDO::PARAM_STR);
 		$query->bindValue(9, $company->region, PDO::PARAM_STR);
-		$query->bindValue(10, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
-		$query->bindValue(11, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
+		$query->bindValue(10, isset($company->tags[0]) ? $company->tags[0] : '', PDO::PARAM_STR);
+		$query->bindValue(11, isset($company->tags[1]) ? $company->tags[1] : '', PDO::PARAM_STR);
 		$query->bindValue(12, $otherTags, PDO::PARAM_STR);
 		$query->bindValue(13, time(), PDO::PARAM_INT);
 
@@ -357,17 +337,16 @@ class Company extends DataAccess
 
 	public function insert(CompanyData $company)
 	{
-		$otherTags = implode(self::VALUES_DELIMITER, $company->otherTags);
-		$i = count($company->otherTags);
+		$otherTags = '';
 
-		if (empty($company->postalCode)){
-		    $company->region = $this->fetchProvinceID(null);
-        }else{
-		    $company->region = $this->fetchProvinceID(substr($company->postalCode,0,2));
-        }
+		for ($i = count($company->tags) -2; $i > 0 && strlen($otherTags) > 255; --$i)
+		{ $otherTags = implode(parent::VALUES_DELIMITER, array_slice($company->tags, 2, $i)); }
 
-		while(strlen($otherTags) > 255)
-		{ $otherTags = implode(self::VALUES_DELIMITER, array_slice($company->otherTags, 0, --$i)); }
+		//TODO: Bad design code!
+		if (empty($company->postalCode))
+		{ $company->region = $this->fetchProvinceID(null); }
+		else
+		{ $company->region = $this->fetchProvinceID(substr($company->postalCode,0,2)); }
 
 		$query = $this->pdo->query('select coalesce(max(ID)+1,' . self::INT_MIN . ') from Company');
 		$query->execute();
@@ -394,8 +373,8 @@ class Company extends DataAccess
 			$query->bindValue(9, $company->email, PDO::PARAM_STR);
 			$query->bindValue(10, $company->address, PDO::PARAM_STR);
 			$query->bindValue(11, $company->region, PDO::PARAM_STR);
-			$query->bindValue(12, isset($company->visibleTags[0]) ? $company->visibleTags[0] : '', PDO::PARAM_STR);
-			$query->bindValue(13, isset($company->visibleTags[1]) ? $company->visibleTags[1] : '', PDO::PARAM_STR);
+			$query->bindValue(12, isset($company->tags[0]) ? $company->tags[0] : '', PDO::PARAM_STR);
+			$query->bindValue(13, isset($company->tags[1]) ? $company->tags[1] : '', PDO::PARAM_STR);
 			$query->bindValue(14, $otherTags, PDO::PARAM_STR);
 			$query->bindValue(15, time(), PDO::PARAM_INT);
 

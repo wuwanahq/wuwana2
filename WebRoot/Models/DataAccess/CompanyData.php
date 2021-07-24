@@ -2,12 +2,11 @@
 namespace DataAccess;
 
 /**
- * Data Access Object representing a company.
+ * Data object representing company info.
  * @license https://mozilla.org/MPL/2.0 This Source Code is subject to the terms of the Mozilla Public License v2.0
  */
 class CompanyData
 {
-	public $permalink;
 	public $name;
 	public $logo = '';
 	public $description = '';
@@ -15,9 +14,8 @@ class CompanyData
 	public $email = '';
 	public $phone = '0000000000';
 	public $address = '';
-	public $region = '';
-	public $visibleTags = [];
-	public $otherTags;
+	public $region = 'ES';
+	public $tags = [];
 	public $instagram;
 	public $facebook;
 	public $lastUpdate;
@@ -75,6 +73,9 @@ class CompanyData
 
 	public function setWebsite($url)
 	{
+		if (!is_string($url) || strlen($url) < 4)
+		{ return; }
+
 		if (substr($url, 0, 4) != 'http')
 		{ $url = 'http://' . $url; }
 
@@ -105,5 +106,4 @@ class CompanyData
 
 		return $permalink;
 	}
-
 }

@@ -9,44 +9,21 @@ spl_autoload_register(function($className) {
 	require '../Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-$language = WebApp\WebApp::getLanguage();
+$inputs = filter_input_array(INPUT_POST,
+[
+	'pageCount' => FILTER_VALIDATE_INT,
+	'selectedRegions' => FILTER_SANITIZE_STRING,
+	'search' => FILTER_SANITIZE_STRING
+]);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
+if ($inputs['pageCount'] > 0 && $inputs['selectedRegions'] != null && $inputs['search'] != null)
 {
-	$pageCount = $_POST['pageCount'];
-	$selectedRegions = json_decode(stripslashes($_POST['selectedRegions']));
+	$companies = (new DataAccess\Company())->search(
+		urldecode($inputs['search']),
+		json_decode(stripslashes($inputs['selectedRegions'])),
+		WebApp\WebApp::getLanguage()->code,
+		$settings['MaxResultSearch'],
+		$inputs['pageCount'] * $settings['MaxResultSearch']);
 
-	$locations = (new DataAccess\Location())->selectUsefulItemsOnly('es',$language->code);
-	$companies = (new DataAccess\Company())->selectRegions($language, $selectedRegions, 0);
-	$companies = array_splice($companies,($pageCount*8),8);
-	$counter = count($companies);
-
-	$output = '';
-
-	foreach ($companies as $permalink => $company)
-	{
-		$output .= '<a class="card" href="/'. $permalink.'">
-			<div class="logo-main margin-r16">
-				<img src="'. $company->logo.'" alt="">
-			</div>
-			<div class="company-card-wrapper">
-				<div class="company-card-info">
-					<h3>'.$company->name.'</h3>
-					<ul class="tag-area">
-						<li>'.implode('</li><li>', $company->tags).'</li>
-					</ul>
-					<div class="button-icon-small margin-t-auto">
-						<img src="/static/icon/tiny/map.svg" alt="">
-						'. $company->region.'
-					</div>
-				</div>
-				<div class="company-card-badge-wrapper"></div>
-			</div>
-		</a>';
-
-		if (--$counter > 0)
-		{ $output .= '<hr>'; }
-	}
-
-	echo $output;
+	WebApp\ViewComponent::printCompanyCards($companies, true);
 }

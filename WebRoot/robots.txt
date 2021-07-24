@@ -3,7 +3,9 @@
 
 User-agent: *
 Disallow: /admin/
+Sitemap: https://wuwana.com/sitemap.xml
 
 # adsbot ignores robots.txt unless specifically named
 User-agent: adsbot-google
 Disallow: /admin/
+Sitemap: https://wuwana.com/sitemap.xml

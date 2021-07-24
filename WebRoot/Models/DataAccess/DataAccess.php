@@ -22,12 +22,22 @@ abstract class DataAccess
 		date_default_timezone_set('UTC');
 	}
 
+	/**
+	 * Return SQL query to create the table.
+	 * @return string SQL
+	 */
 	abstract static function getTableSchema();
+
+	/**
+	 * Import data.
+	 * @uses importData
+	 */
 	abstract public function insertData($filePath);
 
 	private function createDatabase()
 	{
 		// Create tables
+		$this->pdo->exec(AppSettings::getTableSchema());
 		$this->pdo->exec(User::getTableSchema());
 		$this->pdo->exec(Tag::getTableSchema());
 		$this->pdo->exec(SocialMedia::getTableSchema());
@@ -39,6 +49,7 @@ abstract class DataAccess
 		$this->pdo->exec(Company::getTableSchema());
 
 		// Default tables data
+		(new AppSettings($this->pdo))->insertData(__DIR__ . '/default data/AppSettings.tsv');
 		(new Location($this->pdo))->insertData(__DIR__ . '/default data/location.tsv');
 		(new Tag($this->pdo))->insertData(__DIR__ . '/default data/tag.tsv');
 		(new SocialMedia($this->pdo))->insertData( __DIR__ . '/default data/socialmedia.tsv');
@@ -47,6 +58,10 @@ abstract class DataAccess
         (new Province($this->pdo))->insertData(__DIR__ . '/default data/province.tsv');
         (new PostalCode($this->pdo))->insertData(__DIR__ . '/default data/postalcode.tsv');
         (new Company($this->pdo))->insertData(__DIR__ . '/default data/company.tsv');
+
+		// For developer environments create user dev@wuwana.com with the access code "1234" to easily test as Admin
+		if (php_sapi_name() == 'cli-server')
+		{ (new User())->insertUser(\WebApp\Crypt::hashUniqueID('dev@wuwana.com'), 'd…@wuwana.com', 0, 1234, 1); }
 	}
 
 	/**

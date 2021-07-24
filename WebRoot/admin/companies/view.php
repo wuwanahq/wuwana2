@@ -5,84 +5,101 @@
 	<title>Admin page | Wuwana</title>
 	<meta property="og:title" content="Admin page | Wuwana">
 	<link rel="stylesheet" type="text/css" href="/static/dhtml/admin.css">
-	<script src="/static/dhtml/admin.js"></script>
-	<script>updateCompany("<?php echo $oldestInstagram ?>")</script>
+	<script src="/static/dhtml/admin.js" defer></script>
 </head>
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<?php include 'Templates/admin menu.php' ?>
-		<div class="column-main">
-			<?php if(!$user->isAdmin()): ?>
-				<div class="information-error-box">
-					<div class="information-error-vertical"></div>
-					<h2>You are not logged in!</h2>
+		<nav>
+			<?php include 'Templates/navbar admin.php' ?>
+		</nav>
+		<main>
+			<h1>Admin | Companies</h1>
+			<?php include 'Templates/search.php' ?>
+			<section>
+				<h2>Notifications</h2>
+				<div class="box box-text">
+					<a href=""><p id="MsgTxt">Nothing to show</p></a>
 				</div>
-			<?php endif ?>
+			</section>
 			<section>
 				<h2>Add new company</h2>
-				<div class="box pad-16">
+				<div class="box pad-16" id="new-company">
 					<form method="post">
-						<div class="form-layout-column">
-							<div class="form-label-wrapper">
-								<label for="instagram" class="form-label">Instagram profile URL</label>
-							</div>
-							<input id="instagram" name="instagram" type="url" class="form-input" onchange="scrape()">
-						</div>
-						<div class="form-layout-column">
-							<div class="form-label-wrapper">
-								<label for="website" class="form-label">Website URL</label>
-							</div>
-							<input id="website" name="website" type="url" class="form-input">
-						</div>
-						<div class="form-layout-column">
-							<div class="form-label-wrapper">
-								<label for="email" class="form-label">Company email</label>
-							</div>
-							<input id="email" name="email" type="text" class="form-input">
-						</div>
-						<div class="form-layout-column">
-							<div class="form-label-wrapper">
-								<label for="name" class="form-label">Company name</label>
-							</div>
-							<input id="name" name="name" type="text" class="form-input">
-						</div>
-						<div class="form-layout-column">
-							<div class="form-label-wrapper">
-								<label for="biography" class="form-label">Biography</label>
-							</div>
-							<textarea id="biography" name="biography" rows="6" class="form-input"></textarea>
-						</div>
-						<div class="form-layout-row">
-							<div class="form-layout-column" style="margin-right:24px">
-								<div class="form-label-wrapper">
-									<label class="form-label">Posts</label>
+						<section>
+							<details>
+								<summary>Main Information ▾</summary>
+								<div class="form-layout-column">
+									<label for="name">Company name</label>
+									<input id="name" name="name" type="text" >
 								</div>
-								<input type="text" id="posts" name="posts" size="6" class="form-input">
-							</div>
-							<div class="form-layout-column" style="margin-right:24px">
-								<div class="form-label-wrapper">
-									<label class="form-label">Followers</label>
+								<div class="form-layout-column">
+									<label for="postal-code">Postal Code</label>
+									<input id="postal-code" name="postal-code" type="text" >
 								</div>
-								<input type="text" id="followers" name="followers" size="6" class="form-input">
-							</div>
-							<div class="form-layout-column" style="margin-right:24px">
-								<div class="form-label-wrapper">
-									<label class="form-label">Following</label>
+								<div class="form-layout-column">
+									<label for="company-about">Company About</label>
+									<textarea id="company-about"></textarea>
 								</div>
-								<input type="text" id="following" name="following" size="6" class="form-input">
-							</div>
-						</div>
-						<input type="text" id="ProfilePicURL" name="ProfilePicURL">
-						<input type="text" id="ThumbnailSrc0" name="ThumbnailSrc0">
-						<input type="text" id="ThumbnailSrc1" name="ThumbnailSrc1">
-						<input type="text" id="ThumbnailSrc2" name="ThumbnailSrc2">
-						<input type="text" id="ThumbnailSrc3" name="ThumbnailSrc3">
-						<input type="text" id="ThumbnailSrc4" name="ThumbnailSrc4">
-						<input type="text" id="ThumbnailSrc5" name="ThumbnailSrc5">
-						<input type="text" id="ExternalURL" name="ExternalURL">
-						<input type="text" id="ExtraInfo" name="ExtraInfo">
-						<input type="submit" value="Add company" class="button-main">
+								<div class="form-layout-column">
+									<label for="permalink">Permanent link</label>
+									<input id="permalink" type="text">
+								</div>
+							</details>
+						</section>
+						<hr>
+						<section>
+							<details>
+								<summary>Contact ▾</summary>
+								<div class="form-layout-column">
+									<label for="ExternalURL">Website URL</label>
+									<input type="url" id="ExternalURL" name="ExternalURL">
+								</div>
+								<div class="form-layout-column">
+									<label for="whatsapp">Whatsapp</label>
+									<input id="whatsapp" name="whatsapp" type="text" >
+								</div>
+								<div class="form-layout-column">
+									<label for="phone">Phone</label>
+									<input id="phone" name="phone" type="text" >
+								</div>
+								<div class="form-layout-column">
+									<label for="email">Email</label>
+									<input id="email" name="email" type="text" >
+								</div>
+							</details>
+						</section>
+						<hr>
+						<section>
+							<details open>
+								<summary>Social Media ▾</summary>
+								<div class="form-layout-column">
+									<label for="instagram">Instagram profile URL</label>
+									<input id="instagram" name="instagram" type="url" onchange="scrapeInstagramToFillForm()">
+								</div>
+								<div class="form-layout-column">
+									<label for="GoogleID">Google Place ID</label>
+									<input type="url" id="GoogleID" name="GoogleID">
+								</div>
+								<details>
+									<summary><span>Other ▾</span></summary>
+									<textarea id="biography" name="biography" ></textarea>
+									<input type="text" id="posts" name="posts" size="6" placeholder="IG posts" >
+									<input type="text" id="followers" name="followers" size="6" placeholder="IG followers" >
+									<input type="text" id="following" name="following" size="6" placeholder="IG following" >
+									<input type="text" id="ExtraInfo" name="ExtraInfo" placeholder="IG extra text">
+									<input type="text" id="ProfilePicURL" name="ProfilePicURL" placeholder="IG profile url">
+									<input type="text" id="ThumbnailSrc0" name="ThumbnailSrc0" placeholder="IG picture 1">
+									<input type="text" id="ThumbnailSrc1" name="ThumbnailSrc1" placeholder="IG picture 2">
+									<input type="text" id="ThumbnailSrc2" name="ThumbnailSrc2" placeholder="IG picture 3">
+									<input type="text" id="ThumbnailSrc3" name="ThumbnailSrc3" placeholder="IG picture 4">
+									<input type="text" id="ThumbnailSrc4" name="ThumbnailSrc4" placeholder="IG picture 5">
+									<input type="text" id="ThumbnailSrc5" name="ThumbnailSrc5" placeholder="IG picture 6">
+								</details>
+							</details>
+						</section>
+						<hr>
+						<input type="submit" id="button" value="Add company" class="button-main-new">
 					</form>
 				</div>
 			</section>
@@ -93,7 +110,6 @@
 						<table>
 							<thead>
 								<tr>
-									<th>Logo</th>
 									<th style="min-width:240px">Company Name</th>
 									<th style="min-width:150px">Location</th>
 									<th>Visible tags</th>
@@ -102,19 +118,16 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach ($companies as $company): ?>
+								<?php foreach ($companies as $permalink => $company): ?>
 									<tr>
-										<td><div class="logo-small">
-											<img src="/static/image/schemekle.jpg">
-										</div></td>
 										<td title="<?php echo $company->description ?>">
-											<a href="<?php echo '/', $company->permalink ?>">
+											<a href="<?php echo '/', $permalink ?>">
 												<?php echo $company->name ?>
 											</a>
 										</td>
 										<td><?php echo $company->region ?></td>
-										<td title="Other tags: <?php echo $company->otherTags ?>">
-											<?php echo implode(' ', $company->visibleTags) ?>
+										<td title="Other tags: <?php echo implode(' ', array_slice($company->tags,2)) ?>">
+											<?php echo implode(' ', array_slice($company->tags, 0, 2)) ?>
 										</td>
 										<td><?php echo $language->formatDate($company->lastUpdate) ?></td>
 										<td><input type="button" value="Delete" disabled></td>
@@ -126,7 +139,7 @@
 					</div>
 				</div>
 			</section>
-		</div>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>

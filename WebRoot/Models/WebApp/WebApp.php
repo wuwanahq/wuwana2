@@ -83,7 +83,7 @@ class WebApp
 		if ($excludeProtocol)
 		{ return $host; }
 
-		if (Config::FORCE_HTTPS || filter_input(INPUT_SERVER,'HTTPS') == 'on')
+		if (filter_input(INPUT_SERVER,'HTTPS') == 'on')
 		{ return 'https://' . $host; }
 
 		return 'http://' . $host;
@@ -112,7 +112,7 @@ class WebApp
 
 		$host .= filter_input(INPUT_SERVER, 'REQUEST_URI');
 
-		if (Config::FORCE_HTTPS || filter_input(INPUT_SERVER,'HTTPS') == 'on')
+		if (filter_input(INPUT_SERVER,'HTTPS') == 'on')
 		{ return 'https://' . $host; }
 
 		return 'http://' . $host;
@@ -136,16 +136,47 @@ class WebApp
 		if ($pdo instanceof PDO)
 		{ return $pdo; }
 
-		$dbSource = Config::DB_SOURCE;
+		if (strpos(Config::DB_HOST, 'unix_socket=') === 0)
+		{
+			$dsn = Config::DB_HOST . ';dbname=' . Config::DB_NAME;
+		}
+		else
+		{
+			switch (Config::DB_DRIVER)
+			{
+				case 'mysql':
+				case 'pgsql':
+					$dsn = Config::DB_PORT > 0
+						? 'host=' . Config::DB_HOST . ';port=' . Config::DB_PORT . ';dbname=' . Config::DB_NAME
+						: 'host=' . Config::DB_HOST . ';dbname=' . Config::DB_NAME;
+					break;
 
-		if (empty($dbSource))
-		{ $dbSource = 'sqlite:SQLite.db'; }
+				case 'sqlsrv':
+					$dsn = Config::DB_PORT > 0
+						? 'Server=' . Config::DB_HOST . ',' . Config::DB_PORT . ';Database=' . Config::DB_NAME
+						: 'Server=' . Config::DB_HOST . ';Database=' . Config::DB_NAME;
+					break;
 
-		$pdo = new PDO(
-			$dbSource, Config::DB_USERNAME, Config::DB_PASSWORD, [
-				PDO::ATTR_PERSISTENT => true,
-				PDO::ATTR_EMULATE_PREPARES => false,
-				PDO::ATTR_STRINGIFY_FETCHES => false]);
+				case 'oci':
+					$dsn = Config::DB_PORT > 0
+						? 'dbname=//' . Config::DB_HOST . ':' . Config::DB_PORT . '/' . Config::DB_NAME
+						: 'dbname=//' . Config::DB_HOST . '/' . Config::DB_NAME;
+					break;
+
+				case 'sqlite':
+				case 'odbc':
+					$dsn = Config::DB_NAME;
+					break;
+
+				default:
+					throw new Exception('Unknown driver ' . Config::DB_DRIVER);
+			}
+		}
+
+		$pdo = new PDO(Config::DB_DRIVER . ':' . $dsn, Config::DB_USERNAME, Config::DB_PASSWORD, [
+			PDO::ATTR_PERSISTENT => true,
+			PDO::ATTR_EMULATE_PREPARES => false,
+			PDO::ATTR_STRINGIFY_FETCHES => false]);
 
 		return $pdo;
 	}
@@ -173,5 +204,23 @@ class WebApp
 		}
 
 		return $company;
+	}
+
+	static function gitLastCommit()
+	{
+		if (!is_file('../.git/FETCH_HEAD'))
+		{ return ''; }
+
+		$text = file_get_contents('../.git/FETCH_HEAD');
+
+		if (strlen($text) <= 50 || $text[49] != "'")
+		{ return ''; }
+
+		$length = strpos($text, "'", 50) - 50;
+
+		if ($length < 1)
+		{ return ''; }
+
+		return substr($text, 0, 7) . ' (' . substr($text, 50, $length) . ')';
 	}
 }

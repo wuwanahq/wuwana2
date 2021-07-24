@@ -7,7 +7,9 @@ This project maintains a list of local businesses and keep track of it by scrapi
 ## How to deploy on your web server
 
 This WebApp needs **PHP 7** and the DOM extension (php-xml package) to work.  
-Also the HTTP server must be able to rewrite URL with Apache mod_rewrite, FallbackResource directive or Nginx "try_files" directive.
+Also the HTTP server must be able to route URL with Apache FallbackResource directive, mod_rewrite or Nginx "try_files" directive.
+
+For the database you just have to `create database Wuwana` the WebApp will automatically create all tables in your database.
 
 ### Dedicated Server or Virtual Private Server (with SSH access)
 
@@ -50,7 +52,7 @@ Later, if you want to update the WebApp, just run `git pull` on your computer in
 ## How to use this WebApp
 
 Just after you installed this WebApp, the first thing to do is probably adding new company.  
-Go to https://your.website/admin/companies to add new companies in the database.  
+Go to https://your.website/admin to add new companies in the database.  
 After that you can see all companies on the homepage.
 
 ## Maintainers

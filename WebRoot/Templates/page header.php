@@ -1,31 +1,16 @@
-<h1 class="visually-hidden">Wuwana</h1>
-<header class="header-bar">
+<header>
 	<div class="header-container">
-		<div class="header-logo"><a href="/"><img src="/static/logo/website.svg" alt="wuwana logo"></a></div>
-		<div class="header-invisible"></div>
-		<?php if (isset($user) && $user->isLogin()): ?>
-			<span>
-				<?php
-					echo $user->isAdmin() ? '<a href="/admin/companies">Admin page</a>' : $_SESSION['CompanyID'];
-					echo ' | ', $_SESSION['Name'];
-				?>
-			</span>
-		<?php elseif (filter_has_var(INPUT_GET, 'login')): ?>
-			<form method="post">
-				<label for="email">Email: </label>
-				<input id="email" type="text" name="email">
-				<input type="button" value="Send email" onclick="sendEmail()">
-				<label for="code">Code: </label>
-				<input id="code" type="password" name="code"> <input type="submit" value="Login">
-			</form>
-		<?php elseif ($url == '/'): ?>
-			<div class="header-icon" onclick="showMenu()">
-				<img id="menu-icon" src="/static/icon/menu.svg" alt="menu icon">
-			</div>
-		<?php else: ?>
-			<div class="header-icon" onclick="showMenu()">
-				<a href="/"><img id="menu-icon" src="/static/icon/home.svg" alt="home icon"></a>
-			</div>
-		<?php endif ?>
+		<div class="header-icon" onclick="toggleNavbar()">
+			<img class="icon" id="menu-icon" src="/static/icon/menu.svg" alt="menu icon">
+		</div>
+		<div class="header-logo">
+			<a href="/">
+				<picture class="icon">
+					<source media="(max-width: 300px)" srcset="/static/logo/w-logo.svg" alt="wuwana logo">
+					<source media="(min-width: 300px)" srcset="/static/logo/website.svg" alt="wuwana logo">
+					<img src="/static/logo/website.svg" alt="wuwana logo">
+				</picture>
+			</a>
+		</div>
 	</div>
 </header>

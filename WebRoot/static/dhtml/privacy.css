@@ -1,59 +1,30 @@
 /* CSS for the Privacy Policy Page */
-
-.privacy-wrapper {
-	max-width: 70ch;
-	width: 100%;
-	text-align: left;
+main .box section {
+	margin-block-end: 40px;
+	padding-block-end: 24px;
+	border-bottom: 1px solid var(--border-grey);
 }
 
-body {
-	background-color: var(--white);
-	padding-left: 16px;
-	padding-right: 16px;
+main .box section:last-child {
+	margin-block-end: 0;
+	padding-block-end: 0;
+	border: none;
 }
 
-section {
-	margin: 24px 0 12px;
-	white-space: pre-line;
+main h3 {
+	margin-block-end: 16px;
+	font-weight: 500;
 }
 
-h1 {
-	font-size: 3rem;
-	line-height: 1;
-	font-weight: 700;
-	margin: 8px 0 8px
+main p {
+	margin-block-end: 24px;
 }
 
-h2 {
-	font-size: var(--font-xxl);
-	margin-bottom: 16px;
-}
-
-h3 {
-	font-size: var(--font-l);
-	margin-top: 8px;
-	margin-bottom: 8px;
-}
-
-p {
-	margin: 0 0 12px;
-}
-
-#privacy-intro span {
-	font-weight: 400;
-	font-size: var(--font-s);
-	color: var(--grey700);
-	margin-bottom: 32px;
-}
-
-ol {
-	margin: 0;
-	padding-inline-start: 10px;
-	list-style-type: lower-roman;
-}
-
-li {
-	font-size: var(--font-m);
-	color: var(--grey700);
-	margin: 8px;
+main span,
+main li {
+	margin-block-start: -8px;
+	margin-block-end: 24px;
+	color: var(--text-grey);
+	font-size: var(--s);
+	text-transform: uppercase;
 }

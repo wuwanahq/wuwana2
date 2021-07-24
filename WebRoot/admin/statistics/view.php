@@ -10,8 +10,15 @@
 <body>
 	<?php include 'Templates/page header.php' ?>
 	<div class="container">
-		<?php include 'Templates/admin menu.php' ?>
-		<div class="column-main">
+		<nav>
+			<?php include 'Templates/navbar admin.php' ?>
+		</nav>
+		<main>
+			<?php if(!$user->isAdmin()): ?>
+				<div class="box info-error-box">
+					<h2>You are not logged in!</h2>
+				</div>
+			<?php else: ?>
 			<section id="section-table">
 				<h2>Statistics</h2>
 				<div class="box-table">
@@ -61,7 +68,8 @@
 					</div>
 				</div>
 			</section>
-		</div>
+			<?php endif ?>
+		</main>
 	</div>
 	<?php include 'Templates/page footer.php' ?>
 </body>

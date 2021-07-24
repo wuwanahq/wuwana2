@@ -10,10 +10,12 @@ use DataAccess\UserData;
 class UserSession
 {
 	private $dao;
+	private $sessionLifetime;
 
-	public function __construct(User $dataAccessObject)
+	public function __construct(User $dataAccessObject, $sessionLifetime)
 	{
 		$this->dao = $dataAccessObject;
+		$this->sessionLifetime = $sessionLifetime;
 
 		if (filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'code'))
 		{
@@ -25,8 +27,8 @@ class UserSession
 		elseif (filter_has_var(INPUT_COOKIE, session_name()))
 		{
 			session_start([
-				'cookie_lifetime' => Config::SESSION_LIFETIME,
-				'gc_maxlifetime' => Config::SESSION_LIFETIME,
+				'cookie_lifetime' => $this->sessionLifetime,
+				'gc_maxlifetime' => $this->sessionLifetime,
 				'read_and_close' => true
 			]);
 		}
@@ -39,8 +41,8 @@ class UserSession
 		if ($user instanceof UserData && $user->accessCode == $code)
 		{
 			session_start([
-				'cookie_lifetime' => Config::SESSION_LIFETIME,
-				'gc_maxlifetime' => Config::SESSION_LIFETIME
+				'cookie_lifetime' => $this->sessionLifetime,
+				'gc_maxlifetime' => $this->sessionLifetime
 			]);
 
 			$_SESSION['Name'] = $user->name;

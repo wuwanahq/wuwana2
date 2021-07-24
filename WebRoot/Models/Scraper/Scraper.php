@@ -122,14 +122,11 @@ class Scraper
 			. ';' . $company->website
 			. ';' . $text;
 
-		$company->otherTags = $this->tagger->getBasicTags($content);
-		$company->visibleTags = $this->tagger->getCombinedTags($content, $company->otherTags);
+		$tags = $this->tagger->getBasicTags($content);
+		$company->tags = $this->tagger->getCombinedTags($content, $tags);
 
-		if (empty($company->visibleTags[0]) && isset($company->otherTags[0]))
-		{ $company->visibleTags[0] = array_shift($company->otherTags); }
-
-		while (count($company->visibleTags) > 2)
-		{ array_unshift($company->otherTags, array_pop($company->visibleTags)); }
+		foreach ($tags as $tag)
+		{ $company->tags[] = $tag; }
 
 		return $company;
 	}

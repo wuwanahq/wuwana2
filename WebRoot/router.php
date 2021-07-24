@@ -11,51 +11,41 @@ spl_autoload_register(function($className) {
 	require 'Models/' . str_replace('\\', '/', $className) . '.php';
 });
 
-if (WebApp\Config::FORCE_HTTPS && !WebApp\WebApp::isSecure() && php_sapi_name() != 'cli-server')
+// Global variables available in all views and controllers
+$settings = (new DataAccess\AppSettings())->selectAll();
+$language = WebApp\WebApp::getLanguage();
+$user = new WebApp\UserSession(new DataAccess\User(), $settings['SessionLifetime']);
+$url = WebApp\WebApp::getURL();
+
+if ($settings['ForceHTTPS'] == 'yes' && !WebApp\WebApp::isSecure() && php_sapi_name() != 'cli-server')
 {
 	header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], TRUE, 301);
 	exit;
 }
 
-// Global variables available in all views and controllers
-$language = WebApp\WebApp::getLanguage();
-$user = new WebApp\UserSession(new DataAccess\User());
-$url = WebApp\WebApp::getURL();
-
 require 'Templates/text ' . $language->code . '.php';
 
 switch ($url)
 {
-	case '/':
-		require 'homepage/text ' . $language->code . '.php';
-		require 'homepage/controller.php';
-		require 'homepage/view.php';
-		break;
-
-	case '/privacy':
-		$page = substr($url, 1);
-		require $page . '/text ' . $language->code . '.php';
-		require $page . '/view.php';
-		break;
-
-	case '/admin/statistics':
-	case '/admin/categories':
-	case '/admin/companies':
-	case '/admin/database':
-	case '/admin/tags':
-	case '/admin/users':
-		$page = substr($url, 1);
-		require $page . '/controller.php';
-		require $page . '/view.php';
-		break;
+	case '/':                require 'homepage/controller.php'; break;
+	case '/privacy':         require 'privacy/controller.php'; break;
+	case '/admin':           require 'admin/controller.php'; break;
+	case '/admin/stat':      require 'admin/statistics/controller.php'; break;
+	case '/admin/settings':  require 'admin/settings/controller.php'; break;
+	case '/admin/companies': require 'admin/companies/controller.php'; break;
+	case '/admin/database':  require 'admin/database/controller.php'; break;
+	case '/admin/tags':      require 'admin/tags/controller.php'; break;
+	case '/admin/users':     require 'admin/users/controller.php'; break;
+	case '/sitemap.xml':     require 'sitemap.php'; break;
 
 	default:
-		if (php_sapi_name() == 'cli-server')
+
+		if (php_sapi_name() == 'cli-server')  // PHP built-in web server only
 		{
 			switch (substr($url, 0, 6))
 			{
-				case '/stati':  // static resources
-				case '/ajax/':  // There is no view with AJAX request
+				case '/stati':  // Static resource
+				case '/ajax/':  // AJAX request
 					return false;
 			}
 		}
@@ -70,9 +60,7 @@ switch ($url)
 		}
 		else  // No permalink found so display the error page
 		{
-			require '404/text ' . $language->code . '.php';
 			require '404/controller.php';
-			require '404/view.php';
 		}
 }
 
